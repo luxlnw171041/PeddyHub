@@ -43,13 +43,13 @@ a,
 .main-header .sticky-header .main-menu .navigation > li:hover > a,
 .main-header .sticky-header .main-menu .navigation > li.current > a,
 .main-header .sticky-header .main-menu .navigation > li.current-menu-item > a{
-	color:#e7470c;
+	color:#B8205B;
 }
 .color-palate-head{
-	background-color: #e7470c;
+	background-color: #B8205B;
 }
 .color-trigger{
-	background-color: #e7470c;
+	background-color: #B8205B;
 }
 /*Border Color*/
 .scroll-to-top,
@@ -68,7 +68,7 @@ a,
 .fact-counter .column:nth-child(2) .inner .icon-box,
 .fact-counter .column:nth-child(4) .inner .icon-box,
 .pet-block .inner-box .image .overlay-box .overlay-inner .content ul li a:hover{
-	border-color:#e7470c;
+	border-color:#B8205B;
 }
 
 /*Background Color*/
@@ -94,7 +94,7 @@ a,
 .testimonial-section.style-two .owl-dots .owl-dot.active:before,
 .blog-single .inner-box .lower-content .title-box .date-box,
 .pet-block .inner-box .image .overlay-box .overlay-inner .content ul li a:hover{
-	background-color:#e7470c;
+	background-color:#B8205B;
 }
 
 /*RGBA Color Dark*/
@@ -102,7 +102,7 @@ a,
 @media only screen and (max-width: 767px){
 	
 	.main-menu .navbar-header .navbar-toggle{
-		border-color:#e7470c;
+		border-color:#B8205B;
 	}
 	
 	.main-menu .navbar-header .navbar-toggle,
@@ -121,7 +121,7 @@ a,
 	.main-menu .navbar-collapse > .navigation > li.current > a,
 	.main-menu .navbar-collapse > .navigation > li.current-menu-item > a,
 	.header-style-two.inner-header .main-menu .navigation > li > a{
-		background-color:#e7470c;
+		background-color:#B8205B;
 	}
 	
 }
