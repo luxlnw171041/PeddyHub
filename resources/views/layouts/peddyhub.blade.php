@@ -36,7 +36,7 @@
             <div class="header">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
-                        <a href="index.html" class="navbar-brand">
+                        <a href="{{ url('/') }}" class="navbar-brand">
                             <img src="peddyhub/images/home_5/logo.png" width="35%" alt="image of logo" title="logo"
                                 class="img-fluid d-inline-block align-middle mr-2">
                             <span class="text-uppercase font-weight-bold"></span>
@@ -48,23 +48,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link active dropdown-toggle" data-bs-toggle="dropdown">HOME</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index.html">Home 01</a></li>
-                                        <li><a href="index-2.html">Home 02</a></li>
-                                        <li><a href="index-3.html">Home 03</a></li>
-                                        <li><a href="index-4.html">Home 04</a></li>
-                                        <li><a href="index-5.html">Home 05</a></li>
-                                        <li><a href="#">Header Styles</a>
-                                            <ul>
-                                                <li><a href="index.html">Header 01</a></li>
-                                                <li><a href="index-2.html">Header 02</a></li>
-                                                <li><a href="index-3.html">Header 03</a></li>
-                                                <li><a href="index-4.html">Header 04</a></li>
-                                                <li><a href="index-5.html">Header 05</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                    <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >HOME</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="about.html" class="hvr-overline-from-center nav-link dropdown-toggle"
@@ -163,13 +147,8 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="contact.html" class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">CONTACT</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="contact2.html">Contact 02</a></li>
-                                        <li><a href="pet-contact.html">Contact 03</a></li>
-                                        <li><a href="pet-contact2.html">Contact 04</a></li>
-                                    </ul>
+                                    <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                        >LOGIN</a>
                                 </li>
                                 <li class="nav-item">
                                     <div class="search-box-outer">
@@ -205,24 +184,7 @@
                                     </div>
                                     <div class="navbar-collapse clearfix">
                                         <ul class="navigation clearfix">
-                                            <li class="current dropdown"><a href="#">Home</a>
-                                                <ul>
-                                                    <li><a href="index.html">Home 01</a></li>
-                                                    <li><a href="index-2.html">Home 02</a></li>
-                                                    <li><a href="index-3.html">Home 03</a></li>
-                                                    <li><a href="index-4.html">Home 04</a></li>
-                                                    <li><a href="index-5.html">Home 05</a></li>
-                                                    <li class="dropdown"><a href="#">Header Styles</a>
-                                                        <ul>
-                                                            <li><a href="index.html">Header 01</a></li>
-                                                            <li><a href="index-2.html">Header 02</a></li>
-                                                            <li><a href="index-3.html">Header 03</a></li>
-                                                            <li><a href="index-4.html">Header 04</a></li>
-                                                            <li><a href="index-5.html">Header 05</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                            <li><a href="{{ url('/') }}">Home</a></li>
                                             <li class="dropdown"><a href="about.html">About</a>
                                                 <ul>
                                                     <li><a href="about-2.html">About 2</a></li>
@@ -304,12 +266,7 @@
                                                     <li><a href="blog-profile.html">Blog Single 01</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="dropdown"><a href="contact.html">Contact</a>
-                                                <ul>
-                                                    <li><a href="contact2.html">Contact 02</a></li>
-                                                    <li><a href="pet-contact.html">Contact 03</a></li>
-                                                    <li><a href="pet-contact2.html">Contact 04</a></li>
-                                                </ul>
+                                            <li><a href="{{'login'}}">Login</a>
                                             </li>
                                         </ul>
                                     </div>

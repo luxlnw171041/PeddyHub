@@ -107,7 +107,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="content">
                                 <div class="image text-center wow fadeInLeft">
-                                    <img src="peddyhub/images/home_5/bowl6.png" alt="image of product" title="product"
+                                    <img src="peddyhub/images/home_5/bowl1.png" alt="image of product" title="product"
                                         class="img-fluid rounded-circle">
                                     <h4>Kibble/Dry Food</h4>
                                     <p>
@@ -117,7 +117,7 @@
                                     </p>
                                 </div>
                                 <div class="image text-center wow fadeInLeft">
-                                    <img src="peddyhub/images/home_5/bowl7.png" alt="image of product" title="product"
+                                    <img src="peddyhub/images/home_5/bowl3.png" alt="image of product" title="product"
                                         class="img-fluid rounded-circle">
                                     <h4>Canned Food</h4>
                                     <p>
@@ -138,7 +138,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="context">
                                 <div class="image text-center wow fadeInRight">
-                                    <img src="peddyhub/images/home_5/bowl5.png" alt="image of product" title="product"
+                                    <img src="peddyhub/images/home_5/bowl2.png" alt="image of product" title="product"
                                         class="img-fluid rounded-circle">
                                     <h4>Semi-Moist Food</h4>
                                     <p>
@@ -148,7 +148,7 @@
                                     </p>
                                 </div>
                                 <div class="image text-center wow fadeInRight">
-                                    <img src="peddyhub/images/home_5/bowl4.png" alt="image of product" title="product"
+                                    <img src="peddyhub/images/home_5/bowl44.png" alt="image of product" title="product"
                                         class="img-fluid rounded-circle">
                                     <h4>Home Cooked Food</h4>
                                     <p>
@@ -323,7 +323,7 @@
                                             data-svg-icon="peddyhub/images/home_5/svg/blob (3).svg">
                                         </div>
                                     </div>
-                                    <img src="peddyhub/images/home_5/animal.png" alt="Image of Animal" title="Animal"
+                                    <img src="peddyhub/images/home_5/4.png" alt="Image of Animal" title="Animal"
                                         class="img-fluid" id="animal">
                                     <img src="peddyhub/images/home_5/dots.png" alt="" class="dots rotate">
                                 </div>
@@ -350,12 +350,12 @@
                         <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/1.jpg" alt="">
+                                    <img src="peddyhub/images/gallery/re1.1.jpg" alt="">
                                     <!--Overlay Box-->
                                     <div class="overlay-box">
                                         <div class="overlay-inner">
                                             <div class="content">
-                                                <a href="peddyhub/images/gallery/1.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
+                                                <a href="peddyhub/images/gallery/re1.1.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -366,12 +366,12 @@
                         <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/2.jpg" alt="">
+                                    <img src="peddyhub/images/gallery/re2.jpg" alt="">
                                     <!--Overlay Box-->
                                     <div class="overlay-box">
                                         <div class="overlay-inner">
                                             <div class="content">
-                                                <a href="peddyhub/images/gallery/2.jpg" data-fancybox="images" data-caption="" class=" lightbox-image link"><span class="icon fa fa-search"></span></a>
+                                                <a href="peddyhub/images/gallery/re2.jpg" data-fancybox="images" data-caption="" class=" lightbox-image link"><span class="icon fa fa-search"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -382,12 +382,12 @@
                         <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/3.jpg" alt="">
+                                    <img src="peddyhub/images/gallery/re3.jpg" alt="">
                                     <!--Overlay Box-->
                                     <div class="overlay-box">
                                         <div class="overlay-inner">
                                             <div class="content">
-                                                <a href="peddyhub/images/gallery/3.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
+                                                <a href="peddyhub/images/gallery/re3.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -398,12 +398,12 @@
                         <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/4.jpg" alt="">
+                                    <img src="peddyhub/images/gallery/re4.jpg" alt="">
                                     <!--Overlay Box-->
                                     <div class="overlay-box">
                                         <div class="overlay-inner">
                                             <div class="content">
-                                                <a href="peddyhub/images/gallery/4.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
+                                                <a href="peddyhub/images/gallery/re4.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -414,12 +414,12 @@
                         <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/5.jpg" alt="">
+                                    <img src="peddyhub/images/gallery/re5.jpg" alt="">
                                     <!--Overlay Box-->
                                     <div class="overlay-box">
                                         <div class="overlay-inner">
                                             <div class="content">
-                                                <a href="peddyhub/images/gallery/5.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
+                                                <a href="peddyhub/images/gallery/re5.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -430,12 +430,12 @@
                         <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
                             <div class="inner-box">
                                 <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/6.jpg" alt="">
+                                    <img src="peddyhub/images/gallery/re6.jpg" alt="">
                                     <!--Overlay Box-->
                                     <div class="overlay-box">
                                         <div class="overlay-inner">
                                             <div class="content">
-                                                <a href="peddyhub/images/gallery/6.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
+                                                <a href="peddyhub/images/gallery/re6.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
                                             </div>
                                         </div>
                                     </div>
@@ -541,14 +541,14 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
-                                    <div class="icon orange">
+                                    <div class="icon orange"><br>
                                         <div class="svg-icon" id="svg-4"
                                             data-svg-icon="peddyhub/images/home_5/svg/pet_grooming.svg">
                                         </div>
                                     </div>
                                     <div class="context">
                                         <h5 class="orange">
-                                            Pet Grooming
+                                            ตัดแต่งขนสัตว์
                                         </h5>
                                         <p>
                                             Abore et dolore magna aliqua ut enim minim veniam quis nostrud
@@ -560,9 +560,47 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
-                                    <div class="icon purple">
+                                    <div class="icon purple"><br>
                                         <div class="svg-icon" id="svg-5"
                                             data-svg-icon="peddyhub/images/home_5/svg/pet_adoption.svg">
+                                        </div>
+                                    </div>
+                                    <div class="context">
+                                        <h5 class="purple">
+                                            โรงแรมสัตว์เลี้ยง
+                                        </h5>
+                                        <p>
+                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
+                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
+                                            incididunt labore.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="icon orange"><br>
+                                        <div class="svg-icon" id="svg-6"
+                                            data-svg-icon="peddyhub/images/home_5/svg/pet_training.svg">
+                                        </div>
+                                    </div>
+                                    <div class="context">
+                                        <h5 class="orange">
+                                            ซื้อ-ขายสัตว์เลี้ยง
+                                        </h5>
+                                        <p>
+                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
+                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
+                                            incididunt labore.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="icon purple"><br>
+                                        <div class="svg-icon" id="svg-7"
+                                            data-svg-icon="peddyhub/images/home_5/svg/pet_shelter.svg">
                                         </div>
                                     </div>
                                     <div class="context">
@@ -570,23 +608,6 @@
                                             รับเลี้ยงสัตว์
                                         </h5>
                                         <p>
-                                            ฟหก
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="icon orange">
-                                        <div class="svg-icon" id="svg-6"
-                                            data-svg-icon="peddyhub/images/home_5/svg/pet_training.svg">
-                                        </div>
-                                    </div>
-                                    <div class="context">
-                                        <h5 class="orange">
-                                            Pet Training
-                                        </h5>
-                                        <p>
                                             Abore et dolore magna aliqua ut enim minim veniam quis nostrud
                                             exercitation ullamco laboris nisi aliquip eiusmod tempor
                                             incididunt labore.
@@ -596,33 +617,14 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
-                                    <div class="icon purple">
-                                        <div class="svg-icon" id="svg-7"
-                                            data-svg-icon="peddyhub/images/home_5/svg/pet_health.svg">
-                                        </div>
-                                    </div>
-                                    <div class="context">
-                                        <h5 class="purple">
-                                            Pet Vaccination
-                                        </h5>
-                                        <p>
-                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
-                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
-                                            incididunt labore.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="icon orange">
+                                    <div class="icon orange"><br>
                                         <div class="svg-icon" id="svg-8"
-                                            data-svg-icon="peddyhub/images/home_5/svg/pet_daycare.svg">
+                                            data-svg-icon="peddyhub/images/home_5/svg/pet_care.svg">
                                         </div>
                                     </div>
                                     <div class="context">
                                         <h5 class="orange">
-                                            Pet Day Caring
+                                            โรงพยาบาลสัตว์
                                         </h5>
                                         <p>
                                             Abore et dolore magna aliqua ut enim minim veniam quis nostrud
@@ -634,7 +636,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
-                                    <div class="icon purple">
+                                    <div class="icon purple"><br>
                                         <div class="svg-icon" id="svg-9"
                                             data-svg-icon="peddyhub/images/home_5/svg/pet_location.svg">
                                         </div>
