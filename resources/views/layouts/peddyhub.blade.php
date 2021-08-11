@@ -37,7 +37,8 @@
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
                         <a href="{{ url('/') }}" class="navbar-brand">
-                            <img src="peddyhub/images/home_5/logo.png" width="35%" alt="image of logo" title="logo"
+                            
+                        <img src="peddyhub/images/logo-4.png" width="" alt="image of logo" title="logo"
                                 class="img-fluid d-inline-block align-middle mr-2">
                             <span class="text-uppercase font-weight-bold"></span>
                         </a>

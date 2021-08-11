@@ -75,6 +75,7 @@
     </div>
 </div> -->
 
+
 <div class="crumb center">
                 <div class="container">
                     <h1>
@@ -115,6 +116,11 @@
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group">
+                                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Username" required autocomplete="username">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="form-group">
                                                     <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                                 </div>
                                             </div>
@@ -130,11 +136,11 @@
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                    <label class="form-check-label" for="exampleCheck1">By Clicking
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required="">
+                                                    <span class="form-check-label" for="exampleCheck1">&nbsp;By Clicking
                                                         On Signup, You Agree to Our <a href="#" title="Terms">Terms</a>
                                                         and
-                                                        <a href="#" title="Condition">Conditions</a></label>
+                                                        <a href="#" title="Condition">Conditions</a></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12">
