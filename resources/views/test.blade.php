@@ -1,113 +1,155 @@
-@extends('layouts.app')
+@extends('layouts.peddyhub')
 
 @section('content')
-
-</section>
-<div class="main-wrapper pet tm_profile">
-        <section class="profile team">
-            <div class="container">
-                <div class="slide">
-                    <div class="row">
-                        
-                        <div class="col-lg-5 col-md-12 col-sm-12">
-
-                            <div class="images">
-                                <img src="peddyhub/images/home_5/team-1.png" alt="Image of Member" title="Member"
-                                    class="img-fluid">
-                            </div>
-                            <div class="card">
-                                <ul>
-                                    <li>
-                                        <h4>Contact Info</h4>
-                                    </li>
-
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Email: </span>
-                                        <a href="mailto: example@example.com">example@example.com</a> </li>
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Phone: </span>  <a href="tel: 9328475899"> +9328475899</a>
-                                    </li>
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Emergency: </span>
-                                        <a href="tel: (08000) 5439 980"> (08000) 5439 980</a>
-                                    </li>
-                                    <li class="links mt-3 text-center">
-                                        <a href="#" title="facebook"><i class="fas fa-facebook"></i></a>
-                                        <a href="#" title="twitter">asd</a>
-                                        <a href="#" title="instagram"><i class="fas fa-instagram"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-12 col-sm-12" >
-                            <br>
-                            <div class="spec card">
-                                <ul>
-                                    <li>
-                                        <h5>ข้อมูลส่วนตัว</h5>
-                                    </li>
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> username: </span> </li>
-                                   
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> name: </span> </li>
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Email: </span> </li>
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> tel: </span></li>
-                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Availablity: </span> Mon -
-                                        Sat 9:00 am To 6:00 pm</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-    </div>
-
-    @endsection
-    
-    <div class="pet about main-wrapper pet tm_profile">
-        <section class="team">
-            <div class="row">
-                <div class="col-md-5 d-flex justify-content-center">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="member">
-                            <div class="image">
-                                <img src="peddyhub/images/home_5/team-1.png" alt="image of client" title="client"
-                                    class="img-fluid customer">
-                            </div>
-                            <div class="content">
-                                <div class="name wow fadeInDown">
-                                    <a href="team-profile.html" title="Lucy Anderson">Lucy Anderson</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="main-wrapper pet tm_profile">
-                        <section class="profile team">
-                                <div class="slide">
+<div class="pet service">
+<section class="contact">
+<div class="faq wow fadeInRight mt-4">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
                                     <div class="row">
-                                        
-                                        <div class="col-lg-11 col-md-11 col-sm-12" >
-                                            <br>
-                                            <div class="spec card">
-                                                <ul>
-                                                    <li>
-                                                        <h5>ข้อมูลส่วนตัว</h5>
-                                                    </li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> username: </span> </li>
-                                                
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> name: </span> </li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Email: </span> </li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> tel: </span></li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Availablity: </span> Mon -
-                                                        Sat 9:00 am To 6:00 pm</li>
-                                                </ul>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <input id="username" type="username" placeholder="Username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required  autofocus>
                                             </div>
                                         </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="exampleCheck1">&nbsp;Remember Me</label>
+                                                </div>
+                                        </div>
+
+                                        <div class="link text-center">
+                                            <a href="{{ 'register' }}" class="d-inline-block" title="Register">Register</a> ||
+                                            <a href="{{'password/reset'}}" class="d-inline-block"
+                                                title="Forgot Password">Forgot-Password</a>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group text-center">
+                                                <button type="submit" class="btn form-control">Login</button>
+                                            </div>
+                                        </div>
+                                        <div class="heading text-center">
+                                                <br>
+                                            <p class="wow fadeInUp">
+                                                <span class="wow pulse" data-wow-delay="1s"> Or Sign Up Using </span>
+                                            </p>
+                                            <center class="justify-content-xl-between" style="margin-top:10px;">
+                                                <a href="">  
+                                                    <span class="fa-stack fa-lg wow fadeInUp">
+                                                        <i class="fa fa-circle fa-stack-2x " style="color:#4267B2;"></i>
+                                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                                    </span>  
+                                                </a>
+                                                <a href="">  
+                                                    <span class="fa-stack fa-lg wow fadeInUp">
+                                                        <i class="fa fa-circle fa-stack-2x" style="color:#db4a39;"></i>
+                                                        <i class="fab fa-google-plus fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                                <a href="">  
+                                                    <img class="wow fadeInUp" src="peddyhub/images/home_5/icon-line.png" alt="" width="35px">
+                                                </a>
+                                            </center>
+                                        </div>
                                     </div>
-                                </div>
-                        </section>
+                                </form>
+                            </div>
+</section>
+
+</div>
+                                        <br><br><br>
+<div class="main-wrapper pet login" style="margin-top:-55px;">
+        <div class="pet service">
+            <section class="contact">
+                <div class="container">
+                        <div class="content">
+                            <div class="heading text-center">
+                                <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span>
+                                            <span class="orange"><i class="fas fa-paw"></i> </span>
+                                            <span class="purple"><i class="fas fa-paw"></i> </span>
+                                </p>
+                                <h3> <span class="wow pulse" data-wow-delay="1s"> Login
+                                    </span></h3>
+                            </div>
+                            <div class="faq wow fadeInRight mt-4">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <input id="username" type="username" placeholder="Username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required  autofocus>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="exampleCheck1">&nbsp;Remember Me</label>
+                                                </div>
+                                        </div>
+
+                                        <div class="link text-center">
+                                            <a href="{{ 'register' }}" class="d-inline-block" title="Register">Register</a> ||
+                                            <a href="{{'password/reset'}}" class="d-inline-block"
+                                                title="Forgot Password">Forgot-Password</a>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group text-center">
+                                                <button type="submit" class="btn form-control">Login</button>
+                                            </div>
+                                        </div>
+                                        <div class="heading text-center">
+                                                <br>
+                                            <p class="wow fadeInUp">
+                                                <span class="wow pulse" data-wow-delay="1s"> Or Sign Up Using </span>
+                                            </p>
+                                            <center class="justify-content-xl-between" style="margin-top:10px;">
+                                                <a href="">  
+                                                    <span class="fa-stack fa-lg wow fadeInUp">
+                                                        <i class="fa fa-circle fa-stack-2x " style="color:#4267B2;"></i>
+                                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                                    </span>  
+                                                </a>
+                                                <a href="">  
+                                                    <span class="fa-stack fa-lg wow fadeInUp">
+                                                        <i class="fa fa-circle fa-stack-2x" style="color:#db4a39;"></i>
+                                                        <i class="fab fa-google-plus fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                                <a href="">  
+                                                    <img class="wow fadeInUp" src="peddyhub/images/home_5/icon-line.png" alt="" width="35px">
+                                                </a>
+                                            </center>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+
+        <div class="search-popup">
+            <button class="close-search style-two"><img src="images/home_5/cross-out.png" alt=""></button>
+            <button class="close-search"><img src="images/home_5/cross-out.png" alt=""></button>
+            <form method="post" action="blog.html">
+                <div class="form-group">
+                    <input type="search" name="search-field" value="" placeholder="Search Here" required>
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
+    @endsection

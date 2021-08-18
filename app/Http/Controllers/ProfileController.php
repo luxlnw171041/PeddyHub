@@ -19,7 +19,6 @@ class ProfileController extends Controller
     {
         $id = Auth::id();
         $data = User::findOrFail($id);
-        //
         return view('profile/profile',compact('data') );
     }
 
@@ -53,8 +52,8 @@ class ProfileController extends Controller
     public function show($id)
     {
         $data = User::findOrFail($id);
-
         return view('profile/profile' , compact('data') );
+
     }
 
     /**
@@ -88,6 +87,7 @@ class ProfileController extends Controller
         $data = User::findOrFail($id);
         $data->update($requestData);
         
+        return redirect('profile')->with('flash_message', 'profile updated!');
     }
 
     /**
