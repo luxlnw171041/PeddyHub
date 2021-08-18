@@ -47,40 +47,7 @@ class LoginController extends Controller
         }
           
     }
-    //All providers login
-    public function redirectToProvider($provider)
-    {
-        return Socialite::driver($provider)->redirect();
-    }
-    //All providers callback
-    public function handleProviderCallback($provider)
-    {
-        $data= Socialite::driver($provider)->user();
-        // print_r($user);
-        $this->_registerOrLoginUser($data, $provider);
-        // Return home after login
-        return redirect()->intended();
-    }
-    //Register or Login
-    protected function _registerOrLoginUser($data, $provider)
-    {
-        //GET USER 
-        $user = User::where('email', $data->email)->first();
-        
-        //Create if not exists
-        if (!$user) {
-            //CREATE NEW USER
-            $user = new User();
-            $user->name = $data->name;
-            $user->provider_id = $data->id;
-            $user->provider = $data->provider;
-            $user->email = empty($data->email)?"":$data->email;
-            $user->avatar = empty($data->avatar)?"":$data->avatar;
-            $user->save();
-        }
-        //LOGIN by object user
-        Auth::login($user);
-    }
+    
 
     // Google login
     public function redirectToGoogle(Request $request)
@@ -147,5 +114,39 @@ class LoginController extends Controller
         //return redirect($value);
         return redirect()->intended($value);
 
+    }
+
+    protected function _registerOrLoginUser($data, $type)
+    {
+        //GET USER 
+        $user = User::where('provider_id', '=', $data->id)->first();
+        // print_r($data) ;
+        // exit();
+
+        if (!$user) {
+            //CREATE NEW USER
+            $user = new User();
+            $user->name = $data->name;
+            $user->provider_id = $data->id;
+            $user->type = $type;
+            $user->username = $data->name;
+
+            if (!empty($data->email)) {
+                $user->email = $data->email;
+            }
+            if (!empty($data->avatar)) {
+                $user->avatar = $data->avatar;
+            }
+
+            if (empty($data->email)) {
+                $user->email = "กรุณาเพิ่มอีเมล";
+            }
+            if (empty($data->avatar)) {
+                $user->avatar = "กรุณาเพิ่มรูปโปรไฟล์";
+            }
+            $user->save();
+        }
+        //LOGIN
+        Auth::login($user);
     }
 }
