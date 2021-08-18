@@ -33,13 +33,17 @@
                                             <div class="spec card">
                                                 <ul>
                                                     <li>
-                                                        <h5>ข้อมูลส่วนตัว</h5><a href="{{ url('/profile/' . $data->id . '/edit') }}" class="text-white float-right btn btn-warning main-shadow main-radius" >
-                                <i class="fas fa-user-edit"></i> แก้ไขโปรไฟล์
-                            </a>
+                                                        <h5>ข้อมูลส่วนตัว &nbsp;
+                                                            <a href="{{ url('/profile/' . $data->id . '/edit') }}" class="text-white float-right btn btn-warning " >
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                        </h5>
                                                     </li>
                                                     <li><i class="fas fa-paw yellow me-2"></i> <span> username: </span>  {{ $data->username }}</li>
+                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Birthday: </span>  {{ $data->birth }}</li>
+                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Gender: </span> {{ $data->sex }}</li>
                                                     <li><i class="fas fa-paw yellow me-2"></i> <span> Email: </span> {{ $data->email }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> tel: </span>{{ $data->tel }}</li>
+                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> tel: </span>{{ $data->phone }}</li>
                                                 </ul>
                                             </div>
                                         </div>

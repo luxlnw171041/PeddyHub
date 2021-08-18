@@ -1,9 +1,9 @@
 @extends('layouts.peddyhub')
 
 @section('content')
-<div class="pet service">
-<section class="contact">
-<div class="faq wow fadeInRight mt-4">
+                    <div class="pet service">
+                        <section class="contact">
+                            <div class="faq wow fadeInRight mt-4">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="row">
@@ -60,9 +60,15 @@
                                     </div>
                                 </form>
                             </div>
-</section>
-
-</div>
+                            <div class="col-md-7 col-sm-7">
+                                <div class="detail-pannel-footer-btn pull-right">
+                                    <a href="#" class="theme-btn btn-style-two ml-20" title="">Quick Apply</a>
+                                    <a href="#" class="theme-btn btn-style-three" title="">Save Draft</a></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                
                                         <br><br><br>
 <div class="main-wrapper pet login" style="margin-top:-55px;">
         <div class="pet service">

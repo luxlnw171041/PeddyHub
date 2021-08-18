@@ -9670,7 +9670,12 @@ ul, p {
     color: var(--pt_black);
 }
 
-.pet .featured:before {
+.pet .featured1 {
+    position: relative;
+    color: var(--pt_black);
+}
+
+.pet .featured1:before {
     content: '';
     position: absolute;
     top: 0px;
@@ -9684,7 +9689,7 @@ ul, p {
     z-index: -1;
 }
 
-.pet .featured:after {
+.pet .featured1:after {
     content: '';
     position: absolute;
     top: 0px;
@@ -9697,7 +9702,60 @@ ul, p {
     z-index: -1;
 }
 
+.pet .featured:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top right;
+    width: calc(50vw + 500px);
+    height: 100%;
+    z-index: -1;
+}
+
+.pet .featured:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-position: top right;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
 /* Slider */
+
+.pet .featured1 .slider {
+    padding: 0px 0px 75px;
+    margin: 75px 0px 0px;
+}
+
+.pet .featured1 .slider .yellow {
+    color: var(--pt_yellow);
+}
+
+.pet .featured1 .slider .text p {
+    font-size: 20px;
+    margin-bottom: 0px;
+    padding-right: 5px;
+}
+
+.pet .featured1 .slider .image {
+    position: relative;
+}
+
+.pet .featured1 .slider .image img {
+    width: 110%;
+    max-width: initial;
+}
+
+.pet .featured1 .slider .button {
+    padding-top: 42px;
+}
 
 .pet .featured .slider {
     padding: 0px 0px 75px;
@@ -12355,6 +12413,15 @@ ul, p {
 }
 
 .pet.comming .featured::before {
+    width: calc(40vw + 500px);
+}
+
+.pet.comming .featured1 .crumb {
+    margin-top: 0px;
+    padding-top: 75px;
+}
+
+.pet.comming .featured1::before {
     width: calc(40vw + 500px);
 }
 

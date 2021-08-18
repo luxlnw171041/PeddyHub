@@ -5,10 +5,8 @@
 
 <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 ">
-                <div class="card">
-                    <div class="card-header">แก้ไขข้อมูลส่วนตัว</div>
-                    <div class="card-body">
+          
+               
                         @if ($errors->any())
                             <ul class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -26,10 +24,9 @@
 
                         </form>
 
-                    </div>
-                </div>
-            </div>
-            </div>
+                    
+            
+         
         </div>
     </div>
     <br>
