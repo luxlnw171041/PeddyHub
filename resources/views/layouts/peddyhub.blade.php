@@ -33,12 +33,12 @@
         <div id="preloading"></div>
 
         <section class="featured">
-            <div class="header">
+            <div class="header" >
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
                         <a href="{{ url('/') }}" class="navbar-brand">
                             
-                        <img src="peddyhub/images/logo-4.png" width="" alt="image of logo" title="logo"
+                        <img src="{{ url('/peddyhub/images/logo-4.png') }}" width="" alt="image of logo" title="logo"
                                 class="img-fluid d-inline-block align-middle mr-2">
                             <span class="text-uppercase font-weight-bold"></span>
                         </a>
@@ -133,31 +133,30 @@
                                         <li><a href="pet-calorie.html">Calories Calculator 01</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">BLOG</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="blog.html">Our Blog</a></li>
-                                        <li><a href="blog2.html">Blog 02</a></li>
-                                        <li><a href="pet-blog.html">Blog 03</a></li>
-                                        <li><a href="pet-blog2.html">Blog 04</a></li>
-                                        <li><a href="blog-leftsidebar.html">Blog Right Sidebar</a></li>
-                                        <li><a href="pet-blog-right.html">Blog Right Sidebar 01</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                        <li><a href="blog-profile.html">Blog Single 01</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        >LOGIN</a>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="search-box-outer">
-                                        <div class="search-box-btn">
-                                            <a href="#" class="nav-link"><i class="fas fa-search"></i></a>
-                                        </div>
-                                    </div>
-                                </li>
+                                @guest
+                                    <li class="nav-item dropdown">
+                                        <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                            >LOGIN</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a href="#" style="font-size: 20px;" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                            data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{{ url('/profile') }}">Profile</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endguest
                             </ul>
                         </div>
                     </div>
@@ -167,7 +166,7 @@
                         <div class="auto-container clearfix">
                             <!--Logo-->
                             <div class="logo pull-left">
-                                <a href="index.html" class="img-responsive"><img src="peddyhub/images/home_5/logo.png" alt="" width="15%" style="margin-bottom:-30px;"
+                                <a href="index.html" class="img-responsive"><img src="{{ url('/peddyhub/images/home_5/logo.png') }}" alt="" width="15%" style="margin-bottom:-30px;"
                                         title=""></a>
                             </div>
                             <!--Right Col-->
@@ -255,20 +254,30 @@
                                                     <li><a href="pet-calorie.html">Calories Calculator 01</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="dropdown"><a href="#">Blog</a>
-                                                <ul>
-                                                    <li><a href="blog.html">Our Blog</a></li>
-                                                    <li><a href="blog2.html">Blog 02</a></li>
-                                                    <li><a href="pet-blog.html">Blog 03</a></li>
-                                                    <li><a href="pet-blog2.html">Blog 04</a></li>
-                                                    <li><a href="blog-leftsidebar.html">Blog Right Sidebar</a></li>
-                                                    <li><a href="pet-blog-right.html">Blog Right Sidebar 01</a></li>
-                                                    <li><a href="blog-single.html">Blog Single</a></li>
-                                                    <li><a href="blog-profile.html">Blog Single 01</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="{{'login'}}">Login</a>
-                                            </li>
+                                            @guest
+                                                <li class="nav-item dropdown">
+                                                    <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                                        >LOGIN</a>
+                                                </li>
+                                            @else
+                                                <li class="nav-item dropdown">
+                                                    <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                                        data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{ url('/profile') }}">Profile</a></li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();
+                                                                            document.getElementById('logout-form').submit();">
+                                                                {{ __('Logout') }}
+                                                            </a>
+                                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                                @csrf
+                                                            </form>
+                                                        </li>   
+                                                    </ul>
+                                                </li>
+                                            @endguest
                                         </ul>
                                     </div>
                                 </nav>
@@ -432,6 +441,7 @@
     <script src="{{ asset('peddyhub/js/mousewheel.js') }}"></script>
     <script src="{{ asset('peddyhub/js/vivus.min.js') }}"></script>
     <script src="{{ asset('peddyhub/js/validate.js') }}"></script>
+    <script src="{{ asset('peddyhub/js/jquery.countdown.js') }}"></script>
 </body>
 
 </html>

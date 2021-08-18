@@ -19,11 +19,13 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
-
-Auth::routes();
-
+Route::resource('profile', 'ProfileController');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/edit_profile', 'ProfileController@edit_profile');
 //Route for all providers login
 Route::get('login/{provider}','Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+
+
+
+Auth::routes();
