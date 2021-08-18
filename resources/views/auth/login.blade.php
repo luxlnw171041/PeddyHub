@@ -136,19 +136,19 @@
                                                 <span class="wow pulse" data-wow-delay="1s"> Or Sign Up Using </span>
                                             </p>
                                             <center class="justify-content-xl-between" style="margin-top:10px;">
-                                                <a href="">  
+                                                <a href="{{ route('login.facebook') }}">
                                                     <span class="fa-stack fa-lg wow fadeInUp">
                                                         <i class="fa fa-circle fa-stack-2x " style="color:#4267B2;"></i>
                                                         <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
                                                     </span>  
                                                 </a>
-                                                <a href="">  
+                                                <a href="{{ route('login.google') }}?redirectTo={{ request('redirectTo') }}"> 
                                                     <span class="fa-stack fa-lg wow fadeInUp">
                                                         <i class="fa fa-circle fa-stack-2x" style="color:#db4a39;"></i>
                                                         <i class="fab fa-google-plus fa-stack-1x fa-inverse"></i>
                                                     </span>
                                                 </a>
-                                                <a href="">  
+                                                <a href="{{ route('login.line') }}?redirectTo={{ request('redirectTo') }}">
                                                     <img class="wow fadeInUp" src="peddyhub/images/home_5/icon-line.png" alt="" width="35px">
                                                 </a>
                                             </center>

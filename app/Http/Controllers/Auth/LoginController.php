@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
   
 class LoginController extends Controller
 {
@@ -79,5 +80,72 @@ class LoginController extends Controller
         }
         //LOGIN by object user
         Auth::login($user);
+    }
+
+    // Google login
+    public function redirectToGoogle(Request $request)
+    {
+        $request->session()->put('redirectTo', $request->get('redirectTo'));
+
+        return Socialite::driver('google')->redirect();
+    }
+
+    // Google callback
+    public function handleGoogleCallback(Request $request)
+    {
+        $user = Socialite::driver('google')->user();
+
+        $this->_registerOrLoginUser($user, "google");
+
+        $value = $request->session()->get('redirectTo');
+        $request->session()->forget('redirectTo');
+
+        // Return home after login
+        return redirect()->intended($value);
+    }
+
+    // Facebook login
+    public function redirectToFacebook()
+    {   
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    // Facebook callback
+    public function handleFacebookCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+        // print_r($user);
+        $this->_registerOrLoginUser($user,"facebook");
+
+        // Return home after login
+        return redirect()->intended();
+    }
+
+    // Line login
+    public function redirectToLine(Request $request)
+    {
+        // echo $_SERVER['HTTP_REFERER'];
+        // exit();
+        $request->session()->put('redirectTo', $request->get('redirectTo'));
+
+        return Socialite::driver('line')->redirect();
+    }
+    // Line callback
+    public function handleLineCallback(Request $request)
+    {
+
+        $user = Socialite::driver('line')->user();
+        // print_r($user);
+        $this->_registerOrLoginUser($user,"line");
+        // echo $_SERVER['HTTP_REFERER'];
+        // exit();
+        // Return home after login
+        $value = $request->session()->get('redirectTo');
+        $request->session()->forget('redirectTo');
+        // echo $value;
+        // exit();
+        //return redirect($value);
+        return redirect()->intended($value);
+
     }
 }
