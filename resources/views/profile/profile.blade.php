@@ -12,8 +12,11 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="member">
                             <div class="image">
-                                <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" alt="image of client" title="client"
-                                    class="img-fluid customer">
+                                @if(!empty($data->photo))
+                                    <img src="{{$data->avatar}}" alt="image of client" title="client" class="img-fluid customer">
+                                @else 
+                                    <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}"  alt="image of client" title="client" class="img-fluid customer">
+                                @endif
                             </div>
                             <div class="content">
                                 <div class="name wow fadeInDown">

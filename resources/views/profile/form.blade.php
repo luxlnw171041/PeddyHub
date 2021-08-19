@@ -59,6 +59,15 @@
                                         {!! $errors->first('massengbox', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
+                                <div class="col-12 col-md-2">
+                                    <label  class="control-label"><b>{{ 'รูปภาพ' }}</b></label>
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <div class="form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
+                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($data->photo) ? $data->photo : ''}}" accept="image/*" multiple="multiple">
+                                        {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

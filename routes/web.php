@@ -19,6 +19,12 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return view('test');
 });
+Route::get('/privacy_policy', function () {
+    return view('privacy_policy');
+});
+Route::get('/terms_of_service', function () {
+    return view('terms_of_service');
+});
 Route::resource('profile', 'ProfileController');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/edit_profile', 'ProfileController@edit_profile');

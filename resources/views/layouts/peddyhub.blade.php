@@ -51,88 +51,6 @@
                                 <li class="nav-item dropdown">
                                     <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >HOME</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a href="about.html" class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">ABOUT</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="about-2.html">About 2</a></li>
-                                        <li><a href="about-pet.html">About 3</a></li>
-                                        <li><a href="about-pet2.html">About 4</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="services.html" class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">SERVICES</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="pet-service.html">Services 01</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown"><a href="pets.html"
-                                        class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">PETS</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="buy-pet.html">Pets 01</a></li>
-                                        <li><a href="pet-detail.html">Pet Detail</a></li>
-                                        <li><a href="pet-profile.html">Pet Detail 01</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">SHOP</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="pet-shop.html">Shop 01</a></li>
-                                        <li><a href="product-details.html">Product Detail</a></li>
-                                        <li><a href="pet-product.html">Product Detail 01</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="pet-cart.html">Cart 01</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="pet-checkout.html">Check Out 01</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown"><a href="#"
-                                        class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">PAGES</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="gallery.html">Gallery</a></li>
-                                        <li><a href="gallery-2.html">Gallery 02</a></li>
-                                        <li><a href="pet-gallery.html">Gallery 03</a></li>
-                                        <li><a href="pet-gallery2.html">Gallery 04</a></li>
-                                        <li><a href="404.html">Error</a></li>
-                                        <li><a href="pet-error.html">Error 01</a></li>
-                                        <li><a href="commingsoon.html">Comming Soon</a></li>
-                                        <li><a href="pet-coming.html">Comming Soon 01</a></li>
-                                        <li><a href="donation.html">Donation</a></li>
-                                        <li><a href="pet-donate.html">Donation 01</a></li>
-                                        <li><a href="appointment.html">Appointment</a></li>
-                                        <li><a href="pet-appoint.html">Appointment 01</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown"><a href="#"
-                                        class="hvr-overline-from-center nav-link dropdown-toggle"
-                                        data-bs-toggle="dropdown">SPECIAL
-                                        PAGES</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="jobs-list.html">Jobs</a></li>
-                                        <li><a href="pet-job.html">Jobs 01</a></li>
-                                        <li><a href="job-details.html">Job Detail</a></li>
-                                        <li><a href="job-profile.html">Job Detail 01</a></li>
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="pet-login.html">Login 01</a></li>
-                                        <li><a href="register.html">Register</a></li>
-                                        <li><a href="pet-register.html">Register 01</a></li>
-                                        <li><a href="team.html">Team</a></li>
-                                        <li><a href="pet-team.html">Team 01</a></li>
-                                        <li><a href="team-detail.html">Team Detail</a></li>
-                                        <li><a href="team-profile.html">Team Detail 01</a></li>
-                                        <li><a href="events.html">Events</a></li>
-                                        <li><a href="pet-event.html">Events 01</a></li>
-                                        <li><a href="event-single.html">Event Detail</a></li>
-                                        <li><a href="event-profile.html">Event Detail 01</a></li>
-                                        <li><a href="calculator.html">Calories Calculator</a></li>
-                                        <li><a href="pet-calorie.html">Calories Calculator 01</a></li>
-                                    </ul>
-                                </li>
                                 @guest
                                     <li class="nav-item dropdown">
                                         <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
@@ -185,75 +103,6 @@
                                     <div class="navbar-collapse clearfix">
                                         <ul class="navigation clearfix">
                                             <li><a href="{{ url('/') }}">Home</a></li>
-                                            <li class="dropdown"><a href="about.html">About</a>
-                                                <ul>
-                                                    <li><a href="about-2.html">About 2</a></li>
-                                                    <li><a href="about-pet.html">About 3</a></li>
-                                                    <li><a href="about-pet2.html">About 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"><a href="services.html">Services</a>
-                                                <ul>
-                                                    <li><a href="pet-service.html">Services 01</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"><a href="pets.html">Pets</a>
-                                                <ul>
-                                                    <li><a href="buy-pet.html">Pets 01</a></li>
-                                                    <li><a href="pet-detail.html">Pet Detail</a></li>
-                                                    <li><a href="pet-profile.html">Pet Detail 02</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"><a href="#">Shop</a>
-                                                <ul>
-                                                    <li><a href="shop.html">Shop</a></li>
-                                                    <li><a href="pet-shop.html">Shop 01</a></li>
-                                                    <li><a href="product-details.html">Product Detail</a></li>
-                                                    <li><a href="pet-product.html">Product Detail 01</a></li>
-                                                    <li><a href="cart.html">Cart</a></li>
-                                                    <li><a href="pet-cart.html">Cart 01</a></li>
-                                                    <li><a href="checkout.html">Check Out</a></li>
-                                                    <li><a href="pet-checkout.html">Check Out 01</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"><a href="#">Pages</a>
-                                                <ul>
-                                                    <li><a href="gallery.html">Gallery</a></li>
-                                                    <li><a href="gallery-2.html">Gallery 02</a></li>
-                                                    <li><a href="pet-gallery.html">Gallery 03</a></li>
-                                                    <li><a href="pet-gallery2.html">Gallery 04</a></li>
-                                                    <li><a href="404.html">Error</a></li>
-                                                    <li><a href="pet-error.html">Error 01</a></li>
-                                                    <li><a href="commingsoon.html">Comming Soon</a></li>
-                                                    <li><a href="pet-coming.html">Comming Soon 01</a></li>
-                                                    <li><a href="donation.html">Donation</a></li>
-                                                    <li><a href="pet-donate.html">Donation 01</a></li>
-                                                    <li><a href="appointment.html">Appointment</a></li>
-                                                    <li><a href="pet-appoint.html">Appointment 01</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown"><a href="#">Special Pages</a>
-                                                <ul>
-                                                    <li><a href="jobs-list.html">Jobs</a></li>
-                                                    <li><a href="pet-job.html">Jobs 01</a></li>
-                                                    <li><a href="job-details.html">Job Detail</a></li>
-                                                    <li><a href="job-profile.html">Job Detail 01</a></li>
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a href="pet-login.html">Login 01</a></li>
-                                                    <li><a href="register.html">Register</a></li>
-                                                    <li><a href="pet-register.html">Register 01</a></li>
-                                                    <li><a href="team.html">Team</a></li>
-                                                    <li><a href="pet-team.html">Team 01</a></li>
-                                                    <li><a href="team-detail.html">Team Detail</a></li>
-                                                    <li><a href="team-profile.html">Team Detail 01</a></li>
-                                                    <li><a href="events.html">Events</a></li>
-                                                    <li><a href="pet-event.html">Events 01</a></li>
-                                                    <li><a href="event-single.html">Event Detail</a></li>
-                                                    <li><a href="event-profile.html">Event Detail 01</a></li>
-                                                    <li><a href="calculator.html">Calories Calculator</a></li>
-                                                    <li><a href="pet-calorie.html">Calories Calculator 01</a></li>
-                                                </ul>
-                                            </li>
                                             @guest
                                                 <li class="nav-item dropdown">
                                                     <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
@@ -378,8 +227,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="copyright">Copyrights 2021 <span>PAWREX</span> • All Rights Reserved.</div>
+                <div class="footer-bottom d-flex justify-content-start">
+                    <div class="copyright">WWW.PEDDYHUB.COM <span>•</span> 
+                        <a href="{{'privacy_policy'}}">
+                            <span>นโยบายเกี่ยวกับข้อมูลส่วนบุคคล</span>
+                        </a>
+                        <span>•</span> 
+                        <a href="{{'privacy_policy'}}">
+                            <span>ข้อกำหนดและเงื่อนไขการใช้บริการ</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </footer>
@@ -387,7 +244,12 @@
     </div>
     <!--End pagewrapper-->
     <!--Scroll to top-->
-    <div class="scroll-to-top scroll-to-target" style="background-color:#B8205B;border-color: #B8205B; " data-bs-target="html"><span class="icon flaticon-pawprint-1"></span></div>
+    <div class="scroll-to-top scroll-to-target" style="background-color:#B8205B;border-color: #B8205B; " data-bs-target="html">
+        <div class="row">
+            <p style="margin-top:5px; color:white; ">top</p><br>
+            <p  style="margin-top:-38px; color:white; font-size:20px" class="icon flaticon-pawprint-1"></p>
+        </div>
+    </div>
     <!-- Color Palate / Color Switcher -->
     <!-- <div class="color-palate">
         <div class="color-trigger">
