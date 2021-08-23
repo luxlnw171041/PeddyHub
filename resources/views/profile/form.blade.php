@@ -14,6 +14,17 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-2">
+                                        <label  class="control-label"><b>{{ 'UserName' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10">
+                                    <div class="form-group">
+                                        <input class="form-control"  name="username" type="text" id="username" value="{{ isset($data->username) ? $data->username : ''}}" readonly>
+                                        {!! $errors->first('username', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <div class="col-12 col-md-2">
                                         <label  class="control-label"><b>{{ 'Name' }}</b></label>
                                     </div>
                                 </div>
@@ -62,7 +73,7 @@
                                 <div class="col-12 col-md-2">
                                     <label  class="control-label"><b>{{ 'รูปภาพ' }}</b></label>
                                 </div>
-                                <div class="col-12 col-md-4">
+                                <div class="col-12 col-md-10">
                                     <div class="form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
                                     <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($data->photo) ? $data->photo : ''}}" accept="image/*" multiple="multiple">
                                         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}

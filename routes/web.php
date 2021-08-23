@@ -25,7 +25,8 @@ Route::get('/privacy_policy', function () {
 Route::get('/terms_of_service', function () {
     return view('terms_of_service');
 });
-Route::resource('profile', 'ProfileController');
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/edit_profile', 'ProfileController@edit_profile');
 // Google login
@@ -40,6 +41,9 @@ Route::get('login/facebook/callback', 'Auth\LoginController@handleFacebookCallba
 Route::get('login/line', 'Auth\LoginController@redirectToLine')->name('login.line');
 Route::get('login/line/callback', 'Auth\LoginController@handleLineCallback');
 
-
-
 Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('pet', 'PetController');
+    Route::resource('profile', 'ProfileController');
+});

@@ -2043,7 +2043,7 @@ img {
     line-height: 1.2em;
 }
 
-.team-block .inner-box .lower-box h3 a {
+.team-block .inner-box .lower-box h3 a button{
     position: relative;
     color: #222222;
     transition: all 0.3s ease;
@@ -2053,7 +2053,7 @@ img {
     -o-transition: all 0.3s ease;
 }
 
-.team-block .inner-box .lower-box h3 a:hover {
+.team-block .inner-box .lower-box h3 a:hover button:hover{
     color: #B81F5B;
 }
 
@@ -11417,6 +11417,7 @@ ul, p {
     border-bottom: 1px solid var(--pt_nwhite);
     padding-bottom: 50px;
     color: var(--pt_black);
+    height: 100%;
 }
 
 .buy.pet .about.pet .team .member .content a h3 {

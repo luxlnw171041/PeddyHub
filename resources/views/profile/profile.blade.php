@@ -5,18 +5,39 @@
 
 
 </section>
-<div class="pet about main-wrapper pet tm_profile" style="z-index: 1";>
-        <section class="team">
+<div class="pet about main-wrapper pet tm_profile">
+        <section class="featured">
+            <div class="crumb">
+                <div class="container">
+                    <h1>
+                        My <span class="wow pulse" data-wow-delay="1s"> Profile </span>
+                    </h1>
+                    <div class="bg_tran">
+                        My Pfofile
+                    </div>
+                    <p>
+                        <a href="{{ url('/') }}" title="Home">HOME</a>
+                        || <span> profile </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="team" style="margin-top:-20px">
             <div class="row">
                 <div class="col-md-5 d-flex justify-content-center">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="member">
                             <div class="image">
                                 @if(!empty($data->photo))
-                                    <img src="{{$data->avatar}}" alt="image of client" title="client" class="img-fluid customer">
+                                    <img style="width:350px; hight: 292px;" src="{{ url('storage')}}/{{ $data->photo }}" alt="image of client" title="client" class="img-fluid customer">
                                 @else 
                                     <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}"  alt="image of client" title="client" class="img-fluid customer">
                                 @endif
+                                <!-- @if(!empty($data->photo))
+                                                <img alt="" style="width:600px; border-radius: 50%;" title="" class="img-circle img-thumbnail isTooltip" src="{{ url('storage')}}/{{ $data->photo }}" data-original-title="Usuario"> 
+                                            @else
+                                                <img alt="" style="width:600px; border-radius: 50%;" title="" class="img-circle img-thumbnail isTooltip" src="{{$data->avatar}}" data-original-title="Usuario"> 
+                                            @endif -->
                             </div>
                             <div class="content">
                                 <div class="name wow fadeInDown">

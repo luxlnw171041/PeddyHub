@@ -58,10 +58,11 @@
                                     </li>
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a href="#" style="font-size: 20px;" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                        <a href="#" style="font-size: 20px; color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle"
                                             data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ url('/profile') }}">Profile</a></li>
+                                            <li><a href="{{ url('/pet') }}">Pet</a></li>
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -110,10 +111,11 @@
                                                 </li>
                                             @else
                                                 <li class="nav-item dropdown">
-                                                    <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                                    <a href="#" style="color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle"
                                                         data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="{{ url('/profile') }}">Profile</a></li>
+                                                        <li><a href="{{ url('/pet') }}">Pet</a></li>
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                                 onclick="event.preventDefault();
@@ -233,7 +235,7 @@
                             <span>นโยบายเกี่ยวกับข้อมูลส่วนบุคคล</span>
                         </a>
                         <span>•</span> 
-                        <a href="{{'privacy_policy'}}">
+                        <a href="{{'terms_of_service'}}">
                             <span>ข้อกำหนดและเงื่อนไขการใช้บริการ</span>
                         </a>
                     </div>

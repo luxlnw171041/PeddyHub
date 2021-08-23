@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'birth',
         'avatar',
+        'photo',
     ];
 
     /**
@@ -45,4 +46,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function pets(){
+        return $this->hasMany('App\Pet', 'user_id'); 
+    } 
+
 }
