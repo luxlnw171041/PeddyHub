@@ -30,6 +30,12 @@
                             <div class="image">
                                 @if(!empty($data->photo))
                                     <img style="width:350px; hight: 292px;" src="{{ url('storage')}}/{{ $data->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                   <br> 
+                                    <div class="d-flex justify-content-around">
+                                        <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
+                                        <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
+                                        <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
+                                    </div>
                                 @else 
                                     <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}"  alt="image of client" title="client" class="img-fluid customer">
                                 @endif

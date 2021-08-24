@@ -18,7 +18,7 @@
                                     Louisiana.</p>
                                 <div class="button wow fadeInUp">
                                     <a href="#" class="btn main" title="contact">
-                                        Contact Us <i class="fas fa-paw"></i>
+                                        Register <i class="fas fa-paw"></i>
                                     </a>
                                 </div>
                             </div>
