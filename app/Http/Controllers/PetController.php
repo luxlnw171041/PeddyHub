@@ -145,4 +145,13 @@ class PetController extends Controller
             return redirect('/login/line?redirectTo=pet/create');
         }
     }
+
+    public function welcome_line_pet()
+    {
+        if(Auth::check()){
+            return redirect('pet');
+        }else{
+            return redirect('/login/line?redirectTo=pet');
+        }
+    }
 }
