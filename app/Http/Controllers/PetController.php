@@ -136,4 +136,13 @@ class PetController extends Controller
 
         return redirect('pet')->with('flash_message', 'Pet deleted!');
     }
+
+    public function welcome_line()
+    {
+        if(Auth::check()){
+            return redirect('pet/create');
+        }else{
+            return redirect('/login/line?redirectTo=pet/create');
+        }
+    }
 }
