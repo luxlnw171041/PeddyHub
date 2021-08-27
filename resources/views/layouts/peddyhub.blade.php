@@ -144,12 +144,10 @@
         <footer class="main-footer">
             <div class="auto-container">
                 <!--Widgets Section-->
-                <div class="widgets-section">
+                <!-- <div class="widgets-section">
                     <div class="row clearfix">
-                        <!--big column-->
                         <div class="big-column col-md-6 col-sm-12 col-xs-12">
                             <div class="row clearfix">
-                                <!--Footer Column-->
                                 <div class="footer-column col-md-7 col-sm-6 col-xs-12">
                                     <div class="footer-widget logo-widget">
                                         <div class="logo">
@@ -167,7 +165,6 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <!--Footer Column-->
                                 <div class="footer-column col-md-5 col-sm-6 col-xs-12">
                                     <div class="footer-widget links-widget">
                                         <h2>Web Links</h2>
@@ -182,14 +179,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!--big column-->
                         <div class="big-column col-md-6 col-sm-12 col-xs-12">
                             <div class="row clearfix">
-                                <!--Footer Column-->
                                 <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                                     <div class="footer-widget posts-widget">
                                         <h2>Recent Posts</h2>
-                                        <!--Widget Post-->
                                         <article class="widget-post">
                                             <figure class="post-thumb"><a href="blog-single.html"><img
                                                         src="images/resource/post-thumb-1.jpg" alt=""></a></figure>
@@ -197,7 +191,6 @@
                                                     Services</a></div>
                                             <div class="post-info">Feb 15, 2021</div>
                                         </article>
-                                        <!--Widget Post-->
                                         <article class="widget-post">
                                             <figure class="post-thumb"><a href="blog-single.html"><img
                                                         src="images/resource/post-thumb-2.jpg" alt=""></a></figure>
@@ -207,7 +200,6 @@
                                         </article>
                                     </div>
                                 </div>
-                                <!--Footer Column-->
                                 <div class="footer-column col-md-6 col-sm-6 col-xs-12">
                                     <div class="footer-widget info-widget">
                                         <h2>Get In Touch</h2>
@@ -228,7 +220,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="footer-bottom d-flex justify-content-start">
                     <div class="copyright">WWW.PEDDYHUB.COM <span>•</span> 
                         <a href="{{'privacy_policy'}}">
