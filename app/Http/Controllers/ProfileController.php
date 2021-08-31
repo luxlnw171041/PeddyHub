@@ -18,8 +18,6 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        
-        $pet = Pet::all()->random(3);
         $id = Auth::id();
         $data = User::findOrFail($id);
         return view('profile/profile',compact('data') );
