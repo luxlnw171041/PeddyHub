@@ -1,30 +1,8 @@
 @extends('layouts.peddyhub')
 
 @section('content')
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pawrex Template | Blog</title>
-    <!-- Stylesheets -->
-    
-    <link href="{{ asset('peddyhub/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('peddyhub/css/imagehover.css') }}" rel="stylesheet">
-    <link href="{{ asset('peddyhub/css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('peddyhub/css/responsive.css') }}" rel="stylesheet">
-    <!--Color Switcher Mockup-->
-    <link href="{{ asset('peddyhub/css/color-switcher-design.cs') }}" rel="stylesheet">
-    <!--Color Themes-->
-    <link href="{{ asset('peddyhub/css/color-themes/default-theme.css') }}" rel="stylesheet">
-    <!--Favicon-->
-    <link href="{{ asset('peddyhub/images/favicon.png') }}" type="image/x-icon">
-    <link href="{{ asset('peddyhub/images/favicon.png') }}" type="image/x-icon">
-    <!-- Responsive -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
-</head>
-    <div class="main-wrapper pet b_profile">
+
+<div class="main-wrapper pet b_profile">
         <div class="pet blog_right">
             <section class="job">
                 <div class="container">
@@ -32,31 +10,11 @@
                         <div class="col-lg-8 col-md-12 col-sm-12">
                             <div class="profile mt-4">
                                 <div class="details">
-                                    <div class="image">
-                                        <img src="peddyhub/images/home_5/event-bg.jpg" alt="Image Of Event" title="Event"
-                                            class="img-fluid">
-
+                                    <div class="image d-flex justify-content-center">
+                                        <img src="{{ url('storage/'.$post->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
                                     </div>
-                                    <h4 class="mt-4 mb-2">Some toughly useful much walking before
+                                    <h4 class="mt-4 mb-2">{{ $post->detail}}
                                     </h4>
-                                    <p>
-                                        Forwardly echidna outside tiger split thanks far vibrantly gosh
-                                        hence pang. Oh while frog urgent a circa connected atro
-                                        us some neutral inside elusive by more the jeez orca tarantula
-                                        meadowlark barring that on clinically oh ouch far jeezpa
-                                        much grizzly amidst in grabbed wallaby well expediently much giraffe
-                                        constantly and forbade a one yet belligerent the
-                                        robust cried goodness more sedulously vulgar yet however.
-                                    </p>
-                                    <p class="mb-4">
-                                        Reproachful lugubrious dry gazelle far lobster deftly shoddy and far
-                                        checkedr more wow much darn far grudgingly yet
-                                        speechlessly gosh where less away and adequate before upon by until
-                                        respectful found a like authentically much after
-                                        clapped impolite goodness showy witlessly the rhinoceros he the
-                                        beaver the hello far excluding opossum gibber closed
-                                        jeepers scowled crud more.
-                                    </p>
                                 </div>
                                 <div class="elements">
                                     <span class="tags">
@@ -78,7 +36,7 @@
                                         </h5>
                                         <div class="comment">
                                             <div class="image pr-4 pt-3">
-                                                <img class="img-fluid" src="peddyhub/images/home_5/reviewer-1.png"
+                                                <img class="img-fluid" src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}"
                                                     alt="Image of Author" title="Author">
                                             </div>
                                             <div class="context">
@@ -97,7 +55,7 @@
                                         </div>
                                         <div class="comment pt-3">
                                             <div class="image pr-4 pt-3">
-                                                <img class="img-fluid" src="peddyhub/images/home_5/reviewer-2.png"
+                                                <img class="img-fluid" src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}"
                                                     alt="Image of Author" title="Author">
                                             </div>
                                             <div class="context">
@@ -186,7 +144,7 @@
                                         <li>
                                             <div class="image">
                                                 <figure class="imghvr-slide-down">
-                                                    <img src="peddyhub/images/home_5/pet-1.png" alt="Image of pet" title="Pet"
+                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
                                                         class="img-fluid">
                                                     <figcaption class="text-center">
                                                         <div class="icon">
@@ -200,7 +158,7 @@
                                         <li>
                                             <div class="image">
                                                 <figure class="imghvr-slide-down">
-                                                    <img src="peddyhub/images/home_5/pet-2.png" alt="Image of pet" title="Pet"
+                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
                                                         class="img-fluid">
                                                     <figcaption class="text-center">
                                                         <div class="icon">
@@ -214,7 +172,7 @@
                                         <li>
                                             <div class="image">
                                                 <figure class="imghvr-slide-down">
-                                                    <img src="peddyhub/images/home_5/pet-3.png" alt="Image of pet" title="Pet"
+                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
                                                         class="img-fluid">
                                                     <figcaption class="text-center">
                                                         <div class="icon">
@@ -228,7 +186,7 @@
                                         <li>
                                             <div class="image">
                                                 <figure class="imghvr-slide-down">
-                                                    <img src="peddyhub/images/home_5/pet-4.png" alt="Image of pet" title="Pet"
+                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
                                                         class="img-fluid">
                                                     <figcaption class="text-center">
                                                         <div class="icon">
@@ -242,7 +200,7 @@
                                         <li>
                                             <div class="image">
                                                 <figure class="imghvr-slide-down">
-                                                    <img src="peddyhub/images/home_5/pet-5.png" alt="Image of pet" title="Pet"
+                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
                                                         class="img-fluid">
                                                     <figcaption class="text-center">
                                                         <div class="icon">
@@ -256,7 +214,7 @@
                                         <li>
                                             <div class="image">
                                                 <figure class="imghvr-slide-down">
-                                                    <img src="peddyhub/images/home_5/pet-6.png" alt="Image of pet" title="Pet"
+                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
                                                         class="img-fluid">
                                                     <figcaption class="text-center">
                                                         <div class="icon">
@@ -284,7 +242,7 @@
                                     <div class="card">
                                         <div class="post">
                                             <a href="blog-profile.html" title="Image">
-                                                <img src="peddyhub/images/home_5/event-3-post.png" alt="Image of Post" title="Post" class="img-fluid">
+                                                <img src="{{ asset('peddyhub/images/home_5/event-3-post.png') }}" alt="Image of Post" title="Post" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="context">
@@ -301,7 +259,7 @@
                                     <div class="card">
                                         <div class="post">
                                             <a href="blog-profile.html" title="Image">
-                                                <img src="peddyhub/images/home_5/event-4-post.png" alt="Image of Post" title="Post" class="img-fluid">
+                                                <img src="{{ asset('peddyhub/images/home_5/event-3-post.png') }}" alt="Image of Post" title="Post" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="context">
@@ -318,7 +276,7 @@
                                     <div class="card">
                                         <div class="post">
                                             <a href="blog-profile.html" title="Image">
-                                                <img src="peddyhub/images/home_5/event-5-post.png" alt="Image of Post" title="Post" class="img-fluid">
+                                                <img src="{{ asset('peddyhub/images/home_5/event-3-post.png') }}" alt="Image of Post" title="Post" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="context">
@@ -340,18 +298,41 @@
             </section>
         </div>
     </div>
-    <script src="{{ asset('pessyhub/js/jquery.js') }}"></script>
-    <script src="{{ asset('pessyhub/js/bootstrap.bundle.min.js') }}"></script>
 
-    <script src="{{ asset('pessyhub/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('pessyhub/js/mousewheel.js') }}"></script>
+    <!-- <div class="container">
+        <div class="row">
+            @include('admin.sidebar')
 
-    <script src="{{ asset('pessyhub/js/wow.min.js') }}"></script>
-    <script src="{{ asset('pessyhub/js/vivus.min.js') }}"></script>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">Post {{ $post->id }}</div>
+                    <div class="card-body">
 
-    <script src="{{ asset('pessyhub/js/script.js') }}"></script>
-    <script src="{{ asset('pessyhub/js/color-settings.js') }}"></script>
+                        <a href="{{ url('/post') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/post/' . $post->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-    <script src="{{ asset('') }}"></script>
+                        <form method="POST" action="{{ url('post' . '/' . $post->id) }}" accept-charset="UTF-8" style="display:inline">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                        </form>
+                        <br/>
+                        <br/>
 
-    @endsection
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>ID</th><td>{{ $post->id }}</td>
+                                    </tr>
+                                    <tr><th> User Id </th><td> {{ $post->user_id }} </td></tr><tr><th> Detail </th><td> {{ $post->detail }} </td></tr><tr><th> Photo </th><td> {{ $post->photo }} </td></tr><tr><th> Video </th><td> {{ $post->video }} </td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+@endsection

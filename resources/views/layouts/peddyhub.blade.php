@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>PeddyHub</title>
     <!-- Stylesheets -->
+    <link href="{{ asset('peddyhub/css/imagehover.css') }}" rel="stylesheet">
     <link href="{{ asset('peddyhub/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"> 
     <link href="{{ asset('peddyhub/plugins/revolution/css/settings.css') }}" rel="text/css">
     <!-- REVOLUTION SETTINGS STYLES -->
@@ -50,6 +50,9 @@
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
                                     <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >HOME</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >COMMUNITY</a>
                                 </li>
                                 @guest
                                     <li class="nav-item dropdown">
@@ -104,6 +107,9 @@
                                     <div class="navbar-collapse clearfix">
                                         <ul class="navigation clearfix">
                                             <li><a href="{{ url('/') }}">Home</a></li>
+                                            <li>
+                                                <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >COMMUNITY</a>
+                                            </li>
                                             @guest
                                                 <li class="nav-item dropdown">
                                                     <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
@@ -298,6 +304,7 @@
     <script src="{{ asset('peddyhub/js/vivus.min.js') }}"></script>
     <script src="{{ asset('peddyhub/js/validate.js') }}"></script>
     <script src="{{ asset('peddyhub/js/jquery.countdown.js') }}"></script>
+    
 </body>
 
 </html>

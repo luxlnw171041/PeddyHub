@@ -1,0 +1,139 @@
+@extends('layouts.peddyhub')
+
+@section('content')
+
+<div class="main-wrapper pet blog">
+    <div class="button wow fadeInUp " style="margin-bottom:-50px">  
+        <div class="container  d-flex justify-content-end">
+            <a style="font-size:15px;" href="{{ url('/post/create') }}" class="btn main" title="contact">
+            Post 
+            </a>
+        </div>
+    </div>
+        <div class="pet event">
+            <div class="pet job">
+                <section class="job">
+                    <div class="container">
+                        <!-- <div class="heading text-center">
+                            <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
+                                    class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
+                                        class="fas fa-paw"></i> </span></p>
+                            <h2 class="wow fadeInDown">Find The Most <span class="wow pulse" data-wow-delay="1s">
+                                    Exciting News</span></h2>
+                        </div> -->
+                        <div class="row mt-5">
+                            @foreach($post as $item)
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <div class="card">
+                                        <div class="image">
+                                                <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
+                                                
+                                            <div class="label">
+                                                <ul>
+                                                    <li class="date">{{ $item->created_at->format('d') }}</li>
+                                                    <li>{{ $item->created_at->format('M') }}</li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="desc">
+                                            <p class="mb-0 col-md-10 col-10" style="z-index:1;">
+                                                <!-- <span class="category">Pet Care</span> -->
+                                                <span class="comment">20 Comments</span>
+                                                <span class="like">192 Likes</span>
+                                            </p>
+                                            <div class="d-flex justify-content-end" style="margin-top:-28px;z-index:4;">
+                                                    <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                                    <div class="dropdown-menu dropdown-primary">
+                                                        <a class="dropdown-item" href="#"><i class="fab fa-apple-pay"></i>&nbsp;&nbsp;CopyLink</a>
+                                                        <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;Edit</a>
+                                                        <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                            {{ method_field('DELETE') }}
+                                                            {{ csrf_field() }}
+                                                            <button  type="submit" class="asText" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            <a href="{{ url('/post/' . $item->id) }}" title="">
+                                                <p class="head mt-1 mb-0">{{ $item->detail }}
+                                                </p>
+                                            </a>
+                                            <!-- <p class="mt-1 mb-4">
+                                                Broadcast neglectful and poignantly well until and some listlessly amidst
+                                                cessful...
+                                            </p> -->
+                                            <div class="button text-end">
+                                                <a href="{{ url('/post/' . $item->id) }}" class="btn main register">Read More</a><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+   
+
+    <!-- <div class="container">
+        <div class="row">
+            @include('admin.sidebar')
+
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header">Post</div>
+                    <div class="card-body">
+                        <a href="{{ url('/post/create') }}" class="btn btn-success btn-sm" title="Add New Post">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        </a>
+
+                        <form method="GET" action="{{ url('/post') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
+                                <span class="input-group-append">
+                                    <button class="btn btn-secondary" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </form>
+
+                        <br/>
+                        <br/>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th><th>User Id</th><th>Detail</th><th>Photo</th><th>Video</th><th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($post as $item)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $item->user_id }}</td><td>{{ $item->detail }}</td><td><img src="{{ url('storage/'.$item->photo )}}" width="295px" alt="image of pet" title="pet" class="img-fluid customer"></td><td>{{ $item->video }}</td>
+                                        <td>
+                                            <a href="{{ url('/post/' . $item->id) }}" title="View Post"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/post/' . $item->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+
+                                            <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button  type="submit" class="asText" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            <div class="pagination-wrapper"> {!! $post->appends(['search' => Request::get('search')])->render() !!} </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+@endsection

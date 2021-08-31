@@ -49,3 +49,4 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('pet', 'PetController');
     Route::resource('profile', 'ProfileController');
 });
+Route::resource('post', 'PostController');

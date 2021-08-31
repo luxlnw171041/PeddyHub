@@ -69,7 +69,17 @@ font-family: 'Kaushan Script', sans-serif;*/
 ====================================================================
 
  ***/
-
+.imgf {
+    width:348px;
+    height:290px;
+}
+.asText {
+    background:none;
+    border:none;
+    background-color:none;
+    margin:0;
+    padding:0;
+    }
 body {
     font-size: 15px;
     color: #777777;

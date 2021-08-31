@@ -26,6 +26,7 @@ class User extends Authenticatable
         'birth',
         'avatar',
         'photo',
+        'password',
     ];
 
     /**
@@ -48,7 +49,7 @@ class User extends Authenticatable
     ];
 
     public function pets(){
-        return $this->hasMany('App\Pet', 'user_id'); 
+        return $this->hasMany('App\Models\pet', 'user_id'); 
     } 
 
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Pet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +18,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        
+        $pet = Pet::all()->random(3);
         $id = Auth::id();
         $data = User::findOrFail($id);
         return view('profile/profile',compact('data') );

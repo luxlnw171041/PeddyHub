@@ -30,12 +30,14 @@
                             <div class="image">
                                 @if(!empty($data->photo))
                                     <img style="width:350px; hight: 292px;" src="{{ url('storage')}}/{{ $data->photo }}" alt="image of client" title="client" class="img-fluid customer">
-                                   <br> 
+                                   <!-- <br> 
                                     <div class="d-flex justify-content-around">
-                                        <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
-                                        <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
-                                        <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
-                                    </div>
+                                         @foreach($data->pets->random(3) as $pet)
+                                        <img src="{{ url('storage/'.$pet->photo )}}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
+                                        <br>
+                                        
+                                        @endforeach
+                                    </div> -->
                                 @else 
                                     <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}"  alt="image of client" title="client" class="img-fluid customer">
                                 @endif
@@ -45,6 +47,13 @@
                                                 <img alt="" style="width:600px; border-radius: 50%;" title="" class="img-circle img-thumbnail isTooltip" src="{{$data->avatar}}" data-original-title="Usuario"> 
                                             @endif -->
                             </div>
+                            <!-- @foreach($data->pets as $pet)
+                            {{ $pet->name }}
+                            <div class="d-flex justify-content-around">
+                            <img src="{{ url('storage/'.$pet->photo )}}" width="295px" alt="image of pet" title="pet" class="img-fluid customer">
+</div>
+                            @endforeach -->
+                            
                             <div class="content">
                                 <div class="name wow fadeInDown">
                                     <a title="name">{{ $data->name }}</a>

@@ -5,10 +5,10 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Pet;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
-class PetController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,28 +16,21 @@ class PetController extends Controller
      * @return \Illuminate\View\View
      */
     public function index(Request $request)
-    {   
-        $user = Auth::user();
+    {
         $keyword = $request->get('search');
         $perPage = 25;
 
-
-
         if (!empty($keyword)) {
-            $pet = Pet::where('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('name', 'LIKE', "%$keyword%")
-                ->orWhere('birth', 'LIKE', "%$keyword%")
+            $post = Post::where('user_id', 'LIKE', "%$keyword%")
+                ->orWhere('detail', 'LIKE', "%$keyword%")
                 ->orWhere('photo', 'LIKE', "%$keyword%")
-                ->orWhere('gender', 'LIKE', "%$keyword%")
-                ->orWhere('size', 'LIKE', "%$keyword%")
-                ->orWhere('age', 'LIKE', "%$keyword%")
+                ->orWhere('video', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $pet = Pet::where('user_id', $user->id)
-            ->latest()->paginate($perPage);
+            $post = Post::latest()->paginate($perPage);
         }
 
-        return view('pet.index', compact('pet'));
+        return view('post.index', compact('post'));
     }
 
     /**
@@ -47,7 +40,7 @@ class PetController extends Controller
      */
     public function create()
     {
-        return view('pet.create');
+        return view('post.create');
     }
 
     /**
@@ -66,8 +59,9 @@ class PetController extends Controller
                 ->store('uploads', 'public');
         }
         $requestData['user_id'] = Auth::id();   
-        Pet::create($requestData);
-        return redirect('pet')->with('flash_message', 'Pet added!');
+        Post::create($requestData);
+
+        return redirect('post')->with('flash_message', 'Post added!');
     }
 
     /**
@@ -79,9 +73,21 @@ class PetController extends Controller
      */
     public function show($id)
     {
-        $pet = Pet::findOrFail($id);
+        $perPage = 25;
+        
+        if (!empty($keyword)) {
+            $post = Post::where('user_id', 'LIKE', "%$keyword%")
+                ->orWhere('detail', 'LIKE', "%$keyword%")
+                ->orWhere('photo', 'LIKE', "%$keyword%")
+                ->orWhere('video', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            $post = Post::latest()->paginate($perPage);
+        }
 
-        return view('pet.show', compact('pet'));
+        $post = Post::findOrFail($id);
+
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -93,21 +99,9 @@ class PetController extends Controller
      */
     public function edit($id)
     {
-        $user_id = Auth::id();
-        $check_user = Pet::where('user_id',$user_id )->where('id',$id )->get();
+        $post = Post::findOrFail($id);
 
-        foreach ($check_user as $key ) {
-            $user = $key->id ;
-        }
-        if (empty($user)) {
-
-            return view('/errors/404');
-
-       }else{
-            $pet = Pet::findOrFail($id);
-            return view('pet.edit', compact('pet'));
-       }
-        
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -126,11 +120,11 @@ class PetController extends Controller
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
-        $requestData['user_id'] = Auth::id();
-        $pet = Pet::findOrFail($id);
-        $pet->update($requestData);
 
-        return redirect('pet')->with('flash_message', 'Pet updated!');
+        $post = Post::findOrFail($id);
+        $post->update($requestData);
+
+        return redirect('post')->with('flash_message', 'Post updated!');
     }
 
     /**
@@ -142,26 +136,8 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-        Pet::destroy($id);
+        Post::destroy($id);
 
-        return redirect('pet')->with('flash_message', 'Pet deleted!');
-    }
-
-    public function welcome_line()
-    {
-        if(Auth::check()){
-            return redirect('pet/create');
-        }else{
-            return redirect('/login/line?redirectTo=pet/create');
-        }
-    }
-
-    public function welcome_line_pet()
-    {
-        if(Auth::check()){
-            return redirect('pet');
-        }else{
-            return redirect('/login/line?redirectTo=pet');
-        }
+        return redirect('post')->with('flash_message', 'Post deleted!');
     }
 }

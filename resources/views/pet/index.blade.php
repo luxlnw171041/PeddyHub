@@ -21,12 +21,13 @@
         </section>
         
         <div class="button wow fadeInUp ">
-        <div class="container  d-flex justify-content-end">
-            <a style="font-size:15px;" href="{{ url('/pet/create') }}" class="btn main" title="contact">
-                Add Pet <i class="fas fa-paw"></i>
-            </a>
-            </div></div>
-        <div class="pet about second" style="margin-top:-65px">
+            <div class="container  d-flex justify-content-end">
+                <a style="font-size:15px;" href="{{ url('/pet/create') }}" class="btn main" title="contact">
+                    Add Pet <i class="fas fa-paw"></i>
+                </a>
+            </div>
+        </div>
+        <div class="pet about second" >
             <section class="team">
                 <div class="container">
                     <!-- <div class="heading text-center">
@@ -43,7 +44,7 @@
                                 <div class="member">
                                     <div class="image">
                                     @if(!empty($item->photo))
-                                        <img src="{{ url('storage/'.$item->photo )}}" width="295px" alt="image of pet" title="pet" class="img-fluid customer">
+                                        <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="295px" alt="image of pet" title="pet" class="img-fluid customer">
                                     @else 
                                         <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}"  alt="image of client" title="client" class="img-fluid customer">
                                     @endif
