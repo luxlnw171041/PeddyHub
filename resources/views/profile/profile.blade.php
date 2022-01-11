@@ -46,12 +46,42 @@
                             <img src="{{ url('storage/'.$pet->photo )}}" width="295px" alt="image of pet" title="pet" class="img-fluid customer">
 </div>
                             @endforeach -->
-                            
                             <div class="content">
                                 <div class="name wow fadeInDown">
                                     <a title="name">{{ $data->name }}</a>
                                 </div>
                             </div>
+                            <div class="row">
+                                @php
+                                    $pet = $data->pets;
+                                @endphp
+                               
+                            </div>
+                            <!-- <div class="row"></div>
+                            <div class="image">
+                                @php
+                                    $pet = $data->pets;
+                                @endphp
+                                @foreach($pet->random(3) as $pet)
+                                <span>    <img src="{{ url('storage/'.$pet->photo )}}" width="15%"  alt="image of client" title="client" class="img-fluid customer"></span>
+                                    <br>
+                                    <h5 style="margin-top:-30px;">{{ $pet->name }}</h5> 
+                                @endforeach
+                            </div> -->
+
+                            <!-- <div class="d-flex justify-content-around">
+                                        @php
+                                            $pet = $data->pets;
+                                        @endphp
+
+                                         @foreach($pet->random(3) as $pet)
+                                        <img src="{{ url('storage/'.$pet->photo )}}" width="15%"  alt="image of client" title="client" class="img-fluid customer">
+                                        <br>
+                                        {{ $pet->name }}
+                                        @endforeach
+                                    </div> -->
+                            
+                            
                         </div>
                     </div>
                 </div>
