@@ -541,6 +541,23 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
+                                    <div class="icon purple"><br>
+                                        <div class="svg-icon" id="svg-9"
+                                            data-svg-icon="peddyhub/images/home_5/svg/pet_location.svg">
+                                        </div>
+                                    </div>
+                                    <div class="context">
+                                        <h5 class="purple">
+                                            ตามหาเจ้าตัวแสบ
+                                        </h5>
+                                        <p>
+                                            เมื่อสัตว์เลี้ยงของท่านเดินเล่น หรือสำรวจสิ่งต่าง ๆ รอบตัว อย่างเพลิดเพลิน จนอาจจะเกิดการพลัดหลง เพียงท่านลงทะเบียนสัตว์เลี้ยงกับเรา เมื่อสัตว์เลี้ยงของท่านเกิดการพลัดหลง ก็สามารถแจ้งคนที่ใช้บริการของเราใกล้ๆท่านให้ช่วยค้นหาสัตว์เลี้ยงของท่านได้
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="card">
                                     <div class="icon orange"><br>
                                         <div class="svg-icon" id="svg-4"
                                             data-svg-icon="peddyhub/images/home_5/svg/pet_grooming.svg">
@@ -551,28 +568,7 @@
                                             ตัดแต่งขนสัตว์
                                         </h5>
                                         <p>
-                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
-                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
-                                            incididunt labore.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="icon purple"><br>
-                                        <div class="svg-icon" id="svg-5"
-                                            data-svg-icon="peddyhub/images/home_5/svg/pet_adoption.svg">
-                                        </div>
-                                    </div>
-                                    <div class="context">
-                                        <h5 class="purple">
-                                            โรงแรมสัตว์เลี้ยง
-                                        </h5>
-                                        <p>
-                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
-                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
-                                            incididunt labore.
+                                            รวบรวมบริการตัดแต่งขนสัตว์ ซึ่งมีทั้งขนาดใหญ่เป็นโรงพยาบาลขนาดใหญ่ไปจนถึงร้านขนาดเล็ก แต่มีคุณหมอและเหล่ากรูมเมอร์ที่มีความสามารถและประสบการณ์ เพื่อให้ผู้ใช้บริการมั่นใจในการนำสัตว์เลี้ยงไปใช้บริการ ซึ่งมีราคาให้เลือกหลากหลาย 
                                         </p>
                                     </div>
                                 </div>
@@ -581,17 +577,15 @@
                                 <div class="card">
                                     <div class="icon orange"><br>
                                         <div class="svg-icon" id="svg-6"
-                                            data-svg-icon="peddyhub/images/home_5/svg/pet_training.svg">
+                                            data-svg-icon="peddyhub/images/home_5/svg/pet_food.svg">
                                         </div>
                                     </div>
                                     <div class="context">
                                         <h5 class="orange">
-                                            ซื้อ-ขายสัตว์เลี้ยง
+                                            อาหารสัตว์
                                         </h5>
                                         <p>
-                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
-                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
-                                            incididunt labore.
+                                            สามารถเลือกซื้ออาหารให้สัตว์เลี้ยงอย่างสบายใจ โดยซื้อจากร้านขายอาหารสัตว์เลี้ยงชั้นนำ และยังมีบริการส่งแบบรวดเร็ว 24 ชม. โปรโมชั่นลดราคาสุดพิเศษ และหากสินค้ามีปัญหาก็สามารถคืนสินค้าได้อีกด้วย
                                         </p>
                                     </div>
                                 </div>
@@ -605,12 +599,10 @@
                                     </div>
                                     <div class="context">
                                         <h5 class="purple">
-                                            รับเลี้ยงสัตว์
+                                            อุปการะสัตว์เลี้ยง
                                         </h5>
                                         <p>
-                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
-                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
-                                            incididunt labore.
+                                            ถ้าหากต้องการหาบ้านพักพิงหลังใหม่ให้สัตว์เลี้ยง เราก็มีบริการรองรับเพียงแค่เข้าไปประกาศในคอมมูนิตี้ของเรา หรือถ้าหากท่านต้องการหาเพื่อนสัตว์เลี้ยง ก็สามารถเข้าไปหาในคอมมูนิตี้ของเราได้เลย
                                         </p>
                                     </div>
                                 </div>
@@ -627,9 +619,7 @@
                                             โรงพยาบาลสัตว์
                                         </h5>
                                         <p>
-                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
-                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
-                                            incididunt labore.
+                                            เวลาที่สัตว์เลี้ยงป่วยท่านคงจะอยากได้โรงพยาบาลสัตว์ที่ดีๆเพื่อที่จะนำสัตว์เลี้ยงไปรักษา ซึ่งเรามีโรงพยาบาลสัตว์มากมาย ที่มีสัตวแพทย์มีเชี่ยวชาญชำนาญในโรคต่าง ๆ ของสัตว์อย่างรอบด้าน 
                                         </p>
                                     </div>
                                 </div>
@@ -637,18 +627,16 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
                                     <div class="icon purple"><br>
-                                        <div class="svg-icon" id="svg-9"
-                                            data-svg-icon="peddyhub/images/home_5/svg/pet_location.svg">
+                                        <div class="svg-icon" id="svg-5"
+                                            data-svg-icon="peddyhub/images/home_5/svg/pet_adoption.svg">
                                         </div>
                                     </div>
                                     <div class="context">
                                         <h5 class="purple">
-                                            ตามหาสัตว์เลี้ยง
+                                            โรงแรมสัตว์เลี้ยง
                                         </h5>
                                         <p>
-                                            Abore et dolore magna aliqua ut enim minim veniam quis nostrud
-                                            exercitation ullamco laboris nisi aliquip eiusmod tempor
-                                            incididunt labore.
+                                            หากวันหนึ่งคุณจำเป็นที่ต้องไปธุระ หรือไปท่องเที่ยว โดยที่ไม่สามารถพาพวกเขาไปได้ เรามีบริการโรงแรมสัตว์เลี้ยงให้เลือกใช้บริการ ซึ่งเรามีให้เลือกมากมาย 
                                         </p>
                                     </div>
                                 </div>
