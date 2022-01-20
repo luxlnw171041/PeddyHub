@@ -5,7 +5,7 @@
     <div class="main-wrapper pet buy">
         <section class="featured">
             <div class="crumb">
-                <div class="container">
+                <div class="container notranslate">
                     <h1>
                         My <span class="wow pulse" data-wow-delay="1s"> Pet </span>
                     </h1>
@@ -23,7 +23,7 @@
         <div class="button wow fadeInUp ">
             <div class="container  d-flex justify-content-end">
                 <a style="font-size:15px;" href="{{ url('/pet/create') }}" class="btn main" title="contact">
-                    Add Pet <i class="fas fa-paw"></i>
+                    เพิ่มสัตว์เลี้ยง <i class="fas fa-paw"></i>
                 </a>
             </div>
         </div>
@@ -50,18 +50,18 @@
                                     @endif
                                     </div>
                                     <div class="content">
-                                        <h4 class="wow fadeInDown text-conter">{{ $item->name }}</h4>
+                                        <h4 class="wow fadeInDown text-conter notranslate">{{ $item->name }}</h4>
                                         <ul>
                                         <li>
-                                            <i class="fas fa-paw"></i>Gender : {{ $item->gender }}</li>
-                                            <li><i class="fas fa-paw"></i>Birth : {{ $item->birth }}</li>
-                                            <li><i class="fas fa-paw"></i>Age renge : {{ $item->age }}</li>
+                                            <i class="fas fa-paw"></i>เพศ : {{ $item->gender }}</li>
+                                            <li><i class="fas fa-paw"></i>วันเกิด : {{ $item->birth }}</li>
+                                            <li><i class="fas fa-paw"></i>ช่วงอายุ : {{ $item->age }}</li>
                                         </ul>
                                         <div class="row">
                                             <div class="col-md-6 col-6 col-lg-6">
                                                 <div class="button wow fadeInUp d-flex justify-content-start " >
                                                     <a  href="{{ url('/pet/' . $item->id . '/edit') }} " class="btn main d-flex align-items-end" title="contact">
-                                                        Edit &nbsp;<i class="fas fa-paw"></i>
+                                                        แก้ไข &nbsp;<i class="fas fa-paw"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -70,7 +70,7 @@
                                                     <form id="myform" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                         {{ method_field('DELETE') }}
                                                         {{ csrf_field() }}
-                                                        <a href="javascript:;" type="submit" class="btn main" title="Delete Pet" onclick="document.getElementById('myform').submit() ">Delete</a>
+                                                        <a href="javascript:;" type="submit" class="btn main" title="Delete Pet" onclick="document.getElementById('myform').submit() ">ลบ</a>
                                                     </form>
                                                 </div>
                                             </div>

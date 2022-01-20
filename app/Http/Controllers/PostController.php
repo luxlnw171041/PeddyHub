@@ -71,7 +71,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $perPage = 25;
         
@@ -86,8 +86,9 @@ class PostController extends Controller
         }
 
         $post = Post::findOrFail($id);
+        $query = Post::all(['id', 'detail' ,'photo' ,'created_at']);
 
-        return view('post.show', compact('post'));
+        return view('post.show', compact('post' , 'query'));
     }
 
     /**
@@ -139,5 +140,11 @@ class PostController extends Controller
         Post::destroy($id);
 
         return redirect('post')->with('flash_message', 'Post deleted!');
+    }
+    public function test()
+    {
+        
+
+        return view('post.show',compact('query'));
     }
 }

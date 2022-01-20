@@ -8,12 +8,12 @@
 <div class="pet about main-wrapper pet tm_profile">
         <section class="featured">
             <div class="crumb">
-                <div class="container">
+                <div class="container notranslate">
                     <h1>
                         My <span class="wow pulse" data-wow-delay="1s"> Profile </span>
                     </h1>
                     <div class="bg_tran">
-                        My Pfofile
+                        My Profile
                     </div>
                     <p>
                         <a href="{{ url('/') }}" title="Home">HOME</a>
@@ -51,24 +51,20 @@
                                     <a title="name">{{ $data->name }}</a>
                                 </div>
                             </div>
-                            <div class="row">
-                                @php
-                                    $pet = $data->pets;
-                                @endphp
-                               
-                            </div>
-                            <!-- <div class="row"></div>
-                            <div class="image">
-                                @php
-                                    $pet = $data->pets;
-                                @endphp
-                                @foreach($pet->random(3) as $pet)
-                                <span>    <img src="{{ url('storage/'.$pet->photo )}}" width="15%"  alt="image of client" title="client" class="img-fluid customer"></span>
-                                    <br>
-                                    <h5 style="margin-top:-30px;">{{ $pet->name }}</h5> 
-                                @endforeach
-                            </div> -->
-
+                                <div class="image">
+                                    @php
+                                        $pet = $data->pets;
+                                    @endphp
+                                    <div class="row">
+                                        @foreach($pet->random(3) as $pet) 
+                                            <div class="col-4">
+                                                <img src="{{ url('storage/'.$pet->photo )}}" width="50%"  alt="image of client" title="client" class="img-fluid customer">
+                                                <br>
+                                                <h5 style="margin-top:-30px;" class="notranslate">{{ $pet->name }}</h5> 
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                 </div>
                             <!-- <div class="d-flex justify-content-around">
                                         @php
                                             $pet = $data->pets;

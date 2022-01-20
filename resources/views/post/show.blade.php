@@ -138,6 +138,7 @@
                                                 Care</a></li>
                                     </ul>
                                 </div>
+                                
                                 <div class="adopt_gallery">
                                     <h5>For Adoption</h5>
                                     <ul>
@@ -239,7 +240,28 @@
                                 </div>
                                 <div class="recent">
                                     <h5>Recent Posts</h5>
+                                    @foreach($query->   random(3) as $data)
+                                    
                                     <div class="card">
+                                        <div class="post">
+                                            <a href="{{ url('/post/' . $data->id) }}" title="Image">
+                                                <img src="{{ url('storage/'.$data->photo )}}"  width="100px" height="100px"alt="Image of Post" title="Post" class="img-fluid">
+                                            </a>
+                                        </div>
+                                        <div class="context">
+                                            <div class="content">
+                                                <a href="blog-profile.html" title="Post">
+                                                    <p>
+                                                        {{$data->detail}}
+                                                    </p>
+                                                </a>
+                                                <div class="purple date">{{ $data->created_at->thaidate('j M Y') }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    <!-- <div class="card">
                                         <div class="post">
                                             <a href="blog-profile.html" title="Image">
                                                 <img src="{{ asset('peddyhub/images/home_5/event-3-post.png') }}" alt="Image of Post" title="Post" class="img-fluid">
@@ -272,24 +294,7 @@
                                                 <div class="purple date">Feb 28, 2021</div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="post">
-                                            <a href="blog-profile.html" title="Image">
-                                                <img src="{{ asset('peddyhub/images/home_5/event-3-post.png') }}" alt="Image of Post" title="Post" class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="context">
-                                            <div class="content">
-                                                <a href="blog-profile.html" title="Post">
-                                                    <p>
-                                                        Considering At Aesthetic <br> More Some Dreamed
-                                                    </p>
-                                                </a>
-                                                <div class="purple date">Feb 28, 2021</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
     <div class="button wow fadeInUp " style="margin-bottom:-50px">  
         <div class="container  d-flex justify-content-end">
             <a style="font-size:15px;" href="{{ url('/post/create') }}" class="btn main" title="contact">
-            Post 
+            โพสต์ 
             </a>
         </div>
     </div>
@@ -25,48 +25,91 @@
                             @foreach($post as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="card">
+                                    <div  style="padding-top:10px;padding-left:20px;">
+                                            <div class="row">
+                                                <!-- <span class="category">Pet Care</span> -->
+                                                <div class="col-2" style="padding:0px;">
+                                                @if(!empty($item->user->photo))
+                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->user->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                @else
+                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="peddyhub/images/sticker/1.png" alt="image of client" title="client" class="img-fluid customer">
+                                                @endif
+                                                </div>
+                                                <div class="col-9" style="padding:0px">
+                                                @if(!empty($item->user->name))
+                                                <p class="notranslate" style="padding:0px;margin:0px;"> <b>{{ $item->user->name }}</b>  </p>
+                                                    
+                                                @else
+                                                    Guest
+                                                @endif
+                                                    <span style="font-size:20px"> <b></b> </span>
+                                                    <p style="font-size:12px;margin-top:-8px;"> {{ $item->created_at->diffForHumans() }} </p>
+                                                </div>
+                                                <div class="col-12" style="padding:0px 0px 0px 20px">
+                                                    <a href="{{ url('/post/' . $item->id) }}" title="">
+                                                        <p class="head mt-1 mb-0">{{ $item->detail }} </p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="image">
                                                 <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
-                                                
+<!--                                                 
                                             <div class="label">
                                                 <ul>
                                                     <li class="date">{{ $item->created_at->format('d') }}</li>
                                                     <li>{{ $item->created_at->format('M') }}</li>
                                                     
                                                 </ul>
-                                            </div>
+                                            </div> -->
                                         </div>
-                                        <div class="desc">
+                                        <div class="desc" style="padding-bottom:0px;">
                                             <p class="mb-0 col-md-10 col-10" style="z-index:1;">
                                                 <!-- <span class="category">Pet Care</span> -->
                                                 <span class="comment">20 Comments</span>
                                                 <span class="like">192 Likes</span>
                                             </p>
+                                            
                                             <div class="d-flex justify-content-end" style="margin-top:-28px;z-index:4;">
                                                     <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                                                     <div class="dropdown-menu dropdown-primary">
-                                                        <a class="dropdown-item" href="#"><i class="fab fa-apple-pay"></i>&nbsp;&nbsp;CopyLink</a>
-                                                        <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;Edit</a>
+                                                        <a class="dropdown-item" href="#"><i class="fab fa-apple-pay"></i>&nbsp;&nbsp;คัดลอก</a>
+                                                        <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
                                                         <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                             {{ method_field('DELETE') }}
                                                             {{ csrf_field() }}
-                                                            <button  type="submit" class="asText" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Delete</button>
+                                                            <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;ลบโพสต์</button>
                                                         </form>
                                                     </div>
                                                 </div>
-                                            <a href="{{ url('/post/' . $item->id) }}" title="">
+                                                
+                                            <!-- <a href="{{ url('/post/' . $item->id) }}" title="">
                                                 <p class="head mt-1 mb-0">{{ $item->detail }}
                                                 </p>
-                                            </a>
+                                            </a> -->
                                             <!-- <p class="mt-1 mb-4">
                                                 Broadcast neglectful and poignantly well until and some listlessly amidst
                                                 cessful...
                                             </p> -->
-                                            <div class="button text-end">
+                                            <!-- <div class="button text-end">
                                                 <a href="{{ url('/post/' . $item->id) }}" class="btn main register">Read More</a><br>
-                                            </div>
+                                            </div> -->
                                         </div>
+                                        <br>
+                                        <!-- <hr>
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <button type="button" class="btn btn-light">Light</button>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button type="button" class="btn btn-light">Light</button>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button type="button" class="btn btn-light">Light</button>
+                                                </div>
+                                            </div>
+                                        <hr> -->
                                     </div>
                                 </div>
                             @endforeach

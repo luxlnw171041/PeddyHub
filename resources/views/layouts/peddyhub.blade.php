@@ -26,7 +26,19 @@
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
+<style>
+    .goog-logo-link {
+            display:none !important;
+        } 
+            
+    .goog-te-gadget {
+            color: transparent !important;
+        }
 
+    .goog-te-banner-frame.skiptranslate {
+        display: none !important;
+        } 
+</style>
 <body>
 <div class="main-wrapper pet">
 
@@ -49,28 +61,28 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >HOME</a>
+                                    <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >หน้าแรก</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >COMMUNITY</a>
+                                    <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >ชุมชน</a>
                                 </li>
                                 @guest
                                     <li class="nav-item dropdown">
                                         <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
-                                            >LOGIN</a>
+                                            >เข้าสู่ระบบ</a>
                                     </li>
                                 @else
                                     <li class="nav-item dropdown">
-                                        <a href="#" style="font-size: 20px; color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                        <a href="#" style="font-size: 20px; color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle notranslate"
                                             data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ url('/profile') }}">Profile</a></li>
-                                            <li><a href="{{ url('/pet') }}">Pet</a></li>
+                                            <li><a href="{{ url('/profile') }}">โปรไฟล์</a></li>
+                                            <li><a href="{{ url('/pet') }}">สัตว์เลี้ยง</a></li>
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                                    {{ __('ออกจากระบบ') }}
                                                 </a>
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                     @csrf
@@ -104,11 +116,12 @@
                                             <span class="icon-bar"></span>
                                         </button>
                                     </div>
-                                    <div class="navbar-collapse clearfix">
-                                        <ul class="navigation clearfix">
-                                            <li><a href="{{ url('/') }}">Home</a></li>
+                                    <div class="navbar-collapse clearfix ">
+                                        <ul class="navigation clearfix">    
+                                            <li class="d-none"><div id="google_translate_element" onchange="check_language();"></div></li>
+                                            <li><a href="{{ url('/') }}">หน้าแรก</a></li>
                                             <li>
-                                                <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >COMMUNITY</a>
+                                                <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >ชุมชน</a>
                                             </li>
                                             @guest
                                                 <li class="nav-item dropdown">
@@ -117,16 +130,16 @@
                                                 </li>
                                             @else
                                                 <li class="nav-item dropdown">
-                                                    <a href="#" style="color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle"
+                                                    <a href="#" style="color:#B8205B;" class="notranslate hvr-overline-from-center nav-link dropdown-toggle"
                                                         data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="{{ url('/profile') }}">Profile</a></li>
-                                                        <li><a href="{{ url('/pet') }}">Pet</a></li>
+                                                        <li><a href="{{ url('/profile') }}">โปรไฟล์</a></li>
+                                                        <li><a href="{{ url('/pet') }}">สัตว์เลี้ยง</a></li>
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                                 onclick="event.preventDefault();
                                                                             document.getElementById('logout-form').submit();">
-                                                                {{ __('Logout') }}
+                                                                {{ __('ออกจากระบบ') }}
                                                             </a>
                                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                                 @csrf
@@ -144,6 +157,24 @@
                     </div>
                 </div>
             </div>
+            @if(Auth::check())
+      <h1 class="d-none" id="change_country" onclick="change_country('{{ Auth::user()->id }}','{{ Auth::user()->country }}' , '{{ Auth::user()->language }}');"></h1> 
+      <div class="d-none">
+        <a id="btn_change_language_th" href="javascript:trocarIdioma('th')">th</a>
+        <a id="btn_change_language_en" href="javascript:trocarIdioma('en')">en</a>
+        <a id="btn_change_language_zh-TW" href="javascript:trocarIdioma('zh-TW')">zh-TW</a>
+        <a id="btn_change_language_ja" href="javascript:trocarIdioma('ja')">ja</a>
+        <a id="btn_change_language_ko" href="javascript:trocarIdioma('ko')">ko</a>
+        <a id="btn_change_language_es" href="javascript:trocarIdioma('es')">es</a>
+        <a id="btn_change_language_lo" href="javascript:trocarIdioma('lo')">lo</a>
+        <a id="btn_change_language_my" href="javascript:trocarIdioma('my')">my</a>
+        <a id="btn_change_language_de" href="javascript:trocarIdioma('de')">de</a>
+        <a id="btn_change_language_ar" href="javascript:trocarIdioma('ar')">ar</a>
+        <a id="btn_change_language_hi" href="javascript:trocarIdioma('hi')">hi</a>
+        <a id="btn_change_language_ru" href="javascript:trocarIdioma('ru')">ru</a>
+      </div>
+       
+      @endif
         <!--End Header Upper-->
             @yield('content')
         <!--Main Footer-->
@@ -304,7 +335,118 @@
     <script src="{{ asset('peddyhub/js/vivus.min.js') }}"></script>
     <script src="{{ asset('peddyhub/js/validate.js') }}"></script>
     <script src="{{ asset('peddyhub/js/jquery.countdown.js') }}"></script>
+    <script type="text/javascript">
+    var comboGoogleTradutor = 'null'; //Varialvel global
+
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'po',
+            // includedLanguages: 'th,en,zh-TW,ja,ko,es',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+        }, 'google_translate_element');
+
+        comboGoogleTradutor = document.getElementById("google_translate_element").querySelector(".goog-te-combo");
+    }
+
+    function changeEvent(el) {
+        if (el.fireEvent) {
+            el.fireEvent('onchange');
+        } else {
+            var evObj = document.createEvent("HTMLEvents");
+
+            evObj.initEvent("change", false, true);
+            el.dispatchEvent(evObj);
+        }
+    }
+
+    function trocarIdioma(sigla) {
+        if (comboGoogleTradutor) {
+            comboGoogleTradutor.value = sigla;
+            changeEvent(comboGoogleTradutor);//Dispara a troca
+        }
+    }
+    </script>
     
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+
+      if (document.querySelector("#name_user")) {
+
+        var name_user = document.querySelector("#name_user");
+
+            fetch("{{ url('/') }}/api/explode_name/" + name_user.value)
+                .then(response => response.text())
+                .then(result => {
+                    // console.log(result);
+                    let input_name = document.querySelector("#input_name");
+                    input_name.innerHTML = result;
+                    
+                });
+
+            var status_user = document.querySelector('#status_user').value;
+            var status_id = document.querySelector('#status_id').value;
+      }
+
+        if (status_user === 'expired') {
+          document.querySelector('#btn_welcome_home').click();
+          fetch("{{ url('/') }}/api/welcome_home/"+status_id+"/profile");
+        }
+    });
+
+    if (document.querySelector("#change_country")) {
+
+        document.querySelector("#change_country").click();
+    }
+
+
+function change_country(user_id, country , language) {
+
+    // console.log(user_id);
+    // console.log(country);
+    // console.log(language);
+
+    if (country === "") {
+      fetch("{{ url('/') }}/api/change_country/"  + user_id );
+    }
+
+    if (language === "") {
+        document.querySelector('#btn_select_language').click();
+    }else {
+
+      var delayInMilliseconds = 1500; //1.5 second
+
+        setTimeout(function() {
+
+          document.querySelector('#btn_change_language_' + language).click();
+
+      }, delayInMilliseconds);
+    }
+
+}
+
+function user_language(language, user_id) {
+
+    // console.log(language);
+    // console.log(user_id);
+
+    fetch("{{ url('/') }}/api/user_language/"  + language + "/" + user_id);
+
+    var delayInMilliseconds = 1500; //1.5 second
+
+      setTimeout(function() {
+
+        document.querySelector('#btn_change_language_' + language).click();
+
+    }, delayInMilliseconds);
+      
+}
+</script>
+
 </body>
 
 </html>
