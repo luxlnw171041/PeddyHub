@@ -17,7 +17,7 @@
                                 ศูนย์รวมบริการ ข้อมูล และ community สำหรับคนรักสัตว์ 
                                 peddy hub ครบจบในที่เดียว !!!</p>
                                 <div class="button wow fadeInUp">
-                                    <a href="#" class="btn main" title="contact">
+                                    <a href="{{'pet/create'}}" class="btn main" title="contact">
                                         Register <i class="fas fa-paw"></i>
                                     </a>
                                 </div>
@@ -63,14 +63,15 @@
                                         ลักษณะของการเป็นอาหารเม็ดที่สามารถผสมผสานหลายวัตถุดิบและสารอาหารอันมีประโยชน์อยู่ภายในชุดเดียวกันได้อย่างง่ายดาย ทำให้น้องหมาได้สารอาหารอย่างครบถ้วนที่สุดภายใต้ข้อกำจัดด้านเวลาและงบประมาณของตนเอง ตลอดจนช่วยเสริมสร้างสุขภาพฟันของน้องหมาในทางอ้อมจากการหมั่นเคี้ยว 
                                     </p>
                                 </div>
-                                <div class="image text-center wow fadeInLeft">
-                                    <img src="peddyhub/images/home_5/bowl3.png" alt="image of product" title="product"
+                                <div class="image text-center wow fadeInRight">
+                                    <img src="peddyhub/images/home_5/bowl2.png" alt="image of product" title="product"
                                         class="img-fluid rounded-circle">
-                                    <h4>Canned Food</h4>
+                                    <h4>Semi-Moist Food</h4>
                                     <p>
-                                        สำหรับน้องหมาที่มีปัญหาสุขภาพฟัน ไม่สามารถเคี้ยวอาหารเม็ดแข็ง ๆ ได้ดีมากนัก ตลอดจนอาจจะไม่ชอบรสชาติของอาหารเม็ด ตัวเลือกอาหารประเภทกึ่งเปียกจึงอาจกลายเป็นตัวเลือกที่ใช่กว่าขึ้นมาได้เช่นกัน โดยสำหรับอาหารประเภทกึ่งเปียกนี้ ส่วนใหญ่ก็จะอยู่ในรูปเม็ดเหมือนกัน แต่จะมีองค์ประกอบของน้ำมากกว่าหน่อยราว 60% เพื่อให้น้องหมาเคี้ยวง่ายขึ้น 
+                                    อาหารประเภทนี้จะมีคล้ายอาหารแห้งแต่จะมีสารเพิ่มความชื้น เข้าไปเพื่อเพิ่มความน่ากินและช่วยถนอมอาหาร นอกจากนี้ยังมีการเพิ่มสารอาหารที่ป้องกันการเติบโตของเชื้อจุลินทรีย์ เพื่อยืดอายุของอาหารอีกด้วย อาหารชนิดนี้ส่วนมากอยู่ในรูปของห่อ(Foilwrapped sachets packed) เพื่อป้องกันไม่ให้แห้งเมื่อถูกอากาศ จึงมักจะบรรจุเป็นห่อเดี่ยวๆ (Single package)และหากตั้งทิ้งไว้นานๆ จะทำให้ความน่ากินจะลดลงได้เนื่องจากการระเหยออกของน้ำและมีกลิ่นลดลง
                                     </p>
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
@@ -81,14 +82,12 @@
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="context">
-                                <div class="image text-center wow fadeInRight">
-                                    <img src="peddyhub/images/home_5/bowl2.png" alt="image of product" title="product"
+                                <div class="image text-center wow fadeInLeft">
+                                    <img src="peddyhub/images/home_5/bowl3.png" alt="image of product" title="product"
                                         class="img-fluid rounded-circle">
-                                    <h4>Semi-Moist Food</h4>
+                                    <h4>Canned Food</h4>
                                     <p>
-                                        Commercial dog foods shaped like pork chops, burgers, or other meaty foods are
-                                        called semi-moist foods. These kinds of
-                                        foods are the least nutritional of all dog foods
+                                        สำหรับน้องหมาที่มีปัญหาสุขภาพฟัน ไม่สามารถเคี้ยวอาหารเม็ดแข็ง ๆ ได้ดีมากนัก ตลอดจนอาจจะไม่ชอบรสชาติของอาหารเม็ด ตัวเลือกอาหารประเภทกึ่งเปียกจึงอาจกลายเป็นตัวเลือกที่ใช่กว่าขึ้นมาได้เช่นกัน โดยสำหรับอาหารประเภทกึ่งเปียกนี้ ส่วนใหญ่ก็จะอยู่ในรูปเม็ดเหมือนกัน แต่จะมีองค์ประกอบของน้ำมากกว่าหน่อยราว 60% เพื่อให้น้องหมาเคี้ยวง่ายขึ้น 
                                     </p>
                                 </div>
                                 <div class="image text-center wow fadeInRight">
