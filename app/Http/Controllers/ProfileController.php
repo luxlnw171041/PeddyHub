@@ -41,27 +41,27 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData = $request->all();
+        // $requestData = $request->all();
 
-        if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
+        // if ($request->hasFile('photo')) {
+        //     $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
 
-            $img_avatar = Image::make(storage_path("app/public")."/".$requestData['photo']);
+        //     $img_avatar = Image::make(storage_path("app/public")."/".$requestData['photo']);
 
-            $size_avatar = $img_avatar->filesize();  
+        //     $size_avatar = $img_avatar->filesize();  
 
-            if($size_avatar > 512000 ){
-                $img_avatar->resize(
-                    intval($img_avatar->width()/2) , 
-                    intval($img_avatar->height()/2)
-                )->save(); 
-            }
+        //     if($size_avatar > 512000 ){
+        //         $img_avatar->resize(
+        //             intval($img_avatar->width()/2) , 
+        //             intval($img_avatar->height()/2)
+        //         )->save(); 
+        //     }
 
-        }
+        // }
 
-        $data = User::findOrFail($id);
-        $data->update($requestData);
-        return redirect('profile')->with('flash_message', 'Product added!');
+        // $data = User::findOrFail($id);
+        // $data->update($requestData);
+        // return redirect('profile')->with('flash_message', 'Product added!');
     }
 
     /**
@@ -118,8 +118,8 @@ class ProfileController extends Controller
                     intval($img_avatar->height()/2)
                 )->save(); 
             }
-
         }
+        
 
         $data = User::findOrFail($id);
         $data->update($requestData);
