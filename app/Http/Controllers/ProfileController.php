@@ -7,7 +7,6 @@ use App\Models\Pet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Intervention\Image\Facades\Image as Image;
 
 class ProfileController extends Controller
 {
@@ -43,21 +42,11 @@ class ProfileController extends Controller
     {
         $requestData = $request->all();
 
+        $requestData = $request->all();
         if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
-
-            $img_avatar = Image::make(storage_path("app/public")."/".$requestData['photo']);
-
-            $size_avatar = $img_avatar->filesize();  
-
-            if($size_avatar > 512000 ){
-                $img_avatar->resize(
-                    intval($img_avatar->width()/2) , 
-                    intval($img_avatar->height()/2)
-                )->save(); 
-            }
-
-        }
+        $requestData['photo'] = $request->file('photo')
+            ->store('storage/uploads', 'public'); 
+    }
 
         $data = User::findOrFail($id);
         $data->update($requestData);
@@ -105,21 +94,11 @@ class ProfileController extends Controller
     {   
         $requestData = $request->all();
 
+        $requestData = $request->all();
         if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
-
-            $img_avatar = Image::make(storage_path("app/public")."/".$requestData['photo']);
-
-            $size_avatar = $img_avatar->filesize();  
-
-            if($size_avatar > 512000 ){
-                $img_avatar->resize(
-                    intval($img_avatar->width()/2) , 
-                    intval($img_avatar->height()/2)
-                )->save(); 
-            }
-
-        }
+    $requestData['photo'] = $request->file('photo')
+        ->store('storage/uploads', 'public'); 
+}
 
         $data = User::findOrFail($id);
         $data->update($requestData);
