@@ -7,7 +7,7 @@ use App\Models\Pet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Facades\Image as Image;
 
 class ProfileController extends Controller
 {

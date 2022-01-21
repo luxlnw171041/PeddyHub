@@ -30,7 +30,7 @@ Route::get('/terms_of_service', function () {
 });
 
 
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/edit_profile', 'ProfileController@edit_profile');
 // Google login
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
