@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', function () {
+    return view('welcome');
+});
 Route::get('/test', function () {
     return view('test');
 });
@@ -27,7 +30,7 @@ Route::get('/terms_of_service', function () {
 });
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/edit_profile', 'ProfileController@edit_profile');
 // Google login
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
@@ -50,3 +53,4 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('profile', 'ProfileController');
 });
 Route::resource('post', 'PostController');
+Route::get('/post/create', 'PostController@create')->name('post_create');

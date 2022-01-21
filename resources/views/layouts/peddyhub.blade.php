@@ -100,7 +100,7 @@
                         <div class="auto-container clearfix">
                             <!--Logo-->
                             <div class="logo pull-left">
-                                <a href="index.html" class="img-responsive"><img src="{{ url('/peddyhub/images/home_5/logo.png') }}" alt="" width="15%" style="margin-bottom:-30px;"
+                                <a href="{{ url('/') }}" class="img-responsive"><img src="{{ url('/peddyhub/images/home_5/logo.png') }}" alt="" width="15%" style="margin-bottom:-30px;"
                                         title=""></a>
                             </div>
                             <!--Right Col-->
@@ -259,6 +259,7 @@
                     </div>
                 </div> -->
                 <div class="footer-bottom d-flex justify-content-start">
+                
                     <div class="copyright">WWW.PEDDYHUB.COM <span>•</span> 
                         <a href="{{'privacy_policy'}}">
                             <span>นโยบายเกี่ยวกับข้อมูลส่วนบุคคล</span>
@@ -268,6 +269,11 @@
                             <span>ข้อกำหนดและเงื่อนไขการใช้บริการ</span>
                         </a>
                     </div>
+                    <div class="col-1" style="margin-left:10px;">
+                        <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=0fb7dd20-26-5-1dd80cec414c4d670072026d423afa933e149&markID=firstmar" target="bank">
+                        <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
+                    </a>
+                </div>
                 </div>
             </div>
         </footer>

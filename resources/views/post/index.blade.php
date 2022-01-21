@@ -5,9 +5,11 @@
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp " style="margin-bottom:-50px">  
         <div class="container  d-flex justify-content-end">
-            <a style="font-size:15px;" href="{{ url('/post/create') }}" class="btn main" title="contact">
-            โพสต์ 
-            </a>
+            @if(Auth::check())
+                <a style="font-size:15px;" href="{{ url('/post/create') }}" class="btn main" title="contact">
+                    โพสต์ 
+                </a>
+             @endif
         </div>
     </div>
         <div class="pet event">
@@ -75,12 +77,12 @@
                                                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                                                     <div class="dropdown-menu dropdown-primary">
                                                         <a class="dropdown-item" href="#"><i class="fab fa-apple-pay"></i>&nbsp;&nbsp;คัดลอก</a>
-                                                        <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
+                                                        <!-- <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
                                                         <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                             {{ method_field('DELETE') }}
                                                             {{ csrf_field() }}
                                                             <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;ลบโพสต์</button>
-                                                        </form>
+                                                        </form> -->
                                                     </div>
                                                 </div>
                                                 

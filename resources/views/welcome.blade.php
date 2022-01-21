@@ -23,12 +23,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-md-12 col-sm-12">
+                        
+                        <div class="col-lg-5 col-md-12 col-sm-12 method" style="margin-top:-20px;">
                             <div class="image">
                                 <div class="an_image an_image_hz_ps_right_end an_image_vt_ps_top an_image_anime_delay_300 an_image_anime_duration_1500 an_image_anime_style_ease_out_sine"
                                     data-speed="1.2">
                                     <div class="an_image_image" data-speed="1.2">
-                                        <div class="pt_image"><span><img src="peddyhub/images/home_5/icon.png" title="Pet"
+                                        <div class="pt_image"><span><img src="peddyhub/images/home_5/icon1.png" title="Pet"
                                                     alt="Image of Pet"></span>
                                         </div>
                                     </div>
@@ -40,58 +41,6 @@
             </div>
         </section>
 
-        <section class="services-section-two">
-            <div class="auto-container" > 
-                <!--Sec Title Two-->
-                <div class="sec-title-two centered" >
-                    <div class="heading text-center">
-                        <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
-                                class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
-                                    class="fas fa-paw"></i> </span></p>
-                        <h2 class="wow fadeInDown">We can keep them <span class="wow pulse" data-wow-delay="1s">
-                                happy</span></h2>
-                    </div>
-                    <h2>All Types of Grooming Services</h2>
-                    <div class="text">For professional dog and cat grooming needs Fanatic clearly</div>
-                </div>
-                <!--End Sec Title Two-->
-                <div class="row clearfix">
-                    <!--Services Block Two-->
-                    <div class="services-block-two col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeIn" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="icon-box">
-                                <span class="icon flaticon-dog-in-front-of-a-man"></span>
-                            </div>
-                            <h3><a href="#">Experienced Staff</a></h3>
-                            <div class="text">Well gaudy hound hired set flailed much followed less this maternal well
-                                unavoidable crudely aloof more save groomed.</div>
-                        </div>
-                    </div>
-                    <!--Services Block Two-->
-                    <div class="services-block-two col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeIn" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <div class="icon-box">
-                                <span class="icon flaticon-man"></span>
-                            </div>
-                            <h3><a href="#">Top Class Facilities</a></h3>
-                            <div class="text">Well gaudy hound hired set flailed much followed less this maternal well
-                                unavoidable crudely aloof more save groomed.</div>
-                        </div>
-                    </div>
-                    <!--Services Block Two-->
-                    <div class="services-block-two col-md-4 col-sm-6 col-xs-12">
-                        <div class="inner-box wow fadeIn" data-wow-delay="600ms" data-wow-duration="1500ms">
-                            <div class="icon-box">
-                                <span class="icon flaticon-pets-hotel-house-sign-with-a-paw"></span>
-                            </div>
-                            <h3><a href="#">Easy Consultation</a></h3>
-                            <div class="text">Well gaudy hound hired set flailed much followed less this maternal well
-                                unavoidable crudely aloof more save groomed.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section class="descript">
             <div class="context">
@@ -100,8 +49,8 @@
                         <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
                                 class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
                                     class="fas fa-paw"></i> </span></p>
-                        <h2 class="wow fadeInDown">We can keep them <span class="wow pulse" data-wow-delay="1s">
-                                happy</span></h2>
+                        <h2 class="wow fadeInDown">ประเภทอาหารสุนัขใดเหมาะสมที่สุดกับ<span class="wow pulse" data-wow-delay="1s">
+                                สุนัขของคุณ</span></h2>
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
@@ -111,9 +60,7 @@
                                         class="img-fluid rounded-circle">
                                     <h4>Kibble/Dry Food</h4>
                                     <p>
-                                        Dry food is the most economical type of commercial dog food, and this is the
-                                        reason that many owners choose it for their
-                                        dog. It also lasts for a long time and does not need to be refrigerated
+                                        ลักษณะของการเป็นอาหารเม็ดที่สามารถผสมผสานหลายวัตถุดิบและสารอาหารอันมีประโยชน์อยู่ภายในชุดเดียวกันได้อย่างง่ายดาย ทำให้น้องหมาได้สารอาหารอย่างครบถ้วนที่สุดภายใต้ข้อกำจัดด้านเวลาและงบประมาณของตนเอง ตลอดจนช่วยเสริมสร้างสุขภาพฟันของน้องหมาในทางอ้อมจากการหมั่นเคี้ยว 
                                     </p>
                                 </div>
                                 <div class="image text-center wow fadeInLeft">
@@ -121,10 +68,7 @@
                                         class="img-fluid rounded-circle">
                                     <h4>Canned Food</h4>
                                     <p>
-                                        Most dogs love canned, or wet, food; it has a long shelf life and is easy to
-                                        find at any supermarket, but it can be
-                                        expensive. For some owners, it’s definitely worth the expense, but not every
-                                        brand.
+                                        สำหรับน้องหมาที่มีปัญหาสุขภาพฟัน ไม่สามารถเคี้ยวอาหารเม็ดแข็ง ๆ ได้ดีมากนัก ตลอดจนอาจจะไม่ชอบรสชาติของอาหารเม็ด ตัวเลือกอาหารประเภทกึ่งเปียกจึงอาจกลายเป็นตัวเลือกที่ใช่กว่าขึ้นมาได้เช่นกัน โดยสำหรับอาหารประเภทกึ่งเปียกนี้ ส่วนใหญ่ก็จะอยู่ในรูปเม็ดเหมือนกัน แต่จะมีองค์ประกอบของน้ำมากกว่าหน่อยราว 60% เพื่อให้น้องหมาเคี้ยวง่ายขึ้น 
                                     </p>
                                 </div>
                             </div>
@@ -152,9 +96,7 @@
                                         class="img-fluid rounded-circle">
                                     <h4>Home Cooked Food</h4>
                                     <p>
-                                        Some dog owners value the ability to be in complete control of their dog’s diet.
-                                        A home-cooked diet allows the owner to
-                                        know for certain exactly what is in everything her dog eats
+                                        การเลือกทำอาหารด้วยตนเองให้น้องหมานั้นส่วนใหญ่จะควบคุมโภชนาการและปริมาณที่เหมาะสมได้ยาก ผู้เลี้ยงอาจมักเลือกวัตถุดิบที่เหลือ ๆ มาผสมรวมกัน หรือเลือกเฉพาะที่น้องหมาชื่นชอบเป็นพิเศษตลอดเวลา แนะนำว่าอาจจะควรจัดให้เป็นเฉพาะในโอกาสพิเศษหรือในช่วงที่เรามีเวลาจริง ๆ เท่านั้น ส่วนมื้ออาหารหลักปกตินั้นก็ให้เลือกเป็นแบบเม็ดสำเร็จรูป หรือประเภทอื่น ๆ ที่สามารถให้โภชนาการครบถ้วนได้อย่างสม่ำเสมอกว่า
                                     </p>
                                 </div>
                             </div>
@@ -335,15 +277,15 @@
         </section>
 
 <!--Gallery Section-->
-        <section class="gallery-section">
+        <section class="gallery-section" style="background-color: #B8205B;margin-top:20px;">
             <div class="auto-container">
                 <!--Sec Title Two-->
                 <div class="sec-title-two centered">
                     <div class="title-icon">
                         <img src="peddyhub/images/icons/title-icon.png" alt="" />
                 </div>
-                        <h2>ขั้นตอนการลงทะเบียน</h2>
-                        <div class="text">For professional dog and cat grooming needs</div>
+                        <h3 style="color:white;">แสดงเจ้าตัวแสบของคุณให้ทุกคนได้เห็น</h3>
+                        <!-- <div class="text">For professional dog and cat grooming needs</div> -->
                     </div>
                     <div class="row clearfix">
                         <!--Gallery Item-->
@@ -551,7 +493,7 @@
                                             ตามหาเจ้าตัวแสบ
                                         </h5>
                                         <p>
-                                            เมื่อสัตว์เลี้ยงของท่านเดินเล่น หรือสำรวจสิ่งต่าง ๆ รอบตัว อย่างเพลิดเพลิน จนอาจจะเกิดการพลัดหลง เพียงท่านลงทะเบียนสัตว์เลี้ยงกับเรา เมื่อสัตว์เลี้ยงของท่านเกิดการพลัดหลง ก็สามารถแจ้งคนที่ใช้บริการของเราใกล้ๆท่านให้ช่วยค้นหาสัตว์เลี้ยงของท่านได้
+                                        เมื่อเจ้าตัวแสบเดินเล่น สำรวจสิ่งต่าง ๆ รอบตัว อย่างเพลิดเพลิน จนบางครั้งอาจเกิดการพลัดหลง เพียงท่านลงทะเบียนสัตว์เลี้ยงกับ  ระบบของเรา จากนั้นระบบก็จะช่วยส่งข้อมูลให้ชุมชนคนรักสัตว์ ในบริเวณใกล้เคียงได้รับทราบและช่วยกันตามหาเจ้าตัวแสบของท่านในทันที
                                         </p>
                                     </div>
                                 </div>
@@ -565,10 +507,10 @@
                                     </div>
                                     <div class="context">
                                         <h5 class="orange">
-                                            ตัดแต่งขนสัตว์
+                                            ตัดขนเสริมสวยแต่งหล่อ
                                         </h5>
                                         <p>
-                                            หากเราอยากหล่ออยากสวยเรื่องเสริมความสวยความงามก็เป็นเรื่องที่เข้าใจได้การจัดแต่งทรงให้หล่อสวยนั้นสัตว์เลี้ยงของเราก็เหมือนกัน เพราะไม่ว่าจะเป็นแมวสุนัขหรือน้องสัตว์ที่มีขนสั้นบ้างยาวบ้าง ก็เป็นหน้าที่ของเจ้าของที่จะต้องดูแลเพื่อความสวยงามและสุขอนามัย
+                                            หากเราอยากหล่ออยากสวยเรื่องเสริมความสวยความงามก็เป็นเรื่องที่เข้าใจได้ การจัดแต่งทรงให้สวยหล่อนั้นสำหรับสัตว์เลี้ยงของเราก็เหมือนกัน เพราะไม่ว่าจะเป็นแมวสุนัขหรือน้องสัตว์ทั้งหลายที่มีขนสั้นบ้างยาวบ้าง ก็เป็นหน้าที่ของเจ้าของที่จะต้องดูแลเพื่อความสวยงามและสุขอนามัย
                                         </p>
                                     </div>
                                 </div>
@@ -582,27 +524,10 @@
                                     </div>
                                     <div class="context">
                                         <h5 class="orange">
-                                            อาหารสัตว์
+                                            อาหารเจ้าซุกซน 
                                         </h5>
                                         <p>
-                                            สามารถเลือกซื้ออาหารให้สัตว์เลี้ยงอย่างสบายใจ โดยซื้อจากร้านขายอาหารสัตว์เลี้ยงชั้นนำ และยังมีบริการส่งแบบรวดเร็ว 24 ชม. โปรโมชั่นลดราคาสุดพิเศษ และหากสินค้ามีปัญหาก็สามารถคืนสินค้าได้อีกด้วย
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div class="icon purple"><br>
-                                        <div class="svg-icon" id="svg-7"
-                                            data-svg-icon="peddyhub/images/home_5/svg/pet_shelter.svg">
-                                        </div>
-                                    </div>
-                                    <div class="context">
-                                        <h5 class="purple">
-                                            อุปการะสัตว์เลี้ยง
-                                        </h5>
-                                        <p>
-                                            ถ้าหากต้องการหาบ้านพักพิงหลังใหม่ให้สัตว์เลี้ยง เราก็มีบริการรองรับเพียงแค่เข้าไปประกาศในคอมมูนิตี้ของเรา หรือถ้าหากท่านต้องการหาเพื่อนสัตว์เลี้ยง ก็สามารถเข้าไปหาในคอมมูนิตี้ของเราได้เลย
+                                        อาหารที่มีคุณภาพและได้มาตรฐานจะช่วยให้ลูกๆของคุณร่างกายแข็งแรงและมีสุขภาพที่ดียิ่งขึ้น เราจึงสรรหาและมอบสิ่งดีๆเพื่อเจ้าแสนซน เราบริการส่งแบบรวดเร็วภายใน 24 ชม. และโปรโมชั่นลดราคาสุดพิเศษเตรียมไว้เพื่อคุณแล้ว
                                         </p>
                                     </div>
                                 </div>
@@ -619,11 +544,29 @@
                                             โรงพยาบาลสัตว์
                                         </h5>
                                         <p>
-                                            เวลาที่สัตว์เลี้ยงป่วยท่านคงจะอยากได้โรงพยาบาลสัตว์ที่ดีๆเพื่อที่จะนำสัตว์เลี้ยงไปรักษา ซึ่งเรามีโรงพยาบาลสัตว์มากมาย ที่มีสัตวแพทย์มีเชี่ยวชาญชำนาญในโรคต่าง ๆ ของสัตว์อย่างรอบด้าน 
+                                            เวลาที่เพื่อนคู่ชีวิตป่วยท่านคงจะอยากได้โรงพยาบาลสัตว์ที่ดี อยู่ใกล้และค่ารักษาไม่แพงจนเกินไป เพื่อทำการตรวจรักษา ซึ่งเรามีโรงพยาบาลที่มีมาตรฐานที่พร้อมสัตวแพทย์ที่มีความเชี่ยวชาญให้บริการครอบคลุมในทุกพื้นเลยค่ะ
                                         </p>
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="card">
+                                    <div class="icon purple"><br>
+                                        <div class="svg-icon" id="svg-7"
+                                            data-svg-icon="peddyhub/images/home_5/svg/pet_shelter.svg">
+                                        </div>
+                                    </div>
+                                    <div class="context">
+                                        <h5 class="purple">
+                                            อุปการะน้องๆ
+                                        </h5>
+                                        <p>
+                                        ถ้าหากต้องการหาบ้านพักพิงหลังใหม่ให้น้องๆ เราก็มีบริการรองรับเพียงแค่เข้าไปประกาศในคอมมูนิตี้ของเรา หรือถ้าหากท่านต้องการหาเพื่อนคู่ชีวิต ก็สามารถเข้าไปค้นหาในคอมมูนิตี้ของเราได้เลยจ้า
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                           
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card">
                                     <div class="icon purple"><br>
@@ -636,7 +579,7 @@
                                             โรงแรมสัตว์เลี้ยง
                                         </h5>
                                         <p>
-                                            เมื่อทาสชอบเที่ยวแต่ไม่ใช่ว่าเราจะพาตัวแสบไปได้ทุกที่จึงจำเป็นต้องหาสถานที่รับฝากน้องๆ โรงแรมสัตว์เลี้ยงที่มีมาตรฐานสามารถค้นหาได้เลยจ้า
+                                        เมื่อทาสชอบเที่ยว แต่ทาสก็ไม่สามารถที่จะพาเจ้าตัวแสบไปได้ทุกที่ จึงจำเป็นอย่างยิ่งที่ต้องหาสถานที่รับฝากน้องๆ สำหรับโรงแรมสัตว์เลี้ยงที่มีมาตรฐานสามารถค้นหาได้ที่นี่เลยจ้า
                                         </p>
                                     </div>
                                 </div>
