@@ -13,9 +13,9 @@
                                     </h1>
                                 </div>
                                 <p class="wow fadeInDown">
-                                    Speaking of Frenchies, we are definitely one of the best kennels in America. Our
-                                    champs are born and raised in
-                                    Louisiana.</p>
+                                PeddyHub 
+                                ศูนย์รวมบริการ ข้อมูล และ community สำหรับคนรักสัตว์ 
+                                peddy hub ครบจบในที่เดียว !!!</p>
                                 <div class="button wow fadeInUp">
                                     <a href="#" class="btn main" title="contact">
                                         Register <i class="fas fa-paw"></i>

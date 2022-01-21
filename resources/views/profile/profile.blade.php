@@ -51,20 +51,20 @@
                                     <a title="name">{{ $data->name }}</a>
                                 </div>
                             </div>
-                                <div class="image">
-                                    @php
-                                        $pet = $data->pets;
-                                    @endphp
-                                    <div class="row">
-                                        @foreach($pet->random(3) as $pet) 
-                                            <div class="col-4">
-                                                <img src="{{ url('storage/'.$pet->photo )}}" width="50%"  alt="image of client" title="client" class="img-fluid customer">
-                                                <br>
-                                                <h5 style="margin-top:-30px;" class="notranslate">{{ $pet->name }}</h5> 
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                 </div>
+                                    <!-- <div class="image">
+                                        @php
+                                            $pet = $data->pets;
+                                        @endphp
+                                        <div class="row">
+                                            @foreach($pet->random(3) as $pet) 
+                                                <div class="col-4">
+                                                    <img src="{{ url('storage/'.$pet->photo )}}" width="50%"  alt="image of client" title="client" class="img-fluid customer">
+                                                    <br>
+                                                    <h5 style="margin-top:-30px;" class="notranslate">{{ $pet->name }}</h5> 
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div> -->
                             <!-- <div class="d-flex justify-content-around">
                                         @php
                                             $pet = $data->pets;
