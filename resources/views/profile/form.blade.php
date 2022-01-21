@@ -176,7 +176,7 @@
                                         <img class="btn" id="img_flag_ae" style="filter: grayscale(100%);"  src="{{ url('/peddyhub/images/national-flag/pet-ar.png') }}" onclick="change_language('ar' , '{{ $data->id }}');">
                                     </div>
                                     <div class="col-4 col-md-4 col-lg-3" style="top:4px">
-                                        <img class="btn" id="img_flag_in" style="filter: grayscale(100%);font"  src="{{ url('/peddyhub/images/national-flag/pet-in.png') }}" onclick="change_language('hi' , '{{ $data->id }}');">
+                                        <img class="btn" id="img_flag_in" style="filter: grayscale(100%);"  src="{{ url('/peddyhub/images/national-flag/pet-in.png') }}" onclick="change_language('hi' , '{{ $data->id }}');">
                                     </div>
                                     <div class="col-md-4 col-lg-3 col-4">
                                         <img class="btn" id="img_flag_ja" style="filter: grayscale(100%); "   src="{{ url('/peddyhub/images/national-flag/pet-jp.png') }}" onclick="change_language('ja' , '{{ $data->id }}');">
