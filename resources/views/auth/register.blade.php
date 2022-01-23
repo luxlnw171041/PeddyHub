@@ -145,7 +145,7 @@
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group text-center mt-4">
-                                                    <button type="submit" class="btn form-control">Signup</button>
+                                                    <button type="submit" class="btn btn-11 form-control">Signup</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,8 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
     <title>PeddyHub</title>
+    <!-- icon -->
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" rel="stylesheet">
+    
     <!-- Stylesheets -->
     <link href="{{ asset('peddyhub/css/imagehover.css') }}" rel="stylesheet">
     <link href="{{ asset('peddyhub/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"> 
@@ -15,7 +20,12 @@
     <link href="{{ asset('peddyhub/css/responsive.css') }}" rel="stylesheet" type="text/css">
     <!--Color Switcher Mockup-->
     <link href="{{ asset('peddyhub/css/color-switcher-design.css') }}" rel="stylesheet">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100&display=swap" rel="stylesheet">
     <!--Color Themes-->
+    
      <link href="{{ asset('peddyhub/ss/color-themes/default-theme.css') }}" rel="stylesheet" id="theme-color-file">
     <link id="theme-color-file" href="{{ asset('peddyhub/css/color-themes/default-theme.css') }}" rel="stylesheet">
     <!--Favicon-->
@@ -40,6 +50,7 @@
         } 
 </style>
 <body>
+    
 <div class="main-wrapper pet">
 
         <div id="preloading"></div>

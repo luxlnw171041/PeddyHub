@@ -207,11 +207,11 @@
             <div class="faq wow fadeInRight">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
-                        <button class="btn btn-style-two" type="reset" onclick="location.href='{{ url('/profile') }}'">กลับ</button>
+                        <button class="btn btn-11" type="reset" onclick="location.href='{{ url('/profile') }}'">กลับ</button>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
                         <div class="d-flex justify-content-end" >
-                            <button type="submit" class="btn form-control" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">บันทึก</button>
+                            <button type="submit" class="btn btn-11 form-control" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">บันทึก</button>
                         </div>
                     </div>
                 </div>

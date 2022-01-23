@@ -45,7 +45,7 @@
     border: 2px solid var(--pt_black);
 }
 
-.pet button.btn:before {
+.pet button.btn-11:before {
     background: var(--pt_orange);
 }
 

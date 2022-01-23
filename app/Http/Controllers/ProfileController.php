@@ -104,8 +104,6 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {   
         $requestData = $request->all();
-
-        $requestData = $request->all();
                 if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('storage/uploads', 'public'); 

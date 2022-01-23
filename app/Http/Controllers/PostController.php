@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Pet;
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image as Image;
 
 class PostController extends Controller
 {
@@ -20,7 +22,7 @@ class PostController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        $id = Auth::id();
         if (!empty($keyword)) {
             $post = Post::where('user_id', 'LIKE', "%$keyword%")
                 ->orWhere('detail', 'LIKE', "%$keyword%")
@@ -31,7 +33,7 @@ class PostController extends Controller
             $post = Post::latest()->paginate($perPage);
         }
 
-        return view('post.index', compact('post'));
+        return view('post.index', compact('post' ,'id'));
     }
 
     /**
@@ -60,6 +62,7 @@ class PostController extends Controller
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
+        
         $requestData['user_id'] = Auth::id();   
         Post::create($requestData);
 
@@ -102,11 +105,21 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $user_id = Auth::id();
+        $check_user = Pet::where('user_id',$user_id )->where('id',$id )->get();
 
-        return view('post.edit', compact('post'));
+        foreach ($check_user as $key ) {
+            $user = $key->id ;
+        }
+        if (empty($user)) {
+
+            return view('/errors/404');
+
+       }else{
+            $post = Post::findOrFail($id);
+            return view('post.edit', compact('post'));
+       }
     }
-
     /**
      * Update the specified resource in storage.
      *

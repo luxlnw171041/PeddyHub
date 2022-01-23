@@ -2,11 +2,29 @@
 
 @section('content')
 
+<link href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" rel="stylesheet">
+<style>
+   .likebtn{
+    background-color: transparent;
+    color:#53565B;
+    font-family: 'Sarabun', sans-serif;
+    font-size:14px;
+
+   }
+
+.likebtn:hover {background-color: #F2F2F2; color:black ;}
+
+/* .likebtn:active {
+  background-color: #3e8e41 !important;;
+  box-shadow: 0 5px #666 !important;;
+  transform: translateY(4px) !important;;
+} */
+</style>
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp " style="margin-bottom:-50px">  
         <div class="container  d-flex justify-content-end">
             @if(Auth::check())
-                    <a style="font-size:15px;" href="{{ url('/post/create') }}" class="btn main" title="contact">
+                    <a href="{{ url('/post/create') }}" class="btn main" title="contact">
                         โพสต์ 
                     </a>
              @endif
@@ -23,6 +41,8 @@
                             <h2 class="wow fadeInDown">Find The Most <span class="wow pulse" data-wow-delay="1s">
                                     Exciting News</span></h2>
                         </div> -->
+                       
+                        
                         <div class="row mt-5">
                             @foreach($post as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
@@ -46,6 +66,21 @@
                                                 @endif
                                                     <span style="font-size:20px"> <b></b> </span>
                                                     <p style="font-size:12px;margin-top:-8px;"> {{ $item->created_at->diffForHumans() }} </p>
+                                                </div>
+                                                <div class="col-1" style="padding:0px;">
+                                                    <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                                    <div class="dropdown-menu dropdown-primary">
+                                                        <a class="dropdown-item" href="#"><i class="fab fa-apple-pay"></i>&nbsp;&nbsp;คัดลอก</a>
+                                                        @if(($id  ==  $item->user_id))
+                                                            <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
+                                                            <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                                {{ method_field('DELETE') }}
+                                                                {{ csrf_field() }}
+                                                                <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;ลบโพสต์</button>
+                                                            </form>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                                 <div class="col-12" style="padding:0px 0px 0px 20px">
                                                     <a href="{{ url('/post/' . $item->id) }}" title="">
@@ -72,19 +107,6 @@
                                                 <span class="like">192 Likes</span>
                                             </p>
                                             
-                                            <div class="d-flex justify-content-end" style="margin-top:-28px;z-index:4;">
-                                                    <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                                                    <div class="dropdown-menu dropdown-primary">
-                                                        <a class="dropdown-item" href="#"><i class="fab fa-apple-pay"></i>&nbsp;&nbsp;คัดลอก</a>
-                                                        <!-- <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
-                                                        <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                            {{ method_field('DELETE') }}
-                                                            {{ csrf_field() }}
-                                                            <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;ลบโพสต์</button>
-                                                        </form> -->
-                                                    </div>
-                                                </div>
                                                 
                                             <!-- <a href="{{ url('/post/' . $item->id) }}" title="">
                                                 <p class="head mt-1 mb-0">{{ $item->detail }}
@@ -98,20 +120,19 @@
                                                 <a href="{{ url('/post/' . $item->id) }}" class="btn main register">Read More</a><br>
                                             </div> -->
                                         </div>
-                                        <br>
-                                        <!-- <hr>
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <button type="button" class="btn btn-light">Light</button>
+                                       
+                                            <hr style="margin:0px 0px 0px 0px; ">
+                                            <div class="row d-flex justify-content-center" style="padding:10px;">
+                                                <div class="col-4 d-grid gap-2">
+                                                    <button type="button" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button>
                                                 </div>
-                                                <div class="col-4">
-                                                    <button type="button" class="btn btn-light">Light</button>
-                                                </div>
-                                                <div class="col-4">
-                                                    <button type="button" class="btn btn-light">Light</button>
+                                                <!-- <div class="col-4 d-grid gap-2">
+                                                    <button type="button" class="btn likebtn btn-lg" ><b> <i class="fas fa-heart"></i>  &nbsp;ถูกใจ</b></button>
+                                                </div> -->
+                                                <div class="col-8 d-grid gap-2">
+                                                    <button type="button" class="btn likebtn btn-lg" ><b><i class="fal fa-comments-alt"></i> แสดงความคิดเห็น</b></button>
                                                 </div>
                                             </div>
-                                        <hr> -->
                                     </div>
                                 </div>
                             @endforeach

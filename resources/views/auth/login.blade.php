@@ -139,7 +139,7 @@
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12">
                                             <div class="form-group text-center">
-                                                <button type="submit" class="btn form-control">Login</button>
+                                                <button type="submit" class="btn btn-11 form-control">Login</button>
                                             </div>
                                         </div>
                                         <div class="heading text-center">
