@@ -34,26 +34,48 @@
                                         <h5>
                                             Comments
                                         </h5>
-                                        <div class="comment">
-                                            <div class="image pr-4 pt-3">
-                                                <img class="img-fluid" src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}"
-                                                    alt="Image of Author" title="Author">
-                                            </div>
-                                            <div class="context">
-                                                <h5>Natasha</h5>
-                                                <p class="mb-0">
-                                                    <span>March 2, 2021</span> || <span><a href="#"
-                                                            title="Reply">Reply</a> </span>
-                                                </p>
-                                                <p>
-                                                    And one into considering ahead yet tepid far oriole
-                                                    pointed wildebeest jeepers contrary circa hello
-                                                    rolled
-                                                    alas goldfinch less apt wherever suitably.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="comment pt-3">
+                                        @foreach($comment as $data)
+                                                @if(($data->post_id  ==  $post->id))
+                                                    <div class="comment">
+                                                        <div class="image pr-4 pt-3 col-11" style="margin-top:-10px;"> 
+                                                            @if(!empty($data->user->photo))
+                                                                <img class="img-fluid" src="{{ url('storage')}}/{{ $data->user->photo }}"alt="Image of Author" title="Author" width="125" height="100">
+                                                            @elseif(($data->user->photo  ==  null))
+                                                            <img class="img-fluid" src="{{ url('peddyhub/images/home_5/icon1.png')}}"alt="Image of Author" title="Author" width="125" height="100">
+                                                            @endif
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-11">
+                                                            <div class="context">
+                                                            <h5>{{$data->user->name}}</h5>
+                                                            <p class="mb-0">
+                                                                <span>{{ $data->created_at->thaidate('j M Y') }}</span> 
+                                                            </p>
+                                                            <p>
+                                                            {{$data->content}}
+                                                            </p>
+                                                        </div>
+                                                            </div>
+                                                            <div class="col-1">
+                                                            @if(($user_id  ==  $data->user_id))
+                                                                <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
+                                                                aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                                                                <div class="dropdown-menu dropdown-primary">
+                                                                    <a class="dropdown-item" href="{{ url('/comment/' . $data->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
+                                                                    <form method="POST" action="{{ url('/comment' . '/' . $data->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                                        {{ method_field('DELETE') }}
+                                                                        {{ csrf_field() }}
+                                                                        <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;ลบโพสต์</button>
+                                                                    </form>
+                                                                </div>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                @endif        
+                                        @endforeach
+                                        <!-- <div class="comment pt-3">
                                             <div class="image pr-4 pt-3">
                                                 <img class="img-fluid" src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}"
                                                     alt="Image of Author" title="Author">
@@ -71,47 +93,62 @@
                                                     alas goldfinch less apt wherever suitably.
                                                 </p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="form mt-4">
-                                        <form action="" method="post">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="name"
-                                                            placeholder="Name">
+                                        @if(Auth::check())
+                                            <form method="POST" action="{{ url('/comment') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <!-- <div class="col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="name"
+                                                                placeholder="Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" name="email"
+                                                                placeholder="Email">
+                                                        </div>
+                                                    </div> -->
+                                                    {{ csrf_field() }}
+                                                    <input class="d-none" name="user_id" type="number" id="user_id" value="{{$user_id}}" >                                
+                                                    <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $post->id }}" >  
+                                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="form-group">
+                                                            <textarea name="content" id="content" cols="30" rows="5"
+                                                                class="form-control"
+                                                                placeholder="แสดงความคิดเห็น..."></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                                    <div class="form-group">
-                                                        <input type="email" class="form-control" name="email"
-                                                            placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <div class="form-group">
-                                                        <textarea name="comment" id="" cols="30" rows="5"
-                                                            class="form-control"
-                                                            placeholder="Leave A Comment..."></textarea>
-                                                    </div>
-                                                </div>
+                                                <button type="submit" class="btn btn-11">แสดงความคิดเห็น</button>
+                                            </form>
+                                        @else
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <textarea name="content" id="content" cols="30" rows="5"
+                                                    class="form-control"
+                                                    placeholder="เข้าสู่ระบบเพื่อแสดงความคิดเห็น..." disabled></textarea>
                                             </div>
-                                            <button type="submit" class="btn">Leave Comment</button>
-                                        </form>
+                                        </div>
+                                        <button type="submit" class="btn btn-11 disabled" >เข้าสู่ระบบเพื่อแสดงความคิดเห็น</button>
+                                        @endif
                                     </div>
+                                    {{$likeCtr}}
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="r_sidebar mt-4">
-                                <form action="" method="post">
+                                <!-- <form action="" method="post">
                                     <div class="form-group">
                                         <input type="search" name="search" id="search" class="form-control"
                                             placeholder="Search">
                                         <button type="submit" class="form-control"><i
                                                 class="fas fa-search"></i></button>
                                     </div>
-                                </form>
+                                </form> -->
                                 <div class="categories">
                                     <h5>Categories</h5>
                                     <ul>

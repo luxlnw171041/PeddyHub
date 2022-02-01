@@ -5,9 +5,11 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pet;
+use App\Models\Like;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image as Image;
 
@@ -23,6 +25,20 @@ class PostController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
         $id = Auth::id();
+        $LIKE = Like::where('user_id', $id)->get();
+        
+        $comment = Comment::all(['id', 'post_id' ,'user_id' ,'content' ,'created_at']);
+        
+        
+        $postss = Post::get();
+        foreach($postss as $item) {
+            $asdaa = $item->id ;
+        }
+
+        $posts = Post::where('id' , '=' ,$asdaa)->get();
+        $likePost = Post::find($asdaa);
+        $likeCtr = Like::where(['post_id' => $likePost->id] )->get();
+
         if (!empty($keyword)) {
             $post = Post::where('user_id', 'LIKE', "%$keyword%")
                 ->orWhere('detail', 'LIKE', "%$keyword%")
@@ -33,7 +49,7 @@ class PostController extends Controller
             $post = Post::latest()->paginate($perPage);
         }
 
-        return view('post.index', compact('post' ,'id'));
+        return view('post.index', compact('post' ,'id' ,'comment'  ,'LIKE' ,'asdaa'));
     }
 
     /**
@@ -79,7 +95,13 @@ class PostController extends Controller
     public function show(Request $request, $id)
     {
         $perPage = 25;
+        $comment = Comment::all(['id', 'post_id' ,'user_id' ,'content' ,'created_at']);
+        $user_id = Auth::id();
         
+        $posts = Post::where('id' , '=' ,$id)->get();
+        $likePost = Post::find($id);
+        $likeCtr = Like::where(['post_id' => $likePost->id] )->count();
+
         if (!empty($keyword)) {
             $post = Post::where('user_id', 'LIKE', "%$keyword%")
                 ->orWhere('detail', 'LIKE', "%$keyword%")
@@ -93,7 +115,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $query = Post::all(['id', 'detail' ,'photo' ,'created_at']);
 
-        return view('post.show', compact('post' , 'query'));
+        return view('post.show', compact('post' , 'query' ,'comment' , 'user_id' ,'likeCtr' ));
     }
 
     /**
@@ -105,20 +127,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $user_id = Auth::id();
-        $check_user = Pet::where('user_id',$user_id )->where('id',$id )->get();
-
-        foreach ($check_user as $key ) {
-            $user = $key->id ;
-        }
-        if (empty($user)) {
-
-            return view('/errors/404');
-
-       }else{
+      
             $post = Post::findOrFail($id);
             return view('post.edit', compact('post'));
-       }
+       
     }
     /**
      * Update the specified resource in storage.

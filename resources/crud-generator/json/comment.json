@@ -1,0 +1,16 @@
+{
+    "fields": [
+        {
+            "name": "content",
+            "type": "integer"
+        },
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "post_id",
+            "type": "integer"
+        }
+    ]
+}

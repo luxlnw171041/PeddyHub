@@ -1,0 +1,13 @@
+{
+    "fields": [
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "post_id",
+            "type": "integer"
+        }
+    ]
+}
+    

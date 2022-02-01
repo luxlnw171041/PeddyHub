@@ -54,3 +54,8 @@ Route::middleware(['auth'])->group(function () {
 });
 Route::resource('post', 'PostController');
 Route::get('/post/create', 'PostController@create')->name('post_create');
+
+Route::resource('comment', 'CommentController');
+Route::get('comment/{id}', 'CommentController@test');
+Route::resource('like', 'LikeController');
+Route::resource('like', 'LikeController');

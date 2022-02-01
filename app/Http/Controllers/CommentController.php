@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
-use App\Models\Like;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class LikeController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,15 @@ class LikeController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $like = Like::where('user_id', 'LIKE', "%$keyword%")
+            $comment = Comment::where('content', 'LIKE', "%$keyword%")
+                ->orWhere('user_id', 'LIKE', "%$keyword%")
                 ->orWhere('post_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $like = Like::latest()->paginate($perPage);
+            $comment = Comment::latest()->paginate($perPage);
         }
 
-        return view('like.index', compact('like'));
+        return view('comment.index', compact('comment'));
     }
 
     /**
@@ -53,9 +54,9 @@ class LikeController extends Controller
         
         $requestData = $request->all();
         
-        Like::create($requestData);
+        Comment::create($requestData);
 
-        return redirect('post')->with('flash_message', 'Like added!');
+        return redirect()->back();
     }
 
     /**
@@ -67,9 +68,9 @@ class LikeController extends Controller
      */
     public function show($id)
     {
-        $like = Like::findOrFail($id);
+        $comment = Comment::findOrFail($id);
 
-        return view('like.show', compact('like'));
+        return view('comment.show', compact('comment'));
     }
 
     /**
@@ -81,9 +82,9 @@ class LikeController extends Controller
      */
     public function edit($id)
     {
-        $like = Like::findOrFail($id);
+        $comment = Comment::findOrFail($id);
 
-        return view('like.edit', compact('like'));
+        return view('comment.edit', compact('comment'));
     }
 
     /**
@@ -99,10 +100,10 @@ class LikeController extends Controller
         
         $requestData = $request->all();
         
-        $like = Like::findOrFail($id);
-        $like->update($requestData);
+        $comment = Comment::findOrFail($id);
+        $comment->update($requestData);
 
-        return redirect('like')->with('flash_message', 'Like updated!');
+        return redirect('comment')->with('flash_message', 'Comment updated!');
     }
 
     /**
@@ -114,8 +115,13 @@ class LikeController extends Controller
      */
     public function destroy($id)
     {
-        Like::destroy($id);
+        Comment::destroy($id);
 
-        return redirect('post')->with('flash_message', 'Like deleted!');
+        return redirect()->back();
+    }
+
+    public function test()
+    {
+        return view('post.index');
     }
 }

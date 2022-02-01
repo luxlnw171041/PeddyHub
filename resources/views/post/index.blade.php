@@ -47,14 +47,14 @@
                             @foreach($post as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
                                     <div class="card">
-                                    <div  style="padding-top:10px;padding-left:20px;">
+                                        <div  style="padding-top:10px;padding-left:20px;">
                                             <div class="row">
                                                 <!-- <span class="category">Pet Care</span> -->
                                                 <div class="col-2" style="padding:0px;">
                                                 @if(!empty($item->user->photo))
                                                     <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->user->photo }}" alt="image of client" title="client" class="img-fluid customer">
                                                 @else
-                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="peddyhub/images/sticker/1.png" alt="image of client" title="client" class="img-fluid customer">
+                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
                                                 @endif
                                                 </div>
                                                 <div class="col-9" style="padding:0px">
@@ -84,9 +84,11 @@
                                                 </div>
                                                 <div class="col-12" style="padding:0px 0px 0px 20px">
                                                     <a href="{{ url('/post/' . $item->id) }}" title="">
+                                                    {{$asdaa}}
                                                         <p class="head mt-1 mb-0">{{ $item->detail }} </p>
                                                     </a>
                                                 </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="image">
@@ -123,18 +125,106 @@
                                        
                                             <hr style="margin:0px 0px 0px 0px; ">
                                             <div class="row d-flex justify-content-center" style="padding:10px;">
-                                                <div class="col-4 d-grid gap-2">
-                                                    <button type="button" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button>
+                                                @foreach($LIKE as $asd)
+                                                    @if(($asd->post_id  ==  $item->id))
+                                                        @if(($asd->post_id  ==  $item->id))
+                                                            <form method="POST" action="{{ url('/like' . '/' . $asd->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                                {{ method_field('DELETE') }}
+                                                                {{ csrf_field() }}
+                                                                <div class="col-5 d-grid gap-2 text-center"><button type="submit" class="btn likebtn btn-lg" ><b> <i class="far fa-heart" style="color:#B8205B;"></i>  &nbsp;ถูกใจแล้ว</b></button></div>
+                                                            </form> 
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                                <div class="col-5">
+                                                    <form method="POST" action="{{ url('/like') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                                        <div class="d-grid  text-center"><button type="submit" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button></div>
+                                                        <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
+                                                        <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >     
+                                                    </form> 
                                                 </div>
+                                                <!-- <div class="col-4 d-grid gap-2">
+                                                    <button type="button" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button>
+                                                </div> -->
                                                 <!-- <div class="col-4 d-grid gap-2">
                                                     <button type="button" class="btn likebtn btn-lg" ><b> <i class="fas fa-heart"></i>  &nbsp;ถูกใจ</b></button>
                                                 </div> -->
-                                                <div class="col-8 d-grid gap-2">
-                                                    <button type="button" class="btn likebtn btn-lg" ><b><i class="fal fa-comments-alt"></i> แสดงความคิดเห็น</b></button>
+                                                <div class="col-7 d-grid ">
+                                                    <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}"><b><i class="fas fa-comment-dots"></i><i class="far fa-comment-dots"></i> แสดงความคิดเห็น</b></button>
                                                 </div>
                                             </div>
                                     </div>
                                 </div>
+
+                                <!-- modal -->
+                                <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalScrollableTitle">ความคิดเห็น</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <!-- <span class="category">Pet Care</span> -->
+                                                
+                                        
+                                                @foreach($comment as $data)
+                                                    @if(($data->post_id  ==  $item->id))
+                                                        <div class="col-2 text-center" style="padding:0px;margin-top:10px;">
+                                                            @if(!empty($data->user->photo))
+                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $data->user->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                            @elseif(($data->user->photo  ==  NULL))
+                                                            <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="peddyhub/images/home_5/icon1.png" alt="image of client" title="client" class="img-fluid customer">
+                                                            @endif
+                                                            </div>
+                                                            <div class="col-9" style="padding:0px">
+                                                                <p style="margin-bottom:-25px;">{{$data->user->name}}</p> 
+                                                                <div class="card">
+                                                                    <div class="card-body">
+                                                                        {{$data->content}}
+                                                                    </div>
+                                                                </div> 
+                                                            
+                                                            </div>
+                                                            <div class="col-1"></div>
+                                                            <div class="col-1"></div>
+                                                            <div class="col-10 d-flex justify-content-end">{{ $data->created_at->diffForHumans() }}</div>
+                                                    @endif
+                                                            
+                                                @endforeach
+                                            </div>  
+                                        </div>
+                                        
+                                        <form method="POST" action="{{ url('/comment') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                            <div class="modal-footer" style="padding:5px;">
+
+                                                <div class="row col-12" style="padding:5px;">
+                                                    @if(Auth::check())
+                                                        <div class="col-10" style="padding:0px;">
+                                                            {{ csrf_field() }}
+                                                            <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
+                                                            <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
+                                                            <input class="form-control" name="content" type="text" id="content" value="" >
+
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <button type="submit" class="btn btn-primary" style="border-radius: 50%;"><i class="fas fa-arrow-right"></i></button>
+                                                        </div>
+                                                    @else
+                                                    <h6 class="text-center">เข้าสู่ระบบเพื่อคอมเมนต์</h6>    
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                                <!-- endmodal -->
                             @endforeach
                         </div>
                     </div>
@@ -142,6 +232,7 @@
             </div>
         </div>
    
+
 
     <!-- <div class="container">
         <div class="row">

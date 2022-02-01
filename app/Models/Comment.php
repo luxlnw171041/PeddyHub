@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Comment extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'posts';
+    protected $table = 'comments';
 
     /**
     * The database primary key value.
@@ -25,19 +25,13 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'detail', 'photo', 'video'];
+    protected $fillable = ['content', 'user_id', 'post_id'];
+
+    public function post(){
+        return $this->belongsTo('App\Models\Post', 'post_id'); 
+    }
 
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 
-    }
-    public function comments() 
-    {
-        return $this->hasMany('App\Models\Comment'); 
-    }
-    public function commentsCount() 
-    {
-        return $this->comments() 
-            ->selectRaw('post_id, count(*) as aggregate')
-            ->groupBy('post_id');
     }
 }
