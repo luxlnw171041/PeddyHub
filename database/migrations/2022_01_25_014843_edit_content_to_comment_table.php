@@ -14,7 +14,7 @@ class EditContentToCommentTable extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            $table->string('content')->nullable()->change();
+            $table->string('content', 500)->nullable()->change();
         });
     }
 

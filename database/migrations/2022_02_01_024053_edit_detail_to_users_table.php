@@ -14,7 +14,7 @@ class EditDetailToUsersTable extends Migration
     public function up()
     {
         Schema::table('adoptpets', function (Blueprint $table) {
-            $table->string('detail')->nullable()->change();
+            $table->string('detail', 500)->nullable()->change();
         });
     }
 
