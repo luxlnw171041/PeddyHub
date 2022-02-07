@@ -59,3 +59,4 @@ Route::resource('comment', 'CommentController');
 Route::get('comment/{id}', 'CommentController@test');
 Route::resource('like', 'LikeController');
 Route::resource('like', 'LikeController');
+Route::resource('adoptpet', 'AdoptpetController');

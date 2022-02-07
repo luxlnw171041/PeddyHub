@@ -84,7 +84,7 @@
                                                 </div>
                                                 <div class="col-12" style="padding:0px 0px 0px 20px">
                                                     <a href="{{ url('/post/' . $item->id) }}" title="">
-                                                    {{$asdaa}}
+                                                    <!-- {{$asdaa}} -->
                                                         <p class="head mt-1 mb-0">{{ $item->detail }} </p>
                                                     </a>
                                                 </div>
