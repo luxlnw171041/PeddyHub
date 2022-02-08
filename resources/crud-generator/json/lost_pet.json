@@ -1,0 +1,24 @@
+{
+    "fields": [
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "pet_id",
+            "type": "integer"
+        },
+        {
+            "name": "photo",
+            "type": "file"
+        },
+        {
+            "name": "let",
+            "type": "string"
+        },
+        {
+            "name": "long",
+            "type": "string"
+        }
+    ]
+}
