@@ -3,7 +3,6 @@
     <img style=" object-fit: contain; " width="280 px" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" class="card-img-top center" style="padding: 10px;">
     <div style="position: relative; z-index: 5">
         <div style="padding-top: 8px;"class="translate">
-            <br><br>
             <h4 style="font-family: 'Sarabun', sans-serif;">ขออภัยครับ</h4>
             <h6 style="font-family: 'Sarabun', sans-serif;">ดำเนินการไม่สำเร็จ กรุณาเปิดตำแหน่งที่ตั้ง และลองใหม่อีกครั้งครับ</h6>
         </div>
