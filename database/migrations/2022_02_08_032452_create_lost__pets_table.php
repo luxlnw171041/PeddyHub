@@ -18,8 +18,8 @@ class CreateLostPetsTable extends Migration
             $table->integer('user_id')->nullable();
             $table->integer('pet_id')->nullable();
             $table->string('photo')->nullable();
-            $table->string('let')->nullable();
-            $table->string('long')->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             });
     }
 
