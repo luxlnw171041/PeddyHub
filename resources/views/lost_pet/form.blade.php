@@ -51,23 +51,22 @@
     });
     
     function initMap(position) { 
-        let lat_text = document.querySelector("#lat");
-        let lng_text = document.querySelector("#lng");
-        let latlng = document.querySelector("#latlng");
+        // let lat_text = document.querySelector("#lat");
+        // let lng_text = document.querySelector("#lng");
+        // let latlng = document.querySelector("#latlng");
 
-        lat_text.value = position.coords.latitude ;
-        lng_text.value = position.coords.longitude ;
-        latlng.value = position.coords.latitude+","+position.coords.longitude ;
+        // lat_text.value = position.coords.latitude ;
+        // lng_text.value = position.coords.longitude ;
+        // latlng.value = position.coords.latitude+","+position.coords.longitude ;
         
-        let lat = parseFloat(lat_text.value) ;
-        let lng = parseFloat(lng_text.value) ;
+        // let lat = parseFloat(lat_text.value) ;
+        // let lng = parseFloat(lng_text.value) ;
 
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 15,
-            center: { lat: lat, lng: lng },
+            zoom: 6,
+            center: { lat: 13.7248936, lng: 100.4930264 },
             mapTypeId: "terrain",
         });
-        // 40.7504479,-73.9936564,19
 
         // ตำแหน่ง USER
         // const user = { lat: lat, lng: lng };
