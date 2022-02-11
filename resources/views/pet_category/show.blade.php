@@ -10,8 +10,8 @@
                     <div class="card-header">Pet_Category {{ $pet_category->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/pet_-category') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/pet_-category/' . $pet_category->id . '/edit') }}" title="Edit Pet_Category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a href="{{ url('/pet_category') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/pet_category/' . $pet_category->id . '/edit') }}" title="Edit Pet_Category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                         <form method="POST" action="{{ url('pet_category' . '/' . $pet_category->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}

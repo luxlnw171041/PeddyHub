@@ -62,4 +62,4 @@ Route::resource('like', 'LikeController');
 Route::resource('adoptpet', 'AdoptpetController');
 Route::resource('lost_pet', 'Lost_PetController');
 // Route::resource('profile', 'ProfileController');
-Route::resource('pet_-category', 'Pet_CategoryController');
+Route::resource('pet_category', 'Pet_CategoryController');

@@ -27,7 +27,7 @@ class Pet_CategoryController extends Controller
             $pet_category = Pet_Category::latest()->paginate($perPage);
         }
 
-        return view('pet_-category.index', compact('pet_category'));
+        return view('pet_category.index', compact('pet_category'));
     }
 
     /**
@@ -37,7 +37,7 @@ class Pet_CategoryController extends Controller
      */
     public function create()
     {
-        return view('pet_-category.create');
+        return view('pet_category.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class Pet_CategoryController extends Controller
         
         Pet_Category::create($requestData);
 
-        return redirect('pet_-category')->with('flash_message', 'Pet_Category added!');
+        return redirect('pet_category')->with('flash_message', 'Pet_Category added!');
     }
 
     /**
@@ -68,7 +68,7 @@ class Pet_CategoryController extends Controller
     {
         $pet_category = Pet_Category::findOrFail($id);
 
-        return view('pet_-category.show', compact('pet_category'));
+        return view('pet_category.show', compact('pet_category'));
     }
 
     /**
@@ -82,7 +82,7 @@ class Pet_CategoryController extends Controller
     {
         $pet_category = Pet_Category::findOrFail($id);
 
-        return view('pet_-category.edit', compact('pet_category'));
+        return view('pet_category.edit', compact('pet_category'));
     }
 
     /**
@@ -101,7 +101,7 @@ class Pet_CategoryController extends Controller
         $pet_category = Pet_Category::findOrFail($id);
         $pet_category->update($requestData);
 
-        return redirect('pet_-category')->with('flash_message', 'Pet_Category updated!');
+        return redirect('pet_category')->with('flash_message', 'Pet_Category updated!');
     }
 
     /**
@@ -115,6 +115,6 @@ class Pet_CategoryController extends Controller
     {
         Pet_Category::destroy($id);
 
-        return redirect('pet_-category')->with('flash_message', 'Pet_Category deleted!');
+        return redirect('pet_category')->with('flash_message', 'Pet_Category deleted!');
     }
 }
