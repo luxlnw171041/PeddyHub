@@ -54,9 +54,13 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::resource('pet', 'PetController');
     Route::resource('profile', 'ProfileController');
+    Route::resource('post', 'PostController');
+    Route::get('/post/create', 'PostController@create')->name('post_create');
 });
-Route::resource('post', 'PostController');
-Route::get('/post/create', 'PostController@create')->name('post_create');
+
+
+Route::get('/post', 'PostController@index');
+
 
 Route::resource('comment', 'CommentController');
 Route::get('comment/{id}', 'CommentController@test');
