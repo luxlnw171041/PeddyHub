@@ -28,3 +28,69 @@
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
+
+<input class="form-control" type="text" id="latlng" name="latlng" readonly> 
+
+<div class="col-12 main-shadow main-radius" style="margin-top:15px; margin-bottom:10px;background-color: #ff4544;" id="map" >
+</div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgrxXDgk1tgXngalZF3eWtcTWI-LPdeus&language=th" ></script>
+<style type="text/css">
+    #map {
+      height: calc(45vh);
+    }
+    
+</style>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // console.log("START");
+        initMap();
+    });
+    
+    function initMap(position) { 
+        let lat_text = document.querySelector("#lat");
+        let lng_text = document.querySelector("#lng");
+        let latlng = document.querySelector("#latlng");
+
+        lat_text.value = position.coords.latitude ;
+        lng_text.value = position.coords.longitude ;
+        latlng.value = position.coords.latitude+","+position.coords.longitude ;
+        
+        let lat = parseFloat(lat_text.value) ;
+        let lng = parseFloat(lng_text.value) ;
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: { lat: lat, lng: lng },
+            mapTypeId: "terrain",
+        });
+        // 40.7504479,-73.9936564,19
+
+        // ตำแหน่ง USER
+        // const user = { lat: lat, lng: lng };
+        // const marker_user = new google.maps.Marker({ map, position: user });
+
+        // draw_area(map);
+
+        // const geocoder = new google.maps.Geocoder();
+        // const infowindow = new google.maps.InfoWindow();
+
+        // document.getElementById("location_user").addEventListener("click", () => {
+        //     geocodeLatLng(geocoder, map, infowindow);
+        // });
+
+        // marker_user.addListener("click", () => {
+        //     geocodeLatLng(geocoder, map, infowindow);
+        // });
+
+        // let text_sos = document.querySelector('#text_sos').value;
+
+        // if (text_sos === "insurance") {
+        //     document.querySelector('#btn_contact_insurance').click();
+        // }
+    }
+
+</script>

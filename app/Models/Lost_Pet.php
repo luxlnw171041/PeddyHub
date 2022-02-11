@@ -25,7 +25,7 @@ class Lost_Pet extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'pet_id', 'photo', 'let', 'long'];
+    protected $fillable = ['user_id', 'pet_id', 'photo', 'lat', 'lng'];
 
     
 }
