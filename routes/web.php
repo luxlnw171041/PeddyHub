@@ -60,3 +60,6 @@ Route::get('comment/{id}', 'CommentController@test');
 Route::resource('like', 'LikeController');
 Route::resource('like', 'LikeController');
 Route::resource('adoptpet', 'AdoptpetController');
+Route::resource('lost_pet', 'Lost_PetController');
+// Route::resource('profile', 'ProfileController');
+Route::resource('pet_-category', 'Pet_CategoryController');

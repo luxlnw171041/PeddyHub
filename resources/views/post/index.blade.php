@@ -2,7 +2,6 @@
 
 @section('content')
 
-<link href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" rel="stylesheet">
 <style>
    .likebtn{
     background-color: transparent;
@@ -22,6 +21,19 @@
 </style>
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp " style="margin-bottom:-50px">  
+        <div class="container text-center md:px-20 xl:px-20 flex sm:justify-between justify-center items-center sm:overflow-x-scroll">
+            <div class="card" >
+                <div class="card-body d-flex justify-content-around"style="padding:10px;">
+                    <button type="submit" class="btn likebtn btn-lg" style="font-family: 'Mitr', sans-serif;font-size:18px;"><b><i class="fas fa-dog"  style="font-size:40px;"></i>  <br> &nbsp;&nbsp;&nbsp;สุนัข&nbsp;&nbsp;&nbsp;</b></button>
+                    <button type="submit" class="btn likebtn btn-lg" style="font-family: 'Mitr', sans-serif;font-size:18px;"><b> <i class="fas fa-cat" style="font-size:40px;"></i> <br> &nbsp;&nbsp;&nbsp;แมว&nbsp;&nbsp;&nbsp;</b></button>
+                    <button type="submit" class="btn likebtn btn-lg" style="font-family: 'Mitr', sans-serif;font-size:18px;"><b> <i class="fas fa-dove" style="font-size:40px;"></i> <br> &nbsp;&nbsp;&nbsp;นก&nbsp;&nbsp;&nbsp;</b></button>
+                    <button type="submit" class="btn likebtn btn-lg" style="font-family: 'Mitr', sans-serif;font-size:18px;"><b> <i class="fas fa-fish" style="font-size:40px;"></i> <br> &nbsp;&nbsp;&nbsp;ปลา&nbsp;&nbsp;&nbsp;</b></button>
+                    <button type="submit" class="btn likebtn btn-lg" style="font-family: 'Mitr', sans-serif;font-size:18px;"><b>  <i class="fas fa-frog" style="font-size:40px;"></i><br> สัตว์เล็ก</b></button>
+                    <button type="submit" class="btn likebtn btn-lg" style="font-family: 'Mitr', sans-serif;font-size:18px;"><b>  <i class="fas fa-spider" style="font-size:40px;"></i><br> Exotic</b></button>
+                </div>
+            </div>
+        </div>
+        <br>
         <div class="container  d-flex justify-content-end">
             @if(Auth::check())
                     <a href="{{ url('/post/create') }}" class="btn main" title="contact">
