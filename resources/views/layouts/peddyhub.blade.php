@@ -146,6 +146,9 @@
                                             <li>
                                                 <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >ชุมชน</a>
                                             </li>
+                                            <li class="nav-item dropdown">
+                                                <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >adoptpet</a>
+                                            </li>
                                             @guest
                                                 <li class="nav-item dropdown">
                                                     <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"

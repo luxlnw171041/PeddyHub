@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.peddyhub')
 
 @section('content')
     <div class="container">
