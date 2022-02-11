@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('profile', 'ProfileController');
     Route::resource('post', 'PostController');
     Route::get('/post/create', 'PostController@create')->name('post_create');
+    Route::resource('lost_pet', 'Lost_PetController');
 });
 
 
@@ -67,6 +68,5 @@ Route::get('comment/{id}', 'CommentController@test');
 Route::resource('like', 'LikeController');
 Route::resource('like', 'LikeController');
 Route::resource('adoptpet', 'AdoptpetController');
-Route::resource('lost_pet', 'Lost_PetController');
 // Route::resource('profile', 'ProfileController');
 // Route::resource('pet_category', 'Pet_CategoryController');
