@@ -55,6 +55,12 @@
         {!! $errors->first('lng', '<p class="help-block">:message</p>') !!}
     </div>
 
+    <div class="d-none form-group {{ $errors->has('pet_category_id') ? 'has-error' : ''}}">
+        <label for="pet_category_id" class="control-label">{{ 'Long' }}</label>
+        <input class="form-control" name="pet_category_id" type="text" id="pet_category_id" value="{{ isset($lost_pet->pet_category_id) ? $lost_pet->pet_category_id : ''}}" >
+        {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
+    </div>
+
     <input class="d-none" type="text" id="latlng" name="latlng" readonly> 
 
     <br>
@@ -132,6 +138,9 @@
 
                 let img_pet = document.querySelector('#img_pet');
                     img_pet.src = "{{ url('storage')}}" + "/" + result[0]['photo'];
+
+                let pet_category_id = document.querySelector('#pet_category_id');
+                    pet_category_id.value =  result[0]['pet_category_id'];
 
             });
     }
