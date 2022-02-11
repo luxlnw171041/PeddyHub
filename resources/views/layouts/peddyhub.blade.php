@@ -87,7 +87,7 @@
                                     <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >ชุมชน</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >adoptpet</a>
+                                    <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >อุปการะ</a>
                                 </li>
                                 @guest
                                     <li class="nav-item dropdown">
@@ -147,7 +147,7 @@
                                                 <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >ชุมชน</a>
                                             </li>
                                             <li class="nav-item dropdown">
-                                                <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >adoptpet</a>
+                                                <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >อุปการะ</a>
                                             </li>
                                             @guest
                                                 <li class="nav-item dropdown">

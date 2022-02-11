@@ -163,7 +163,7 @@
                                                     <button type="button" class="btn likebtn btn-lg" ><b> <i class="fas fa-heart"></i>  &nbsp;ถูกใจ</b></button>
                                                 </div> -->
                                                 <div class="col-7 d-grid ">
-                                                    <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}"><b><i class="fas fa-comment-dots"></i><i class="far fa-comment-dots"></i> แสดงความคิดเห็น</b></button>
+                                                    <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}"><b><i class="fas fa-comment-dots"></i> แสดงความคิดเห็น</b></button>
                                                 </div>
                                             </div>
                                     </div>
