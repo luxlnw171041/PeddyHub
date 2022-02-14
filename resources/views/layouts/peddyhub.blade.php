@@ -103,7 +103,7 @@
                                 @else
                                     <li class="nav-item dropdown">
                                         <a href="#" style="font-size: 20px; color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle notranslate"
-                                            data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                            data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
                                             <li><a href="{{ url('/pet') }}">สัตว์เลี้ยง</a></li>

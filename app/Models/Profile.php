@@ -27,5 +27,8 @@ class Profile extends Model
      */
     protected $fillable = ['user_id', 'name', 'photo', 'phone', 'birth', 'sex', 'type', 'language'];
 
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'user_id'); 
+    }
     
 }
