@@ -74,6 +74,11 @@ class PostController extends Controller
     {
         
         $requestData = $request->all();
+
+        echo "<per>";
+        print_r($requestData);
+        echo "<per>";
+        exit();
                 if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
