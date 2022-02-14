@@ -22,32 +22,34 @@ class LineApiController extends Controller
         ];
         MyLog::create($data);  
 
-        // //GET ONLY FIRST EVENT
-        // $event = $requestData["events"][0];
+        //GET ONLY FIRST EVENT
+        $event = $requestData["events"][0];
 
-        // switch($event["type"]){
-        //     case "message" : 
-        //         $this->messageHandler($event);
-        //         break;
-        //     case "postback" : 
-        //         $this->postbackHandler($event);
-        //         break;
-        //     case "join" :
-        //         $this->save_group_line($event);
-        //         break;
-        //     case "follow" :
-        //         $this->user_follow_line($event);
-        //         DB::table('users')
-        //             ->where([ 
-        //                     ['type', 'line'],
-        //                     ['provider_id', $event['source']['userId']],
-        //                     ['status', "active"] 
-        //                 ])
-        //             ->update(['add_line' => 'Yes']);
-        //         break;
-        // }
+        switch($event["type"]){
+            case "message" : 
+                $this->messageHandler($event);
+                break;
+            case "postback" : 
+                $this->postbackHandler($event);
+                break;
+            case "join" :
+                $this->save_group_line($event);
+                break;
+            case "follow" :
+                $this->user_follow_line($event);
+                DB::table('users')
+                    ->where([ 
+                            ['type', 'line'],
+                            ['provider_id', $event['source']['userId']],
+                            ['status', "active"] 
+                        ])
+                    ->update(['add_line' => 'Yes']);
+                break;
+        }
 
         return $data ;
     }
+
+    
 
 }
