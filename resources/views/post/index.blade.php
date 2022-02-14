@@ -55,15 +55,15 @@
                                             <div class="row">
                                                 <!-- <span class="category">Pet Care</span> -->
                                                 <div class="col-2" style="padding:0px;">
-                                                @if(!empty($item->user->profile->photo))
-                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->user->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                @if(!empty($item->user->photo))
+                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->user->photo }}" alt="image of client" title="client" class="img-fluid customer">
                                                 @else
                                                     <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
                                                 @endif
                                                 </div>
                                                 <div class="col-9" style="padding:0px">
-                                                @if(!empty($item->user->profile->name))
-                                                <p class="notranslate" style="padding:0px;margin:0px;"> <b>{{ $item->user->profile->name }}</b>  </p>
+                                                @if(!empty($item->user->name))
+                                                <p class="notranslate" style="padding:0px;margin:0px;"> <b>{{ $item->user->name }}</b>  </p>
                                                     
                                                 @else
                                                     Guest
