@@ -36,12 +36,10 @@ class LineApiController extends Controller
                 $this->save_group_line($event);
                 break;
             case "follow" :
-                $this->user_follow_line($event);
+                // $this->user_follow_line($event);
                 DB::table('users')
                     ->where([ 
-                            ['type', 'line'],
                             ['provider_id', $event['source']['userId']],
-                            ['status', "active"] 
                         ])
                     ->update(['add_line' => 'Yes']);
                 break;
