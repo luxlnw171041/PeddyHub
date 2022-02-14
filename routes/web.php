@@ -70,3 +70,4 @@ Route::resource('like', 'LikeController');
 Route::resource('adoptpet', 'AdoptpetController');
 // Route::resource('profile', 'ProfileController');
 // Route::resource('pet_category', 'Pet_CategoryController');
+Route::resource('mylog', 'MylogController');

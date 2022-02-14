@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/lineapi', 'API\LineApiController@store');
+
 Route::get('/change_language/{language}/{user_id}', 'API\API_language@change_language');
 Route::get('/change_country/{user_id}','API\LocationController@change_country');
 Route::get('/user_language/{language}/{user_id}','API\LocationController@user_language');
