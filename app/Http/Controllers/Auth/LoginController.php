@@ -127,10 +127,10 @@ class LoginController extends Controller
     {
         //GET USER 
         $user = User::where('provider_id', '=', $data->id)->first();
-        echo "<pre>";
-        print_r($data) ;
-        echo "<pre>";
-        exit();
+        // echo "<pre>";
+        // print_r($data) ;
+        // echo "<pre>";
+        // exit();
 
         if (!$user) {
             //CREATE NEW USER
