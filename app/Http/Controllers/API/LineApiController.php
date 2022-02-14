@@ -15,7 +15,7 @@ class LineApiController extends Controller
     public function store(Request $request)
     {
         //SAVE LOG
-        // $requestData = $request->all();
+        $requestData = $request->all();
         // $data = [
         //     "title" => "Line",
         //     "content" => json_encode($requestData, JSON_UNESCAPED_UNICODE),
@@ -46,7 +46,8 @@ class LineApiController extends Controller
         //             ->update(['add_line' => 'Yes']);
         //         break;
         // }
-        return "ok";
+
+        return $requestData ;
     }
 
 }
