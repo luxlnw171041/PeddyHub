@@ -21,3 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/change_language/{language}/{user_id}', 'API\API_language@change_language');
 Route::get('/change_country/{user_id}','API\LocationController@change_country');
 Route::get('/user_language/{language}/{user_id}','API\LocationController@user_language');
+
+// หารูปภาพสัตว์เลี้ยง
+Route::get('/select_img_pet/{pet_id}','API\API_Lost_PetController@select_img_pet');

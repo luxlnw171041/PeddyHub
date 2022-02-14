@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Lost_Pet;
+use App\Models\Pet;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class Lost_PetController extends Controller
@@ -41,7 +43,11 @@ class Lost_PetController extends Controller
      */
     public function create()
     {
-        return view('lost_pet.create');
+        $user_id = Auth::id();
+
+        $select_pet = Pet::where('user_id' , $user_id)->get();
+
+        return view('lost_pet.create', compact('select_pet'));
     }
 
     /**
@@ -55,9 +61,10 @@ class Lost_PetController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
+
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
-                ->store('uploads', 'public');
+            ->store('uploads', 'public');
         }
 
         Lost_Pet::create($requestData);
