@@ -21,7 +21,7 @@ class CreateProfilesTable extends Migration
             $table->string('phone')->nullable();
             $table->date('birth')->nullable();
             $table->string('sex')->nullable();
-            $table->date('type')->nullable();
+            $table->string('type')->nullable();
             $table->string('language')->nullable();
             });
     }
