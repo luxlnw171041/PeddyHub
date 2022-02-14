@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -132,26 +133,35 @@ class LoginController extends Controller
         if (!$user) {
             //CREATE NEW USER
             $user = new User();
-            $user->name = $data->name;
-            $user->provider_id = $data->id;
-            $user->type = $type;
-            $user->username = $data->name;
 
+            $user->provider_id = $data->id;
+            $user->username = $data->name;
+            // E-MAIL
             if (!empty($data->email)) {
                 $user->email = $data->email;
             }
+            else if (empty($data->email)) {
+                $user->email = "กรุณาเพิ่มอีเมล";
+            } 
+            // AVATAR
             if (!empty($data->avatar)) {
                 $user->avatar = $data->avatar;
             }
-
-            if (empty($data->email)) {
-                $user->email = "กรุณาเพิ่มอีเมล";
-            }
-            if (empty($data->avatar)) {
+            else if (empty($data->avatar)) {
                 $user->avatar = "กรุณาเพิ่มรูปโปรไฟล์";
             }
             $user->save();
         }
+        
+        //CREATE NEW PROFILE
+        $data_user = User::where('provider_id', '=', $data->id)->first();
+        $profile = [
+            "user_id" => $data_user->id,
+            "name" => $data->name,
+            "type" => $type,
+        ];
+        Profile::create($profile);
+
         //LOGIN
         Auth::login($user);
     }

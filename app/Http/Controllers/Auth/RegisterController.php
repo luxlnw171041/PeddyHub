@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -65,11 +66,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $provider_id = uniqid('PeddyHub-', true);
+
+        User::create([
             'email' => $data['email'],
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
+            'provider_id' => $provider_id,
         ]);
+
+        $data_user = User::where('provider_id', $provider_id)->first();
+        Profile::create([
+            'name' => $data['name'],
+            'user_id' => $data_user->id,
+            'type' => 'web',
+        ]);
+
+        return $data_user;
+
     }
 }
