@@ -46,6 +46,7 @@ class LineApiController extends Controller
         //             ->update(['add_line' => 'Yes']);
         //         break;
         // }
+        return $data;
     }
 
 }
