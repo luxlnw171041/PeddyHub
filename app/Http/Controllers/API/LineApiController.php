@@ -16,11 +16,11 @@ class LineApiController extends Controller
     {
         //SAVE LOG
         $requestData = $request->all();
-        // $data = [
-        //     "title" => "Line",
-        //     "content" => json_encode($requestData, JSON_UNESCAPED_UNICODE),
-        // ];
-        // MyLog::create($data);  
+        $data = [
+            "title" => "Line",
+            "content" => json_encode($requestData, JSON_UNESCAPED_UNICODE),
+        ];
+        MyLog::create($data);  
 
         // //GET ONLY FIRST EVENT
         // $event = $requestData["events"][0];
@@ -47,7 +47,7 @@ class LineApiController extends Controller
         //         break;
         // }
 
-        return $requestData ;
+        return $data ;
     }
 
 }
