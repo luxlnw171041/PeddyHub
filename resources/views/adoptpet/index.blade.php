@@ -2,13 +2,18 @@
 
 @section('content')
 <div class="pet about second">
-<div class="button wow fadeInUp " style="margin-bottom:-50px">  
-        <div class="container  d-flex justify-content-end">
-            @if(Auth::check())
-                    <a href="{{ url('/adoptpet/create') }}" class="btn main" title="contact">
-                        โพสต์ 
-                    </a>
-             @endif
+    <div class="button wow fadeInUp " style="margin-bottom:-50px">  
+        <div class="container">
+            <div class="row ">
+                @include ('menubar.menu') 
+                <div class="col-3 d-flex justify-content-end" style="margin-top:15px;">
+                    @if(Auth::check())
+                        <a href="{{ url('/adoptpet/create') }}" class="btn main" title="contact">
+                            โพสต์ 
+                        </a>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
             <section class="team">
