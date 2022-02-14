@@ -58,6 +58,11 @@ class ProfileController extends Controller
     {
         
         $requestData = $request->all();
+        $requestData = $request->all();
+                if ($request->hasFile('photo')) {
+            $requestData['photo'] = $request->file('photo')
+                ->store('uploads', 'public');
+        }
         
         Profile::create($requestData);
 
@@ -88,6 +93,7 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::findOrFail($id);
+        
 
         return view('profile.edit', compact('profile'));
     }
