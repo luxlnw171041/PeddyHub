@@ -68,7 +68,7 @@
                                                 <ul>
                                                     <li>
                                                         <h5>ข้อมูลส่วนตัว &nbsp;
-                                                            <a href="{{ url('/profile/' . $data->id . '/edit') }}" class="text-white float-right btn btn-warning " >
+                                                            <a href="{{ url('/user/' . $data->id . '/edit') }}" class="text-white float-right btn btn-warning " >
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                         </h5>

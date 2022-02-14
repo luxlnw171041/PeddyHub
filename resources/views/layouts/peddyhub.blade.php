@@ -105,7 +105,7 @@
                                         <a href="#" style="font-size: 20px; color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle notranslate"
                                             data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ url('/profile') }}">โปรไฟล์</a></li>
+                                            <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
                                             <li><a href="{{ url('/pet') }}">สัตว์เลี้ยง</a></li>
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -165,7 +165,7 @@
                                                     <a href="#" style="color:#B8205B;" class="notranslate hvr-overline-from-center nav-link dropdown-toggle"
                                                         data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="{{ url('/profile') }}">โปรไฟล์</a></li>
+                                                        <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
                                                         <li><a href="{{ url('/pet') }}">สัตว์เลี้ยง</a></li>
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"

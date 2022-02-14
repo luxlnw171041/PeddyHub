@@ -34,7 +34,7 @@ Route::get('/terms_of_service', function () {
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/edit_profile', 'ProfileController@edit_profile');
+Route::get('/edit_profile', 'userController@edit_profile');
 // Google login
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
@@ -53,7 +53,7 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('pet', 'PetController');
-    Route::resource('profile', 'ProfileController');
+    Route::resource('user', 'userController');
     Route::resource('post', 'PostController');
     Route::get('/post/create', 'PostController@create')->name('post_create');
     Route::resource('lost_pet', 'Lost_PetController');
@@ -71,3 +71,4 @@ Route::resource('adoptpet', 'AdoptpetController');
 // Route::resource('profile', 'ProfileController');
 // Route::resource('pet_category', 'Pet_CategoryController');
 Route::resource('mylog', 'MylogController');
+Route::resource('profile', 'ProfileController');

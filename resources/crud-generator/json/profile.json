@@ -1,0 +1,36 @@
+{
+    "fields": [
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "photo",
+            "type": "string"
+        },
+        {
+            "name": "phone",
+            "type": "string"
+        },
+        {
+            "name": "birth",
+            "type": "date"
+        },
+        {
+            "name": "sex",
+            "type": "string"
+        },
+        {
+            "name": "type",
+            "type": "date"
+        },
+        {
+            "name": "language",
+            "type": "string"
+        }
+    ]
+}

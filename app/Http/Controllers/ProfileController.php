@@ -2,129 +2,126 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Pet;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+
+use App\Models\Profile;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Intervention\Image\Facades\Image as Image;
 
 class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $id = Auth::id();
-        $data = User::findOrFail($id);
-        return view('profile/profile',compact('data') );
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $profile = Profile::where('user_id', 'LIKE', "%$keyword%")
+                ->orWhere('name', 'LIKE', "%$keyword%")
+                ->orWhere('photo', 'LIKE', "%$keyword%")
+                ->orWhere('phone', 'LIKE', "%$keyword%")
+                ->orWhere('birth', 'LIKE', "%$keyword%")
+                ->orWhere('sex', 'LIKE', "%$keyword%")
+                ->orWhere('type', 'LIKE', "%$keyword%")
+                ->orWhere('language', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            $profile = Profile::latest()->paginate($perPage);
+        }
+
+        return view('profile.index', compact('profile'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('profile.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        // $requestData = $request->all();
+        
+        $requestData = $request->all();
+        
+        Profile::create($requestData);
 
-        // if ($request->hasFile('photo')) {
-        //     $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
-
-        //     $img_avatar = Image::make(storage_path("app/public")."/".$requestData['photo']);
-
-        //     $size_avatar = $img_avatar->filesize();  
-
-        //     if($size_avatar > 512000 ){
-        //         $img_avatar->resize(
-        //             intval($img_avatar->width()/2) , 
-        //             intval($img_avatar->height()/2)
-        //         )->save(); 
-        //     }
-
-        // }
-
-        // $data = User::findOrFail($id);
-        // $data->update($requestData);
-        // return redirect('profile')->with('flash_message', 'Product added!');
+        return redirect('profile')->with('flash_message', 'Profile added!');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\View\View
      */
     public function show($id)
     {
-        $data = User::findOrFail($id);
-        return view('profile/profile' , compact('data') );
+        $profile = Profile::findOrFail($id);
 
+        return view('profile.show', compact('profile'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\View\View
      */
     public function edit($id)
     {
-        if (Auth::id() == $id )
-        {
-            $data = User::findOrFail($id);
-            return view('profile/edit', compact('data'));
-            
-        }else
-            return view('errors/404');
+        $profile = Profile::findOrFail($id);
+
+        return view('profile.edit', compact('profile'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
-    {   
+    {
+        
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')
-                ->store('storage/uploads', 'public'); 
-        }
         
+        $profile = Profile::findOrFail($id);
+        $profile->update($requestData);
 
-        $data = User::findOrFail($id);
-        $data->update($requestData);
-        
-        return redirect('profile')->with('flash_message', 'profile updated!');
+        return redirect('profile')->with('flash_message', 'Profile updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        //
+        Profile::destroy($id);
+
+        return redirect('profile')->with('flash_message', 'Profile deleted!');
     }
- 
 }
