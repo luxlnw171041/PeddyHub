@@ -75,9 +75,9 @@ class PostController extends Controller
         
         $requestData = $request->all();
 
-        echo "<per>";
+        echo "<pre>";
         print_r($requestData);
-        echo "<per>";
+        echo "<pre>";
         exit();
                 if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
