@@ -55,15 +55,15 @@
                                             <div class="row">
                                                 <!-- <span class="category">Pet Care</span> -->
                                                 <div class="col-2" style="padding:0px;">
-                                                @if(!empty($item->profile->photo))
-                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                @if(!empty($item->user->photo))
+                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->user->photo }}" alt="image of client" title="client" class="img-fluid customer">
                                                 @else
                                                     <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
                                                 @endif
                                                 </div>
                                                 <div class="col-9" style="padding:0px">
-                                                @if(!empty($item->profile->name))
-                                                <p class="notranslate" style="padding:0px;margin:0px;"> <b>{{ $item->profile->name }}</b>  </p>
+                                                @if(!empty($item->user->name))
+                                                <p class="notranslate" style="padding:0px;margin:0px;"> <b>{{ $item->user->name }}</b>  </p>
                                                     
                                                 @else
                                                     Guest
@@ -179,14 +179,14 @@
                                                 @foreach($comment as $data)
                                                     @if(($data->post_id  ==  $item->id))
                                                         <div class="col-2 text-center" style="padding:0px;margin-top:10px;">
-                                                            @if(!empty($data->profile->photo))
-                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $data->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
-                                                            @elseif(($data->profile->photo  ==  NULL))
+                                                            @if(!empty($data->user->photo))
+                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $data->user->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                            @elseif(($data->user->photo  ==  NULL))
                                                             <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="peddyhub/images/home_5/icon1.png" alt="image of client" title="client" class="img-fluid customer">
                                                             @endif
                                                             </div>
                                                             <div class="col-9" style="padding:0px">
-                                                                <p style="margin-bottom:-25px;">{{$data->profile->name}}</p> 
+                                                                <p style="margin-bottom:-25px;">{{$data->user->name}}</p> 
                                                                 <div class="card">
                                                                     <div class="card-body">
                                                                         {{$data->content}}
