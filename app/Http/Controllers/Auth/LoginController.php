@@ -153,16 +153,16 @@ class LoginController extends Controller
                 $user->avatar = "กรุณาเพิ่มรูปโปรไฟล์";
             }
             $user->save();
+
+            //CREATE NEW PROFILE
+            $data_user = User::where('provider_id', '=', $data->id)->first();
+            $profile = [
+                "user_id" => $data_user->id,
+                "name" => $data->name,
+                "type" => $type,
+            ];
+            Profile::create($profile);
         }
-        
-        //CREATE NEW PROFILE
-        $data_user = User::where('provider_id', '=', $data->id)->first();
-        $profile = [
-            "user_id" => $data_user->id,
-            "name" => $data->name,
-            "type" => $type,
-        ];
-        Profile::create($profile);
 
         //LOGIN
         Auth::login($user);
