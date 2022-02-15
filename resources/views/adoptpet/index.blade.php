@@ -4,185 +4,191 @@
 <div class="pet about second">
     <div class="button wow fadeInUp " style="margin-bottom:-50px">  
         <div class="container">
-            <div class="row ">
-                @include ('menubar.menu') 
-                <div class="col-3 d-flex justify-content-end" style="margin-top:15px;">
+            <div class="row col-12">
+                @include ('menubar.menu')
+            </div>
+            <br>
+            <div class="row col-12" style="padding:0px;">
+                <div class="col-12 col-md-9  ">
+                    @include ('menubar.menu_btn')
+                </div>
+                <div class="col-12 col-md-3 order-first order-md-2">
                     @if(Auth::check())
-                        <a href="{{ url('/adoptpet/create') }}" class="btn main" title="contact">
-                            โพสต์ 
+                        <a href="{{ url('/adoptpet/create') }}" style="margin-top:8px" class="btn main float-right" title="contact">
+                        <span >โพสต์</span>  
                         </a>
                     @endif
                 </div>
             </div>
         </div>
     </div>
-            <section class="team">
-                <div class="container">
-                    <div class="heading text-center">
-                        <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
-                                class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
-                                    class="fas fa-paw"></i> </span></p>
-                        <h2 class="wow fadeInDown">Ready to Adopt <span class="wow pulse" data-wow-delay="1s">
-                                Pets</span>
-                        </h2>
+    <section class="team" style="margin-top:80px;">
+        <div class="container" >
+            <div class="heading text-center">
+                <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
+                        class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
+                            class="fas fa-paw"></i> </span></p>
+                <h2 class="wow fadeInDown">Ready to Adopt <span class="wow pulse" data-wow-delay="1s">
+                        Pets</span>
+                </h2>
+            </div>
+            <div class="row">
+                @foreach($adoptpet as $item)
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="member">
+                            <div class="image">
+                                <img src="{{ url('storage/'.$item->photo )}}" style="width: 350px; height:292px;object-fit: cover;"  alt="image of pet" title="pet"
+                                    class="img-fluid customer">
+                            </div>
+                            <div class="content">
+                                <a href="{{ url('/adoptpet/' . $item->id) }}">
+                                    <h4 class="wow fadeInDown">{{ $item->titel }}</h4>
+                                </a>
+                                <ul>
+                                    <li><i class="fas fa-paw"></i> {{ $item->gender }}</li>
+                                    <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
+                                </ul>
+
+                                <div class="button wow fadeInUp">
+                                    <a href="pet-profile.html" class="btn main" title="contact">
+                                        Adopt me <i class="fas fa-paw"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
-                        @foreach($adoptpet as $item)
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="member">
-                                    <div class="image">
-                                        <img src="{{ url('storage/'.$item->photo )}}" style="width: 350px; height:292px;object-fit: cover;"  alt="image of pet" title="pet"
-                                            class="img-fluid customer">
-                                    </div>
-                                    <div class="content">
-                                        <a href="{{ url('/adoptpet/' . $item->id) }}">
-                                            <h4 class="wow fadeInDown">{{ $item->titel }}</h4>
-                                        </a>
-                                        <ul>
-                                            <li><i class="fas fa-paw"></i> {{ $item->gender }}</li>
-                                            <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
-                                        </ul>
+                @endforeach
+                <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="member">
+                        <div class="image">
+                            <img src="peddyhub/images/home_5/pet-1.png" alt="image of pet" title="pet"
+                                class="img-fluid customer">
+                        </div>
+                        <div class="content">
+                            <h4 class="wow fadeInDown">Scooby</h4>
+                            <ul>
+                                <li><i class="fas fa-paw"></i> Male Adult</li>
+                                <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
+                                <li><i class="fas fa-paw"></i> Hollywood, FL</li>
+                            </ul>
 
-                                        <div class="button wow fadeInUp">
-                                            <a href="pet-profile.html" class="btn main" title="contact">
-                                                Adopt me <i class="fas fa-paw"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                        <!-- <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="member">
-                                <div class="image">
-                                    <img src="peddyhub/images/home_5/pet-1.png" alt="image of pet" title="pet"
-                                        class="img-fluid customer">
-                                </div>
-                                <div class="content">
-                                    <h4 class="wow fadeInDown">Scooby</h4>
-                                    <ul>
-                                        <li><i class="fas fa-paw"></i> Male Adult</li>
-                                        <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
-                                        <li><i class="fas fa-paw"></i> Hollywood, FL</li>
-                                    </ul>
-
-                                    <div class="button wow fadeInUp">
-                                        <a href="pet-profile.html" class="btn main" title="contact">
-                                            Adopt me <i class="fas fa-paw"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="button wow fadeInUp">
+                                <a href="pet-profile.html" class="btn main" title="contact">
+                                    Adopt me <i class="fas fa-paw"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="member">
-                                <div class="image">
-                                    <img src="peddyhub/images/home_5/pet-2.png" alt="image of pet" title="pet"
-                                        class="img-fluid customer">
-                                </div>
-                                <div class="content">
-                                    <h4 class="wow fadeInDown">Shawns</h4>
-                                    <ul>
-                                        <li><i class="fas fa-paw"></i> Male Adult</li>
-                                        <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
-                                        <li><i class="fas fa-paw"></i> Hollywood, FL</li>
-                                    </ul>
-                                    <div class="button wow fadeInUp">
-                                        <a href="pet-profile.html" class="btn main" title="contact">
-                                            Adopt me <i class="fas fa-paw"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="member">
-                                <div class="image">
-                                    <img src="peddyhub/images/home_5/pet-3.png" alt="image of pet" title="pet"
-                                        class="img-fluid customer">
-                                </div>
-                                <div class="content">
-                                    <h4 class="wow fadeInDown">Roscoe</h4>
-                                    <ul>
-                                        <li><i class="fas fa-paw"></i> Male Adult</li>
-                                        <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
-                                        <li><i class="fas fa-paw"></i> Hollywood, FL</li>
-                                    </ul>
-                                    <div class="button wow fadeInUp">
-                                        <a href="pet-profile.html" class="btn main" title="contact">
-                                            Adopt me <i class="fas fa-paw"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="member">
-                                <div class="image">
-                                    <img src="peddyhub/images/home_5/pet-4.png" alt="image of pet" title="pet"
-                                        class="img-fluid customer">
-                                </div>
-                                <div class="content">
-                                    <h4 class="wow fadeInDown">Gretchen</h4>
-                                    <ul>
-                                        <li><i class="fas fa-paw"></i> Male Adult</li>
-                                        <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
-                                        <li><i class="fas fa-paw"></i> Hollywood, FL</li>
-                                    </ul>
-                                    <div class="button wow fadeInUp">
-                                        <a href="pet-profile.html" class="btn main" title="contact">
-                                            Adopt me <i class="fas fa-paw"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="member">
-                                <div class="image">
-                                    <img src="peddyhub/images/home_5/pet-5.png" alt="image of pet" title="pet"
-                                        class="img-fluid customer">
-                                </div>
-                                <div class="content">
-                                    <h4 class="wow fadeInDown">Caine</h4>
-                                    <ul>
-                                        <li><i class="fas fa-paw"></i> Male Adult</li>
-                                        <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
-                                        <li><i class="fas fa-paw"></i> Hollywood, FL</li>
-                                    </ul>
-                                    <div class="button wow fadeInUp">
-                                        <a href="pet-profile.html" class="btn main" title="contact">
-                                            Adopt me <i class="fas fa-paw"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <div class="member">
-                                <div class="image">
-                                    <img src="peddyhub/images/home_5/pet-6.png" alt="image of pet" title="pet"
-                                        class="img-fluid customer">
-                                </div>
-                                <div class="content">
-                                    <h4 class="wow fadeInDown">Rookie</h4>
-                                    <ul>
-                                        <li><i class="fas fa-paw"></i> Male Adult</li>
-                                        <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
-                                        <li><i class="fas fa-paw"></i> Hollywood, FL</li>
-                                    </ul>
-                                    <div class="button wow fadeInUp">
-                                        <a href="pet-profile.html" class="btn main" title="contact">
-                                            Adopt me <i class="fas fa-paw"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
-            </section>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="member">
+                        <div class="image">
+                            <img src="peddyhub/images/home_5/pet-2.png" alt="image of pet" title="pet"
+                                class="img-fluid customer">
+                        </div>
+                        <div class="content">
+                            <h4 class="wow fadeInDown">Shawns</h4>
+                            <ul>
+                                <li><i class="fas fa-paw"></i> Male Adult</li>
+                                <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
+                                <li><i class="fas fa-paw"></i> Hollywood, FL</li>
+                            </ul>
+                            <div class="button wow fadeInUp">
+                                <a href="pet-profile.html" class="btn main" title="contact">
+                                    Adopt me <i class="fas fa-paw"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="member">
+                        <div class="image">
+                            <img src="peddyhub/images/home_5/pet-3.png" alt="image of pet" title="pet"
+                                class="img-fluid customer">
+                        </div>
+                        <div class="content">
+                            <h4 class="wow fadeInDown">Roscoe</h4>
+                            <ul>
+                                <li><i class="fas fa-paw"></i> Male Adult</li>
+                                <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
+                                <li><i class="fas fa-paw"></i> Hollywood, FL</li>
+                            </ul>
+                            <div class="button wow fadeInUp">
+                                <a href="pet-profile.html" class="btn main" title="contact">
+                                    Adopt me <i class="fas fa-paw"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="member">
+                        <div class="image">
+                            <img src="peddyhub/images/home_5/pet-4.png" alt="image of pet" title="pet"
+                                class="img-fluid customer">
+                        </div>
+                        <div class="content">
+                            <h4 class="wow fadeInDown">Gretchen</h4>
+                            <ul>
+                                <li><i class="fas fa-paw"></i> Male Adult</li>
+                                <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
+                                <li><i class="fas fa-paw"></i> Hollywood, FL</li>
+                            </ul>
+                            <div class="button wow fadeInUp">
+                                <a href="pet-profile.html" class="btn main" title="contact">
+                                    Adopt me <i class="fas fa-paw"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="member">
+                        <div class="image">
+                            <img src="peddyhub/images/home_5/pet-5.png" alt="image of pet" title="pet"
+                                class="img-fluid customer">
+                        </div>
+                        <div class="content">
+                            <h4 class="wow fadeInDown">Caine</h4>
+                            <ul>
+                                <li><i class="fas fa-paw"></i> Male Adult</li>
+                                <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
+                                <li><i class="fas fa-paw"></i> Hollywood, FL</li>
+                            </ul>
+                            <div class="button wow fadeInUp">
+                                <a href="pet-profile.html" class="btn main" title="contact">
+                                    Adopt me <i class="fas fa-paw"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="member">
+                        <div class="image">
+                            <img src="peddyhub/images/home_5/pet-6.png" alt="image of pet" title="pet"
+                                class="img-fluid customer">
+                        </div>
+                        <div class="content">
+                            <h4 class="wow fadeInDown">Rookie</h4>
+                            <ul>
+                                <li><i class="fas fa-paw"></i> Male Adult</li>
+                                <li><i class="fas fa-paw"></i> American Staffordshire Terrier</li>
+                                <li><i class="fas fa-paw"></i> Hollywood, FL</li>
+                            </ul>
+                            <div class="button wow fadeInUp">
+                                <a href="pet-profile.html" class="btn main" title="contact">
+                                    Adopt me <i class="fas fa-paw"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
         </div>
+    </section>
+</div>
     <!-- <div class="container">
         <div class="row">
             @include('admin.sidebar')

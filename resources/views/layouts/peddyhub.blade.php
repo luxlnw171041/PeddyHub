@@ -71,7 +71,7 @@
         <div id="preloading"></div>
 
         <section class="featured">
-            <div class="header" >
+            <div class="header" style="padding-bottom:10px;">
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
                         <a href="{{ url('/') }}" class="navbar-brand">

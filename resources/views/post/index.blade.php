@@ -39,14 +39,14 @@
                 @include ('menubar.menu')
             </div>
             <br>
-            <div class="row col-12">
-                <div class="col-9">
+            <div class="row col-12" style="padding:0px;">
+                <div class="col-12 col-md-9  ">
                     @include ('menubar.menu_btn')
                 </div>
-                <div class="col-3">
+                <div class="col-12 col-md-3 order-first order-md-2">
                     @if(Auth::check())
                         <a href="{{ url('/post/create') }}" style="margin-top:8px" class="btn main float-right" title="contact">
-                           <span style="">โพสต์</span>  
+                           <span >โพสต์</span>  
                         </a>
                     @endif
                 </div>
