@@ -35,14 +35,11 @@
                         <div class="col-12 col-md-9  ">
                             @include ('menubar.menu_btn')
                         </div>
-<<<<<<< Updated upstream
-=======
                         <div class="col-3">
                             <a href="{{ url('/lost_pet/create') }}" style="margin-top:8px" class="btn main float-right" title="contact">
                                 <span style="">ประกาศหา</span>  
                             </a>
                         </div>
->>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
