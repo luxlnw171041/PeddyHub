@@ -35,10 +35,12 @@
                         <div class="col-12 col-md-9  ">
                             @include ('menubar.menu_btn')
                         </div>
-                        <div class="col-3">
-                            <a href="{{ url('/lost_pet/create') }}" style="margin-top:8px" class="btn main float-right" title="contact">
-                                <span style="">ประกาศหา</span>  
-                            </a>
+                        <div class="col-12 col-md-3 order-first order-md-2">
+                            @if(Auth::check())
+                                <a href="{{ url('/lost_pet/create') }}" style="margin-top:8px" class="btn main float-right" title="contact">
+                                    <span style="">ประกาศหา</span>  
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
