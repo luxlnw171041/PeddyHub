@@ -31,11 +31,9 @@
                         @include ('menubar.menu')
                     </div>
                     <br>
-                    <div class="row col-12">
-                        <div class="col-9">
+                    <div class="row col-12" style="padding:0px;">
+                        <div class="col-12 col-md-9  ">
                             @include ('menubar.menu_btn')
-                        </div>
-                        <div class="col-3">
                         </div>
                     </div>
                 </div>
