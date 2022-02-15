@@ -291,7 +291,6 @@
                     </div>
                 </div> -->
                 <div class="footer-bottom d-flex justify-content-start">
-                
                     <div class="copyright">WWW.PEDDYHUB.COM <span>•</span> 
                         <a href="{{'privacy_policy'}}">
                             <span>นโยบายเกี่ยวกับข้อมูลส่วนบุคคล</span>
@@ -303,9 +302,11 @@
                     </div>
                     <div class="col-1" style="margin-left:10px;">
                         <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
-                        <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
-                    </a>
-                </div>
+                            <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
+                        </a>
+                    </div>
+                    <p class="copyright">รูปภาพที่ใช้ในการพัฒนาในเว็บไซต์ อ้างอิงจาก https://www.manoonpetshop.co.th/</p>
+
                 </div>
             </div>
         </footer>

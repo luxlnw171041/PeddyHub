@@ -258,6 +258,22 @@ ul, li {
     color: #e5a62d;
 }
 
+.btn-outline-two {
+    position: relative;
+    padding: 11px 32px;
+    line-height: 29px;
+    color: #e5a62d;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50px;
+    background-color: #ffffff;
+    border: 2px solid #e5a62d;
+}
+
+.btn-outline-two:hover {
+    background: #e5a62d;
+    color: #ffffff;
+}
 /*Btn Style Three*/
 
 .btn-style-three {
@@ -314,7 +330,22 @@ ul, li {
     background: none;
     color: #630abb;
 }
+.btn-outline-five {
+    position: relative;
+    padding: 11px 32px;
+    line-height: 29px;
+    color: #630abb;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50px;
+    background-color: #ffffff;
+    border: 2px solid #630abb;
+}
 
+.btn-outline-five:hover {
+    background: #630abb;
+    color: #ffffff;
+}
 /*Btn Style Six*/
 
 .btn-style-six {
@@ -394,7 +425,22 @@ ul, li {
     background: none;
     color: #368a33;
 } 
+.btn-outline-ten {
+    position: relative;
+    padding: 11px 32px;
+    line-height: 29px;
+    color: #368a33;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 50px;
+    background-color: #ffffff;
+    border: 2px solid #368a33;
+}
 
+.btn-outline-ten:hover {
+    background: #368a33;
+    color: #ffffff;
+}
 .btn-style-nine {
     position: relative;
     padding: 9px 32px;

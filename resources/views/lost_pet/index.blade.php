@@ -103,3 +103,17 @@
 </div>
 
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log("START");
+        add_color();
+        
+    });
+    function add_color(){
+        console.log("add_color");
+        document.querySelector('#btn_a_lost').classList.add('btn-primary');
+        document.querySelector('#btn_a_lost').classList.remove('btn-outline-primary');
+        document.querySelector('#btn_a_lost_pc').classList.add('btn-style-five');
+        document.querySelector('#btn_a_lost_pc').classList.remove('btn-outline-five');
+    }
+</script>

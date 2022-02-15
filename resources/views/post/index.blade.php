@@ -317,3 +317,15 @@
         </div>
     </div> -->
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log("START");
+        add_color();
+        
+    });
+    function add_color(){
+        console.log("add_color");
+        document.querySelector('#btn_a_all').classList.add('btn-primary');
+        document.querySelector('#btn_a_all').classList.remove('btn-outline-primary');
+    }
+</script>

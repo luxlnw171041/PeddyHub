@@ -14,7 +14,7 @@
         .btn-outline-peddyhub {
             position: relative;
             line-height: 29px;
-            color: #B81F5B;
+            color: #8e8e8e;
             font-size: 16px;
             font-weight: 700;
             border: none;
