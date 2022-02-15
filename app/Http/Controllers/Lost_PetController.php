@@ -9,6 +9,7 @@ use App\Models\Lost_Pet;
 use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Lost_PetController extends Controller
 {
@@ -68,6 +69,14 @@ class Lost_PetController extends Controller
         }
 
         Lost_Pet::create($requestData);
+
+        if (!empty($requestData['phone'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update(['phone' => $requestData['phone']]);
+        }
 
         return redirect('lost_pet')->with('flash_message', 'Lost_Pet added!');
     }

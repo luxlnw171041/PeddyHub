@@ -18,8 +18,14 @@
         {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
     </div>
 
+    <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
+        <label for="phone" class="control-label">{{ 'เบอร์ติดต่อ' }}</label>
+        <input class="form-control" name="phone" type="text" id="phone" value="{{ Auth::user()->profile->phone }}" required>
+        {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
+    </div>
+
     <div class="form-group {{ $errors->has('select_pet') ? 'has-error' : ''}}">
-        <label for="user_id" class="control-label">{{ 'เลือกสัตว์เลี้ยง' }}</label>
+        <label for="select_pet" class="control-label">{{ 'เลือกสัตว์เลี้ยง' }}</label>
         <select name="select_pet" id="select_pet" class="form-control" onchange="select_pet_id();" required>
             <option value="" selected>- เลือกสัตว์เลี้ยง -</option>
             @foreach($select_pet as $item)
