@@ -24,12 +24,13 @@
         <div class="container">
             <div class="row ">
                 @include ('menubar.menu') 
-                <div class="col-4 col-md-3  d-flex justify-content-end" style="margin-top:15px;vertical-align: middle;">
+                <div class="col-6 col-md-6  d-flex justify-content-end" style="margin-top:15px;">
+                <div class="col-12">
                     @if(Auth::check())
-                        <a href="{{ url('/post/create') }}" class="btn main" title="contact">
+                        <a href="{{ url('/post/create') }}" class="btn main " title="contact">
                            <span style="">โพสต์</span>  
                         </a>
-                    @endif
+                    @endif</div>
                 </div>
             </div>
         </div>
