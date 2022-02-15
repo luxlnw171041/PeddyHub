@@ -22,7 +22,7 @@
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp justify-content-end" style="margin-bottom:-50px">  
         <div class="container">
-            <div class="row ">
+            <!-- <div class="row ">
                 @include ('menubar.menu') 
                 <div class="col-6 col-md-6  d-flex justify-content-end" style="margin-top:15px;">
                 <div class="col-12">
@@ -30,7 +30,25 @@
                         <a href="{{ url('/post/create') }}" class="btn main " title="contact">
                            <span style="">โพสต์</span>  
                         </a>
-                    @endif</div>
+                    @endif
+                </div>
+                </div>
+            </div> -->
+
+            <div class="row col-12">
+                @include ('menubar.menu')
+            </div>
+            <br>
+            <div class="row col-12">
+                <div class="col-9">
+                    @include ('menubar.menu_btn')
+                </div>
+                <div class="col-3">
+                    @if(Auth::check())
+                        <a href="{{ url('/post/create') }}" style="margin-top:8px" class="btn main float-right" title="contact">
+                           <span style="">โพสต์</span>  
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
