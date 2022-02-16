@@ -1,39 +1,88 @@
 @extends('layouts.peddyhub')
 
 @section('content')
+
     <div class="container">
         <div class="row">
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Lost_Pet {{ $lost_pet->id }}</div>
+                    <h5 class="card-header text-info">ประกาศหา  {{ $lost_pet->pet->name }}</h5>
                     <div class="card-body">
-
-                        <a href="{{ url('/lost_pet') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/lost_pet/' . $lost_pet->id . '/edit') }}" title="Edit Lost_Pet"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                        <form method="POST" action="{{ url('lost_pet' . '/' . $lost_pet->id) }}" accept-charset="UTF-8" style="display:inline">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Lost_Pet" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                        </form>
-                        <br/>
-                        <br/>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $lost_pet->id }}</td>
-                                    </tr>
-                                    <tr><th> User Id </th><td> {{ $lost_pet->user_id }} </td></tr><tr><th> Pet Id </th><td> {{ $lost_pet->pet_id }} </td></tr><tr><th> Photo </th><td> {{ $lost_pet->photo }} </td></tr><tr><th> Let </th><td> {{ $lost_pet->let }} </td></tr><tr><th> Long </th><td> {{ $lost_pet->long }} </td></tr>
-                                </tbody>
-                            </table>
+                        <div class="row col-12">
+                            <div class="col-12 col-md-6">
+                                <b style="font-size:22px;">ข้อมูลน้อง</b>
+                                <br><br>
+                                <div class="row col-12">
+                                    <div class="col-12 col-md-6">
+                                        <img width="100%" src="{{ url('storage')}}/{{ $lost_pet->pet->photo }}" class="main-shadow main-radius">
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <br class="d-block d-md-none">
+                                        ชื่อ : {{ $lost_pet->pet->name }} <br>
+                                        ประเภท : {{ $lost_pet->pet_category->name }} <br>
+                                        เพศ : {{ $lost_pet->pet->gender }} <br>
+                                        ขนาดตัว : {{ $lost_pet->pet->size }} <br>
+                                        ช่วงวัย : {{ $lost_pet->pet->age }} <br>
+                                        <br>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <br>
+                                        คำอธิบาย : <br>
+                                        {{ $lost_pet->detail }}
+                                    </div>
+                                </div>
+                                <br class="d-block d-md-none">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div id="map_show">
+                                    
+                                </div>
+                                <span style="margin-top: 8px;" class="text-secondary float-right">ตำแหน่งที่แจ้งน้องหาย</span>
+                            </div>                            
+                            <div class="col-12 col-md-6">
+                                <br><br>
+                                <a href="tel:{{ $lost_pet->profile->phone }}" class="col-12 col-md-6 main-shadow main-radius btn btn-info" >
+                                    <i class="fa-solid fa-phone"></i> &nbsp;&nbsp; ติดต่อเจ้าของ
+                                </a>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <br><br>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgrxXDgk1tgXngalZF3eWtcTWI-LPdeus&language=th" ></script>
+<style type="text/css">
+    #map_show {
+      height: calc(30vh);
+    }
+    
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // console.log("START");
+        initMap();
+    });
+    
+    function initMap() { 
+        
+        let lat = {{ $lost_pet->lat }} ;
+        let lng = {{ $lost_pet->lng }} ;
+
+        const map = new google.maps.Map(document.querySelector('#map_show'), {
+            zoom: 17,
+            center: { lat: lat, lng: lng },
+            mapTypeId: "terrain",
+        });
+
+        // ตำแหน่ง USER
+        const user = { lat: lat, lng: lng };
+        const marker_user = new google.maps.Marker({ map, position: user });
+
+    }
+
+</script>
 @endsection
