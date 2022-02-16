@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Lost_Pet;
+use App\Models\Pet_Category;
 use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class Lost_PetController extends Controller
             $lost_pet = Lost_Pet::latest()->paginate($perPage);
         }
 
-        return view('lost_pet.index', compact('lost_pet'));
+        return view('lost_pet.index', compact('lost_pet' ));
     }
 
     /**

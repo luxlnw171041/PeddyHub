@@ -81,9 +81,30 @@
                                                 <span style="font-size:20px"> <b></b> </span>
                                                 <p style="font-size:12px;margin-top:-8px;"> {{ $item->created_at->diffForHumans() }} </p>
                                             </div>
+                                            <div class="col-12" style="padding:8px;">
+                                                @php
+                                                    $pet_category = $item->pet_category_id ;
+                                                @endphp
+
+                                                <!-- icon_categorie -->
+                                                @include ('menubar.icon_categorie')
+
+                                                @switch( $item->pet->gender )
+                                                    @case ('ชาย')
+                                                        <i class="fa-solid fa-mars text-info" style="font-size:20px;"></i> &nbsp;&nbsp;&nbsp;
+                                                    @break
+                                                    @case ('หญิง')
+                                                        <i class="fa-solid fa-venus" style="font-size:20px;color: pink;"></i> &nbsp;&nbsp;&nbsp;
+                                                    @break
+                                                    @case ('ไม่ระบุ')
+                                                        <i class="fa-solid fa-genderless text-secondary" style="font-size:20px;"></i> &nbsp;&nbsp;&nbsp;
+                                                    @break
+                                                @endswitch
+                                                <b class="text-secondary">ขนาด : {{ $item->pet->size }}</b>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="image">
+                                    <div class="image" style="margin-top:8px;">
                                         <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" class="img-fluid customer">
                                     </div>
                                     <div style="padding-top:10px;padding-left:20px;">

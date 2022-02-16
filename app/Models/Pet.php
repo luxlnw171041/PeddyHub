@@ -31,4 +31,8 @@ class Pet extends Model
         return $this->belongsTo('App\Models\User', 'user_id'); 
     }
 
+    public function lost_pet(){
+        return $this->belongsTo('App\Models\Lost_Pet', 'pet_id'); 
+    }
+
 }
