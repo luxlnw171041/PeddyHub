@@ -45,6 +45,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="faq wow fadeInRight">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <div class="col-12 col-md-2">
+                                        <label  class="control-label"><b>{{ 'Type' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10">
+                                <select name="pet_category_id" class="form-control">
+                                    <option value="0" selected="selected">โปรดเลือก</option>
+                                    @foreach($category as $item)
+                                        <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-6 col-md-12 col-sm-12"></div>
                 </div>
                 </div>

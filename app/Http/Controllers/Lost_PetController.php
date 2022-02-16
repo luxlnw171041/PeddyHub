@@ -21,15 +21,14 @@ class Lost_PetController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
+        
         $perPage = 25;
+        $category  = $request->get('pet_category_id');
 
+        $keyword =  !empty($category);
+        
         if (!empty($keyword)) {
-            $lost_pet = Lost_Pet::where('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('pet_id', 'LIKE', "%$keyword%")
-                ->orWhere('photo', 'LIKE', "%$keyword%")
-                ->orWhere('let', 'LIKE', "%$keyword%")
-                ->orWhere('long', 'LIKE', "%$keyword%")
+            $lost_pet = Lost_Pet::where('pet_category_id',    'LIKE', '%' .$category.'%')
                 ->latest()->paginate($perPage);
         } else {
             $lost_pet = Lost_Pet::latest()->paginate($perPage);

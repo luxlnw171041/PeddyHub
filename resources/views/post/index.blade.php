@@ -19,6 +19,7 @@
   transform: translateY(4px) !important;;
 } */
 </style>
+
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp justify-content-end" style="margin-bottom:-50px">  
         <div class="container">
@@ -94,7 +95,7 @@
                                                     <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                                                     <div class="dropdown-menu dropdown-primary">
-                                                        <a class="dropdown-item" href="#"><i class="fab fa-apple-pay"></i>&nbsp;&nbsp;คัดลอก</a>
+                                                        <a class="dropdown-item" href="#" ><i class="fa-solid fa-copy"></i>&nbsp;&nbsp;คัดลอก</a>
                                                         @if(($id  ==  $item->user_id))
                                                             <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
                                                             <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
@@ -107,7 +108,7 @@
                                                 </div>
                                                 <div class="col-12" style="padding:0px 0px 0px 20px">
                                                     <a href="{{ url('/post/' . $item->id) }}" title="">
-                                                    <!-- {{$asdaa}} -->
+                                                    
                                                         <p class="head mt-1 mb-0">{{ $item->detail }} </p>
                                                     </a>
                                                 </div>
@@ -327,5 +328,8 @@
         console.log("add_color");
         document.querySelector('#btn_a_all').classList.add('btn-primary');
         document.querySelector('#btn_a_all').classList.remove('btn-outline-primary');
+        document.querySelector('#btn_a_all_pc').classList.add('btn-style-two');
+        document.querySelector('#btn_a_all_pc').classList.remove('btn-outline-two');
+        
     }
 </script>

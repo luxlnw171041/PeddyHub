@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Pet_Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pet;
@@ -26,30 +27,19 @@ class PostController extends Controller
         $perPage = 25;
         $id = Auth::id();
         $LIKE = Like::where('user_id', $id)->get();
-        
+        $category  = $request->get('pet_category_id');
         $comment = Comment::all(['id', 'post_id' ,'user_id' ,'content' ,'created_at']);
         
-        
-        $postss = Post::get();
-        foreach($postss as $item) {
-            $asdaa = $item->id ;
-        }
+        $needFilter =  !empty($category);
 
-        $posts = Post::where('id' , '=' ,$asdaa)->get();
-        $likePost = Post::find($asdaa);
-        $likeCtr = Like::where(['post_id' => $likePost->id] )->get();
-
-        if (!empty($keyword)) {
-            $post = Post::where('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('detail', 'LIKE', "%$keyword%")
-                ->orWhere('photo', 'LIKE', "%$keyword%")
-                ->orWhere('video', 'LIKE', "%$keyword%")
+        if (!empty($needFilter)) {
+            $post = Post::where('pet_category_id',    'LIKE', '%' .$category.'%')
                 ->latest()->paginate($perPage);
         } else {
             $post = Post::latest()->paginate($perPage);
         }
 
-        return view('post.index', compact('post' ,'id' ,'comment'  ,'LIKE' ,'asdaa'));
+        return view('post.index', compact('post' ,'id' ,'comment'  ,'LIKE' ));
     }
 
     /**
@@ -59,8 +49,10 @@ class PostController extends Controller
      */
     public function create()
     {
+        $category = Pet_Category::all(['id', 'name']);
+
         $user = Auth::user();
-        return view('post.create');
+        return view('post.create' , compact('category'));
     }
 
     /**
