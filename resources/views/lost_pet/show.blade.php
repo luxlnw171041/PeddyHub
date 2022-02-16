@@ -5,11 +5,11 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-12">
                 <div class="card">
                     <h5 class="card-header text-info">ประกาศหา  {{ $lost_pet->pet->name }}</h5>
                     <div class="card-body">
-                        <div class="row col-12">
+                        <div class="row">
                             <div class="col-12 col-md-6">
                                 <b style="font-size:22px;">ข้อมูลน้อง</b>
                                 <br><br>
@@ -35,7 +35,7 @@
                                 <br class="d-block d-md-none">
                             </div>
                             <div class="col-12 col-md-6">
-                                <div id="map_show">
+                                <div id="map_show" class="main-shadow main-radius">
                                     
                                 </div>
                                 <span style="margin-top: 8px;" class="text-secondary float-right">ตำแหน่งที่แจ้งน้องหาย</span>
