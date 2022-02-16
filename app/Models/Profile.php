@@ -30,5 +30,9 @@ class Profile extends Model
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 
     }
+
+    public function lost_pets(){
+        return $this->hasMany('App\Models\Lost_Pet', 'user_id' , 'user_id'); 
+    } 
     
 }
