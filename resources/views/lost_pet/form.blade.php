@@ -1,5 +1,32 @@
 
-<div class="col-12 main-shadow main-radius" style="margin-top:15px; margin-bottom:10px;" id="map" >
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 col-md-3" style="margin-top:12px;">
+                <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                    <option value="" selected>- เลือกจังหวัด -</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-3" style="margin-top:12px;">
+                <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_tambon();" required>
+                    <option value="" selected>- เลือกอำเภอ -</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-3" style="margin-top:12px;">
+                <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                    <option value="" selected>- เลือกตำบล -</option>
+                </select>
+            </div>
+            <div class="col-12 col-md-3" style="margin-top:12px;">
+                <a class="col-6 btn btn-success text-white float-right" onclick="getLocation();">
+                    <i class="fa-solid fa-location-crosshairs"></i> ตำแน่งปัจจุบัน
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-12 main-shadow main-radius d-none" style="margin-top:15px; margin-bottom:10px;" id="map" >
     <img style=" object-fit: contain; " width="280 px" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" class="card-img-top center" style="padding: 10px;">
     <div style="position: relative; z-index: 5">
         <div style="padding-top: 8px;"class="translate">
@@ -25,9 +52,9 @@
     </div>
 
     <div class="form-group {{ $errors->has('select_pet') ? 'has-error' : ''}}">
-        <label for="select_pet" class="control-label">{{ 'เลือกสัตว์เลี้ยง' }}</label>
+        <label for="select_pet" class="control-label">{{ 'เลือกเจ้าตัวแสบ' }}</label>
         <select name="select_pet" id="select_pet" class="form-control" onchange="select_pet_id();" required>
-            <option value="" selected>- เลือกสัตว์เลี้ยง -</option>
+            <option value="" selected>- เลือกเจ้าตัวแสบ -</option>
             @foreach($select_pet as $item)
                 <option value="{{ $item->id }}" 
                 {{ request('name') == $item->name ? 'selected' : ''   }} >
@@ -56,12 +83,12 @@
         <input class="form-control" name="photo" type="text" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" >
         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
     </div>
-    <div class="d-none form-group {{ $errors->has('lat') ? 'has-error' : ''}}">
+    <div class="d- form-group {{ $errors->has('lat') ? 'has-error' : ''}}">
         <label for="lat" class="control-label">{{ 'Let' }}</label>
         <input class="form-control" name="lat" type="text" id="lat" value="{{ isset($lost_pet->lat) ? $lost_pet->lat : ''}}" >
         {!! $errors->first('lat', '<p class="help-block">:message</p>') !!}
     </div>
-    <div class="d-none form-group {{ $errors->has('lng') ? 'has-error' : ''}}">
+    <div class="d- form-group {{ $errors->has('lng') ? 'has-error' : ''}}">
         <label for="lng" class="control-label">{{ 'Long' }}</label>
         <input class="form-control" name="lng" type="text" id="lng" value="{{ isset($lost_pet->lng) ? $lost_pet->lng : ''}}" >
         {!! $errors->first('lng', '<p class="help-block">:message</p>') !!}
@@ -98,7 +125,8 @@
 
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
-        getLocation();
+        // getLocation();
+        select_province();
     });
 
     function getLocation() {
@@ -107,6 +135,8 @@
         } else { 
             x.innerHTML = "Geolocation is not supported by this browser.";
         }
+
+        document.querySelector('#map').classList.remove('d-none');
     }
     
     function initMap(position) { 
@@ -154,6 +184,49 @@
                 let pet_category_id = document.querySelector('#pet_category_id');
                     pet_category_id.value =  result[0]['pet_category_id'];
 
+            });
+    }
+
+    function select_province(){
+        let select_province = document.querySelector('#select_province');
+
+        fetch("{{ url('/') }}/api/select_province/")
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_province.innerHTML = "";
+
+                // let option = document.createElement("option");
+                //     option.text = "- เลือกจังหวัด -";
+                //     option.value = "";
+                //     input_car_model.add(option); 
+
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.changwat_th;
+                    option.value = item.changwat_th;
+                    select_province.add(option);
+                }
+            });
+    }
+
+    function select_A(){
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+
+        fetch("{{ url('/') }}/api/select_amphoe/" + select_province.value )
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_amphoe.innerHTML = "";
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.amphoe_th;
+                    option.value = item.amphoe_th;
+                    select_amphoe.add(option);
+                }
             });
     }
 

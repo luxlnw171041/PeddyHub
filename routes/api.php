@@ -26,3 +26,7 @@ Route::get('/user_language/{language}/{user_id}','API\LocationController@user_la
 
 // หารูปภาพสัตว์เลี้ยง
 Route::get('/select_img_pet/{pet_id}','API\API_Lost_PetController@select_img_pet');
+
+// หาจังหวัด
+Route::get('/select_province/','API\LocationController@show_location_P');
+Route::get('/select_amphoe/{province}','API\LocationController@show_location_A');

@@ -1,9 +1,10 @@
 
 
 <div class="row col-12 text-center d-none d-lg-block">
+
     <a id="btn_a_all_pc" href="{{ url('/post') }}" class="col-3 theme-btn btn-outline-two thm-btn main-shadow main-radius" style="margin:15px;border-radius:25px;">PEDDyShare</a>
-    <a id="btn_a_adopt_pc" href="{{ url('/adoptpet') }}" class="col-3 theme-btn btn-outline-five thm-btn main-shadow main-radius" style="margin:15px;border-radius:25px;">ตามหาเจ้าของ</a>
-    <a id="btn_a_lost_pc" href="{{ url('/lost_pet') }}" class="col-3 theme-btn btn-outline-ten thm-btn main-shadow main-radius" style="margin:15px;border-radius:25px;">ตามหาน้องๆ</a>
+    <a id="btn_a_adopt_pc" href="{{ url('/adoptpet') }}" class="col-3 theme-btn btn-outline-five thm-btn main-shadow main-radius" style="margin:15px;border-radius:25px;">เจ้าตัวแสบใครนะ</a>
+    <a id="btn_a_lost_pc" href="{{ url('/lost_pet') }}" class="col-3 theme-btn btn-outline-ten thm-btn main-shadow main-radius" style="margin:15px;border-radius:25px;">ตามหาเจ้าตัวแสบ</a>
     <div class="col-3">
     </div>
 </div>

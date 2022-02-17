@@ -69,4 +69,26 @@ class LocationController extends Controller
         return $user_id;
     }
 
+    public function show_location_P()
+    {
+        $location_P = DB::table('lat_longs')
+                        ->select('changwat_th')
+                        ->groupBy('changwat_th')
+                        ->orderBy('changwat_th', 'asc')
+                        ->get();
+
+        return $location_P;
+    }
+
+    public function show_location_A($province)
+    {
+        $location_A = DB::table('lat_longs')
+                        ->select('amphoe_th')
+                        ->where('province', $province)
+                        ->groupBy('amphoe_th')
+                        ->orderBy('amphoe_th', 'asc')
+                        ->get();
+        return $location_A;
+    }
+
 }
