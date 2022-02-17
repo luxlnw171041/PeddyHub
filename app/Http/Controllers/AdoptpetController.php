@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Adoptpet;
+use App\Models\Pet_Category;
 use Illuminate\Http\Request;
 
 class AdoptpetController extends Controller
@@ -18,17 +19,12 @@ class AdoptpetController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
         $perPage = 25;
+        $category  = $request->get('pet_category_id');
 
+        $keyword =  !empty($category);
         if (!empty($keyword)) {
-            $adoptpet = Adoptpet::where('titel', 'LIKE', "%$keyword%")
-                ->orWhere('detail', 'LIKE', "%$keyword%")
-                ->orWhere('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('photo', 'LIKE', "%$keyword%")
-                ->orWhere('gender', 'LIKE', "%$keyword%")
-                ->orWhere('size', 'LIKE', "%$keyword%")
-                ->orWhere('age', 'LIKE', "%$keyword%")
+            $adoptpet = Adoptpet::where('pet_category_id',    'LIKE', '%' .$category.'%')
                 ->latest()->paginate($perPage);
         } else {
             $adoptpet = Adoptpet::latest()->paginate($perPage);
@@ -44,7 +40,9 @@ class AdoptpetController extends Controller
      */
     public function create()
     {
-        return view('adoptpet.create');
+        $category = Pet_Category::all(['id', 'name']);
+
+        return view('adoptpet.create' , compact('category'));
     }
 
     /**

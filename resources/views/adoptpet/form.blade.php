@@ -5,11 +5,10 @@
                 <div class="faq wow fadeInRight">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="heading">
-                                        <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
-                                            </span><span class="orange"><i class="fas fa-paw"></i> </span><span
-                                                class="purple"><i class="fas fa-paw"></i> </span></p>
-                                        <h3>adoptpet <span class="wow pulse" data-wow-delay="1s"></span></h3>
-                                    </div>
+                            <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
+                                </span><span class="orange"><i class="fas fa-paw"></i> </span><span
+                                    class="purple"><i class="fas fa-paw"></i> </span></p>
+                            <h3>adoptpet <span class="wow pulse" data-wow-delay="1s"></span></h3>
                         </div>
                     </div>
                 <div class="row">
@@ -106,6 +105,19 @@
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="faq wow fadeInRight">
                             <div class="row">
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <div class="col-12 col-md-12">
+                                        <label  class="control-label"><b>{{ 'Type' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <select name="pet_category_id" class="form-control" required>
+                                        <option value='' selected="selected">โปรดเลือก</option>
+                                        @foreach($category as $item)
+                                            <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'เพศ' }}</b></label>
@@ -113,8 +125,8 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <select name="gender" class="form-control" id="gender" >
-                                            <option value="" selected > - โปรดเลือก - </option>
+                                        <select name="gender" class="form-control" id="gender" required>
+                                            <option value='' selected > - โปรดเลือก - </option>
                                             @foreach (json_decode('{"\u0e0a\u0e32\u0e22":"\u0e0a\u0e32\u0e22","\u0e2b\u0e0d\u0e34\u0e07":"\u0e2b\u0e0d\u0e34\u0e07","\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38":"\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"}', true) as $optionKey => $optionValue)
                                                 <option value="{{ $optionKey }}" {{ (isset($adoptpet->gender) && $adoptpet->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                             @endforeach
@@ -134,22 +146,14 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                    <select name="size" class="form-control" id="size" >
-                                        <option value="" selected >
-                                                - โปรดเลือก - 
-</option>
+                                    <select name="size" class="form-control" id="size" required>
+                                        <option value='' selected > - โปรดเลือก - </option>
                                         @foreach (json_decode('{"\u0e40\u0e25\u0e47\u0e01\u0e21\u0e32\u0e01":"\u0e40\u0e25\u0e47\u0e01\u0e21\u0e32\u0e01","\u0e40\u0e25\u0e47\u0e01":"\u0e40\u0e25\u0e47\u0e01","\u0e01\u0e25\u0e32\u0e07":"\u0e01\u0e25\u0e32\u0e07","\u0e43\u0e2b\u0e0d\u0e48":"\u0e43\u0e2b\u0e0d\u0e48","\u0e43\u0e2b\u0e0d\u0e48\u0e21\u0e32\u0e01":"\u0e43\u0e2b\u0e0d\u0e48\u0e21\u0e32\u0e01"}', true) as $optionKey => $optionValue)
                                             <option value="{{ $optionKey }}" {{ (isset($adoptpet->size) && $adoptpet->size == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                         @endforeach
                                     </select>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="faq wow fadeInRight">
-                            <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'ช่วงอายุ' }}</b></label>
@@ -157,8 +161,8 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                    <select name="age" class="form-control" id="age" >
-                                        <option value="" selected >
+                                    <select name="age" class="form-control" id="age" required>
+                                        <option value='' selected >
                                                 - โปรดเลือก - 
                                         </option>
                                         @foreach (json_decode('{"\u0e41\u0e23\u0e01\u0e40\u0e01\u0e34\u0e14":"\u0e41\u0e23\u0e01\u0e40\u0e01\u0e34\u0e14","\u0e40\u0e14\u0e47\u0e01":"\u0e40\u0e14\u0e47\u0e01","\u0e27\u0e31\u0e22\u0e23\u0e38\u0e48\u0e19":"\u0e27\u0e31\u0e22\u0e23\u0e38\u0e48\u0e19","\u0e1c\u0e39\u0e49\u0e43\u0e2b\u0e0d\u0e48":"\u0e1c\u0e39\u0e49\u0e43\u0e2b\u0e0d\u0e48","\u0e0a\u0e23\u0e32":"\u0e0a\u0e23\u0e32"}', true) as $optionKey => $optionValue)

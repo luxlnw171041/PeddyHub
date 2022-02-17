@@ -51,6 +51,7 @@
         <div class="d-none d-lg-block container text-center">
             <div class="card" style="border:none;">
                 <div class="card-body d-flex justify-content-around"style="padding:10px;">
+                    <a id="btn_cat_pc_0" href="{{ url()->current(); }}" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"><i class="fa-solid fa-paw icon-menu"></i>  <br>ทั้งหมด</b></a>
                     <a id="btn_cat_pc_1" href="{{ url()->current(); }}?pet_category_id=1" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"><i class="fas fa-dog icon-menu"  ></i>  <br>สุนัข</b></a>
                     <a id="btn_cat_pc_2" href="{{ url()->current(); }}?pet_category_id=2" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-cat icon-menu" ></i> <br> แมว</b></a>
                     <a id="btn_cat_pc_3" href="{{ url()->current(); }}?pet_category_id=3" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-dove icon-menu" ></i> <br>นก</b></a>
@@ -63,6 +64,7 @@
         <div class="d-block d-md-none scrolling-wrapper container text-center ">
             <div class="menupet" >
                 <div class="petbtn card-body d-flex justify-content-around"style="padding:10px;">
+                    <a id="btn_cat_0" href="{{ url()->current(); }}" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"><i class="fa-solid fa-paw icon-menu"></i>  <br>ทั้งหมด</b></a>
                     <a id="btn_cat_1" href="{{ url()->current(); }}?pet_category_id=1"  type="submit"class="btn btn-outline-peddyhub"><b class="text-b"><i class="fas fa-dog icon-menu" ></i>  <br>สุนัข </b></a>
                     <a id="btn_cat_2" href="{{ url()->current(); }}?pet_category_id=2" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-cat icon-menu"></i> <br> แมว </b></a>
                     <a id="btn_cat_3" href="{{ url()->current(); }}?pet_category_id=3" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-dove icon-menu"></i> <br>นก  </b></a>
@@ -74,7 +76,13 @@
         </div>
 
 <script>
-    if (document.location.search === "?pet_category_id=1") {
+    if (document.location.search === "") {
+        document.querySelector('#btn_cat_pc_0').classList.add('btn-peddyhub');
+        document.querySelector('#btn_cat_pc_0').classList.remove('btn-outline-peddyhub');
+        document.querySelector('#btn_cat_0').classList.add('btn-peddyhub');
+        document.querySelector('#btn_cat_0').classList.remove('btn-outline-peddyhub');
+    }
+    else if (document.location.search === "?pet_category_id=1") {
         document.querySelector('#btn_cat_pc_1').classList.add('btn-peddyhub');
         document.querySelector('#btn_cat_pc_1').classList.remove('btn-outline-peddyhub');
         document.querySelector('#btn_cat_1').classList.add('btn-peddyhub');

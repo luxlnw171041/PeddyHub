@@ -9,10 +9,7 @@
             </div>
             <br>
             <div class="row col-12" style="padding:0px;">
-                <div class="col-12 col-md-9  ">
-                    @include ('menubar.menu_btn')
-                </div>
-                <div class="col-12 col-md-3 order-first order-md-2">
+                <div class="col-12 col-md-12 order-first order-md-2">
                     @if(Auth::check())
                         <a href="{{ url('/adoptpet/create') }}" style="margin-top:8px" class="btn main float-right" title="contact">
                         <span >โพสต์</span>  

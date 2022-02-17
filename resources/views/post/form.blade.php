@@ -5,11 +5,11 @@
                 <div class="faq wow fadeInRight">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="heading">
-                                        <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
-                                            </span><span class="orange"><i class="fas fa-paw"></i> </span><span
-                                                class="purple"><i class="fas fa-paw"></i> </span></p>
-                                        <h3>Post <span class="wow pulse" data-wow-delay="1s"></span></h3>
-                                    </div>
+                            <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
+                                </span><span class="orange"><i class="fas fa-paw"></i> </span><span
+                                    class="purple"><i class="fas fa-paw"></i> </span></p>
+                            <h3>Post <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                        </div>
                         </div>
                     </div>
                 <div class="row">
@@ -54,12 +54,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-10">
-                                <select name="pet_category_id" class="form-control" required>
-                                    <option value='' selected="selected">โปรดเลือก</option>
-                                    @foreach($category as $item)
-                                        <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
-                                    @endforeach
-                                </select>
+                                    <select name="pet_category_id" class="form-control" required>
+                                        <option value='' selected="selected">โปรดเลือก</option>
+                                        @foreach($category as $item)
+                                            <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>

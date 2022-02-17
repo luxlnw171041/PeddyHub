@@ -25,7 +25,7 @@ class Adoptpet extends Model
      *
      * @var array
      */
-    protected $fillable = ['titel', 'detail', 'user_id', 'photo', 'gender', 'size', 'age' ,'photo2','photo3','photo4','photo5'];
+    protected $fillable = ['titel', 'detail', 'user_id', 'photo', 'gender', 'size', 'age' ,'photo2','photo3','photo4','photo5','pet_category_id'];
 
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 
