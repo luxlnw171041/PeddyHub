@@ -114,9 +114,7 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
                                         <select name="gender" class="form-control" id="gender" >
-                                            <option value="" selected >
-                                                - โปรดเลือก - 
-</option>
+                                            <option value="" selected > - โปรดเลือก - </option>
                                             @foreach (json_decode('{"\u0e0a\u0e32\u0e22":"\u0e0a\u0e32\u0e22","\u0e2b\u0e0d\u0e34\u0e07":"\u0e2b\u0e0d\u0e34\u0e07","\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38":"\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"}', true) as $optionKey => $optionValue)
                                                 <option value="{{ $optionKey }}" {{ (isset($adoptpet->gender) && $adoptpet->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                             @endforeach

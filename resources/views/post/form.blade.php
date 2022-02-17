@@ -54,8 +54,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-10">
-                                <select name="pet_category_id" class="form-control">
-                                    <option value="0" selected="selected">โปรดเลือก</option>
+                                <select name="pet_category_id" class="form-control" required>
+                                    <option value='' selected="selected">โปรดเลือก</option>
                                     @foreach($category as $item)
                                         <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
                                     @endforeach

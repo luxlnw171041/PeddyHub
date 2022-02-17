@@ -119,9 +119,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-      
-            $post = Post::findOrFail($id);
-            return view('post.edit', compact('post'));
+        $category = Pet_Category::all(['id', 'name']);
+        $post = Post::findOrFail($id);
+        
+        return view('post.edit', compact('post' ,'category'));
        
     }
     /**

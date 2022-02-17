@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pet;
+use App\Models\Pet_Category;
 use Illuminate\Http\Request;
 
 class PetController extends Controller
@@ -47,8 +48,10 @@ class PetController extends Controller
      */
     public function create()
     {
+        $category = Pet_Category::all(['id', 'name']);
+
         $user = Auth::user();
-        return view('pet.create');
+        return view('pet.create' , compact('category'));
     }
 
     /**
@@ -96,6 +99,7 @@ class PetController extends Controller
     {
         $user_id = Auth::id();
         $check_user = Pet::where('user_id',$user_id )->where('id',$id )->get();
+        $category = Pet_Category::all(['id', 'name']);
 
         foreach ($check_user as $key ) {
             $user = $key->id ;
@@ -106,7 +110,7 @@ class PetController extends Controller
 
        }else{
             $pet = Pet::findOrFail($id);
-            return view('pet.edit', compact('pet'));
+            return view('pet.edit', compact('pet' ,'category'));
        }
         
     }
