@@ -12,8 +12,8 @@ class API_language extends Controller
 {
     public function change_language($language , $user_id)
     {
-        DB::table('users')
-              ->where('id', $user_id)
+        DB::table('profiles')
+              ->where('user_id', $user_id)
               ->update([
                 'language' => $language,
         ]);
