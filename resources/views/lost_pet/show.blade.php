@@ -26,7 +26,7 @@
                                         ช่วงวัย : {{ $lost_pet->pet->age }} <br>
                                         <br>
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                    <div class="col-12 col-md-12">
                                         <br>
                                         คำอธิบาย : <br>
                                         {{ $lost_pet->detail }}
