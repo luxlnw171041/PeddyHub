@@ -190,7 +190,7 @@
                 </div>
             </div>
             @if(Auth::check())
-      <h1 class="d-none" id="change_country" onclick="change_country('{{ Auth::user()->id }}','{{ Auth::user()->country }}' , '{{ Auth::user()->language }}');"></h1> 
+      <h1 class="d-none" id="change_country" onclick="change_country('{{ Auth::user()->id }}','{{ Auth::user()->country }}' , '{{ Auth::user()->profile->language }}');"></h1> 
       <div class="d-none">
         <a id="btn_change_language_th" href="javascript:trocarIdioma('th')">th</a>
         <a id="btn_change_language_en" href="javascript:trocarIdioma('en')">en</a>
