@@ -30,3 +30,5 @@ Route::get('/select_img_pet/{pet_id}','API\API_Lost_PetController@select_img_pet
 // หาจังหวัด
 Route::get('/select_province/','API\LocationController@show_location_P');
 Route::get('/select_amphoe/{province}','API\LocationController@show_location_A');
+Route::get('/select_tambon/{province}/{amphoe}','API\LocationController@show_location_T');
+Route::get('/select_lat_lng/{province}/{amphoe}/{tambon}','API\LocationController@show_location_latlng');

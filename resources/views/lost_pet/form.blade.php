@@ -8,7 +8,7 @@
                 </select>
             </div>
             <div class="col-12 col-md-3" style="margin-top:12px;">
-                <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_tambon();" required>
+                <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
                     <option value="" selected>- เลือกอำเภอ -</option>
                 </select>
             </div>
@@ -17,7 +17,7 @@
                     <option value="" selected>- เลือกตำบล -</option>
                 </select>
             </div>
-            <div class="col-12 col-md-3" style="margin-top:12px;">
+            <div class="col-12 col-md-3 d-none" style="margin-top:12px;">
                 <a class="col-6 btn btn-success text-white float-right" onclick="getLocation();">
                     <i class="fa-solid fa-location-crosshairs"></i> ตำแน่งปัจจุบัน
                 </a>
@@ -129,25 +129,25 @@
         select_province();
     });
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(initMap);
-        } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
+    // function getLocation() {
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(initMap);
+    //     } else { 
+    //         x.innerHTML = "Geolocation is not supported by this browser.";
+    //     }
 
-        document.querySelector('#map').classList.remove('d-none');
-    }
+    //     document.querySelector('#map').classList.remove('d-none');
+    // }
     
-    function initMap(position) { 
+    function initMap() { 
 
         let lat_text = document.querySelector("#lat");
         let lng_text = document.querySelector("#lng");
         let latlng = document.querySelector("#latlng");
 
-        lat_text.value = position.coords.latitude ;
-        lng_text.value = position.coords.longitude ;
-        latlng.value = position.coords.latitude+","+position.coords.longitude ;
+        // lat_text.value = position.coords.latitude ;
+        // lng_text.value = position.coords.longitude ;
+        // latlng.value = position.coords.latitude+","+position.coords.longitude ;
         
         let lat = parseFloat(lat_text.value) ;
         let lng = parseFloat(lng_text.value) ;
@@ -162,7 +162,7 @@
         const user = { lat: lat, lng: lng };
         const marker_user = new google.maps.Marker({ map, position: user });
 
-        document.querySelector('#div_form').classList.remove('d-none');
+        // document.querySelector('#div_form').classList.remove('d-none');
 
     }
 
@@ -197,10 +197,10 @@
 
                 select_province.innerHTML = "";
 
-                // let option = document.createElement("option");
-                //     option.text = "- เลือกจังหวัด -";
-                //     option.value = "";
-                //     input_car_model.add(option); 
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกจังหวัด -";
+                    option_select.value = "";
+                    select_province.add(option_select); 
 
                 for(let item of result){
                     let option = document.createElement("option");
@@ -215,12 +215,18 @@
         let select_province = document.querySelector('#select_province');
         let select_amphoe = document.querySelector('#select_amphoe');
 
-        fetch("{{ url('/') }}/api/select_amphoe/" + select_province.value )
+        fetch("{{ url('/') }}/api/select_amphoe" + "/" + select_province.value)
             .then(response => response.json())
             .then(result => {
                 // console.log(result);
 
                 select_amphoe.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกอำเภอ -";
+                    option_select.value = "";
+                    select_amphoe.add(option_select); 
+
                 for(let item of result){
                     let option = document.createElement("option");
                     option.text = item.amphoe_th;
@@ -228,6 +234,57 @@
                     select_amphoe.add(option);
                 }
             });
+    }
+
+    function select_T(){
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+        let select_tambon = document.querySelector('#select_tambon');
+
+        fetch("{{ url('/') }}/api/select_tambon" + "/" + select_province.value + "/" + select_amphoe.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_tambon.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกตำบล -";
+                    option_select.value = "";
+                    select_tambon.add(option_select); 
+
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.tambon_th;
+                    option.value = item.tambon_th;
+                    select_tambon.add(option);
+                }
+            });
+    }
+
+    function select_lat_lng(){
+        
+        document.querySelector('#div_form').classList.remove('d-none');
+
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+        let select_tambon = document.querySelector('#select_tambon');
+
+        fetch("{{ url('/') }}/api/select_lat_lng" + "/" + select_province.value + "/" + select_amphoe.value + "/" + select_tambon.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                let lat = document.querySelector('#lat');
+                    lat.value = result[0]['lat'];
+
+                let lng = document.querySelector('#lng');
+                    lng.value = result[0]['lng'];
+            });
+
+        document.querySelector('#map').classList.remove('d-none');
+
+        initMap();
     }
 
 </script>
