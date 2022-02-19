@@ -62,6 +62,10 @@ class Lost_PetController extends Controller
     {
         
         $requestData = $request->all();
+        
+        $requestData['tambon_th'] = $requestData['select_tambon']; 
+        $requestData['amphoe_th'] = $requestData['select_amphoe']; 
+        $requestData['changwat_th'] = $requestData['select_province']; 
 
         if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')

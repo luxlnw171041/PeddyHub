@@ -83,14 +83,14 @@
         <input class="form-control" name="photo" type="text" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" >
         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
     </div>
-    <div class="d- form-group {{ $errors->has('lat') ? 'has-error' : ''}}">
+    <div class="d-none form-group {{ $errors->has('lat') ? 'has-error' : ''}}">
         <label for="lat" class="control-label">{{ 'Let' }}</label>
-        <input class="form-control" name="lat" type="text" id="lat" value="{{ isset($lost_pet->lat) ? $lost_pet->lat : ''}}" >
+        <input class="form-control" name="lat" type="text" id="lat" value="" >
         {!! $errors->first('lat', '<p class="help-block">:message</p>') !!}
     </div>
-    <div class="d- form-group {{ $errors->has('lng') ? 'has-error' : ''}}">
+    <div class="d-none form-group {{ $errors->has('lng') ? 'has-error' : ''}}">
         <label for="lng" class="control-label">{{ 'Long' }}</label>
-        <input class="form-control" name="lng" type="text" id="lng" value="{{ isset($lost_pet->lng) ? $lost_pet->lng : ''}}" >
+        <input class="form-control" name="lng" type="text" id="lng" value="" >
         {!! $errors->first('lng', '<p class="help-block">:message</p>') !!}
     </div>
 
@@ -280,11 +280,12 @@
 
                 let lng = document.querySelector('#lng');
                     lng.value = result[0]['lng'];
+
+                document.querySelector('#map').classList.remove('d-none');
+                initMap();
+                   
             });
-
-        document.querySelector('#map').classList.remove('d-none');
-
-        initMap();
+        
     }
 
 </script>
