@@ -30,6 +30,9 @@ class Post extends Model
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 
     }
+    public function profile(){
+        return $this->belongsTo('App\Models\Profile', 'user_id'); 
+    }
     public function comments() 
     {
         return $this->hasMany('App\Models\Comment'); 

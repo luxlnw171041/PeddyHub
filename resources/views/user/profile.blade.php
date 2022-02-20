@@ -28,8 +28,8 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="member">
                             <div class="image">
-                                @if(!empty($data->photo))
-                                    <img style="width:350px; hight: 292px;" src="{{ url('storage')}}/{{ $data->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                @if(!empty($data->profile->photo))
+                                    <img style="width:350px; " src="{{ url('storage')}}/{{ $data->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
                                   
                                 @else 
                                     <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}"  alt="image of client" title="client" class="img-fluid customer">

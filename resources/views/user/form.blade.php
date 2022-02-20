@@ -24,18 +24,18 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'ชื่อ' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control"  name="name" type="text" id="name" value="{{ isset($data->name) ? $data->name : ''}}" >
+                                        <input class="form-control"  name="name" type="text" id="name" value="{{ isset($data->profile->name) ? $data->profile->name : ''}}" >
                                         {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'วันเกิด' }}</b></label>
                                     </div>
                                 </div>
@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'เพศ' }}</b></label>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                         {!! $errors->first('massengbox', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-12 col-md-2">
+                                <div class="col-lg-12 col-12 col-md-12">
                                     <label  class="control-label"><b>{{ 'รูปภาพ' }}</b></label>
                                 </div>
                                 <div class="col-lg-12 col-12 col-md-10">
@@ -92,19 +92,19 @@
                                 <h3>ข้อมูลติดต่อ <span class="wow pulse" data-wow-delay="1s"></span></h3>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-md-2 col-sm-2">
-                                    <div class="col-12 col-md-2">
+                                <div class="col-lg-12 col-md-12 col-sm-2">
+                                    <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'อีเมล' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->email ) ? $data->email  : ''}}" >
+                                        <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->email ) ? $data->email  : ''}}" readonly>
                                         {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
-                                    <div class="col-12 col-md-2">
+                                    <div class="col-12 12">
                                         <label  class="control-label"><b>{{ 'เบอร์โทร' }}</b></label>
                                     </div>
                                 </div>
