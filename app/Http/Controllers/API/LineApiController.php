@@ -79,14 +79,52 @@ class LineApiController extends Controller
             ->where('provider_id', $provider_id)
             ->get();
 
-        // if (!empty($data_users[0])) {
-        //     // เช็คภาษาของ User
-        //     $this->check_language_user($data_users);
-        // }else {
-        //     // ตั้งค่าริชเมนูเริ่มต้น
-        //     $this->set_richmanu_start($provider_id , $data_result->language);
-        // }
+        if (!empty($data_users[0])) {
+            // เช็คภาษาของ User
+            $this->check_language_user($data_users);
+        }else {
+            // ตั้งค่าริชเมนูเริ่มต้น
+            $this->set_richmanu_start($provider_id , $data_result->language);
+        }
 
+    }
+
+    public function check_language_user($data_users)
+    {
+        foreach ($data_users as $data_user) {
+            $user_language = $data_user->profile->language ;
+            $provider_id = $data_user->provider_id ;
+        }
+
+        if (empty($user_language)) {
+            // DF ริชเมนู EN 
+            $richMenuId = "richmenu-abf409dee26385d885a3fee64572bca5" ;
+        }else {
+            switch ($user_language) {
+                case 'th':
+                    $richMenuId = "richmenu-454c598f6cc2cfa01d9e61dd08c90f1a" ;
+                    break;
+                case 'en':
+                    $richMenuId = "richmenu-abf409dee26385d885a3fee64572bca5" ;
+                    break;
+            }
+        }
+
+        $this->set_richmanu_language($provider_id , $richMenuId , $user_language);
+        
+    }
+
+    public function set_richmanu_language($provider_id , $richMenuId , $user_language)
+    {
+        $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('CHANNEL_ACCESS_TOKEN'));
+        $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_CLIENT_SECRET')]);
+        $response = $bot->linkRichMenu($provider_id, $richMenuId);
+
+        $data = [
+            "title" => "set_richmanu_" . $user_language,
+            "content" => $provider_id,
+        ];
+        MyLog::create($data);
     }
     
 
