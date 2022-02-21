@@ -96,6 +96,13 @@ class LineApiController extends Controller
             $provider_id = $data_user->provider_id ;
         }
 
+        //SAVE LOG
+        $data = [
+            "title" => "CHECK",
+            "content" => "CHECK",
+        ];
+        MyLog::create($data);
+
         if (empty($user_language)) {
             // DF ริชเมนู EN 
             $richMenuId = "richmenu-f74b7d2a88f9a579925341a9e302cd4f" ;
