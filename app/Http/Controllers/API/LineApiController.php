@@ -84,7 +84,7 @@ class LineApiController extends Controller
             //SAVE LOG
             $data_CHECK = [
                 "title" => "CHECK",
-                "content" => "CHECK",
+                "content" => $data_users[0],
             ];
             MyLog::create($data_CHECK);
             $this->check_language_user($data_users);
