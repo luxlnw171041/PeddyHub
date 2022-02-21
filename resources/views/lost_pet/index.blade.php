@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="image" style="margin-top:8px;">
-                                        <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" class="img-fluid customer">
+                                        <img class="imgf" src="{{ url('storage/'.$item->photo )}}" style="object-fit: scale-down;" width="400px" height="300px" class="img-fluid customer">
                                     </div>
                                     <div style="padding-top:10px;padding-left:20px;">
                                         <div class="row col-12">

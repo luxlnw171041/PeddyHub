@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                    <input class="form-control" name="birth" type="date" id="birth" value="{{ isset($data->birth) ? $data->birth : ''}}" >
+                                    <input class="form-control" name="birth" type="date" id="birth" value="{{ isset($data->profile->birth) ? $data->profile->birth : ''}}" >
                                         {!! $errors->first('birth', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                                 - โปรดเลือก - 
                                             </option>  
                                                 @foreach (json_decode('{"ผู้ชาย":"ผู้ชาย","ผู้หญิง":"ผู้หญิง","ไม่ต้องการตอบ":"ไม่ต้องการตอบ"}', true) as $optionKey => $optionValue)
-                                            <option  ption value="{{ $optionKey }}"  {{ (isset($data->sex) && $data->sex == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                                            <option  ption value="{{ $optionKey }}"  {{ (isset($data->profile->sex) && $data->profile->sex == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                                 @endforeach
                                         </select>
                                         {!! $errors->first('massengbox', '<p class="help-block">:message</p>') !!}
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-lg-12 col-12 col-md-10">
                                     <div class="form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
-                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($data->photo) ? $data->photo : ''}}" accept="image/*" multiple="multiple">
+                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($data->profile->photo) ? $data->profile->photo : ''}}" accept="image/*" multiple="multiple">
                                         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->email ) ? $data->email  : ''}}" readonly>
+                                        <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->profile->email ) ? $data->profile->email  : ''}}" readonly>
                                         {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control" name="phone" type="number" id="phone" value="{{ isset($data->phone) ? $data->phone : ''}}" >
+                                        <input class="form-control" name="phone" type="number" id="phone" value="{{ isset($data->profile->phone) ? $data->profile->phone : ''}}" >
                                         {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>

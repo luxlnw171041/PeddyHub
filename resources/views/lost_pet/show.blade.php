@@ -11,7 +11,13 @@
                     <!--Content Side / Blog Single-->
                     <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                         <!-- Place somewhere in the <body> of your page -->
-                        <img src="{{ url('storage')}}/{{ $lost_pet->pet->photo }}" draggable="false">
+                        <div class="card main-shadow main-radius">
+                                <div class="card-body">
+                                    <h4>รูปภาพ</h4>
+                                    <img src="{{ url('storage')}}/{{ $lost_pet->pet->photo }}" style="border-radius: 25px;" draggable="false">
+                                </div>
+                            </div>
+                        
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <div class="name">
@@ -62,6 +68,7 @@
                                     <div id="map_show" class="main-shadow main-radius">
                                     </div>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -48,7 +48,7 @@
                             @endforeach -->
                             <div class="content">
                                 <div class="name wow fadeInDown">
-                                    <a title="name">{{ $data->name }}</a>
+                                    <a title="name">{{ $data->profile->name }}</a>
                                 </div>
                             </div>
                                    
@@ -74,10 +74,10 @@
                                                         </h5>
                                                     </li>
                                                     <li><i class="fas fa-paw yellow me-2"></i> <span> username: </span>  {{ $data->username }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Birthday: </span>  {{ $data->birth }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Gender: </span> {{ $data->sex }}</li>
+                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Birthday: </span>  {{ $data->profile->birth }}</li>
+                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Gender: </span> {{ $data->profile->sex }}</li>
                                                     <li><i class="fas fa-paw yellow me-2"></i> <span> Email: </span> {{ $data->email }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> tel: </span>{{ $data->phone }}</li>
+                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> tel: </span>{{ $data->profile->phone }}</li>
                                                 </ul>
                                             </div>
                                         </div>
