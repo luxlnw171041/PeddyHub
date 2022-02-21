@@ -75,9 +75,7 @@ class LineApiController extends Controller
         ];
         MyLog::create($data);
 
-        $data_users = DB::table('users')
-            ->where('provider_id', $provider_id)
-            ->get();
+        $data_users = User::where('provider_id', $provider_id)->get();
 
         if (!empty($data_users[0])) {
             // เช็คภาษาของ User
