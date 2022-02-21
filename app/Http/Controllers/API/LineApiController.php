@@ -119,7 +119,7 @@ class LineApiController extends Controller
             $data_CHECK = [
                 "title" => "CHECK",
                 // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
-                "content" => $user_language,
+                "content" => $richMenuId,
             ];
             MyLog::create($data_CHECK);
         $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('CHANNEL_ACCESS_TOKEN'));
