@@ -79,6 +79,15 @@ class LineApiController extends Controller
 
         if (!empty($data_users[0])) {
             // เช็คภาษาของ User
+
+            //SAVE LOG
+            $data_CHECK = [
+                "title" => "CHECK",
+                // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
+                "content" => "CHECK",
+            ];
+            MyLog::create($data_CHECK);
+            
             $this->check_language_user($data_users);
         }else {
             // ตั้งค่าริชเมนูเริ่มต้น
@@ -89,14 +98,6 @@ class LineApiController extends Controller
 
     public function check_language_user($data_users)
     {
-        //SAVE LOG
-            $data_CHECK = [
-                "title" => "CHECK",
-                "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
-                // "content" => "CHECK",
-            ];
-            MyLog::create($data_CHECK);
-
         foreach ($data_users as $data_user) {
             $user_language = $data_user->profile->language ;
             $provider_id = $data_user->provider_id ;
