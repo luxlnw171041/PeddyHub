@@ -2,16 +2,81 @@
     <div class="pet service">
         <section class="contact">
             <div class="container">
-                <div class="faq wow fadeInRight">
+                <!-- ข้อมูล USER -->
+                <div id="data_user" class="faq wow fadeInRight">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="heading">
-                                        <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
-                                            </span><span class="orange"><i class="fas fa-paw"></i> </span><span
-                                                class="purple"><i class="fas fa-paw"></i> </span></p>
-                                        <h3>ข้อมูลสัตว์เลี้ยง <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                            <p class="wow fadeInUp">
+                                <span class="purple"><i class="fas fa-paw"></i></span>
+                                <span class="orange"><i class="fas fa-paw"></i> </span>
+                                <span class="purple"><i class="fas fa-paw"></i> </span>
+                            </p>
+                            <h3>
+                                ข้อมูลของคุณ 
+                                <span class="wow pulse" data-wow-delay="1s"></span>
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 col-md-12">
+                                        <label  class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
+                                        <span class="text-danger">*</span>
+                                        @if(!empty(Auth::user()->profile->changwat_th))
+                                            <a class="text-secondary" href="{{ url('/user/' . Auth::user()->id . '/edit') }}" >
+                                                แก้ไขข้อมูล
+                                            </a>
+                                        @endif
                                     </div>
+                                    <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->changwat_th))
+                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
+                                        @else
+                                            <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                                    <option value="" selected>- เลือกจังหวัด -</option>
+
+                                            </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->amphoe_th))
+                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
+                                        @else
+                                            <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                                <option value="" selected>- เลือกอำเภอ -</option>
+                                            </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        
+
+                                        @if(!empty(Auth::user()->profile->tambon_th))
+                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
+                                        @else
+                                            <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                                <option value="" selected>- เลือกตำบล -</option>
+                                            </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <!-- จบข้อมูล USER -->
+
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="heading">
+                        <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
+                            </span><span class="orange"><i class="fas fa-paw"></i> </span><span
+                                class="purple"><i class="fas fa-paw"></i> </span></p>
+                        <h3>ข้อมูลสัตว์เลี้ยง <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="faq wow fadeInRight">
@@ -105,7 +170,7 @@
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
                                         <select name="size" class="form-control" id="size" required>
-                                            <option value='' selected > - โปรดเลือก - </option>
+                                            <option value='' selected> - โปรดเลือก - </option>
                                             @foreach (json_decode('{"\u0e40\u0e25\u0e47\u0e01\u0e21\u0e32\u0e01":"\u0e40\u0e25\u0e47\u0e01\u0e21\u0e32\u0e01","\u0e40\u0e25\u0e47\u0e01":"\u0e40\u0e25\u0e47\u0e01","\u0e01\u0e25\u0e32\u0e07":"\u0e01\u0e25\u0e32\u0e07","\u0e43\u0e2b\u0e0d\u0e48":"\u0e43\u0e2b\u0e0d\u0e48","\u0e43\u0e2b\u0e0d\u0e48\u0e21\u0e32\u0e01":"\u0e43\u0e2b\u0e0d\u0e48\u0e21\u0e32\u0e01"}', true) as $optionKey => $optionValue)
                                                 <option value="{{ $optionKey }}" {{ (isset($pet->size) && $pet->size == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                             @endforeach
@@ -117,7 +182,7 @@
                     </div>
                     <div class="col-lg-6 col-md-12 col-sm-12"></div>
                 </div>
-                </div>
+            </div>
             <div class="faq wow fadeInRight">
                 <div class="container">
                     <div class="row">
@@ -135,3 +200,91 @@
         </section>
     </div>
 </div>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // console.log("START");
+        let check_changwat_th = document.querySelector('#check_changwat_th');
+
+        if (!check_changwat_th.value) {
+            select_province();
+        }
+    });
+
+    function select_province(){
+        let select_province = document.querySelector('#select_province');
+
+        fetch("{{ url('/') }}/api/select_province/")
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_province.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกจังหวัด -";
+                    option_select.value = "";
+                    select_province.add(option_select); 
+
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.changwat_th;
+                    option.value = item.changwat_th;
+                    select_province.add(option);
+                }
+            });
+    }
+
+    function select_A(){
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+
+        fetch("{{ url('/') }}/api/select_amphoe" + "/" + select_province.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_amphoe.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกอำเภอ -";
+                    option_select.value = "";
+                    select_amphoe.add(option_select); 
+
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.amphoe_th;
+                    option.value = item.amphoe_th;
+                    select_amphoe.add(option);
+                }
+            });
+    }
+
+    function select_T(){
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+        let select_tambon = document.querySelector('#select_tambon');
+
+        fetch("{{ url('/') }}/api/select_tambon" + "/" + select_province.value + "/" + select_amphoe.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_tambon.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกตำบล -";
+                    option_select.value = "";
+                    select_tambon.add(option_select); 
+
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.tambon_th;
+                    option.value = item.tambon_th;
+                    select_tambon.add(option);
+                }
+            });
+
+    }
+</script>

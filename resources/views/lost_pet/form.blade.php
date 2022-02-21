@@ -260,6 +260,7 @@
                     select_tambon.add(option);
                 }
             });
+
     }
 
     function select_lat_lng(){

@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pet;
 use App\Models\Pet_Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class PetController extends Controller
@@ -65,11 +66,26 @@ class PetController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
+
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
-                ->store('uploads', 'public');
+            ->store('uploads', 'public');
         }
-        $requestData['user_id'] = Auth::id();   
+        $requestData['user_id'] = Auth::id(); 
+
+        if (!empty($requestData['select_province'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'changwat_th' => $requestData['select_province'],
+                    'amphoe_th' => $requestData['select_amphoe'],
+                    'tambon_th' => $requestData['select_tambon'],
+                    'phone' => $requestData['phone_user']
+                ]);
+        }  
+
         Pet::create($requestData);
         return redirect('pet')->with('flash_message', 'Pet added!');
     }
