@@ -77,17 +77,16 @@ class LineApiController extends Controller
 
         $data_users = User::where('provider_id', $provider_id)->get();
 
-        if (!empty($data_users[0])) {
-            // เช็คภาษาของ User
-
-            //SAVE LOG
+        //SAVE LOG
             $data_CHECK = [
                 "title" => "CHECK",
                 // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
                 "content" => "CHECK",
             ];
             MyLog::create($data_CHECK);
-            
+
+        if (!empty($data_users[0])) {
+            // เช็คภาษาของ User
             $this->check_language_user($data_users);
         }else {
             // ตั้งค่าริชเมนูเริ่มต้น
