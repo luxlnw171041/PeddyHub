@@ -94,14 +94,6 @@ class LineApiController extends Controller
             $provider_id = $data_user->provider_id ;
         }
 
-        //SAVE LOG
-            $data_CHECK = [
-                "title" => "CHECK",
-                // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
-                "content" => $user_language,
-            ];
-            MyLog::create($data_CHECK);
-
         if (empty($user_language)) {
             // DF ริชเมนู EN 
             $richMenuId = "richmenu-f74b7d2a88f9a579925341a9e302cd4f" ;
@@ -122,6 +114,14 @@ class LineApiController extends Controller
 
     public function set_richmanu_language($provider_id , $richMenuId , $user_language)
     {
+
+        //SAVE LOG
+            $data_CHECK = [
+                "title" => "CHECK",
+                // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
+                "content" => $user_language,
+            ];
+            MyLog::create($data_CHECK);
         $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('CHANNEL_ACCESS_TOKEN'));
         $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_CLIENT_SECRET')]);
         $response = $bot->linkRichMenu($provider_id, $richMenuId);
