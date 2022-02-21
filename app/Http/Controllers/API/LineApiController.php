@@ -114,6 +114,14 @@ class LineApiController extends Controller
 
     public function set_richmanu_language($provider_id , $richMenuId , $user_language)
     {
+        //SAVE LOG
+            $data_CHECK = [
+                "title" => "CHECK",
+                // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
+                "content" => $provider_id,
+            ];
+            MyLog::create($data_CHECK);
+            
         $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('CHANNEL_ACCESS_TOKEN'));
         $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_CLIENT_SECRET')]);
         $response = $bot->linkRichMenu($provider_id, $richMenuId);
