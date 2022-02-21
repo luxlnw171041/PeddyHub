@@ -98,11 +98,11 @@ class LineApiController extends Controller
 
         if (empty($user_language)) {
             // DF ริชเมนู EN 
-            $richMenuId = "richmenu-abf409dee26385d885a3fee64572bca5" ;
+            $richMenuId = "richmenu-f74b7d2a88f9a579925341a9e302cd4f" ;
         }else {
             switch ($user_language) {
                 case 'th':
-                    $richMenuId = "richmenu-454c598f6cc2cfa01d9e61dd08c90f1a" ;
+                    $richMenuId = "richmenu-f74b7d2a88f9a579925341a9e302cd4f" ;
                     break;
                 case 'en':
                     $richMenuId = "richmenu-abf409dee26385d885a3fee64572bca5" ;
