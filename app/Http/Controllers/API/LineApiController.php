@@ -81,6 +81,12 @@ class LineApiController extends Controller
 
         if (!empty($data_users[0])) {
             // เช็คภาษาของ User
+            //SAVE LOG
+            $data_CHECK = [
+                "title" => "CHECK",
+                "content" => "CHECK",
+            ];
+            MyLog::create($data_CHECK);
             $this->check_language_user($data_users);
         }else {
             // ตั้งค่าริชเมนูเริ่มต้น
@@ -97,11 +103,11 @@ class LineApiController extends Controller
         }
 
         //SAVE LOG
-        $data = [
+        $data_CHECK = [
             "title" => "CHECK",
             "content" => "CHECK",
         ];
-        MyLog::create($data);
+        MyLog::create($data_CHECK);
 
         if (empty($user_language)) {
             // DF ริชเมนู EN 
