@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\User;
+use App\Models\User;
 use App\Models\Mylog;
 use App\Models\LineMessagingAPI;
 use Illuminate\Support\Facades\DB;
@@ -77,14 +77,6 @@ class LineApiController extends Controller
 
         $data_users = User::where('provider_id', $provider_id)->get();
 
-        //SAVE LOG
-            $data_CHECK = [
-                "title" => "CHECK",
-                // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
-                "content" => "CHECK",
-            ];
-            MyLog::create($data_CHECK);
-
         if (!empty($data_users[0])) {
             // เช็คภาษาของ User
             $this->check_language_user($data_users);
@@ -101,6 +93,14 @@ class LineApiController extends Controller
             $user_language = $data_user->profile->language ;
             $provider_id = $data_user->provider_id ;
         }
+
+        //SAVE LOG
+            $data_CHECK = [
+                "title" => "CHECK",
+                // "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
+                "content" => $user_language,
+            ];
+            MyLog::create($data_CHECK);
 
         if (empty($user_language)) {
             // DF ริชเมนู EN 
