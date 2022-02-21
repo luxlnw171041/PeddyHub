@@ -94,10 +94,11 @@ class LineApiController extends Controller
         //SAVE LOG
             $data_CHECK = [
                 "title" => "CHECK",
-                "content" => "CHECK",
+                "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
+                // "content" => "CHECK",
             ];
             MyLog::create($data_CHECK);
-            
+
         foreach ($data_users as $data_user) {
             $user_language = $data_user->profile->language ;
             $provider_id = $data_user->provider_id ;
