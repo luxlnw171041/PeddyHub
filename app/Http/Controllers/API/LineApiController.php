@@ -89,20 +89,20 @@ class LineApiController extends Controller
 
     }
 
-    public function check_language_user($data_users_old)
+    public function check_language_user($data_users)
     {
-        $data_user = User::findOrFail($data_users_old->id);
-
-        $user_language = $data_user->profile->language ;
-        $provider_id = $data_user->provider_id ;
-
         //SAVE LOG
-        $data_CHECK = [
-            "title" => "CHECK",
-            // "content" => json_encode($data_users_old, JSON_UNESCAPED_UNICODE),
-            "content" => $user_language,
-        ];
-        MyLog::create($data_CHECK);
+            $data_CHECK = [
+                "title" => "CHECK",
+                "content" => json_encode($data_users, JSON_UNESCAPED_UNICODE),
+                // "content" => "CHECK",
+            ];
+            MyLog::create($data_CHECK);
+
+        foreach ($data_users as $data_user) {
+            $user_language = $data_user->profile->language ;
+            $provider_id = $data_user->provider_id ;
+        }
 
         if (empty($user_language)) {
             // DF ริชเมนู EN 
