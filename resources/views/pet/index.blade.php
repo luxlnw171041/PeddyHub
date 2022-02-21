@@ -67,10 +67,10 @@
                                             </div>
                                             <div class="col-md-6 col-6 col-lg-6" >
                                                 <div class="button wow fadeInUp d-flex justify-content-end" >
-                                                    <form id="myform" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                    <form id="myform" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline" >
                                                         {{ method_field('DELETE') }}
                                                         {{ csrf_field() }}
-                                                        <a href="javascript:;" type="submit" class="btn main" title="Delete Pet" onclick="document.getElementById('myform').submit() ">ลบ</a>
+                                                        <a  href="javascript:;" type="submit" class="btn main" title="Delete Pet" onclick="this.parentNode.submit();">ลบ</a>
                                                     </form>
                                                 </div>
                                             </div>

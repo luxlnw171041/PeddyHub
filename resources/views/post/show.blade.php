@@ -38,16 +38,16 @@
                                                 @if(($data->post_id  ==  $post->id))
                                                     <div class="comment">
                                                         <div class="image pr-4 pt-3 col-11" style="margin-top:-10px;"> 
-                                                            @if(!empty($data->user->photo))
-                                                                <img class="img-fluid" src="{{ url('storage')}}/{{ $data->user->photo }}"alt="Image of Author" title="Author" width="125" height="100">
-                                                            @elseif(($data->user->photo  ==  null))
+                                                            @if(!empty($data->profile->photo))
+                                                                <img class="img-fluid" src="{{ url('storage')}}/{{ $data->profile->photo }}"alt="Image of Author" title="Author" width="125" height="100">
+                                                            @else
                                                             <img class="img-fluid" src="{{ url('peddyhub/images/home_5/icon1.png')}}"alt="Image of Author" title="Author" width="125" height="100">
                                                             @endif
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-11">
                                                             <div class="context">
-                                                            <h5>{{$data->user->name}}</h5>
+                                                            <h5>{{$data->profile->name}}</h5>
                                                             <p class="mb-0">
                                                                 <span>{{ $data->created_at->thaidate('j M Y') }}</span> 
                                                             </p>

@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-lg-10 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($post->photo) ? $post->photo : ''}}" >
+                                        <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($post->photo) ? $post->photo : ''}}" accept="image/*" />
                                     </div>
                                 </div>
                             </div>

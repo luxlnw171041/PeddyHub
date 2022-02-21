@@ -197,7 +197,7 @@
                                                     @if(($data->post_id  ==  $item->id))
                                                         <div class="col-2 text-center" style="padding:0px;margin-top:10px;">
                                                             @if(!empty($data->profile->photo))
-                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $data->user->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $data->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
                                                             @else
                                                             <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="peddyhub/images/home_5/icon1.png" alt="image of client" title="client" class="img-fluid customer">
                                                             @endif

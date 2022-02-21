@@ -115,7 +115,7 @@
                                             <a href="tel:{{ $item->profile->phone }}" class="col-6 main-shadow main-radius btn btn-info" >
                                                 ติดต่อ
                                             </a> -->
-                                            <div class="card-body d-flex justify-content-around"style="padding:10px;">
+                                            <div class="card-body d-flex justify-content-between"style="padding:10px;">
                                                 <a href="{{ url('/lost_pet/' . $item->id) }}" class="btn btn-outline-peddyhub">
                                                     <b class="text-b-lost_pet"><i class="fa-solid fa-file-lines icon-menu-lost_pet"></i>  <br>
                                                         รายละเอียด
