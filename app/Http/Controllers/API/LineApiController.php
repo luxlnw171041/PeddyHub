@@ -79,6 +79,9 @@ class LineApiController extends Controller
             case "ติดต่อ PEDDyHUB" :  
                 $line->replyToUser(null, $event, "contact");
                 break;
+            case "ติดต่อ" :  
+                $line->replyToUser(null, $event, "contact");
+                break;
             case "contact" :  
                 $line->replyToUser(null, $event, "contact");
                 break;
