@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\API\LineApiController;
 use Intervention\Image\ImageManagerStatic as Image;
   
 class LoginController extends Controller
