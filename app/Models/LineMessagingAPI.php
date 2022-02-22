@@ -32,6 +32,10 @@ class LineMessagingAPI extends Model
         	$tambon_th = $data['input_tambon'];
         }
 
+        $photo = $data['photo'];
+        $detail = $data['detail'];
+        $phone = $data['phone'];
+
         switch ($data['pet_category_id']) {
         	case '1':
         		$pet_category_id = 'สุนัข';
@@ -72,11 +76,11 @@ class LineMessagingAPI extends Model
 
 	        $string_json = file_get_contents($template_path);
 	        $string_json = str_replace("pet_cat",$pet_category_id,$string_json);
-	        $string_json = str_replace("IMGPET",$data['photo'],$string_json);
+	        $string_json = str_replace("IMGPET",$photo,$string_json);
 	        $string_json = str_replace("4544.png",$img_icon,$string_json);
 	        $string_json = str_replace("22/2/2022",$date_now,$string_json);
-	        $string_json = str_replace("รายละเอียด",$data['detail'],$string_json);
-	        $string_json = str_replace("0999999999",$data['phone'],$string_json);
+	        $string_json = str_replace("รายละเอียด",$detail,$string_json);
+	        $string_json = str_replace("0999999999",$phone,$string_json);
 
 	        foreach ($data_pets as $data_pet) {
 	        	$string_json = str_replace("pet_name",$data_pet->name,$string_json);
