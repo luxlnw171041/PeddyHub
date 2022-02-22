@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
+use App\Models\Mylog;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\API\LineApiController;
 // use App\Models\LineMessagingAPI;
