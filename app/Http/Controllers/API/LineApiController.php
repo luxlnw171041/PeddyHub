@@ -132,6 +132,34 @@ class LineApiController extends Controller
         ];
         MyLog::create($data);
     }
+
+    public function set_richmanu_start($provider_id , $device_language)
+    {
+        switch ($device_language) {
+            case 'th':
+                $richMenuId_start = "richmenu-37967709bcd2bcdbbb78f44e9e296c5c" ;
+                break;
+            case 'en':
+                $richMenuId_start = "richmenu-c81651226ee758ba815030849e2787e9" ;
+                break;
+            
+            default:
+                // en
+                $richMenuId_start = "richmenu-c81651226ee758ba815030849e2787e9" ;
+                break;
+        }
+
+        $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('CHANNEL_ACCESS_TOKEN'));
+        $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_CLIENT_SECRET')]);
+        $response = $bot->linkRichMenu($provider_id, $richMenuId_start);
+
+        $data = [
+            "title" => "set_richmanu_start",
+            "content" => $provider_id,
+        ];
+        MyLog::create($data);
+
+    }
     
 
 }
