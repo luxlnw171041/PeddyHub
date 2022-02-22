@@ -111,7 +111,7 @@ class LineMessagingAPI extends Model
 	        //SAVE LOG
 	        $data_save_log = [
 	            "title" => "ส่งข้อความแจ้งสัตว์เลี้ยงหาย",
-	            "content" => json_encode($result, JSON_UNESCAPED_UNICODE),
+	            "content" => $item->user->username . " - " . $item->user->provider_id,
 	        ];
         	MyLog::create($data_save_log);
 
