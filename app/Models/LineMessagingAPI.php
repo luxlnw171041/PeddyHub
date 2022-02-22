@@ -109,10 +109,11 @@ class LineMessagingAPI extends Model
 	        $result = file_get_contents($url, false, $context);
 
 	        //SAVE LOG
-	        $data = [
+	        $data_save_log = [
 	            "title" => "ส่งข้อความแจ้งสัตว์เลี้ยงหาย",
 	            "content" => json_encode($result, JSON_UNESCAPED_UNICODE),
 	        ];
+        	MyLog::create($data_save_log);
 
         }
 		
