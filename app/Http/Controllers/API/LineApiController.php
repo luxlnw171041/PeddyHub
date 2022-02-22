@@ -103,7 +103,7 @@ class LineApiController extends Controller
                     $richMenuId = "richmenu-18d6a83914d2a3b83f25a1469d797ae5" ;
                     break;
                 case 'en':
-                    $richMenuId = "" ;
+                    $richMenuId = "richmenu-889d55423c76bfc75ae480d3578399ba" ;
                     break;
             }
         }
