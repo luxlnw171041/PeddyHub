@@ -14,7 +14,9 @@
                         <div class="card main-shadow main-radius">
                                 <div class="card-body">
                                     <h4>รูปภาพ</h4>
-                                    <img src="{{ url('storage')}}/{{ $lost_pet->pet->photo }}" style="border-radius: 25px;" draggable="false">
+                                    <div class="d-flex justify-content-center">
+                                        <img src="{{ url('storage')}}/{{ $lost_pet->pet->photo }}" style="border-radius: 25px;" draggable="false">
+                                    </div>
                                 </div>
                             </div>
                         
