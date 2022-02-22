@@ -60,7 +60,7 @@
         "contents": [
           {
             "type": "image",
-            "url": "https://www.peddyhub.com/storage/uploads/Rq9AwENn1vsTxQabsyUOo8ik1FGezY5F9CJXnFHP.jpg",
+            "url": "https://www.peddyhub.com/peddyhub/images/img-icon/4544.png",
             "size": "full",
             "aspectRatio": "1:1",
             "aspectMode": "fit"
@@ -136,7 +136,7 @@
                 "contents": [
                   {
                     "type": "text",
-                    "text": "รายละเอียดสัตว์เลี้ยงรายละเอียดสัตว์เลี้ยงรายละเอียดสัตว์เลี้ยง",
+                    "text": "รายละเอียด",
                     "flex": 0,
                     "margin": "sm",
                     "wrap": true
@@ -180,7 +180,7 @@
                     "action": {
                       "type": "uri",
                       "label": "ติดต่อ",
-                      "uri": "http://peddyhub.com/"
+                      "uri": "tel:0999999999"
                     },
                     "height": "sm",
                     "style": "primary",
