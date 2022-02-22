@@ -70,7 +70,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->user();
 
-        $this->_registerOrLoginUser($user, "google");
+        $this->_registerOrLoginUser($user, "google",null);
 
         $value = $request->session()->get('redirectTo');
         $request->session()->forget('redirectTo');
@@ -90,7 +90,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
         // print_r($user);
-        $this->_registerOrLoginUser($user,"facebook");
+        $this->_registerOrLoginUser($user,"facebook",null);
 
         // Return home after login
         return redirect()->intended();
@@ -102,6 +102,7 @@ class LoginController extends Controller
         // echo $_SERVER['HTTP_REFERER'];
         // exit();
         $request->session()->put('redirectTo', $request->get('redirectTo'));
+        $request->session()->put('from', $request->get('from'));
 
         return Socialite::driver('line')->redirect();
     }
@@ -110,8 +111,10 @@ class LoginController extends Controller
     {
 
         $user = Socialite::driver('line')->user();
+        $from = $request->session()->get('from');
+
         // print_r($user);
-        $this->_registerOrLoginUser($user,"line");
+        $this->_registerOrLoginUser($user,"line",$from);
         // echo $_SERVER['HTTP_REFERER'];
         // exit();
         // Return home after login
@@ -124,7 +127,7 @@ class LoginController extends Controller
 
     }
 
-    protected function _registerOrLoginUser($data, $type)
+    protected function _registerOrLoginUser($data, $type , $from)
     {
         //GET USER 
         $user = User::where('provider_id', '=', $data->id)->first();
