@@ -1,6 +1,6 @@
 {
     "type": "flex",
-    "altText": "ViiCHECK ยินดีให้บริการค่ะ",
+    "altText": "PEDDyHUB ยินดีให้บริการค่ะ",
     "contents": {
   "type": "bubble",
   "body": {
@@ -14,7 +14,7 @@
         "contents": [
           {
             "type": "image",
-            "url": "https://www.viicheck.com/img/logo/VII-check-LOGO-W-v1.png",
+            "url": "https://www.peddyhub.com/peddyhub/images/logo-4.png",
             "size": "4xl",
             "aspectRatio": "16:9",
             "aspectMode": "fit",
@@ -26,7 +26,7 @@
           },
           {
             "type": "image",
-            "url": "https://www.viicheck.com/img/stickerline/Flex/5.png",
+            "url": "https://www.peddyhub.com/peddyhub/images/home_5/icon1.png",
             "size": "full",
             "aspectRatio": "16:9",
             "aspectMode": "fit",
@@ -120,7 +120,7 @@
                 "action": {
                   "type": "uri",
                   "label": "action",
-                  "uri": "https://www.viicheck.com/faq"
+                  "uri": "https://www.peddyhub.com/faq"
                 },
                 "weight": "bold",
                 "flex": 4
@@ -134,7 +134,7 @@
                 "action": {
                   "type": "uri",
                   "label": "action",
-                  "uri": "https://www.viicheck.com/faq"
+                  "uri": "https://www.peddyhub.com/faq"
                 }
               }
             ],
@@ -142,7 +142,7 @@
             "action": {
               "type": "uri",
               "label": "action",
-              "uri": "https://www.viicheck.com/faq"
+              "uri": "https://www.peddyhub.com/faq"
             },
             "margin": "md"
           },
@@ -255,7 +255,7 @@
     ],
     "borderWidth": "bold",
     "cornerRadius": "xl",
-    "borderColor": "#ff0101"
+    "borderColor": "#b8205b"
   },
   "styles": {
     "hero": {
