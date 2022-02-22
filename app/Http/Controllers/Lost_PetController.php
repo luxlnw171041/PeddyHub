@@ -11,6 +11,7 @@ use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\LineMessagingAPI;
 
 class Lost_PetController extends Controller
 {
@@ -90,6 +91,9 @@ class Lost_PetController extends Controller
                 ->update(['phone' => $requestData['phone']]);
         }
 
+        $line = new LineMessagingAPI();
+        $line->send_lost_pet($requestData);
+
         return redirect('lost_pet')->with('flash_message', 'Lost_Pet added!');
     }
 
@@ -166,4 +170,5 @@ class Lost_PetController extends Controller
             return redirect('/login/line?redirectTo=lost_pet/create');
         }
     }
+
 }

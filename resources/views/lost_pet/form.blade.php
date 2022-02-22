@@ -1,29 +1,5 @@
 
 <div class="row">
-     <!-- Button trigger modal -->
-    <button id="btn_modal_15day" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#modal_15day">
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modal_15day" data-backdrop="static" data-keyboard="false" tabindex="5" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <input class="col-10 btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'ยืนยัน' : 'ยืนยัน' }}">
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="col-12">
         <div class="row">
             <div class="col-12 col-md-12" style="margin-top:12px;">
@@ -142,8 +118,7 @@
 
     <div class="row ">
         <div class="col-1"></div>
-        <!-- <input class="col-10 btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}"> -->
-        <a class="col-10 btn btn-primary text-white" onclick="document.querySelector('#btn_modal_15day').click();">แจ้งน้องหาย</a>
+        <input class="col-10 btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
         <div class="col-1"></div>
     </div>
 
