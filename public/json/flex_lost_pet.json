@@ -1,0 +1,208 @@
+{
+    "type": "flex",
+    "altText": "ตามหาpet_catหาย",
+    "contents": {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/home_5/icon1.png",
+                    "align": "center",
+                    "aspectMode": "cover"
+                  }
+                ],
+                "width": "50px",
+                "height": "50px",
+                "cornerRadius": "50px"
+              }
+            ],
+            "width": "70px",
+            "height": "70px",
+            "justifyContent": "center",
+            "alignItems": "center"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "ตามหาpet_catหาย",
+                "align": "start",
+                "size": "xl",
+                "weight": "bold",
+                "offsetTop": "20px"
+              }
+            ]
+          }
+        ],
+        "borderColor": "#B8205B",
+        "borderWidth": "none"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://www.peddyhub.com/storage/uploads/Rq9AwENn1vsTxQabsyUOo8ik1FGezY5F9CJXnFHP.jpg",
+            "size": "full",
+            "aspectRatio": "1:1",
+            "aspectMode": "fit"
+          }
+        ],
+        "offsetTop": "md"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "pet_name",
+                "size": "xl",
+                "weight": "bold",
+                "offsetStart": "20px",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+                "position": "relative"
+              }
+            ],
+            "spacing": "25px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "วันที่หาย :",
+                    "flex": 0,
+                    "margin": "sm",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "22/2/2022",
+                    "flex": 0,
+                    "margin": "sm",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "คำอธิบาย ",
+                    "flex": 0,
+                    "margin": "sm",
+                    "weight": "bold"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "รายละเอียดสัตว์เลี้ยงรายละเอียดสัตว์เลี้ยงรายละเอียดสัตว์เลี้ยง",
+                    "flex": 0,
+                    "margin": "sm",
+                    "wrap": true
+                  }
+                ],
+                "paddingEnd": "20px"
+              }
+            ],
+            "paddingStart": "20px"
+          }
+        ],
+        "spacing": "md",
+        "margin": "xl",
+        "offsetTop": "10px"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://www.peddyhub.com/peddyhub/images/logo-4.png",
+                "offsetBottom": "xxl"
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "uri",
+                      "label": "ติดต่อ",
+                      "uri": "http://peddyhub.com/"
+                    },
+                    "height": "sm",
+                    "style": "primary",
+                    "color": "#28A754"
+                  }
+                ],
+                "borderWidth": "bold",
+                "borderColor": "#28A754",
+                "cornerRadius": "lg"
+              }
+            ],
+            "paddingAll": "10px",
+            "borderColor": "#B8205B"
+          }
+        ],
+        "offsetTop": "20px"
+      }
+    ],
+    "paddingAll": "0px",
+    "borderWidth": "bold",
+    "borderColor": "#B8205B",
+    "cornerRadius": "xl"
+  }
+}
+}

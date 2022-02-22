@@ -69,6 +69,12 @@ class Lost_PetController extends Controller
         $requestData['changwat_th'] = $requestData['select_province']; 
         $requestData['status'] = 'show'; 
 
+        if (!empty($requestData['input_province'])) {
+            $requestData['tambon_th'] = $requestData['input_tambon']; 
+            $requestData['amphoe_th'] = $requestData['input_amphoe']; 
+            $requestData['changwat_th'] = $requestData['input_province'];
+        }
+
         if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
             ->store('uploads', 'public');

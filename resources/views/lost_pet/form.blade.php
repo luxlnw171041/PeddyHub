@@ -2,20 +2,32 @@
 <div class="row">
     <div class="col-12">
         <div class="row">
+            <div class="col-12 col-md-12" style="margin-top:12px;">
+                <a class="btn btn-sm btn-success text-white float-right" onclick="locations_myhome();">
+                    <i class="fa-solid fa-house-user"></i> บ้านของฉัน
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-3" style="margin-top:12px;"></div>
             <div class="col-12 col-md-3" style="margin-top:12px;">
                 <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
                     <option value="" selected>- เลือกจังหวัด -</option>
                 </select>
+                <input type="text" name="input_province" id="input_province" class="form-control d-none" readonly>
             </div>
             <div class="col-12 col-md-3" style="margin-top:12px;">
                 <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
                     <option value="" selected>- เลือกอำเภอ -</option>
                 </select>
+                <input type="text" name="input_amphoe" id="input_amphoe" class="form-control d-none" readonly>
+
             </div>
             <div class="col-12 col-md-3" style="margin-top:12px;">
                 <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
                     <option value="" selected>- เลือกตำบล -</option>
                 </select>
+                <input type="text" name="input_tambon" id="input_tambon" class="form-control d-none" readonly>
             </div>
             <div class="col-12 col-md-3 d-none" style="margin-top:12px;">
                 <a class="col-6 btn btn-success text-white float-right" onclick="getLocation();">
@@ -268,25 +280,82 @@
         document.querySelector('#div_form').classList.remove('d-none');
 
         let select_province = document.querySelector('#select_province');
+
+        if (select_province.value) {
+            let select_amphoe = document.querySelector('#select_amphoe');
+            let select_tambon = document.querySelector('#select_tambon');
+
+            fetch("{{ url('/') }}/api/select_lat_lng" + "/" + select_province.value + "/" + select_amphoe.value + "/" + select_tambon.value)
+                .then(response => response.json())
+                .then(result => {
+                    // console.log(result);
+
+                    let lat = document.querySelector('#lat');
+                        lat.value = result[0]['lat'];
+
+                    let lng = document.querySelector('#lng');
+                        lng.value = result[0]['lng'];
+
+                    document.querySelector('#map').classList.remove('d-none');
+                    initMap();
+                       
+                });
+        }else{
+            let input_province = document.querySelector('#input_province');
+            let input_amphoe = document.querySelector('#input_amphoe');
+            let input_tambon = document.querySelector('#input_tambon');
+
+            fetch("{{ url('/') }}/api/select_lat_lng" + "/" + input_province.value + "/" + input_amphoe.value + "/" + input_tambon.value)
+                .then(response => response.json())
+                .then(result => {
+                    // console.log(result);
+
+                    let lat = document.querySelector('#lat');
+                        lat.value = result[0]['lat'];
+
+                    let lng = document.querySelector('#lng');
+                        lng.value = result[0]['lng'];
+
+                    document.querySelector('#map').classList.remove('d-none');
+                    initMap();
+                       
+                });
+        }
+        
+        
+    }
+
+    function locations_myhome(){
+
+        document.querySelector('#select_province').classList.add('d-none');
+        document.querySelector('#select_amphoe').classList.add('d-none');
+        document.querySelector('#select_tambon').classList.add('d-none');
+
+        document.querySelector('#input_province').classList.remove('d-none');
+        document.querySelector('#input_amphoe').classList.remove('d-none');
+        document.querySelector('#input_tambon').classList.remove('d-none');
+
+        let select_province = document.querySelector('#select_province');
         let select_amphoe = document.querySelector('#select_amphoe');
         let select_tambon = document.querySelector('#select_tambon');
 
-        fetch("{{ url('/') }}/api/select_lat_lng" + "/" + select_province.value + "/" + select_amphoe.value + "/" + select_tambon.value)
-            .then(response => response.json())
-            .then(result => {
-                // console.log(result);
+            select_province.value = "";
+            select_amphoe.value = "";
+            select_tambon.value = "";
+            
+            select_province.required = "";
+            select_amphoe.required = "";
+            select_tambon.required = "";
 
-                let lat = document.querySelector('#lat');
-                    lat.value = result[0]['lat'];
+        let input_province = document.querySelector('#input_province');
+        let input_amphoe = document.querySelector('#input_amphoe');
+        let input_tambon = document.querySelector('#input_tambon');
 
-                let lng = document.querySelector('#lng');
-                    lng.value = result[0]['lng'];
+            input_province.value = "{{ Auth::user()->profile->changwat_th }}";
+            input_amphoe.value = "{{ Auth::user()->profile->amphoe_th }}";
+            input_tambon.value = "{{ Auth::user()->profile->tambon_th }}";
 
-                document.querySelector('#map').classList.remove('d-none');
-                initMap();
-                   
-            });
-        
+        select_lat_lng();
     }
 
 </script>
