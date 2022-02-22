@@ -166,5 +166,28 @@ class LoginController extends Controller
 
         //LOGIN
         Auth::login($user);
+
+        if ($type == "line") {
+
+            $provider_id = $user->provider_id ;
+
+            $data_users = User::where('provider_id', $provider_id)->get();
+
+            $lineAPI = new LineApiController();
+            $lineAPI->check_language_user($data_users);
+
+        }
+
+        if (!empty($from)) {
+
+            if ($from == "line_oa") {
+
+                DB::table('users')
+                    ->where([ 
+                            ['provider_id', $user->provider_id],
+                        ])
+                    ->update(['add_line' => 'Yes']);
+            }
+        }
     }
 }
