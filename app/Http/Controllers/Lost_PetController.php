@@ -29,9 +29,10 @@ class Lost_PetController extends Controller
         
         if (!empty($keyword)) {
             $lost_pet = Lost_Pet::where('pet_category_id',    'LIKE', '%' .$category.'%')
+                ->where('status','show')
                 ->latest()->paginate($perPage);
         } else {
-            $lost_pet = Lost_Pet::latest()->paginate($perPage);
+            $lost_pet = Lost_Pet::where('status','show')->latest()->paginate($perPage);
         }
 
         return view('lost_pet.index', compact('lost_pet' ));
@@ -66,6 +67,7 @@ class Lost_PetController extends Controller
         $requestData['tambon_th'] = $requestData['select_tambon']; 
         $requestData['amphoe_th'] = $requestData['select_amphoe']; 
         $requestData['changwat_th'] = $requestData['select_province']; 
+        $requestData['status'] = 'show'; 
 
         if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
