@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\API\LineApiController;
@@ -20,9 +21,7 @@ class API_language extends Controller
                 'language' => $language,
         ]);
 
-        $data_users = DB::table('users')
-                ->where('id', $user_id)
-                ->get();
+        $data_users = User::where('id', $user_id)->get();
 
         $lineAPI = new LineApiController();
         $lineAPI->check_language_user($data_users);
