@@ -8,6 +8,11 @@ use App\Http\Requests;
 use App\Models\Mylog;
 use Illuminate\Http\Request;
 
+use LINE\LINEBot\Constant\Meta;
+use LINE\LINEBot\Exception\CurlExecutionException;
+use LINE\LINEBot\HTTPClient;
+use LINE\LINEBot\Response;
+
 class MylogController extends Controller
 {
     /**
