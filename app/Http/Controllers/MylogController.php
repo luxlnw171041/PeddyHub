@@ -17,17 +17,6 @@ class MylogController extends Controller
      */
     public function index(Request $request)
     {
-        $richMenuId = "richmenu-18d6a83914d2a3b83f25a1469d797ae5" ;
-        $provider_id = "U912994894c449f2237f73f18b5703e89" ;
-
-        $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env('CHANNEL_ACCESS_TOKEN'));
-        $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env('LINE_CLIENT_SECRET')]);
-        $response = $bot->linkRichMenu($provider_id, $richMenuId);
-
-
-        exit();
-
-
         $keyword = $request->get('search');
         $perPage = 25;
 
