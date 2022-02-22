@@ -73,10 +73,10 @@ class LineApiController extends Controller
             case "ประกันสัตว์เลี้ยง" :  
                 $line->replyToUser(null, $event, "pet_insurance");
                 break;
-            case "pet_insurance" :  
+            case "pet insurance" :  
                 $line->replyToUser(null, $event, "pet_insurance");
                 break;
-            case "ติดต่อ_PEDDyHUB" :  
+            case "ติดต่อ PEDDyHUB" :  
                 $line->replyToUser(null, $event, "contact");
                 break;
             case "contact" :  
@@ -136,14 +136,14 @@ class LineApiController extends Controller
 
         if (empty($user_language)) {
             // DF ริชเมนู EN 
-            $richMenuId = "" ;
+            $richMenuId = "richmenu-9fe970f1ec5f06e605e47817d609219b" ;
         }else {
             switch ($user_language) {
                 case 'th':
-                    $richMenuId = "" ;
+                    $richMenuId = "richmenu-4e144d1cdd02b6be63227643a34bf6e2" ;
                     break;
                 case 'en':
-                    $richMenuId = "" ;
+                    $richMenuId = "richmenu-9fe970f1ec5f06e605e47817d609219b" ;
                     break;
             }
         }
@@ -169,15 +169,15 @@ class LineApiController extends Controller
     {
         switch ($device_language) {
             case 'th':
-                $richMenuId_start = "" ;
+                $richMenuId_start = "richmenu-8eeb36859ec849957228c1a07f8aee28" ;
                 break;
             case 'en':
-                $richMenuId_start = "" ;
+                $richMenuId_start = "richmenu-3cac8ef4737798bbb9b3dda3d6100dc6" ;
                 break;
             
             default:
                 // en
-                $richMenuId_start = "" ;
+                $richMenuId_start = "richmenu-3cac8ef4737798bbb9b3dda3d6100dc6" ;
                 break;
         }
 
