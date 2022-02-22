@@ -19,7 +19,10 @@ class LineMessagingAPI extends Model
     {  
     	switch ($message_type) {
     		case 'other':
-    			// code...
+    			$template_path = storage_path('../public/json/flex-other.json');   
+                $string_json = file_get_contents($template_path);
+
+                $messages = [ json_decode($string_json, true) ]; 
     			break;
     		case 'pet_insurance':
     			// code...
@@ -28,7 +31,7 @@ class LineMessagingAPI extends Model
     			// code...
     			break;
     		case "language": 
-    		
+
                 $provider_id = $event["source"]['userId'];
         		$user = User::where('provider_id', $provider_id)->get();
 
@@ -42,6 +45,34 @@ class LineMessagingAPI extends Model
                 $messages = [ json_decode($string_json, true) ]; 
                 break;
     	}
+
+    	$body = [
+            "replyToken" => $event["replyToken"],
+            "messages" => $messages,
+        ];
+
+        $opts = [
+            'http' =>[
+                'method'  => 'POST',
+                'header'  => "Content-Type: application/json \r\n".
+                            'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                //'timeout' => 60
+            ]
+        ];
+                            
+        $context  = stream_context_create($opts);
+        //https://api-data.line.me/v2/bot/message/11914912908139/content
+        $url = "https://api.line.me/v2/bot/message/reply";
+        $result = file_get_contents($url, false, $context);
+
+        //SAVE LOG
+        $data = [
+            "title" => "reply Success",
+            "content" => "reply Success",
+        ];
+        MyLog::create($data);
+        return $result;
     }
 
 	public function send_lost_pet($data)
