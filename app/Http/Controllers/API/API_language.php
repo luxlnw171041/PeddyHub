@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\API\LineApiController;
+// use App\Models\LineMessagingAPI;
 
 
 class API_language extends Controller
@@ -18,15 +20,14 @@ class API_language extends Controller
                 'language' => $language,
         ]);
 
-        // $data_users = DB::table('users')
-        //         ->where('id', $user_id)
-        //         ->where('status', "active")
-        //         ->get();
+        $data_users = DB::table('users')
+                ->where('id', $user_id)
+                ->get();
 
-        // $lineAPI = new LineApiController();
-        // $lineAPI->check_language_user($data_users);
+        $lineAPI = new LineApiController();
+        $lineAPI->check_language_user($data_users);
 
-        // return $language;
+        return $language;
     }
 
 }
