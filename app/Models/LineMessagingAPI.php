@@ -17,6 +17,12 @@ class LineMessagingAPI extends Model
 {
 	public function replyToUser($data, $event, $message_type)
     {  
+    	//SAVE LOG
+        $check = [
+            "title" => "CHECK",
+            "content" => json_encode($event, JSON_UNESCAPED_UNICODE),
+        ];
+        MyLog::create($check);  
     	switch ($message_type) {
     		case 'other':
     			$template_path = storage_path('../public/json/flex-other.json');   
