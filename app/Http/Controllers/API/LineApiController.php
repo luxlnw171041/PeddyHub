@@ -62,7 +62,7 @@ class LineApiController extends Controller
     {
         $line = new LineMessagingAPI();
 
-        switch($event["message"]["text"]) )
+        switch($event["message"]["text"])
         {     
             case "อื่นๆ" :  
                 $line->replyToUser(null, $event, "other");
@@ -73,10 +73,10 @@ class LineApiController extends Controller
             case "ประกันสัตว์เลี้ยง" :  
                 $line->replyToUser(null, $event, "pet_insurance");
                 break;
-            case "pet insurance" :  
+            case "pet_insurance" :  
                 $line->replyToUser(null, $event, "pet_insurance");
                 break;
-            case "ติดต่อ PEDDyHUB" :  
+            case "ติดต่อ_PEDDyHUB" :  
                 $line->replyToUser(null, $event, "contact");
                 break;
             case "contact" :  
