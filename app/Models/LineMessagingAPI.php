@@ -15,6 +15,35 @@ use App\Models\Mylog;
 
 class LineMessagingAPI extends Model
 {
+	public function replyToUser($data, $event, $message_type)
+    {  
+    	switch ($message_type) {
+    		case 'other':
+    			// code...
+    			break;
+    		case 'pet_insurance':
+    			// code...
+    			break;
+    		case 'contact':
+    			// code...
+    			break;
+    		case "language": 
+    		
+                $provider_id = $event["source"]['userId'];
+        		$user = User::where('provider_id', $provider_id)->get();
+
+                foreach ($user as $item) {
+                    $user_id = $item->id ;
+                }
+                $template_path = storage_path('../public/json/flex-language.json');   
+                $string_json = file_get_contents($template_path);
+                $string_json = str_replace("user_id",$user_id,$string_json);
+
+                $messages = [ json_decode($string_json, true) ]; 
+                break;
+    	}
+    }
+
 	public function send_lost_pet($data)
 	{
         $data_users = User::where('id', $data['user_id'])->get();

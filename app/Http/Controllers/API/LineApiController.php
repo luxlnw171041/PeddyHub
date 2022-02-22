@@ -48,6 +48,46 @@ class LineApiController extends Controller
         return $data ;
     }
 
+    public function messageHandler($event)
+    {
+        switch($event["message"]["type"]){
+            case "text" : 
+                $this->textHandler($event);
+                break;
+        }   
+
+    }
+
+    public function textHandler($event)
+    {
+        $line = new LineMessagingAPI();
+
+        switch($event["message"]["text"]) )
+        {     
+            case "อื่นๆ" :  
+                $line->replyToUser(null, $event, "other");
+                break;
+            case "other" :  
+                $line->replyToUser(null, $event, "other");
+                break;
+            case "ประกันสัตว์เลี้ยง" :  
+                $line->replyToUser(null, $event, "pet_insurance");
+                break;
+            case "pet insurance" :  
+                $line->replyToUser(null, $event, "pet_insurance");
+                break;
+            case "ติดต่อ PEDDyHUB" :  
+                $line->replyToUser(null, $event, "contact");
+                break;
+            case "contact" :  
+                $line->replyToUser(null, $event, "contact");
+                break;
+            case "language" :  
+                $line->replyToUser(null, $event, "language");
+                break;
+        }
+    }
+
 
     public function user_follow_line($event)
     {
@@ -96,14 +136,14 @@ class LineApiController extends Controller
 
         if (empty($user_language)) {
             // DF ริชเมนู EN 
-            $richMenuId = "richmenu-d82948e731b1ed73d7d0c003aac7b8f3" ;
+            $richMenuId = "" ;
         }else {
             switch ($user_language) {
                 case 'th':
-                    $richMenuId = "richmenu-e6059d2138540aeeaaefcf8e2d205768" ;
+                    $richMenuId = "" ;
                     break;
                 case 'en':
-                    $richMenuId = "richmenu-d82948e731b1ed73d7d0c003aac7b8f3" ;
+                    $richMenuId = "" ;
                     break;
             }
         }
@@ -129,15 +169,15 @@ class LineApiController extends Controller
     {
         switch ($device_language) {
             case 'th':
-                $richMenuId_start = "richmenu-37967709bcd2bcdbbb78f44e9e296c5c" ;
+                $richMenuId_start = "" ;
                 break;
             case 'en':
-                $richMenuId_start = "richmenu-c81651226ee758ba815030849e2787e9" ;
+                $richMenuId_start = "" ;
                 break;
             
             default:
                 // en
-                $richMenuId_start = "richmenu-c81651226ee758ba815030849e2787e9" ;
+                $richMenuId_start = "" ;
                 break;
         }
 
