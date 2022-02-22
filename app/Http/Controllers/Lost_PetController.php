@@ -149,4 +149,13 @@ class Lost_PetController extends Controller
 
         return redirect('lost_pet')->with('flash_message', 'Lost_Pet deleted!');
     }
+
+    public function lost_pet_line()
+    {
+        if(Auth::check()){
+            return redirect('lost_pet/create');
+        }else{
+            return redirect('/login/line?redirectTo=lost_pet/create');
+        }
+    }
 }
