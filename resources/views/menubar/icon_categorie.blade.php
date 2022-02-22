@@ -13,7 +13,7 @@
 		<i class="fas fa-fish text-primary" style="font-size:20px;"></i>&nbsp;&nbsp;&nbsp;
 	@break
 	@case (5)
-		<i class="fas fa-frog text-primary" style="font-size:20px;"></i>&nbsp;&nbsp;&nbsp;
+		<i class="fa-solid fa-otter text-primary" style="font-size:20px;"></i>&nbsp;&nbsp;&nbsp;
 	@break
 	@case (6)
 		<i class="fas fa-spider text-primary" style="font-size:20px;"></i>&nbsp;&nbsp;&nbsp;
