@@ -53,9 +53,9 @@ class LocationController extends Controller
 
     public function user_language($language, $user_id)
     {
-        $data_user = DB::table('users')->where('id', $user_id)->get();
+        $data_user = DB::table('profiles')->where('id', $user_id)->get();
 
-        DB::table('users')
+        DB::table('profiles')
             ->where('id', $user_id)
             ->update([
                 'language' => $language,

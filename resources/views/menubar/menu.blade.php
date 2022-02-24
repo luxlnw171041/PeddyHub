@@ -56,8 +56,10 @@
                     <a id="btn_cat_pc_2" href="{{ url()->current(); }}?pet_category_id=2" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-cat icon-menu" ></i> <br> แมว</b></a>
                     <a id="btn_cat_pc_3" href="{{ url()->current(); }}?pet_category_id=3" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-dove icon-menu" ></i> <br>นก</b></a>
                     <a id="btn_cat_pc_4" href="{{ url()->current(); }}?pet_category_id=4" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-fish icon-menu" ></i> <br>ปลา</b></a>
-                    <a id="btn_cat_pc_5" href="{{ url()->current(); }}?pet_category_id=5" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fa-solid fa-otter icon-menu"></i><br> สัตว์เล็ก</b></a>
+                    <a id="btn_cat_pc_5" href="{{ url()->current(); }}?pet_category_id=5" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fas fa-rabbit icon-menu"></i><br> สัตว์เล็ก</b></a>
                     <a id="btn_cat_pc_6" href="{{ url()->current(); }}?pet_category_id=6" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fas fa-spider icon-menu" ></i><br> Exotic</b></a>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -69,7 +71,7 @@
                     <a id="btn_cat_2" href="{{ url()->current(); }}?pet_category_id=2" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-cat icon-menu"></i> <br> แมว </b></a>
                     <a id="btn_cat_3" href="{{ url()->current(); }}?pet_category_id=3" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-dove icon-menu"></i> <br>นก  </b></a>
                     <a id="btn_cat_4" href="{{ url()->current(); }}?pet_category_id=4" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-fish icon-menu"></i> <br>ปลา </b></a>
-                    <a id="btn_cat_5" href="{{ url()->current(); }}?pet_category_id=5" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fa-solid fa-otter icon-menu"></i><br> สัตว์เล็ก</b></a>
+                    <a id="btn_cat_5" href="{{ url()->current(); }}?pet_category_id=5" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fas fa-rabbit icon-menu"></i><br> สัตว์เล็ก</b></a>
                     <a id="btn_cat_6" href="{{ url()->current(); }}?pet_category_id=6" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fas fa-spider icon-menu"></i><br> Exotic</b></a>
                 </div>
             </div>

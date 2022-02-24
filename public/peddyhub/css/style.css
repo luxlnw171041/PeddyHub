@@ -829,7 +829,7 @@ img {
     -webkit-transition: all 500ms ease;
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
-    font-family: 'FontAwesome';
+    
 }
 
 .main-menu .navigation>li>ul>li:hover>a:before {
@@ -911,7 +911,7 @@ img {
     -webkit-transition: all 500ms ease;
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
-    font-family: 'FontAwesome';
+    
 }
 
 .main-menu .navigation>li>ul>li>ul>li:hover>a:before {
@@ -1102,7 +1102,7 @@ img {
     left: 0px;
     top: 1px;
     font-size: 16px;
-    font-family: 'FontAwesome';
+    
 }
 
 .header-top .top-right>ul>li>a>.icon {
@@ -1380,7 +1380,7 @@ img {
 }
 
 .form-group .ui-button .ui-icon:before {
-    font-family: 'FontAwesome';
+    
     content: "\f107";
     position: absolute;
     right: 0px;
@@ -1652,7 +1652,7 @@ img {
 .fancybox-next span:before, .fancybox-prev span:before {
     content: '';
     position: absolute;
-    font-family: 'FontAwesome';
+    
     left: 0px;
     top: 0px;
     font-size: 12px;
@@ -9407,8 +9407,7 @@ ul.detail-footer-social li a i {
 }
 
 .pet i {
-    font-family: 'FontAwesome';
-    /* font-family: "Font Awesome 5 Free"; */
+    
     font-style: normal;
 }
 
@@ -12752,7 +12751,7 @@ ul, p {
     position: absolute;
     left: 0px;
     top: 0px;
-    font-family: 'FontAwesome';
+    
     width: 30px;
     height: 100%;
     color: var(--pt_orange);
@@ -13264,7 +13263,7 @@ ul, p {
     position: absolute;
     left: 0px;
     top: 0px;
-    font-family: 'FontAwesome';
+    
     width: 30px;
     height: 100%;
     color: var(--pt_yellow);
@@ -14323,7 +14322,7 @@ ul, p {
     position: absolute;
     left: 0px;
     top: 0px;
-    font-family: 'FontAwesome';
+    
     width: 30px;
     height: 100%;
     color: var(--pt_yellow);
