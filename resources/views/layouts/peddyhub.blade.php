@@ -319,7 +319,7 @@
                   <div class="row text-center">
                     <div class="col-4" style="top:2px;left:-5px">
                       <div class="btn"  onclick="user_language('en', '{{ Auth::user()->id }}');"  data-dismiss="modal">
-                        <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-en.PNG') }}">
+                        <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-en.png') }}">
                         <br>
                         <h5 class="notranslate" style="margin-top:10px;">English</h5>
                       </div>
