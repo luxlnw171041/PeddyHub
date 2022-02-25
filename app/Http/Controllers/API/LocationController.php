@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\API\LineApiController;
 use App\Models\Sos_map;
+use App\Models\User;
+
 
 class LocationController extends Controller
 {
@@ -53,18 +55,17 @@ class LocationController extends Controller
 
     public function user_language($language, $user_id)
     {
-        $data_user = DB::table('profiles')->where('id', $user_id)->get();
+        $data_user = User::where('id', $user_id)->get();
 
         DB::table('profiles')
             ->where('id', $user_id)
             ->update([
                 'language' => $language,
         ]);
-
-        $user = DB::table('users')->where('id', $user_id)->get();   
+ 
 
         $lineAPI = new LineApiController();
-        $lineAPI->check_language_user($user);
+        $lineAPI->check_language_user($data_user);
        
         return $user_id;
     }
