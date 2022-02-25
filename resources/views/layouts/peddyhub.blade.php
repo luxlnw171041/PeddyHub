@@ -215,7 +215,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">
                   <img width="35" src="{{ url('peddyhub/images/national-flag/translation.png') }}">
                   &nbsp;
-                  <span>Please select language</span>
+                  <span class="notranslate">Please select language</span>
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -229,84 +229,84 @@
                       <div class="btn" style="margin-left:-10px;" onclick="user_language('en', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-en.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">English</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">English</h5>
                       </div>
                     </div>
                     <div class="col-4 ">
                       <div class="btn" onclick="user_language('zh-TW', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">中國人</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">中國人</h5>
                       </div>
                     </div>
                     <div class="col-4 ">
                       <div class="btn" onclick="user_language('hi', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-in.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">इंडिया</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">इंडिया</h5>
                       </div>
                     </div>
                     <div class="col-4 ">
                       <div class="btn"style="margin-left:-10px;" onclick="user_language('ar', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-ar.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">عرب</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">عرب</h5>
                       </div>
                     </div>
                     <div class="col-4 ">
                       <div class="btn" onclick="user_language('ru', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-ru.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">Россия</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">Россия</h5>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="btn"  onclick="user_language('es', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-es.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">Español</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">Español</h5>
                       </div>
                     </div>
                     <div class="col-4" style="left:-15px">
                       <div class="btn" onclick="user_language('de', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-de.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;font-size:22px;">Deutschland</h5>
+                        <h5 class="notranslate" style="margin-top:10px;font-size:22px;">Deutschland</h5>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="btn" onclick="user_language('ja', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-ja.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">日本</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">日本</h5>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="btn" onclick="user_language('ko', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-ko.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">한국인</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">한국인</h5>
                       </div>
                     </div>
                     <div class="col-4" style="left:-5px">
                       <div class="btn" onclick="user_language('th', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-th.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">ไทย</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">ไทย</h5>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="btn" onclick="user_language('lo', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-la.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">ລາວ</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">ລາວ</h5>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="btn" onclick="user_language('mr', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-mm.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;font-size:18px;">မြန်မာပြည်</h5>
+                        <h5 class="notranslate" style="margin-top:10px;font-size:18px;">မြန်မာပြည်</h5>
                       </div>
                     </div>
                   </div>
@@ -318,87 +318,87 @@
                 <div class="col-12">
                   <div class="row text-center">
                     <div class="col-4" style="top:2px;left:-5px">
-                      <div class="btn"  onclick="user_language('en', '{{ Auth::user()->id }}');" data-dismiss="modal">
+                      <div class="btn"  onclick="user_language('en', '{{ Auth::user()->id }}');"  data-dismiss="modal">
                         <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-en.PNG') }}">
                         <br>
-                        <h5 style="margin-top:10px;">English</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">English</h5>
                       </div>
                     </div>
                     <div class="col-4 " style="top:5px;padding:0px;" >
                       <div class="btn"style="margin-left:3px;" onclick="user_language('zh-TW', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;font-size:18px;">&nbsp;中國人&nbsp;</h5>
+                        <h5 class="notranslate" style="margin-top:10px;font-size:18px;">&nbsp;中國人&nbsp;</h5>
                       </div>
                     </div>
                     <div class="col-4" style="top:3px;">
                       <div class="btn"style="margin-top:5px;" onclick="user_language('hi', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-in.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">इंडिया</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">इंडिया</h5>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="btn" onclick="user_language('ar', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="65" src="{{ url('/peddyhub/images/national-flag/flex-ar.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">&nbsp;عرب&nbsp;</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">&nbsp;عرب&nbsp;</h5>
                       </div>
                     </div>
                     <div class="col-4 " style="left:-8px;">
                       <div class="btn" style="margin-left:-5px;" onclick="user_language('ru', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="50" src="{{ url('/peddyhub/images/national-flag/flex-ru.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">Россия</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">Россия</h5>
                       </div>
                     </div>
                     <div class="col-4" style="left:-8px;top:-5px;">
                       <div class="btn"  onclick="user_language('es', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="58" src="{{ url('/peddyhub/images/national-flag/flex-es.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">Español</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">Español</h5>
                       </div>
                     </div>
                     <div class="col-4" style="left:-15px">
                       <div class="btn" onclick="user_language('de', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-de.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;font-size:16px;">Deutschland</h5>
+                        <h5 class="notranslate" style="margin-top:10px;font-size:16px;">Deutschland</h5>
                       </div>
                     </div>
                     <div class="col-4" style="padding:0px;">
                       <div class="btn" onclick="user_language('ja', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-ja.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;font-size:16px;">日本</h5>
+                        <h5 class="notranslate" style="margin-top:10px;font-size:16px;">日本</h5>
                       </div>
                     </div>
                     <div class="col-4"  style="padding:0px;">
                       <div class="btn" onclick="user_language('ko', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-ko.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">한국인</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">한국인</h5>
                       </div>
                     </div>
                     <div class="col-4" style="left:-5px ; top:-2px">
                       <div class="btn" onclick="user_language('th', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-th.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">&nbsp;&nbsp;ไทย&nbsp;&nbsp;</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">&nbsp;&nbsp;ไทย&nbsp;&nbsp;</h5>
                       </div>
                     </div>
                     <div class="col-4">
                       <div class="btn" onclick="user_language('lo', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-la.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;">&nbsp;&nbsp;ລາວ&nbsp;&nbsp;</h5>
+                        <h5 class="notranslate" style="margin-top:10px;">&nbsp;&nbsp;ລາວ&nbsp;&nbsp;</h5>
                       </div>
                     </div>
                     <div class="col-4"style="padding:0px;">
                       <div class="btn" onclick="user_language('mr', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-mm.png') }}">
                         <br>
-                        <h5 style="margin-top:10px;font-size:16px;">မြန်မာပြည်</h5>
+                        <h5 class="notranslate" style="margin-top:10px;font-size:16px;">မြန်မာပြည်</h5>
                       </div>
                     </div>
                   </div>

@@ -68,16 +68,82 @@
                                                 <ul>
                                                     <li>
                                                         <h5>ข้อมูลส่วนตัว &nbsp;
+                                                        @switch($data->profile->language)
+                                                            @case('en')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" height="26px" src="{{ asset('/peddyhub/images/national-flag/en.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('zh-TW')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/cn.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('hi')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/in.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('ar')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ar.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('ru')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ru.png') }}" style= "border-radius: 5px;border: 1px solid; color:#8C8C8C;">
+                                                                </a>
+                                                            @break
+                                                            @case('es')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/es.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('de')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px"  height="26px" src="{{ asset('/peddyhub/images/national-flag/de.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('ja')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/jp.png') }}" style= "border-radius: 5px;border: 1px solid; color:#8C8C8C;">
+                                                                </a>
+                                                            @break
+                                                            @case('ko')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ko.png') }}" style= "border-radius: 5px;border: 1px solid; color:#8C8C8C;">
+                                                                </a>
+                                                            @break
+                                                            @case('th')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/th.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('lo')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/la.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                            @case('mr')
+                                                                <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                    <img width="40px" src="{{ asset('/peddyhub/images/national-flag/my.png') }}" style= "border-radius: 5px;">
+                                                                </a>
+                                                            @break
+                                                        @endswitch
+                                                            
+                                                            
+                                                            
+                                                            
                                                             <a href="{{ url('/user/' . $data->id . '/edit') }}" class="text-white float-right btn btn-warning " >
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                         </h5>
                                                     </li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> username: </span>  {{ $data->username }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Birthday: </span>  {{ $data->profile->birth }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Gender: </span> {{ $data->profile->sex }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> Email: </span> {{ $data->email }}</li>
-                                                    <li><i class="fas fa-paw yellow me-2"></i> <span> tel: </span>{{ $data->profile->phone }}</li>
+                                                    <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> username: </span>  {{ $data->username }}</li>
+                                                    <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> วันเกิด: </span>  {{ $data->profile->birth }}</li>
+                                                    <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> เพศ: </span> {{ $data->profile->sex }}</li>
+                                                    <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> อีเมล: </span> {{ $data->email }}</li>
+                                                    <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> เบอร์: </span>{{ $data->profile->phone }}</li>
                                                 </ul>
                                             </div>
                                         </div>

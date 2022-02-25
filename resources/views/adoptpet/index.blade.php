@@ -41,7 +41,7 @@
                                 <a href="{{ url('/adoptpet/' . $item->id) }}">
                                     <h4 class="wow fadeInDown">{{ $item->titel }}</h4>
                                 </a>
-                                <ul>
+                                <ul style="font-size:22px;">
                                     <li><i class="fas fa-paw"></i> {{ $item->gender }}</li>
                                     <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
                                 </ul>

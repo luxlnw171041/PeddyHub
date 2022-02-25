@@ -51,9 +51,8 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="wow fadeInDown text-conter notranslate">{{ $item->name }}</h4>
-                                        <ul>
-                                        <li>
-                                            <i class="fas fa-paw"></i>เพศ : {{ $item->gender }}</li>
+                                        <ul style="font-size:22px;">
+                                            <li> <i class="fas fa-paw"></i>เพศ : {{ $item->gender }}</li>
                                             <li><i class="fas fa-paw"></i>วันเกิด : {{ $item->birth }}</li>
                                             <li><i class="fas fa-paw"></i>ช่วงอายุ : {{ $item->age }}</li>
                                         </ul>
