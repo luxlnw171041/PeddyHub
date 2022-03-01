@@ -66,42 +66,43 @@ class LineApiController extends Controller
             $line->replyToUser(null, $event, "contact_PEDDyHUB");
         }else {
 
-        $data_users = User::where('provider_id', $event["source"]['userId'])->get();
+            $data_users = User::where('provider_id', $event["source"]['userId'])->get();
 
-        foreach ($data_users as $data_user) {
-            if (!empty($data_user->profile->language)) {
-                $user_language = $data_user->profile->language ;
-                if ($user_language == "zh-TW") {
-                    $user_language = "zh_TW";
+            foreach ($data_users as $data_user) {
+                if (!empty($data_user->profile->language)) {
+                    $user_language = $data_user->profile->language ;
+                    if ($user_language == "zh-TW") {
+                        $user_language = "zh_TW";
+                    }
+                }else{
+                    $user_language = 'en' ;
                 }
-            }else{
-                $user_language = 'en' ;
             }
-        }
-        
-        $text_topic = DB::table('text_topics')
-            ->select('th')
-            ->where($user_language, $event["message"]["text"])
-            ->get();
+            
+            $text_topic = DB::table('text_topics')
+                ->select('th')
+                ->where($user_language, $event["message"]["text"])
+                ->get();
 
-        foreach ($text_topic as $item) {
-            $text_th = $item->th ;
-        }
+            foreach ($text_topic as $item) {
+                $text_th = $item->th ;
+            }
 
-        switch( strtolower($text_th) )
-        {     
-            case "อื่นๆ" :  
-                $line->replyToUser(null, $event, "other");
-                break;
-            case "ประกันสัตว์เลี้ยง" :  
-                $line->replyToUser(null, $event, "pet_insurance");
-                break;
-            case "ติดต่อ" :  
-                $line->replyToUser(null, $event, "contact");
-                break;
-            case "language" :  
-                $line->replyToUser(null, $event, "language");
-                break;
+            switch( strtolower($text_th) )
+            {     
+                case "อื่นๆ" :  
+                    $line->replyToUser(null, $event, "other");
+                    break;
+                case "ประกันสัตว์เลี้ยง" :  
+                    $line->replyToUser(null, $event, "pet_insurance");
+                    break;
+                case "ติดต่อ" :  
+                    $line->replyToUser(null, $event, "contact");
+                    break;
+                case "language" :  
+                    $line->replyToUser(null, $event, "language");
+                    break;
+            }
         }
     }
 
