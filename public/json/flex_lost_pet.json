@@ -92,7 +92,7 @@
               },
               {
                 "type": "icon",
-                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/pet_img_gender.png",
+                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/pet_img_gender",
                 "position": "relative",
                 "offsetEnd": "xxl"
               }
