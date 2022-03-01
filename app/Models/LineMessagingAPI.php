@@ -50,6 +50,7 @@ class LineMessagingAPI extends Model
     		case 'other':
     			$template_path = storage_path('../public/json/flex-other.json');   
                 $string_json = file_get_contents($template_path);
+                $string_json = str_replace("PEDDyHUBstickerline","PEDDyHUB sticker line",$string_json);
 
                 $messages = [ json_decode($string_json, true) ]; 
     			break;
@@ -60,7 +61,7 @@ class LineMessagingAPI extends Model
 
                 $messages = [ json_decode($string_json, true) ]; 
     			break;
-                
+
     	}
 
     	$body = [
