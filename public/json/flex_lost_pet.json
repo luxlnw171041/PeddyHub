@@ -1,6 +1,6 @@
 {
     "type": "flex",
-    "altText": "ตามหาpet_catหาย",
+    "altText": "ตามหา pet_cat หาย",
     "contents": {
   "type": "bubble",
   "body": {
@@ -42,7 +42,7 @@
             "contents": [
               {
                 "type": "text",
-                "text": "ตามหาpet_catหาย",
+                "text": "ตามหา pet_cat หาย",
                 "align": "start",
                 "size": "xl",
                 "weight": "bold",
