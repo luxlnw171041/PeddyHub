@@ -1,0 +1,52 @@
+{
+    "fields": [
+        {
+            "name": "th",
+            "type": "string"
+        },
+        {
+            "name": "en",
+            "type": "string"
+        },
+        {
+            "name": "zh_TW",
+            "type": "string"
+        },
+        {
+            "name": "ja",
+            "type": "string"
+        },
+        {
+            "name": "ko",
+            "type": "string"
+        },
+        {
+            "name": "es",
+            "type": "string"
+        },
+        {
+            "name": "lo",
+            "type": "string"
+        },
+        {
+            "name": "my",
+            "type": "string"
+        },
+        {
+            "name": "de",
+            "type": "string"
+        },
+        {
+            "name": "de",
+            "type": "string"
+        },
+        {
+            "name": "ar",
+            "type": "string"
+        },
+        {
+            "name": "ru",
+            "type": "string"
+        }
+    ]
+}

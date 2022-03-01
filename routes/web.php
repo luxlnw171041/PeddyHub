@@ -32,6 +32,14 @@ Route::get('/terms_of_service', function () {
     return view('terms_of_service');
 });
 
+// ADMIN
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    
+    Route::resource('text_topic', 'Text_topicController');
+    
+});
+// END ADMIN
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/edit_profile', 'userController@edit_profile');
@@ -78,3 +86,4 @@ Route::resource('adoptpet', 'AdoptpetController');
 Route::get('/login_line_reg_pet', 'PetController@welcome_line'); // ลงทะเบียนสัตว์
 // Route::get('/login_line_near_hospital', 'PetController@welcome_line'); // รพ.ใกล้ฉัน
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
+
