@@ -124,7 +124,7 @@ class LineMessagingAPI extends Model
         }
 
         $photo = $data['photo'];
-        
+
         if (!empty($data['detail'])) {
             $detail = $data['detail'];
         }else{
@@ -169,9 +169,26 @@ class LineMessagingAPI extends Model
 
         foreach ($send_to_users as $item) {
 
+            $data_Text_topic = [
+                "ตามหา",
+                "วันที่หาย",
+                "คำอธิบาย",
+                "ติดต่อ",
+                "หาย",
+            ];
+
+            $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
+
         	$template_path = storage_path('../public/json/flex_lost_pet.json');   
 
 	        $string_json = file_get_contents($template_path);
+
+            $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
+            $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
+            $string_json = str_replace("คำอธิบาย",$data_topic[2],$string_json);
+            $string_json = str_replace("ติดต่อ",$data_topic[3],$string_json);
+            $string_json = str_replace("หาย",$data_topic[4],$string_json);
+
 	        $string_json = str_replace("pet_cat",$pet_category_id,$string_json);
 	        $string_json = str_replace("IMGPET",$photo,$string_json);
 	        $string_json = str_replace("4544.png",$img_icon,$string_json);
