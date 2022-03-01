@@ -21,31 +21,21 @@ class LineMessagingAPI extends Model
             case "contact_PEDDyHUB": 
                 $template_path = storage_path('../public/json/soon.json');   
                 $string_json = file_get_contents($template_path);
-                
+
                 $messages = [ json_decode($string_json, true) ]; 
                 break;
-    		case 'other':
-    			$template_path = storage_path('../public/json/flex-other.json');   
+
+            case 'contact':
+                $template_path = storage_path('../public/json/soon.json');   
                 $string_json = file_get_contents($template_path);
 
                 $messages = [ json_decode($string_json, true) ]; 
-    			break;
-    		case 'pet_insurance':
-    			$template_path = storage_path('../public/json/soon.json');   
-                $string_json = file_get_contents($template_path);
+                break;
 
-                $messages = [ json_decode($string_json, true) ]; 
-    			break;
-    		case 'contact':
-    			$template_path = storage_path('../public/json/soon.json');   
-                $string_json = file_get_contents($template_path);
-
-                $messages = [ json_decode($string_json, true) ]; 
-    			break;
-    		case "language": 
+            case "language": 
 
                 $provider_id = $event["source"]['userId'];
-        		$user = User::where('provider_id', $provider_id)->get();
+                $user = User::where('provider_id', $provider_id)->get();
 
                 foreach ($user as $item) {
                     $user_id = $item->id ;
@@ -56,6 +46,21 @@ class LineMessagingAPI extends Model
 
                 $messages = [ json_decode($string_json, true) ]; 
                 break;
+
+    		case 'other':
+    			$template_path = storage_path('../public/json/flex-other.json');   
+                $string_json = file_get_contents($template_path);
+
+                $messages = [ json_decode($string_json, true) ]; 
+    			break;
+
+    		case 'pet_insurance':
+    			$template_path = storage_path('../public/json/soon.json');   
+                $string_json = file_get_contents($template_path);
+
+                $messages = [ json_decode($string_json, true) ]; 
+    			break;
+                
     	}
 
     	$body = [
