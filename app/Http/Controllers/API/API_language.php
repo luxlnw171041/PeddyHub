@@ -47,16 +47,11 @@ class API_language extends Controller
           $provider_id = $key->provider_id ;
         }
 
-        switch ($language) {
-          case 'th':
-              $data_Text_topic = "เปลี่ยนภาษาเรียบร้อยแล้ว";
-            break;
+        $data_Text_topic = [
+            "เปลี่ยนภาษาเรียบร้อยแล้ว",
+        ];
 
-          case 'en':
-              $data_Text_topic = "The language has been changed." ;
-            break;
-          
-        }
+        $data_topic = $this->language_for_user($data_Text_topic, $provider_id);
 
 
         $template_path = storage_path('../public/json/change_language_success.json');   
