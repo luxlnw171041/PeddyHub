@@ -111,22 +111,6 @@ class LineMessagingAPI extends Model
         $data_users = User::where('id', $data['user_id'])->get();
         $data_pets = Pet::where('id', $data['pet_id'])->get();
 
-        foreach ($data_pets as $data_pet) {
-            $pet_name = $data_pet->name ;
-
-            switch ($data_pet->gender) {
-                case 'ชาย':
-                    $img_pet_gendeer = 'male.png';
-                    break;
-                case 'หญิง':
-                    $img_pet_gendeer = 'female.png';
-                    break;
-                case 'ไม่ระบุ':
-                    $img_pet_gendeer = 'equality.png';
-                    break;
-            }
-        }
-
         $date_now = date("d/m/Y");
 
         if (!empty($data['select_province'])) {
@@ -189,8 +173,23 @@ class LineMessagingAPI extends Model
 	        $string_json = str_replace("รายละเอียด",$detail,$string_json);
 	        $string_json = str_replace("0999999999",$phone,$string_json);
             // data pet 
-            $string_json = str_replace("pet_name",$pet_name,$string_json);
-	        $string_json = str_replace("pet_img_gender",$img_pet_gendeer,$string_json);
+            foreach ($data_pets as $data_pet) {
+                $string_json = str_replace("pet_name",$data_pet->name,$string_json);
+
+                switch ($data_pet->gender) {
+                    case 'ชาย':
+                        $img_pet_gendeer = 'male.png';
+                        break;
+                    case 'หญิง':
+                        $img_pet_gendeer = 'female.png';
+                        break;
+                    case 'ไม่ระบุ':
+                        $img_pet_gendeer = 'equality.png';
+                        break;
+                }
+                
+                $string_json = str_replace("pet_img_gender",$img_pet_gendeer,$string_json);
+            }
 
 	        $messages = [ json_decode($string_json, true) ];
 
