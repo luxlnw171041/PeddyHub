@@ -124,7 +124,13 @@ class LineMessagingAPI extends Model
         }
 
         $photo = $data['photo'];
-        $detail = $data['detail'];
+        
+        if (!empty($data['detail'])) {
+            $detail = $data['detail'];
+        }else{
+            $detail = "-";
+        }
+        
         $phone = $data['phone'];
 
         switch ($data['pet_category_id']) {
@@ -174,19 +180,21 @@ class LineMessagingAPI extends Model
 	        $string_json = str_replace("0999999999",$phone,$string_json);
             // data pet 
             foreach ($data_pets as $data_pet) {
-
                 $string_json = str_replace("pet_name",$data_pet->name,$string_json);
 
-                if ($data_pet->gender == "ชาย") {
-                    $string_json = str_replace("pet_img_gender.png","male.png",$string_json);
-                }
-                if ($data_pet->gender == "หญิง") {
-                    $string_json = str_replace("pet_img_gender.png","female.png",$string_json);
-                }
-                if ($data_pet->gender == "ไม่ระบุ") {
-                    $string_json = str_replace("pet_img_gender.png","equality.png",$string_json);
+                switch ($data_pet->gender) {
+                    case 'ชาย':
+                        $img_pet_gendeer = 'male.png';
+                        break;
+                    case 'หญิง':
+                        $img_pet_gendeer = 'female.png';
+                        break;
+                    case 'ไม่ระบุ':
+                        $img_pet_gendeer = 'equality.png';
+                        break;
                 }
 
+                $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
             }
 
 	        $messages = [ json_decode($string_json, true) ];
