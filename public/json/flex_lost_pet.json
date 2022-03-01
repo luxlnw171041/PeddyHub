@@ -149,30 +149,6 @@
                   }
                 ],
                 "paddingEnd": "20px"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "แปลภาษา",
-                    "flex": 0,
-                    "margin": "sm",
-                    "wrap": true,
-                    "size": "sm",
-                    "color": "#FF9999",
-                    "style": "italic",
-                    "align": "end",
-                    "offsetEnd": "lg",
-                    "action": {
-                      "type": "uri",
-                      "label": "action",
-                      "uri": "https://www.viicheck.com/"
-                    }
-                  }
-                ],
-                "paddingEnd": "20px"
               }
             ],
             "paddingStart": "20px"
