@@ -56,7 +56,7 @@ class API_language extends Controller
 
         $template_path = storage_path('../public/json/change_language_success.json');   
         $string_json = file_get_contents($template_path);
-        $string_json = str_replace("เปลี่ยนภาษาเรียบร้อยแล้ว",$data_Text_topic,$string_json);
+        $string_json = str_replace("เปลี่ยนภาษาเรียบร้อยแล้ว",$data_topic[0],$string_json);
 
         $messages = [ json_decode($string_json, true) ]; 
 
