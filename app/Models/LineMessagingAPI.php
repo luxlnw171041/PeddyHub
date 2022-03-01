@@ -48,6 +48,16 @@ class LineMessagingAPI extends Model
                 break;
 
     		case 'other':
+
+                $data_Text_topic = [
+                    "ข้อมูลของคุณ",
+                    "ถามตอบ",
+                    "ติดต่อ",
+                    "ยินดีให้บริการค่ะ",
+                ];
+
+                $data_topic = $this->language_for_user($data_Text_topic, $event["source"]['userId']);
+
     			$template_path = storage_path('../public/json/flex-other.json');   
                 $string_json = file_get_contents($template_path);
 
@@ -202,14 +212,11 @@ class LineMessagingAPI extends Model
     // แปลภาษา
     public function language_for_user($data_topic, $to_user)
     {
-        $data_users = DB::table('users')
-                    ->where('provider_id', $to_user)
-                    ->where('status', "active")
-                    ->get();
+        $data_users = User::where('provider_id', $to_user)->get();
 
         foreach ($data_users as $data_user) {
-            if (!empty($data_user->language)) {
-                    $user_language = $data_user->language ;
+            if (!empty($data_user->profile->language)) {
+                    $user_language = $data_user->profile->language ;
                     if ($user_language == "zh-TW") {
                         $user_language = "zh_TW";
                     }
