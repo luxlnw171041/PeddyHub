@@ -163,6 +163,37 @@ class LineApiController extends Controller
                 case 'en':
                     $richMenuId = "richmenu-9fe970f1ec5f06e605e47817d609219b" ;
                     break;
+                case 'zh-TW':
+                    $richMenuId = "richmenu-479b3da6324a3ddc13ce7f61f0156ebd" ;
+                    break;
+                case 'ja':
+                    $richMenuId = "richmenu-141ff1f0f65e7f165d07d80150c55828" ;
+                    break;
+                case 'ko':
+                    $richMenuId = "richmenu-f02bae1b3820d22f635da962d2ca788c" ;
+                    break;
+                case 'es':
+                    $richMenuId = "richmenu-71eb715ea496b689ee6390046de68edc" ;
+                    break;
+                case 'lo':
+                    $richMenuId = "richmenu-98276278b93725b8306029356744005e" ;
+                    break;
+                case 'my':
+                    $richMenuId = "richmenu-7793c2f8243f94cb5ae2b9b7b1cd7574" ;
+                    break;
+                case 'de':
+                    $richMenuId = "richmenu-cc2f238c7ace59ea0593a6cc904f35c9" ;
+                    break;
+                case 'hi':
+                    $richMenuId = "richmenu-b72c68202a75a0c245b1c5f55e479bf9" ;
+                    break;
+                case 'ar':
+                    $richMenuId = "richmenu-958a3798fecd0fc0aaecba727c0d58f8" ;
+                    break;
+                case 'ru':
+                    $richMenuId = "richmenu-2b9189f05355e37ff47c21715769f59d" ;
+                    break;
+                
             }
         }
 
@@ -191,6 +222,36 @@ class LineApiController extends Controller
                 break;
             case 'en':
                 $richMenuId_start = "richmenu-3cac8ef4737798bbb9b3dda3d6100dc6" ;
+                break;
+            case 'zh-TW':
+                $richMenuId_start = "richmenu-13647d14fff953329dae9c391d725e2d" ;
+                break;
+            case 'ja':
+                $richMenuId_start = "richmenu-7e58899e24ce1e7426f3c9a0e2449b2b" ;
+                break;
+            case 'ko':
+                $richMenuId_start = "richmenu-3a90990cc163861dd76a9ac4ec119e8b" ;
+                break;
+            case 'es-ES':
+                $richMenuId_start = "richmenu-9b794a29304525db1e5c03071006c534" ;
+                break;
+            case 'lo':
+                $richMenuId_start = "richmenu-629b710928998ef3708438ed1b1b02a9" ;
+                break;
+            case 'my':
+                $richMenuId_start = "richmenu-45ed64d7f16ba38019298a9b54c47d0f" ;
+                break;
+            case 'de':
+                $richMenuId_start = "richmenu-3df87fdac7037f17b37510aacfac4691" ;
+                break;
+            case 'hi':
+                $richMenuId_start = "richmenu-5c6f39c3fc496c157537698202e04c4f" ;
+                break;
+            case 'ar':
+                $richMenuId_start = "richmenu-712b3dbaebbe8d7a25c97e75a1e4d6c7" ;
+                break;
+            case 'ru':
+                $richMenuId_start = "richmenu-7acb0c4dfb15371ccb0db93917a4eef7" ;
                 break;
             
             default:
