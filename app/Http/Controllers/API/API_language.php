@@ -90,4 +90,36 @@ class API_language extends Controller
         return view('return_line');
     }
 
+    public function language_for_user($data_topic, $to_user)
+    {
+        $data_users = User::where('provider_id', $to_user)->get();
+
+        foreach ($data_users as $data_user) {
+            if (!empty($data_user->profile->language)) {
+                    $user_language = $data_user->profile->language ;
+                    if ($user_language == "zh-TW") {
+                        $user_language = "zh_TW";
+                    }
+                }else{
+                    $user_language = 'en' ;
+                }
+        }
+
+        for ($i=0; $i < count($data_topic); $i++) { 
+
+            $text_topic = DB::table('text_topics')
+                    ->select($user_language)
+                    ->where('th', $data_topic[$i])
+                    ->where('en', "!=", null)
+                    ->get();
+
+            foreach ($text_topic as $item_of_text_topic) {
+                $data_topic[$i] = $item_of_text_topic->$user_language ;
+            }
+        }
+
+        return $data_topic ;
+
+    }
+
 }
