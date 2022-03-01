@@ -176,19 +176,19 @@ class LineMessagingAPI extends Model
             foreach ($data_pets as $data_pet) {
                 $string_json = str_replace("pet_name",$data_pet->name,$string_json);
 
-                switch ($data_pet->gender) {
-                    case 'ชาย':
-                        $img_pet_gendeer = 'male.png';
-                        break;
-                    case 'หญิง':
-                        $img_pet_gendeer = 'female.png';
-                        break;
-                    case 'ไม่ระบุ':
-                        $img_pet_gendeer = 'equality.png';
-                        break;
-                }
+                // switch ($data_pet->gender) {
+                //     case 'ชาย':
+                //         $img_pet_gendeer = 'male.png';
+                //         break;
+                //     case 'หญิง':
+                //         $img_pet_gendeer = 'female.png';
+                //         break;
+                //     case 'ไม่ระบุ':
+                //         $img_pet_gendeer = 'equality.png';
+                //         break;
+                // }
                 
-                $string_json = str_replace("pet_img_gender",$img_pet_gendeer,$string_json);
+                // $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
             }
 
 	        $messages = [ json_decode($string_json, true) ];
