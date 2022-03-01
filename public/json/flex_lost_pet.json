@@ -89,6 +89,12 @@
                 "type": "icon",
                 "url": "https://www.peddyhub.com/peddyhub/images/img-icon/4544.png",
                 "position": "relative"
+              },
+              {
+                "type": "icon",
+                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/pet_img_gender.png",
+                "position": "relative",
+                "offsetEnd": "xxl"
               }
             ],
             "spacing": "25px"
@@ -123,7 +129,7 @@
                 "contents": [
                   {
                     "type": "text",
-                    "text": "คำอธิบาย ",
+                    "text": "คำอธิบาย",
                     "flex": 0,
                     "margin": "sm",
                     "weight": "bold"
