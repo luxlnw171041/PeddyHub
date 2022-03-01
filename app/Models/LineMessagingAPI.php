@@ -175,6 +175,8 @@ class LineMessagingAPI extends Model
                 "คำอธิบาย",
                 "ติดต่อ",
                 "หาย",
+                "แปลภาษา",
+                $pet_category_id,
             ];
 
             $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
@@ -188,8 +190,10 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("คำอธิบาย",$data_topic[2],$string_json);
             $string_json = str_replace("ติดต่อ",$data_topic[3],$string_json);
             $string_json = str_replace("หาย",$data_topic[4],$string_json);
+            $string_json = str_replace("แปลภาษา",$data_topic[5],$string_json);
 
-	        $string_json = str_replace("pet_cat",$pet_category_id,$string_json);
+            $string_json = str_replace("pet_cat",$data_topic[6],$string_json);
+
 	        $string_json = str_replace("IMGPET",$photo,$string_json);
 	        $string_json = str_replace("4544.png",$img_icon,$string_json);
 	        $string_json = str_replace("22/2/2022",$date_now,$string_json);
