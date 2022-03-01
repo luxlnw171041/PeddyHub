@@ -168,7 +168,7 @@
                     "action": {
                       "type": "uri",
                       "label": "action",
-                      "uri": "https://translate.google.co.th/?tl=TEXT_EN&text=สีแดง%0A&op=translate"
+                      "uri": "https://translate.google.co.th/?sl=th&tl=en&text=สีแดง%0A&op=translate"
                     }
                   }
                 ],

@@ -200,8 +200,9 @@ class LineMessagingAPI extends Model
 	        $string_json = str_replace("รายละเอียด",$detail,$string_json);
             $string_json = str_replace("0999999999",$phone,$string_json);
 
-            $string_json = str_replace("TEXT_EN",$item->user->language,$string_json);
-	        $string_json = str_replace("สีแดง",$detail,$string_json);
+         //    $string_json = str_replace("TEXT_EN",$item->user->language,$string_json);
+	        // $string_json = str_replace("สีแดง",$detail,$string_json);
+            
             // data pet 
             foreach ($data_pets as $data_pet) {
                 $string_json = str_replace("pet_name",$data_pet->name,$string_json);
