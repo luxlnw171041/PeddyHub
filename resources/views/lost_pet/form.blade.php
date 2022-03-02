@@ -76,7 +76,7 @@
         </select>
     </div>
 
-    <div class="form-group {{ $errors->has('detail') ? 'has-error' : ''}}">
+    <div class="d-none form-group {{ $errors->has('detail') ? 'has-error' : ''}}">
         <label for="detail" class="control-label">{{ 'อธิบายลักษณะหรือจุดที่ผลัดหลงกับน้อง' }}</label>
         <textarea  class="form-control" name="detail" type="textarea" rows="4" id="detail" value=""></textarea>
         {!! $errors->first('detail', '<p class="help-block">:message</p>') !!}

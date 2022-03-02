@@ -122,33 +122,6 @@
                     "weight": "bold"
                   }
                 ]
-              },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "คำอธิบาย",
-                    "flex": 0,
-                    "margin": "sm",
-                    "weight": "bold"
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "รายละเอียด",
-                    "flex": 0,
-                    "margin": "sm",
-                    "wrap": true
-                  }
-                ],
-                "paddingEnd": "20px"
               }
             ],
             "paddingStart": "20px"
