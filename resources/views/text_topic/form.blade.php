@@ -1,4 +1,4 @@
-<div class="form-group {{ $errors->has('th') ? 'has-error' : ''}}">
+<!-- <div class="form-group {{ $errors->has('th') ? 'has-error' : ''}}">
     <label for="th" class="control-label">{{ 'Th' }}</label>
     <input class="form-control" name="th" type="text" id="th" value="{{ isset($text_topic->th) ? $text_topic->th : ''}}" >
     {!! $errors->first('th', '<p class="help-block">:message</p>') !!}
@@ -57,8 +57,120 @@
     <label for="ru" class="control-label">{{ 'Ru' }}</label>
     <input class="form-control" name="ru" type="text" id="ru" value="{{ isset($text_topic->ru) ? $text_topic->ru : ''}}" >
     {!! $errors->first('ru', '<p class="help-block">:message</p>') !!}
-</div>
+</div> -->
+<div class="col-12 text-center" >
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาไทย</h5>
+                    <input class="form-control" name="th" type="text" id="th" value="{{ isset($text_topic->th) ? $text_topic->th : ''}}" >
+                    {!! $errors->first('th', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
 
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาอังกฤษ</h5>
+                    <input class="form-control" name="en" type="text" id="en" value="{{ isset($text_topic->en) ? $text_topic->en : ''}}" >
+                    {!! $errors->first('en', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาจีน</h5>
+                    <input class="form-control" name="zh_TW" type="text" id="zh_TW" value="{{ isset($text_topic->zh_TW) ? $text_topic->zh_TW : ''}}" >
+                {!! $errors->first('zh_TW', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาญี่ปุ่น</h5>
+                    <input class="form-control" name="ja" type="text" id="ja" value="{{ isset($text_topic->ja) ? $text_topic->ja : ''}}" >
+                    {!! $errors->first('ja', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาเกาหลี</h5>
+                    <input class="form-control" name="ko" type="text" id="ko" value="{{ isset($text_topic->ko) ? $text_topic->ko : ''}}" >
+                    {!! $errors->first('ko', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาสเปน</h5>
+                    <input class="form-control" name="es" type="text" id="es" value="{{ isset($text_topic->es) ? $text_topic->es : ''}}" >
+                    {!! $errors->first('es', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาลาว</h5>
+                    <input class="form-control" name="lo" type="text" id="lo" value="{{ isset($text_topic->lo) ? $text_topic->lo : ''}}" >
+                    {!! $errors->first('lo', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาพม่า</h5>
+                    <input class="form-control" name="my" type="text" id="my" value="{{ isset($text_topic->my) ? $text_topic->my : ''}}" >
+                    {!! $errors->first('my', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาเยอรมัน</h5>
+                    <input class="form-control" name="de" type="text" id="de" value="{{ isset($text_topic->de) ? $text_topic->de : ''}}" >
+                    {!! $errors->first('de', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาฮินดี</h5>
+                    <input class="form-control" name="hi" type="text" id="hi" value="{{ isset($text_topic->hi) ? $text_topic->hi : ''}}" >
+                    {!! $errors->first('hi', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษาอาหรับ</h5>
+                    <input class="form-control" name="ar" type="text" id="ar" value="{{ isset($text_topic->ar) ? $text_topic->ar : ''}}" >
+                    {!! $errors->first('ar', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body" >
+                    <h5 class="card-title">ภาษารัสเซีย</h5>
+                    <input class="form-control" name="ru" type="text" id="ru" value="{{ isset($text_topic->ru) ? $text_topic->ru : ''}}" >
+                    {!! $errors->first('ru', '<p class="help-block">:message</p>') !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">

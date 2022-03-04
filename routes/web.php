@@ -31,6 +31,9 @@ Route::get('/privacy_policy', function () {
 Route::get('/terms_of_service', function () {
     return view('terms_of_service');
 });
+Route::get('/hospital_near', function () {
+    return view('hospital_near');
+});
 
 // ADMIN
 Route::middleware(['auth', 'role:admin'])->group(function () {

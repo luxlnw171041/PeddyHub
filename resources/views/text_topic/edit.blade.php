@@ -1,35 +1,36 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+<br>
+    <div class="container-fluid">
         <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Edit Text_topic #{{ $text_topic->id }}</div>
-                    <div class="card-body">
-                        <a href="{{ url('/text_topic') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <br />
-                        <br />
-
-                        @if ($errors->any())
-                            <ul class="alert alert-danger">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        @endif
-
-                        <form method="POST" action="{{ url('/text_topic/' . $text_topic->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            {{ csrf_field() }}
-
-                            @include ('text_topic.form', ['formMode' => 'edit'])
-
-                        </form>
-
+                    <div class="card-header">
+                        <h4>แก้ไขหัวข้อ {{ $text_topic->th }}</h4>
                     </div>
+                        <div class="card-body">
+                            <a href="{{ url('/text_topic') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                            <br />
+                            <br />
+
+                            @if ($errors->any())
+                                <ul class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+
+                            <form method="POST" action="{{ url('/text_topic/' . $text_topic->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                {{ method_field('PATCH') }}
+                                {{ csrf_field() }}
+
+                                @include ('text_topic.form', ['formMode' => 'edit'])
+
+                            </form>
+
+                        </div>
                 </div>
             </div>
         </div>

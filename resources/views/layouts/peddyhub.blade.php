@@ -74,7 +74,7 @@
                     <div class="container">
                         <a href="{{ url('/') }}" class="navbar-brand">
                             
-                        <img src="{{ url('/peddyhub/images/logo-4.png') }}" width="" alt="image of logo" title="logo"
+                        <img src="{{ url('/peddyhub/images/logo/logo-4.png') }}" width="" alt="image of logo" title="logo"
                                 class="img-fluid d-inline-block align-middle mr-2">
                             <span class="text-uppercase font-weight-bold"></span>
                         </a>

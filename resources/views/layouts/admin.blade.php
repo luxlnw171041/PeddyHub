@@ -65,9 +65,9 @@
                         
                     </div>
                     <div>
-                        <a href="{{ url('/partner_index') }}" >
-                            <h4 class="logo-text" style="font-family: 'Baloo Bhaijaan 2', cursive;
-                            font-family: 'Prompt', sans-serif;">zzdf</h4>
+                        <a href="{{ url('') }}" >
+						<img src="{{ url('/peddyhub/images/logo/logo-4.png') }}" width="" alt="image of logo" title="logo"
+                                class="img-fluid d-inline-block align-middle mr-2">
                         </a>
                     </div>
                 <div class="toggle-icon ms-auto">
@@ -97,28 +97,6 @@
 				<nav class="navbar navbar-expand" >
 					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
 					</div>
-					<div class="top-menu-left d-none d-lg-block">
-						<ul class="nav">
-						  <li class="nav-item">
-							<a class="nav-link" href="tel:020277856"><i class='bx bx-phone'></i>
-                            </a>
-						  </li>
-                          <li class="nav-item" style="margin-top:-3px;margin-left:-10px;">
-                            <a class="nav-link" href="tel:020277856">
-                                <span  style="font-size:15px;margin-top:15px;">02-0277856</span> 
-                            </a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link" href="mailto:contact.viicheck@gmail.com"><i class='bx bx-envelope'></i>
-                            </a>
-						  </li>
-                          <li class="nav-item" style="margin-top:-3px;margin-left:-10px;">
-                            <a class="nav-link" href="mailto:contact.viicheck@gmail.com">
-                                <span style="font-size:15px;">contact.viicheck@gmail.com</span>
-                            </a>
-						  </li>
-					  </ul>
-					 </div>
 					<div class="search-bar flex-grow-1">
 						<div class="position-relative search-bar-box">
 							<input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
@@ -129,38 +107,9 @@
 					</div>
 					<div class="user-box dropdown">
 						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        @if(!empty(Auth::user()->photo))
-                                <img alt="" style="width:50px;"class="img-circle img-thumbnail isTooltip" src="{{ url('storage')}}/{{ Auth::user()->photo }}" data-original-title="Usuario"> 
-                            @else
-                                <img src="{{ asset('/partner/images/user/avatar-1.jpg') }}" width="25%" class="img-radius" alt="User-Profile-Image">
-                            @endif
-							<div class="user-info ps-3">
-								<p class="user-name mb-0">{{ Auth::user()->name }}</p>
-								<p class="designattion mb-0">
-									@switch(Auth::user()->role)
-                                        @case('partner')
-                                            เจ้าหน้าที่
-                                        @break
-                                        @case('admin-partner')
-                                            แอดมิน
-                                        @break
-                                    @endswitch
-								</p>
-							</div>
+                        {{ Auth::user()->username }}
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
-							@if(Auth::user()->id == "0")
-	                            <li><a href="" class="dropdown-item"><i class="lni lni-line"></i><span>ตั้งค่ากลุ่มไลน์</span></a>
-								</li>
-								<li><a href="" class="dropdown-item" data-toggle="modal" data-target="#modal_change_color" onclick="random_color();"><i class="bx bx-paint"></i><span>เปลี่ยนสี Template</span></a>
-								</li>
-	                            <li><a href="" class="dropdown-item"><i class="bx bx-edit-alt"></i><span>เปลี่ยนโลโก้ Template(soon)</span></a>
-								</li>
-								<li>
-									<div class="dropdown-divider mb-0"></div>
-								</li>
-							@endif
-							<li>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
