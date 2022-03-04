@@ -50,9 +50,20 @@
                                     @endif
                                     </div>
                                     <div class="content">
-                                        <h4 class="wow fadeInDown text-conter notranslate">{{ $item->name }}</h4>
+                                        <h4 class="wow fadeInDown text-conter notranslate">{{ $item->name }}
+                                        @switch($item->gender)
+                                            @case('หญิง')
+                                            <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
+                                            @break
+                                            @case('ชาย')
+                                                <i style="font-size:28px;color:#00ADEF;margin-left:10px" class="fas fa-mars"></i>
+                                            @break
+                                            @case('ไม่ระบุ')
+                                                <i style="font-size:28px;color:#88C550;margin-left:10px" class="fas fa-venus-mars"></i>
+                                            @break
+                                        @endswitch
+                                        </h4>
                                         <ul style="font-size:22px;">
-                                            <li> <i class="fas fa-paw"></i>เพศ : {{ $item->gender }}</li>
                                             <li><i class="fas fa-paw"></i>วันเกิด : {{ $item->birth }}</li>
                                             <li><i class="fas fa-paw"></i>ช่วงอายุ : {{ $item->age }}</li>
                                         </ul>

@@ -87,7 +87,7 @@ class PetController extends Controller
         }  
 
         Pet::create($requestData);
-        return redirect('pet')->with('flash_message', 'Pet added!');
+        return redirect('user')->with('flash_message', 'Pet added!');
     }
 
     /**
@@ -151,7 +151,7 @@ class PetController extends Controller
         $pet = Pet::findOrFail($id);
         $pet->update($requestData);
 
-        return redirect('pet')->with('flash_message', 'Pet updated!');
+        return redirect('user')->with('flash_message', 'Pet updated!');
     }
 
     /**

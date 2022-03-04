@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" required>
+                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" >
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">

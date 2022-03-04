@@ -34,5 +34,9 @@ class Profile extends Model
     public function lost_pets(){
         return $this->hasMany('App\Models\Lost_Pet', 'user_id' , 'user_id'); 
     } 
+
+    public function pets(){
+        return $this->hasMany('App\Models\Pet', 'user_id'); 
+    } 
     
 }

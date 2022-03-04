@@ -30,7 +30,9 @@ class Pet extends Model
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 
     }
-
+    public function profile(){
+        return $this->belongsTo('App\Models\Profile', 'user_id'); 
+    }
     public function lost_pet(){
         return $this->belongsTo('App\Models\Lost_Pet', 'pet_id'); 
     }

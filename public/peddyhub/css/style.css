@@ -94,6 +94,7 @@ body {
     background-position: center top;
     -webkit-font-smoothing: antialiased;
     font-family: 'Open Sans', sans-serif;
+    top:0px !important;; 
 }
 
 a {
@@ -6387,7 +6388,7 @@ ul.petdetails li:before {
     left: 0;
     right: 0;
     background-color: #B81F5B;
-    height: 80%;
+    height: 40%;
 }
 
 .ui-input-group>input {

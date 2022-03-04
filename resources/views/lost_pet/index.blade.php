@@ -87,7 +87,7 @@
                                                 @endphp
 
                                                 <!-- icon_categorie -->
-                                                @include ('menubar.icon_categorie')
+                                                @include ('menubar.icon_categorie') &nbsp;&nbsp;&nbsp;
 
                                                 @switch( $item->pet->gender )
                                                     @case ('ชาย')

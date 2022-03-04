@@ -84,11 +84,22 @@
                             <br>
                             <div class="spec">
                                 <div class="name">
-                                    <h3>ชื่อ: <span> {{$adoptpet->titel}} </span></h3>
+                                    <h3>ชื่อ: <span> {{$adoptpet->titel}} </span>
+                                        @switch($adoptpet->gender)
+                                            @case('หญิง')
+                                            <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
+                                            @break
+                                            @case('ชาย')
+                                                <i style="font-size:28px;color:#00ADEF;margin-left:10px" class="fas fa-mars"></i>
+                                            @break
+                                            @case('ไม่ระบุ')
+                                                <i style="font-size:28px;color:#88C550;margin-left:10px" class="fas fa-venus-mars"></i>
+                                            @break
+                                        @endswitch
+                                    </h3>
                                 </div>
                                 <ul>
                                     <li><i class="fas fa-paw yellow me-2"></i> ช่วงอายุ: {{$adoptpet->age}}</li>
-                                    <li><i class="fas fa-paw yellow me-2"></i> เพศ: {{$adoptpet->gender}}</li>
                                     <!-- <li><i class="fas fa-paw yellow me-2"></i> Hollywood, FL</li> -->
                                     <li><i class="fas fa-paw yellow me-2"></i> ขนาด: {{$adoptpet->size}}</li>
                                     <!-- <li><i class="fas fa-paw yellow me-2"></i> Weight: 6</li>

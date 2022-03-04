@@ -39,10 +39,30 @@
                             </div>
                             <div class="content">
                                 <a href="{{ url('/adoptpet/' . $item->id) }}">
-                                    <h4 class="wow fadeInDown">{{ $item->titel }}</h4>
+                                    @php
+                                        $pet_category = $item->pet_category_id ;
+                                    @endphp
+                                    <!-- icon_categorie -->
+                                   
+
+                                    <h4 class="wow fadeInDown">
+                                         @include ('menubar.icon_categorie')
+                                        {{ $item->titel }}
+                                        @switch($item->gender)
+                                            @case('หญิง')
+                                            <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
+                                            @break
+                                            @case('ชาย')
+                                                <i style="font-size:28px;color:#00ADEF;margin-left:10px" class="fas fa-mars"></i>
+                                            @break
+                                            @case('ไม่ระบุ')
+                                                <i style="font-size:28px;color:#88C550;margin-left:10px" class="fas fa-venus-mars"></i>
+                                            @break
+                                        @endswitch
+                                    </h4>
                                 </a>
                                 <ul style="font-size:22px;">
-                                    <li><i class="fas fa-paw"></i> {{ $item->gender }}</li>
+                                    <li><i class="fas fa-paw"></i> {{ $item->size }}</li>
                                     <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
                                 </ul>
 

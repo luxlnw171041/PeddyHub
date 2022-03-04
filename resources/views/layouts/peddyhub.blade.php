@@ -104,7 +104,6 @@
                                             data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
-                                            <li><a href="{{ url('/pet') }}">สัตว์เลี้ยง</a></li>
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -153,6 +152,7 @@
                                             <li class="nav-item dropdown">
                                                 <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >อุปการะ</a>
                                             </li>
+                                            
                                             @guest
                                                 <li class="nav-item dropdown">
                                                     <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
@@ -161,10 +161,9 @@
                                             @else
                                                 <li class="nav-item dropdown">
                                                     <a href="#" style="color:#B8205B;" class="notranslate hvr-overline-from-center nav-link dropdown-toggle"
-                                                        data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                                        data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
-                                                        <li><a href="{{ url('/pet') }}">สัตว์เลี้ยง</a></li>
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                                 onclick="event.preventDefault();

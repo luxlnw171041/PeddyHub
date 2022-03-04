@@ -107,7 +107,7 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'Type' }}</b></label>
+                                        <label  class="control-label"><b>{{ 'ประเภท' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
