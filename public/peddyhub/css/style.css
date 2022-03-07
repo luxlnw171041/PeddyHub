@@ -69,8 +69,14 @@ font-family: 'Kaushan Script', sans-serif;*/
 ====================================================================
 
  ***/
+
+
  .modal-backdrop {
     display: none;
+  }
+  
+  .modal {
+    background: rgba(0,0,0,0.5);
   }
 .imgf {
     width:348px;

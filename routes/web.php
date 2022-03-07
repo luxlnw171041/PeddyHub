@@ -34,7 +34,9 @@ Route::get('/terms_of_service', function () {
 Route::get('/hospital_near', function () {
     return view('hospital_near');
 });
-
+Route::get('/pet_insurance', function () {
+    return view('pet_insurance');
+});
 // ADMIN
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
