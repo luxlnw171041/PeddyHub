@@ -24,11 +24,7 @@ class Hospital_nearController extends Controller
             $hospital_near = Hospital_near::where('name', 'LIKE', "%$keyword%")
                 ->orWhere('lat', 'LIKE', "%$keyword%")
                 ->orWhere('lng', 'LIKE', "%$keyword%")
-                ->orWhere('photo_1', 'LIKE', "%$keyword%")
-                ->orWhere('photo_2', 'LIKE', "%$keyword%")
-                ->orWhere('photo_3', 'LIKE', "%$keyword%")
-                ->orWhere('photo_4', 'LIKE', "%$keyword%")
-                ->orWhere('photo_5', 'LIKE', "%$keyword%")
+                ->orWhere('photo', 'LIKE', "%$keyword%")
                 ->orWhere('address', 'LIKE', "%$keyword%")
                 ->orWhere('business_hours', 'LIKE', "%$keyword%")
                 ->orWhere('phone', 'LIKE', "%$keyword%")
@@ -61,24 +57,8 @@ class Hospital_nearController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('photo_1')) {
-            $requestData['photo_1'] = $request->file('photo_1')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_2')) {
-            $requestData['photo_2'] = $request->file('photo_2')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_3')) {
-            $requestData['photo_3'] = $request->file('photo_3')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_4')) {
-            $requestData['photo_4'] = $request->file('photo_4')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_5')) {
-            $requestData['photo_5'] = $request->file('photo_5')
+                if ($request->hasFile('photo')) {
+            $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
 
@@ -127,24 +107,8 @@ class Hospital_nearController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('photo_1')) {
-            $requestData['photo_1'] = $request->file('photo_1')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_2')) {
-            $requestData['photo_2'] = $request->file('photo_2')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_3')) {
-            $requestData['photo_3'] = $request->file('photo_3')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_4')) {
-            $requestData['photo_4'] = $request->file('photo_4')
-                ->store('uploads', 'public');
-        }
-        if ($request->hasFile('photo_5')) {
-            $requestData['photo_5'] = $request->file('photo_5')
+                if ($request->hasFile('photo')) {
+            $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
 
