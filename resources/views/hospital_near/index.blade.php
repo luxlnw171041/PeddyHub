@@ -98,7 +98,7 @@
                                                 </p>
                                             </div>
                                             <div class="col-5">
-                                                <img src="{{ url('storage')}}/{{ $item->photo_1 }}" class="img-fluid">
+                                                <img src="{{ url('storage')}}/{{ $item->photo }}" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>

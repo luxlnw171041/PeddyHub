@@ -25,7 +25,7 @@ class Hospital_near extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'lat', 'lng', 'photo_1', 'photo_2', 'photo_3', 'photo_4', 'photo_5', 'address', 'business_hours', 'phone'];
+    protected $fillable = ['name', 'lat', 'lng', 'photo', 'address', 'business_hours', 'phone'];
 
     
 }

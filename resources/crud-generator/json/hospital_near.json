@@ -13,23 +13,7 @@
             "type": "string"
         },
         {
-            "name": "photo_1",
-            "type": "file"
-        },
-        {
-            "name": "photo_2",
-            "type": "file"
-        },
-        {
-            "name": "photo_3",
-            "type": "file"
-        },
-        {
-            "name": "photo_4",
-            "type": "file"
-        },
-        {
-            "name": "photo_5",
+            "name": "photo",
             "type": "file"
         },
         {
