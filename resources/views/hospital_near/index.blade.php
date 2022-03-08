@@ -73,7 +73,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row animated fadeInup">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 @foreach($hospital_near as $item)
                                     <div class="card main-shadow main-radius">
@@ -82,15 +82,15 @@
                                                 <h6>{{ $item->name }}</h6>
                                             </div>
                                             <div class="col-7">                                         
-                                                <p>
+                                                <p style="margin-bottom:0px;">
                                                     <i style="color:#b81f5b;padding-right:10px;" class="fa-solid fa-location-crosshairs" ></i>
                                                     {{ $item->address }}
                                                 </p>
-                                                <p>
+                                                <p style="margin-bottom:0px;">
                                                     <i style="color:green;padding-right:10px;" class="fa-solid fa-timer" ></i>
                                                     {{ $item->business_hours }}
                                                 </p>
-                                                <p>
+                                                <p style="margin-bottom:0px;">
                                                     <a href="tel:{{ $item->phone }}">
                                                         <i style="color:blue;padding-right:10px;" class="fa-solid fa-phone-volume" ></i>
                                                         {{ $item->phone }}
@@ -105,8 +105,8 @@
                                 @endforeach
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div id="map" ></div>
-                                <div id="map_my_location" class="d-none"></div>
+                                <div id="map" class="animated fadeInUp"></div>
+                                <div id="map_my_location" class="animated fadeInUp d-none"></div>
                             </div>
                         </div>
                     </div>
@@ -150,6 +150,7 @@
 
             document.querySelector('#map_my_location').classList.remove('d-none');
             document.querySelector('#map').classList.add('d-none');
+            document.querySelector('#map').classList.add('animated fadeInUp');
         }
 
         function initMap_my_location(position) { 
