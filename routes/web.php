@@ -31,9 +31,6 @@ Route::get('/privacy_policy', function () {
 Route::get('/terms_of_service', function () {
     return view('terms_of_service');
 });
-Route::get('/hospital_near', function () {
-    return view('hospital_near');
-});
 Route::get('/pet_insurance', function () {
     return view('pet_insurance');
 });
@@ -92,3 +89,5 @@ Route::get('/login_line_reg_pet', 'PetController@welcome_line'); // ลงทะ
 // Route::get('/login_line_near_hospital', 'PetController@welcome_line'); // รพ.ใกล้ฉัน
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
 
+
+Route::resource('hospital_near', 'Hospital_nearController');
