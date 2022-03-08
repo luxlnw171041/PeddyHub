@@ -63,20 +63,35 @@
                 </div>
             </div>
         </div>
-        <div class="d-block d-md-none scrolling-wrapper container text-center ">
-            <div class="menupet" >
-                <div class="petbtn card-body d-flex justify-content-around"style="padding:10px;">
+        
+        
+        <div class="d-block d-md-none  text-center ">
+            <div class="row d-flex justify-content-center" >
+                <div class="col-3">
                     <a id="btn_cat_0" href="{{ url()->current(); }}" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"><i class="fa-solid fa-paw icon-menu"></i>  <br>ทั้งหมด</b></a>
+                </div>
+                <div class="col-3">                       
                     <a id="btn_cat_1" href="{{ url()->current(); }}?pet_category_id=1"  type="submit"class="btn btn-outline-peddyhub"><b class="text-b"><i class="fas fa-dog icon-menu" ></i>  <br>สุนัข </b></a>
+                </div>
+                <div class="col-3">          
                     <a id="btn_cat_2" href="{{ url()->current(); }}?pet_category_id=2" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-cat icon-menu"></i> <br> แมว </b></a>
+                </div>
+                <div class="col-3">                        
                     <a id="btn_cat_3" href="{{ url()->current(); }}?pet_category_id=3" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-dove icon-menu"></i> <br>นก  </b></a>
+                </div>
+                <div class="col-12"></div>
+                <div class="col-4">                        
                     <a id="btn_cat_4" href="{{ url()->current(); }}?pet_category_id=4" type="submit" class="btn btn-outline-peddyhub"><b class="text-b"> <i class="fas fa-fish icon-menu"></i> <br>ปลา </b></a>
-                    <a id="btn_cat_5" href="{{ url()->current(); }}?pet_category_id=5" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fas fa-rabbit icon-menu"></i><br> สัตว์เล็ก</b></a>
+                </div>
+                <div class="col-4">                        
+                    <a id="btn_cat_5" style=""href="{{ url()->current(); }}?pet_category_id=5" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fas fa-rabbit icon-menu"></i><br> สัตว์เล็ก</b></a>
+                </div>
+                <div class="col-4" >                        
                     <a id="btn_cat_6" href="{{ url()->current(); }}?pet_category_id=6" type="submit" class="btn btn-outline-peddyhub"><b class="text-b">  <i class="fas fa-spider icon-menu"></i><br> Exotic</b></a>
                 </div>
             </div>
         </div>
-
+        
 <script>
     if (document.location.search === "") {
         document.querySelector('#btn_cat_pc_0').classList.add('btn-peddyhub');

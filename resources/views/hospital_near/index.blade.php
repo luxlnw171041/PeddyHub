@@ -15,10 +15,10 @@
                                 <input class="form-control col-4" name="lng" type="text" id="lng" value="100.4930264" >
                             </div>
                             <div class="col-12 col-md-12 col-lg-12">
-                                <button id="btn_select_my_location" type="button" class="btn btn-danger" onclick="select_my_location();">
+                                <button id="btn_select_my_location" type="button" class="btn btn-danger wow fadeInUp" onclick="select_my_location();">
                                     <i class="fa-solid fa-location-crosshairs"></i> เลือกจากตำแหน่งของฉัน
                                 </button>
-                                <button id="btn_select_location_by_T" type="button" class="btn btn-danger d-none" onclick="select_location_by_T();">
+                                <button id="btn_select_location_by_T" type="button" class="btn btn-danger d-none wow fadeInUp" onclick="select_location_by_T();">
                                     <i class="fa-solid fa-map-location-dot"></i> เลือกจากพื้นที่
                                 </button>
                             </div>
@@ -50,7 +50,7 @@
                                 </div>
 
                                 <!-- เลือกจากตำบล -->
-                                <div id="location_by_T" class="row">
+                                <div id="location_by_T" class="row wow fadeInDown">
                                     <div class="form-group col-lg-4 col-md-4 col-sm-12">
                                         <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
                                             <option value="" selected>- เลือกจังหวัด -</option>
@@ -73,8 +73,8 @@
                             </div>
                         </div>
 
-                        <div class="row animated fadeInup">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="row ">
+                            <div class="col-lg-6 col-md-6 col-sm-12 wow fadeInLeft">
                                 @foreach($hospital_near as $item)
                                     <div class="card main-shadow main-radius">
                                         <div class="row">
@@ -105,8 +105,8 @@
                                 @endforeach
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div id="map" class="animated fadeInUp"></div>
-                                <div id="map_my_location" class="animated fadeInUp d-none"></div>
+                                <div id="map" class="wow fadeInRight"></div>
+                                <div id="map_my_location" class="wow fadeInRight d-none"></div>
                             </div>
                         </div>
                     </div>

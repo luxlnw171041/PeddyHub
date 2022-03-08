@@ -329,8 +329,8 @@
     });
     function add_color(){
         console.log("add_color");
-        document.querySelector('#btn_a_all').classList.add('btn-primary');
-        document.querySelector('#btn_a_all').classList.remove('btn-outline-primary');
+        document.querySelector('#btn_a_all').classList.add('btn-style-two');
+        document.querySelector('#btn_a_all').classList.remove('btn-outline-two');
         document.querySelector('#btn_a_all_pc').classList.add('btn-style-two');
         document.querySelector('#btn_a_all_pc').classList.remove('btn-outline-two');
         

@@ -5,7 +5,7 @@
     <div class="main-wrapper pet shop">
         <section class="featured">
             <div class="crumb">
-                <div class="container">
+                <div class="container notranslate">
                     <h1>
                         Manoonpet <span class="wow pulse" data-wow-delay="1s" style="visibility: hidden; animation-delay: 1s; animation-name: none;"> Shop </span>
                     </h1>
@@ -20,7 +20,9 @@
             </div>
 
         </section>
-
+        <div class="row col-12">
+            @include ('menubar.menu')
+        </div>
         <section class="steps">
             <div class="container">
                 <!-- <div class="filter">
@@ -115,7 +117,7 @@
                                                 <p class="cat">Food</p>
                                                 <a href="https://www.manoonpetshop.co.th/product/lifemate-%e0%b8%ad%e0%b8%b2%e0%b8%ab%e0%b8%b2%e0%b8%a3%e0%b8%aa%e0%b8%b8%e0%b8%99%e0%b8%b1%e0%b8%82%e0%b9%82%e0%b8%95-%e0%b8%9e%e0%b8%b1%e0%b8%99%e0%b8%98%e0%b8%b8%e0%b9%8c%e0%b8%81%e0%b8%a5%e0%b8%b2%e0%b8%87-%e0%b8%9e%e0%b8%b1%e0%b8%99%e0%b8%98%e0%b8%b8%e0%b9%8c%e0%b9%83%e0%b8%ab%e0%b8%8d%e0%b9%88-400-%e0%b8%81%e0%b8%a3%e0%b8%b1%e0%b8%a1" title="Prescription Diet">
                                                     <h5>Lifemate อาหารสุนัข รสเนื้อ
- </h5>
+                                                    </h5>
                                                 </a>
                                                 <p class="rating">
                                                     <i class="fas fa-star"></i>
@@ -125,7 +127,7 @@
                                                     <i class="fas fa-star"></i>
                                                 </p>
                                                 <p class="head"> ฿69-฿1,690</p>
-<br>
+                                                <br>
                                                 <div class="more">
                                                     <a href="https://www.manoonpetshop.co.th/product/lifemate-%e0%b8%ad%e0%b8%b2%e0%b8%ab%e0%b8%b2%e0%b8%a3%e0%b8%aa%e0%b8%b8%e0%b8%99%e0%b8%b1%e0%b8%82%e0%b9%82%e0%b8%95-%e0%b8%9e%e0%b8%b1%e0%b8%99%e0%b8%98%e0%b8%b8%e0%b9%8c%e0%b8%81%e0%b8%a5%e0%b8%b2%e0%b8%87-%e0%b8%9e%e0%b8%b1%e0%b8%99%e0%b8%98%e0%b8%b8%e0%b9%8c%e0%b9%83%e0%b8%ab%e0%b8%8d%e0%b9%88-400-%e0%b8%81%e0%b8%a3%e0%b8%b1%e0%b8%a1" title="Add to Cart"><i class="fas fa-shopping-cart"></i></a>
                                                 </div>

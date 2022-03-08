@@ -24,6 +24,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap" rel="stylesheet">
+
     <!--Color Themes-->
     
      <link href="{{ asset('peddyhub/ss/color-themes/default-theme.css') }}" rel="stylesheet" id="theme-color-file">
@@ -67,9 +69,29 @@
 <div class="main-wrapper pet">
 
         <div id="preloading"></div>
-
+        
         <section class="featured">
-            <div class="header" style="padding-bottom:10px;">
+            <div class="header">
+              <nav class="navbar navbar-expand-lg" style="padding:8px 0px 8px 0px;background-color:#f2f2f2;">
+                  <div class="container">
+                    <div class="d-none d-lg-block">
+                      <span>
+                          <a href="https://www.facebook.com/peddyhubs" target="bank">
+                          <i style="font-size:22px;" class="fab fa-facebook text-primary"></i>
+                        </a>
+                        <a href="https://lin.ee/QRPGdf7" target="bank"> 
+                          <i style="font-size:23px;" class="fab fa-line text-success"></i>
+                        </a>
+                      </span> &nbsp;
+                         <a href="mailto:contact.peddyhub@gmail.com" style="color:black;"><i style="color:#B8205B" class="fa-solid fa-envelope"></i> contact.peddyhub@gmail.com</a>&nbsp;
+                        <a href="tel:020277856" style="color:black;"><i style="color:#B8205B" class="fa-solid fa-phone"></i> 02-0277856</a>
+                    </div>
+                    <div class="d-block d-lg-none">
+                        <a style="color:black;" href="mailto:contact.peddyhub@gmail.com"><i style="color:#B8205B" class="fa-solid fa-envelope"></i> contact.peddyhub@gmail.com</a>&nbsp;
+                        <a style="color:black;" href="tel:020277856"><i style="color:#B8205B" class="fa-solid fa-phone"></i> 02-0277856</a>
+                    </div>
+                  </div>
+              </nav>
                 <nav class="navbar navbar-expand-lg">
                     <div class="container">
                         <a href="{{ url('/') }}" class="navbar-brand">
