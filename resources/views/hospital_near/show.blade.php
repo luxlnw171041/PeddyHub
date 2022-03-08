@@ -27,7 +27,8 @@
                                     <tr>
                                         <th>ID</th><td>{{ $hospital_near->id }}</td>
                                     </tr>
-                                    <tr><th> Name </th><td> {{ $hospital_near->name }} </td></tr><tr><th> Lat </th><td> {{ $hospital_near->lat }} </td></tr><tr><th> Lng </th><td> {{ $hospital_near->lng }} </td></tr><tr><th> Photo 1 </th><td> {{ $hospital_near->photo_1 }} </td></tr><tr><th> Photo 2 </th><td> {{ $hospital_near->photo_2 }} </td></tr><tr><th> Photo 3 </th><td> {{ $hospital_near->photo_3 }} </td></tr><tr><th> Photo 4 </th><td> {{ $hospital_near->photo_4 }} </td></tr><tr><th> Photo 5 </th><td> {{ $hospital_near->photo_5 }} </td></tr><tr><th> Address </th><td> {{ $hospital_near->address }} </td></tr><tr><th> Business Hours </th><td> {{ $hospital_near->business_hours }} </td></tr><tr><th> Phone </th><td> {{ $hospital_near->phone }} </td></tr>
+                                    <tr><th> Name </th><td> {{ $hospital_near->name }} </td></tr><tr><th> Lat </th><td> {{ $hospital_near->lat }} </td></tr><tr><th> Lng </th><td> {{ $hospital_near->lng }} </td></tr><tr><th> Photo </th><td> {{ $hospital_near->photo }} </td></tr>
+                                    <tr><th> Address </th><td> {{ $hospital_near->address }} </td></tr><tr><th> Business Hours </th><td> {{ $hospital_near->business_hours }} </td></tr><tr><th> Phone </th><td> {{ $hospital_near->phone }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

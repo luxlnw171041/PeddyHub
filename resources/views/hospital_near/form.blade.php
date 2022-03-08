@@ -13,30 +13,10 @@
     <input class="form-control" name="lng" type="text" id="lng" value="{{ isset($hospital_near->lng) ? $hospital_near->lng : ''}}" >
     {!! $errors->first('lng', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('photo_1') ? 'has-error' : ''}}">
-    <label for="photo_1" class="control-label">{{ 'Photo 1' }}</label>
-    <input class="form-control" name="photo_1" type="file" id="photo_1" value="{{ isset($hospital_near->photo_1) ? $hospital_near->photo_1 : ''}}" >
-    {!! $errors->first('photo_1', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('photo_2') ? 'has-error' : ''}}">
-    <label for="photo_2" class="control-label">{{ 'Photo 2' }}</label>
-    <input class="form-control" name="photo_2" type="file" id="photo_2" value="{{ isset($hospital_near->photo_2) ? $hospital_near->photo_2 : ''}}" >
-    {!! $errors->first('photo_2', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('photo_3') ? 'has-error' : ''}}">
-    <label for="photo_3" class="control-label">{{ 'Photo 3' }}</label>
-    <input class="form-control" name="photo_3" type="file" id="photo_3" value="{{ isset($hospital_near->photo_3) ? $hospital_near->photo_3 : ''}}" >
-    {!! $errors->first('photo_3', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('photo_4') ? 'has-error' : ''}}">
-    <label for="photo_4" class="control-label">{{ 'Photo 4' }}</label>
-    <input class="form-control" name="photo_4" type="file" id="photo_4" value="{{ isset($hospital_near->photo_4) ? $hospital_near->photo_4 : ''}}" >
-    {!! $errors->first('photo_4', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('photo_5') ? 'has-error' : ''}}">
-    <label for="photo_5" class="control-label">{{ 'Photo 5' }}</label>
-    <input class="form-control" name="photo_5" type="file" id="photo_5" value="{{ isset($hospital_near->photo_5) ? $hospital_near->photo_5 : ''}}" >
-    {!! $errors->first('photo_5', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
+    <label for="photo" class="control-label">{{ 'Photo 1' }}</label>
+    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($hospital_near->photo) ? $hospital_near->photo : ''}}" >
+    {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('address') ? 'has-error' : ''}}">
     <label for="address" class="control-label">{{ 'Address' }}</label>
