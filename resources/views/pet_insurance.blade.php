@@ -41,16 +41,16 @@
                 <i class="fa-solid fa-paw-simple" style="font-size:46px;"></i><br>
                ประกันสัตว์เลี้ยง
             </a>
-            <a data-toggle="pill" class="btn btn-outline-peddyhub col-md-3 col-6 " href="#menu1">
+            <a id="btn_tip" data-toggle="pill" class="btn btn-outline-peddyhub col-md-3 col-6 " href="#menu1">
                 <img src="{{ asset('peddyhub/images/logo_insurance/tip.png') }}"width="50px" alt="Image">
                 <br>
                 ทิพยประกันภัย
             </a>
-            <a data-toggle="pill" class="btn btn-outline-peddyhub col-md-3 col-6" href="#menu2">
+            <a id="btn_falcon" data-toggle="pill" class="btn btn-outline-peddyhub col-md-3 col-6" href="#menu2">
                 <img src="{{ asset('peddyhub/images/logo_insurance/falcon.png') }}"width="70px" alt="Image">
                 <br>
                 ฟอลคอนประกันภัย</a>
-            <a data-toggle="pill" class="btn btn-outline-peddyhub col-md-3 col-6" href="#menu3">
+            <a id="btn_thai" data-toggle="pill" class="btn btn-outline-peddyhub col-md-3 col-6" href="#menu3">
                 <img src="{{ asset('peddyhub/images/logo_insurance/mt.png') }}"width="50px" alt="Image">
                     <br>
                 เมืองไทยประกันภัย</a>
@@ -343,4 +343,15 @@
             <br>
         </div>
     </div>
+    <script>
+         if (document.location.search === "?insurance=1") {
+            document.getElementById("btn_tip").click();
+        }
+        else if (document.location.search === "?insurance=2") {
+            document.getElementById("btn_falcon").click();
+        }
+        else if (document.location.search === "?insurance=3") {
+            document.getElementById("btn_thai").click();
+        }
+    </script>
 @endsection
