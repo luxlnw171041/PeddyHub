@@ -1,0 +1,133 @@
+{
+    "type": "flex",
+    "altText": "ประกันสัตว์เลี้ยง",
+    "contents":{
+        "type": "carousel",
+        "contents": [
+          {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "size": "full",
+                  "aspectMode": "fit",
+                  "aspectRatio": "1:1",
+                  "gravity": "top",
+                  "url": "https://peddyhub.com/peddyhub/images/logo_insurance/flex-tip.jpg"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "action": {
+                        "type": "uri",
+                        "label": "รายละเอียด",
+                        "uri": "https://peddyhub.com/pet_insurance?insurance=1"
+                      },
+                      "style": "link",
+                      "height": "sm",
+                      "color": "#ffffff"
+                    }
+                  ],
+                  "position": "absolute",
+                  "cornerRadius": "xxl",
+                  "offsetTop": "240px",
+                  "offsetStart": "100px",
+                  "backgroundColor": "#708090cc"
+                }
+              ],
+              "paddingAll": "0px",
+              "backgroundColor": "#000000"
+            }
+          },
+          {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "size": "full",
+                  "aspectMode": "fit",
+                  "aspectRatio": "1:1",
+                  "gravity": "top",
+                  "url": "https://peddyhub.com/peddyhub/images/logo_insurance/flex-falcon.png"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "action": {
+                        "type": "uri",
+                        "label": "รายละเอียด",
+                        "uri": "https://peddyhub.com/pet_insurance?insurance=2"
+                      },
+                      "style": "link",
+                      "height": "sm",
+                      "color": "#ffffff"
+                    }
+                  ],
+                  "position": "absolute",
+                  "cornerRadius": "xxl",
+                  "offsetTop": "240px",
+                  "offsetStart": "100px",
+                  "backgroundColor": "#708090cc"
+                }
+              ],
+              "paddingAll": "0px",
+              "backgroundColor": "#000000"
+            }
+          },
+          {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://peddyhub.com/peddyhub/images/logo_insurance/flex-thai.jpg",
+                  "size": "full",
+                  "aspectMode": "fit",
+                  "aspectRatio": "1:1",
+                  "gravity": "top"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "action": {
+                        "type": "uri",
+                        "label": "รายละเอียด",
+                        "uri": "https://peddyhub.com/pet_insurance?insurance=3"
+                      },
+                      "style": "link",
+                      "height": "sm",
+                      "color": "#ffffff"
+                    }
+                  ],
+                  "position": "absolute",
+                  "cornerRadius": "xxl",
+                  "offsetTop": "240px",
+                  "offsetStart": "100px",
+                  "backgroundColor": "#708090cc"
+                }
+              ],
+              "paddingAll": "0px",
+              "backgroundColor": "#000000"
+            }
+          }
+        ]
+      }
+
+}
