@@ -140,7 +140,7 @@
                                                 </p>
                                             </div>
                                             <div class="col-5">
-                                                <img src="{{ $item->photo_1 }}" class="img-fluid">
+                                                <img src="{{ url('/')}}{{ $item->photo }}" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
