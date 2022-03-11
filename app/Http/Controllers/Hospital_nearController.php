@@ -20,6 +20,8 @@ class Hospital_nearController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
+        $hospital_recommend = Hospital_near::where('recommend', "Yes")->get();
+
         if (!empty($keyword)) {
             $hospital_near = Hospital_near::where('name', 'LIKE', "%$keyword%")
                 ->orWhere('lat', 'LIKE', "%$keyword%")
@@ -33,7 +35,7 @@ class Hospital_nearController extends Controller
             $hospital_near = Hospital_near::latest()->paginate($perPage);
         }
 
-        return view('hospital_near.index', compact('hospital_near'));
+        return view('hospital_near.index', compact('hospital_near','hospital_recommend'));
     }
 
     /**

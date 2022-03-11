@@ -38,7 +38,8 @@ Route::get('/pet_insurance', function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
     Route::resource('text_topic', 'Text_topicController');
-    
+    Route::resource('hospital_near', 'Hospital_nearController');
+
 });
 // END ADMIN
 
@@ -90,4 +91,4 @@ Route::get('/login_line_reg_pet', 'PetController@welcome_line'); // ลงทะ
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
 
 
-Route::resource('hospital_near', 'Hospital_nearController');
+Route::get('hospital_near', 'Hospital_nearController@index');

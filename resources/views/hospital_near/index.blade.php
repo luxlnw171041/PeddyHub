@@ -73,8 +73,47 @@
                             </div>
                         </div>
 
+                        <div class="form-group d-none">
+                            <button type="button" class="btn btn-outline-primary">ค้นหา</button>
+                            <button type="button" class="btn btn-outline-danger">Reset</button>
+                        </div>
+
                         <div class="row ">
                             <div class="col-lg-6 col-md-6 col-sm-12 wow fadeInLeft">
+                                @foreach($hospital_recommend as $item)
+                                    <div class="card main-shadow main-radius">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <h6>{{ $item->name }}</h6>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-sm btn-success float-right" style="margin-top: -10px;">
+                                                    แนะนำ <i class="fa-solid fa-badge-check"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-7">                                         
+                                                <p style="margin-bottom:0px;">
+                                                    <i style="color:#b81f5b;padding-right:10px;" class="fa-solid fa-location-crosshairs" ></i>
+                                                    {{ $item->address }}
+                                                </p>
+                                                <p style="margin-bottom:0px;">
+                                                    <i style="color:green;padding-right:10px;" class="fa-solid fa-timer" ></i>
+                                                    {{ $item->business_hours }}
+                                                </p>
+                                                <p style="margin-bottom:0px;">
+                                                    <a href="tel:{{ $item->phone }}">
+                                                        <i style="color:blue;padding-right:10px;" class="fa-solid fa-phone-volume" ></i>
+                                                        {{ $item->phone }}
+                                                    </a>
+                                                </p>
+                                            </div>
+                                            <div class="col-5">
+                                                <img src="{{ url('storage')}}/{{ $item->photo }}" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+
                                 @foreach($hospital_near as $item)
                                     <div class="card main-shadow main-radius">
                                         <div class="row">
