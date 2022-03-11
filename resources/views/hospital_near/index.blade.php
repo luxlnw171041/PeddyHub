@@ -104,14 +104,16 @@
                                                     <a href="tel:{{ $item->phone }}">
                                                         <i style="color:blue;padding-right:10px;" class="fa-solid fa-phone-volume" ></i>
                                                         {{ $item->phone }}
+                                                        {{ $item->photo_1 }}
                                                     </a>
                                                 </p>
                                             </div>
                                             <div class="col-5">
-                                                <img src="{{ url('storage')}}/{{ $item->photo }}" class="img-fluid">
+                                                <img src="{{ url('/')}}{{ $item->photo_1 }}" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 @endforeach
 
                                 @foreach($hospital_near as $item)
@@ -128,6 +130,7 @@
                                                 <p style="margin-bottom:0px;">
                                                     <i style="color:green;padding-right:10px;" class="fa-solid fa-timer" ></i>
                                                     {{ $item->business_hours }}
+                                                    
                                                 </p>
                                                 <p style="margin-bottom:0px;">
                                                     <a href="tel:{{ $item->phone }}">
@@ -137,11 +140,12 @@
                                                 </p>
                                             </div>
                                             <div class="col-5">
-                                                <img src="{{ url('storage')}}/{{ $item->photo }}" class="img-fluid">
+                                                <img src="{{ $item->photo_1 }}" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
+                                <div class="pagination-wrapper"> {!! $hospital_near->appends(['search' => Request::get('search')])->render() !!} </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div id="map" class="wow fadeInRight"></div>
@@ -149,7 +153,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
         </div>
