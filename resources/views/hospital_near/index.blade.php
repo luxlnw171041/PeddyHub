@@ -104,12 +104,11 @@
                                                     <a href="tel:{{ $item->phone }}">
                                                         <i style="color:blue;padding-right:10px;" class="fa-solid fa-phone-volume" ></i>
                                                         {{ $item->phone }}
-                                                        {{ $item->photo_1 }}
                                                     </a>
                                                 </p>
                                             </div>
                                             <div class="col-5">
-                                                <img src="{{ url('/')}}{{ $item->photo_1 }}" class="img-fluid">
+                                                <img src="{{ url('storage')}}/{{ $item->photo }}" class="img-fluid">
                                             </div>
                                         </div>
                                     </div>
