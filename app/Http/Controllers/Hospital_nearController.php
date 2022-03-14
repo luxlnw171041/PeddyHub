@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Hospital_near;
 use Illuminate\Http\Request;
 
@@ -17,23 +18,13 @@ class Hospital_nearController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
+        $latlng = $request->get('latlng');
+
+        echo $latlng ;
         $perPage = 3;
+        $hospital_near = "";
 
-        $hospital_recommend = Hospital_near::where('recommend', "Yes")->get();
-
-        if (!empty($keyword)) {
-            $hospital_near = Hospital_near::where('name', 'LIKE', "%$keyword%")
-                ->orWhere('lat', 'LIKE', "%$keyword%")
-                ->orWhere('lng', 'LIKE', "%$keyword%")
-                ->orWhere('photo', 'LIKE', "%$keyword%")
-                ->orWhere('address', 'LIKE', "%$keyword%")
-                ->orWhere('business_hours', 'LIKE', "%$keyword%")
-                ->orWhere('phone', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $hospital_near = Hospital_near::latest()->paginate($perPage);
-        }
+        $hospital_recommend = Hospital_near::where('recommend', "Yes")->inRandomOrder()->limit(3)->get();
 
         return view('hospital_near.index', compact('hospital_near','hospital_recommend'));
     }
@@ -133,4 +124,27 @@ class Hospital_nearController extends Controller
 
         return redirect('hospital_near')->with('flash_message', 'Hospital_near deleted!');
     }
+
+    public function search_my_location($latlng , $distance)
+    {
+        $lat_lung_sp = explode(",",$latlng);
+        $lat = $lat_lung_sp[0];
+        $lng = $lat_lung_sp[1];
+
+        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears  HAVING distance < $distance ORDER BY distance ", []);
+
+        return $hos_near;
+    }
+
+    public function search_my_location_recommend($latlng , $distance)
+    {
+        $lat_lung_sp = explode(",",$latlng);
+        $lat = $lat_lung_sp[0];
+        $lng = $lat_lung_sp[1];
+
+        $hos_near_recommend = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend LIKE 'Yes' HAVING distance < 20 ORDER BY distance LIMIT 0 ,2", []);
+
+        return $hos_near_recommend;
+    }
+
 }
