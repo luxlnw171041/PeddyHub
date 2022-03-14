@@ -87,7 +87,7 @@ Route::resource('adoptpet', 'AdoptpetController');
 
 //RICH MENU LINE
 Route::get('/login_line_reg_pet', 'PetController@welcome_line'); // ลงทะเบียนสัตว์
-Route::get('/login_line_near_hospital', 'PetController@welcome_line'); // รพ.ใกล้ฉัน
+Route::get('/login_line_near_hospital', 'PetController@welcome_line_Hospital_near'); // รพ.ใกล้ฉัน
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
 
 

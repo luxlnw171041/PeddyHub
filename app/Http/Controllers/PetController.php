@@ -185,4 +185,13 @@ class PetController extends Controller
             return redirect('/login/line?redirectTo=pet');
         }
     }
+
+    public function welcome_line_Hospital_near()
+    {
+        if(Auth::check()){
+            return redirect('/hospital_near');
+        }else{
+            return redirect('/login/line?redirectTo=hospital_near');
+        }
+    }
 }
