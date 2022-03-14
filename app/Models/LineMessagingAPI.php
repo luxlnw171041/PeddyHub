@@ -79,7 +79,7 @@ class LineMessagingAPI extends Model
                     $user = User::where('provider_id' , $provider_id)->get();
 
                 foreach($user as $item){
-                    $template_path = storage_path('../public/json/flex_profile.json');   
+                    $template_path = storage_path('../public/json/flex-profile.json');   
                     $string_json = file_get_contents($template_path);
 
                     $string_json = str_replace("lucky@gmail.com",$item->email,$string_json);
