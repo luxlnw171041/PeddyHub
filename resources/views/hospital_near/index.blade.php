@@ -152,6 +152,8 @@
         var user ;
         var marker_user ;
 
+        let icon_marker_user = "https://www.peddyhub.com/peddyhub/images/icons/marker_user.png";
+
         document.addEventListener('DOMContentLoaded', (event) => {
             // console.log("START");
             // getLocation();
@@ -193,8 +195,11 @@
             });
 
             // ตำแหน่ง USER
-            user = { lat: lat, lng: lng };
-            marker_user = new google.maps.Marker({ map, position: user });
+            marker_user = new google.maps.Marker({
+                position: user , 
+                map: map,
+                icon: icon_marker_user,
+            }); 
 
             // document.querySelector('#div_form').classList.remove('d-none');
             document.querySelector('#distance').classList.remove('d-none');
@@ -226,8 +231,11 @@
             });
 
             // ตำแหน่ง USER
-            user = { lat: lat, lng: lng };
-            marker_user = new google.maps.Marker({ map, position: user });
+            marker_user = new google.maps.Marker({
+                position: user , 
+                map: map,
+                icon: icon_marker_user,
+            }); 
 
             // document.querySelector('#div_form').classList.remove('d-none');
 
@@ -680,11 +688,9 @@
                             content_search.appendChild(div_card);
 
                             //ปักหมุด
-                            let image_marker = "https://www.peddyhub.com/peddyhub/images/icons/marker.png";
                             let marker = new google.maps.Marker({
                                 position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
                                 map: map,
-                                icon: image_marker ,
                             }); 
                             
                         }
