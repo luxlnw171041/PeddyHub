@@ -151,8 +151,8 @@
         var map ;
         var user ;
         var marker_user ;
-
-        let icon_marker_user = "https://www.peddyhub.com/peddyhub/images/icons/marker_user.png";
+        var image_marker_user = "https://www.peddyhub.com/peddyhub/images/icons/marker_user.png";
+        var image_marker_recommend = "https://www.peddyhub.com/peddyhub/images/icons/placeholder.png";
 
         document.addEventListener('DOMContentLoaded', (event) => {
             // console.log("START");
@@ -189,17 +189,14 @@
             document.querySelector('#div_spinner').classList.add('d-none');
 
             map = new google.maps.Map(document.getElementById("map_my_location"), {
-                zoom: 15,
+                zoom: 11,
                 center: { lat: lat, lng: lng },
                 mapTypeId: "terrain",
             });
 
             // ตำแหน่ง USER
-            marker_user = new google.maps.Marker({
-                position: user , 
-                map: map,
-                icon: icon_marker_user,
-            }); 
+            user = { lat: lat, lng: lng };
+            marker_user = new google.maps.Marker({ map, position: user , icon: image_marker_user});
 
             // document.querySelector('#div_form').classList.remove('d-none');
             document.querySelector('#distance').classList.remove('d-none');
@@ -225,19 +222,26 @@
             let lng = parseFloat(lng_text.value) ;
 
             map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 15,
+                zoom: 11,
                 center: { lat: lat, lng: lng },
                 mapTypeId: "terrain",
             });
 
             // ตำแหน่ง USER
-            marker_user = new google.maps.Marker({
-                position: user , 
-                map: map,
-                icon: icon_marker_user,
-            }); 
+            user = { lat: lat, lng: lng };
+            marker_user = new google.maps.Marker({ map, position: user , icon: image_marker_user });
 
             // document.querySelector('#div_form').classList.remove('d-none');
+
+            @foreach($hospital_recommend as $item)
+                @if(!empty($item->lng))
+                    marker = new google.maps.Marker({
+                        position: {lat: {{ $item->lat }} , lng: {{ $item->lng }} },
+                        map: map,
+                        icon: image_marker_recommend,
+                    });
+                @endif
+            @endforeach
 
         }
 
@@ -548,7 +552,6 @@
                             content_search_recommend.appendChild(div_card_recommend);
 
                             //ปักหมุด
-                            let image_marker_recommend = "https://www.peddyhub.com/peddyhub/images/icons/placeholder.png";
                             let marker_recommend = new google.maps.Marker({
                                 position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
                                 map: map,
