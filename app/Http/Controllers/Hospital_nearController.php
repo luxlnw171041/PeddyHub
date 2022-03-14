@@ -147,4 +147,26 @@ class Hospital_nearController extends Controller
         return $hos_near_recommend;
     }
 
+    public function search_location_by_T_recommend($input_province , $input_amphoe , $input_tambon)
+    {
+        $hos_near = Hospital_near::where('recommend', "Yes")
+            ->where('tambon_th' , $input_tambon)
+            ->where('amphoe_th' , $input_amphoe)
+            ->where('changwat_th' , $input_province)
+            ->get();
+
+        return $hos_near;
+    }
+
+    public function search_location_by_T($input_province , $input_amphoe , $input_tambon)
+    {
+        $hos_near = Hospital_near::where('recommend' , null)
+            ->where('tambon_th' , $input_tambon)
+            ->where('amphoe_th' , $input_amphoe)
+            ->where('changwat_th' , $input_province)
+            ->get();
+
+        return $hos_near;
+    }
+
 }

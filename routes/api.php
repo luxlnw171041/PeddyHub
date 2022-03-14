@@ -37,3 +37,7 @@ Route::get('/change_language_fromline/{language}/{user_id}', 'API\API_language@c
 
 Route::get('search_my_location/{latlng}/{distance}', 'Hospital_nearController@search_my_location');
 Route::get('search_my_location_recommend/{latlng}/{distance}', 'Hospital_nearController@search_my_location_recommend');
+
+Route::get('search_location_by_T_recommend/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T_recommend');
+
+Route::get('search_location_by_T/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T');

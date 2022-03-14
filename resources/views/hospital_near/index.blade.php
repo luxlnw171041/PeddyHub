@@ -150,7 +150,9 @@
 
         var map ;
         var user ;
+        var marker ;
         var marker_user ;
+        var marker_recommend ;
         var image_marker_user = "https://www.peddyhub.com/peddyhub/images/icons/marker_user.png";
         var image_marker_recommend = "https://www.peddyhub.com/peddyhub/images/icons/placeholder.png";
 
@@ -242,6 +244,334 @@
                     });
                 @endif
             @endforeach
+
+        }
+
+        function initMap_location_by_T(input_province , input_amphoe , input_tambon) { 
+
+            document.querySelector('#map_my_location').classList.add('d-none');
+            document.querySelector('#map').classList.remove('d-none');
+
+            let lat_text = document.querySelector("#lat");
+            let lng_text = document.querySelector("#lng");
+            let latlng = document.querySelector("#latlng");
+
+            // lat_text.value = position.coords.latitude ;
+            // lng_text.value = position.coords.longitude ;
+            // latlng.value = position.coords.latitude+","+position.coords.longitude ;
+            
+            let lat = parseFloat(lat_text.value) ;
+            let lng = parseFloat(lng_text.value) ;
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: { lat: lat, lng: lng },
+                mapTypeId: "terrain",
+            });
+
+            // ตำแหน่ง USER
+            user = { lat: lat, lng: lng };
+            marker_user = new google.maps.Marker({ map, position: user , icon: image_marker_user });
+
+            // document.querySelector('#div_form').classList.remove('d-none');
+
+            fetch("{{ url('/') }}/api/search_location_by_T/" + input_province + "/" + input_amphoe + "/" + input_tambon)
+                .then(response => response.json())
+                .then(result => {
+                    // console.log(result);
+
+                    if (result.length === 0) {
+                        document.querySelector('#content_search').classList.add('d-none');
+                    }else{
+                        // แสดงข้อมูล รพ.ใกล้ฉัน
+                        document.querySelector('#content_search').classList.remove('d-none');
+
+                        let content_search = document.querySelector('#content_search');
+                            content_search.textContent = "" ;
+
+                        for(let item of result){
+
+                            let div_card = document.createElement("div");
+                            let class_div_card = document.createAttribute("class");
+                                class_div_card.value = "card main-shadow main-radius";
+                                div_card.setAttributeNode(class_div_card);
+
+                            let div_row = document.createElement("div");
+                            let class_div_row = document.createAttribute("class");
+                                class_div_row.value = "row";
+                                div_row.setAttributeNode(class_div_row);
+                            div_card.appendChild(div_row);
+
+                            // ชื่อ
+                            let div_col_name = document.createElement("div");
+                            let class_div_name = document.createAttribute("class");
+                                class_div_name.value = "col-12";
+                                div_col_name.setAttributeNode(class_div_name);
+                            let h_name = document.createElement("h6");
+                                h_name.innerHTML = item.name ;
+                                div_col_name.appendChild(h_name);
+                            div_row.appendChild(div_col_name);
+
+                            // ข้อมูล
+                            let div_col_data = document.createElement("div");
+                            let class_div_data = document.createAttribute("class");
+                                class_div_data.value = "col-7";
+                                div_col_data.setAttributeNode(class_div_data);
+
+                                // address
+                                let p_address = document.createElement("p");
+                                let style_p_address = document.createAttribute("style");
+                                    style_p_address.value = "margin-bottom:0px;";
+                                    p_address.setAttributeNode(style_p_address);
+
+                                let icon_address = document.createElement("i");
+                                let icon_class = document.createAttribute("class");
+                                    icon_class.value = "fa-solid fa-location-crosshairs";
+                                    icon_address.setAttributeNode(icon_class);
+                                let icon_style = document.createAttribute("style");
+                                    icon_style.value = "color:#b81f5b;padding-right:10px;";
+                                    icon_address.setAttributeNode(icon_style);
+                                    p_address.appendChild(icon_address);
+
+                                let span_address = document.createElement("span");
+                                    span_address.innerHTML = item.address ;
+                                    p_address.appendChild(span_address);
+                                div_col_data.appendChild(p_address);
+
+                                // business_hours
+                                let p_business_hours = document.createElement("p");
+                                let style_p_business_hours = document.createAttribute("style");
+                                    style_p_business_hours.value = "margin-bottom:0px;";
+                                    p_business_hours.setAttributeNode(style_p_business_hours);
+
+                                let icon_business_hours = document.createElement("i");
+                                let icon_class_business_hours = document.createAttribute("class");
+                                    icon_class_business_hours.value = "fa-solid fa-timer";
+                                    icon_business_hours.setAttributeNode(icon_class_business_hours);
+                                let icon_style_business_hours = document.createAttribute("style");
+                                    icon_style_business_hours.value = "color:green;padding-right:10px;";
+                                    icon_business_hours.setAttributeNode(icon_style_business_hours);
+                                    p_business_hours.appendChild(icon_business_hours);
+
+                                let span_business_hours = document.createElement("span");
+                                    span_business_hours.innerHTML = item.business_hours ;
+                                    p_business_hours.appendChild(span_business_hours);
+                                div_col_data.appendChild(p_business_hours);
+
+                                // phone
+                                let p_phone = document.createElement("p");
+                                let style_p_phone = document.createAttribute("style");
+                                    style_p_phone.value = "margin-bottom:0px;";
+                                    p_phone.setAttributeNode(style_p_phone);
+
+                                let icon_phone = document.createElement("i");
+                                let icon_class_phone = document.createAttribute("class");
+                                    icon_class_phone.value = "fa-solid fa-phone-volume";
+                                    icon_phone.setAttributeNode(icon_class_phone);
+                                let icon_style_phone = document.createAttribute("style");
+                                    icon_style_phone.value = "color:blue;padding-right:10px;";
+                                    icon_phone.setAttributeNode(icon_style_phone);
+                                    p_phone.appendChild(icon_phone);
+
+                                let span_phone = document.createElement("span");
+                                    span_phone.innerHTML = item.phone ;
+                                    p_phone.appendChild(span_phone);
+                                div_col_data.appendChild(p_phone);
+
+                            div_row.appendChild(div_col_data);
+
+                            // รูปภาพ
+                            let div_col_img = document.createElement("div");
+                            let class_div_img = document.createAttribute("class");
+                                class_div_img.value = "col-5";
+                                div_col_img.setAttributeNode(class_div_img);
+
+                                let tag_img = document.createElement("img");
+                                let class_tag_img = document.createAttribute("class");
+                                    class_tag_img.value = "img-fluid";
+                                    tag_img.setAttributeNode(class_tag_img);
+                                let src_img = document.createAttribute("src");
+                                    src_img.value = item.photo;
+                                    tag_img.setAttributeNode(src_img);
+
+                                    div_col_img.appendChild(tag_img);
+
+                            div_row.appendChild(div_col_img);
+
+                            content_search.appendChild(div_card);
+
+                            //ปักหมุด
+                            marker = new google.maps.Marker({
+                                position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
+                                map: map,
+                            }); 
+                            
+                        }
+
+                    }
+
+                });
+
+            fetch("{{ url('/') }}/api/search_location_by_T_recommend/" + input_province + "/" + input_amphoe + "/" + input_tambon )
+                .then(response => response.json())
+                .then(result => {
+                    // console.log(result);
+                    if (result.length === 0) {
+                        document.querySelector('#content_search_recommend').classList.add('d-none');
+                    }else{
+                        // แสดงข้อมูล รพ.ใกล้ฉัน แนะนำ
+                        document.querySelector('#content_search_recommend').classList.remove('d-none');
+
+                        let content_search_recommend = document.querySelector('#content_search_recommend');
+                            content_search_recommend.textContent = "" ;
+
+                        for(let item of result){
+
+                            let div_card_recommend = document.createElement("div");
+                            let class_div_card_recommend = document.createAttribute("class");
+                                class_div_card_recommend.value = "card main-shadow main-radius";
+                                div_card_recommend.setAttributeNode(class_div_card_recommend);
+
+                            let div_row_recommend = document.createElement("div");
+                            let class_div_row_recommend = document.createAttribute("class");
+                                class_div_row_recommend.value = "row";
+                                div_row_recommend.setAttributeNode(class_div_row_recommend);
+                            div_card_recommend.appendChild(div_row_recommend);
+
+                            // ชื่อ
+                            let div_col_name_recommend = document.createElement("div");
+                            let class_div_name_recommend = document.createAttribute("class");
+                                class_div_name_recommend.value = "col-9";
+                                div_col_name_recommend.setAttributeNode(class_div_name_recommend);
+                            let h_name_recommend = document.createElement("h6");
+                                h_name_recommend.innerHTML = item.name ;
+                                div_col_name_recommend.appendChild(h_name_recommend);
+                            div_row_recommend.appendChild(div_col_name_recommend);
+
+                            // ป้ายนะนำ
+                            let div_col_btn_recommend = document.createElement("div");
+                            let class_div_btn_recommend = document.createAttribute("class");
+                                class_div_btn_recommend.value = "col-3";
+                                div_col_btn_recommend.setAttributeNode(class_div_btn_recommend);
+                            let btn_recommend = document.createElement("button");
+                            let class_btn_recommend = document.createAttribute("class");
+                                class_btn_recommend.value = "btn btn-sm btn-success float-right";
+                                btn_recommend.setAttributeNode(class_btn_recommend);
+                            let style_btn_recommend = document.createAttribute("style");
+                                style_btn_recommend.value = "margin-top: -10px;";
+                                btn_recommend.setAttributeNode(style_btn_recommend);
+                            let span_recommend = document.createElement("span");
+                                span_recommend.innerHTML = "แนะนำ " ;
+                                btn_recommend.appendChild(span_recommend);
+                            let icon_btn_recommend = document.createElement("i");
+                            let icon_class_btn_recommend = document.createAttribute("class");
+                                icon_class_btn_recommend.value = "fa-solid fa-badge-check";
+                                icon_btn_recommend.setAttributeNode(icon_class_btn_recommend);
+                                btn_recommend.appendChild(icon_btn_recommend);
+                            
+
+                                div_col_btn_recommend.appendChild(btn_recommend);
+                            div_row_recommend.appendChild(div_col_btn_recommend);
+
+                            // ข้อมูล
+                            let div_col_data_recommend = document.createElement("div");
+                            let class_div_data_recommend = document.createAttribute("class");
+                                class_div_data_recommend.value = "col-7";
+                                div_col_data_recommend.setAttributeNode(class_div_data_recommend);
+
+                                // address
+                                let p_address_recommend = document.createElement("p");
+                                let style_p_address_recommend = document.createAttribute("style");
+                                    style_p_address_recommend.value = "margin-bottom:0px;";
+                                    p_address_recommend.setAttributeNode(style_p_address_recommend);
+
+                                let icon_address_recommend = document.createElement("i");
+                                let icon_class_recommend = document.createAttribute("class");
+                                    icon_class_recommend.value = "fa-solid fa-location-crosshairs";
+                                    icon_address_recommend.setAttributeNode(icon_class_recommend);
+                                let icon_style_recommend = document.createAttribute("style");
+                                    icon_style_recommend.value = "color:#b81f5b;padding-right:10px;";
+                                    icon_address_recommend.setAttributeNode(icon_style_recommend);
+                                    p_address_recommend.appendChild(icon_address_recommend);
+
+                                let span_address_recommend = document.createElement("span");
+                                    span_address_recommend.innerHTML = item.address ;
+                                    p_address_recommend.appendChild(span_address_recommend);
+                                div_col_data_recommend.appendChild(p_address_recommend);
+
+                                // business_hours
+                                let p_business_hours_recommend = document.createElement("p");
+                                let style_p_business_hours_recommend = document.createAttribute("style");
+                                    style_p_business_hours_recommend.value = "margin-bottom:0px;";
+                                    p_business_hours_recommend.setAttributeNode(style_p_business_hours_recommend);
+
+                                let icon_business_hours_recommend = document.createElement("i");
+                                let icon_class_business_hours_recommend = document.createAttribute("class");
+                                    icon_class_business_hours_recommend.value = "fa-solid fa-timer";
+                                    icon_business_hours_recommend.setAttributeNode(icon_class_business_hours_recommend);
+                                let icon_style_business_hours_recommend = document.createAttribute("style");
+                                    icon_style_business_hours_recommend.value = "color:green;padding-right:10px;";
+                                    icon_business_hours_recommend.setAttributeNode(icon_style_business_hours_recommend);
+                                    p_business_hours_recommend.appendChild(icon_business_hours_recommend);
+
+                                let span_business_hours_recommend = document.createElement("span");
+                                    span_business_hours_recommend.innerHTML = item.business_hours ;
+                                    p_business_hours_recommend.appendChild(span_business_hours_recommend);
+                                div_col_data_recommend.appendChild(p_business_hours_recommend);
+
+                                // phone
+                                let p_phone_recommend = document.createElement("p");
+                                let style_p_phone_recommend = document.createAttribute("style");
+                                    style_p_phone_recommend.value = "margin-bottom:0px;";
+                                    p_phone_recommend.setAttributeNode(style_p_phone_recommend);
+
+                                let icon_phone_recommend = document.createElement("i");
+                                let icon_class_phone_recommend = document.createAttribute("class");
+                                    icon_class_phone_recommend.value = "fa-solid fa-phone-volume";
+                                    icon_phone_recommend.setAttributeNode(icon_class_phone_recommend);
+                                let icon_style_phone_recommend = document.createAttribute("style");
+                                    icon_style_phone_recommend.value = "color:blue;padding-right:10px;";
+                                    icon_phone_recommend.setAttributeNode(icon_style_phone_recommend);
+                                    p_phone_recommend.appendChild(icon_phone_recommend);
+
+                                let span_phone_recommend = document.createElement("span");
+                                    span_phone_recommend.innerHTML = item.phone ;
+                                    p_phone_recommend.appendChild(span_phone_recommend);
+                                div_col_data_recommend.appendChild(p_phone_recommend);
+
+                            div_row_recommend.appendChild(div_col_data_recommend);
+
+                            // รูปภาพ
+                            let div_col_img_recommend = document.createElement("div");
+                            let class_div_img_recommend = document.createAttribute("class");
+                                class_div_img_recommend.value = "col-5";
+                                div_col_img_recommend.setAttributeNode(class_div_img_recommend);
+
+                                let tag_img_recommend = document.createElement("img");
+                                let class_tag_img_recommend = document.createAttribute("class");
+                                    class_tag_img_recommend.value = "img-fluid";
+                                    tag_img_recommend.setAttributeNode(class_tag_img_recommend);
+                                let src_img_recommend = document.createAttribute("src");
+                                    src_img_recommend.value = item.photo;
+                                    tag_img_recommend.setAttributeNode(src_img_recommend);
+
+                                    div_col_img_recommend.appendChild(tag_img_recommend);
+
+                            div_row_recommend.appendChild(div_col_img_recommend);
+
+                            content_search_recommend.appendChild(div_card_recommend);
+
+                            //ปักหมุด
+                            marker_recommend = new google.maps.Marker({
+                                position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
+                                map: map,
+                                icon: image_marker_recommend,
+                            }); 
+                            
+                        }
+                    }
+
+            });
 
         }
 
@@ -341,7 +671,8 @@
                             lng.value = result[0]['lng'];
 
                         document.querySelector('#map').classList.remove('d-none');
-                        initMap();
+                        select_location_by_T();
+                        initMap_location_by_T(select_province.value , select_amphoe.value , select_tambon.value);
                            
                     });
             }else{
@@ -361,7 +692,8 @@
                             lng.value = result[0]['lng'];
 
                         document.querySelector('#map').classList.remove('d-none');
-                        initMap();
+                        select_location_by_T();
+                        initMap_location_by_T(input_province.value , input_amphoe.value , input_tambon.value);
                            
                     });
             }
@@ -371,6 +703,11 @@
 
         function select_location_by_T()
         {
+            let content_search = document.querySelector('#content_search');
+                content_search.textContent = "" ;
+            let content_search_recommend = document.querySelector('#content_search_recommend');
+                content_search_recommend.textContent = "" ;
+
             document.querySelector('#location_by_T').classList.remove('d-none');
             document.querySelector('#my_location').classList.add('d-none');
 
@@ -382,6 +719,15 @@
 
         function select_my_location()
         {
+            document.querySelector('#select_province').value = "";
+            document.querySelector('#select_amphoe').value = "";
+            document.querySelector('#select_tambon').value = "";
+            
+            let content_search = document.querySelector('#content_search');
+                content_search.textContent = "" ;
+            let content_search_recommend = document.querySelector('#content_search_recommend');
+                content_search_recommend.textContent = "" ;
+
             document.querySelector('#div_spinner').classList.remove('d-none');
 
             document.querySelector('#location_by_T').classList.add('d-none');
@@ -398,6 +744,14 @@
 
         function search_my_location()
         {
+            if (marker) {
+                marker.setMap(null);
+            }
+
+            if (marker_recommend) {
+                marker_recommend.setMap(null);
+            }
+            
             document.querySelector('#text_select_distance').classList.add('d-none');
             let latlng = document.querySelector('#latlng').value;
             let distance = document.querySelector('#distance').value;
@@ -552,7 +906,7 @@
                             content_search_recommend.appendChild(div_card_recommend);
 
                             //ปักหมุด
-                            let marker_recommend = new google.maps.Marker({
+                            marker_recommend = new google.maps.Marker({
                                 position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
                                 map: map,
                                 icon: image_marker_recommend,
@@ -691,7 +1045,7 @@
                             content_search.appendChild(div_card);
 
                             //ปักหมุด
-                            let marker = new google.maps.Marker({
+                            marker = new google.maps.Marker({
                                 position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
                                 map: map,
                             }); 
@@ -701,11 +1055,6 @@
                     }
 
                 });
-        }
-
-        function search_location_by_T()
-        {
-
         }
 
     </script>
