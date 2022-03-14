@@ -1,0 +1,24 @@
+{
+    "fields": [
+        {
+            "name": "pet_id",
+            "type": "integer"
+        },
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "quantity",
+            "type": "integer"
+        },
+        {
+            "name": "total_blood",
+            "type": "string"
+        },
+        {
+            "name": "location",
+            "type": "string"
+        }
+    ]
+}

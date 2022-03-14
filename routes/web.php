@@ -92,3 +92,5 @@ Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // à¸•à¸
 
 
 Route::get('hospital_near', 'Hospital_nearController@index');
+
+Route::resource('blood_bank', 'Blood_bankController');
