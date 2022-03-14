@@ -684,7 +684,7 @@
                             let marker = new google.maps.Marker({
                                 position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
                                 map: map,
-                                icon: image_marker ;
+                                icon: image_marker ,
                             }); 
                             
                         }
