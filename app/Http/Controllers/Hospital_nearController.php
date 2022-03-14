@@ -131,7 +131,7 @@ class Hospital_nearController extends Controller
         $lat = $lat_lung_sp[0];
         $lng = $lat_lung_sp[1];
 
-        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears  HAVING distance < $distance ORDER BY distance ", []);
+        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL HAVING distance < $distance ORDER BY distance ", []);
 
         return $hos_near;
     }
