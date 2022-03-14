@@ -1,0 +1,205 @@
+{
+    "type": "flex",
+    "altText": "ติดต่อ",
+    "contents":{
+        "type": "bubble",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "spacing": "md",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://peddyhub.com/peddyhub/images/logo/logo-2.png",
+                  "size": "4xl",
+                  "aspectRatio": "20:5",
+                  "aspectMode": "fit",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://www.viicheck.com/"
+                  }
+                },
+                {
+                  "type": "image",
+                  "url": "https://peddyhub.com/peddyhub/images/sticker/19.png",
+                  "size": "full",
+                  "aspectMode": "fit",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://www.viicheck.com/"
+                  },
+                  "offsetBottom": "md",
+                  "aspectRatio": "17:9",
+                  "offsetTop": "md"
+                }
+              ]
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "separator",
+                  "color": "#B8205B"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/phone.png",
+                      "size": "40px",
+                      "offsetTop": "10px",
+                      "offsetEnd": "sm",
+                      "offsetStart": "2px"
+                    },
+                    {
+                      "type": "text",
+                      "text": "โทร",
+                      "weight": "bold",
+                      "margin": "xl",
+                      "action": {
+                        "type": "uri",
+                        "label": "action",
+                        "uri": "tel:020277856"
+                      },
+                      "flex": 4,
+                      "position": "absolute",
+                      "offsetTop": "xxl",
+                      "offsetStart": "60px"
+                    },
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/pawprint_c2.png",
+                      "offsetStart": "197px",
+                      "offsetTop": "-5px"
+                    },
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/pawprint_c2.png",
+                      "offsetTop": "-5px",
+                      "offsetStart": "164px"
+                    }
+                  ],
+                  "height": "50px",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "tel:020277856"
+                  }
+                },
+                {
+                  "type": "separator",
+                  "margin": "xl",
+                  "color": "#B8205B"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/email.png",
+                      "size": "3xl",
+                      "margin": "none",
+                      "offsetTop": "md"
+                    },
+                    {
+                      "type": "text",
+                      "text": "อีเมล",
+                      "margin": "xl",
+                      "action": {
+                        "type": "uri",
+                        "label": "action",
+                        "uri": "mailto:contact.peddyhub@gmail.com"
+                      },
+                      "weight": "bold",
+                      "flex": 4
+                    },
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/pawprint_c2.png"
+                    },
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/pawprint_c2.png",
+                      "offsetStart": "1px"
+                    }
+                  ],
+                  "height": "50px",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "mailto:contact.peddyhub@gmail.com"
+                  },
+                  "margin": "md"
+                },
+                {
+                  "type": "separator",
+                  "margin": "xl",
+                  "color": "#B8205B"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/facebook.png",
+                      "size": "3xl",
+                      "margin": "none",
+                      "offsetTop": "md"
+                    },
+                    {
+                      "type": "text",
+                      "text": "Facebook",
+                      "weight": "bold",
+                      "margin": "xl",
+                      "action": {
+                        "type": "uri",
+                        "label": "action",
+                        "uri": "https://m.me/Petdyhub"
+                      },
+                      "flex": 4
+                    },
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/pawprint_c2.png"
+                    },
+                    {
+                      "type": "icon",
+                      "url": "https://peddyhub.com/peddyhub/images/icons/pawprint_c2.png",
+                      "offsetStart": "1px"
+                    }
+                  ],
+                  "height": "50px",
+                  "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": "https://m.me/peddyhubs"
+                  },
+                  "margin": "md"
+                }
+              ],
+              "offsetBottom": "sm"
+            }
+          ],
+          "borderWidth": "bold",
+          "cornerRadius": "xl",
+          "borderColor": "#B8205B"
+        },
+        "styles": {
+          "hero": {
+            "backgroundColor": "#ff0101"
+          }
+        }
+      }
+}
