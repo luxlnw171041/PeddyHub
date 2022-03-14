@@ -77,11 +77,12 @@ class LineMessagingAPI extends Model
             case 'profile':
                     $provider_id = $event["source"]['userId'];
 
-                    $user = User::where('provider_id' , '=' ,$provider_id);
+                    $user = User::where('provider_id' , '=' , $provider_id)->get();
 
                 foreach($user as $item){
                     $template_path = storage_path('../public/json/flex_profile.json');   
                     $string_json = file_get_contents($template_path);
+
                     $string_json = str_replace("lucky@gmail.com",$item->email,$string_json);
                     $string_json = str_replace("Lucky",$item->profile->name,$string_json);
                     // เบอร์
