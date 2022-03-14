@@ -102,6 +102,9 @@ class LineApiController extends Controller
                 case "language" :  
                     $line->replyToUser(null, $event, "language");
                     break;
+                case "ข้อมูลของคุณ" :  
+                    $line->replyToUser(null, $event, "profile");
+                    break;
             }
         }
     }

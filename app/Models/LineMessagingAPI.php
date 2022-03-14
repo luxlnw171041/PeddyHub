@@ -74,7 +74,38 @@ class LineMessagingAPI extends Model
 
                 $messages = [ json_decode($string_json, true) ]; 
     			break;
+            case 'profile':
+                    $provider_id = $event["source"]['userId'];
 
+                    $user = User::where('provider_id' , '=' ,$provider_id);
+
+                foreach($user as $item){
+                    $template_path = storage_path('../public/json/flex_profile.json');   
+                    $string_json = file_get_contents($template_path);
+                    $string_json = str_replace("lucky@gmail.com",$item->email,$string_json);
+                    $string_json = str_replace("Lucky",$item->profile->name,$string_json);
+                    // เบอร์
+                    if (!empty($item->phone)) {
+                        $string_json = str_replace("0999999999",$item->profile->phone,$string_json);
+                    }else{
+                        $string_json = str_replace("0999999999","กรุณาเพิ่มเบอร์โทรศัพท์",$string_json);
+                    }
+                    // วันเกิด
+                    if (!empty($item->birth)) {
+                        $string_json = str_replace("17/10/1998",$item->profile->birth,$string_json);
+                    }else{
+                        $string_json = str_replace("17/10/1998","กรุณาเพิ่มวันเกิด",$string_json);
+                    }
+                    
+                    // เพศ
+                    if (!empty($item->sex)) {
+                        $string_json = str_replace("ชาย",$item->profile->sex,$string_json);
+                    }else{
+                        $string_json = str_replace("ชาย","กรุณาระบุเพศ",$string_json);
+                    }
+                    $messages = [ json_decode($string_json, true) ]; 
+                }
+                break;
     	}
 
     	$body = [
