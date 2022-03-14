@@ -76,8 +76,7 @@ class LineMessagingAPI extends Model
     			break;
             case 'profile':
                     $provider_id = $event["source"]['userId'];
-
-                    $user = User::where('provider_id' , '=' , $provider_id)->get();
+                    $user = User::where('provider_id' , $provider_id)->get();
 
                 foreach($user as $item){
                     $template_path = storage_path('../public/json/flex_profile.json');   
