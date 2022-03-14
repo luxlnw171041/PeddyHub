@@ -538,9 +538,16 @@
                             div_row_recommend.appendChild(div_col_img_recommend);
 
                             content_search_recommend.appendChild(div_card_recommend);
+
+                            //ปักหมุด
+                            let image_marker_recommend = "https://www.peddyhub.com/peddyhub/images/icons/placeholder.png";
+                            let marker_recommend = new google.maps.Marker({
+                                position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
+                                map: map,
+                                icon: image_marker_recommend,
+                            }); 
                             
                         }
-                        // ---------
                     }
 
             });
@@ -671,6 +678,14 @@
                             div_row.appendChild(div_col_img);
 
                             content_search.appendChild(div_card);
+
+                            //ปักหมุด
+                            let image_marker = "https://www.peddyhub.com/peddyhub/images/icons/marker.png";
+                            let marker = new google.maps.Marker({
+                                position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
+                                map: map,
+                                icon: image_marker ;
+                            }); 
                             
                         }
 
