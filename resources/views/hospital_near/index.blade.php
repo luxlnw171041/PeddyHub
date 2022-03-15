@@ -81,7 +81,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 wow fadeInLeft">
                                 <div id="div_recommend" class="">
                                     @foreach($hospital_recommend as $item)
-                                        <div class="card main-shadow main-radius" onclick="view_markar('{{ $item->lat }}' , '{{ $item->lng }}');">
+                                        <div class="card main-shadow main-radius" onclick="view_markar('{{ $item->lat }}' , '{{ $item->lng }}','{{ $item->name }}');">
                                             <div class="row">
                                                 <div class="col-9">
                                                     <h6>{{ $item->name }}</h6>
@@ -296,7 +296,7 @@
                                 class_div_card.value = "card main-shadow main-radius";
                                 div_card.setAttributeNode(class_div_card);
                             let onclick_div_card = document.createAttribute("onclick");
-                                onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
                                 div_card.setAttributeNode(onclick_div_card);
 
                             let div_row = document.createElement("div");
@@ -435,7 +435,7 @@
                                 class_div_card_recommend.value = "card main-shadow main-radius";
                                 div_card_recommend.setAttributeNode(class_div_card_recommend);
                             let onclick_div_card_recommend = document.createAttribute("onclick");
-                                onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
                                 div_card_recommend.setAttributeNode(onclick_div_card_recommend);
 
                             let div_row_recommend = document.createElement("div");
@@ -780,7 +780,7 @@
                                 class_div_card_recommend.value = "card main-shadow main-radius";
                                 div_card_recommend.setAttributeNode(class_div_card_recommend);
                             let onclick_div_card_recommend = document.createAttribute("onclick");
-                                onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
                                 div_card_recommend.setAttributeNode(onclick_div_card_recommend);
 
                             let div_row_recommend = document.createElement("div");
@@ -947,7 +947,7 @@
                                 class_div_card.value = "card main-shadow main-radius";
                                 div_card.setAttributeNode(class_div_card);
                             let onclick_div_card = document.createAttribute("onclick");
-                                onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
                                 div_card.setAttributeNode(onclick_div_card);
 
                             let div_row = document.createElement("div");
@@ -1067,7 +1067,7 @@
                 });
         }
 
-        function view_markar(text_lat , text_lng)
+        function view_markar(text_lat , text_lng , name)
         {   
             document.querySelector('#map_my_location').classList.add('d-none');
             document.querySelector('#map').classList.remove('d-none');
@@ -1084,6 +1084,23 @@
             // ปักหมุด
             user = { lat: lat, lng: lng };
             marker_user = new google.maps.Marker({ map, position: user });
+
+            const myLatlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
+
+            const contentString =
+                '<div>' +
+                    '<h4>'+ name +'</h4>' +
+                    "<p>lat : "+ lat + "<br>" +
+                    "lng : "+ lng + "</p>" +
+                "</div>";
+
+            let infoWindow = new google.maps.InfoWindow({
+                // content: "<p>ชื่อพื้นที่ : <b>" + name_area  + "</b></p>" + "Lat :" + lat + "<br>" + "Lat :" + lng,
+                content: contentString,
+                position: myLatlng,
+            });
+
+            infoWindow.open(map);
 
         }
 
