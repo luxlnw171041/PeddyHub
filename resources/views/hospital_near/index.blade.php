@@ -81,7 +81,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12 wow fadeInLeft">
                                 <div id="div_recommend" class="">
                                     @foreach($hospital_recommend as $item)
-                                        <div class="card main-shadow main-radius">
+                                        <div class="card main-shadow main-radius" onclick="view_markar('{{ $item->lat }}' , '{{ $item->lng }}');">
                                             <div class="row">
                                                 <div class="col-9">
                                                     <h6>{{ $item->name }}</h6>
@@ -126,6 +126,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div id="map" class="wow fadeInRight"></div>
                                 <div id="map_my_location" class="wow fadeInRight d-none"></div>
+                                <div id="map_view_marker" class="wow fadeInRight d-none"></div>
                             </div>
                         </div>
                     </div>
@@ -173,6 +174,8 @@
             document.querySelector('#map_my_location').classList.remove('d-none');
             document.querySelector('#map').classList.add('d-none');
             document.querySelector('#map').classList.add('animated fadeInUp');
+            document.querySelector('#map_view_marker').classList.add('d-none');
+            document.querySelector('#map_view_marker').classList.add('d-none animated fadeInUp');
         }
 
         function initMap_my_location(position) { 
@@ -211,6 +214,7 @@
 
             document.querySelector('#map_my_location').classList.add('d-none');
             document.querySelector('#map').classList.remove('d-none');
+            document.querySelector('#map_view_marker').classList.add('d-none');
 
             let lat_text = document.querySelector("#lat");
             let lng_text = document.querySelector("#lng");
@@ -251,6 +255,7 @@
 
             document.querySelector('#map_my_location').classList.add('d-none');
             document.querySelector('#map').classList.remove('d-none');
+            document.querySelector('#map_view_marker').classList.add('d-none');
 
             let lat_text = document.querySelector("#lat");
             let lng_text = document.querySelector("#lng");
@@ -670,7 +675,6 @@
                         let lng = document.querySelector('#lng');
                             lng.value = result[0]['lng'];
 
-                        document.querySelector('#map').classList.remove('d-none');
                         select_location_by_T();
                         initMap_location_by_T(select_province.value , select_amphoe.value , select_tambon.value);
                            
@@ -691,7 +695,6 @@
                         let lng = document.querySelector('#lng');
                             lng.value = result[0]['lng'];
 
-                        document.querySelector('#map').classList.remove('d-none');
                         select_location_by_T();
                         initMap_location_by_T(input_province.value , input_amphoe.value , input_tambon.value);
                            
@@ -1057,5 +1060,29 @@
                 });
         }
 
+        function view_markar(text_lat , text_lng)
+        {
+            document.querySelector('#map_my_location').classList.add('d-none');
+            document.querySelector('#map').classList.add('d-none');
+            document.querySelector('#map_view_marker').classList.remove('d-none');
+            
+            lat = parseFloat(text_lat) ;
+            lng = parseFloat(text_lng) ;
+
+            map = new google.maps.Map(document.getElementById("map_view_marker"), {
+                zoom: 16,
+                center: { lat: lat, lng: lng },
+                mapTypeId: "terrain",
+            });
+
+            // ปักหมุด
+            user = { lat: lat, lng: lng };
+            marker_user = new google.maps.Marker({ map, position: user });
+
+        }
+
+
+
     </script>
+
 @endsection
