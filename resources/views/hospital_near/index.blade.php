@@ -126,7 +126,6 @@
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div id="map" class="wow fadeInRight"></div>
                                 <div id="map_my_location" class="wow fadeInRight d-none"></div>
-                                <div id="map_view_marker" class="wow fadeInRight d-none"></div>
                             </div>
                         </div>
                     </div>
@@ -174,8 +173,6 @@
             document.querySelector('#map_my_location').classList.remove('d-none');
             document.querySelector('#map').classList.add('d-none');
             document.querySelector('#map').classList.add('animated fadeInUp');
-            document.querySelector('#map_view_marker').classList.add('d-none');
-            document.querySelector('#map_view_marker').classList.add('d-none animated fadeInUp');
         }
 
         function initMap_my_location(position) { 
@@ -214,7 +211,6 @@
 
             document.querySelector('#map_my_location').classList.add('d-none');
             document.querySelector('#map').classList.remove('d-none');
-            document.querySelector('#map_view_marker').classList.add('d-none');
 
             let lat_text = document.querySelector("#lat");
             let lng_text = document.querySelector("#lng");
@@ -255,7 +251,6 @@
 
             document.querySelector('#map_my_location').classList.add('d-none');
             document.querySelector('#map').classList.remove('d-none');
-            document.querySelector('#map_view_marker').classList.add('d-none');
 
             let lat_text = document.querySelector("#lat");
             let lng_text = document.querySelector("#lng");
@@ -300,6 +295,9 @@
                             let class_div_card = document.createAttribute("class");
                                 class_div_card.value = "card main-shadow main-radius";
                                 div_card.setAttributeNode(class_div_card);
+                            let onclick_div_card = document.createAttribute("onclick");
+                                onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                div_card.setAttributeNode(onclick_div_card);
 
                             let div_row = document.createElement("div");
                             let class_div_row = document.createAttribute("class");
@@ -436,6 +434,9 @@
                             let class_div_card_recommend = document.createAttribute("class");
                                 class_div_card_recommend.value = "card main-shadow main-radius";
                                 div_card_recommend.setAttributeNode(class_div_card_recommend);
+                            let onclick_div_card_recommend = document.createAttribute("onclick");
+                                onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                div_card_recommend.setAttributeNode(onclick_div_card_recommend);
 
                             let div_row_recommend = document.createElement("div");
                             let class_div_row_recommend = document.createAttribute("class");
@@ -778,6 +779,9 @@
                             let class_div_card_recommend = document.createAttribute("class");
                                 class_div_card_recommend.value = "card main-shadow main-radius";
                                 div_card_recommend.setAttributeNode(class_div_card_recommend);
+                            let onclick_div_card_recommend = document.createAttribute("onclick");
+                                onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                div_card_recommend.setAttributeNode(onclick_div_card_recommend);
 
                             let div_row_recommend = document.createElement("div");
                             let class_div_row_recommend = document.createAttribute("class");
@@ -942,6 +946,9 @@
                             let class_div_card = document.createAttribute("class");
                                 class_div_card.value = "card main-shadow main-radius";
                                 div_card.setAttributeNode(class_div_card);
+                            let onclick_div_card = document.createAttribute("onclick");
+                                onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "');";
+                                div_card.setAttributeNode(onclick_div_card);
 
                             let div_row = document.createElement("div");
                             let class_div_row = document.createAttribute("class");
@@ -1061,15 +1068,14 @@
         }
 
         function view_markar(text_lat , text_lng)
-        {
+        {   
             document.querySelector('#map_my_location').classList.add('d-none');
-            document.querySelector('#map').classList.add('d-none');
-            document.querySelector('#map_view_marker').classList.remove('d-none');
+            document.querySelector('#map').classList.remove('d-none');
             
             lat = parseFloat(text_lat) ;
             lng = parseFloat(text_lng) ;
 
-            map = new google.maps.Map(document.getElementById("map_view_marker"), {
+            map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 16,
                 center: { lat: lat, lng: lng },
                 mapTypeId: "terrain",
