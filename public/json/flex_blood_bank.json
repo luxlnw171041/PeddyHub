@@ -1,0 +1,166 @@
+{
+    "type": "flex",
+    "altText": "ติดต่อ",
+    "contents":{
+    "type": "bubble",
+    "size": "mega",
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+        {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+            {
+                "type": "text",
+                "text": "ธนาคารเลือด",
+                "color": "#ffffff",
+                "size": "xl",
+                "flex": 0,
+                "weight": "bold"
+            }
+            ],
+            "justifyContent": "center",
+            "alignItems": "center"
+        },
+        {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+            {
+                "type": "text",
+                "text": "จำนวน :",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0
+            },
+            {
+                "type": "text",
+                "text": "5",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0,
+                "offsetStart": "5px"
+            },
+            {
+                "type": "text",
+                "text": "ครั้ง",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0,
+                "offsetStart": "10px"
+            }
+            ]
+        },
+        {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+            {
+                "type": "text",
+                "text": "จาก :",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0
+            },
+            {
+                "type": "text",
+                "text": "3",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0,
+                "offsetStart": "5px"
+            },
+            {
+                "type": "text",
+                "text": "ตัว",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0,
+                "offsetStart": "10px"
+            }
+            ]
+        },
+        {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+            {
+                "type": "text",
+                "text": "ปริมาณ :",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0
+            },
+            {
+                "type": "text",
+                "text": "1500",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0,
+                "offsetStart": "5px"
+            },
+            {
+                "type": "text",
+                "text": "ml",
+                "color": "#ffffff",
+                "size": "xl",
+                "weight": "bold",
+                "flex": 0,
+                "offsetStart": "10px"
+            }
+            ]
+        }
+        ],
+        "paddingAll": "20px",
+        "backgroundColor": "#B8205B",
+        "spacing": "md",
+        "height": "180px",
+        "paddingTop": "22px"
+    },
+    "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+        {
+            "type": "button",
+            "action": {
+            "type": "uri",
+            "label": "ฝาก",
+            "uri": "https://www.peddyhub.com/login_line_blood_bank"
+            },
+            "style": "primary"
+        },
+        {
+            "type": "button",
+            "style": "secondary",
+            "action": {
+            "type": "uri",
+            "label": "แชร์",
+            "uri": "http://linecorp.com/"
+            }
+        },
+        {
+            "type": "button",
+            "action": {
+            "type": "uri",
+            "label": "ใช้",
+            "uri": "http://linecorp.com/"
+            },
+            "style": "secondary"
+        }
+        ],
+        "spacing": "md"
+        }
+    }
+
+}

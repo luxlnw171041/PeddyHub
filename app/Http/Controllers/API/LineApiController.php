@@ -105,6 +105,9 @@ class LineApiController extends Controller
                 case "ข้อมูลของคุณ" :  
                     $line->replyToUser(null, $event, "profile");
                     break;
+                case "ธนาคารเลือด" :  
+                    $line->replyToUser(null, $event, "blood_bank");
+                    break;
             }
         }
     }
