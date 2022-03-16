@@ -119,14 +119,27 @@ class LineMessagingAPI extends Model
                     foreach ($user as $item) {
                         $user_id = $item->id ;
                     }
-                    //จำนวนสัตว์ทั้งหมด
-                    $count_pet = Blood_bank::where('user_id', $user_id)
-                        ->groupBy('pet_id')
-                        ->get()->count();
-                
+                //จำนวนสัตว์ทั้งหมด
+                $count_pet = Blood_bank::where('user_id', $user_id)
+                    ->groupBy('pet_id')
+                    ->get()->count();
+                // จำนวนคร้งทั้งหมด
+                    $count_time = Blood_bank::where('user_id', $user_id)
+                    ->selectRaw('count(pet_id) as count')
+                    ->count();
+                //  ประมาณทั้งหมด
+                $count_blood = Blood_bank::where('user_id', $user_id)
+                    ->selectRaw('sum(total_blood) as count')
+                    ->get();
+                foreach ($count_blood as $item) {
+                    $total_blood = $item->count ;
+                }
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   
                     $string_json = file_get_contents($template_path);
+                    $string_json = str_replace("1500", $total_blood,$string_json);
                     $string_json = str_replace("3",$count_pet,$string_json);
+                    $string_json = str_replace("5", $count_time,$string_json);
+                    
                     $messages = [ json_decode($string_json, true) ]; 
                     break;
     	}
