@@ -136,7 +136,7 @@ class LineMessagingAPI extends Model
                 }
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   
                     $string_json = file_get_contents($template_path);
-                    $string_json = str_replace("1500", $total_blood,$string_json);
+                    $string_json = str_replace("1700", $total_blood,$string_json);
                     $string_json = str_replace("3",$count_pet,$string_json);
                     $string_json = str_replace("5", $count_time,$string_json);
                     

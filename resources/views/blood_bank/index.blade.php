@@ -14,48 +14,52 @@
                 </div>
             </div>
         </section>
-        <section class="steps">
-            <div class="container">
-                <div class="row">
-                @foreach($petbank as $item)
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="card orange">
-                            <div class="image">
-                                <img src="{{ url('storage/'.$item->pet->photo )}}"style=" width: 348px; " height="10px" alt="Image of Product" title="Profuct" class="img-fluid">
+        <div class="pet event">
+        <div class="pet job">
+            <section class="job">
+                <div class="container">
+                    <div class="row mt-5">
+                        @foreach($petbank as $item)
+                            <div class="col-lg-3 col-md-3 col-sm-12">
+                                <div class="card">
+                                    <div class="image" style="margin-top:8px;">
+                                        <img class="imgf" src="{{ url('storage/'.$item->pet->photo )}}" style="object-fit: scale-down;" width="400px" height="300px" class="img-fluid customer">
+                                    </div>
+                                    <div class="text-center">
+                                        @php
+                                            $pet_category = $item->pet->pet_category_id ;
+                                        @endphp
+                                        <h5 style="color:#B81F5B;">
+                                            @include ('menubar.icon_categorie')
+                                            {{$item->pet->name}}
+                                            @switch($item->pet->gender)
+                                                @case('หญิง')
+                                                    <i style="font-size:22px;color:#F06491;margin-left:1px" class="fas fa-venus"></i>
+                                                @break
+                                                @case('ชาย')
+                                                    <i style="font-size:22px;color:#00ADEF;margin-left:1px" class="fas fa-mars"></i>
+                                                @break
+                                                @case('ไม่ระบุ')
+                                                    <i style="font-size:22px;color:#88C550;margin-left:1px" class="fas fa-venus-mars"></i>
+                                                @break
+                                            @endswitch
+                                        </h5>
+                                        <h6 style="color:#B81F5B;">จำนวน : ครั้ง</h6>
+                                        <h6 style="color:#B81F5B;">ปริมาณ : ครั้ง</h6>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="content">
-                                @php
-                                    $pet_category = $item->pet->pet_category_id ;
-                                @endphp
-                                <h5>
-                                    @include ('menubar.icon_categorie')
-                                    {{$item->pet->name}}
-                                    @switch($item->pet->gender)
-                                        @case('หญิง')
-                                        <i style="font-size:22px;color:#F06491;margin-left:1px" class="fas fa-venus"></i>
-                                        @break
-                                        @case('ชาย')
-                                            <i style="font-size:22px;color:#00ADEF;margin-left:1px" class="fas fa-mars"></i>
-                                        @break
-                                        @case('ไม่ระบุ')
-                                            <i style="font-size:22px;color:#88C550;margin-left:1px" class="fas fa-venus-mars"></i>
-                                        @break
-                                    @endswitch
-                                </h5>
-                                <p class="head">จำนวน : ครั้ง</p>
-                                <p class="head">ปริมาณ : ครั้ง</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
+    </div>
         
 
     </div>
     
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
@@ -111,5 +115,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 @endsection
