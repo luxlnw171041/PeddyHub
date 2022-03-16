@@ -6,7 +6,7 @@
             <div class="crumb" style="padding-bottom:0%">
                 <div class="container notranslate">
                     <h4>
-                        ธนาคารเลือด
+                        ธนาคารเลือด 
                     </h4>
                     <p>
                         <span>ทั้งหมด : {{$count_pet}}  ตัว</span> || <span>จำนวนทั้งหมด :  {{ $count_time }} ครั้ง </span> || <span> รวม : {{ $total_blood }} ml </span>
@@ -44,8 +44,8 @@
                                                 @break
                                             @endswitch
                                         </h5>
-                                        <h6 style="color:#B81F5B;">จำนวน : ครั้ง</h6>
-                                        <h6 style="color:#B81F5B;">ปริมาณ : ครั้ง</h6>
+                                        <h6 style="color:#B81F5B;">จำนวน :  ครั้ง</h6>
+                                        <h6 style="color:#B81F5B;">ปริมาณ :  ครั้ง</h6>
                                     </div>
                                 </div>
                             </div>

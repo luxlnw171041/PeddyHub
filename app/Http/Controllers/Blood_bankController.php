@@ -20,29 +20,33 @@ class Blood_bankController extends Controller
     public function index(Request $request)
     {
         $id = Auth::id();
-        $pett = Pet::where('user_id', Auth::id() )->get();
-
 
         $petbank = Blood_bank::where('user_id', $id)
             ->groupBy('pet_id')
             ->get();
         $keyword = $request->get('search');
         $perPage = 25;
+
+        
         //จำนวนสัตว์ทั้งหมด
         $count_pet = Blood_bank::where('user_id', $id)
             ->groupBy('pet_id')
             ->get()->count();
+
+
         // จำนวนคร้งทั้งหมด
         $count_time = Blood_bank::where('user_id', $id)
             ->selectRaw('count(pet_id) as count')
             ->count();
+
+
         //  ประมาณทั้งหมด
         $count_blood = Blood_bank::where('user_id', $id)
             ->selectRaw('sum(total_blood) as count')
             ->get();
-        foreach ($count_blood as $item) {
-            $total_blood = $item->count ;
-        }
+            foreach ($count_blood as $item) {
+                $total_blood = $item->count ;
+            }
         
 
         if (!empty($keyword)) {
@@ -56,7 +60,7 @@ class Blood_bankController extends Controller
             $blood_bank = Blood_bank::latest()->paginate($perPage);
         }
 
-        return view('blood_bank.index', compact('blood_bank' ,'petbank' ,'count_time' ,'total_blood' ,'count_pet','pett'));
+        return view('blood_bank.index', compact('blood_bank' ,'petbank' ,'count_time' ,'total_blood' ,'count_pet'));
     }
 
     /**
