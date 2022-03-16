@@ -36,5 +36,7 @@ class Pet extends Model
     public function lost_pet(){
         return $this->belongsTo('App\Models\Lost_Pet', 'pet_id'); 
     }
-
+    public function Blood_bank(){
+        return $this->hasMany('App\Models\Blood_bank', 'pet_id'); 
+    } 
 }

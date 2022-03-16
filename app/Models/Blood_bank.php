@@ -27,5 +27,7 @@ class Blood_bank extends Model
      */
     protected $fillable = ['pet_id', 'user_id', 'quantity', 'total_blood', 'location'];
 
-    
+    public function Pet(){
+        return $this->belongsTo('App\Models\Pet', 'pet_id'); 
+    }
 }

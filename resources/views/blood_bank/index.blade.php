@@ -1,10 +1,62 @@
-@extends('layouts.app')
+@extends('layouts.peddyhub')
 
 @section('content')
+<div class="main-wrapper pet shop">
+        <section class="featured">
+            <div class="crumb" style="padding-bottom:0%">
+                <div class="container notranslate">
+                    <h4>
+                        ธนาคารเลือด
+                    </h4>
+                    <p>
+                        <span>ทั้งหมด : {{$count_pet}}  ตัว</span> || <span>จำนวนทั้งหมด :  {{ $count_time }} ครั้ง </span> || <span> รวม : {{ $total_blood }} ml </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="steps">
+            <div class="container">
+                <div class="row">
+                @foreach($petbank as $item)
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="card orange">
+                            <div class="image">
+                                <img src="{{ url('storage/'.$item->pet->photo )}}"style=" width: 348px; " height="10px" alt="Image of Product" title="Profuct" class="img-fluid">
+                            </div>
+                            <div class="content">
+                                @php
+                                    $pet_category = $item->pet->pet_category_id ;
+                                @endphp
+                                <h5>
+                                    @include ('menubar.icon_categorie')
+                                    {{$item->pet->name}}
+                                    @switch($item->pet->gender)
+                                        @case('หญิง')
+                                        <i style="font-size:22px;color:#F06491;margin-left:1px" class="fas fa-venus"></i>
+                                        @break
+                                        @case('ชาย')
+                                            <i style="font-size:22px;color:#00ADEF;margin-left:1px" class="fas fa-mars"></i>
+                                        @break
+                                        @case('ไม่ระบุ')
+                                            <i style="font-size:22px;color:#88C550;margin-left:1px" class="fas fa-venus-mars"></i>
+                                        @break
+                                    @endswitch
+                                </h5>
+                                <p class="head">จำนวน : ครั้ง</p>
+                                <p class="head">ปริมาณ : ครั้ง</p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        
+
+    </div>
+    
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
-
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Blood_bank</div>
