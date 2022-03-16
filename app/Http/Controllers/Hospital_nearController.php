@@ -125,18 +125,18 @@ class Hospital_nearController extends Controller
         return redirect('hospital_near')->with('flash_message', 'Hospital_near deleted!');
     }
 
-    public function search_my_location($latlng , $distance)
+    public function search_my_location($latlng , $text_distance)
     {
         $lat_lung_sp = explode(",",$latlng);
         $lat = $lat_lung_sp[0];
         $lng = $lat_lung_sp[1];
 
-        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL HAVING distance < $distance ORDER BY distance ", []);
+        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL HAVING distance < $text_distance ORDER BY distance ", []);
 
         return $hos_near;
     }
 
-    public function search_my_location_recommend($latlng , $distance)
+    public function search_my_location_recommend($latlng , $text_distance)
     {
         $lat_lung_sp = explode(",",$latlng);
         $lat = $lat_lung_sp[0];

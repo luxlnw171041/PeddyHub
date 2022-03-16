@@ -36,14 +36,8 @@
                                         <input type="text" id="latlng" class="form-control" placeholder="ตำแหน่งของฉัน" readonly>
                                     </div>
                                     <div class="form-group col-lg-5 col-md-5 col-sm-12">
-                                        <select name="distance" id="distance" class="form-control d-none" required onchange="search_my_location();">
-                                            <option value='0' selected="selected">ระยะทาง</option>
-                                            <option value="1">1 กม.</option>
-                                            <option value="5">5 กม.</option>
-                                            <option value="10">10 กม.</option>
-                                            <option value="25">25 กม.</option>
-                                            <option value="50">50 กม.</option>
-                                            <option value="75">70 กม.</option>
+                                        <select name="distance" id="distance" class="form-control d-none" required >
+                                            <option value='15' selected="selected">15</option>
                                         </select>
                                     </div>
                                 </div>
@@ -124,6 +118,26 @@
 
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <center>
+                                                <img src="{{ url('/peddyhub/images/icons/marker_user.png') }}"> <br>ตำแหน่งของคุณ
+                                            </center>
+                                        </div>
+                                        <div class="col-4">
+                                            <center>
+                                                <img src="{{ url('/peddyhub/images/icons/placeholder_2.png') }}"> <br>แนะนำ
+                                            </center>
+                                        </div>
+                                        <div class="col-4">
+                                            <center>
+                                                <img src="{{ url('/peddyhub/images/icons/marker_general.png') }}"> <br>ทั่วไป
+                                            </center>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
                                 <div id="map" class="wow fadeInRight"></div>
                                 <div id="map_my_location" class="wow fadeInRight d-none"></div>
                             </div>
@@ -154,7 +168,8 @@
         var marker_user ;
         var marker_recommend ;
         var image_marker_user = "https://www.peddyhub.com/peddyhub/images/icons/marker_user.png";
-        var image_marker_recommend = "https://www.peddyhub.com/peddyhub/images/icons/placeholder.png";
+        var image_marker_recommend = "https://www.peddyhub.com/peddyhub/images/icons/placeholder_2.png";
+        var icon_image_marker = "https://www.peddyhub.com/peddyhub/images/icons/marker_general.png";
 
         document.addEventListener('DOMContentLoaded', (event) => {
             // console.log("START");
@@ -200,8 +215,10 @@
             user = { lat: lat, lng: lng };
             marker_user = new google.maps.Marker({ map, position: user , icon: image_marker_user});
 
+            search_my_location();
+
             // document.querySelector('#div_form').classList.remove('d-none');
-            document.querySelector('#distance').classList.remove('d-none');
+            // document.querySelector('#distance').classList.remove('d-none');
 
         }
 
@@ -367,6 +384,12 @@
                                     style_p_phone.value = "margin-bottom:0px;";
                                     p_phone.setAttributeNode(style_p_phone);
 
+                                let tag_a_phone = document.createElement("a");
+                                let href_tag_a_phone = document.createAttribute("href");
+                                    href_tag_a_phone.value = "tel:" + item.phone;
+                                    tag_a_phone.setAttributeNode(href_tag_a_phone);
+                                    p_phone.appendChild(tag_a_phone);
+
                                 let icon_phone = document.createElement("i");
                                 let icon_class_phone = document.createAttribute("class");
                                     icon_class_phone.value = "fa-solid fa-phone-volume";
@@ -374,11 +397,12 @@
                                 let icon_style_phone = document.createAttribute("style");
                                     icon_style_phone.value = "color:blue;padding-right:10px;";
                                     icon_phone.setAttributeNode(icon_style_phone);
-                                    p_phone.appendChild(icon_phone);
+                                    tag_a_phone.appendChild(icon_phone);
 
                                 let span_phone = document.createElement("span");
                                     span_phone.innerHTML = item.phone ;
-                                    p_phone.appendChild(span_phone);
+                                    tag_a_phone.appendChild(span_phone);
+
                                 div_col_data.appendChild(p_phone);
 
                             div_row.appendChild(div_col_data);
@@ -407,6 +431,7 @@
                             marker = new google.maps.Marker({
                                 position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
                                 map: map,
+                                icon: icon_image_marker,
                             }); 
                             
                         }
@@ -531,6 +556,12 @@
                                     style_p_phone_recommend.value = "margin-bottom:0px;";
                                     p_phone_recommend.setAttributeNode(style_p_phone_recommend);
 
+                                let tag_a_phone_recommend = document.createElement("a");
+                                let href_tag_a_phone_recommend = document.createAttribute("href");
+                                    href_tag_a_phone_recommend.value = "tel:" + item.phone;
+                                    tag_a_phone_recommend.setAttributeNode(href_tag_a_phone_recommend);
+                                    p_phone_recommend.appendChild(tag_a_phone_recommend);
+
                                 let icon_phone_recommend = document.createElement("i");
                                 let icon_class_phone_recommend = document.createAttribute("class");
                                     icon_class_phone_recommend.value = "fa-solid fa-phone-volume";
@@ -538,11 +569,12 @@
                                 let icon_style_phone_recommend = document.createAttribute("style");
                                     icon_style_phone_recommend.value = "color:blue;padding-right:10px;";
                                     icon_phone_recommend.setAttributeNode(icon_style_phone_recommend);
-                                    p_phone_recommend.appendChild(icon_phone_recommend);
+                                    tag_a_phone_recommend.appendChild(icon_phone_recommend);
 
                                 let span_phone_recommend = document.createElement("span");
                                     span_phone_recommend.innerHTML = item.phone ;
-                                    p_phone_recommend.appendChild(span_phone_recommend);
+                                    tag_a_phone_recommend.appendChild(span_phone_recommend);
+
                                 div_col_data_recommend.appendChild(p_phone_recommend);
 
                             div_row_recommend.appendChild(div_col_data_recommend);
@@ -741,21 +773,13 @@
             document.querySelector('#btn_select_location_by_T').classList.remove('d-none');
 
             document.querySelector("#div_recommend").classList.add('d-none');
-            document.querySelector('#text_select_distance').classList.remove('d-none');
+            // document.querySelector('#text_select_distance').classList.remove('d-none');
 
             getLocation();
         }
 
         function search_my_location()
         {
-            if (marker) {
-                marker.setMap(null);
-            }
-
-            if (marker_recommend) {
-                marker_recommend.setMap(null);
-            }
-            
             document.querySelector('#text_select_distance').classList.add('d-none');
             let latlng = document.querySelector('#latlng').value;
             let distance = document.querySelector('#distance').value;
@@ -876,6 +900,12 @@
                                     style_p_phone_recommend.value = "margin-bottom:0px;";
                                     p_phone_recommend.setAttributeNode(style_p_phone_recommend);
 
+                                let tag_a_phone_recommend = document.createElement("a");
+                                let href_tag_a_phone_recommend = document.createAttribute("href");
+                                    href_tag_a_phone_recommend.value = "tel:" + item.phone;
+                                    tag_a_phone_recommend.setAttributeNode(href_tag_a_phone_recommend);
+                                    p_phone_recommend.appendChild(tag_a_phone_recommend);
+
                                 let icon_phone_recommend = document.createElement("i");
                                 let icon_class_phone_recommend = document.createAttribute("class");
                                     icon_class_phone_recommend.value = "fa-solid fa-phone-volume";
@@ -883,11 +913,26 @@
                                 let icon_style_phone_recommend = document.createAttribute("style");
                                     icon_style_phone_recommend.value = "color:blue;padding-right:10px;";
                                     icon_phone_recommend.setAttributeNode(icon_style_phone_recommend);
-                                    p_phone_recommend.appendChild(icon_phone_recommend);
+                                    tag_a_phone_recommend.appendChild(icon_phone_recommend);
 
                                 let span_phone_recommend = document.createElement("span");
                                     span_phone_recommend.innerHTML = item.phone ;
-                                    p_phone_recommend.appendChild(span_phone_recommend);
+                                    tag_a_phone_recommend.appendChild(span_phone_recommend);
+
+                                let span_km_pc_recommend = document.createElement("span");
+                                let span_km_class_pc_recommend = document.createAttribute("class");
+                                    span_km_class_pc_recommend.value = "d-none d-lg-block float-right";
+                                    span_km_pc_recommend.setAttributeNode(span_km_class_pc_recommend);
+                                    span_km_pc_recommend.innerHTML = (item.distance * 2.6 ).toFixed(2) + " กิโลเมตร" ;
+                                    p_phone_recommend.appendChild(span_km_pc_recommend);
+
+                                let span_km_mb_recommend = document.createElement("span");
+                                let span_km_class_mb_recommend = document.createAttribute("class");
+                                    span_km_class_mb_recommend.value = "d-block d-md-none";
+                                    span_km_mb_recommend.setAttributeNode(span_km_class_mb_recommend);
+                                    span_km_mb_recommend.innerHTML = (item.distance * 2.6 ).toFixed(2) + " กิโลเมตร" ;
+                                    p_phone_recommend.appendChild(span_km_mb_recommend);
+
                                 div_col_data_recommend.appendChild(p_phone_recommend);
 
                             div_row_recommend.appendChild(div_col_data_recommend);
@@ -1018,6 +1063,12 @@
                                     style_p_phone.value = "margin-bottom:0px;";
                                     p_phone.setAttributeNode(style_p_phone);
 
+                                let tag_a_phone = document.createElement("a");
+                                let href_tag_a_phone = document.createAttribute("href");
+                                    href_tag_a_phone.value = "tel:" + item.phone;
+                                    tag_a_phone.setAttributeNode(href_tag_a_phone);
+                                    p_phone.appendChild(tag_a_phone);
+
                                 let icon_phone = document.createElement("i");
                                 let icon_class_phone = document.createAttribute("class");
                                     icon_class_phone.value = "fa-solid fa-phone-volume";
@@ -1025,11 +1076,26 @@
                                 let icon_style_phone = document.createAttribute("style");
                                     icon_style_phone.value = "color:blue;padding-right:10px;";
                                     icon_phone.setAttributeNode(icon_style_phone);
-                                    p_phone.appendChild(icon_phone);
+                                    tag_a_phone.appendChild(icon_phone);
 
                                 let span_phone = document.createElement("span");
                                     span_phone.innerHTML = item.phone ;
-                                    p_phone.appendChild(span_phone);
+                                    tag_a_phone.appendChild(span_phone);
+
+                                let span_km_pc = document.createElement("span");
+                                let span_km_class_pc = document.createAttribute("class");
+                                    span_km_class_pc.value = "d-none d-lg-block float-right";
+                                    span_km_pc.setAttributeNode(span_km_class_pc);
+                                    span_km_pc.innerHTML = (item.distance * 2.6 ).toFixed(2) + " กิโลเมตร" ;
+                                    p_phone.appendChild(span_km_pc);
+
+                                let span_km_mb = document.createElement("span");
+                                let span_km_class_mb = document.createAttribute("class");
+                                    span_km_class_mb.value = "d-block d-md-none";
+                                    span_km_mb.setAttributeNode(span_km_class_mb);
+                                    span_km_mb.innerHTML = (item.distance * 2.6 ).toFixed(2) + " กิโลเมตร" ;
+                                    p_phone.appendChild(span_km_mb);
+
                                 div_col_data.appendChild(p_phone);
 
                             div_row.appendChild(div_col_data);
@@ -1058,6 +1124,7 @@
                             marker = new google.maps.Marker({
                                 position: { lat: parseFloat(item.lat)  , lng: parseFloat(item.lng) } , 
                                 map: map,
+                                icon: icon_image_marker,
                             }); 
                             
                         }
@@ -1083,15 +1150,19 @@
 
             // ปักหมุด
             user = { lat: lat, lng: lng };
-            marker_user = new google.maps.Marker({ map, position: user });
+            marker_user = new google.maps.Marker({ map, position: user , icon:icon_image_marker });
 
             const myLatlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
-
+            let lat_mail = '@' + parseFloat(lat) ;
             const contentString =
                 '<div>' +
-                    '<h4>'+ name +'</h4>' +
-                    "<p>lat : "+ lat + "<br>" +
-                    "lng : "+ lng + "</p>" +
+                    '<h6>'+ name +'</h6>' +
+                    '<div>' +
+                        "<p>lat : "+ lat + "lng : "+ lng + "</p>" +
+                    '</div>' +
+                    '<div>' +
+                        '<a href="https://www.google.co.th/maps/search/'+ lat + ',' + lng + '/' + lat_mail + ',' + lng +',16z" class="btn btn-sm btn-primary float-right" target="bank"><i class="fa-solid fa-circle-location-arrow"></i> เส้นทาง</a>' +
+                    '</div>' +
                 "</div>";
 
             let infoWindow = new google.maps.InfoWindow({
