@@ -136,8 +136,8 @@
                   "color": "#ff0101",
                   "action": {
                     "type": "message",
-                    "label": "ข้อมูลของคุณ",
-                    "text": "ข้อมูลของคุณ"
+                    "label": "ธนาคารเลือด",
+                    "text": "ธนาคารเลือด"
                   },
                   "position": "absolute",
                   "offsetTop": "xxl",
@@ -147,8 +147,8 @@
               "height": "50px",
               "action": {
                 "type": "message",
-                "label": "ข้อมูลของคุณ",
-                "text": "ข้อมูลของคุณ"
+                "label": "ธนาคารเลือด",
+                "text": "ธนาคารเลือด"
               }
             },
             {
