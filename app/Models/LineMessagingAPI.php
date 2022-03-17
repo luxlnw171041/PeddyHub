@@ -115,9 +115,9 @@ class LineMessagingAPI extends Model
                 break;
             case 'blood_bank':
                 $provider_id = $event["source"]['userId'];
-                $user = User::where('provider_id' , $provider_id)->get();
-                foreach ($user as $item) {
-                    $user_id = $item->id ;
+                $users = User::where('provider_id' , $provider_id)->get();
+                foreach ($users as $user) {
+                    $user_id = $user->id ;
                 }
                 //จำนวนสัตว์ทั้งหมด
                 $count_pet = Blood_bank::where('user_id', $user_id)
