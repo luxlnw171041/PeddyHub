@@ -17,7 +17,17 @@
                   "text": "ID : user_id",
                   "color": "#ffffff",
                   "style": "italic",
-                  "size": "xs"
+                  "size": "xs",
+                  "contents": [
+                    {
+                      "type": "span",
+                      "text": "ID : "
+                    },
+                    {
+                      "type": "span",
+                      "text": "user_id"
+                    }
+                  ]
                 }
               ],
               "position": "absolute",
