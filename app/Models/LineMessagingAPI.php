@@ -160,7 +160,13 @@ class LineMessagingAPI extends Model
                 $string_json = file_get_contents($template_path);
 
                 $messages = [ json_decode($string_json, true) ]; 
-    			break;
+    		break;
+            case 'success_blood_bank':
+    			$template_path = storage_path('../public/json/flex-success-blood-bank.json');   
+                $string_json = file_get_contents($template_path);
+
+                $messages = [ json_decode($string_json, true) ]; 
+    		break;
     	}
 
     	$body = [

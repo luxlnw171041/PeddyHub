@@ -111,6 +111,9 @@ class LineApiController extends Controller
                 case "ยืนยันฝากเลือด" :  
                     $line->replyToUser(null, $event, "cf_blood_bank");
                     break;
+                case "ฝากเลือดสำเร็จ" :  
+                        $line->replyToUser(null, $event, "success_blood_bank");
+                        break;
             }
         }
     }

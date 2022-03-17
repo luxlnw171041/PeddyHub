@@ -1,0 +1,295 @@
+{
+    "type": "flex",
+    "altText": "ฝากเลือดสำเร็จ",
+    "contents":{
+        "type": "bubble",
+        "size": "mega",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "ฝากเลือดสำเร็จแล้ว",
+                  "weight": "bold",
+                  "size": "xl",
+                  "color": "#ffffff"
+                },
+                {
+                  "type": "text",
+                  "text": "รพ. เกษตร",
+                  "weight": "bold",
+                  "size": "md",
+                  "wrap": true,
+                  "color": "#ffffff"
+                }
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "offsetTop": "10px",
+              "paddingBottom": "10px",
+              "borderColor": "#B8202B"
+            },
+            {
+              "type": "box",
+              "layout": "horizontal",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg",
+                  "aspectMode": "fit",
+                  "gravity": "center",
+                  "size": "5xl"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "hello, world",
+                          "contents": [
+                            {
+                              "type": "span",
+                              "text": "ชื่อ : ",
+                              "weight": "bold",
+                              "color": "#ffffff"
+                            },
+                            {
+                              "type": "span",
+                              "text": "Luca",
+                              "color": "#ffffff"
+                            }
+                          ],
+                          "size": "md",
+                          "wrap": true
+                        }
+                      ],
+                      "offsetStart": "md"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "hello, world",
+                          "contents": [
+                            {
+                              "type": "span",
+                              "text": "เจ้าของ : ",
+                              "weight": "bold",
+                              "color": "#ffffff"
+                            },
+                            {
+                              "type": "span",
+                              "text": "Lucky",
+                              "color": "#ffffff"
+                            }
+                          ],
+                          "size": "md",
+                          "wrap": true
+                        }
+                      ],
+                      "offsetStart": "md"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "hello, world",
+                          "contents": [
+                            {
+                              "type": "span",
+                              "text": "วันที่ : ",
+                              "weight": "bold",
+                              "color": "#ffffff"
+                            },
+                            {
+                              "type": "span",
+                              "text": "17/3/2565",
+                              "color": "#ffffff"
+                            }
+                          ],
+                          "size": "md"
+                        }
+                      ],
+                      "offsetStart": "md"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "hello, world",
+                          "contents": [
+                            {
+                              "type": "span",
+                              "text": "เวลา : ",
+                              "weight": "bold",
+                              "color": "#ffffff"
+                            },
+                            {
+                              "type": "span",
+                              "text": "16:44",
+                              "color": "#ffffff"
+                            }
+                          ],
+                          "size": "md"
+                        }
+                      ],
+                      "offsetStart": "md"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "hello, world",
+                          "contents": [
+                            {
+                              "type": "span",
+                              "text": "ปริมาณ : ",
+                              "weight": "bold",
+                              "color": "#ffffff"
+                            },
+                            {
+                              "type": "span",
+                              "text": "500 ml",
+                              "color": "#ffffff"
+                            }
+                          ],
+                          "size": "md"
+                        }
+                      ],
+                      "offsetStart": "md"
+                    }
+                  ],
+                  "justifyContent": "center"
+                }
+              ],
+              "margin": "lg"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "separator",
+                  "color": "#ffffff"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "ธนาคารเลือด",
+                      "align": "center",
+                      "color": "#ffffff",
+                      "size": "xl",
+                      "weight": "bold"
+                    }
+                  ],
+                  "paddingEnd": "0px",
+                  "flex": 0,
+                  "margin": "5px"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "hello, world",
+                      "color": "#ffffff",
+                      "align": "center",
+                      "contents": [
+                        {
+                          "type": "span",
+                          "text": "ฝากรวม "
+                        },
+                        {
+                          "type": "span",
+                          "text": "5 ครั้ง"
+                        }
+                      ],
+                      "size": "18px"
+                    },
+                    {
+                      "type": "text",
+                      "text": "hello, world",
+                      "color": "#ffffff",
+                      "align": "center",
+                      "contents": [
+                        {
+                          "type": "span",
+                          "text": "จาก "
+                        },
+                        {
+                          "type": "span",
+                          "text": " 3 ตัว"
+                        }
+                      ],
+                      "size": "18px"
+                    }
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "margin": "0px",
+                  "paddingTop": "10px"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "hello, world",
+                      "color": "#ffffff",
+                      "align": "center",
+                      "contents": [
+                        {
+                          "type": "span",
+                          "text": "ปริมาณรวม "
+                        },
+                        {
+                          "type": "span",
+                          "text": "1300 ml"
+                        }
+                      ],
+                      "size": "18px"
+                    }
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "margin": "0px",
+                  "paddingTop": "10px"
+                }
+              ],
+              "spacing": "xl",
+              "paddingTop": "10px",
+              "paddingBottom": "10px"
+            }
+          ],
+          "paddingAll": "5px",
+          "borderColor": "#007F01",
+          "borderWidth": "bold",
+          "cornerRadius": "xl",
+          "backgroundColor": "#5cb85c"
+        }
+    }
+
+}
