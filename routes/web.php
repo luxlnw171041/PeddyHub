@@ -65,7 +65,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::resource('pet', 'PetController');
     Route::resource('user', 'UserController');
-    // Route::resource('profile', 'ProfileController');
+    Route::resource('profile', 'ProfileController');
     Route::resource('post', 'PostController');
     Route::get('/post/create', 'PostController@create')->name('post_create');
     Route::resource('lost_pet', 'Lost_PetController');
