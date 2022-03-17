@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('post', 'PostController');
     Route::get('/post/create', 'PostController@create')->name('post_create');
     Route::resource('lost_pet', 'Lost_PetController');
-    Route::resource('blood_bank', 'Blood_bankController');
+    
 });
 
 
@@ -90,8 +90,10 @@ Route::resource('adoptpet', 'AdoptpetController');
 Route::get('/login_line_reg_pet', 'PetController@welcome_line'); // ลงทะเบียนสัตว์
 Route::get('/login_line_near_hospital', 'PetController@welcome_line_Hospital_near'); // รพ.ใกล้ฉัน
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
-Route::get('/login_line_blood_bank', 'Blood_bankController@blood_bank_line'); // ธนาคารเลือด
 Route::get('/login_line_profile', 'ProfileController@profile_edit_line');// แก้ไขโปรไฟล์
 Route::get('/login_line_profile2', 'ProfileController@profile_edit_line2');
 Route::get('hospital_near', 'Hospital_nearController@index');
 
+Route::middleware(['auth', 'role:admin-partner'])->group(function () {
+    Route::resource('blood_bank', 'Blood_bankController');
+});
