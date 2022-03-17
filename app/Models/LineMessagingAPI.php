@@ -134,14 +134,23 @@ class LineMessagingAPI extends Model
                 foreach ($count_blood as $item) {
                     $total_blood = $item->count ;
                 }
+
+                if (!empty($count_pet)) {
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   
                     $string_json = file_get_contents($template_path);
                     $string_json = str_replace("1700", $total_blood,$string_json);
                     $string_json = str_replace("3",$count_pet,$string_json);
                     $string_json = str_replace("5", $count_time,$string_json);
-                    
-                    $messages = [ json_decode($string_json, true) ]; 
-                    break;
+                }else{
+                    $template_path = storage_path('../public/json/flex_blood_bank.json');   
+                    $string_json = file_get_contents($template_path);
+                    $string_json = str_replace("1700", "0",$string_json);
+                    $string_json = str_replace("3", "0" ,$string_json);
+                    $string_json = str_replace("5", "0" ,$string_json);
+                }
+                
+                $messages = [ json_decode($string_json, true) ]; 
+            break;
     	}
 
     	$body = [
