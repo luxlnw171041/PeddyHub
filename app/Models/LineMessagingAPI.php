@@ -147,6 +147,7 @@ class LineMessagingAPI extends Model
                     $string_json = file_get_contents($template_path);
                     $string_json = str_replace("1700", "0",$string_json);
                     $string_json = str_replace("3", "0" ,$string_json);
+                    $string_json = str_replace("user_id",$user_id,$string_json);
                     $string_json = str_replace("5", "0" ,$string_json);
                 }
                 
