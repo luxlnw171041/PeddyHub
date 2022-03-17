@@ -120,7 +120,7 @@ class LineMessagingAPI extends Model
                     $user_id = $user->id ;
                 }
 
-                $id_user = Auth::user()->id;
+                $id_user = Auth::id();
                 //จำนวนสัตว์ทั้งหมด
                 $count_pet = Blood_bank::where('user_id', $user_id)
                     ->groupBy('pet_id')
