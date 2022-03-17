@@ -14,6 +14,53 @@
               "contents": [
                 {
                   "type": "text",
+                  "text": "ID : user_id",
+                  "color": "#ffffff",
+                  "style": "italic",
+                  "size": "xs"
+                }
+              ],
+              "position": "absolute",
+              "offsetTop": "md",
+              "offsetStart": "md",
+              "width": "100px"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "เพิ่มเติม",
+                  "color": "#B8205B",
+                  "style": "normal",
+                  "size": "xs",
+                  "weight": "bold"
+                }
+              ],
+              "position": "absolute",
+              "offsetTop": "md",
+              "offsetStart": "210px",
+              "width": "80px",
+              "borderWidth": "light",
+              "borderColor": "#ffffff",
+              "paddingAll": "2px",
+              "cornerRadius": "100px",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "action": {
+                "type": "uri",
+                "label": "action",
+                "uri": "https://www.peddyhub.com/login_line_blood_bank"
+              }
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
                   "text": "ธนาคารเลือด",
                   "color": "#ffffff",
                   "size": "xl",
@@ -22,7 +69,8 @@
                 }
               ],
               "justifyContent": "center",
-              "alignItems": "center"
+              "alignItems": "center",
+              "offsetTop": "none"
             },
             {
               "type": "box",
@@ -119,25 +167,11 @@
                   "offsetStart": "10px"
                 }
               ]
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "ID : user_id",
-                  "color": "#ffffff",
-                  "style": "italic"
-                }
-              ]
             }
           ],
-          "paddingAll": "20px",
           "backgroundColor": "#B8205B",
           "spacing": "md",
-          "height": "200px",
-          "paddingTop": "22px"
+          "height": "180px"
         },
         "body": {
           "type": "box",

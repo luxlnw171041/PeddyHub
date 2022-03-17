@@ -140,6 +140,7 @@ class LineMessagingAPI extends Model
                     $string_json = file_get_contents($template_path);
                     $string_json = str_replace("1700", $total_blood,$string_json);
                     $string_json = str_replace("3",$count_pet,$string_json);
+                    $string_json = str_replace("User_id",$user_id,$string_json);
                     $string_json = str_replace("5", $count_time,$string_json);
                 }else{
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   

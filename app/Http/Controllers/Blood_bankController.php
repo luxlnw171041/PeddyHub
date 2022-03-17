@@ -20,6 +20,16 @@ class Blood_bankController extends Controller
     public function index(Request $request)
     {
         $id = Auth::id();
+        $data_blood = Blood_bank::groupBy('pet_id')->get();
+        // for ($i=0; $i < count($data_blood); $i++) { 
+        //    foreach
+        // }
+        // echo count($data_blood);
+        // echo "<br>";
+        // echo "<pre>";
+        // print_r($data_blood);
+        // echo "<pre>";
+        // exit();
 
         $petbank = Blood_bank::where('user_id', $id)
             ->groupBy('pet_id')
@@ -32,7 +42,7 @@ class Blood_bankController extends Controller
         $count_pet = Blood_bank::where('user_id', $id)
             ->groupBy('pet_id')
             ->get()->count();
-
+        
 
         // จำนวนคร้งทั้งหมด
         $count_time = Blood_bank::where('user_id', $id)
@@ -42,7 +52,7 @@ class Blood_bankController extends Controller
 
         //  ประมาณทั้งหมด
         $count_blood = Blood_bank::where('user_id', $id)
-            ->selectRaw('sum(total_blood) as count')
+            ->selectRaw('sum(quantity) as count')
             ->get();
             foreach ($count_blood as $item) {
                 $total_blood = $item->count ;
@@ -73,6 +83,7 @@ class Blood_bankController extends Controller
         $user_id = Auth::id();
 
         $pet = Pet::where('user_id' , $user_id)->get();
+
         return view('blood_bank.create' , compact('pet' ));
     }
 
@@ -157,9 +168,9 @@ class Blood_bankController extends Controller
     public function blood_bank_line()
     {
         if(Auth::check()){
-            return redirect('blood_bank/create');
+            return redirect('blood_bank');
         }else{
-            return redirect('/login/line?redirectTo=blood_bank/create');
+            return redirect('/login/line?redirectTo=blood_bank');
         }
     }
 }
