@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Blood_bank;
 use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
@@ -98,7 +98,32 @@ class Blood_bankController extends Controller
     {
         
         $requestData = $request->all();
-        
+
+        $pets = Pet::where('id' , $requestData['pet_id'])->get();
+            foreach ($pets as $pet) {
+                if (!empty($pet->count_blood)) {
+                    $count_blood = $pet->count_blood ;
+                }else{
+                    $count_blood = 0;
+                }
+
+
+                if (!empty($pet->total_blood)) {
+                    $total_blood = $pet->total_blood ;
+                }else{
+                    $total_blood = 0;
+                }
+            }
+        // นับครั้ง
+        $sum_count_blood = $count_blood + 1;
+        // นับปริมาณรวม
+        $sum_total_blood = $total_blood + $requestData['quantity'];
+        DB::table('pets')
+                ->where('id', $requestData['pet_id'])
+                ->update([
+                    'total_blood' => $sum_total_blood,
+                    'count_blood' => $sum_count_blood,
+        ]);
         Blood_bank::create($requestData);
 
         return redirect('blood_bank')->with('flash_message', 'Blood_bank added!');

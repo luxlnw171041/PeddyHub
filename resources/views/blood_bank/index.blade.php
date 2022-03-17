@@ -44,8 +44,8 @@
                                                 @break
                                             @endswitch
                                         </h5>
-                                        <h6 style="color:#B81F5B;">จำนวน :  ครั้ง</h6>
-                                        <h6 style="color:#B81F5B;">ปริมาณ :  ครั้ง</h6>
+                                        <h6 style="color:#B81F5B;">จำนวน : {{$item->pet->count_blood}} ครั้ง</h6>
+                                        <h6 style="color:#B81F5B;">ปริมาณ : {{$item->pet->total_blood}} ml</h6>
                                     </div>
                                 </div>
                             </div>
