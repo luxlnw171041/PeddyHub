@@ -2,205 +2,230 @@
     "type": "flex",
     "altText": "ข้อมูลของคุณ",
     "contents":{
-        "type": "bubble",
-        "size": "mega",
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "aspectMode": "cover",
-                      "size": "full",
-                      "aspectRatio": "1:1",
-                      "url": "https://www.peddyhub.com/peddyhub/images/sticker/01.png"
+      "type": "bubble",
+      "size": "mega",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "image",
+                    "aspectMode": "cover",
+                    "size": "full",
+                    "aspectRatio": "1:1",
+                    "url": "https://www.peddyhub.com/peddyhub/images/sticker/01.png"
+                  }
+                ],
+                "width": "200px",
+                "height": "200px",
+                "borderColor": "#B8205B",
+                "borderWidth": "5px",
+                "backgroundColor": "#B8205B",
+                "justifyContent": "center",
+                "cornerRadius": "100px"
+              }
+            ],
+            "spacing": "xl",
+            "paddingAll": "20px",
+            "alignItems": "center",
+            "justifyContent": "center"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://peddyhub.com/peddyhub/images/home_5/dog.png",
+                    "aspectMode": "fit",
+                    "size": "full",
+                    "aspectRatio": "1:1",
+                    "position": "absolute"
+                  }
+                ],
+                "width": "80px",
+                "height": "80px"
+              }
+            ],
+            "alignItems": "center",
+            "justifyContent": "center",
+            "position": "absolute",
+            "offsetTop": "145px",
+            "offsetStart": "180px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://peddyhub.com/peddyhub/images/home_5/cat2.png",
+                    "aspectMode": "fit",
+                    "size": "full",
+                    "aspectRatio": "1:1",
+                    "position": "absolute"
+                  }
+                ],
+                "width": "80px",
+                "height": "80px"
+              }
+            ],
+            "alignItems": "center",
+            "justifyContent": "center",
+            "position": "absolute",
+            "offsetTop": "155px",
+            "offsetStart": "30px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "Lucky",
+                    "align": "center",
+                    "size": "xl",
+                    "color": "#B81F5B",
+                    "weight": "bold",
+                    "flex": 0,
+                    "position": "relative",
+                    "contents": [
+                      {
+                        "type": "span",
+                        "text": "Lucky"
+                      },
+                      {
+                        "type": "span",
+                        "text": " "
+                      },
+                      {
+                        "type": "span",
+                        "text": "แก้ไข",
+                        "size": "xxs",
+                        "weight": "regular",
+                        "style": "italic",
+                        "decoration": "underline"
+                      }
+                    ],
+                    "action": {
+                      "type": "uri",
+                      "label": "action",
+                      "uri": "http://www.peddyhub.com/login_line_profile?openExternalBrowser=1"
                     }
-                  ],
-                  "width": "200px",
-                  "height": "200px",
-                  "borderColor": "#B8205B",
-                  "borderWidth": "5px",
-                  "backgroundColor": "#B8205B",
-                  "justifyContent": "center",
-                  "cornerRadius": "100px"
-                }
-              ],
-              "spacing": "xl",
-              "paddingAll": "20px",
-              "alignItems": "center",
-              "justifyContent": "center"
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://peddyhub.com/peddyhub/images/home_5/dog.png",
-                      "aspectMode": "fit",
-                      "size": "full",
-                      "aspectRatio": "1:1",
-                      "position": "absolute"
-                    }
-                  ],
-                  "width": "80px",
-                  "height": "80px"
-                }
-              ],
-              "alignItems": "center",
-              "justifyContent": "center",
-              "position": "absolute",
-              "offsetTop": "145px",
-              "offsetStart": "180px"
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "vertical",
-                  "contents": [
-                    {
-                      "type": "image",
-                      "url": "https://peddyhub.com/peddyhub/images/home_5/cat2.png",
-                      "aspectMode": "fit",
-                      "size": "full",
-                      "aspectRatio": "1:1",
-                      "position": "absolute"
-                    }
-                  ],
-                  "width": "80px",
-                  "height": "80px"
-                }
-              ],
-              "alignItems": "center",
-              "justifyContent": "center",
-              "position": "absolute",
-              "offsetTop": "155px",
-              "offsetStart": "30px"
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": "Lucky",
-                      "align": "center",
-                      "size": "xl",
-                      "color": "#B81F5B",
-                      "weight": "bold"
-                    }
-                  ],
-                  "justifyContent": "center",
-                  "alignItems": "center"
-                },
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://peddyhub.com/peddyhub/images/icons/email.png",
-                      "margin": "xl",
-                      "size": "xxl"
-                    },
-                    {
-                      "type": "text",
-                      "text": "lucky@gmail.com",
-                      "margin": "xxl",
-                      "offsetTop": "-6px"
-                    }
-                  ],
-                  "margin": "md"
-                },
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://peddyhub.com/peddyhub/images/icons/phone.png",
-                      "margin": "xl",
-                      "size": "xxl",
-                      "offsetTop": "sm"
-                    },
-                    {
-                      "type": "text",
-                      "text": "0999999999",
-                      "margin": "xxl",
-                      "offsetTop": "-6px"
-                    }
-                  ],
-                  "margin": "md"
-                },
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://peddyhub.com/peddyhub/images/icons/birth.png",
-                      "margin": "xl",
-                      "size": "xxl",
-                      "offsetTop": "sm"
-                    },
-                    {
-                      "type": "text",
-                      "text": "17/10/1998",
-                      "margin": "xxl",
-                      "offsetTop": "-6px"
-                    }
-                  ],
-                  "margin": "md"
-                },
-                {
-                  "type": "box",
-                  "layout": "baseline",
-                  "contents": [
-                    {
-                      "type": "icon",
-                      "url": "https://peddyhub.com/peddyhub/images/icons/gender.png",
-                      "margin": "xl",
-                      "size": "xxl",
-                      "offsetTop": "sm"
-                    },
-                    {
-                      "type": "text",
-                      "text": "ชาย",
-                      "margin": "xxl",
-                      "offsetTop": "-6px"
-                    }
-                  ],
-                  "offsetBottom": "md",
-                  "paddingTop": "5px",
-                  "margin": "md"
-                }
-              ],
-              "offsetBottom": "md"
-            }
-          ],
-          "paddingAll": "0px",
-          "borderColor": "#B8205B",
-          "borderWidth": "bold",
-          "cornerRadius": "xl"
-        }
+                  }
+                ],
+                "justifyContent": "center",
+                "alignItems": "center"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://peddyhub.com/peddyhub/images/icons/email.png",
+                    "margin": "xl",
+                    "size": "xxl"
+                  },
+                  {
+                    "type": "text",
+                    "text": "lucky@gmail.com",
+                    "margin": "xxl",
+                    "offsetTop": "-6px"
+                  }
+                ],
+                "margin": "md"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://peddyhub.com/peddyhub/images/icons/phone.png",
+                    "margin": "xl",
+                    "size": "xxl",
+                    "offsetTop": "sm"
+                  },
+                  {
+                    "type": "text",
+                    "text": "0999999999",
+                    "margin": "xxl",
+                    "offsetTop": "-6px"
+                  }
+                ],
+                "margin": "md"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://peddyhub.com/peddyhub/images/icons/birth.png",
+                    "margin": "xl",
+                    "size": "xxl",
+                    "offsetTop": "sm"
+                  },
+                  {
+                    "type": "text",
+                    "text": "17/10/1998",
+                    "margin": "xxl",
+                    "offsetTop": "-6px"
+                  }
+                ],
+                "margin": "md"
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "icon",
+                    "url": "https://peddyhub.com/peddyhub/images/icons/gender.png",
+                    "margin": "xl",
+                    "size": "xxl",
+                    "offsetTop": "sm"
+                  },
+                  {
+                    "type": "text",
+                    "text": "ชาย",
+                    "margin": "xxl",
+                    "offsetTop": "-6px"
+                  }
+                ],
+                "offsetBottom": "md",
+                "paddingTop": "5px",
+                "margin": "md"
+              }
+            ],
+            "offsetBottom": "md"
+          }
+        ],
+        "paddingAll": "0px",
+        "borderColor": "#B8205B",
+        "borderWidth": "bold",
+        "cornerRadius": "xl"
+      }
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 
@@ -127,5 +127,15 @@ class ProfileController extends Controller
         Profile::destroy($id);
 
         return redirect('profile')->with('flash_message', 'Profile deleted!');
+    }
+
+    public function profile_edit_line()
+    {
+        $id = Auth::id();
+        if(Auth::check()){
+            return redirect('profile/'.$id.'/edit');
+        }else{
+            return redirect('/login/line?redirectTo=profile/'.$id.'/edit');
+        }
     }
 }

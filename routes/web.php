@@ -91,6 +91,6 @@ Route::get('/login_line_reg_pet', 'PetController@welcome_line'); // ลงทะ
 Route::get('/login_line_near_hospital', 'PetController@welcome_line_Hospital_near'); // รพ.ใกล้ฉัน
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
 Route::get('/login_line_blood_bank', 'Blood_bankController@blood_bank_line'); // ธนาคารเลือด
-
+Route::get('/login_line_profile', 'ProfileController@profile_edit_line');// แก้ไขโปรไฟล์
 Route::get('hospital_near', 'Hospital_nearController@index');
 
