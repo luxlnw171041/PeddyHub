@@ -11,6 +11,7 @@ use App\Models\Pet;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Mylog;
+use Illuminate\Support\Facades\Auth;
 
 
 class LineMessagingAPI extends Model
