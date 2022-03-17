@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Blood_bank;
 use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class Blood_bankController extends Controller
@@ -100,20 +101,17 @@ class Blood_bankController extends Controller
         $requestData = $request->all();
 
         $pets = Pet::where('id' , $requestData['pet_id'])->get();
-            foreach ($pets as $pet) {
-                if (!empty($pet->count_blood)) {
-                    $count_blood = $pet->count_blood ;
-                }else{
-                    $count_blood = 0;
-                }
 
-
-                if (!empty($pet->total_blood)) {
-                    $total_blood = $pet->total_blood ;
-                }else{
-                    $total_blood = 0;
-                }
+        $count_blood = 0;
+        $total_blood = 0;
+        foreach ($pets as $pet) {
+            if (!empty($pet->count_blood)) {
+                $count_blood = $pet->count_blood ;
             }
+            if (!empty($pet->total_blood)) {
+                $total_blood = $pet->total_blood ;
+            }
+        }
         // นับครั้ง
         $sum_count_blood = $count_blood + 1;
         // นับปริมาณรวม
@@ -124,9 +122,10 @@ class Blood_bankController extends Controller
                     'total_blood' => $sum_total_blood,
                     'count_blood' => $sum_count_blood,
         ]);
+
         Blood_bank::create($requestData);
 
-        return redirect('blood_bank')->with('flash_message', 'Blood_bank added!');
+        // return redirect('blood_bank')->with('flash_message', 'Blood_bank added!');
     }
 
     /**
@@ -197,5 +196,19 @@ class Blood_bankController extends Controller
         }else{
             return redirect('/login/line?redirectTo=blood_bank');
         }
+    }
+
+    public function search_data_user($user_id)
+    {
+        $data_user = Profile::where('user_id' , $user_id)->get();
+
+        return $data_user;
+    }
+
+    public function search_data_pet_of_user($user_id)
+    {
+        $data_pet_of_user = Pet::where('user_id' , $user_id)->get();
+
+        return $data_pet_of_user;
     }
 }

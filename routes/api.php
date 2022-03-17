@@ -41,3 +41,7 @@ Route::get('search_my_location_recommend/{latlng}/{distance}', 'Hospital_nearCon
 Route::get('search_location_by_T_recommend/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T_recommend');
 
 Route::get('search_location_by_T/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T');
+
+Route::get('/search_data_user/{user_id}', 'Blood_bankController@search_data_user');
+Route::get('/search_data_pet_of_user/{user_id}', 'Blood_bankController@search_data_pet_of_user');
+
