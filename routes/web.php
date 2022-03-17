@@ -65,7 +65,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::resource('pet', 'PetController');
     Route::resource('user', 'UserController');
-    Route::resource('profile', 'ProfileController');
+    // Route::resource('profile', 'ProfileController');
     Route::resource('post', 'PostController');
     Route::get('/post/create', 'PostController@create')->name('post_create');
     Route::resource('lost_pet', 'Lost_PetController');
@@ -92,5 +92,6 @@ Route::get('/login_line_near_hospital', 'PetController@welcome_line_Hospital_nea
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
 Route::get('/login_line_blood_bank', 'Blood_bankController@blood_bank_line'); // ธนาคารเลือด
 Route::get('/login_line_profile', 'ProfileController@profile_edit_line');// แก้ไขโปรไฟล์
+Route::get('/login_line_profile2', 'ProfileController@profile_edit_line2');
 Route::get('hospital_near', 'Hospital_nearController@index');
 
