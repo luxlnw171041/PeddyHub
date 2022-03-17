@@ -124,6 +124,35 @@
 
 </div>
 
+<!-- Button trigger modal -->
+<button id="btn_lost_pet_15day" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#lost_pet_15day">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="lost_pet_15day" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/01.png') }}">
+                <br><br>
+                <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
+                <p>
+                    ในการลงประกาศตามหาเจ้าตัวแสบระบบจะขึ้นประกาศบนหน้าฟีดไว้เป็นเวลา <span class="text-danger"><b>15 วัน</b></span> หลังจากนั้นคุณสามารถรีโพสใหม่ได้ที่หน้า <u>โพสของฉัน</u>
+                </p>
+            </div>
+            <div class="modal-footer d-none">
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgrxXDgk1tgXngalZF3eWtcTWI-LPdeus&language=th" ></script>
 <style type="text/css">
@@ -139,6 +168,7 @@
         // console.log("START");
         // getLocation();
         select_province();
+        document.querySelector('#btn_lost_pet_15day').click();
     });
 
     // function getLocation() {
