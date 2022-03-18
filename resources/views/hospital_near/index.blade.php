@@ -111,7 +111,7 @@ aside {
                                                 </a>
                                             </p>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 col-md-5">
                                             <img src="{{ $item->photo }}" class="img-fluid">
                                         </div>
                                     </div>

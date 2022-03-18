@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,200;1,800&display=swap" rel="stylesheet">
     <!--Color Themes-->
     
      <link href="{{ asset('peddyhub/ss/color-themes/default-theme.css') }}" rel="stylesheet" id="theme-color-file">

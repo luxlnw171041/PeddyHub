@@ -171,4 +171,13 @@ class Lost_PetController extends Controller
         }
     }
 
+    public function mypost()
+    {
+        $id = Auth::id();
+        $my_post = Lost_Pet::where('user_id', $id)->get();
+            
+        return view('lost_pet.my_post', compact('my_post' ));
+
+    }
+
 }

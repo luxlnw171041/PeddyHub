@@ -70,6 +70,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/post/create', 'PostController@create')->name('post_create');
     Route::resource('lost_pet', 'Lost_PetController');
     Route::get('/blood_bank', 'Blood_bankController@index');
+    Route::get('/my_post', 'Lost_PetController@mypost');
+
 });
 
 
