@@ -1,151 +1,162 @@
 @extends('layouts.peddyhub')
 @section('content')
-    <div class="main-wrapper pet service">
-        <div class="about pet">
-            <section class="service">
-                <div class="container">
-                    <div class="heading text-center">
-                        <p class="wow fadeInUp" style="visibility: visible;"><span class="purple"><i class="fas fa-paw"></i> </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
-                        <h4 class="wow fadeInDown" style="visibility: visible;">โรงพยาบาลสัตว์ใกล้ฉัน</h4>
+<style>
+
+
+aside {
+  float: left;
+  padding: 1%;
+  width: 100%;
+}
+
+.sticky {
+  position: relative;
+}
+
+</style>
+    <div class="about pet">
+        <section class="service">
+            <div class="container">
+                <div class="heading text-center">
+                    <p class="wow fadeInUp" style="visibility: visible;"><span class="purple"><i class="fas fa-paw"></i> </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
+                    <h4 class="wow fadeInDown" style="visibility: visible;">โรงพยาบาลสัตว์ใกล้ฉัน</h4>
+                </div>
+                <div class="row">
+                    <div class="row col-12 d-none">
+                        <input class="form-control col-4" name="lat" type="text" id="lat" value="13.7248936" >
+                        <input class="form-control col-4" name="lng" type="text" id="lng" value="100.4930264" >
                     </div>
-                    <div class="cards">
-                        <div class="row">
-                            <div class="row col-12 d-none">
-                                <input class="form-control col-4" name="lat" type="text" id="lat" value="13.7248936" >
-                                <input class="form-control col-4" name="lng" type="text" id="lng" value="100.4930264" >
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <button id="btn_select_my_location" type="button" class="btn btn-danger wow fadeInUp" onclick="select_my_location();">
+                            <i class="fa-solid fa-location-crosshairs"></i> เลือกจากตำแหน่งของฉัน
+                        </button>
+                        <button id="btn_select_location_by_T" type="button" class="btn btn-danger d-none wow fadeInUp" onclick="select_location_by_T();">
+                            <i class="fa-solid fa-map-location-dot"></i> เลือกจากพื้นที่
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-10 col-lg-10 d-none" id="div_spinner">
+                        <br>
+                        <div class="spinner-border text-success"></div> &nbsp;&nbsp;กำลังค้นหา..
+                        <br><br>
+                    </div>
+                    <br><br>
+                    <hr class="col-11 col-md-11 col-lg-11" style="margin-left:15px;">
+                    <div class="col-12 col-md-10 col-lg-10">
+                        <!-- ตำแหน่งของฉัน -->
+                        <div id="my_location" class="row d-none">
+                            <div class="form-group col-lg-5 col-md-5 col-sm-12">
+                                <input type="text" id="latlng" class="form-control" placeholder="ตำแหน่งของฉัน" readonly>
                             </div>
-                            <div class="col-12 col-md-12 col-lg-12">
-                                <button id="btn_select_my_location" type="button" class="btn btn-danger wow fadeInUp" onclick="select_my_location();">
-                                    <i class="fa-solid fa-location-crosshairs"></i> เลือกจากตำแหน่งของฉัน
-                                </button>
-                                <button id="btn_select_location_by_T" type="button" class="btn btn-danger d-none wow fadeInUp" onclick="select_location_by_T();">
-                                    <i class="fa-solid fa-map-location-dot"></i> เลือกจากพื้นที่
-                                </button>
-                            </div>
-                            <div class="col-12 col-md-10 col-lg-10 d-none" id="div_spinner">
-                                <br>
-                                <div class="spinner-border text-success"></div> &nbsp;&nbsp;กำลังค้นหา..
-                                <br><br>
-                            </div>
-                            <br><br>
-                            <hr class="col-11 col-md-11 col-lg-11" style="margin-left:15px;">
-                            <div class="col-12 col-md-10 col-lg-10">
-                                <!-- ตำแหน่งของฉัน -->
-                                <div id="my_location" class="row d-none">
-                                    <div class="form-group col-lg-5 col-md-5 col-sm-12">
-                                        <input type="text" id="latlng" class="form-control" placeholder="ตำแหน่งของฉัน" readonly>
-                                    </div>
-                                    <div class="form-group col-lg-5 col-md-5 col-sm-12">
-                                        <select name="distance" id="distance" class="form-control d-none" required >
-                                            <option value='15' selected="selected">15</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <!-- เลือกจากตำบล -->
-                                <div id="location_by_T" class="row wow fadeInDown">
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
-                                            <option value="" selected>- เลือกจังหวัด -</option>
-                                        </select>
-                                        <input type="text" name="input_province" id="input_province" class="form-control d-none" readonly>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
-                                            <option value="" selected>- เลือกอำเภอ -</option>
-                                        </select>
-                                        <input type="text" name="input_amphoe" id="input_amphoe" class="form-control d-none" readonly>
-                                    </div>
-                                    <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
-                                            <option value="" selected>- เลือกตำบล -</option>
-                                        </select>
-                                        <input type="text" name="input_tambon" id="input_tambon" class="form-control d-none" readonly>
-                                    </div>
-                                </div>
+                            <div class="form-group col-lg-5 col-md-5 col-sm-12">
+                                <select name="distance" id="distance" class="form-control d-none" required >
+                                    <option value='15' selected="selected">15</option>
+                                </select>
                             </div>
                         </div>
 
-                        <div class="form-group d-none">
-                            <button type="button" class="btn btn-outline-primary">ค้นหา</button>
-                            <button type="button" class="btn btn-outline-danger">Reset</button>
-                        </div>
-
-                        <div class="row ">
-                            <div class="col-lg-6 col-md-6 col-sm-12 wow fadeInLeft">
-                                <div id="div_recommend" class="">
-                                    @foreach($hospital_recommend as $item)
-                                        <div class="card main-shadow main-radius" onclick="view_markar('{{ $item->lat }}' , '{{ $item->lng }}','{{ $item->name }}');">
-                                            <div class="row">
-                                                <div class="col-9">
-                                                    <h6>{{ $item->name }}</h6>
-                                                </div>
-                                                <div class="col-3">
-                                                    <button class="btn btn-sm btn-success float-right" style="margin-top: -10px;">
-                                                        แนะนำ <i class="fa-solid fa-badge-check"></i>
-                                                    </button>
-                                                </div>
-                                                <div class="col-7">                                         
-                                                    <p style="margin-bottom:0px;">
-                                                        <i style="color:#b81f5b;padding-right:10px;" class="fa-solid fa-location-crosshairs" ></i>
-                                                        {{ $item->address }}
-                                                    </p>
-                                                    <p style="margin-bottom:0px;">
-                                                        <i style="color:green;padding-right:10px;" class="fa-solid fa-timer" ></i>
-                                                        {{ $item->business_hours }}
-                                                    </p>
-                                                    <p style="margin-bottom:0px;">
-                                                        <a href="tel:{{ $item->phone }}">
-                                                            <i style="color:blue;padding-right:10px;" class="fa-solid fa-phone-volume" ></i>
-                                                            {{ $item->phone }}
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                                <div class="col-5">
-                                                    <img src="{{ $item->photo }}" class="img-fluid">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <span id="text_select_distance" class="text-danger d-none">กรุณาเลือกระยะทาง</span>
-                                <span id="search_not_found" class="text-danger d-none">ไม่พบการค้นหา</span>
-
-                                <!-- DIV ค้นหา ร้านแนะนำ-->
-                                <div id="content_search_recommend" class="d-none"></div>
-                                <!-- DIV ค้นหา -->
-                                <div id="content_search" class="d-none"></div>
-
+                        <!-- เลือกจากตำบล -->
+                        <div id="location_by_T" class="row wow fadeInDown">
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                    <option value="" selected>- เลือกจังหวัด -</option>
+                                </select>
+                                <input type="text" name="input_province" id="input_province" class="form-control d-none" readonly>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <center>
-                                                <img src="{{ url('/peddyhub/images/icons/marker_user.png') }}"> <br>ตำแหน่งของคุณ
-                                            </center>
-                                        </div>
-                                        <div class="col-4">
-                                            <center>
-                                                <img src="{{ url('/peddyhub/images/icons/placeholder_2.png') }}"> <br>แนะนำ
-                                            </center>
-                                        </div>
-                                        <div class="col-4">
-                                            <center>
-                                                <img src="{{ url('/peddyhub/images/icons/marker_general.png') }}"> <br>ทั่วไป
-                                            </center>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <div id="map" class="wow fadeInRight"></div>
-                                <div id="map_my_location" class="wow fadeInRight d-none"></div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                    <option value="" selected>- เลือกอำเภอ -</option>
+                                </select>
+                                <input type="text" name="input_amphoe" id="input_amphoe" class="form-control d-none" readonly>
+                            </div>
+                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                    <option value="" selected>- เลือกตำบล -</option>
+                                </select>
+                                <input type="text" name="input_tambon" id="input_tambon" class="form-control d-none" readonly>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+                <div class="form-group d-none">
+                    <button type="button" class="btn btn-outline-primary">ค้นหา</button>
+                    <button type="button" class="btn btn-outline-danger">Reset</button>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 wow fadeInLeft main-content order-md-1 order-2">
+                        <div id="div_recommend" class="">
+                            @foreach($hospital_recommend as $item)
+                                <div class="card main-shadow main-radius" onclick="view_markar('{{ $item->lat }}' , '{{ $item->lng }}','{{ $item->name }}');">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h6>{{ $item->name }}</h6>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-sm btn-success float-right" style="margin-top: -10px;">
+                                                แนะนำ <i class="fa-solid fa-badge-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">                                         
+                                            <p style="margin-bottom:0px;">
+                                                <i style="color:#b81f5b;padding-right:10px;" class="fa-solid fa-location-crosshairs" ></i>
+                                                {{ $item->address }}
+                                            </p>
+                                            <p style="margin-bottom:0px;">
+                                                <i style="color:green;padding-right:10px;" class="fa-solid fa-timer" ></i>
+                                                {{ $item->business_hours }}
+                                            </p>
+                                            <p style="margin-bottom:0px;">
+                                                <a href="tel:{{ $item->phone }}">
+                                                    <i style="color:blue;padding-right:10px;" class="fa-solid fa-phone-volume" ></i>
+                                                    {{ $item->phone }}
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="col-12">
+                                            <img src="{{ $item->photo }}" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <span id="text_select_distance" class="text-danger d-none">กรุณาเลือกระยะทาง</span>
+                        <span id="search_not_found" class="text-danger d-none">ไม่พบการค้นหา</span>
+                        <a href="#div-sticky">
+                            <!-- DIV ค้นหา ร้านแนะนำ-->
+                            <div id="content_search_recommend" class="d-none"></div>
+                            <!-- DIV ค้นหา -->
+                            <div id="content_search" class="d-none"></div>
+                        </a>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 order-md-2 order-1">
+                        <aside id="div-sticky" class="sticky">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <center>
+                                            <img src="{{ url('/peddyhub/images/icons/marker_user.png') }}"> <br>ตำแหน่งของคุณ
+                                        </center>
+                                    </div>
+                                    <div class="col-4">
+                                        <center>
+                                            <img src="{{ url('/peddyhub/images/icons/placeholder_2.png') }}"> <br>แนะนำ
+                                        </center>
+                                    </div>
+                                    <div class="col-4">
+                                        <center>
+                                            <img src="{{ url('/peddyhub/images/icons/marker_general.png') }}"> <br>ทั่วไป
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        <br>
+                        <div id="map" class="wow fadeInRight"></div>
+                        <div id="map_my_location" class="wow fadeInRight d-none"></div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     <br>
 
@@ -335,7 +346,7 @@
                             // ข้อมูล
                             let div_col_data = document.createElement("div");
                             let class_div_data = document.createAttribute("class");
-                                class_div_data.value = "col-7";
+                                class_div_data.value = "col-sm-12 col-md-7";
                                 div_col_data.setAttributeNode(class_div_data);
 
                                 // address
@@ -410,7 +421,7 @@
                             // รูปภาพ
                             let div_col_img = document.createElement("div");
                             let class_div_img = document.createAttribute("class");
-                                class_div_img.value = "col-5";
+                                class_div_img.value = "col-sm-12 col-md-5";
                                 div_col_img.setAttributeNode(class_div_img);
 
                                 let tag_img = document.createElement("img");
@@ -507,7 +518,7 @@
                             // ข้อมูล
                             let div_col_data_recommend = document.createElement("div");
                             let class_div_data_recommend = document.createAttribute("class");
-                                class_div_data_recommend.value = "col-7";
+                                class_div_data_recommend.value = "col-sm-12 col-md-7";
                                 div_col_data_recommend.setAttributeNode(class_div_data_recommend);
 
                                 // address
@@ -582,7 +593,7 @@
                             // รูปภาพ
                             let div_col_img_recommend = document.createElement("div");
                             let class_div_img_recommend = document.createAttribute("class");
-                                class_div_img_recommend.value = "col-5";
+                                class_div_img_recommend.value = "col-sm-12 col-md-5";
                                 div_col_img_recommend.setAttributeNode(class_div_img_recommend);
 
                                 let tag_img_recommend = document.createElement("img");
@@ -851,7 +862,7 @@
                             // ข้อมูล
                             let div_col_data_recommend = document.createElement("div");
                             let class_div_data_recommend = document.createAttribute("class");
-                                class_div_data_recommend.value = "col-7";
+                                class_div_data_recommend.value = "col-sm-12 col-md-7";
                                 div_col_data_recommend.setAttributeNode(class_div_data_recommend);
 
                                 // address
@@ -940,7 +951,7 @@
                             // รูปภาพ
                             let div_col_img_recommend = document.createElement("div");
                             let class_div_img_recommend = document.createAttribute("class");
-                                class_div_img_recommend.value = "col-5";
+                                class_div_img_recommend.value = "col-sm-12 col-md-5";
                                 div_col_img_recommend.setAttributeNode(class_div_img_recommend);
 
                                 let tag_img_recommend = document.createElement("img");
@@ -1014,7 +1025,7 @@
                             // ข้อมูล
                             let div_col_data = document.createElement("div");
                             let class_div_data = document.createAttribute("class");
-                                class_div_data.value = "col-7";
+                                class_div_data.value = "col-sm-12 col-md-7";
                                 div_col_data.setAttributeNode(class_div_data);
 
                                 // address
@@ -1103,7 +1114,7 @@
                             // รูปภาพ
                             let div_col_img = document.createElement("div");
                             let class_div_img = document.createAttribute("class");
-                                class_div_img.value = "col-5";
+                                class_div_img.value = "col-sm-12 col-md-5";
                                 div_col_img.setAttributeNode(class_div_img);
 
                                 let tag_img = document.createElement("img");
@@ -1178,5 +1189,43 @@
 
 
     </script>
+<script>
+var stickySidebar = $('.sticky');
 
+if (stickySidebar.length > 0) {	
+  var stickyHeight = stickySidebar.height(),
+      sidebarTop = stickySidebar.offset().top;
+}
+
+// on scroll move the sidebar
+$(window).scroll(function () {
+  if (stickySidebar.length > 0) {	
+    var scrollTop = $(window).scrollTop();
+            
+    if (sidebarTop < scrollTop) {
+      stickySidebar.css('top', scrollTop - sidebarTop);
+
+      // stop the sticky sidebar at the footer to avoid overlapping
+      var sidebarBottom = stickySidebar.offset().top + stickyHeight,
+          stickyStop = $('.main-content').offset().top + $('.main-content').height();
+      if (stickyStop < sidebarBottom) {
+        var stopPosition = $('.main-content').height() - stickyHeight;
+        stickySidebar.css('top', stopPosition);
+      }
+    }
+    else {
+      stickySidebar.css('top', '0');
+    } 
+  }
+});
+
+$(window).resize(function () {
+  if (stickySidebar.length > 0) {	
+    stickyHeight = stickySidebar.height();
+  }
+});
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    document.querySelector('#div-sticky').classList.remove('sticky');
+}
+</script>
 @endsection
