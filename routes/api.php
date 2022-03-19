@@ -48,4 +48,5 @@ Route::get('/search_data_pet_of_user/{user_id}', 'Blood_bankController@search_da
 Route::post('/send_data_to_user', 'Blood_bankController@send_data_to_user');
 
 Route::get('/cf_blood_user/{blood_id}/{cf_or_nocf}', 'Blood_bankController@cf_blood_user');
+Route::get('/check_cf_blood_foruser/{blood_id}', 'Blood_bankController@check_cf_blood_foruser');
 

@@ -83,10 +83,12 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="wait_user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="wait_user" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body text-center">
+                    <button id="btn_close_wait_user" type="button" class="close d-none" data-dismiss="modal" aria-label="Close">
+                    </button>
                     <center>
                         <br><br>
                         <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/15.png') }}">
@@ -172,7 +174,20 @@
 
     function check_data_blood_id()
     {
-        console.log("check_data_blood_id");
+        let data_blood_id = {{ $data_blood_id }} ;
+
+        fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
+            .then(response => response.json())
+            .then(result => {
+                console.log(result[0]['status']);
+
+                if (result[0]['status'] == "Yes") {
+                    document.querySelector('#btn_close_wait_user').click();
+                    document.querySelector('#btn_user_cf').click();
+                }
+
+
+        });
     }
 
 </script>
