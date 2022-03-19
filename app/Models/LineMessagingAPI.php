@@ -499,9 +499,9 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("17/3/2565",$date_now,$string_json);
             $string_json = str_replace("16:44",$time_now,$string_json);
 
+            $string_json = str_replace("1300",$quantity_blood,$string_json);
             $string_json = str_replace("5",$count_blood,$string_json);
             $string_json = str_replace("3",$count_pet,$string_json);
-            $string_json = str_replace("1300",$quantity_blood,$string_json);
 
             foreach ($data_blood as $key) {
                 $string_json = str_replace("รพ. เกษตร",$key->location,$string_json);
