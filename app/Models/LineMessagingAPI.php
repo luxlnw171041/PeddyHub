@@ -123,14 +123,17 @@ class LineMessagingAPI extends Model
                 
                 //จำนวนสัตว์ทั้งหมด
                 $count_pet = Blood_bank::where('user_id', $user_id)
+                    ->where('status', "Yes")
                     ->groupBy('pet_id')
                     ->get()->count();
                 // จำนวนคร้งทั้งหมด
                     $count_time = Blood_bank::where('user_id', $user_id)
+                    ->where('status', "Yes")
                     ->selectRaw('count(pet_id) as count')
                     ->count();
                 //  ประมาณทั้งหมด
                 $count_blood = Blood_bank::where('user_id', $user_id)
+                    ->where('status', "Yes")
                     ->selectRaw('sum(total_blood) as count')
                     ->get();
                 foreach ($count_blood as $item) {
@@ -429,6 +432,25 @@ class LineMessagingAPI extends Model
 
     public function send_blood_success($data_blood , $data_user , $data_pet)
     {
+        $date_now = date("Y-m-d") ;
+        $time_now = date("H:i");
+
+        //จำนวนสัตว์ทั้งหมด
+        $count_pet = Blood_bank::where('user_id', $user_id)
+            ->where('status', "Yes")
+            ->groupBy('pet_id')
+            ->get()->count();
+        // จำนวนคร้งทั้งหมด
+            $count_time = Blood_bank::where('user_id', $user_id)
+            ->where('status', "Yes")
+            ->selectRaw('count(pet_id) as count')
+            ->count();
+        //  ประมาณทั้งหมด
+        $count_blood = Blood_bank::where('user_id', $user_id)
+            ->where('status', "Yes")
+            ->selectRaw('sum(total_blood) as count')
+            ->get();
+
         foreach ($data_user as $item) {
 
             $data_Text_topic = [
@@ -438,20 +460,52 @@ class LineMessagingAPI extends Model
                 "วันที่",
                 "เวลา",
                 "ปริมาณ",
-                "ไม่ยืนยัน",
-                "ยืนยัน",
+                "ธนาคารเลือด",
+                "ฝากรวม",
+                "จาก",
+                "ปริมาณรวม",
+                "ครั้ง",
+                "ตัว",
             ];
 
             $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
 
-            $template_path = storage_path('../public/json/flex-cf-blood-bank.json');   
+            $template_path = storage_path('../public/json/flex-success-blood-bank.json');   
 
             $string_json = file_get_contents($template_path);
 
-            $string_json = str_replace("ยืนยันการฝากเลือด",$data_topic[0],$string_json);
+            $string_json = str_replace("ฝากเลือดสำเร็จแล้ว",$data_topic[0],$string_json);
             $string_json = str_replace("ชื่อ",$data_topic[1],$string_json);
+            $string_json = str_replace("เจ้าของ",$data_topic[2],$string_json);
+            $string_json = str_replace("วันที่",$data_topic[3],$string_json);
+            $string_json = str_replace("เวลา",$data_topic[4],$string_json);
+            $string_json = str_replace("ปริมาณ",$data_topic[5],$string_json);
 
+            $string_json = str_replace("ธนาคารเลือด",$data_topic[6],$string_json);
+            $string_json = str_replace("ฝากรวม",$data_topic[7],$string_json);
+            $string_json = str_replace("จาก",$data_topic[8],$string_json);
+            $string_json = str_replace("ปริมาณรวม",$data_topic[9],$string_json);
+            $string_json = str_replace("ครั้ง",$data_topic[10],$string_json);
+            $string_json = str_replace("ตัว",$data_topic[11],$string_json);
+
+            foreach ($data_blood as $key) {
+                $string_json = str_replace("รพ. เกษตร",$key->location,$string_json);
+                $string_json = str_replace("500 ml",$key->quantity,$string_json);
+            }
+
+            $string_json = str_replace("Lucky",$item->name,$string_json);
+            $string_json = str_replace("17/3/2565",$date_now,$string_json);
+            $string_json = str_replace("16:44",$time_now,$string_json);
             
+            foreach ($data_pet as $pet) {
+                $string_json = str_replace("Luca",$pet->name,$string_json);
+                $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/".$pet->photo,$string_json);
+            }
+
+            $string_json = str_replace("5",$count_time,$string_json);
+            $string_json = str_replace("3",$count_pet,$string_json);
+            $string_json = str_replace("1300",$count_blood,$string_json);
+
             $messages = [ json_decode($string_json, true) ];
 
             $body = [
