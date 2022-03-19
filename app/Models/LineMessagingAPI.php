@@ -386,7 +386,7 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("ยืนยัน",$data_topic[7],$string_json);
 
             $string_json = str_replace("รพ. เกษตร",$location,$string_json);
-            $string_json = str_replace("500 ml",$quantity,$string_json);
+            $string_json = str_replace("500",$quantity,$string_json);
             $string_json = str_replace("Lucky",$item->name,$string_json);
             $string_json = str_replace("17/3/2565",$date_now,$string_json);
             $string_json = str_replace("16:44",$time_now,$string_json);
@@ -440,16 +440,16 @@ class LineMessagingAPI extends Model
         foreach ($data_user as $item) {
 
             //จำนวนสัตว์ทั้งหมด
-            $data_blood = Blood_bank::where('user_id', 1)
+            $data_blood = Blood_bank::where('user_id', $item->user_id)
                 ->where('status', "Yes")
                 ->get();
             //จำนวนสัตว์ทั้งหมด
-            $data_count_pet = Blood_bank::where('user_id', 1)
+            $data_count_pet = Blood_bank::where('user_id', $item->user_id)
                 ->where('status', "Yes")
                 ->groupBy('pet_id')
                 ->get();
 
-            $data_quantity_bloods = Blood_bank::where('user_id', 1)
+            $data_quantity_bloods = Blood_bank::where('user_id', $item->user_id)
                 ->where('status', "Yes")
                 ->selectRaw('sum(quantity) as count')
                 ->get();
@@ -497,7 +497,7 @@ class LineMessagingAPI extends Model
 
             foreach ($data_blood as $key) {
                 $string_json = str_replace("รพ. เกษตร",$key->location,$string_json);
-                $string_json = str_replace("500 ml",$key->quantity,$string_json);
+                $string_json = str_replace("500",$key->quantity,$string_json);
             }
 
             $string_json = str_replace("Lucky",$item->name,$string_json);
