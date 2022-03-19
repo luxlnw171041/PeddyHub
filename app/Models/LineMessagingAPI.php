@@ -347,7 +347,68 @@ class LineMessagingAPI extends Model
 		
 	}
 
+    public function send_lane_to_user($data_user, $data_pet , $location , $quantity)
+    {
+        foreach ($data_user as $item) {
 
+            $data_Text_topic = [
+                "ยืนยันการฝากเลือด",
+                "ชื่อ",
+                "เจ้าของ",
+                "วันที่",
+                "เวลา",
+                "ปริมาณ",
+                "ยืนยัน",
+                "ไม่ยืนยัน",
+            ];
+
+            $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
+
+            $template_path = storage_path('../public/json/flex-cf-blood-bank.json');   
+
+            $string_json = file_get_contents($template_path);
+
+            $string_json = str_replace("ยืนยันการฝากเลือด",$data_topic[0],$string_json);
+            $string_json = str_replace("ชื่อ",$data_topic[1],$string_json);
+            $string_json = str_replace("เจ้าของ",$data_topic[2],$string_json);
+            $string_json = str_replace("วันที่",$data_topic[3],$string_json);
+            $string_json = str_replace("เวลา",$data_topic[4],$string_json);
+            $string_json = str_replace("ปริมาณ",$data_topic[5],$string_json);
+            $string_json = str_replace("ยืนยัน",$data_topic[6],$string_json);
+            $string_json = str_replace("ไม่ยืนยัน",$data_topic[7],$string_json);
+
+            
+            $messages = [ json_decode($string_json, true) ];
+
+            $body = [
+                "to" => $item->user->provider_id,
+                "messages" => $messages,
+            ];
+
+            $opts = [
+                'http' =>[
+                    'method'  => 'POST',
+                    'header'  => "Content-Type: application/json \r\n".
+                                'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                    'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                    //'timeout' => 60
+                ]
+            ];
+                                
+            $context  = stream_context_create($opts);
+            $url = "https://api.line.me/v2/bot/message/push";
+            $result = file_get_contents($url, false, $context);
+
+            //SAVE LOG
+            $data_save_log = [
+                "title" => "ส่งข้อความแจ้งข้อมูลการฝากเลือด",
+                "content" => $item->user->username . " - " . $item->user->provider_id,
+            ];
+            MyLog::create($data_save_log);
+
+        }
+        
+    }
 
 
     // แปลภาษา

@@ -9,6 +9,8 @@ use App\Models\Blood_bank;
 use App\Models\Pet;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
+use App\Models\User;
+use App\Models\LineMessagingAPI;
 use Illuminate\Http\Request;
 
 class Blood_bankController extends Controller
@@ -126,6 +128,7 @@ class Blood_bankController extends Controller
         Blood_bank::create($requestData);
 
         // return redirect('blood_bank')->with('flash_message', 'Blood_bank added!');
+        return view('blood_bank.wait_user', compact('requestData'));
     }
 
     /**
@@ -210,5 +213,21 @@ class Blood_bankController extends Controller
         $data_pet_of_user = Pet::where('user_id' , $user_id)->get();
 
         return $data_pet_of_user;
+    }
+
+    public function send_data_to_user()
+    {
+        $json = file_get_contents("php://input");
+        $data = json_decode($json, true);
+
+        $data_user = Profile::where('user_id' , $data['user_id'])
+            ->where('type' , 'line')
+            ->get();
+
+        $data_pet = Pet::where('id' , $data['pet_id'])->get();
+
+        $line = new LineMessagingAPI();
+        $line->send_lane_to_user($data_user, $data_pet );
+
     }
 }

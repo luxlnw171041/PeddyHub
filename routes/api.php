@@ -45,3 +45,5 @@ Route::get('search_location_by_T/{input_province}/{input_amphoe}/{input_tambon}'
 Route::get('/search_data_user/{user_id}', 'Blood_bankController@search_data_user');
 Route::get('/search_data_pet_of_user/{user_id}', 'Blood_bankController@search_data_pet_of_user');
 
+Route::post('/send_data_to_user', 'Blood_bankController@send_data_to_user');
+
