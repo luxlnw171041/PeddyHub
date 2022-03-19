@@ -388,7 +388,7 @@ class LineMessagingAPI extends Model
 
             foreach ($data_pet as $pet) {
                 $string_json = str_replace("Luca",$pet->name,$string_json);
-                $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/"+$pet->photo,$string_json);
+                $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/".$pet->photo,$string_json);
             }
 
             
