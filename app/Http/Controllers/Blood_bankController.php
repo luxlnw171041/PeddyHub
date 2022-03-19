@@ -250,6 +250,17 @@ class Blood_bankController extends Controller
     public function cf_blood_user($blood_id , $cf_or_nocf)
     {
         $data_blood = Blood_bank::where('id' , $blood_id)->get();
+        foreach ($data_blood as $item) {
+            $user_id = $item->user_id ;
+            $pet_id = $item->pet_id ;
+        }
+
+        $data_user = Profile::where('user_id' , $user_id)
+            ->where('type' , 'line')
+            ->get();
+
+        $data_pet = Pet::where('id' , $pet_id)->get();
+
 
         if ($cf_or_nocf == "cf") {
             DB::table('blood_banks')
@@ -258,6 +269,10 @@ class Blood_bankController extends Controller
                 ->update([
                     'status' => "Yes",
             ]);
+
+            $line = new LineMessagingAPI();
+            $line->send_blood_success($data_blood , $data_user , $data_pet);
+                
         }
 
         if ($cf_or_nocf == "no_cf") {
@@ -267,6 +282,9 @@ class Blood_bankController extends Controller
                 ->update([
                     'status' => "No",
             ]);
+
+            $line = new LineMessagingAPI();
+            $line->send_blood_no_cf($data_user);
         }
 
         return view('return_line');

@@ -387,7 +387,7 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("16:44",$time_now,$string_json);
 
             $string_json = str_replace("blood_id",$data_blood_id,$string_json);
-            
+
 
             foreach ($data_pet as $pet) {
                 $string_json = str_replace("Luca",$pet->name,$string_json);
@@ -425,6 +425,105 @@ class LineMessagingAPI extends Model
 
         }
         
+    }
+
+    public function send_blood_success($data_blood , $data_user , $data_pet)
+    {
+        foreach ($data_user as $item) {
+
+            $data_Text_topic = [
+                "ฝากเลือดสำเร็จแล้ว",
+                "ชื่อ",
+                "เจ้าของ",
+                "วันที่",
+                "เวลา",
+                "ปริมาณ",
+                "ไม่ยืนยัน",
+                "ยืนยัน",
+            ];
+
+            $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
+
+            $template_path = storage_path('../public/json/flex-cf-blood-bank.json');   
+
+            $string_json = file_get_contents($template_path);
+
+            $string_json = str_replace("ยืนยันการฝากเลือด",$data_topic[0],$string_json);
+            $string_json = str_replace("ชื่อ",$data_topic[1],$string_json);
+
+            
+            $messages = [ json_decode($string_json, true) ];
+
+            $body = [
+                "to" => $item->user->provider_id,
+                "messages" => $messages,
+            ];
+
+            $opts = [
+                'http' =>[
+                    'method'  => 'POST',
+                    'header'  => "Content-Type: application/json \r\n".
+                                'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                    'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                    //'timeout' => 60
+                ]
+            ];
+                                
+            $context  = stream_context_create($opts);
+            $url = "https://api.line.me/v2/bot/message/push";
+            $result = file_get_contents($url, false, $context);
+
+            //SAVE LOG
+            $data_save_log = [
+                "title" => "ฝากเลือดสำเร็จ",
+                "content" => $item->user->username . " - " . $item->user->provider_id,
+            ];
+            MyLog::create($data_save_log);
+        }
+    }
+
+     public function send_blood_no_cf($data_user)
+    {
+        foreach ($data_user as $item) {
+
+            $data_Text_topic = [
+                "คุณไม่ได้ยืนยันการฝากเลือด",
+            ];
+
+            $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
+            $template_path = storage_path('../public/json/not_cf_blood.json');   
+
+            $string_json = file_get_contents($template_path);
+            $string_json = str_replace("คุณไม่ได้ยืนยันการฝากเลือด",$data_topic[0],$string_json);
+
+            $messages = [ json_decode($string_json, true) ];
+
+            $body = [
+                "to" => $item->user->provider_id,
+                "messages" => $messages,
+            ];
+
+            $opts = [
+                'http' =>[
+                    'method'  => 'POST',
+                    'header'  => "Content-Type: application/json \r\n".
+                                'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                    'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                    //'timeout' => 60
+                ]
+            ];
+                                
+            $context  = stream_context_create($opts);
+            $url = "https://api.line.me/v2/bot/message/push";
+            $result = file_get_contents($url, false, $context);
+
+            //SAVE LOG
+            $data_save_log = [
+                "title" => "ฝากเลือดwไม่สำเร็จ",
+                "content" => $item->user->username . " - " . $item->user->provider_id,
+            ];
+            MyLog::create($data_save_log);
+        }
     }
 
 
