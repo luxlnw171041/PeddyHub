@@ -102,10 +102,10 @@ class Blood_bankController extends Controller
         
         $requestData = $request->all();
 
-        // echo "<pre>";
-        // print_r($requestData);
-        // echo "<pre>";
-        // exit();
+        echo "<pre>";
+        print_r($requestData);
+        echo "<pre>";
+        exit();
 
         $pets = Pet::where('id' , $requestData['pet_id'])->get();
 
