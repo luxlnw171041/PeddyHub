@@ -249,10 +249,10 @@ class Blood_bankController extends Controller
 
     public function cf_blood_user($blood_id , $cf_or_nocf)
     {
-        $data_blood = Blood_bank::where('id' , $blood_id)->get();
-        foreach ($data_blood as $item) {
-            $user_id = $item->user_id ;
-            $pet_id = $item->pet_id ;
+        $data_bloods = Blood_bank::where('id' , $blood_id)->get();
+        foreach ($data_bloods as $data_blood) {
+            $user_id = $data_blood->user_id ;
+            $pet_id = $data_blood->pet_id ;
         }
 
         $data_user = Profile::where('user_id' , $user_id)
@@ -260,7 +260,6 @@ class Blood_bankController extends Controller
             ->get();
 
         $data_pet = Pet::where('id' , $pet_id)->get();
-
 
         if ($cf_or_nocf == "cf") {
             DB::table('blood_banks')
