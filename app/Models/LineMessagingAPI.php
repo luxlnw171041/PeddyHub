@@ -122,31 +122,33 @@ class LineMessagingAPI extends Model
                 }
                 
                 //จำนวนสัตว์ทั้งหมด
-                $count_pet = Blood_bank::where('user_id', $user_id)
+                $data_blood = Blood_bank::where('user_id', $user_id)
+                    ->where('status', "Yes")
+                    ->get();
+                //จำนวนสัตว์ทั้งหมด
+                $data_count_pet = Blood_bank::where('user_id', $user_id)
                     ->where('status', "Yes")
                     ->groupBy('pet_id')
-                    ->get()->count();
-                // จำนวนคร้งทั้งหมด
-                    $count_time = Blood_bank::where('user_id', $user_id)
-                    ->where('status', "Yes")
-                    ->selectRaw('count(pet_id) as count')
-                    ->count();
-                //  ประมาณทั้งหมด
-                $count_blood = Blood_bank::where('user_id', $user_id)
-                    ->where('status', "Yes")
-                    ->selectRaw('sum(total_blood) as count')
                     ->get();
-                foreach ($count_blood as $item) {
-                    $total_blood = $item->count ;
+
+                $data_quantity_bloods = Blood_bank::where('user_id', $user_id)
+                    ->where('status', "Yes")
+                    ->selectRaw('sum(quantity) as count')
+                    ->get();
+
+                $count_pet = count($data_count_pet);
+                $count_blood = count($data_blood);
+                foreach ($data_quantity_bloods as $data_quantity_blood) {
+                    $quantity_blood = $data_quantity_blood->count ;
                 }
 
                 if (!empty($count_pet)) {
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   
                     $string_json = file_get_contents($template_path);
-                    $string_json = str_replace("1700", $total_blood,$string_json);
+                    $string_json = str_replace("1700", $quantity_blood,$string_json);
                     $string_json = str_replace("3",$count_pet,$string_json);
                     $string_json = str_replace("user_id",$user_id,$string_json);
-                    $string_json = str_replace("5", $count_time,$string_json);
+                    $string_json = str_replace("5", $count_blood,$string_json);
                 }else{
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   
                     $string_json = file_get_contents($template_path);
