@@ -246,4 +246,26 @@ class Blood_bankController extends Controller
         $line->send_lane_to_user($data_user, $data_pet , $data['location'] , $data['quantity'] , $data['data_blood_id']);
 
     }
+
+    public function cf_blood_user($blood_id , $cf_or_nocf)
+    {
+        $data_blood = Blood_bank::where('id' , $blood_id)->get();
+
+        if ($cf_or_nocf == "cf") {
+            DB::table('blood_banks')
+                ->where('id', $blood_id)
+                ->update([
+                    'status' => "Yes",
+            ]);
+        }
+
+        if ($cf_or_nocf == "no_cf") {
+            DB::table('blood_banks')
+                ->where('id', $blood_id)
+                ->update([
+                    'status' => "No",
+            ]);
+        }
+
+    }
 }

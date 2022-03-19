@@ -380,11 +380,14 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("ไม่ยืนยัน",$data_topic[6],$string_json);
             $string_json = str_replace("ยืนยัน",$data_topic[7],$string_json);
 
-            $string_json = str_replace("รพ. เกษตร",$data_blood_id,$string_json);
+            $string_json = str_replace("รพ. เกษตร",$location,$string_json);
             $string_json = str_replace("500 ml",$quantity,$string_json);
             $string_json = str_replace("Lucky",$item->name,$string_json);
             $string_json = str_replace("17/3/2565",$date_now,$string_json);
             $string_json = str_replace("16:44",$time_now,$string_json);
+
+            $string_json = str_replace("blood_id",$data_blood_id,$string_json);
+            
 
             foreach ($data_pet as $pet) {
                 $string_json = str_replace("Luca",$pet->name,$string_json);
