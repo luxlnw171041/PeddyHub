@@ -435,22 +435,6 @@ class LineMessagingAPI extends Model
         $date_now = date("Y-m-d") ;
         $time_now = date("H:i");
 
-        //จำนวนสัตว์ทั้งหมด
-        $count_pet = Blood_bank::where('user_id', $user_id)
-            ->where('status', "Yes")
-            ->groupBy('pet_id')
-            ->get()->count();
-        // จำนวนคร้งทั้งหมด
-            $count_time = Blood_bank::where('user_id', $user_id)
-            ->where('status', "Yes")
-            ->selectRaw('count(pet_id) as count')
-            ->count();
-        //  ประมาณทั้งหมด
-        $count_blood = Blood_bank::where('user_id', $user_id)
-            ->where('status', "Yes")
-            ->selectRaw('sum(total_blood) as count')
-            ->get();
-
         foreach ($data_user as $item) {
 
             $data_Text_topic = [
@@ -501,6 +485,22 @@ class LineMessagingAPI extends Model
                 $string_json = str_replace("Luca",$pet->name,$string_json);
                 $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/".$pet->photo,$string_json);
             }
+
+            //จำนวนสัตว์ทั้งหมด
+            $count_pet = Blood_bank::where('user_id', $item->id)
+                ->where('status', "Yes")
+                ->groupBy('pet_id')
+                ->get()->count();
+            // จำนวนคร้งทั้งหมด
+                $count_time = Blood_bank::where('user_id', $item->id)
+                ->where('status', "Yes")
+                ->selectRaw('count(pet_id) as count')
+                ->count();
+            //  ประมาณทั้งหมด
+            $count_blood = Blood_bank::where('user_id', $item->id)
+                ->where('status', "Yes")
+                ->selectRaw('sum(total_blood) as count')
+                ->get();
 
             $string_json = str_replace("5",$count_time,$string_json);
             $string_json = str_replace("3",$count_pet,$string_json);
