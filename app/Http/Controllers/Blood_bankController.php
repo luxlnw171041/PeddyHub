@@ -255,16 +255,14 @@ class Blood_bankController extends Controller
             $pet_id = $data_blood->pet_id ;
         }
 
-        echo $user_id;
-        echo "<br>";
-        echo "<pre>";
-        print_r($data_bloods);
-        echo "<pre>";
-        exit();
-
         $data_user = Profile::where('user_id' , $user_id)
             ->where('type' , 'line')
             ->get();
+
+        echo "<pre>";
+        print_r($data_user);
+        echo "<pre>";
+        exit();
 
         $data_pet = Pet::where('id' , $pet_id)->get();
 
