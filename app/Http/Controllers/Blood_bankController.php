@@ -254,6 +254,7 @@ class Blood_bankController extends Controller
         if ($cf_or_nocf == "cf") {
             DB::table('blood_banks')
                 ->where('id', $blood_id)
+                ->where('status', null)
                 ->update([
                     'status' => "Yes",
             ]);
@@ -262,10 +263,13 @@ class Blood_bankController extends Controller
         if ($cf_or_nocf == "no_cf") {
             DB::table('blood_banks')
                 ->where('id', $blood_id)
+                ->where('status', null)
                 ->update([
                     'status' => "No",
             ]);
         }
+
+        return view('return_line');
 
     }
 }

@@ -166,6 +166,13 @@
             }).catch(function(error){
                 // console.error(error);
             });
+
+            check_data_blood_id();
+    }
+
+    function check_data_blood_id()
+    {
+        
     }
 
 </script>
