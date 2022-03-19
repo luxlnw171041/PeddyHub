@@ -487,24 +487,29 @@ class LineMessagingAPI extends Model
             }
 
             //จำนวนสัตว์ทั้งหมด
-            $count_pet = Blood_bank::where('user_id', $item->id)
+            $data_blood = Blood_bank::where('user_id', 1)
+                ->where('status', "Yes")
+                ->get();
+            //จำนวนสัตว์ทั้งหมด
+            $data_count_pet = Blood_bank::where('user_id', 1)
                 ->where('status', "Yes")
                 ->groupBy('pet_id')
-                ->get()->count();
-            // จำนวนคร้งทั้งหมด
-            $count_time = Blood_bank::where('user_id', $item->id)
-                ->where('status', "Yes")
-                ->selectRaw('count(pet_id) as count')
-                ->count();
-            //  ประมาณทั้งหมด
-            $count_blood = Blood_bank::where('user_id', $item->id)
-                ->where('status', "Yes")
-                ->selectRaw('sum(total_blood) as count')
                 ->get();
 
-            $string_json = str_replace("5",$count_time,$string_json);
+            $data_quantity_bloods = Blood_bank::where('user_id', 1)
+                ->where('status', "Yes")
+                ->selectRaw('sum(quantity) as count')
+                ->get();
+
+            $count_pet = count($data_count_pet);
+            $count_blood = count($data_blood);
+            foreach ($data_quantity_bloods as $data_quantity_blood) {
+                $quantity_blood = $data_quantity_blood->count ;
+            }
+            
+            $string_json = str_replace("5",$count_blood,$string_json);
             $string_json = str_replace("3",$count_pet,$string_json);
-            $string_json = str_replace("1300",$count_blood,$string_json);
+            $string_json = str_replace("1300",$quantity_blood,$string_json);
 
             $messages = [ json_decode($string_json, true) ];
 

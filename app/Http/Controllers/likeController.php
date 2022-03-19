@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Like;
+use App\Models\Blood_bank;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller
@@ -17,6 +18,39 @@ class LikeController extends Controller
      */
     public function index(Request $request)
     {
+        //จำนวนสัตว์ทั้งหมด
+        $data_blood = Blood_bank::where('user_id', 1)
+            ->where('status', "Yes")
+            ->get();
+        //จำนวนสัตว์ทั้งหมด
+        $data_count_pet = Blood_bank::where('user_id', 1)
+            ->where('status', "Yes")
+            ->groupBy('pet_id')
+            ->get();
+
+        $data_quantity_bloods = Blood_bank::where('user_id', 1)
+            ->where('status', "Yes")
+            ->selectRaw('sum(quantity) as count')
+            ->get();
+
+        $count_pet = count($data_count_pet);
+        $count_blood = count($data_blood);
+        foreach ($data_quantity_bloods as $data_quantity_blood) {
+            $quantity_blood = $data_quantity_blood->count ;
+        }
+
+        echo $count_pet . " ตัว" ;
+        echo "<br>";
+        echo $count_blood . " ครั้ง" ;
+        echo "<br>";
+        echo $quantity_blood . " ml" ;
+
+        echo "<pre>";
+        print_r($data_count_pet);
+        echo "<pre>";
+
+        exit();
+
         $keyword = $request->get('search');
         $perPage = 25;
 
