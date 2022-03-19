@@ -347,7 +347,7 @@ class LineMessagingAPI extends Model
 		
 	}
 
-    public function send_lane_to_user($data_user, $data_pet )
+    public function send_lane_to_user($data_user, $data_pet , $location , $quantity)
     {
         foreach ($data_user as $item) {
 
@@ -376,6 +376,9 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("ปริมาณ",$data_topic[5],$string_json);
             $string_json = str_replace("ไม่ยืนยัน",$data_topic[6],$string_json);
             $string_json = str_replace("ยืนยัน",$data_topic[7],$string_json);
+            
+            $string_json = str_replace("รพ. เกษตร",$location,$string_json);
+            $string_json = str_replace("500 ml",$quantity,$string_json);
 
             
             $messages = [ json_decode($string_json, true) ];

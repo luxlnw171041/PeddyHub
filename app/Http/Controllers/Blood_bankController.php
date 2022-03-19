@@ -227,7 +227,7 @@ class Blood_bankController extends Controller
         $data_pet = Pet::where('id' , $data['pet_id'])->get();
 
         $line = new LineMessagingAPI();
-        $line->send_lane_to_user($data_user, $data_pet );
+        $line->send_lane_to_user($data_user, $data_pet , $data['location'] , $data['quantity']);
 
     }
 }
