@@ -12,7 +12,7 @@ use App\Models\Pet;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mylog;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Blood_bank;
 
 class LineMessagingAPI extends Model
 {
@@ -492,7 +492,7 @@ class LineMessagingAPI extends Model
                 ->groupBy('pet_id')
                 ->get()->count();
             // จำนวนคร้งทั้งหมด
-                $count_time = Blood_bank::where('user_id', $item->id)
+            $count_time = Blood_bank::where('user_id', $item->id)
                 ->where('status', "Yes")
                 ->selectRaw('count(pet_id) as count')
                 ->count();
