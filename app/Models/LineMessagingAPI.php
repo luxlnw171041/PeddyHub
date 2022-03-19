@@ -438,18 +438,18 @@ class LineMessagingAPI extends Model
         $time_now = date("H:i");
 
         foreach ($data_user as $item) {
-
+            $user_id = $item->id ;
             //จำนวนสัตว์ทั้งหมด
-            $data_blood = Blood_bank::where('user_id', $item->user_id)
+            $data_blood = Blood_bank::where('user_id', $user_id)
                 ->where('status', "Yes")
                 ->get();
             //จำนวนสัตว์ทั้งหมด
-            $data_count_pet = Blood_bank::where('user_id', $item->user_id)
+            $data_count_pet = Blood_bank::where('user_id', $user_id)
                 ->where('status', "Yes")
                 ->groupBy('pet_id')
                 ->get();
 
-            $data_quantity_bloods = Blood_bank::where('user_id', $item->user_id)
+            $data_quantity_bloods = Blood_bank::where('user_id', $user_id)
                 ->where('status', "Yes")
                 ->selectRaw('sum(quantity) as count')
                 ->get();
