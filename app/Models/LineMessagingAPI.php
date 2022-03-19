@@ -347,7 +347,7 @@ class LineMessagingAPI extends Model
 		
 	}
 
-    public function send_lane_to_user($data_user, $data_pet , $location , $quantity)
+    public function send_lane_to_user($data_user, $data_pet )
     {
         foreach ($data_user as $item) {
 
