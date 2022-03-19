@@ -438,8 +438,29 @@ class LineMessagingAPI extends Model
         $time_now = date("H:i");
 
         foreach ($data_user as $item) {
-            
+
             $user_id = $item->id ;
+
+            //จำนวนสัตว์ทั้งหมด
+            $data_blood = Blood_bank::where('user_id', $user_id)
+                ->where('status', "Yes")
+                ->get();
+            //จำนวนสัตว์ทั้งหมด
+            $data_count_pet = Blood_bank::where('user_id', $user_id)
+                ->where('status', "Yes")
+                ->groupBy('pet_id')
+                ->get();
+
+            $data_quantity_bloods = Blood_bank::where('user_id', $user_id)
+                ->where('status', "Yes")
+                ->selectRaw('sum(quantity) as count')
+                ->get();
+
+            $count_pet = count($data_count_pet);
+            $count_blood = count($data_blood);
+            foreach ($data_quantity_bloods as $data_quantity_blood) {
+                $quantity_blood = $data_quantity_blood->count ;
+            }
 
             $data_Text_topic = [
                 "ฝากเลือดสำเร็จแล้ว",
@@ -488,27 +509,6 @@ class LineMessagingAPI extends Model
             foreach ($data_pet as $pet) {
                 $string_json = str_replace("Luca",$pet->name,$string_json);
                 $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/".$pet->photo,$string_json);
-            }
-
-            //จำนวนสัตว์ทั้งหมด
-            $data_blood = Blood_bank::where('user_id', $user_id)
-                ->where('status', "Yes")
-                ->get();
-            //จำนวนสัตว์ทั้งหมด
-            $data_count_pet = Blood_bank::where('user_id', $user_id)
-                ->where('status', "Yes")
-                ->groupBy('pet_id')
-                ->get();
-
-            $data_quantity_bloods = Blood_bank::where('user_id', $user_id)
-                ->where('status', "Yes")
-                ->selectRaw('sum(quantity) as count')
-                ->get();
-
-            $count_pet = count($data_count_pet);
-            $count_blood = count($data_blood);
-            foreach ($data_quantity_bloods as $data_quantity_blood) {
-                $quantity_blood = $data_quantity_blood->count ;
             }
 
             $string_json = str_replace("5",$count_blood,$string_json);
