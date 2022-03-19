@@ -137,6 +137,7 @@
         let user_id = {{ $requestData['user_id'] }} ;
         let pet_id = {{ $requestData['pet_id'] }} ;
         let quantity = {{ $requestData['quantity'] }} ;
+        let data_blood_id = {{ $data_blood_id }} ;
 
         // console.log(location);
         // console.log(user_id);
@@ -149,6 +150,7 @@
             "user_id" : user_id,
             "pet_id" : pet_id,
             "quantity" : quantity,
+            "data_blood_id" : data_blood_id,
         };
 
         fetch("{{ url('/') }}/api/send_data_to_user", {

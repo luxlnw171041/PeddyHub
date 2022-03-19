@@ -102,6 +102,11 @@ class Blood_bankController extends Controller
         
         $requestData = $request->all();
 
+        echo "<pre>";
+        print_r($requestData);
+        echo "<pre>";
+        exit();
+
         $pets = Pet::where('id' , $requestData['pet_id'])->get();
 
         $count_blood = 0;
@@ -127,8 +132,19 @@ class Blood_bankController extends Controller
 
         Blood_bank::create($requestData);
 
+        $data_blood = Blood_bank::where('location' , $requestData['location'])
+            ->where('user_id' , $requestData['user_id'])
+            ->where('pet_id' , $requestData['pet_id'])
+            ->where('quantity' , $requestData['quantity'])
+            ->where('status' , null)
+            ->get();
+
+        foreach ($data_blood as $key) {
+            $data_blood_id = $key->id ;
+        }
+
         // return redirect('blood_bank')->with('flash_message', 'Blood_bank added!');
-        return view('blood_bank.wait_user', compact('requestData'));
+        return view('blood_bank.wait_user', compact('requestData' , 'data_blood_id'));
     }
 
     /**
@@ -227,7 +243,7 @@ class Blood_bankController extends Controller
         $data_pet = Pet::where('id' , $data['pet_id'])->get();
 
         $line = new LineMessagingAPI();
-        $line->send_lane_to_user($data_user, $data_pet , $data['location'] , $data['quantity']);
+        $line->send_lane_to_user($data_user, $data_pet , $data['location'] , $data['quantity'] , $data['data_blood_id']);
 
     }
 }
