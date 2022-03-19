@@ -482,36 +482,37 @@ class LineMessagingAPI extends Model
             $string_json = file_get_contents($template_path);
 
             $string_json = str_replace("ฝากเลือดสำเร็จแล้ว",$data_topic[0],$string_json);
-            $string_json = str_replace("ชื่อ",$data_topic[1],$string_json);
-            $string_json = str_replace("เจ้าของ",$data_topic[2],$string_json);
-            $string_json = str_replace("วันที่",$data_topic[3],$string_json);
-            $string_json = str_replace("เวลา",$data_topic[4],$string_json);
-            $string_json = str_replace("ปริมาณ",$data_topic[5],$string_json);
+            // $string_json = str_replace("ชื่อ",$data_topic[1],$string_json);
+            // $string_json = str_replace("เจ้าของ",$data_topic[2],$string_json);
+            // $string_json = str_replace("วันที่",$data_topic[3],$string_json);
+            // $string_json = str_replace("เวลา",$data_topic[4],$string_json);
+            // $string_json = str_replace("ปริมาณ",$data_topic[5],$string_json);
 
-            $string_json = str_replace("ธนาคารเลือด",$data_topic[6],$string_json);
-            $string_json = str_replace("ฝากรวม",$data_topic[7],$string_json);
-            $string_json = str_replace("จาก",$data_topic[8],$string_json);
-            $string_json = str_replace("ปริมาณรวม",$data_topic[9],$string_json);
-            $string_json = str_replace("ครั้ง",$data_topic[10],$string_json);
-            $string_json = str_replace("ตัว",$data_topic[11],$string_json);
+            // $string_json = str_replace("ธนาคารเลือด",$data_topic[6],$string_json);
+            // $string_json = str_replace("ฝากรวม",$data_topic[7],$string_json);
+            // $string_json = str_replace("จาก",$data_topic[8],$string_json);
+            // $string_json = str_replace("ปริมาณรวม",$data_topic[9],$string_json);
+            // $string_json = str_replace("ครั้ง",$data_topic[10],$string_json);
+            // $string_json = str_replace("ตัว",$data_topic[11],$string_json);
 
-            foreach ($data_blood as $key) {
-                $string_json = str_replace("รพ. เกษตร",$key->location,$string_json);
-                $string_json = str_replace("500",$key->quantity,$string_json);
-            }
+            // $string_json = str_replace("Lucky",$item->name,$string_json);
+            // $string_json = str_replace("17/3/2565",$date_now,$string_json);
+            // $string_json = str_replace("16:44",$time_now,$string_json);
 
-            $string_json = str_replace("Lucky",$item->name,$string_json);
-            $string_json = str_replace("17/3/2565",$date_now,$string_json);
-            $string_json = str_replace("16:44",$time_now,$string_json);
-            
-            foreach ($data_pet as $pet) {
-                $string_json = str_replace("Luca",$pet->name,$string_json);
-                $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/".$pet->photo,$string_json);
-            }
+            // $string_json = str_replace("5",$count_blood,$string_json);
+            // $string_json = str_replace("3",$count_pet,$string_json);
+            // $string_json = str_replace("1300",$quantity_blood,$string_json);
 
-            $string_json = str_replace("5",$count_blood,$string_json);
-            $string_json = str_replace("3",$count_pet,$string_json);
-            $string_json = str_replace("1300",$quantity_blood,$string_json);
+            // foreach ($data_blood as $key) {
+            //     $string_json = str_replace("รพ. เกษตร",$key->location,$string_json);
+            //     $string_json = str_replace("500",$key->quantity,$string_json);
+            // }
+
+            // foreach ($data_pet as $pet) {
+            //     $string_json = str_replace("Luca",$pet->name,$string_json);
+            //     $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/".$pet->photo,$string_json);
+            // }
+
 
             $messages = [ json_decode($string_json, true) ];
 

@@ -258,12 +258,7 @@ class Blood_bankController extends Controller
         $data_user = Profile::where('user_id' , $user_id)
             ->where('type' , 'line')
             ->get();
-
-        echo "<pre>";
-        print_r($data_user);
-        echo "<pre>";
-        exit();
-
+            
         $data_pet = Pet::where('id' , $pet_id)->get();
 
         if ($cf_or_nocf == "cf") {
