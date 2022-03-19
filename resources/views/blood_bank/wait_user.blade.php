@@ -172,7 +172,7 @@
 
     function check_data_blood_id()
     {
-        
+        console.log("check_data_blood_id");
     }
 
 </script>
