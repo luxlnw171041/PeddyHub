@@ -495,7 +495,7 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("ครั้ง",$data_topic[10],$string_json);
             $string_json = str_replace("ตัว",$data_topic[11],$string_json);
 
-            $string_json = str_replace("data_name",$item->name,$string_json);
+            $string_json = str_replace("data_name_owner",$item->name,$string_json);
             $string_json = str_replace("data_date",$date_now,$string_json);
             $string_json = str_replace("data_time",$time_now,$string_json);
 

@@ -91,7 +91,7 @@
                       },
                       {
                         "type": "span",
-                        "text": "data_name",
+                        "text": "data_name_owner",
                         "color": "#ffffff"
                       }
                     ],
