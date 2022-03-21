@@ -138,7 +138,7 @@
                         <p class="text-date">โพสวันที่ {{ $item->created_at->format('d/m/Y') }} </p>
                         @switch($item->status)
                             @case('show')
-                            <p class="text-date">โพสหมดอายุในอีก <b>10</b> วัน</p>
+                            <p class="text-date">โพสหมดอายุในอีก <b class="text-danger">{{ number_format((strtotime($item->created_at) - strtotime($date_15)) /  ( 60 * 60 * 24 )) }}</b> วัน</p>
                             @break
                             <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
                             <!-- เอาอันนี้แหละ -->

@@ -175,8 +175,12 @@ class Lost_PetController extends Controller
     {
         $id = Auth::id();
         $my_post = Lost_Pet::where('user_id', $id)->get();
+
+        $date_now = date("Y-m-d");
+        $date_delete_15 = strtotime("-15 days");
+        $date_15 = date("Y-m-d" , $date_delete_15);
             
-        return view('lost_pet.my_post', compact('my_post' ));
+        return view('lost_pet.my_post', compact('my_post' , 'date_15'));
 
     }
 
