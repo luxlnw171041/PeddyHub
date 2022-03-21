@@ -87,7 +87,8 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body text-center">
-                    <button id="btn_close_wait_user" type="button" class="close d-none" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" >
+                        <span id="btn_close_wait_user">&times;</span>
                     </button>
                     <center>
                         <br><br>
@@ -119,7 +120,7 @@
                             <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
                             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                         </svg>
-                        <h3 style="color: #7ac142;">บันทึกข้อมูลเรียบร้อยแล้ว</h3>
+                        <h4 style="color: #7ac142;">บันทึกข้อมูลเรียบร้อยแล้ว</h4>
                     </div>
                 </div>
             </div>
@@ -130,7 +131,10 @@
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
         document.querySelector('#btn_wait_user').click();
-        send_data_to_user();
+        // send_data_to_user();
+
+                        document.querySelector('#btn_close_wait_user').click();
+                        document.querySelector('#btn_user_cf').click();
     });
 
     function send_data_to_user()
@@ -182,16 +186,16 @@
             fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result[0]['status']);
+                    console.log(result);
 
-                    if (result[0]['status'] === "Yes") {
-                        document.querySelector('#btn_close_wait_user').click();
-                        document.querySelector('#btn_user_cf').click();
-                        check_status = "Yes" ;
-                    }else if(result[0]['status'] === "No"){
-                        // modal ไม่ได้รับการยืนยัน
-                        check_status = "No" ;
-                    }
+                    // if (result[0]['status'] === "Yes") {
+                    //     document.querySelector('#btn_close_wait_user').click();
+                    //     document.querySelector('#btn_user_cf').click();
+                    //     check_status = "Yes" ;
+                    // }else if(result[0]['status'] === "No"){
+                    //     // modal ไม่ได้รับการยืนยัน
+                    //     check_status = "No" ;
+                    // }
             });
 
         }

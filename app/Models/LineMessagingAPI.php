@@ -495,21 +495,21 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("ครั้ง",$data_topic[10],$string_json);
             $string_json = str_replace("ตัว",$data_topic[11],$string_json);
 
-            $string_json = str_replace("Lucky",$item->name,$string_json);
-            $string_json = str_replace("17/3/2565",$date_now,$string_json);
-            $string_json = str_replace("16:44",$time_now,$string_json);
+            $string_json = str_replace("data_name",$item->name,$string_json);
+            $string_json = str_replace("data_date",$date_now,$string_json);
+            $string_json = str_replace("data_time",$time_now,$string_json);
 
-            $string_json = str_replace("1300",$quantity_blood,$string_json);
-            $string_json = str_replace("5",$count_blood,$string_json);
-            $string_json = str_replace("3",$count_pet,$string_json);
+            $string_json = str_replace("data_total_quantity_blood",$quantity_blood,$string_json);
+            $string_json = str_replace("data_total_r",$count_blood,$string_json);
+            $string_json = str_replace("data_total_pet",$count_pet,$string_json);
 
             foreach ($data_blood as $key) {
-                $string_json = str_replace("รพ. เกษตร",$key->location,$string_json);
-                $string_json = str_replace("500",$key->quantity,$string_json);
+                $string_json = str_replace("data_name_location",$key->location,$string_json);
+                $string_json = str_replace("data_quantity",$key->quantity,$string_json);
             }
 
             foreach ($data_pet as $pet) {
-                $string_json = str_replace("Luca",$pet->name,$string_json);
+                $string_json = str_replace("data_name_pet",$pet->name,$string_json);
                 $string_json = str_replace("https://www.peddyhub.com/storage/uploads/Se5EidTPqpxlQbIf4CAWrGg9A2iwlWlk6hY9gYtQ.jpg","https://www.peddyhub.com/storage/".$pet->photo,$string_json);
             }
 
