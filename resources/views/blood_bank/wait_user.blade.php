@@ -195,6 +195,8 @@
                     // }
             });
 
+            console.log(check_status);
+
         }
 
         
