@@ -50,7 +50,7 @@ class Check_day_lost_pet extends Command
         $date_delete_15 = strtotime("-15 days");
         $date_15 = date("Y-m-d" , $date_delete_15);
 
-        $check_15days = Lost_Pet::where('created_at' , "<=" , $date_15)->get();
+        $check_15days = Lost_Pet::where('updated_at' , "<=" , $date_15)->get();
 
         foreach ($check_15days as $item) {
             DB::table('lost__pets')
