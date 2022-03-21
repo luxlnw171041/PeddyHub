@@ -129,6 +129,7 @@
                                 <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>กำลังโพสอยู่</b> </button>
                             @break
                             <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
+                            <!-- เอาอันนี้แหละ -->
                             @case('expire')
                                 <button type="button" class="button-expire btn-lg shadow-btn"> <b>หมดอายุ</b> </button>
                                 <button type="button" class="button-post-again btn-lg"> <b>โพสอีกครั้ง</b> </button>
@@ -140,6 +141,7 @@
                             <p class="text-date">โพสหมดอายุในอีก <b>10</b> วัน</p>
                             @break
                             <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
+                            <!-- เอาอันนี้แหละ -->
                             @case('expire')
                                 <p class="text-date">โพสหมดอายุแล้วกรุณาโพสใหม่อีกครั้ง</p>
                             @break

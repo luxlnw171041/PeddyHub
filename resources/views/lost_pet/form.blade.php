@@ -143,7 +143,7 @@
                 <br><br>
                 <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
                 <p>
-                    ในการลงประกาศตามหาเจ้าตัวแสบระบบจะขึ้นประกาศบนหน้าฟีดไว้เป็นเวลา <span class="text-danger"><b>15 วัน</b></span> หลังจากนั้นคุณสามารถรีโพสใหม่ได้ที่หน้า <u>โพสของฉัน</u>
+                    ในการลงประกาศตามหาเจ้าตัวแสบระบบจะขึ้นประกาศบนหน้าฟีดไว้เป็นเวลา <span class="text-danger"><b>15 วัน</b></span> หลังจากนั้นคุณสามารถรีโพสใหม่ได้ที่หน้า <a href="{{ url('/my_post') }}"><u>โพสของฉัน</u></a>
                 </p>
             </div>
             <div class="modal-footer d-none">
