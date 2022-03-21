@@ -440,7 +440,7 @@ class LineMessagingAPI extends Model
         foreach ($data_user as $item) {
             $user_id = $item->id ;
             //จำนวนสัตว์ทั้งหมด
-            $data_blood = Blood_bank::where('user_id', $user_id)
+            $data_blood_2 = Blood_bank::where('user_id', $user_id)
                 ->where('status', "Yes")
                 ->get();
             //จำนวนสัตว์ทั้งหมด
@@ -455,7 +455,7 @@ class LineMessagingAPI extends Model
                 ->get();
 
             $count_pet = count($data_count_pet);
-            $count_blood = count($data_blood);
+            $count_blood = count($data_blood_2);
             foreach ($data_quantity_bloods as $data_quantity_blood) {
                 $quantity_blood = $data_quantity_blood->count ;
             }
