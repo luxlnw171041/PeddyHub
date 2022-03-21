@@ -25,7 +25,7 @@ class Blood_bank extends Model
      *
      * @var array
      */
-    protected $fillable = ['pet_id', 'user_id', 'quantity', 'total_blood', 'location'];
+    protected $fillable = ['pet_id', 'user_id', 'quantity', 'total_blood', 'location','status'];
 
     public function Pet(){
         return $this->belongsTo('App\Models\Pet', 'pet_id'); 

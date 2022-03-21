@@ -132,6 +132,7 @@
         // console.log("START");
         document.querySelector('#btn_wait_user').click();
         send_data_to_user();
+        // check_data_blood_id();
     });
 
     function send_data_to_user()
@@ -176,28 +177,30 @@
     function check_data_blood_id()
     {
         let data_blood_id = {{ $data_blood_id }} ;
-        let check_status = null ;
+        let i = 0;
+        console.log(data_blood_id);
+        console.log(i);
 
-        while (check_status) {
+
+        // while (i > 0) {
 
             fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result);
+                    console.log(result[0]['status']);
 
-                    // if (result[0]['status'] === "Yes") {
-                    //     document.querySelector('#btn_close_wait_user').click();
-                    //     document.querySelector('#btn_user_cf').click();
-                    //     check_status = "Yes" ;
-                    // }else if(result[0]['status'] === "No"){
-                    //     // modal ไม่ได้รับการยืนยัน
-                    //     check_status = "No" ;
-                    // }
+                    if (result[0]['status'] === "Yes") {
+                        document.querySelector('#btn_close_wait_user').click();
+                        document.querySelector('#btn_user_cf').click();
+                        i = 1 ;
+                    }else if(result[0]['status'] === "No"){
+                        // modal ไม่ได้รับการยืนยัน
+                        i = 1 ;
+                    }
             });
 
-            console.log(check_status);
 
-        }
+        // }
 
         
     }
