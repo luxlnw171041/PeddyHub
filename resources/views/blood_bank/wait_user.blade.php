@@ -127,12 +127,46 @@
         </div>
     </div>
 
+    <!-- modal user CF -->
+    <button id="btn_user_nocf" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#user_nocf">
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="user_nocf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="wrapper">
+                        <center>
+                            <br><br>
+                            <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/15.png') }}">
+                            <br>
+                            <div class="loader"></div>
+                            <br>
+                            <span>
+                                <b>ข้อมูลไม่ได้รับการยืนยัน</b>
+                            </span>
+                            <br><br>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ url('/blood_bank/create') }}" id="btn_blood_bank_create" class="d-none"></a>
+
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
         document.querySelector('#btn_wait_user').click();
+
         send_data_to_user();
-        // check_data_blood_id();
+
+        setInterval(function() {
+            check_data_blood_id();
+        }, 4000);
+
     });
 
     function send_data_to_user()
@@ -177,32 +211,32 @@
     function check_data_blood_id()
     {
         let data_blood_id = {{ $data_blood_id }} ;
-        let i = 0;
-        console.log(data_blood_id);
-        console.log(i);
 
+        fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
+            .then(response => response.json())
+            .then(result => {
+                console.log(result[0]['status']);
 
-        // while (i > 0) {
+                if (result[0]['status'] === "Yes") {
+                    document.querySelector('#btn_close_wait_user').click();
+                    document.querySelector('#btn_user_cf').click();
 
-            fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
-                .then(response => response.json())
-                .then(result => {
-                    console.log(result[0]['status']);
+                    let delayInMilliseconds = 3000; 
+                    setTimeout(function() {
+                        document.querySelector('#btn_blood_bank_create').click();
+                    }, delayInMilliseconds);
 
-                    if (result[0]['status'] === "Yes") {
-                        document.querySelector('#btn_close_wait_user').click();
-                        document.querySelector('#btn_user_cf').click();
-                        i = 1 ;
-                    }else if(result[0]['status'] === "No"){
-                        // modal ไม่ได้รับการยืนยัน
-                        i = 1 ;
-                    }
-            });
+                }else if(result[0]['status'] === "No"){
+                    // modal ไม่ได้รับการยืนยัน
+                    document.querySelector('#btn_close_wait_user').click();
+                    document.querySelector('#btn_user_nocf').click();
 
-
-        // }
-
-        
+                    let delayInMilliseconds = 3000; 
+                    setTimeout(function() {
+                        document.querySelector('#btn_blood_bank_create').click();
+                    }, delayInMilliseconds);
+                }
+        });
     }
 
 </script>
