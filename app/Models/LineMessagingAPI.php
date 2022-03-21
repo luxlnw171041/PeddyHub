@@ -439,7 +439,7 @@ class LineMessagingAPI extends Model
 
         foreach ($data_user as $item) {
             $user_id = $item->id ;
-            //จำนวนสัตว์ทั้งหมด
+            //จำนวนการฝาก
             $data_blood_2 = Blood_bank::where('user_id', $user_id)
                 ->where('status', "Yes")
                 ->get();

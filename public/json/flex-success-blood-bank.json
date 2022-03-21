@@ -223,7 +223,7 @@
                   },
                   {
                     "type": "span",
-                    "text": "data_total_pet ครั้ง"
+                    "text": "data_total_r ครั้ง"
                   }
                 ],
                 "size": "18px"
@@ -240,7 +240,7 @@
                   },
                   {
                     "type": "span",
-                    "text": "data_total_r ตัว"
+                    "text": "data_total_pet ตัว"
                   }
                 ],
                 "size": "18px"
