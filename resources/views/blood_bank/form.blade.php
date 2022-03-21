@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="quantity" type="text" id="quantity" value="{{ isset($blood_bank->quantity) ? $blood_bank->quantity : ''}}" >
+                                        <input class="form-control" name="quantity" type="text" id="quantity" value="{{ isset($blood_bank->quantity) ? $blood_bank->quantity : ''}}" required>
                                         {!! $errors->first('quantity', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
