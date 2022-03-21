@@ -205,7 +205,6 @@
                 // console.error(error);
             });
 
-            check_data_blood_id();
     }
 
     function check_data_blood_id()
@@ -215,7 +214,7 @@
         fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
             .then(response => response.json())
             .then(result => {
-                console.log(result[0]['status']);
+                // console.log(result[0]['status']);
 
                 if (result[0]['status'] === "Yes") {
                     document.querySelector('#btn_close_wait_user').click();
