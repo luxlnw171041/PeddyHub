@@ -65,6 +65,36 @@
         font-family: 'Sarabun', sans-serif;
         margin:0px;
     }
+    .btn-post-one {
+    position: relative;
+    padding: 3px 13px;
+    line-height: 29px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 50px;
+    background-color: #4B4C4E;
+    border: 2px solid #393A3C;
+}
+.btn-post-one:hover {
+    color: #ffffff;
+    background: #4B4C4E;
+}
+    .btn-post-two {
+        position: relative;
+        padding: 3px 13px;
+        line-height: 29px;
+        color: #4B4C4E;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 50px;
+        background-color: #ffffff;
+        border: 2px solid #4B4C4E;
+}
+    .btn-post-two:hover {
+    color: #ffffff;
+    background: #4B4C4E;
+}
 </style>
 <div class="container">
     <div class="row">
@@ -85,6 +115,10 @@
         </div>
     </div>
     <br><br>
+    <div class="wow fadeInRight" style="margin-top:10px;">
+        <a href="{{ url('/lost_pet') }}"  type="button" class="btn-post-two btn-sm"> <b>โพสทั้งหมด</b> </a href="{{ url('/lost_pet') }}">
+        <a href="{{ url('/my_post') }}" type="button" class="btn-post-one btn-sm "> <b>โพสของฉัน</b> </a href="{{ url('/lost_pet') }}">
+    </div>
     <div class="row">
         @foreach($my_post as $item)
             <div class="col-sm-12 col-md-4 " >
@@ -130,9 +164,9 @@
     });
     function add_color(){
         // console.log("add_color");
-        document.querySelector('#btn_a_mypost').classList.add('btn-style-five');
-        document.querySelector('#btn_a_mypost').classList.remove('btn-outline-five');
-        document.querySelector('#btn_a_mypost_pc').classList.add('btn-style-five');
-        document.querySelector('#btn_a_mypost_pc').classList.remove('btn-outline-five');
+        document.querySelector('#btn_a_lost').classList.add('btn-style-ten');
+        document.querySelector('#btn_a_lost').classList.remove('btn-outline-ten');
+        document.querySelector('#btn_a_lost_pc').classList.add('btn-style-ten');
+        document.querySelector('#btn_a_lost_pc').classList.remove('btn-outline-ten');
     }
 </script>

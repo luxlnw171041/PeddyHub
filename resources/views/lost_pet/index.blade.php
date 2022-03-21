@@ -26,6 +26,36 @@
     .icon-menu-lost_pet{
         font-size:28px;
     }
+    .btn-post-one {
+    position: relative;
+    padding: 3px 13px;
+    line-height: 29px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 50px;
+    background-color: #4B4C4E;
+    border: 2px solid #393A3C;
+}
+.btn-post-one:hover {
+    color: #ffffff;
+    background: #4B4C4E;
+}
+    .btn-post-two {
+        position: relative;
+        padding: 3px 13px;
+        line-height: 29px;
+        color: #4B4C4E;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 50px;
+        background-color: #ffffff;
+        border: 2px solid #4B4C4E;
+}
+    .btn-post-two:hover {
+    color: #ffffff;
+    background: #4B4C4E;
+}
 </style>
 
 <div class="container">
@@ -60,8 +90,11 @@
         <div class="pet job">
             <section class="job">
                 <div class="container">
-
-                    <div class="row mt-5">
+                    <div class="row" >
+                        <div class="col-12 mt-5 wow fadeInRight" >
+                            <a href="{{ url('/lost_pet') }}"  type="button" class="btn-post-one btn-sm"> <b>โพสทั้งหมด</b> </a href="{{ url('/lost_pet') }}">
+                            <a href="{{ url('/my_post') }}" type="button" class="btn-post-two btn-sm"> <b>โพสของฉัน</b> </a href="{{ url('/lost_pet') }}">
+                        </div>
                         @foreach($lost_pet as $item)
                             <div class="col-lg-4 col-md-6 col-sm-12">
                                 <div class="card">
@@ -133,10 +166,6 @@
                             </div>
                         @endforeach
                     </div>
-
-
-
-
                 </div>
             </section>
         </div>
