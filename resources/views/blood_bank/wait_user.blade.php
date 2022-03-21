@@ -131,10 +131,7 @@
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
         document.querySelector('#btn_wait_user').click();
-        // send_data_to_user();
-
-                        document.querySelector('#btn_close_wait_user').click();
-                        document.querySelector('#btn_user_cf').click();
+        send_data_to_user();
     });
 
     function send_data_to_user()
