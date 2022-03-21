@@ -270,7 +270,7 @@ class Blood_bankController extends Controller
             ]);
 
             $line = new LineMessagingAPI();
-            $line->send_blood_success($data_blood , $data_user , $data_pet);
+            $line->send_blood_success($data_bloods , $data_user , $data_pet);
                 
         }
 

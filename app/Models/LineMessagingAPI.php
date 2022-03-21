@@ -432,7 +432,7 @@ class LineMessagingAPI extends Model
         
     }
 
-    public function send_blood_success($data_blood , $data_user , $data_pet)
+    public function send_blood_success($data_bloods , $data_user , $data_pet)
     {
         $date_now = date("Y-m-d") ;
         $time_now = date("H:i");
@@ -503,7 +503,7 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("data_total_r",$count_blood,$string_json);
             $string_json = str_replace("data_total_pet",$count_pet,$string_json);
 
-            foreach ($data_blood as $key) {
+            foreach ($data_bloods as $key) {
                 $string_json = str_replace("data_name_location",$key->location,$string_json);
                 $string_json = str_replace("data_quantity",$key->quantity,$string_json);
             }
