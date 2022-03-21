@@ -175,19 +175,28 @@
     function check_data_blood_id()
     {
         let data_blood_id = {{ $data_blood_id }} ;
+        let check_status = null ;
 
-        fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
-            .then(response => response.json())
-            .then(result => {
-                console.log(result[0]['status']);
+        while (check_status) {
 
-                if (result[0]['status'] == "Yes") {
-                    document.querySelector('#btn_close_wait_user').click();
-                    document.querySelector('#btn_user_cf').click();
-                }
+            fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result[0]['status']);
 
+                    if (result[0]['status'] === "Yes") {
+                        document.querySelector('#btn_close_wait_user').click();
+                        document.querySelector('#btn_user_cf').click();
+                        check_status = "Yes" ;
+                    }else if(result[0]['status'] === "No"){
+                        // modal ไม่ได้รับการยืนยัน
+                        check_status = "No" ;
+                    }
+            });
 
-        });
+        }
+
+        
     }
 
 </script>
