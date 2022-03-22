@@ -426,14 +426,14 @@ class LineMessagingAPI extends Model
 
             $string_json = file_get_contents($template_path);
 
-            // $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
-            // $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
-            // $string_json = str_replace("คำอธิบาย",$data_topic[2],$string_json);
-            // $string_json = str_replace("ติดต่อ",$data_topic[3],$string_json);
-            // $string_json = str_replace("หาย",$data_topic[4],$string_json);
-            // $string_json = str_replace("แปลภาษา",$data_topic[5],$string_json);
+            $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
+            $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
+            $string_json = str_replace("คำอธิบาย",$data_topic[2],$string_json);
+            $string_json = str_replace("ติดต่อ",$data_topic[3],$string_json);
+            $string_json = str_replace("หาย",$data_topic[4],$string_json);
+            $string_json = str_replace("แปลภาษา",$data_topic[5],$string_json);
 
-            // $string_json = str_replace("pet_cat",$data_topic[6],$string_json);
+            $string_json = str_replace("pet_cat",$data_topic[6],$string_json);
 
             // $string_json = str_replace("IMGPET",$photo,$string_json);
             // $string_json = str_replace("4544.png",$img_icon,$string_json);
