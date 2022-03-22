@@ -316,13 +316,13 @@
         fetch("{{ url('/') }}/api/update_lost_pet/send_line/" + id )
             .then(response => response.text())
             .then(result => {
-                // console.log(result);
+                console.log(result);
         });
 
-        document.querySelector('#btn_data_success').click();
-        let delayInMilliseconds = 2500; 
-        setTimeout(function() {
-            document.querySelector('#link_my_post').click();
-        }, delayInMilliseconds);
+        // document.querySelector('#btn_data_success').click();
+        // let delayInMilliseconds = 2500; 
+        // setTimeout(function() {
+        //     document.querySelector('#link_my_post').click();
+        // }, delayInMilliseconds);
     }
 </script>
