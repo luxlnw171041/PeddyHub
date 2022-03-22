@@ -339,7 +339,7 @@ class Lost_PetController extends Controller
                 "title" => "ส่งข้อความแจ้งสัตว์เลี้ยงหาย",
                 "content" => $item->user->username . " - " . $item->user->provider_id,
             ];
-            MyLog::create($data_save_log);
+            Mylog::create($data_save_log);
         }
 
     }
