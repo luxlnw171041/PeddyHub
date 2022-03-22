@@ -426,42 +426,42 @@ class LineMessagingAPI extends Model
 
             $string_json = file_get_contents($template_path);
 
-            $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
-            $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
-            $string_json = str_replace("คำอธิบาย",$data_topic[2],$string_json);
-            $string_json = str_replace("ติดต่อ",$data_topic[3],$string_json);
-            $string_json = str_replace("หาย",$data_topic[4],$string_json);
-            $string_json = str_replace("แปลภาษา",$data_topic[5],$string_json);
+            // $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
+            // $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
+            // $string_json = str_replace("คำอธิบาย",$data_topic[2],$string_json);
+            // $string_json = str_replace("ติดต่อ",$data_topic[3],$string_json);
+            // $string_json = str_replace("หาย",$data_topic[4],$string_json);
+            // $string_json = str_replace("แปลภาษา",$data_topic[5],$string_json);
 
-            $string_json = str_replace("pet_cat",$data_topic[6],$string_json);
+            // $string_json = str_replace("pet_cat",$data_topic[6],$string_json);
 
-            $string_json = str_replace("IMGPET",$photo,$string_json);
-            $string_json = str_replace("4544.png",$img_icon,$string_json);
-            $string_json = str_replace("22/2/2022",$date_now,$string_json);
-            // $string_json = str_replace("รายละเอียด",$detail,$string_json);
-            $string_json = str_replace("0999999999",$phone,$string_json);
+            // $string_json = str_replace("IMGPET",$photo,$string_json);
+            // $string_json = str_replace("4544.png",$img_icon,$string_json);
+            // $string_json = str_replace("22/2/2022",$date_now,$string_json);
+            // // $string_json = str_replace("รายละเอียด",$detail,$string_json);
+            // $string_json = str_replace("0999999999",$phone,$string_json);
 
          //    $string_json = str_replace("TEXT_EN",$item->user->language,$string_json);
             // $string_json = str_replace("สีแดง",$detail,$string_json);
             
             // data pet 
-            foreach ($data_pets as $data_pet) {
-                $string_json = str_replace("pet_name",$data_pet->name,$string_json);
+            // foreach ($data_pets as $data_pet) {
+            //     $string_json = str_replace("pet_name",$data_pet->name,$string_json);
 
-                switch ($data_pet->gender) {
-                    case 'ชาย':
-                        $img_pet_gendeer = 'male.png';
-                        break;
-                    case 'หญิง':
-                        $img_pet_gendeer = 'female.png';
-                        break;
-                    case 'ไม่ระบุ':
-                        $img_pet_gendeer = 'equality.png';
-                        break;
-                }
+            //     switch ($data_pet->gender) {
+            //         case 'ชาย':
+            //             $img_pet_gendeer = 'male.png';
+            //             break;
+            //         case 'หญิง':
+            //             $img_pet_gendeer = 'female.png';
+            //             break;
+            //         case 'ไม่ระบุ':
+            //             $img_pet_gendeer = 'equality.png';
+            //             break;
+            //     }
 
-                $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
-            }
+            //     $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
+            // }
 
             $messages = [ json_decode($string_json, true) ];
 
