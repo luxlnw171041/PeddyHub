@@ -474,17 +474,6 @@ class LineMessagingAPI extends Model
             $url = "https://api.line.me/v2/bot/message/push";
             $result = file_get_contents($url, false, $context);
 
-            echo "<pre>";
-            print_r($body);
-            echo "<pre>";
-
-            echo "<br>";
-            echo $item->user->provider_id;
-            echo "<br>";
-            echo $img_icon;
-
-            exit();
-
             //SAVE LOG
             $data_save_log = [
                 "title" => "ส่งข้อความแจ้งสัตว์เลี้ยงหาย",

@@ -197,8 +197,8 @@ class Lost_PetController extends Controller
     {
         $data = Lost_Pet::findOrFail($id);
 
-        // $requestData['status'] = "show" ;
-        // $data->update($requestData);
+        $requestData['status'] = "show" ;
+        $data->update($requestData);
 
         $line = new LineMessagingAPI();
         $line->send_lost_pet_again($data);
