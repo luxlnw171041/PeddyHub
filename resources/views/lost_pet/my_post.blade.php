@@ -316,7 +316,7 @@
         fetch("{{ url('/') }}/api/update_lost_pet/send_line/" + id )
             .then(response => response.text())
             .then(result => {
-                console.log(result);
+                // console.log(result);
         });
 
         document.querySelector('#btn_data_success').click();
