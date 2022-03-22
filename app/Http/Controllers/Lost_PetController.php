@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\LineMessagingAPI;
 
+use App\Models\Mylog;
+
 class Lost_PetController extends Controller
 {
     /**
@@ -195,34 +197,33 @@ class Lost_PetController extends Controller
 
     public function update_lost_pet_send_line($id)
     {
-        $lost_pet = Lost_Pet::findOrFail($id);
+        $data = Lost_Pet::findOrFail($id);
 
         $requestData['status'] = "show" ;
-        $lost_pet->update($requestData);
+        $data->update($requestData);
 
-        $line = new LineMessagingAPI();
-        $line->send_lost_pet($lost_pet);
+        // ส่งไลน์อีกครั้ง
 
-        $data_users = User::where('id', $lost_pet['user_id'])->get();
-        $data_pets = Pet::where('id', $lost_pet['pet_id'])->get();
+        $data_users = User::where('id', $data['user_id'])->get();
+        $data_pets = Pet::where('id', $data['pet_id'])->get();
 
         $date_now = date("d/m/Y");
 
-        $changwat_th = $lost_pet['changwat_th'];
-        $amphoe_th = $lost_pet['amphoe_th'];
-        $tambon_th = $lost_pet['tambon_th'];
+        $changwat_th = $data['changwat_th'];
+        $amphoe_th = $data['amphoe_th'];
+        $tambon_th = $data['tambon_th'];
 
-        $photo = $lost_pet['photo'];
+        $photo = $data['photo'];
 
-        if (!empty($lost_pet['detail'])) {
-            $detail = $lost_pet['detail'];
+        if (!empty($data['detail'])) {
+            $detail = $data['detail'];
         }else{
             $detail = "-";
         }
         
-        $phone = $lost_pet['phone'];
+        $phone = $data['phone'];
 
-        switch ($lost_pet['pet_category_id']) {
+        switch ($data['pet_category_id']) {
             case '1':
                 $pet_category_id = 'สุนัข';
                 $img_icon = 'shiba.png';
@@ -249,7 +250,7 @@ class Lost_PetController extends Controller
                 break;
         }
 
-        $send_to_users = Profile::where('id', '!=' , $lost_pet['user_id'])
+        $send_to_users = Profile::where('id', '!=' , $data['user_id'])
             ->where('changwat_th' ,$changwat_th)
             ->where('amphoe_th' ,$amphoe_th)
             ->where('tambon_th' ,$tambon_th)
@@ -340,6 +341,40 @@ class Lost_PetController extends Controller
             ];
             MyLog::create($data_save_log);
         }
+
+    }
+
+    // แปลภาษา
+    public function language_for_user($data_topic, $to_user)
+    {
+        $data_users = User::where('provider_id', $to_user)->get();
+
+        foreach ($data_users as $data_user) {
+            if (!empty($data_user->profile->language)) {
+                    $user_language = $data_user->profile->language ;
+                    if ($user_language == "zh-TW") {
+                        $user_language = "zh_TW";
+                    }
+                }else{
+                    $user_language = 'en' ;
+                }
+        }
+
+        for ($i=0; $i < count($data_topic); $i++) { 
+
+            $text_topic = DB::table('text_topics')
+                    ->select($user_language)
+                    ->where('th', $data_topic[$i])
+                    ->where('en', "!=", null)
+                    ->get();
+
+            foreach ($text_topic as $item_of_text_topic) {
+                $data_topic[$i] = $item_of_text_topic->$user_language ;
+            }
+        }
+
+        return $data_topic ;
+
     }
 
 }
