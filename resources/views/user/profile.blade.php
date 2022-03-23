@@ -222,7 +222,7 @@
                                             <div class="col-md-6 col-6 col-lg-6">
                                                 <div class="button wow fadeInUp d-flex justify-content-start " >
                                                     <a  href="{{ url('/pet/' . $item->id . '/edit') }} " class="btn main d-flex align-items-end" title="contact">
-                                                        แก้ไข &nbsp;<i class="fas fa-paw"></i>
+                                                        Edit &nbsp;<i class="fas fa-paw"></i>
                                                     </a>
                                                 </div>
                                             </div>
