@@ -593,13 +593,11 @@ class LineMessagingAPI extends Model
                 "เจ้าของ",
                 "วันที่",
                 "เวลา",
+                "ปริมาณรวม",
                 "ปริมาณ",
                 "ธนาคารเลือด",
                 "ฝากรวม",
-                "จาก",
-                "ปริมาณรวม",
                 "ครั้ง",
-                "ตัว",
             ];
 
             $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
@@ -613,14 +611,13 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("เจ้าของ",$data_topic[2],$string_json);
             $string_json = str_replace("วันที่",$data_topic[3],$string_json);
             $string_json = str_replace("เวลา",$data_topic[4],$string_json);
-            $string_json = str_replace("ปริมาณ",$data_topic[5],$string_json);
 
-            $string_json = str_replace("ธนาคารเลือด",$data_topic[6],$string_json);
-            $string_json = str_replace("ฝากรวม",$data_topic[7],$string_json);
-            $string_json = str_replace("จาก",$data_topic[8],$string_json);
-            $string_json = str_replace("ปริมาณรวม",$data_topic[9],$string_json);
-            $string_json = str_replace("ครั้ง",$data_topic[10],$string_json);
-            $string_json = str_replace("ตัว",$data_topic[11],$string_json);
+            $string_json = str_replace("ปริมาณรวม",$data_topic[5],$string_json);
+            $string_json = str_replace("ปริมาณ",$data_topic[6],$string_json);
+
+            $string_json = str_replace("ธนาคารเลือด",$data_topic[7],$string_json);
+            $string_json = str_replace("ฝากรวม",$data_topic[8],$string_json);
+            $string_json = str_replace("ครั้ง",$data_topic[9],$string_json);
 
             $string_json = str_replace("data_name_owner",$item->name,$string_json);
             $string_json = str_replace("data_date",$date_now,$string_json);

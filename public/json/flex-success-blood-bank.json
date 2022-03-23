@@ -1,6 +1,6 @@
 {
     "type": "flex",
-    "altText": "ฝากเลือดสำเร็จ",
+    "altText": "ฝากเลือดสำเร็จแล้ว",
     "contents":{
   "type": "bubble",
   "size": "mega",
