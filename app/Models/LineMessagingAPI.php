@@ -152,7 +152,7 @@ class LineMessagingAPI extends Model
                     "ใช้",
                 ];
 
-                $data_topic = $this->language_for_user($data_Text_topic, $event["source"]['userId']);
+                $data_topic = $this->language_for_user($data_Text_topic, $provider_id);
 
                 if (!empty($count_pet)) {
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   

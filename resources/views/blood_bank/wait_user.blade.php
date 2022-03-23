@@ -210,6 +210,7 @@
     function check_data_blood_id()
     {
         let data_blood_id = {{ $data_blood_id }} ;
+        var audio = new Audio("{{ asset('sound/succeed.mp3') }}");
 
         fetch("{{ url('/') }}/api/check_cf_blood_foruser/" + data_blood_id )
             .then(response => response.json())
@@ -219,6 +220,7 @@
                 if (result[0]['status'] === "Yes") {
                     document.querySelector('#btn_close_wait_user').click();
                     document.querySelector('#btn_user_cf').click();
+                    audio.play();
 
                     let delayInMilliseconds = 3000; 
                     setTimeout(function() {
