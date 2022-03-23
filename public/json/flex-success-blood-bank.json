@@ -17,7 +17,8 @@
             "text": "ฝากเลือดสำเร็จแล้ว",
             "weight": "bold",
             "size": "xl",
-            "color": "#ffffff"
+            "color": "#ffffff",
+            "wrap": true
           },
           {
             "type": "text",
