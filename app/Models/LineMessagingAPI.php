@@ -576,18 +576,12 @@ class LineMessagingAPI extends Model
             $data_blood_2 = Blood_bank::where('user_id', $user_id)
                 ->where('status', "Yes")
                 ->get();
-            //จำนวนสัตว์ทั้งหมด
-            $data_count_pet = Blood_bank::where('user_id', $user_id)
-                ->where('status', "Yes")
-                ->groupBy('pet_id')
-                ->get();
 
             $data_quantity_bloods = Blood_bank::where('user_id', $user_id)
                 ->where('status', "Yes")
                 ->selectRaw('sum(quantity) as count')
                 ->get();
 
-            $count_pet = count($data_count_pet);
             $count_blood = count($data_blood_2);
             foreach ($data_quantity_bloods as $data_quantity_blood) {
                 $quantity_blood = $data_quantity_blood->count ;
@@ -634,7 +628,6 @@ class LineMessagingAPI extends Model
 
             $string_json = str_replace("data_total_quantity_blood",$quantity_blood,$string_json);
             $string_json = str_replace("data_total_r",$count_blood,$string_json);
-            $string_json = str_replace("data_total_pet",$count_pet,$string_json);
 
             foreach ($data_bloods as $key) {
                 $string_json = str_replace("data_name_location",$key->location,$string_json);

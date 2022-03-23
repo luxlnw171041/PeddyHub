@@ -227,23 +227,6 @@
                   }
                 ],
                 "size": "18px"
-              },
-              {
-                "type": "text",
-                "text": "hello, world",
-                "color": "#ffffff",
-                "align": "center",
-                "contents": [
-                  {
-                    "type": "span",
-                    "text": "จาก "
-                  },
-                  {
-                    "type": "span",
-                    "text": "data_total_pet ตัว"
-                  }
-                ],
-                "size": "18px"
               }
             ],
             "justifyContent": "center",
@@ -291,5 +274,4 @@
     "backgroundColor": "#5cb85c"
   }
 }
-
 }
