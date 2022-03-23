@@ -142,21 +142,41 @@ class LineMessagingAPI extends Model
                     $quantity_blood = $data_quantity_blood->count ;
                 }
 
+                $data_Text_topic = [
+                    "ธนาคารเลือด",
+                    "เพิ่มเติม",
+                    "จำนวน",
+                    "จาก",
+                    "ปริมาณ",
+                    "แชร์",
+                    "ใช้",
+                ];
+
+                $data_topic = $this->language_for_user($data_Text_topic, $event["source"]['userId']);
+
                 if (!empty($count_pet)) {
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   
                     $string_json = file_get_contents($template_path);
-                    $string_json = str_replace("1700", $quantity_blood,$string_json);
-                    $string_json = str_replace("3",$count_pet,$string_json);
+                    $string_json = str_replace("Total_quantity", $quantity_blood,$string_json);
+                    $string_json = str_replace("Total_pet",$count_pet,$string_json);
                     $string_json = str_replace("user_id",$user_id,$string_json);
-                    $string_json = str_replace("5", $count_blood,$string_json);
+                    $string_json = str_replace("Total_time", $count_blood,$string_json);
                 }else{
                     $template_path = storage_path('../public/json/flex_blood_bank.json');   
                     $string_json = file_get_contents($template_path);
-                    $string_json = str_replace("1700", "0",$string_json);
-                    $string_json = str_replace("3", "0" ,$string_json);
+                    $string_json = str_replace("Total_quantity", "0",$string_json);
+                    $string_json = str_replace("Total_pet", "0" ,$string_json);
                     $string_json = str_replace("user_id",$user_id,$string_json);
-                    $string_json = str_replace("5", "0" ,$string_json);
+                    $string_json = str_replace("Total_time", "0" ,$string_json);
                 }
+
+                $string_json = str_replace("ธนาคารเลือด",$data_topic[0],$string_json);
+                $string_json = str_replace("เพิ่มเติม",$data_topic[1],$string_json);
+                $string_json = str_replace("จำนวน",$data_topic[2],$string_json);
+                $string_json = str_replace("จาก",$data_topic[3],$string_json);
+                $string_json = str_replace("ปริมาณ",$data_topic[4],$string_json);
+                $string_json = str_replace("แชร์",$data_topic[5],$string_json);
+                $string_json = str_replace("ใช้",$data_topic[6],$string_json);
                 
                 $messages = [ json_decode($string_json, true) ]; 
             break;

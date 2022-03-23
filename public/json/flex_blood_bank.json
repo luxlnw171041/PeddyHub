@@ -2,211 +2,211 @@
     "type": "flex",
     "altText": "ธนาคารเลือด",
     "contents":{
-        "type": "bubble",
-        "size": "mega",
-        "header": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "ID : user_id",
-                  "color": "#ffffff",
-                  "style": "italic",
-                  "size": "xs",
-                  "contents": [
-                    {
-                      "type": "span",
-                      "text": "ID : "
-                    },
-                    {
-                      "type": "span",
-                      "text": "user_id"
-                    }
-                  ]
-                }
-              ],
-              "position": "absolute",
-              "offsetTop": "md",
-              "offsetStart": "md",
-              "width": "100px"
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "เพิ่มเติม",
-                  "color": "#B8205B",
-                  "style": "normal",
-                  "size": "xs",
-                  "weight": "bold"
-                }
-              ],
-              "position": "absolute",
-              "offsetTop": "md",
-              "offsetStart": "210px",
-              "width": "80px",
-              "borderWidth": "light",
-              "borderColor": "#ffffff",
-              "paddingAll": "2px",
-              "cornerRadius": "100px",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "action": {
-                "type": "uri",
-                "label": "action",
-                "uri": "https://www.peddyhub.com/login_line_blood_bank"
-              }
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "ธนาคารเลือด",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "flex": 0,
-                  "weight": "bold"
-                }
-              ],
-              "justifyContent": "center",
-              "alignItems": "center",
-              "offsetTop": "none"
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "จำนวน :",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0
-                },
-                {
-                  "type": "text",
-                  "text": "5",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0,
-                  "offsetStart": "5px"
-                },
-                {
-                  "type": "text",
-                  "text": "ครั้ง",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0,
-                  "offsetStart": "10px"
-                }
-              ]
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "จาก :",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0
-                },
-                {
-                  "type": "text",
-                  "text": "3",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0,
-                  "offsetStart": "5px"
-                },
-                {
-                  "type": "text",
-                  "text": "ตัว",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0,
-                  "offsetStart": "10px"
-                }
-              ]
-            },
-            {
-              "type": "box",
-              "layout": "baseline",
-              "contents": [
-                {
-                  "type": "text",
-                  "text": "ปริมาณ :",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0
-                },
-                {
-                  "type": "text",
-                  "text": "1700",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0,
-                  "offsetStart": "5px"
-                },
-                {
-                  "type": "text",
-                  "text": "ml",
-                  "color": "#ffffff",
-                  "size": "xl",
-                  "weight": "bold",
-                  "flex": 0,
-                  "offsetStart": "10px"
-                }
-              ]
-            }
-          ],
-          "backgroundColor": "#B8205B",
-          "spacing": "md",
-          "height": "180px"
-        },
-        "body": {
-          "type": "box",
-          "layout": "horizontal",
-          "contents": [
-            {
-              "type": "button",
-              "style": "secondary",
-              "action": {
-                "type": "uri",
-                "label": "แชร์",
-                "uri": "http://linecorp.com/"
-              }
-            },
-            {
-              "type": "button",
-              "action": {
-                "type": "uri",
-                "label": "ใช้",
-                "uri": "http://linecorp.com/"
+  "type": "bubble",
+  "size": "mega",
+  "header": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ID : user_id",
+            "color": "#ffffff",
+            "style": "italic",
+            "size": "xs",
+            "contents": [
+              {
+                "type": "span",
+                "text": "ID : "
               },
-              "style": "secondary"
-            }
-          ],
-          "spacing": "md"
+              {
+                "type": "span",
+                "text": "user_id"
+              }
+            ]
+          }
+        ],
+        "position": "absolute",
+        "offsetTop": "md",
+        "offsetStart": "md",
+        "width": "100px"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "เพิ่มเติม",
+            "color": "#B8205B",
+            "style": "normal",
+            "size": "xs",
+            "weight": "bold"
+          }
+        ],
+        "position": "absolute",
+        "offsetTop": "md",
+        "offsetStart": "210px",
+        "width": "80px",
+        "borderWidth": "light",
+        "borderColor": "#ffffff",
+        "paddingAll": "2px",
+        "cornerRadius": "100px",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "backgroundColor": "#ffffff",
+        "action": {
+          "type": "uri",
+          "label": "action",
+          "uri": "https://www.peddyhub.com/login_line_blood_bank"
         }
-    }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ธนาคารเลือด",
+            "color": "#ffffff",
+            "size": "xl",
+            "flex": 0,
+            "weight": "bold"
+          }
+        ],
+        "justifyContent": "center",
+        "alignItems": "center",
+        "offsetTop": "none"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "จำนวน :",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0
+          },
+          {
+            "type": "text",
+            "text": "Total_time",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0,
+            "offsetStart": "5px"
+          },
+          {
+            "type": "text",
+            "text": "ครั้ง",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0,
+            "offsetStart": "10px"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "จาก :",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0
+          },
+          {
+            "type": "text",
+            "text": "Total_pet",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0,
+            "offsetStart": "5px"
+          },
+          {
+            "type": "text",
+            "text": "ตัว",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0,
+            "offsetStart": "10px"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ปริมาณ :",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0
+          },
+          {
+            "type": "text",
+            "text": "Total_quantity",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0,
+            "offsetStart": "5px"
+          },
+          {
+            "type": "text",
+            "text": "ml",
+            "color": "#ffffff",
+            "size": "xl",
+            "weight": "bold",
+            "flex": 0,
+            "offsetStart": "10px"
+          }
+        ]
+      }
+    ],
+    "backgroundColor": "#B8205B",
+    "spacing": "md",
+    "height": "180px"
+  },
+  "body": {
+    "type": "box",
+    "layout": "horizontal",
+    "contents": [
+      {
+        "type": "button",
+        "style": "secondary",
+        "action": {
+          "type": "uri",
+          "label": "แชร์",
+          "uri": "https://www.peddyhub.com/blood_bank?data=share"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "ใช้",
+          "uri": "https://www.peddyhub.com/blood_bank?data=use"
+        },
+        "style": "secondary"
+      }
+    ],
+    "spacing": "md"
+  }
+}
 }
