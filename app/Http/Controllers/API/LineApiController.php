@@ -58,6 +58,18 @@ class LineApiController extends Controller
 
     }
 
+    public function postbackHandler($event)
+    {
+        $line = new LineMessagingAPI();
+
+        switch($event["postback"]["data"]){
+            case "Chinese" : 
+                $line->replyToUser(null, $event, "Chinese");
+                break;
+        }   
+
+    }
+
     public function textHandler($event)
     {
         $line = new LineMessagingAPI();

@@ -187,11 +187,24 @@ class LineMessagingAPI extends Model
                 $messages = [ json_decode($string_json, true) ]; 
     		break;
             case 'success_blood_bank':
-    			$template_path = storage_path('../public/json/flex-success-blood-bank.json');   
+                $template_path = storage_path('../public/json/flex-success-blood-bank.json');   
                 $string_json = file_get_contents($template_path);
 
                 $messages = [ json_decode($string_json, true) ]; 
-    		break;
+            break;
+            case 'Chinese':
+                $provider_id = $event["source"]['userId'];
+                $user = User::where('provider_id', $provider_id)->get();
+
+                foreach ($user as $item) {
+                    $user_id = $item->id ;
+                }
+                $template_path = storage_path('../public/json/flex-language-Chinese.json');   
+                $string_json = file_get_contents($template_path);
+                $string_json = str_replace("user_id",$user_id,$string_json);
+
+                $messages = [ json_decode($string_json, true) ]; 
+            break;
     	}
 
     	$body = [
