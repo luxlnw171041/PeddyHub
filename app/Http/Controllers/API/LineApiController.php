@@ -86,6 +86,9 @@ class LineApiController extends Controller
                     if ($user_language == "zh-TW") {
                         $user_language = "zh_TW";
                     }
+                    if ($user_language == "zh-CN") {
+                        $user_language = "zh_CN";
+                    }
                 }else{
                     $user_language = 'en' ;
                 }
