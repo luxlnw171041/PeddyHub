@@ -25,7 +25,7 @@ class Pet extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'name', 'birth', 'photo', 'gender', 'size', 'age' ,'pet_category_id'];
+    protected $fillable = ['user_id', 'name', 'birth', 'photo', 'gender', 'size', 'age' ,'pet_category_id','sub_category'];
 
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 

@@ -43,7 +43,7 @@
                                         @if(!empty(Auth::user()->profile->amphoe_th))
                                             <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
                                         @else
-                                            <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                            <select name="select_amphoea" id="select_amphoe" class="form-control" onchange="select_T();" required>
                                                 <option value="" selected>- เลือกอำเภอ -</option>
                                             </select>
                                         @endif
@@ -154,12 +154,12 @@
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <select name="pet_category_id" class="form-control" required>
+                                        <select id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat();" required>
                                             <option value='' selected="selected">- โปรดเลือก -</option>
-                                            @foreach($category as $item)
-                                                <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
-                                            @endforeach
-                                    </select>
+                                        </select>
+                                        <select id="select_sub_category" name="sub_category" class="form-control d-none" >
+                                            <option value='' selected="selected">- โปรดเลือก -</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
@@ -210,6 +210,7 @@
         if (!check_changwat_th.value) {
             select_province();
         }
+        select_category();
     });
 
     function select_province(){
@@ -218,7 +219,7 @@
         fetch("{{ url('/') }}/api/select_province/")
             .then(response => response.json())
             .then(result => {
-                // console.log(result);
+                //console.log(result);
 
                 select_province.innerHTML = "";
 
@@ -243,7 +244,7 @@
         fetch("{{ url('/') }}/api/select_amphoe" + "/" + select_province.value)
             .then(response => response.json())
             .then(result => {
-                // console.log(result);
+                //console.log(result);
 
                 select_amphoe.innerHTML = "";
 
@@ -286,5 +287,55 @@
                 }
             });
 
+    }
+    function select_category(){
+        let select_category = document.querySelector('#select_category');
+
+        fetch("{{ url('/') }}/api/select_category/")
+            .then(response => response.json())
+            .then(result => {
+                select_category.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกประเภท -";
+                    option_select.value = "";
+                    select_category.add(option_select); 
+
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.name;
+                    option.value = item.id;
+                    select_category.add(option);
+                }
+                
+            });
+    }
+    function sub_cat(){
+        let select_category = document.querySelector('#select_category');
+        let select_sub_category = document.querySelector('#select_sub_category');
+        
+        fetch("{{ url('/') }}/api/select_sub_category" + "/" + select_category.value)
+            .then(response => response.json())
+            .then(result => {
+                
+                select_sub_category.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                    option_select.text = "- เลือกประเภทย่อย -";
+                    option_select.value = "";
+                    select_sub_category.add(option_select); 
+
+                for(let item of result){
+                    let option = document.createElement("option");
+                    option.text = item.sub_category;
+                    option.value = item.sub_category;
+                    select_sub_category.add(option);
+                }
+            });
+            if((select_category.value >= 5)) 
+            document.querySelector('#select_sub_category').classList.remove('d-none');
+        else
+            document.querySelector('#select_sub_category').classList.add('d-none');
+        endif
     }
 </script>

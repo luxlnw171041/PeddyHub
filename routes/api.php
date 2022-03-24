@@ -53,3 +53,5 @@ Route::get('/check_cf_blood_foruser/{blood_id}', 'Blood_bankController@check_cf_
 Route::get('/update_lost_pet/nosend/{id}', 'Lost_PetController@update_lost_pet_nosend');
 Route::get('/update_lost_pet/send_line/{id}', 'Lost_PetController@update_lost_pet_send_line');
 
+Route::get('/select_category/','API\CategoryController@category');
+Route::get('/select_sub_category/{category}','API\CategoryController@sub_category');

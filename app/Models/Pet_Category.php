@@ -25,7 +25,7 @@ class Pet_Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = ['name','sub_category'];
 
     public function lost_pet(){
         return $this->belongsTo('App\Models\Lost_Pet', 'pet_category_id'); 

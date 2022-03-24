@@ -197,7 +197,7 @@
                                         <img class="btn" id="img_flag_my" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-mm.png') }}" onclick="change_language('my' , '{{ $data->id }}');">
                                     </div>
                                 </div>
-                                <input class="form-control" name="language" type="hidden" id="language" value="{{ isset($data->language) ? $data->language : ''}}">
+                                <input class="form-control" name="language" type="hidden" id="language" value="{{ isset($data->profile->language) ? $data->profile->language : ''}}">
                                             {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>

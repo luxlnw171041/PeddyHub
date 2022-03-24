@@ -86,7 +86,12 @@ class PetController extends Controller
                 ]);
         }  
 
-        Pet::create($requestData);
+        
+        
+        Pet::create($requestData)->update([
+            'pet_category_id' => $requestData['pet_category_id'],
+            'sub_category' => $requestData['sub_category'],
+        ]);
         return redirect('user')->with('flash_message', 'Pet added!');
     }
 
