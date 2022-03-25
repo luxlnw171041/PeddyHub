@@ -84,7 +84,7 @@
                   },
                   {
                     "type": "text",
-                    "text": "simplified Chinese",
+                    "text": "Simplified Chinese",
                     "margin": "md",
                     "align": "center",
                     "wrap": true
