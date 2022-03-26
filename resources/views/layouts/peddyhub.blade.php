@@ -214,6 +214,7 @@
         <a id="btn_change_language_th" href="javascript:trocarIdioma('th')">th</a>
         <a id="btn_change_language_en" href="javascript:trocarIdioma('en')">en</a>
         <a id="btn_change_language_zh-TW" href="javascript:trocarIdioma('zh-TW')">zh-TW</a>
+        <a id="btn_change_language_zh-CN" href="javascript:trocarIdioma('zh-CN')">zh-CN</a>
         <a id="btn_change_language_ja" href="javascript:trocarIdioma('ja')">ja</a>
         <a id="btn_change_language_ko" href="javascript:trocarIdioma('ko')">ko</a>
         <a id="btn_change_language_es" href="javascript:trocarIdioma('es')">es</a>
@@ -254,12 +255,19 @@
                       </div>
                     </div>
                     <div class="col-4 ">
+                      <div class="btn" style="margin-left:-10px;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
+                        <br>
+                        <h5 style="margin-top:10px;">Chinese</h5>
+                      </div>
+                    </div>
+                    <!-- <div class="col-4 ">
                       <div class="btn" onclick="user_language('zh-TW', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
                         <br>
                         <h5 class="notranslate" style="margin-top:10px;">中國人</h5>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-4 ">
                       <div class="btn" onclick="user_language('hi', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-in.png') }}">
@@ -267,6 +275,33 @@
                         <h5 class="notranslate" style="margin-top:10px;">इंडिया</h5>
                       </div>
                     </div>
+
+                    <!-- จีนเสริม -->
+                    <div class="col-12 collapse" id="collapseExample">
+                      <div class="row">
+                        <hr>
+                        <div class="col-6">
+                          <div class="btn" onclick="user_language('zh-TW', '{{ Auth::user()->id }}');" data-dismiss="modal">
+                            <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
+                            <br>
+                            <h5 style="margin-top:10px;">中國人</h5>
+                            <span>Traditional Chinese</span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="btn" onclick="user_language('zh-CN', '{{ Auth::user()->id }}');" data-dismiss="modal">
+                            <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
+                            <br>
+                            <h5 style="margin-top:10px;">中国人</h5>
+                            <span>Simplified Chinese</span>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                        
+                    </div>
+                    <!-- จบจีนเสริม -->
+
                     <div class="col-4 ">
                       <div class="btn"style="margin-left:-10px;" onclick="user_language('ar', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-ar.png') }}">
@@ -345,11 +380,18 @@
                         <h5 class="notranslate" style="margin-top:10px;">English</h5>
                       </div>
                     </div>
-                    <div class="col-4 " style="top:5px;padding:0px;" >
+                    <!-- <div class="col-4 " style="top:5px;padding:0px;" >
                       <div class="btn"style="margin-left:3px;" onclick="user_language('zh-TW', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
                         <br>
                         <h5 class="notranslate" style="margin-top:10px;font-size:18px;">&nbsp;中國人&nbsp;</h5>
+                      </div>
+                    </div> -->
+                    <div class="col-4 ">
+                      <div class="btn" style="margin-left:-10px;" data-toggle="collapse" data-target="#collapseExample_2" aria-expanded="false" aria-controls="collapseExample_2">
+                        <img width="60" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
+                        <br>
+                        <h5 style="margin-top:10px;">Chinese</h5>
                       </div>
                     </div>
                     <div class="col-4" style="top:3px;">
@@ -359,6 +401,33 @@
                         <h5 class="notranslate" style="margin-top:10px;">इंडिया</h5>
                       </div>
                     </div>
+
+                    <!-- จีนเสริม -->
+                    <div class="col-12 collapse" id="collapseExample_2">
+                      <div class="row">
+                        <hr>
+                        <div class="col-6">
+                          <div class="btn" onclick="user_language('zh-TW', '{{ Auth::user()->id }}');" data-dismiss="modal">
+                            <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
+                            <br>
+                            <h5 style="margin-top:10px;">中國人</h5>
+                            <span>Traditional Chinese</span>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="btn" onclick="user_language('zh-CN', '{{ Auth::user()->id }}');" data-dismiss="modal">
+                            <img width="55" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}">
+                            <br>
+                            <h5 style="margin-top:10px;">中国人</h5>
+                            <span>Simplified Chinese</span>
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                        
+                    </div>
+                    <!-- จบจีนเสริม -->
+                    
                     <div class="col-4">
                       <div class="btn" onclick="user_language('ar', '{{ Auth::user()->id }}');" data-dismiss="modal">
                         <img width="65" src="{{ url('/peddyhub/images/national-flag/flex-ar.png') }}">
@@ -698,8 +767,8 @@ function change_country(user_id, country , language) {
 
 function user_language(language, user_id) {
 
-    console.log(language);
-    console.log(user_id);
+    // console.log(language);
+    // console.log(user_id);
 
     fetch("{{ url('/') }}/api/user_language/"  + language + "/" + user_id);
 
