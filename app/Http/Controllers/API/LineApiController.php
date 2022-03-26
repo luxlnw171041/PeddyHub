@@ -191,7 +191,10 @@ class LineApiController extends Controller
                     $richMenuId = "richmenu-9caa5b6c9fd1909274c599da4367b27c" ;
                     break;
                 case 'zh-TW':
-                    $richMenuId = "richmenu-479b3da6324a3ddc13ce7f61f0156ebd" ;
+                    $richMenuId = "richmenu-23247f44ef923eea04a396964bf63872" ;
+                    break;
+                case 'zh-CN':
+                    $richMenuId = "richmenu-11c87c8e33bf8283a5881105882d9743" ;
                     break;
                 case 'ja':
                     $richMenuId = "richmenu-141ff1f0f65e7f165d07d80150c55828" ;
@@ -251,7 +254,10 @@ class LineApiController extends Controller
                 $richMenuId_start = "richmenu-3cac8ef4737798bbb9b3dda3d6100dc6" ;
                 break;
             case 'zh-TW':
-                $richMenuId_start = "richmenu-13647d14fff953329dae9c391d725e2d" ;
+                $richMenuId_start = "richmenu-4b756c02810fe8cd9c78113a3aeb1f36" ;
+                break;
+            case 'zh-CN':
+                $richMenuId_start = "richmenu-8e7af0aa823103063f1fa6b8e1f7e28b" ;
                 break;
             case 'ja':
                 $richMenuId_start = "richmenu-7e58899e24ce1e7426f3c9a0e2449b2b" ;
