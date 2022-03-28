@@ -43,7 +43,7 @@
                                         @if(!empty(Auth::user()->profile->amphoe_th))
                                             <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
                                         @else
-                                            <select name="select_amphoea" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                            <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
                                                 <option value="" selected>- เลือกอำเภอ -</option>
                                             </select>
                                         @endif
