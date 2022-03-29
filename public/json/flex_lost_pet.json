@@ -2,39 +2,24 @@
     "type": "flex",
     "altText": "ตามหา pet_cat หาย",
     "contents": {
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
+      "type": "bubble",
+      "body": {
         "type": "box",
-        "layout": "horizontal",
+        "layout": "vertical",
         "contents": [
           {
             "type": "box",
             "layout": "vertical",
             "contents": [
               {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "image",
-                    "url": "https://www.peddyhub.com/peddyhub/images/logo/logo-2.png",
-                    "align": "center",
-                    "aspectMode": "cover"
-                  }
-                ],
-                "width": "50px",
-                "height": "50px",
-                "cornerRadius": "50px"
+                "type": "image",
+                "url": "https://www.peddyhub.com/peddyhub/images/logo/logo-2.png",
+                "size": "4xl",
+                "aspectRatio": "16:9",
+                "aspectMode": "fit"
               }
             ],
-            "width": "70px",
-            "height": "70px",
-            "justifyContent": "center",
-            "alignItems": "center"
+            "paddingAll": "0px"
           },
           {
             "type": "box",
@@ -43,61 +28,25 @@
               {
                 "type": "text",
                 "text": "ตามหา pet_cat หาย",
-                "align": "start",
+                "align": "center",
                 "size": "xl",
-                "weight": "bold",
-                "offsetTop": "20px"
+                "weight": "bold"
               }
             ]
-          }
-        ],
-        "borderColor": "#B8205B",
-        "borderWidth": "none"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "image",
-            "url": "https://www.peddyhub.com/storage/IMGPET",
-            "size": "full",
-            "aspectRatio": "1:1",
-            "aspectMode": "fit"
-          }
-        ],
-        "offsetTop": "md"
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
+          },
           {
             "type": "box",
-            "layout": "baseline",
+            "layout": "horizontal",
             "contents": [
               {
-                "type": "text",
-                "text": "pet_name",
-                "size": "xl",
-                "weight": "bold",
-                "offsetStart": "20px",
-                "margin": "sm",
-                "flex": 0
-              },
-              {
-                "type": "icon",
-                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/4544.png",
-                "position": "relative"
-              },
-              {
-                "type": "icon",
-                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/pet_img_gender.png",
-                "position": "relative",
-                "offsetEnd": "xxl"
+                "type": "image",
+                "url": "https://www.peddyhub.com/storage/IMGPET",
+                "size": "full",
+                "aspectRatio": "1:1",
+                "aspectMode": "fit"
               }
             ],
-            "spacing": "25px"
+            "offsetTop": "md"
           },
           {
             "type": "box",
@@ -109,79 +58,130 @@
                 "contents": [
                   {
                     "type": "text",
-                    "text": "วันที่หาย :",
-                    "flex": 0,
+                    "text": "pet_name",
+                    "size": "xl",
+                    "weight": "bold",
+                    "offsetStart": "20px",
                     "margin": "sm",
-                    "weight": "bold"
+                    "flex": 0
                   },
                   {
-                    "type": "text",
-                    "text": "22/2/2022",
-                    "flex": 0,
-                    "margin": "sm",
-                    "weight": "bold"
+                    "type": "icon",
+                    "url": "https://www.peddyhub.com/peddyhub/images/img-icon/4544.png",
+                    "position": "relative"
+                  },
+                  {
+                    "type": "icon",
+                    "url": "https://www.peddyhub.com/peddyhub/images/img-icon/pet_img_gender.png",
+                    "position": "relative",
+                    "offsetEnd": "xxl"
                   }
-                ]
+                ],
+                "spacing": "25px"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "เจ้าของ :",
+                        "flex": 0,
+                        "margin": "sm",
+                        "weight": "bold"
+                      },
+                      {
+                        "type": "text",
+                        "text": "lucky",
+                        "flex": 0,
+                        "margin": "sm",
+                        "weight": "bold"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "box",
+                    "layout": "baseline",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "วันที่หาย :",
+                        "flex": 0,
+                        "margin": "sm",
+                        "weight": "bold"
+                      },
+                      {
+                        "type": "text",
+                        "text": "22/2/2022",
+                        "flex": 0,
+                        "margin": "sm",
+                        "weight": "bold"
+                      }
+                    ]
+                  }
+                ],
+                "paddingStart": "20px"
               }
             ],
-            "paddingStart": "20px"
-          }
-        ],
-        "spacing": "md",
-        "margin": "xl",
-        "offsetTop": "10px"
-      },
-      {
-        "type": "box",
-        "layout": "horizontal",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "image",
-                "url": "https://www.peddyhub.com/peddyhub/images/logo-4.png",
-                "offsetBottom": "xxl"
-              }
-            ]
+            "spacing": "md",
+            "margin": "xl",
+            "offsetTop": "10px"
           },
           {
             "type": "box",
-            "layout": "vertical",
+            "layout": "horizontal",
             "contents": [
               {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
                   {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "ติดต่อ",
-                      "uri": "tel:0999999999"
-                    },
-                    "height": "sm",
-                    "style": "primary",
-                    "color": "#28A754"
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/logo-4.png",
+                    "offsetBottom": "xxl"
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "button",
+                        "action": {
+                          "type": "uri",
+                          "label": "ติดต่อ",
+                          "uri": "tel:0999999999"
+                        },
+                        "height": "sm",
+                        "style": "primary",
+                        "color": "#28A754"
+                      }
+                    ],
+                    "borderWidth": "bold",
+                    "borderColor": "#28A754",
+                    "cornerRadius": "lg"
                   }
                 ],
-                "borderWidth": "bold",
-                "borderColor": "#28A754",
-                "cornerRadius": "lg"
+                "paddingAll": "10px",
+                "borderColor": "#B8205B"
               }
             ],
-            "paddingAll": "10px",
-            "borderColor": "#B8205B"
+            "offsetTop": "20px"
           }
         ],
-        "offsetTop": "20px"
+        "paddingAll": "0px",
+        "borderWidth": "bold",
+        "borderColor": "#B8205B",
+        "cornerRadius": "xl"
       }
-    ],
-    "paddingAll": "0px",
-    "borderWidth": "bold",
-    "borderColor": "#B8205B",
-    "cornerRadius": "xl"
-  }
-}
+    }
 }
