@@ -2,197 +2,95 @@
     "type": "flex",
     "altText": "เจ้าตัวแสบ",
     "contents":{
-        "type": "carousel",
-        "contents": [
-          {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "image",
-                  "size": "full",
-                  "aspectMode": "fit",
-                  "aspectRatio": "1:1",
-                  "gravity": "top",
-                  "url": "https://www.peddyhub.com/storage/uploads/k6h3qjTZ6XRv85rItTGsvc2Z5TP2eGIZqWAULaA4.jpg"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "button",
-                      "action": {
-                        "type": "uri",
-                        "label": "luca",
-                        "uri": "https://peddyhub.com/pet_insurance?insurance=1"
-                      },
-                      "style": "link",
-                      "color": "#ffffff",
-                      "height": "sm",
-                      "flex": 0
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "size": "full",
+                "aspectMode": "fit",
+                "aspectRatio": "1:1",
+                "gravity": "top",
+                "url": "https://www.peddyhub.com/storage/uploads/k6h3qjTZ6XRv85rItTGsvc2Z5TP2eGIZqWAULaA4.jpg"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "uri",
+                      "label": "luca",
+                      "uri": "https://peddyhub.com/pet_insurance?insurance=1"
                     },
-                    {
-                      "type": "image",
-                      "url": "https://cdn-icons.flaticon.com/png/512/3573/premium/3573617.png?token=exp=1648090778~hmac=bdc2c7a25a6a4f8030a06085c5e3b277",
-                      "size": "20px",
-                      "flex": 0,
-                      "offsetEnd": "10px"
-                    }
-                  ],
-                  "position": "absolute",
-                  "cornerRadius": "xxl",
-                  "offsetTop": "10px",
-                  "offsetStart": "10px",
-                  "backgroundColor": "#708090cc",
-                  "justifyContent": "center",
-                  "alignItems": "center"
-                }
-              ],
-              "paddingAll": "0px",
-              "backgroundColor": "#000000"
-            }
-          },
-          {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "image",
-                  "size": "full",
-                  "aspectMode": "fit",
-                  "aspectRatio": "1:1",
-                  "gravity": "top",
-                  "url": "https://www.peddyhub.com/storage/uploads/cjRUkaSGIQmzDnmp8aBHPlrDTB8ZgcdJKjaL9t5b.jpg"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "button",
-                      "action": {
-                        "type": "uri",
-                        "label": "qq",
-                        "uri": "https://peddyhub.com/pet_insurance?insurance=1"
-                      },
-                      "style": "link",
-                      "color": "#ffffff",
-                      "height": "sm",
-                      "flex": 0
-                    },
-                    {
-                      "type": "image",
-                      "url": "https://cdn-icons-png.flaticon.com/512/866/866954.png",
-                      "size": "20px",
-                      "flex": 0,
-                      "offsetEnd": "10px"
-                    }
-                  ],
-                  "position": "absolute",
-                  "cornerRadius": "xxl",
-                  "offsetTop": "10px",
-                  "offsetStart": "10px",
-                  "backgroundColor": "#708090cc",
-                  "justifyContent": "center",
-                  "alignItems": "center"
-                }
-              ],
-              "paddingAll": "0px",
-              "backgroundColor": "#000000"
-            }
-          },
-          {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/storage/uploads/ukIQDiFzIp103tr22k4i2TIEhvFPjYFMUJlpKpJI.jpg",
-                  "size": "full",
-                  "aspectMode": "fit",
-                  "aspectRatio": "1:1",
-                  "gravity": "top"
-                },
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "button",
-                      "action": {
-                        "type": "uri",
-                        "label": "gg",
-                        "uri": "https://peddyhub.com/pet_insurance?insurance=1"
-                      },
-                      "style": "link",
-                      "color": "#ffffff",
-                      "height": "sm",
-                      "flex": 0
-                    },
-                    {
-                      "type": "image",
-                      "url": "https://cdn-icons.flaticon.com/png/512/3573/premium/3573617.png?token=exp=1648090778~hmac=bdc2c7a25a6a4f8030a06085c5e3b277",
-                      "size": "20px",
-                      "flex": 0,
-                      "offsetEnd": "10px"
-                    }
-                  ],
-                  "position": "absolute",
-                  "cornerRadius": "xxl",
-                  "offsetTop": "10px",
-                  "offsetStart": "10px",
-                  "backgroundColor": "#708090cc",
-                  "justifyContent": "center",
-                  "alignItems": "center"
-                }
-              ],
-              "paddingAll": "0px",
-              "backgroundColor": "#000000"
-            }
-          },
-          {
-            "type": "bubble",
-            "body": {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "button",
-                      "action": {
-                        "type": "uri",
-                        "label": "ดูเพิ่มเติม",
-                        "uri": "https://peddyhub.com/pet"
-                      },
-                      "style": "link",
-                      "color": "#ffffff",
-                      "height": "sm",
-                      "flex": 0
-                    }
-                  ],
-                  "position": "absolute",
-                  "cornerRadius": "xxl",
-                  "offsetTop": "130px",
-                  "offsetStart": "110px",
-                  "backgroundColor": "#708090cc",
-                  "justifyContent": "center",
-                  "alignItems": "center"
-                }
-              ],
-              "paddingAll": "0px",
-              "backgroundColor": "#000000"
-            }
+                    "style": "link",
+                    "color": "#ffffff",
+                    "height": "sm",
+                    "flex": 0
+                  },
+                  {
+                    "type": "image",
+                    "url": "https://cdn-icons.flaticon.com/png/512/3573/premium/3573617.png?token=exp=1648090778~hmac=bdc2c7a25a6a4f8030a06085c5e3b277",
+                    "size": "20px",
+                    "flex": 0,
+                    "offsetEnd": "10px"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "10px",
+                "offsetStart": "10px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center"
+              }
+            ],
+            "paddingAll": "0px",
+            "backgroundColor": "#000000"
           }
-        ]
-      }
+        },
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "uri",
+                      "label": "ดูเพิ่มเติม",
+                      "uri": "https://peddyhub.com/pet"
+                    },
+                    "style": "link",
+                    "color": "#ffffff",
+                    "height": "sm",
+                    "flex": 0
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "130px",
+                "offsetStart": "110px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center"
+              }
+            ],
+            "paddingAll": "0px",
+            "backgroundColor": "#000000"
+          }
+        }
+      ]
+    }
     }

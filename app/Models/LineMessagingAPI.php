@@ -205,6 +205,12 @@ class LineMessagingAPI extends Model
 
                 $messages = [ json_decode($string_json, true) ]; 
             break;
+            case 'my_pet':
+    			$template_path = storage_path('../public/json/flex-pet.json');   
+                $string_json = file_get_contents($template_path);
+
+                $messages = [ json_decode($string_json, true) ]; 
+    		break;
     	}
 
     	$body = [
