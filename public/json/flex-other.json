@@ -123,7 +123,7 @@
                     "action": {
                       "type": "message",
                       "label": "เจ้าตัวแสบ",
-                      "text": "ธนาคารเลือด"
+                      "text": "เจ้าตัวแสบ"
                     },
                     "flex": 4,
                     "position": "absolute",
@@ -139,7 +139,7 @@
                     "action": {
                       "type": "message",
                       "label": "เจ้าตัวแสบ",
-                      "text": "ธนาคารเลือด"
+                      "text": "เจ้าตัวแสบ"
                     },
                     "position": "absolute",
                     "offsetTop": "xxl",
