@@ -155,7 +155,7 @@
             </div>
         </section>
     </div>
-    <div class="main-wrapper pet buy">
+    <div class="main-wrapper pet buy" id="pets">
         <section class="featured">
             <div class="crumb">
                 <div class="container notranslate">
