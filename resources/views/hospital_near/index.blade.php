@@ -134,17 +134,17 @@ aside {
                                 <div class="row">
                                     <div class="col-4">
                                         <center>
-                                            <img src="{{ url('/peddyhub/images/icons/marker_user.png') }}"> <br>ตำแหน่งของคุณ
+                                            <img src="{{ url('/peddyhub/images/icons/marker_user_new.png') }}" width="40px;"> <br>ตำแหน่งของคุณ
                                         </center>
                                     </div>
                                     <div class="col-4">
                                         <center>
-                                            <img src="{{ url('/peddyhub/images/icons/placeholder_2.png') }}"> <br>แนะนำ
+                                            <img src="{{ url('/peddyhub/images/icons/placeholder_2_new.png') }}" width="40px;"> <br>แนะนำ
                                         </center>
                                     </div>
                                     <div class="col-4">
                                         <center>
-                                            <img src="{{ url('/peddyhub/images/icons/marker_general.png') }}"> <br>ทั่วไป
+                                            <img src="{{ url('/peddyhub/images/icons/marker_general_new.png') }}" width="40px;"> <br>ทั่วไป
                                         </center>
                                     </div>
                                 </div>
