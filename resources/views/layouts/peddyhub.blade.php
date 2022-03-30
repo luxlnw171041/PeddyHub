@@ -7,7 +7,7 @@
     <title>PeddyHub</title>
     <!-- icon -->
 
-    <link href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css" rel="stylesheet">
+    <link href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css" rel="stylesheet">
     <!-- Stylesheets -->
     <link href="{{ asset('peddyhub/css/imagehover.css') }}" rel="stylesheet">
     <link href="{{ asset('peddyhub/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"> 
@@ -126,6 +126,8 @@
                                             data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
+                                            <li><a href="{{ url('/user#pets') }}">สัตว์เลี้ยง</a></li>
+
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -186,6 +188,8 @@
                                                         data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                                                     <ul class="dropdown-menu">
                                                         <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
+                                                        <li><a href="{{ url('/user#pets') }}">สัตว์เลี้ยง</a></li>
+
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                                 onclick="event.preventDefault();
@@ -507,86 +511,10 @@
             @yield('content')
         <!--Main Footer-->
         <footer class="main-footer">
-            <div class="auto-container">
+            <div class="container">
                 <!--Widgets Section-->
-                <!-- <div class="widgets-section">
-                    <div class="row clearfix">
-                        <div class="big-column col-md-6 col-sm-12 col-xs-12">
-                            <div class="row clearfix">
-                                <div class="footer-column col-md-7 col-sm-6 col-xs-12">
-                                    <div class="footer-widget logo-widget">
-                                        <div class="logo">
-                                            <a href="index.html"><img src="images/footer-logo.png" alt="" /></a>
-                                        </div>
-                                        <div class="text">This prodigiously grew tortoise charact stupidly pernicious
-                                            jeepers along while accordingly under useful much salacious walking fars
-                                            before some supp aesthetically wow shuddered.</div>
-                                        <ul class="social-icon-two">
-                                            <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                                            <li><a href="#"><span class="fa fa-facebook-square"></span></a></li>
-                                            <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                                            <li><a href="#"><span class="fa fa-youtube-play"></span></a></li>
-                                            <li><a href="#"><span class="fa fa-pinterest-p"></span></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="footer-column col-md-5 col-sm-6 col-xs-12">
-                                    <div class="footer-widget links-widget">
-                                        <h2>Web Links</h2>
-                                        <ul class="links">
-                                            <li><a href="index.html">Home Page</a></li>
-                                            <li><a href="about.html">About us</a></li>
-                                            <li><a href="services.html">Our Services</a></li>
-                                            <li><a href="blog.html">Our News</a></li>
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="big-column col-md-6 col-sm-12 col-xs-12">
-                            <div class="row clearfix">
-                                <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                                    <div class="footer-widget posts-widget">
-                                        <h2>Recent Posts</h2>
-                                        <article class="widget-post">
-                                            <figure class="post-thumb"><a href="blog-single.html"><img
-                                                        src="images/resource/post-thumb-1.jpg" alt=""></a></figure>
-                                            <div class="text"><a href="blog-single.html">We have best Pet Grooming
-                                                    Services</a></div>
-                                            <div class="post-info">Feb 15, 2021</div>
-                                        </article>
-                                        <article class="widget-post">
-                                            <figure class="post-thumb"><a href="blog-single.html"><img
-                                                        src="images/resource/post-thumb-2.jpg" alt=""></a></figure>
-                                            <div class="text"><a href="blog-single.html">Less tme is required for cat
-                                                    grooming</a></div>
-                                            <div class="post-info">Feb 15, 2021</div>
-                                        </article>
-                                    </div>
-                                </div>
-                                <div class="footer-column col-md-6 col-sm-6 col-xs-12">
-                                    <div class="footer-widget info-widget">
-                                        <h2>Get In Touch</h2>
-                                        <ul>
-                                            <li><span class="icon fa fa-map-marker"></span>32 BellSouth, Harley Street
-                                                <br> Florida 33968</li>
-                                            <li>
-                                                <span class="icon fa fa-phone"></span>
-                                                <a href="tel:+12345678900">+(1) 234 567 8900 </a>
-                                            </li>
-                                            <li>
-                                                <span class="icon fa fa-envelope"></span>
-                                                    <a href="mailto:support@pawrex.com"> support@pawrex.com </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="col-12 footer-bottom d-flex justify-content-start">
+                <div class="row">
+                  <div class="col-12 footer-bottom d-flex justify-content-start" style="padding-bottom:10px;">
                     <div class="copyright">WWW.PEDDYHUB.COM <span>•</span> 
                         <a href="{{'privacy_policy'}}">
                             <span>นโยบายเกี่ยวกับข้อมูลส่วนบุคคล</span>
@@ -596,14 +524,41 @@
                             <span>ข้อกำหนดและเงื่อนไขการใช้บริการ</span>
                         </a>
                     </div>
-                    <div class="col-1" style="margin-left:10px;">
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;">
                         <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
                             <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
                         </a>
                     </div>
-                </div>
-                <div class="col-12 text-center" style="top:-25px;">
-                    <p class="copyright">รูปภาพที่ใช้ในการพัฒนาในเว็บไซต์ อ้างอิงจาก https://www.manoonpetshop.co.th/</p>
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
+                        <a href="https://manoonpetshop.co.th/" target="bank">
+                            <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
+                        </a>
+                    </div>
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
+                        <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
+                            <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
+                        </a>
+                    </div>
+                  </div>
+                  <div class="col-12 d-block d-md-none" style="padding-bottom:45px;">
+                    <div class="row">
+                      <div class="col-3" style="margin-left:10px;top:10px;">
+                          <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
+                              <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
+                          </a>
+                      </div>
+                      <div class="col-3" style="margin-left:10px;">
+                          <a href="https://manoonpetshop.co.th/" target="bank">
+                              <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
+                          </a>
+                      </div>
+                      <div class="col-3" style="margin-left:10px;">
+                          <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
+                              <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
+                          </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
             </div>
         </footer>
