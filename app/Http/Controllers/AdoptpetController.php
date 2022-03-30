@@ -40,7 +40,7 @@ class AdoptpetController extends Controller
      */
     public function create()
     {
-        $category = Pet_Category::all(['id', 'name']);
+        $category = Pet_Category::groupBy('name')->get();
 
         return view('adoptpet.create' , compact('category'));
     }

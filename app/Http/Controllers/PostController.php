@@ -49,7 +49,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $category = Pet_Category::all(['id', 'name']);
+        $category = Pet_Category::groupBy('name')->get();
+       
 
         $user = Auth::user();
         return view('post.create' , compact('category'));
@@ -119,7 +120,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $category = Pet_Category::all(['id', 'name']);
+        $category = Pet_Category::groupBy('name')->get();
         $post = Post::findOrFail($id);
         
         return view('post.edit', compact('post' ,'category'));

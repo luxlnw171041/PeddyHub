@@ -1,6 +1,12 @@
 @extends('layouts.peddyhub')
 
 @section('content')
+
+<style>
+    .svg-white {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(246deg) brightness(87%) contrast(156%);
+    }
+</style>
             <div class="slider">
                 <div class="container">
                     <div class="row">
@@ -8,7 +14,8 @@
                             <div class="text">
                                 <div class="heading">
                                     <h1>
-                                        ยินดีต้อนรับสู่ <span class="wow pulse" data-wow-delay="1s">
+                                        ยินดีต้อนรับสู่
+                                        <span class="wow pulse" data-wow-delay="1s">
                                             PeddyHub</span>
                                     </h1>
                                 </div>
@@ -197,47 +204,42 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="box borded">
-                                            <div class="icon">
-                                                <span class="icon flaticon-easter-bunny"></span>
-                                            </div>
+                                                <img  class="icon" width="80px;" src="peddyhub/images/home_5/svg/home.svg"  alt="Kiwi standing on oval">
+
                                             <div class="num">
-                                                <span class="counting-value">1500</span>
-                                                <span>+</span>
+                                                <span class="counting-value" style="font-size: 35px;">{{$count_pet * 3}}</span>
+                                                <span style="font-size: 35px;">+</span>
                                             </div>
-                                            <div class="description">PET BORDED</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;">สัตว์เลี้ยงลงทะเบียน</div>
                                         </div>
                                         <div class="box happy">
-                                            <div class="icon">
-                                                <span class="icon flaticon-brush"></span>
-                                            </div>
+                                                <img class="svg-white icon" width="80px;" src="peddyhub/images/home_5/svg/cat-dog.svg"  alt="Kiwi standing on oval">
+                                                
                                             <div class="num">
-                                                <span class="counting-value">900</span>
-                                                <span>+</span>
+                                                <span class="counting-value" style="font-size: 35px;">24</span>
+                                                <span style="font-size: 35px;" style="font-size: 35px;">ชม.</span>
                                             </div>
-                                            <div class="description">HAPPY CLIENTS</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;">ให้การช่วยเหลือ</div>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="box project">
-                                            <div class="icon">
-                                                <span class="icon flaticon-money-bag"></span>
-                                            </div>
+                                        <div class="box user">
+                                                <img class="icon" width="80px;" src="peddyhub/images/home_5/svg/user.svg"  alt="Kiwi standing on oval">
                                             <div class="num">
-                                                <span class="counting-value">500</span>
-                                                <span>+</span>
+                                                <span class="counting-value" style="font-size: 35px;">{{$count_user + 300}}</span>
+                                                <span style="font-size: 35px;">+</span>
                                             </div>
-                                            <div class="description">PROJECT DONE</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;">ผู้ใช้</div>
                                         </div>
-                                        <div class="box event">
-                                            <div class="icon">
-                                                <span class="icon flaticon-award"></span>
+                                        <div class="box language text-center">
+                                            <img  class="icon" width="80px;" src="peddyhub/images/home_5/svg/language.svg"  alt="Kiwi standing on oval">
+
+                                            <div class="num" >
+                                                <span class="counting-value" style="font-size: 35px;">12</span>
+                                                <span style="font-size: 35px;">+</span>
                                             </div>
-                                            <div class="num">
-                                                <span class="counting-value">300</span>
-                                                <span>+</span>
-                                            </div>
-                                            <div class="description">EVENT DONE</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;">ภาษาที่รองรับ</div>
                                         </div>
                                     </div>
                                 </div>
@@ -287,102 +289,50 @@
                         <!-- <div class="text">For professional dog and cat grooming needs</div> -->
                     </div>
                     <div class="row clearfix">
-                        <!--Gallery Item-->
-                        <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/re1.1.jpg" alt="">
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="peddyhub/images/gallery/re1.1.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
+                        @foreach($data_post as $item)
+                            <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
+                                <div class="inner-box">
+                                    <figure class="image-box">
+                                        <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
+                                        <!--Overlay Box-->
+                                        <div class="overlay-box"style="padding:0px 20px;">
+                                            <div class="card" >
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-2" style="padding:0px;">
+                                                            @if(!empty($item->profile->photo))
+                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                            @else
+                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-9" style="padding:0px 10px">
+                                                            @if(!empty($item->profile->name))
+                                                                <p class="notranslate d-flex justify-content-start" style="padding:0px;margin:0px;"> <b>{{ $item->profile->name }}</b>  </p>
+                                                            @else
+                                                                <p class="notranslate d-flex justify-content-start" style="padding:0px;margin:0px;"> <b>Guest</b>  </p>
+                                                            @endif
+                                                            <p class="d-flex justify-content-start" style="font-size:12px;margin-top:-8px;"> {{ $item->created_at->diffForHumans() }} </p>
+                                                        </div>
+                                                        <div class="col-12" style="padding:0px 0px 0px 20px">
+                                                            <a href="{{ url('/post/' . $item->id) }}" title="">
+                                                            
+                                                                <p class="head mt-1 mb-0">{{ $item->detail }} </p>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="overlay-inner" style="top:90px;">
+                                                <div class="content">
+                                                    <a href="{{ url('post' )}}"  class=" link"><span class="icon fa fa-search"></span></a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </figure>
+                                    </figure>
+                                </div>
                             </div>
-                        </div>
-                        <!--Gallery Item-->
-                        <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/re2.jpg" alt="">
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="peddyhub/images/gallery/re2.jpg" data-fancybox="images" data-caption="" class=" lightbox-image link"><span class="icon fa fa-search"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
-                        <!--Gallery Item-->
-                        <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/re3.jpg" alt="">
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="peddyhub/images/gallery/re3.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
-                        <!--Gallery Item-->
-                        <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/re4.jpg" alt="">
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="peddyhub/images/gallery/re4.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
-                        <!--Gallery Item-->
-                        <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/re5.jpg" alt="">
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="peddyhub/images/gallery/re5.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
-                        <!--Gallery Item-->
-                        <div class="gallery-item col-md-4 col-sm-6 col-xs-12">
-                            <div class="inner-box">
-                                <figure class="image-box">
-                                    <img src="peddyhub/images/gallery/re6.jpg" alt="">
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="peddyhub/images/gallery/re6.jpg" data-fancybox="images" data-caption="" class="lightbox-image link"><span class="icon fa fa-search"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
         </section>
