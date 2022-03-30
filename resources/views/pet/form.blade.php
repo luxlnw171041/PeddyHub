@@ -201,6 +201,11 @@
     </div>
 </div>
 
+<input type="text" class="d-none" name="language_user" id="language_user" value="{{ Auth::user()->profile->language }}">
+<a id="btn_change_language" class="d-none" href=""></a>
+
+
+
 <script>
 
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -212,6 +217,10 @@
         }
         select_category();
     });
+
+    var language_user = document.querySelector('#language_user').value ;
+    // console.log(language_user);
+
 
     function select_province(){
         let select_province = document.querySelector('#select_province');
@@ -260,6 +269,8 @@
                     select_amphoe.add(option);
                 }
             });
+
+            change_language_user();
     }
 
     function select_T(){
@@ -286,6 +297,8 @@
                     select_tambon.add(option);
                 }
             });
+
+            change_language_user();
 
     }
     function select_category(){
@@ -337,5 +350,17 @@
         else
             document.querySelector('#select_sub_category').classList.add('d-none');
         endif
+    }
+
+    function change_language_user()
+    {
+        let btn_change_language = document.querySelector('#btn_change_language');
+            btn_change_language.href = "javascript:trocarIdioma('" + language_user +"')" ;
+        
+        var delayInMilliseconds = 1000; //1.5 second
+
+        setTimeout(function() {
+            document.querySelector('#btn_change_language').click();
+        }, delayInMilliseconds);
     }
 </script>

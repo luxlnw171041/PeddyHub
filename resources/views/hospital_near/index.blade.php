@@ -160,6 +160,9 @@ aside {
     </div>
     <br>
 
+    <input type="text" class="d-none" name="language_user" id="language_user" value="{{ Auth::user()->profile->language }}">
+    <a id="btn_change_language" class="d-none" href=""></a>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgrxXDgk1tgXngalZF3eWtcTWI-LPdeus&language=th" ></script>
     <style type="text/css">
         #map {
@@ -181,6 +184,8 @@ aside {
         var image_marker_user = "https://www.peddyhub.com/peddyhub/images/icons/marker_user.png";
         var image_marker_recommend = "https://www.peddyhub.com/peddyhub/images/icons/placeholder_2.png";
         var icon_image_marker = "https://www.peddyhub.com/peddyhub/images/icons/marker_general.png";
+
+        var language_user = document.querySelector('#language_user').value ;
 
         document.addEventListener('DOMContentLoaded', (event) => {
             // console.log("START");
@@ -671,6 +676,8 @@ aside {
                         select_amphoe.add(option);
                     }
                 });
+
+                change_language_user();
         }
 
         function select_T(){
@@ -698,6 +705,20 @@ aside {
                     }
                 });
 
+                change_language_user();
+
+        }
+
+        function change_language_user()
+        {
+            let btn_change_language = document.querySelector('#btn_change_language');
+                btn_change_language.href = "javascript:trocarIdioma('" + language_user +"')" ;
+            
+            var delayInMilliseconds = 1000; //1.5 second
+
+            setTimeout(function() {
+                document.querySelector('#btn_change_language').click();
+            }, delayInMilliseconds);
         }
 
         function select_lat_lng(){
