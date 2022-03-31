@@ -20,19 +20,19 @@
               },
               {
                 "type": "box",
-                "layout": "horizontal",
+                "layout": "vertical",
                 "contents": [
                   {
                     "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "luca",
-                      "uri": "https://peddyhub.com/pet_insurance?insurance=1"
-                    },
                     "style": "link",
                     "color": "#ffffff",
                     "height": "sm",
-                    "flex": 0
+                    "flex": 0,
+                    "action": {
+                      "type": "postback",
+                      "label": "luca",
+                      "data": "hello"
+                    }
                   }
                 ],
                 "position": "absolute",
@@ -56,7 +56,7 @@
             "contents": [
               {
                 "type": "box",
-                "layout": "horizontal",
+                "layout": "vertical",
                 "contents": [
                   {
                     "type": "button",
