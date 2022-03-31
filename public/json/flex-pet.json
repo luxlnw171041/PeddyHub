@@ -33,13 +33,6 @@
                     "color": "#ffffff",
                     "height": "sm",
                     "flex": 0
-                  },
-                  {
-                    "type": "image",
-                    "url": "https://cdn-icons.flaticon.com/png/512/3573/premium/3573617.png?token=exp=1648090778~hmac=bdc2c7a25a6a4f8030a06085c5e3b277",
-                    "size": "20px",
-                    "flex": 0,
-                    "offsetEnd": "10px"
                   }
                 ],
                 "position": "absolute",
@@ -70,7 +63,7 @@
                     "action": {
                       "type": "uri",
                       "label": "ดูเพิ่มเติม",
-                      "uri": "https://peddyhub.com/pet"
+                      "uri": "https://peddyhub.com/user#pets"
                     },
                     "style": "link",
                     "color": "#ffffff",

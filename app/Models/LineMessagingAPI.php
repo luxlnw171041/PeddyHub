@@ -206,10 +206,29 @@ class LineMessagingAPI extends Model
                 $messages = [ json_decode($string_json, true) ]; 
             break;
             case 'my_pet':
-    			$template_path = storage_path('../public/json/flex-pet.json');   
-                $string_json = file_get_contents($template_path);
+                $provider_id = $event["source"]['userId'];
+                $users = User::where('provider_id' , $provider_id)->get();
+                foreach ($users as $user) {
+                    $user_id = $user->id ;
+                }
+                $pet = Pet::where('user_id', $user->id)->get();
 
-                $messages = [ json_decode($string_json, true) ]; 
+                foreach($pet as $item){
+                        $template_path = storage_path('../public/json/flex-pet.json');   
+                        $string_json = file_get_contents($template_path);
+                    // รูป
+                    if (!empty($item->photo)) {
+                        $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                    }
+                    if (empty($item->photo)) {
+                        $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
+                    }
+                    $string_json = str_replace("lucky@gmail.com",$item->email,$string_json);
+                    $string_json = str_replace("luca",$item->name,$string_json);
+                    $string_json = str_replace("https://www.peddyhub.com/storage/uploads/k6h3qjTZ6XRv85rItTGsvc2Z5TP2eGIZqWAULaA4.jpg",$pet_photo,$string_json);
+                    
+                    $messages = [ json_decode($string_json, true) ]; 
+                }
     		break;
     	}
 
