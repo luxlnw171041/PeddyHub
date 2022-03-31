@@ -40,7 +40,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 // END ADMIN
 
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/edit_profile', 'userController@edit_profile');
 // Google login
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
