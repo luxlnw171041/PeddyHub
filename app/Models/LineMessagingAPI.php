@@ -267,8 +267,8 @@ class LineMessagingAPI extends Model
                         // รูป
                         if (!empty($item->photo)) {
                             $pet_photo = "https://www.peddyhub.com/storage/".$photo[0] ;
-                            $pet_photo2 = "https://www.peddyhub.com/storage/".$photo[2] ;
-                            $pet_photo3 = "https://www.peddyhub.com/storage/".$photo[3] ;
+                            $pet_photo2 = "https://www.peddyhub.com/storage/".$photo[1] ;
+                            $pet_photo3 = "https://www.peddyhub.com/storage/".$photo[2] ;
                         }
                         if (empty($item->photo)) {
                             $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
