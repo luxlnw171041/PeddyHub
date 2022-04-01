@@ -185,9 +185,9 @@ class PetController extends Controller
     public function welcome_line_pet()
     {
         if(Auth::check()){
-            return redirect('pet');
+            return redirect('user#pets');
         }else{
-            return redirect('/login/line?redirectTo=pet');
+            return redirect('/login/line?redirectTo=user#pets');
         }
     }
 
