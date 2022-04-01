@@ -215,8 +215,8 @@ class LineMessagingAPI extends Model
                     $user_id = $user->id ;
                 }
 
-                $pet = Pet::where('user_id', $user->id)->get();
-                $data_pet = Post::where('user_id', $user->id)->inRandomOrder()->limit(3)->get();
+                $pet = Pet::where('user_id', $user_id)->get();
+                $data_pet = Post::where('user_id', $user_id)->inRandomOrder()->limit(3)->get();
 
                 for ($i=0; $i < count($data_pet);) { 
                     foreach($data_pet as $item ){
@@ -285,8 +285,8 @@ class LineMessagingAPI extends Model
                     break;
                 }
                 $messages = [ json_decode($string_json, true) ]; 
-                break;
-            }
+            break;
+        }
 
     	$body = [
             "replyToken" => $event["replyToken"],
