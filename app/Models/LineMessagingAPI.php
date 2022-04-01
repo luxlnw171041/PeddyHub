@@ -218,68 +218,75 @@ class LineMessagingAPI extends Model
                 $pet = Pet::where('user_id', $user->id)->get();
                 $data_pet = Post::where('user_id', $user->id)->inRandomOrder()->limit(3)->get();
 
+                for ($i=0; $i < count($data_pet);) { 
+                    foreach($data_pet as $item ){
+                        $name[$i] = $item->name;
+                        $photo[$i] = $item->photo;
+                        $i++;
+                    }
+                }
+
                 switch(count($pet))
                 {
                     case "1": 
-                        foreach($data_pet as $item){
                             $template_path = storage_path('../public/json/flex-pet.json');   
                             $string_json = file_get_contents($template_path);
                             // รูป
                             if (!empty($item->photo)) {
-                                $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                                $pet_photo = "https://www.peddyhub.com/storage/".$photo[0] ;
                             }
                             if (empty($item->photo)) {
                                 $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
                             }
-                            $string_json = str_replace("pet_name_1",$item->name,$string_json);
+                            $string_json = str_replace("pet_name_1",$name[0],$string_json);
                             $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);    
-                        }
+                  
                     break;
                     case "2": 
-                        foreach($data_pet as $item){
-                            $template_path = storage_path('../public/json/flex-pet.json');   
+                            $template_path = storage_path('../public/json/flex-pet2.json');   
                             $string_json = file_get_contents($template_path);
                             // รูป
                             if (!empty($item->photo)) {
-                                $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                                $pet_photo = "https://www.peddyhub.com/storage/".$photo[0] ;
+                                $pet_photo2 = "https://www.peddyhub.com/storage/".$photo[1] ;
+
                             }
                             if (empty($item->photo)) {
                                 $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
                             }
                             //สัตว์เลี้ยง1
-                            $string_json = str_replace("pet_name_1",$item->name,$string_json);
+                            $string_json = str_replace("pet_name_1",$name[0],$string_json);
                             $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);   
                             //สัตว์เลี้ยง2
-                            $string_json = str_replace("pet_name_2",$item->name,$string_json);
-                            $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo,$string_json);  
-                        }
+                            $string_json = str_replace("pet_name_2",$name[1],$string_json);
+                            $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo2,$string_json);  
                     break;
                     default: 
-                    foreach($data_pet as $item){
-                        $template_path = storage_path('../public/json/flex-pet.json');   
+                        $template_path = storage_path('../public/json/flex-pet3.json');   
                         $string_json = file_get_contents($template_path);
                         // รูป
                         if (!empty($item->photo)) {
-                            $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                            $pet_photo = "https://www.peddyhub.com/storage/".$photo[0] ;
+                            $pet_photo2 = "https://www.peddyhub.com/storage/".$photo[2] ;
+                            $pet_photo3 = "https://www.peddyhub.com/storage/".$photo[3] ;
                         }
                         if (empty($item->photo)) {
                             $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
                         }
                         //สัตว์เลี้ยง1
-                        $string_json = str_replace("pet_name_1",$item->name,$string_json);
+                        $string_json = str_replace("pet_name_1",$name[0],$string_json);
                         $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);   
                         //สัตว์เลี้ยง2
-                        $string_json = str_replace("pet_name_2",$item->name,$string_json);
-                        $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo,$string_json);  
+                        $string_json = str_replace("pet_name_2",$name[1],$string_json);
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo2,$string_json);  
                         //สัตว์เลี้ยง3
-                        $string_json = str_replace("pet_name_3",$item->name,$string_json);
-                        $string_json = str_replace("https://www.peddyhub.com/img_pet3.jpg",$pet_photo,$string_json);  
-                    }
+                        $string_json = str_replace("pet_name_3",$name[2],$string_json);
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet3.jpg",$pet_photo3,$string_json);  
                     break;
                 }
-            $messages = [ json_decode($string_json, true) ]; 
-    		break;
-    	}
+                $messages = [ json_decode($string_json, true) ]; 
+                break;
+            }
 
     	$body = [
             "replyToken" => $event["replyToken"],
