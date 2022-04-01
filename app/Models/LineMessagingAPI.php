@@ -216,7 +216,7 @@ class LineMessagingAPI extends Model
                 }
 
                 $pet = Pet::where('user_id', $user_id)->get();
-                $data_pet = Post::where('user_id', $user_id)->inRandomOrder()->limit(3)->get();
+                $data_pet = Pet::where('user_id', $user_id)->inRandomOrder()->limit(3)->get();
 
                 for ($i=0; $i < count($data_pet);) { 
                     foreach($data_pet as $item ){
