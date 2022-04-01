@@ -70,7 +70,7 @@
                         <div class="row mt-5">
                             @foreach($post as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <div class="card">
+                                    <div class="card" id="id{{ $item->id }}">
                                         <div  style="padding-top:10px;padding-left:20px;">
                                             <div class="row">
                                                 <!-- <span class="category">Pet Care</span> -->

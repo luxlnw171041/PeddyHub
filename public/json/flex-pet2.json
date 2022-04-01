@@ -1,0 +1,134 @@
+
+{
+    "type": "flex",
+    "altText": "เจ้าตัวแสบ2",
+    "contents":{
+        "type": "carousel",
+        "contents": [
+            {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "size": "full",
+                    "aspectMode": "fit",
+                    "aspectRatio": "1:1",
+                    "gravity": "top",
+                    "url": "https://www.peddyhub.com/img_pet1.jpg"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "color": "#ffffff",
+                        "height": "sm",
+                        "flex": 0,
+                        "action": {
+                        "type": "postback",
+                        "label": "pet_name_1",
+                        "data": "hello"
+                        }
+                    }
+                    ],
+                    "position": "absolute",
+                    "cornerRadius": "xxl",
+                    "offsetTop": "10px",
+                    "offsetStart": "10px",
+                    "backgroundColor": "#708090cc",
+                    "justifyContent": "center",
+                    "alignItems": "center"
+                }
+                ],
+                "paddingAll": "0px",
+                "backgroundColor": "#000000"
+            }
+            },
+            {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "image",
+                    "size": "full",
+                    "aspectMode": "fit",
+                    "aspectRatio": "1:1",
+                    "gravity": "top",
+                    "url": "https://www.peddyhub.com/img_pet2.jpg"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "color": "#ffffff",
+                        "height": "sm",
+                        "flex": 0,
+                        "action": {
+                        "type": "postback",
+                        "label": "pet_name_2",
+                        "data": "hello"
+                        }
+                    }
+                    ],
+                    "position": "absolute",
+                    "cornerRadius": "xxl",
+                    "offsetTop": "10px",
+                    "offsetStart": "10px",
+                    "backgroundColor": "#708090cc",
+                    "justifyContent": "center",
+                    "alignItems": "center"
+                }
+                ],
+                "paddingAll": "0px",
+                "backgroundColor": "#000000"
+            }
+            },
+            {
+            "type": "bubble",
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "button",
+                        "action": {
+                        "type": "uri",
+                        "label": "ดูเพิ่มเติม",
+                        "uri": "https://peddyhub.com/user#pets"
+                        },
+                        "style": "link",
+                        "color": "#ffffff",
+                        "height": "sm",
+                        "flex": 0
+                    }
+                    ],
+                    "position": "absolute",
+                    "cornerRadius": "xxl",
+                    "offsetTop": "130px",
+                    "offsetStart": "110px",
+                    "backgroundColor": "#708090cc",
+                    "justifyContent": "center",
+                    "alignItems": "center"
+                }
+                ],
+                "paddingAll": "0px",
+                "backgroundColor": "#000000"
+            }
+            }
+        ]
+    }
+}

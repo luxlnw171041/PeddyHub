@@ -55,6 +55,8 @@ class LineMessagingAPI extends Model
                     "ถามตอบ",
                     "ติดต่อ",
                     "ยินดีให้บริการค่ะ",
+                    "เจ้าตัวแสบ",
+                    "ธนาคารเลือด",
                 ];
 
                 $data_topic = $this->language_for_user($data_Text_topic, $event["source"]['userId']);
@@ -65,7 +67,8 @@ class LineMessagingAPI extends Model
                 $string_json = str_replace("ถามตอบ",$data_topic[1],$string_json);
                 $string_json = str_replace("ติดต่อ",$data_topic[2],$string_json);
                 $string_json = str_replace("ยินดีให้บริการค่ะ",$data_topic[3],$string_json);
-
+                $string_json = str_replace("เจ้าตัวแสบ",$data_topic[4],$string_json);
+                $string_json = str_replace("ธนาคารเลือด",$data_topic[5],$string_json);
                 $messages = [ json_decode($string_json, true) ]; 
     			break;
 
@@ -211,24 +214,70 @@ class LineMessagingAPI extends Model
                 foreach ($users as $user) {
                     $user_id = $user->id ;
                 }
-                $pet = Pet::where('user_id', $user->id)->get();
 
-                foreach($pet as $item){
+                $pet = Pet::where('user_id', $user->id)->get();
+                $data_pet = Post::where('user_id', $user->id)->inRandomOrder()->limit(3)->get();
+
+                switch(count($pet))
+                {
+                    case "1": 
+                        foreach($data_pet as $item){
+                            $template_path = storage_path('../public/json/flex-pet.json');   
+                            $string_json = file_get_contents($template_path);
+                            // รูป
+                            if (!empty($item->photo)) {
+                                $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                            }
+                            if (empty($item->photo)) {
+                                $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
+                            }
+                            $string_json = str_replace("pet_name_1",$item->name,$string_json);
+                            $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);    
+                        }
+                    break;
+                    case "2": 
+                        foreach($data_pet as $item){
+                            $template_path = storage_path('../public/json/flex-pet.json');   
+                            $string_json = file_get_contents($template_path);
+                            // รูป
+                            if (!empty($item->photo)) {
+                                $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                            }
+                            if (empty($item->photo)) {
+                                $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
+                            }
+                            //สัตว์เลี้ยง1
+                            $string_json = str_replace("pet_name_1",$item->name,$string_json);
+                            $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);   
+                            //สัตว์เลี้ยง2
+                            $string_json = str_replace("pet_name_2",$item->name,$string_json);
+                            $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo,$string_json);  
+                        }
+                    break;
+                    default: 
+                    foreach($data_pet as $item){
                         $template_path = storage_path('../public/json/flex-pet.json');   
                         $string_json = file_get_contents($template_path);
-                    // รูป
-                    if (!empty($item->photo)) {
-                        $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                        // รูป
+                        if (!empty($item->photo)) {
+                            $pet_photo = "https://www.peddyhub.com/storage/".$item->photo ;
+                        }
+                        if (empty($item->photo)) {
+                            $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
+                        }
+                        //สัตว์เลี้ยง1
+                        $string_json = str_replace("pet_name_1",$item->name,$string_json);
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);   
+                        //สัตว์เลี้ยง2
+                        $string_json = str_replace("pet_name_2",$item->name,$string_json);
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo,$string_json);  
+                        //สัตว์เลี้ยง3
+                        $string_json = str_replace("pet_name_3",$item->name,$string_json);
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet3.jpg",$pet_photo,$string_json);  
                     }
-                    if (empty($item->photo)) {
-                        $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
-                    }
-                    $string_json = str_replace("lucky@gmail.com",$item->email,$string_json);
-                    $string_json = str_replace("luca",$item->name,$string_json);
-                    $string_json = str_replace("https://www.peddyhub.com/storage/uploads/k6h3qjTZ6XRv85rItTGsvc2Z5TP2eGIZqWAULaA4.jpg",$pet_photo,$string_json);
-                    
-                    $messages = [ json_decode($string_json, true) ]; 
+                    break;
                 }
+            $messages = [ json_decode($string_json, true) ]; 
     		break;
     	}
 

@@ -16,7 +16,7 @@
                 "aspectMode": "fit",
                 "aspectRatio": "1:1",
                 "gravity": "top",
-                "url": "https://www.peddyhub.com/storage/uploads/k6h3qjTZ6XRv85rItTGsvc2Z5TP2eGIZqWAULaA4.jpg"
+                "url": "https://www.peddyhub.com/img_pet1.jpg"
               },
               {
                 "type": "box",
@@ -30,7 +30,7 @@
                     "flex": 0,
                     "action": {
                       "type": "postback",
-                      "label": "luca",
+                      "label": "pet_name_1",
                       "data": "hello"
                     }
                   }

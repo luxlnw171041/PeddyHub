@@ -16,8 +16,8 @@ class Home_pageController extends Controller
         $pets = Pet::get();
         $count_pet = count($pets);
         //post
-        $data_post = Post::get()->random(6);
-
+        $data_post = Post::inRandomOrder()->limit(6)->get();
+        
         return view('welcome' ,compact('count_user','count_pet' ,'data_post'));
     }
 

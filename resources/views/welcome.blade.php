@@ -325,7 +325,7 @@
                                             </div>
                                             <div class="overlay-inner" style="top:90px;">
                                                 <div class="content">
-                                                    <a href="{{ url('post' )}}"  class=" link"><span class="icon fa fa-search"></span></a>
+                                                    <a href="{{ url('post' )}}/#id{{ $item->id }}"  class=" link"><span class="icon fa fa-search"></span></a>
                                                 </div>
                                             </div>
                                         </div>
