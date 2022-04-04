@@ -539,6 +539,11 @@
                             <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
                         </a>
                     </div>
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
+                        <a href="https://web.facebook.com/catsanovabkk/" target="bank">
+                            <img width="85%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
+                        </a>
+                    </div>
                   </div>
                   <div class="col-12 d-block d-md-none" style="padding-bottom:45px;">
                     <div class="row">
@@ -555,6 +560,11 @@
                       <div class="col-3" style="margin-left:10px;">
                           <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
                               <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
+                          </a>
+                      </div>
+                      <div class="col-3" style="margin-left:10px;">
+                          <a href="https://web.facebook.com/catsanovabkk/" target="bank">
+                              <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
                           </a>
                       </div>
                     </div>
