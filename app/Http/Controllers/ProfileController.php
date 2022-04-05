@@ -108,11 +108,16 @@ class ProfileController extends Controller
             $requestData['photo'] = $request->file('photo')
                 ->store('storage/uploads', 'public'); 
         }
-        
+      
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
 
-        return redirect('user')->with('flash_message', 'Profile updated!');
+        if(!empty($requestData['login'])){
+            return Redirect("https://lin.ee/Bvi9Zr9");
+        }
+        else{
+            return redirect('user')->with('flash_message', 'Profile updated!');
+        }
     }
 
     /**

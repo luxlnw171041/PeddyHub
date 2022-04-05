@@ -563,7 +563,7 @@
                           </a>
                       </div>
                       <div class="col-3" style="margin-left:10px;">
-                          <a href="https://web.facebook.com/catsanovabkk/" target="bank">
+                          <a href="https://facebook.com/catsanovabkk/" target="bank">
                               <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
                           </a>
                       </div>

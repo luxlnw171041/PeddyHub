@@ -114,7 +114,9 @@
                                         {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
-                                
+                            @if(!empty($login))
+                                <input class="form-control d-none" name="login" type="text" id="login" value="line" >
+                            @endif
                             </div>
                             <div class="heading">
                                 <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>

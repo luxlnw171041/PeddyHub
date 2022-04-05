@@ -84,15 +84,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
+        $login = $request->get('login');
+
         if (Auth::id() == $id )
         {
-            $data = User::findOrFail($id);
-            return view('user/edit', compact('data'));
+             $data = User::findOrFail($id);
+            return view('user/edit', compact('data','login'));
             
-        }else
+        }
+        else
             return view('errors/404');
+
+        
     }
 
     /**
