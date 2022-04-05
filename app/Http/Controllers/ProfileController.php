@@ -149,7 +149,7 @@ class ProfileController extends Controller
     {
         $id = Auth::id();
 
-        return redirect('/login/line?redirectTo=user/'.$id.'/edit');
+        return redirect('/login/line?redirectTo=user/'.$id.'/edit?login=line');
       
     }
 }
