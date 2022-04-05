@@ -222,6 +222,7 @@ class LineMessagingAPI extends Model
                     foreach($data_pet as $item ){
                         $name[$i] = $item->name;
                         $photo[$i] = $item->photo;
+                        $gender[$i] = $item->gender;
                         $i++;
                     }
                 }
@@ -231,6 +232,26 @@ class LineMessagingAPI extends Model
                     case "1": 
                             $template_path = storage_path('../public/json/flex-pet.json');   
                             $string_json = file_get_contents($template_path);
+
+                            $gender1 = $gender[0];
+
+                            $gender_m = "https://www.peddyhub.com/peddyhub/images/img-icon/male.png";
+                            $gender_f = "https://www.peddyhub.com/peddyhub/images/img-icon/female.png";
+                            $gender_e = "https://www.peddyhub.com/peddyhub/images/img-icon/equality.png";
+
+
+                            // เพศ
+                            if ($gender1 == "ชาย") {
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_m,$string_json);    
+                            }
+                            if ($gender1 == "หญิง") {
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_f,$string_json);    
+                            }
+                            else{
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_e,$string_json);    
+
+                            }
+
                             // รูป
                             if (!empty($item->photo)) {
                                 $pet_photo = "https://www.peddyhub.com/storage/".$photo[0] ;
@@ -238,13 +259,43 @@ class LineMessagingAPI extends Model
                             if (empty($item->photo)) {
                                 $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
                             }
+
                             $string_json = str_replace("pet_name_1",$name[0],$string_json);
                             $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);    
+
                   
                     break;
                     case "2": 
                             $template_path = storage_path('../public/json/flex-pet2.json');   
                             $string_json = file_get_contents($template_path);
+                            $gender1 = $gender[0];
+                            $gender2 = $gender[1];
+
+                            $gender_m = "https://www.peddyhub.com/peddyhub/images/img-icon/male.png";
+                            $gender_f = "https://www.peddyhub.com/peddyhub/images/img-icon/female.png";
+                            $gender_e = "https://www.peddyhub.com/peddyhub/images/img-icon/equality.png";
+
+
+                            // เพศ
+                            if ($gender1 == "ชาย") {
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_m,$string_json);    
+                            }
+                            if ($gender1 == "หญิง") {
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_f,$string_json);    
+                            }
+                            if ($gender2 == "ชาย") {
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_m,$string_json);    
+                            }
+                            if ($gender2 == "หญิง") {
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_f,$string_json);    
+                            }
+                            else{
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_e,$string_json); 
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_e,$string_json);    
+
+
+                            }
+                            
                             // รูป
                             if (!empty($item->photo)) {
                                 $pet_photo = "https://www.peddyhub.com/storage/".$photo[0] ;
@@ -264,6 +315,29 @@ class LineMessagingAPI extends Model
                     default: 
                         $template_path = storage_path('../public/json/flex-pet3.json');   
                         $string_json = file_get_contents($template_path);
+
+                        $gender_m = "https://www.peddyhub.com/peddyhub/images/img-icon/male.png";
+                        $gender_f = "https://www.peddyhub.com/peddyhub/images/img-icon/female.png";
+                        $gender_e = "https://www.peddyhub.com/peddyhub/images/img-icon/equality.png";
+                        
+                        if ($item->gender = "ชาย") {
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_m,$string_json);  
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_m,$string_json);    
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male3.png",$gender_m,$string_json);    
+                        }
+                        if ($item->gender = "หญิง") {
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_f,$string_json);  
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_f,$string_json);    
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male3.png",$gender_f,$string_json);    
+                        }
+                        else{
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_e,$string_json);  
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_e,$string_json);    
+                            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male3.png",$gender_e,$string_json);  
+
+                        }
+
+
                         // รูป
                         if (!empty($item->photo)) {
                             $pet_photo = "https://www.peddyhub.com/storage/".$photo[0] ;

@@ -8,7 +8,7 @@
           "type": "bubble",
           "body": {
             "type": "box",
-            "layout": "vertical",
+            "layout": "horizontal",
             "contents": [
               {
                 "type": "image",
@@ -20,7 +20,7 @@
               },
               {
                 "type": "box",
-                "layout": "vertical",
+                "layout": "horizontal",
                 "contents": [
                   {
                     "type": "button",
@@ -38,10 +38,29 @@
                 "position": "absolute",
                 "cornerRadius": "xxl",
                 "offsetTop": "10px",
-                "offsetStart": "10px",
+                "offsetStart": "55px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
                 "alignItems": "center"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male.png",
+                    "size": "20px"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "10px",
+                "offsetStart": "10px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "paddingAll": "10px"
               }
             ],
             "paddingAll": "0px",
