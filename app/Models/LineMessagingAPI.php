@@ -277,23 +277,24 @@ class LineMessagingAPI extends Model
 
 
                             // เพศ
-                            if ($gender1 == "ชาย") {
+                            if ($gender1 == 'ชาย') {
                                 $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_m,$string_json);    
                             }
-                            if ($gender1 == "หญิง") {
+                            if ($gender1 == 'หญิง') {
                                 $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_f,$string_json);    
+                            }else{
+                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_e,$string_json);    
                             }
-                            if ($gender2 == "ชาย") {
+
+
+
+                            if ($gender2 == 'ชาย') {
                                 $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_m,$string_json);    
                             }
-                            if ($gender2 == "หญิง") {
+                            if ($gender2 == 'หญิง') {
                                 $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_f,$string_json);    
-                            }
-                            else{
-                                $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male.png",$gender_e,$string_json); 
+                            }else{
                                 $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",$gender_e,$string_json);    
-
-
                             }
                             
                             // รูป
