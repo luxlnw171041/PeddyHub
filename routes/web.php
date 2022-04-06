@@ -97,3 +97,5 @@ Route::middleware(['auth', 'role:admin-partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
     // Route::get('blood_bank/wait_user', 'Blood_bankController@wait_user');
 });
+Route::resource('partner', 'PartnerController');
+Route::resource('check_in', 'Check_inController');
