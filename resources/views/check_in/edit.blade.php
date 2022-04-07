@@ -1,11 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.peddyhub')
 
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
 
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Edit Check_in #{{ $check_in->id }}</div>
                     <div class="card-body">

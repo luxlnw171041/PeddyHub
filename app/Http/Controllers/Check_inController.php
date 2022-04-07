@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Check_in;
+use App\Models\Partner;
+use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Check_inController extends Controller
 {
@@ -38,9 +42,14 @@ class Check_inController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('check_in.create');
+        $date_now = date("Y/m/d H:i:s");
+        $location =  $request->get('location');
+
+        $data_partner = Partner::where('id' , $location)->get();
+
+        return view('check_in.create', compact('location', 'date_now' , 'data_partner'));
     }
 
     /**
@@ -54,10 +63,61 @@ class Check_inController extends Controller
     {
         
         $requestData = $request->all();
+
+        if ($requestData['check_in_out'] == "check_in") {
+            $requestData['time_out'] = null ;
+        }else if($requestData['check_in_out'] == "check_out"){
+            $requestData['time_in'] = null ;
+        }
         
         Check_in::create($requestData);
 
-        return redirect('check_in')->with('flash_message', 'Check_in added!');
+        $data_user = Profile::where('id' , $requestData['user_id'])->get();
+        
+        foreach ($data_user as $user) {
+            if (empty($user->check_in_at)) {
+                $check_in_all = array($requestData['check_in_at']) ;
+            }else{
+                $check_in_all = json_decode($user->check_in_at) ;
+                if (in_array($requestData['check_in_at'] , $check_in_all)){
+                    $check_in_all = $check_in_all ;
+                }
+                else{   
+                    array_push($check_in_all , $requestData['check_in_at']) ;
+                }
+            }
+        }
+
+        DB::table('profiles')
+            ->where('id', $requestData['user_id'])
+            ->update([
+                'check_in_at' => $check_in_all,
+        ]);
+
+        if (!empty($requestData['time_in'])) {
+            $time = $requestData['time_in'] ;
+            $type = "CHECK IN" ;
+        }
+
+        if (!empty($requestData['time_out'])) {
+            $time = $requestData['time_out'] ;
+            $type = "CHECK OUT" ;
+        }
+
+        $data_in_out = check_in::where('user_id', $requestData['user_id'])
+            ->where('check_in_at', $requestData['check_in_at'])
+            ->latest()
+            ->take(3)
+            ->get();   
+
+        $check_in_at = $requestData['input_name_partner'] ;
+
+        $time = str_replace("T"," ",$time);
+
+
+        // return redirect('check_in')->with('flash_message', 'Check_in added!');
+        return view('check_in.check_in_finish', compact('time','type','data_in_out','check_in_at'));
+
     }
 
     /**
@@ -130,4 +190,5 @@ class Check_inController extends Controller
             return redirect('/login/line?redirectTo=check_in/create?location=' . $location);
         }
     }
+
 }

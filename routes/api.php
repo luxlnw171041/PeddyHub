@@ -55,3 +55,4 @@ Route::get('/update_lost_pet/send_line/{id}', 'Lost_PetController@update_lost_pe
 
 Route::get('/select_category/','API\CategoryController@category');
 Route::get('/select_sub_category/{category}','API\CategoryController@sub_category');
+
