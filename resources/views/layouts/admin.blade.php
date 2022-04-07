@@ -80,13 +80,32 @@
                     Text_topic
                 </li>
                 <li>
-					<a href="{{ url('/check_in/view') }}">
+					<a href="{{ url('/text_topic') }}">
 						<div class="parent-icon"><i class="fa-solid fa-language"></i>
 						</div>
 						<div class="menu-title">Text_topic</div>
 					</a>
 				</li>
-                
+				<li class="menu-label" style="font-size:15px;">
+                    Partner
+                </li>
+                <li>
+					<a href="{{ url('/partner') }}">
+						<div class="parent-icon"><i class="fa-duotone fa-handshake"></i>
+						</div>
+						<div class="menu-title">Partner</div>
+					</a>
+				</li>
+                <li class="menu-label" style="font-size:15px;">
+                    การใช้งาน
+                </li>
+                <li>
+					<a href="{{ url('/media') }}">
+						<div class="parent-icon"><i class="fa-regular fa-photo-film"></i>
+						</div>
+						<div class="menu-title">สื่อประชาสัมพันธ์</div>
+					</a>
+				</li>
 			</ul>
 			<!--end navigation-->
 		</div>
@@ -97,7 +116,7 @@
 				<nav class="navbar navbar-expand" >
 					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
 					</div>
-					<div class="search-bar flex-grow-1">
+					<div class="search-bar flex-grow-1 header-notifications-list header-message-list">
 						<div class="position-relative search-bar-box">
 							<input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
 							<span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>

@@ -1,11 +1,102 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
+<style>
+    
+.lightbox {
+  /* Default to hidden */
+  display: none;
 
-            <div class="col-md-9">
+  /* Overlay entire screen */
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* A bit of padding around image */
+  padding: 1em;
+
+  /* Translucent background */
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Unhide the lightbox when it's the target */
+.lightbox:target {
+  display: block;
+}
+
+.lightbox span {
+  /* Full width and height */
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  /* Size and position background image */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+</style>
+    <div class="card radius-10" >
+        <div class="card-header border-bottom-0 bg-transparent">
+            <div class="d-flex align-items-center">
+                <div>
+                    <h5 class="font-weight-bold mb-0">Partner</h5>
+                </div>
+                <form method="GET" action="{{ url('/partner') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right ms-auto" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control ps-5 radius-30" name="search" placeholder="ค้นหา..." value="{{ request('search') }}">
+                        <span class="input-group-append">
+                            <button class="btn " type="submit" style="border-color:#D2D7DC;border-style: solid;border-width: 1px 1px 1px 1px;border-radius: 0px 30px 30px 0px">
+                                <i class="bx bx-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+                <div class="ms-auto">
+                    <button type="button" class="btn btn-white radius-10" data-toggle="modal" data-target="#exampleModal"><i class='bx bx-user-plus'></i>เพิ่ม Partner</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body" style="position: relative;">
+            <div class="row mt-3">
+                @foreach($partner as $item)
+                    <div class="col-12 col-lg-3" id="img-logo{{$item->id}}">
+                        <div class="card shadow-none border radius-15">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <a href="{{ url('/partner/' . $item->id . '/edit') }}" title="Edit Partner"><button class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                                    <div class="ms-auto font-24">
+                                        <form method="POST" action="{{ url('/partner' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-danger btn-sm text-center" title="Delete Partner" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <h5 class="mt-3 mb-0">{{ $item->name }}</h5>
+                                <h6 class="mt-0 mb-0 ">{{ $item->phone }}</h6>
+                                <p>{{ $item->province }},{{ $item->district }},{{ $item->sub_district }}</p>
+                                <div>
+                                    <a href="#logo{{$item->id}}">
+                                        <img class="card-img-top" style="width: 100%;height: 300px;object-fit: contain;" src="{{ url('storage/'.$item->logo )}}">
+                                    </a>
+                                    <a href="#img-logo{{$item->id}}" class="lightbox" id="logo{{$item->id}}">
+                                        <span style="background-image: url('{{ url('storage/'.$item->logo )}}')"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Partner</div>
                     <div class="card-body">
@@ -56,6 +147,25 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">เพิ่ม Partner</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url('/partner') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+
+                            @include ('partner.form', ['formMode' => 'create'])
+                    </form>
                 </div>
             </div>
         </div>

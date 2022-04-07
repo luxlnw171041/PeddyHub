@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Check_in;
 use Illuminate\Http\Request;
 
@@ -119,5 +119,15 @@ class Check_inController extends Controller
         Check_in::destroy($id);
 
         return redirect('check_in')->with('flash_message', 'Check_in deleted!');
+    }
+    public function welcome_check_in_line(Request $request)
+    {
+        $location = $request->get('location');
+
+        if(Auth::check()){
+            return redirect('check_in/create?location=' . $location);
+        }else{
+            return redirect('/login/line?redirectTo=check_in/create?location=' . $location);
+        }
     }
 }
