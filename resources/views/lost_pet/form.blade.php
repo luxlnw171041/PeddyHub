@@ -115,7 +115,27 @@
     <input class="d-none" type="text" id="latlng" name="latlng" readonly> 
 
     <br>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test">
+ test
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+          <h3>ได้รับข้อมูลเรียบร้อยแล้ว</h3>
+            <img width="60%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/03.png') }}">
+            <br><br>
+            <h5>สนับสนุนโดย
+               <br> manoonpetshop</h5>
+            <img width="40%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
+
+      </div>
+    </div>
+  </div>
+</div>
     <div class="row ">
         <div class="col-1"></div>
         <input class="col-10 btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">

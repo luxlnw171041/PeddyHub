@@ -4,10 +4,17 @@
     <div class="container">
         <div class="row">
 
+        <section class="about_us">
+            <div class="container">
+                <div class="heading text-center">
+                    <p class="wow fadeInUp" style="visibility: visible;"><span class="purple"><i class="fas fa-paw"></i> </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
+                    <h2 class="wow fadeInDown notranslate" style="visibility: visible;"><span class="wow pulse" data-wow-delay="1s" style="visibility: visible; animation-delay: 1s;"> Check In/Out  </span>
+                    </h2>
+                </div>
+                
+            </div>
+        </section>
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Create New Check_in</div>
-                    <div class="card-body">
                         <!-- <a href="{{ url('/check_in') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br /> -->
@@ -27,9 +34,6 @@
 
                         </form>
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
