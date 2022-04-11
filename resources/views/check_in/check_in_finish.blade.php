@@ -54,7 +54,7 @@
                 <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
             </a>
         </div>
-        <div class="col-3" >
+        <div class="col-3" style="top:3px;">
             <a href="https://facebook.com/catsanovabkk/" target="bank">
                 <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
             </a>
@@ -77,10 +77,10 @@
 <div class="modal fade" id="modal_addline" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body" style="padding:10px;">
         <center>
           <a href="https://line.me/R/ti/p/@746tisvc">
-            <!-- รูปภาพ -->
+            <img width="100%" src="{{ asset('peddyhub/images/poster/poster dog.png') }}">
           </a>
         </center>
         <br>

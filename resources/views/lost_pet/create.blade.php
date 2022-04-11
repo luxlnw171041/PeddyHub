@@ -3,11 +3,18 @@
 @section('content')
     <div class="container">
         <div class="row">
-
             <div class="col-md-12">
-                <div class="card">
-                    <h3 class="card-header">แจ้งน้องหาย</h3>
-                    <div class="card-body">
+                    <div class="faq wow fadeInRight">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="heading">
+                                <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
+                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span
+                                        class="purple"><i class="fas fa-paw"></i> </span></p>
+                                <h3>แจ้งน้องหาย <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                         <!-- <a href="{{ url('/lost_pet') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br /> -->
@@ -26,10 +33,7 @@
                             @include ('lost_pet.form', ['formMode' => 'create'])
 
                         </form>
-
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection

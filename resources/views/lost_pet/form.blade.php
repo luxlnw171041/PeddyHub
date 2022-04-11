@@ -1,5 +1,56 @@
 
-<div class="row">
+<div class="main-wrapper pet check">
+    <div class="pet service">
+        <section class="contact" style="margin-top:10px;"> 
+            <div class="row d-flex justify-content-end">
+                <div class="col-12" style="margin-bottom:12px;">
+                <a class="btn btn-sm btn-success text-white float-right" onclick="locations_myhome();">
+                    <i class="fa-solid fa-house-user"></i> บ้านของฉัน
+                </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="faq wow fadeInRight">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                        <option value="" selected>- เลือกจังหวัด -</option>
+                                    </select>
+                                    <input type="text" name="input_province" id="input_province" class="form-control d-none" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="faq wow fadeInRight">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                        <option value="" selected>- เลือกอำเภอ -</option>
+                                    </select>
+                                    <input type="text" name="input_amphoe" id="input_amphoe" class="form-control d-none" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="faq wow fadeInRight">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                    <option value="" selected>- เลือกตำบล -</option>
+                                </select>
+                                <input type="text" name="input_tambon" id="input_tambon" class="form-control d-none" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+<!-- <div class="row">
     <div class="col-12">
         <div class="row">
             <div class="col-12 col-md-12" style="margin-top:12px;">
@@ -36,7 +87,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="col-12 main-shadow main-radius d-none" style="margin-top:15px; margin-bottom:10px;" id="map" >
     <img style=" object-fit: contain; " width="280 px" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" class="card-img-top center" style="padding: 10px;">
@@ -57,13 +108,13 @@
         {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
+    <div class="faq form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
         <label for="phone" class="control-label">{{ 'เบอร์ติดต่อ' }}</label>
         <input class="form-control" name="phone" type="text" id="phone" value="{{ Auth::user()->profile->phone }}" required>
         {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
     </div>
 
-    <div class="form-group {{ $errors->has('select_pet') ? 'has-error' : ''}}">
+    <div class="faq form-group {{ $errors->has('select_pet') ? 'has-error' : ''}}">
         <label for="select_pet" class="control-label">{{ 'เลือกเจ้าตัวแสบ' }}</label>
         <select name="select_pet" id="select_pet" class="form-control" onchange="select_pet_id();" required>
             <option value="" selected>- เลือกเจ้าตัวแสบ -</option>
@@ -115,22 +166,38 @@
     <input class="d-none" type="text" id="latlng" name="latlng" readonly> 
 
     <br>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test">
- test
-</button>
 
 <!-- Modal -->
-<div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" style="z-index:999999999999;" id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
           <h3>ได้รับข้อมูลเรียบร้อยแล้ว</h3>
             <img width="60%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/03.png') }}">
             <br><br>
-            <h5>สนับสนุนโดย
-               <br> manoonpetshop</h5>
-            <img width="40%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
+            <h5>สนับสนุนโดย</h5>
+            <div class="row">
+        <div class="col-3" >
+            <a href="https://manoonpetshop.co.th/" target="bank">
+                <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
+            </a>
+        </div>
+        <div class="col-3" >
+            <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
+                <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
+            </a>
+        </div>
+        <div class="col-3" style="top:3px;">
+            <a href="https://facebook.com/catsanovabkk/" target="bank">
+                <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
+            </a>
+        </div>
+        <div class="col-3" >
+            <a href="https://www.facebook.com/neverlandsiberians/" target="bank">
+                <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
+            </a>
+        </div>
+      </div>
 
       </div>
     </div>
@@ -138,7 +205,11 @@
 </div>
     <div class="row ">
         <div class="col-1"></div>
-        <input class="col-10 btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
+        <!-- Button trigger modal -->
+        <button id="modal_submit" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
+        แจ้งน้องหาย
+        </button>
+        <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
         <div class="col-1"></div>
     </div>
 
@@ -172,7 +243,9 @@
         </div>
     </div>
 </div>
-
+</section>
+    </div>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgrxXDgk1tgXngalZF3eWtcTWI-LPdeus&language=th" ></script>
 <style type="text/css">
@@ -246,6 +319,7 @@
                 let pet_category_id = document.querySelector('#pet_category_id');
                     pet_category_id.value =  result[0]['pet_category_id'];
 
+                document.querySelector('#modal_submit').classList.remove('d-none');
             });
     }
 
@@ -407,5 +481,11 @@
 
         select_lat_lng();
     }
-
+</script>
+<script> 
+function submit_form_lost_pet(){
+    setTimeout(function(){ 
+          document.getElementById("lost_pet_submit").click(); 
+        }, 3000);
+    }
 </script>
