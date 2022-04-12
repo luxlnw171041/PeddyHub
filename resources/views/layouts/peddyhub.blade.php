@@ -107,13 +107,13 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto">
                                 <li class="nav-item dropdown">
-                                    <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >หน้าแรก</a>
+                                    <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Home page</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >ชุมชน</a>
+                                    <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Community</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >อุปการะ</a>
+                                    <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Adoption</a>
                                 </li>
                                 @guest
                                     <li class="nav-item dropdown">
@@ -125,14 +125,14 @@
                                         <a href="#" style="font-size: 20px; color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle notranslate"
                                             data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
-                                            <li><a href="{{ url('/user#pets') }}">สัตว์เลี้ยง</a></li>
+                                            <li><a href="{{ url('/user') }}">Profile</a></li>
+                                            <li><a href="{{ url('/user#pets') }}">Pet</a></li>
 
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
-                                                    {{ __('ออกจากระบบ') }}
+                                                    {{ __('Logout') }}
                                                 </a>
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                     @csrf
@@ -169,12 +169,12 @@
                                     <div class="navbar-collapse clearfix ">
                                         <ul class="navigation clearfix">    
                                             <li class="d-none"><div id="google_translate_element" onchange="check_language();"></div></li>
-                                            <li><a href="{{ url('/') }}">หน้าแรก</a></li>
+                                            <li><a href="{{ url('/') }}">Home page</a></li>
                                             <li>
-                                                <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >ชุมชน</a>
+                                                <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Comunity</a>
                                             </li>
                                             <li class="nav-item dropdown">
-                                                <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >อุปการะ</a>
+                                                <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Adoption</a>
                                             </li>
                                             
                                             @guest
@@ -187,14 +187,14 @@
                                                     <a href="#" style="color:#B8205B;" class="notranslate hvr-overline-from-center nav-link dropdown-toggle"
                                                         data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="{{ url('/user') }}">โปรไฟล์</a></li>
-                                                        <li><a href="{{ url('/user#pets') }}">สัตว์เลี้ยง</a></li>
+                                                        <li><a href="{{ url('/user') }}">Profile</a></li>
+                                                        <li><a href="{{ url('/user#pets') }}">Pet</a></li>
 
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                                 onclick="event.preventDefault();
                                                                             document.getElementById('logout-form').submit();">
-                                                                {{ __('ออกจากระบบ') }}
+                                                                {{ __('Logout') }}
                                                             </a>
                                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                                 @csrf
