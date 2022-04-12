@@ -168,8 +168,8 @@
     <br>
 
 <!-- Modal -->
-<div class="modal fade" style="z-index:999999999999;" id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade "data-keyboard="false" data-backdrop="static"  id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
           <h3>ได้รับข้อมูลเรียบร้อยแล้ว</h3>

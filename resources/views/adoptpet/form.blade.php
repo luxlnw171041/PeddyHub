@@ -202,7 +202,10 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
                             <div class="d-flex justify-content-end" >
-                            <button type="submit" class="btn btn-11 form-control" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">โพส</button>
+                            <button id="modal_submit" type="button" class="btn  btn-11 " data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
+                                โพส
+                                </button>
+                            <button id="lost_pet_submit" type="submit" class="btn btn-11 form-control d-none" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}"></button>
                             </div>
                         </div>
                     </div>
@@ -210,6 +213,44 @@
             </div>
         </section>
     </div>
+</div>
+
+
+
+<div class="modal fade"  id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+          <h3>ได้รับข้อมูลเรียบร้อยแล้ว</h3>
+            <img width="60%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/03.png') }}">
+            <br><br>
+            <h5>สนับสนุนโดย</h5>
+            <div class="row">
+        <div class="col-3" >
+            <a href="https://manoonpetshop.co.th/" target="bank">
+                <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
+            </a>
+        </div>
+        <div class="col-3" >
+            <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
+                <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
+            </a>
+        </div>
+        <div class="col-3" style="top:3px;">
+            <a href="https://facebook.com/catsanovabkk/" target="bank">
+                <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
+            </a>
+        </div>
+        <div class="col-3" >
+            <a href="https://www.facebook.com/neverlandsiberians/" target="bank">
+                <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
+            </a>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 <div class="form-group d-none display-none {{ $errors->has('user_id') ? 'has-error' : ''}}">
     <label for="user_id" class="control-label">{{ 'User id' }} </label>
@@ -268,3 +309,10 @@
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div> -->
+<script>
+    function submit_form_lost_pet(){
+    setTimeout(function(){ 
+          document.getElementById("lost_pet_submit").click(); 
+        }, 3000);
+    }
+</script>
