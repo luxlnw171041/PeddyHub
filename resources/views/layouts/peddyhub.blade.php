@@ -549,6 +549,11 @@
                             <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
                         </a>
                     </div>
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
+                        <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
+                            <img width="60%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+                        </a>
+                    </div>
                   </div>
                   <div class="col-12 d-block d-md-none" style="padding-bottom:45px;">
                     <div class="row">
@@ -563,7 +568,7 @@
                           </a>
                       </div>
                       <div class="col-3" style="margin-left:10px;">
-                          <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
+                          <a href="https://facebook.com/DogInTownCafeEkkamai/" target="bank">
                               <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
                           </a>
                       </div>
@@ -575,6 +580,11 @@
                       <div class="col-3" style="margin-left:20px;top:7px;">
                           <a href="https://www.facebook.com/neverlandsiberians/" target="bank">
                               <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
+                          </a>
+                      </div>
+                      <div class="col-3" style="margin-left:20px;top:7px;">
+                          <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
+                              <img width="60%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
                           </a>
                       </div>
                     </div>

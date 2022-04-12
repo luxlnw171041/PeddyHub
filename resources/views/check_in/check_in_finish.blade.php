@@ -43,7 +43,7 @@
   <h6 class="col-10 d-flex justify-content-start" style="left:10px;padding:0px;margin:0px;font-family: 'Sarabun', sans-serif;font-weight:600;">สนับสนุนโดย</h6>
   <hr class="col-10" style="margin-top:10px;padding:19;left:10px;">
     <div class="col-12" style="margin-bottom:-20px;">
-      <div class="row">
+      <div class="row text-center">
         <div class="col-3" >
             <a href="https://manoonpetshop.co.th/" target="bank">
                 <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
@@ -64,6 +64,11 @@
                 <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
             </a>
         </div>
+        <div class="col-12" style="top:7px;">
+              <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
+                  <img width="13%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+              </a>
+          </div>
       </div>
     </div>
   <br><br>

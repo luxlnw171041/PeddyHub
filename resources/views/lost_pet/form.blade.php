@@ -197,8 +197,13 @@
                 <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
             </a>
         </div>
+        <div class="col-12 text-center">
+            <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
+                <img width="13%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+            </a>
+        </div>
+        
       </div>
-
       </div>
     </div>
   </div>
@@ -206,7 +211,7 @@
     <div class="row ">
         <div class="col-1"></div>
         <!-- Button trigger modal -->
-        <button id="modal_submit" type="button" class="btn btn-primary d-none button-three" data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
+        <button id="modal_submit" type="button" class="btn btn-primary d-none button-three" data-toggle="modal" data-target="#modal_thx"  onclick="submit_form_lost_pet();">
         แจ้งน้องหาย
         </button>
         <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
