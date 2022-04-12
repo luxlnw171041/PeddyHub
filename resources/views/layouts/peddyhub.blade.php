@@ -549,9 +549,9 @@
                             <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
                         </a>
                     </div>
-                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-15px;">
                         <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
-                            <img width="60%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+                            <img width="65%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
                         </a>
                     </div>
                   </div>
@@ -582,7 +582,7 @@
                               <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
                           </a>
                       </div>
-                      <div class="col-3" style="margin-left:20px;top:7px;">
+                      <div class="col-3" style="margin-left:10px;top:7px;">
                           <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
                               <img width="60%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
                           </a>
