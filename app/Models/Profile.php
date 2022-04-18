@@ -38,5 +38,7 @@ class Profile extends Model
     public function pets(){
         return $this->hasMany('App\Models\Pet', 'user_id'); 
     } 
-    
+    public function check_ins(){
+        return $this->hasMany('App\Models\Check_in', 'user_id'); 
+    } 
 }

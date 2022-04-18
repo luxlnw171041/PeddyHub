@@ -27,9 +27,32 @@
 <div class="text-center">
     <img style="margin-top:10px;" class="wow fadeInUp" width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/01.png') }}">
 </div>
-
-
-<br><br>
+    <!-- ชื่อ นามสกุล -->
+<br>
+    @if(!empty($real_name))
+        <h4 class="text-center wow fadeInLeft">
+            คุณ:{{$real_name}}
+        </h4>
+        
+    @else
+        <div  class="faq form-group {{ $errors->has('real_name') ? 'has-error' : ''}}">
+            <label for="real_name" class="control-label translate">{{ 'First name - Surname' }} </label>
+            <input style="border-radius: 25px 0px 25px 25px ;" class="form-control" name="real_name" type="text" id="real_name" value="{{ $real_name }}" required >
+            {!! $errors->first('real_name', '<p class="help-block">:message</p>') !!}
+        </div>
+    @endif
+    <!-- เบอร์ -->
+    @if(!empty($phone_user))
+        <h6 class="text-center wow fadeInRight">เบอร์โทร:{{$phone_user}}</h6>
+        
+    @else
+        <div class="faq form-group {{ $errors->has('phone_user') ? 'has-error' : ''}}">
+            <label for="phone_user" class="control-label translate">{{ 'Phone Number' }}</label>
+            <input style="border-radius: 25px 0px 25px 25px ;" class="form-control" name="phone_user" type="text" id="phone_user" value="{{ $phone_user }}" pattern="[0-9]{10}">
+            {!! $errors->first('phone_user', '<p class="help-block">:message</p>') !!}
+        </div>
+    @endif
+<br>
 
 <input class="form-control d-none" name="check_in_out" type="text" id="check_in_out" value="" >
 <div class="text-center wow fadeInDown">

@@ -28,4 +28,7 @@ class Check_in extends Model
     protected $fillable = ['user_id', 'time_in', 'time_out', 'check_in_at'];
 
     
+    public function profile(){
+        return $this->belongsTo('App\Models\Profile', 'user_id'); 
+    }
 }

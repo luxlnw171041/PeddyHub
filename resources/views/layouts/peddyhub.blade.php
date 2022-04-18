@@ -127,7 +127,11 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="{{ url('/user') }}">Profile</a></li>
                                             <li><a href="{{ url('/user#pets') }}">Pet</a></li>
-
+                                            @if(Auth::user()->role == "admin" )
+                                              <li><a href="{{ url('/text_topic') }}">admin</a></li>
+                                            @elseif(Auth::user()->role == "admin-partner" )
+                                              <li><a href="{{ url('/check_in_admin') }}">admin-partner</a></li>
+                                            @endif
                                             <li>
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();
@@ -189,6 +193,11 @@
                                                     <ul class="dropdown-menu">
                                                         <li><a href="{{ url('/user') }}">Profile</a></li>
                                                         <li><a href="{{ url('/user#pets') }}">Pet</a></li>
+                                                        @if(Auth::user()->role == "admin" )
+                                                        <li><a href="{{ url('/text_topic') }}">admin</a></li>
+                                                        @elseif(Auth::user()->role == "admin-partner" )
+                                                        <li><a href="{{ url('/check_in_admin') }}">admin-partner</a></li>
+                                                        @endif
 
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"

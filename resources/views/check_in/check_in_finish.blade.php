@@ -14,7 +14,7 @@
             @if($type == "CHECK OUT")
               <h2 class="text-danger notranslate" style="font-family: 'Days One', sans-serif;"><b>{{ $type }}</b></h2>
             @endif
-            <h4>คุณ : <b>{{ Auth::user()->profile->name }}</b></h4>
+            <h4>คุณ : <b>{{ Auth::user()->profile->real_name }}</b></h4>
             <h4 style="color:blue;font-family: 'Sarabun', sans-serif;"><b><u>วัน{{ thaidate("l j F Y" , strtotime($time)) }}</u></b></h4>
             <h4 style="color:blue;font-family: 'Sarabun', sans-serif;"><b><u>เวลา {{ thaidate("H:i" , strtotime($time)) }}</u></b></h4>
             <br>

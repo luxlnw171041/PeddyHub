@@ -32,11 +32,10 @@ Route::get('/pet_insurance', function () {
 });
 // ADMIN
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/media', function () {
-        return view('media');
-    });
+    
     Route::resource('text_topic', 'Text_topicController');
     Route::resource('hospital_near', 'Hospital_nearController');
+    Route::resource('partner', 'PartnerController'); 
 
 });
 // END ADMIN
@@ -101,8 +100,11 @@ Route::get('hospital_near', 'Hospital_nearController@index');
 
 Route::middleware(['auth', 'role:admin-partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
+    Route::get('check_in_admin', 'Check_inController@index');
+    Route::get('/media', function () {
+        return view('partner_admin/media');
+    });
     // Route::get('blood_bank/wait_user', 'Blood_bankController@wait_user');
 });
 
-Route::resource('partner', 'PartnerController'); 
-Route::resource('check_in', 'Check_inController');
+Route::resource('check_in', 'Check_inController')->except(['index','show']);

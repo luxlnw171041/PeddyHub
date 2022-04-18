@@ -21,20 +21,68 @@ class Check_inController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
+        $requestData = $request->all();
         $perPage = 25;
+        $data_user = Auth::user();
 
-        if (!empty($keyword)) {
-            $check_in = Check_in::where('user_id', 'LIKE', "%$keyword%")
-                ->orWhere('time_in', 'LIKE', "%$keyword%")
-                ->orWhere('time_out', 'LIKE', "%$keyword%")
-                ->orWhere('check_in_at', 'LIKE', "%$keyword%")
+        $check_in_at = $data_user->partner;
+
+        $select_date = $request->get('select_date');
+        $select_time_1 = $request->get('select_time_1');
+        $select_time_2 = $request->get('select_time_2');
+        $select_name = $request->get('select_name');
+
+       
+        // ชื่อ อย่างเดียว
+        if ( !empty($select_name) and empty($select_time_1) and empty($select_date) ) {
+            $check_in = Check_in::where('check_in_at', $data_user->partner)
+                ->where('user_id','LIKE', "%$select_name%")
                 ->latest()->paginate($perPage);
-        } else {
-            $check_in = Check_in::latest()->paginate($perPage);
+        }
+        // วันที่ อย่างเดียว
+        else if ( !empty($select_date) and empty($select_time_1) and empty($select_name) ) {
+            $check_in = Check_in::where('check_in_at', $data_user->partner)
+                ->whereDate('created_at', $select_date)
+                ->latest()->paginate($perPage);
+        }
+        // วันที่ และ ชื่อ.
+        else if ( !empty($select_date) and !empty($select_name) and empty($select_time_1) ) {
+            $check_in = Check_in::where('check_in_at', $data_user->partner)
+                ->where('user_id','LIKE', "%$select_name%")
+                ->whereDate('created_at', $select_date)
+                ->latest()->paginate($perPage);
+        }
+        // วันที่ และ เวลา
+        else if ( !empty($select_date) and !empty($select_time_1) and empty($select_name) ) {
+            $date_and_time_1 =  $select_date . " " . $select_time_1 ;
+            $date_and_time_1 = date("Y/m/d H:i" , strtotime($date_and_time_1));
+
+            $date_and_time_2 =  $select_date . " " . $select_time_2 ;
+            $date_and_time_2 = date("Y/m/d H:i" , strtotime($date_and_time_2));
+
+            $check_in = Check_in::where('check_in_at', $data_user->partner)
+                ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
+                ->latest()->paginate($perPage);
+        }
+        // วันที่ และ เวลา และ ชื่อ
+        else if ( !empty($select_date) and !empty($select_time_1) and !empty($select_name) ) {
+            $date_and_time_1 =  $select_date . " " . $select_time_1 ;
+            $date_and_time_1 = date("Y/m/d H:i" , strtotime($date_and_time_1));
+
+            $date_and_time_2 =  $select_date . " " . $select_time_2 ;
+            $date_and_time_2 = date("Y/m/d H:i" , strtotime($date_and_time_2));
+
+            $check_in = Check_in::where('check_in_at', $data_user->partner)
+                ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
+                ->where('user_id','LIKE', "%$select_name%")
+                ->latest()->paginate($perPage);
+        }
+        // ว่าง
+        else {
+            $check_in = Check_in::where('check_in_at', $data_user->partner)->latest()->paginate($perPage);
         }
 
-        return view('check_in.index', compact('check_in'));
+        return view('check_in.index', compact('check_in','check_in_at'));
     }
 
     /**
@@ -49,7 +97,10 @@ class Check_inController extends Controller
 
         $data_partner = Partner::where('id' , $location)->get();
 
-        return view('check_in.create', compact('location', 'date_now' , 'data_partner'));
+        $real_name = Auth::user()->profile->real_name;
+        $phone_user = Auth::user()->profile->phone;
+
+        return view('check_in.create', compact('location', 'date_now' , 'data_partner','real_name','phone_user'));
     }
 
     /**
@@ -103,7 +154,22 @@ class Check_inController extends Controller
             $time = $requestData['time_out'] ;
             $type = "CHECK OUT" ;
         }
-
+        // เบอร์
+        if(!empty($requestData['phone_user'])){
+            DB::table('profiles')
+              ->where('id', $requestData['user_id'])
+              ->update([
+                'phone' => $requestData['phone_user'],
+            ]);
+        }
+        //ชื่อจริง
+        if(!empty($requestData['real_name'])){
+            DB::table('profiles')
+              ->where('id', $requestData['user_id'])
+              ->update([
+                'real_name' => $requestData['real_name'],
+            ]);
+        }
         $data_in_out = check_in::where('user_id', $requestData['user_id'])
             ->where('check_in_at', $requestData['check_in_at'])
             ->latest()
