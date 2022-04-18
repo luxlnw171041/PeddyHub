@@ -232,14 +232,14 @@
                                             </div>
                                             <div class="description" style="font-size: 15px;margin-top:5px;">ผู้ใช้</div>
                                         </div>
-                                        <div class="box language text-center">
-                                            <img  class="icon" width="80px;" src="peddyhub/images/home_5/svg/language.svg"  alt="Kiwi standing on oval">
+                                        <div class="box thai text-center">
+                                            <img  class="icon" width="80px;" src="peddyhub/images/home_5/svg/thai.svg"  alt="Kiwi standing on oval">
 
                                             <div class="num" >
-                                                <span class="counting-value" style="font-size: 35px;">12</span>
+                                                <span class="counting-value" style="font-size: 35px;">77</span>
                                                 <span style="font-size: 35px;">+</span>
                                             </div>
-                                            <div class="description" style="font-size: 15px;margin-top:5px;">ภาษาที่รองรับ</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;">จังหวัดที่คลอบคลุม</div>
                                         </div>
                                     </div>
                                 </div>
