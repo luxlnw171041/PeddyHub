@@ -217,29 +217,29 @@ class PartnersController extends Controller
 
                 
                 // TIME ZONE
-                $API_Time_zone = new API_Time_zone();
-                $time_zone = $API_Time_zone->change_Time_zone($profile->time_zone);
+                // $API_Time_zone = new API_Time_zone();
+                // $time_zone = $API_Time_zone->change_Time_zone($profile->time_zone);
 
-                $data_topic = [
-                    "เรียนคุณ",
-                    "ด้วยสถานการณ์การระบาดของ Coronavirus Disease 2019 (COVID -19) ขณะนี้ท่านอยู่ในกลุ่มเสี่ยง",
-                    "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
-                    "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อไวรัสโคโรนา กรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
-                    "วัน / เวลา",
-                ];
+                // $data_topic = [
+                //     "เรียนคุณ",
+                //     "ด้วยสถานการณ์การระบาดของ Coronavirus Disease 2019 (COVID -19) ขณะนี้ท่านอยู่ในกลุ่มเสี่ยง",
+                //     "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
+                //     "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อไวรัสโคโรนา กรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
+                //     "วัน / เวลา",
+                // ];
 
-                for ($xi=0; $xi < count($data_topic); $xi++) { 
+                // for ($xi=0; $xi < count($data_topic); $xi++) { 
 
-                    $text_topic = DB::table('text_topics')
-                            ->select($user_language)
-                            ->where('th', $data_topic[$xi])
-                            ->where('en', "!=", null)
-                            ->get();
+                //     $text_topic = DB::table('text_topics')
+                //             ->select($user_language)
+                //             ->where('th', $data_topic[$xi])
+                //             ->where('en', "!=", null)
+                //             ->get();
 
-                    foreach ($text_topic as $item_of_text_topic) {
-                        $data_topic[$xi] = $item_of_text_topic->$user_language ;
-                    }
-                }
+                //     foreach ($text_topic as $item_of_text_topic) {
+                //         $data_topic[$xi] = $item_of_text_topic->$user_language ;
+                //     }
+                // }
 
                 $template_path = storage_path('../public/json/risk_group.json');
                 $string_json = file_get_contents($template_path);
@@ -254,9 +254,9 @@ class PartnersController extends Controller
                 // $string_json = str_replace("text_03",$data_topic[3],$string_json);
                 // $string_json = str_replace("ตามวัน / เวลาด้านล่าง",$data_topic[4],$string_json);
 
-                // $string_json = str_replace("text_time_1",$text_time[0],$string_json);
-                // $string_json = str_replace("text_time_2",$text_time[1],$string_json);
-                // $string_json = str_replace("text_time_3",$text_time[2],$string_json);
+                $string_json = str_replace("text_time_1",$text_time[0],$string_json);
+                $string_json = str_replace("text_time_2",$text_time[1],$string_json);
+                $string_json = str_replace("text_time_3",$text_time[2],$string_json);
                 
 
                 $messages = [ json_decode($string_json, true) ];
