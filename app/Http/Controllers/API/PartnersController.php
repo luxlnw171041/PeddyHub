@@ -218,8 +218,8 @@ class PartnersController extends Controller
                 
 
                 // TIME ZONE
-                // $API_Time_zone = new API_Time_zone();
-                // $time_zone = $API_Time_zone->change_Time_zone($profile->time_zone);
+                $API_Time_zone = new API_Time_zone();
+                $time_zone = $API_Time_zone->change_Time_zone($profile->time_zone);
 
                 $data_topic = [
                             "เรียนคุณ",
