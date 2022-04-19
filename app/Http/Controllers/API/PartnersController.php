@@ -286,7 +286,7 @@ class PartnersController extends Controller
                     "title" => "คุณคือกลุ่มเสี่ยง",
                     "content" => $profile->name . 'คือกลุ่มเสี่ยง',
                 ];
-                MyLog::create($data_2);
+                Mylog::create($data_2);
 
                 $date_now = date("Y-m-d");
 
