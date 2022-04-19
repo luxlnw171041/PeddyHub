@@ -36,7 +36,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('text_topic', 'Text_topicController');
     Route::resource('hospital_near', 'Hospital_nearController');
     Route::resource('partner', 'PartnerController'); 
-
+    Route::resource('time_zone', 'Time_zoneController');
 });
 // END ADMIN
 
