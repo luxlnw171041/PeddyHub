@@ -91,7 +91,11 @@
                         @foreach($check_in as $item)
                             <tr>
                                 <td>
-                                    {{ $item->profile->name }}
+                                    @if(!empty($item->profile->real_name))
+                                        {{ $item->profile->real_name }}
+                                    @else
+                                        {{ $item->profile->name }}
+                                    @endif
                                 </td>
 
                                 <td>
@@ -134,14 +138,14 @@
                                                 <h5>ค้นหาชื่อ</h5>
                                             </div>
                                             <div class="col-3">
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="ค้นหาจากชื่อ...">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="ค้นหาจากชื่อ..." oninput="search_name('{{ $check_in_at }}');">
                                             </div>
                                         </div>
                                     </div>
                             </div>
                             <br>
                             <div class="row col-12">
-                                <div id="div_content_search_std">
+                                <div id="div_content_search_name">
                                     
                                 </div>
                             </div>
@@ -233,5 +237,313 @@
                 </div>
             </div>
         </div> -->
+
+<script>
+    function search_name(check_in_at){
+
+        let name = document.querySelector('#name');
+
+        fetch("{{ url('/') }}/api/search_name/"+ name.value + "/" + check_in_at)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                let div_content_search_name = document.querySelector('#div_content_search_name');
+                    div_content_search_name.textContent = "" ;
+
+                    let div_header = document.createElement("div");
+                    let class_div_header = document.createAttribute("class");
+                        class_div_header.value = "row col-12";
+                        div_header.setAttributeNode(class_div_header); 
+
+                        // titel name
+                        let div_header_name = document.createElement("div");
+                        let class_div_header_name = document.createAttribute("class");
+                            class_div_header_name.value = "col-4 text-center";
+                            div_header_name.setAttributeNode(class_div_header_name);
+                            let para_name = document.createElement("P");
+                                para_name.innerHTML = "ชื่อ";
+                                div_header_name.appendChild(para_name);
+                        div_header.appendChild(div_header_name);
+
+                        // titel phone
+                        let div_header_phone = document.createElement("div");
+                        let class_div_header_phone = document.createAttribute("class");
+                            class_div_header_phone.value = "col-4 text-center";
+                            div_header_phone.setAttributeNode(class_div_header_phone);
+                            let para_phone = document.createElement("P");
+                                para_phone.innerHTML = "เบอร์โทร";
+                                div_header_phone.appendChild(para_phone);
+                        div_header.appendChild(div_header_phone);
+
+                        // titel btn
+                        let div_header_btn = document.createElement("div");
+                        let class_div_header_btn = document.createAttribute("class");
+                            class_div_header_btn.value = "col-4 text-center";
+                            div_header_btn.setAttributeNode(class_div_header_btn);
+                        div_header.appendChild(div_header_btn);
+
+                    let hr = document.createElement("hr");
+                        div_header.appendChild(hr);
+
+                    div_content_search_name.appendChild(div_header);
+
+                    // div_data
+                    let div_data = document.createElement("div");
+                    let class_div_data = document.createAttribute("class");
+                        class_div_data.value = "row col-12";
+                        div_data.setAttributeNode(class_div_data);
+
+                for(let item of result){
+
+                    // data name
+                        let div_data_name = document.createElement("div");
+                        let class_div_data_name = document.createAttribute("class");
+                            class_div_data_name.value = "col-4";
+                            div_data_name.setAttributeNode(class_div_data_name);
+                            let para_data_name = document.createElement("P");
+                            let style_para_name = document.createAttribute("style");
+                                style_para_name.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;";
+                                para_data_name.setAttributeNode(style_para_name); 
+
+                                if (item.real_name) {
+                                    para_data_name.innerHTML = item.real_name
+                                }else{
+                                    para_data_name.innerHTML = item.name
+                                }
+
+                                div_data_name.appendChild(para_data_name);
+                                div_data.appendChild(div_data_name);
+
+                    // data phone
+                        let div_data_phone = document.createElement("div");
+                        let class_div_data_phone = document.createAttribute("class");
+                            class_div_data_phone.value = "col-4 text-center";
+                            div_data_phone.setAttributeNode(class_div_data_phone);
+                            let para_data_phone = document.createElement("P");
+                            let style_para_phone = document.createAttribute("style");
+                                style_para_phone.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;";
+                                para_data_phone.setAttributeNode(style_para_phone); 
+                                para_data_phone.innerHTML = item.phone
+
+                                div_data_phone.appendChild(para_data_phone);
+                                div_data.appendChild(div_data_phone);
+
+                    // data btn
+                        let div_data_btn = document.createElement("div");
+                        let class_div_data_btn = document.createAttribute("class");
+                            class_div_data_btn.value = "col-4 text-center";
+                            div_data_btn.setAttributeNode(class_div_data_btn);
+
+                            let btn_data = document.createElement("button");
+                            btn_data.innerHTML = '<i class="fas fa-viruses"></i> ติดโควิด !'
+                            let class_btn_data = document.createAttribute("class");
+                                class_btn_data.value = "btn btn-danger";
+                                btn_data.setAttributeNode(class_btn_data); 
+                            let style_btn_data = document.createAttribute("style");
+                                style_btn_data.value = "margin-top: 20px;";
+                                btn_data.setAttributeNode(style_btn_data);
+
+                            let btn_data_onclick = document.createAttribute("onclick");
+                                btn_data_onclick.value = "show_group_risk("+ item.id +",'" + check_in_at + "');";
+                                btn_data.setAttributeNode(btn_data_onclick);  
+                                
+                                div_data_btn.appendChild(btn_data);
+                                div_data.appendChild(div_data_btn);
+
+                    let div_data_hr = document.createElement("hr");
+                        div_data.appendChild(div_data_hr);
+
+
+
+                    div_content_search_name.appendChild(div_data);
+
+                }
+
+        });
+    }
+
+    function show_group_risk(id , check_in_at){
+        let div_content_search_name = document.querySelector('#div_content_search_name');
+            div_content_search_name.textContent = "" ;
+
+        fetch("{{ url('/') }}/api/show_group_risk/" + id + "/" + check_in_at)
+            .then(response => response.json())
+            .then(result => {
+            // console.log(result);
+
+            let text_array = document.querySelector('#text_array');
+                text_array.value = JSON.stringify(result);
+
+            let div_btn_send = document.createElement("div");
+
+            let class_div_btn_send = document.createAttribute("class");
+                    class_div_btn_send.value = "row col-12";
+                    div_btn_send.setAttributeNode(class_div_btn_send);
+
+            // data col-9
+                let div_btn_col_9 = document.createElement("div");
+                let class_div_btn_col_9 = document.createAttribute("class");
+                    class_div_btn_col_9.value = "col-9 text-center";
+                    div_btn_col_9.setAttributeNode(class_div_btn_col_9);
+
+                    div_btn_send.appendChild(div_btn_col_9);
+
+            // data col-3 btn
+                let div_btn_col_3 = document.createElement("div");
+                let class_div_btn_col_3 = document.createAttribute("class");
+                    class_div_btn_col_3.value = "col-3 text-center";
+                    div_btn_col_3.setAttributeNode(class_div_btn_col_3);
+
+                    let btn_send = document.createElement("button");
+                        btn_send.innerHTML = '<i class="fas fa-share-square"></i> ส่งข้อความเตือน !'
+                    let class_btn_send = document.createAttribute("class");
+                        class_btn_send.value = "btn btn-info text-white";
+                        btn_send.setAttributeNode(class_btn_send); 
+                    let style_btn_send = document.createAttribute("style");
+                        style_btn_send.value = "margin-top: 15px;";
+                        btn_send.setAttributeNode(style_btn_send);
+
+                    let btn_send_onclick = document.createAttribute("onclick");
+                        btn_send_onclick.value = "send_risk_group();";
+                        btn_send.setAttributeNode(btn_send_onclick);  
+                        
+                        div_btn_col_3.appendChild(btn_send);
+                        div_btn_send.appendChild(div_btn_col_3);
+
+                div_content_search_name.appendChild(div_btn_send);
+
+            // ----------------------------------------
+
+                let div_header = document.createElement("div");
+                let class_div_header = document.createAttribute("class");
+                    class_div_header.value = "row col-12";
+                    div_header.setAttributeNode(class_div_header); 
+
+                    // titel name
+                    let div_header_name = document.createElement("div");
+                    let class_div_header_name = document.createAttribute("class");
+                        class_div_header_name.value = "col-4 text-center";
+                        div_header_name.setAttributeNode(class_div_header_name);
+                        let para_name = document.createElement("P");
+                            para_name.innerHTML = "ชื่อ";
+                            div_header_name.appendChild(para_name);
+                    div_header.appendChild(div_header_name);
+
+                    // titel phone
+                    let div_header_phone = document.createElement("div");
+                    let class_div_header_phone = document.createAttribute("class");
+                        class_div_header_phone.value = "col-4 text-center";
+                        div_header_phone.setAttributeNode(class_div_header_phone);
+                        let para_phone = document.createElement("P");
+                            para_phone.innerHTML = "เบอร์โทร";
+                            div_header_phone.appendChild(para_phone);
+                    div_header.appendChild(div_header_phone);
+
+                    // titel btn
+                    let div_header_btn = document.createElement("div");
+                    let class_div_header_btn = document.createAttribute("class");
+                        class_div_header_btn.value = "col-4 text-center";
+                        div_header_btn.setAttributeNode(class_div_header_btn);
+                    div_header.appendChild(div_header_btn);
+
+                let hr = document.createElement("hr");
+                    div_header.appendChild(hr);
+
+                div_content_search_name.appendChild(div_header);
+
+                // div_data
+                let show_div_data = document.createElement("div");
+                let class_div_data = document.createAttribute("class");
+                    class_div_data.value = "row col-12";
+                    show_div_data.setAttributeNode(class_div_data);
+
+            for(let item of result){
+                // data name
+                    let show_div_data_name = document.createElement("div");
+                    let show_class_div_data_name = document.createAttribute("class");
+                        show_class_div_data_name.value = "col-4";
+                        show_div_data_name.setAttributeNode(show_class_div_data_name);
+                        let show_para_data_name = document.createElement("P");
+                        let show_style_para_name = document.createAttribute("style");
+                            show_style_para_name.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;";
+                            show_para_data_name.setAttributeNode(show_style_para_name); 
+                            show_para_data_name.innerHTML = item.real_name
+
+                            show_div_data_name.appendChild(show_para_data_name);
+                            show_div_data.appendChild(show_div_data_name);
+
+                // data phone
+                    let show_div_data_phone = document.createElement("div");
+                    let show_class_div_data_phone = document.createAttribute("class");
+                        show_class_div_data_phone.value = "col-4 text-center";
+                        show_div_data_phone.setAttributeNode(show_class_div_data_phone);
+                        let show_para_data_phone = document.createElement("P");
+                        let show_style_para_phone = document.createAttribute("style");
+                            show_style_para_phone.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;";
+                            show_para_data_phone.setAttributeNode(show_style_para_phone); 
+                            show_para_data_phone.innerHTML = item.phone
+
+                            show_div_data_phone.appendChild(show_para_data_phone);
+                            show_div_data.appendChild(show_div_data_phone);
+
+                // data text
+                    let show_div_data_text = document.createElement("div");
+                    let show_class_div_data_text = document.createAttribute("class");
+                        show_class_div_data_text.value = "col-4 text-center";
+                        show_div_data_text.setAttributeNode(show_class_div_data_text);
+                        let show_para_data_text = document.createElement("P");
+                        let show_style_para_text = document.createAttribute("style");
+                            show_style_para_text.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;color:red;";
+                            show_para_data_text.setAttributeNode(show_style_para_text); 
+                            show_para_data_text.innerHTML = "กลุ่มเสี่ยง"
+
+                            show_div_data_text.appendChild(show_para_data_text);
+                            show_div_data.appendChild(show_div_data_text);
+
+                let show_hr = document.createElement("hr");
+                    show_div_data.appendChild(show_hr);
+
+                div_content_search_name.appendChild(show_div_data);
+
+            }
+
+        });
+    }
+
+    function send_risk_group(){
+        let text_array = document.querySelector('#text_array');
+
+        // console.log(text_array.value);
+
+        fetch("{{ url('/') }}/api/send_risk_group", {
+            method: 'post',
+            body: text_array.value,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response){
+            return response.text();
+        }).then(function(text){
+            // console.log(text);
+            document.querySelector('#close_madal_main').click();
+            let div_content_search_std = document.querySelector('#div_content_search_std');
+                div_content_search_std.textContent = "" ;
+
+            document.querySelector('#btn_modal_send_finish').click();
+            
+                var delayInMilliseconds = 3000; 
+                    setTimeout(function() {
+                      document.querySelector('#close_madal_send_finish').click();
+                    }, delayInMilliseconds);
+
+        }).catch(function(error){
+            // console.error(error);
+        });
+    }
+
+</script>
+
+
     @endsection
 @endif
