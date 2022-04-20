@@ -181,6 +181,10 @@ class PartnersController extends Controller
                 ->where('send_covid' , null)
                 ->get();
 
+            $users = DB::table('users')
+                ->where('id', $user_id)
+                ->get();
+
             foreach ($profiles as $profile) {
 
                 $user_language = $profile->language ;
@@ -191,15 +195,16 @@ class PartnersController extends Controller
                     ->take(3)
                     ->get();
 
+                $data_location_check_in = Partner::where('id' , $check_in_at)->get();
+                foreach ($data_location_check_in as $key) {
+                    $check_in_at = $key->name ;
+                }
+
                 $zx=0;
                 foreach ($data_in_outs as $data_in_out ) {
                     $text_time[$zx] = date("d/m/Y H:i" , strtotime($data_in_out->created_at)) ;
                     $zx = $zx + 1 ;    
                 }
-
-                $text_time_1 = "-" ;
-                $text_time_2 = "-" ;
-                $text_time_3 = "-" ;
 
                 if (!empty($text_time[0])) {
                    $text_time_1 = $text_time[0] ;
@@ -258,17 +263,19 @@ class PartnersController extends Controller
                 $string_json = str_replace("text_03",$data_topic[3],$string_json);
                 $string_json = str_replace("ตามวัน / เวลาด้านล่าง",$data_topic[4],$string_json);
 
-                $string_json = str_replace("text_time_1",$text_time[0],$string_json);
-                $string_json = str_replace("text_time_2",$text_time[1],$string_json);
-                $string_json = str_replace("text_time_3",$text_time[2],$string_json);
+                $string_json = str_replace("text_time_1",$text_time_1,$string_json);
+                $string_json = str_replace("text_time_2",$text_time_2,$string_json);
+                $string_json = str_replace("text_time_3",$text_time_3,$string_json);
                 
 
                 $messages = [ json_decode($string_json, true) ];
 
-                $body = [
-                    "to" => $profile->user->provider_id,
-                    "messages" => $messages,
-                ];
+                foreach ($users as $user) {
+                    $body = [
+                        "to" => $user->provider_id,
+                        "messages" => $messages,
+                    ];
+                }
 
                 $opts = [
                     'http' =>[
