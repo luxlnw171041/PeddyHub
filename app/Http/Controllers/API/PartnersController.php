@@ -40,7 +40,7 @@ class PartnersController extends Controller
         $uesr_risk_groups = array();
         $data_user_risk_groups = array();
         
-        $groupBy_date = check_in::where("user_id" , $user_id)
+        $groupBy_date = Check_in::where("user_id" , $user_id)
             ->where("check_in_at", $check_in_at)
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))
             ->get();
@@ -54,7 +54,7 @@ class PartnersController extends Controller
             // echo "<br>";
             // echo date("Y/m/d" , strtotime($key->created_at ));
 
-            $time_in_of_date = check_in::where("user_id" , $user_id)
+            $time_in_of_date = Check_in::where("user_id" , $user_id)
                 ->select('time_in')
                 ->where("check_in_at", $check_in_at)
                 ->where("time_in", "!=" , null)
@@ -67,7 +67,7 @@ class PartnersController extends Controller
                 $time_in = $item->time_in;
             }
 
-            $time_out_of_date = check_in::where("user_id" , $user_id)
+            $time_out_of_date = Check_in::where("user_id" , $user_id)
                 ->select('time_out')
                 ->where("check_in_at", $check_in_at)
                 ->where("time_out", "!=" , null)
@@ -115,7 +115,7 @@ class PartnersController extends Controller
             // echo $date_time_out;
             
 
-            $risk_groups = check_in::where("user_id" ,"!=" , $user_id)
+            $risk_groups = Check_in::where("user_id" ,"!=" , $user_id)
                 ->where("check_in_at", $check_in_at)
                 ->whereBetween('created_at', [$date_time_in, $date_time_out])
                 ->groupBy('user_id')
@@ -176,7 +176,7 @@ class PartnersController extends Controller
             $user_id = $data[$i]['id'] ;
 
             $profiles = DB::table('profiles')
-                ->where('id', $user_id)
+                ->where('user_id', $user_id)
                 ->where('type' , 'line')
                 ->where('send_covid' , null)
                 ->get();
@@ -185,7 +185,7 @@ class PartnersController extends Controller
 
                 $user_language = $profile->language ;
 
-                $data_in_outs = check_in::where('user_id', $profile->id)
+                $data_in_outs = Check_in::where('user_id', $profile->id)
                     ->where('check_in_at', $check_in_at)
                     ->latest()
                     ->take(3)
@@ -197,62 +197,66 @@ class PartnersController extends Controller
                     $zx = $zx + 1 ;    
                 }
 
+                $text_time_1 = "-" ;
+                $text_time_2 = "-" ;
+                $text_time_3 = "-" ;
+
                 if (!empty($text_time[0])) {
                    $text_time_1 = $text_time[0] ;
                 }else{
-                    $text_time_1 = "" ;
+                    $text_time_1 = "-" ;
                 }
 
                 if (!empty($text_time[1])) {
                    $text_time_2 = $text_time[1] ;
                 }else{
-                    $text_time_2 = "" ;
+                    $text_time_2 = "-" ;
                 }
 
                 if (!empty($text_time[2])) {
                    $text_time_3 = $text_time[2] ;
                 }else{
-                    $text_time_3 = "" ;
+                    $text_time_3 = "-" ;
                 }
 
                 
                 // TIME ZONE
                 // $API_Time_zone = new API_Time_zone();
-                // $time_zone = $API_Time_zone->change_Time_zone($profile->time_zone);
+                // $time_zone = $API_Time_zone->change_Time_zone($profile->user->time_zone);
 
-                // $data_topic = [
-                //     "เรียนคุณ",
-                //     "ด้วยสถานการณ์การระบาดของ Coronavirus Disease 2019 (COVID -19) ขณะนี้ท่านอยู่ในกลุ่มเสี่ยง",
-                //     "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
-                //     "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อไวรัสโคโรนา กรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
-                //     "วัน / เวลา",
-                // ];
+                $data_topic = [
+                    "เรียนคุณ",
+                    "ด้วยสถานการณ์การระบาดของ Coronavirus Disease 2019 (COVID -19) ขณะนี้ท่านอยู่ในกลุ่มเสี่ยง",
+                    "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
+                    "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อไวรัสโคโรนา กรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
+                    "วัน / เวลา",
+                ];
 
-                // for ($xi=0; $xi < count($data_topic); $xi++) { 
+                for ($xi=0; $xi < count($data_topic); $xi++) { 
 
-                //     $text_topic = DB::table('text_topics')
-                //             ->select($user_language)
-                //             ->where('th', $data_topic[$xi])
-                //             ->where('en', "!=", null)
-                //             ->get();
+                    $text_topic = DB::table('text_topics')
+                            ->select($user_language)
+                            ->where('th', $data_topic[$xi])
+                            ->where('en', "!=", null)
+                            ->get();
 
-                //     foreach ($text_topic as $item_of_text_topic) {
-                //         $data_topic[$xi] = $item_of_text_topic->$user_language ;
-                //     }
-                // }
+                    foreach ($text_topic as $item_of_text_topic) {
+                        $data_topic[$xi] = $item_of_text_topic->$user_language ;
+                    }
+                }
 
                 $template_path = storage_path('../public/json/risk_group.json');
                 $string_json = file_get_contents($template_path);
                 // users 
-                // $string_json = str_replace("ตัวอย่าง",$data_topic[0],$string_json);
-                // $string_json = str_replace("เรียนคุณ",$data_topic[0],$string_json);
-                // $string_json = str_replace("check_in_area",$check_in_at,$string_json);
-                // $string_json = str_replace("xxx",$profile->name,$string_json);
+                $string_json = str_replace("ตัวอย่าง",$data_topic[0],$string_json);
+                $string_json = str_replace("เรียนคุณ",$data_topic[0],$string_json);
+                $string_json = str_replace("check_in_area",$check_in_at,$string_json);
+                $string_json = str_replace("xxx",$profile->name,$string_json);
 
-                // $string_json = str_replace("text_01",$data_topic[1],$string_json);
-                // $string_json = str_replace("text_02",$data_topic[2],$string_json);
-                // $string_json = str_replace("text_03",$data_topic[3],$string_json);
-                // $string_json = str_replace("ตามวัน / เวลาด้านล่าง",$data_topic[4],$string_json);
+                $string_json = str_replace("text_01",$data_topic[1],$string_json);
+                $string_json = str_replace("text_02",$data_topic[2],$string_json);
+                $string_json = str_replace("text_03",$data_topic[3],$string_json);
+                $string_json = str_replace("ตามวัน / เวลาด้านล่าง",$data_topic[4],$string_json);
 
                 $string_json = str_replace("text_time_1",$text_time[0],$string_json);
                 $string_json = str_replace("text_time_2",$text_time[1],$string_json);
@@ -262,7 +266,7 @@ class PartnersController extends Controller
                 $messages = [ json_decode($string_json, true) ];
 
                 $body = [
-                    "to" => "U912994894c449f2237f73f18b5703e89",
+                    "to" => $profile->user->provider_id,
                     "messages" => $messages,
                 ];
 
