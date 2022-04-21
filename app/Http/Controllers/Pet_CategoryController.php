@@ -54,7 +54,9 @@ class Pet_CategoryController extends Controller
             }
         }
 
-        echo $query ;
+        echo "<pre>" ;
+        print_r($query);
+        echo "<pre>" ;
 
         exit();
         $keyword = $request->get('search');
