@@ -25,13 +25,16 @@
     </div>
 </div>
 <div class="text-center">
-    <img style="margin-top:10px;" class="wow fadeInUp" width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/01.png') }}">
+    <img style="margin-top:10px;" class="wow fadeInUp" width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/25.png') }}">
 </div>
     <!-- ชื่อ นามสกุล -->
 <br>
     @if(!empty($real_name))
-        <h4 class="text-center wow fadeInLeft">
+        <h4 id="text_real_name" class="text-center wow fadeInLeft">
             คุณ:{{$real_name}}
+            <a class="btn text-white" style="border-radius:25px;background-color:#B81F5B;font-size:5px;" onclick="edit_real_name();">
+                <i class="fa-light fa-pencil"> แก้ไขข้อมูล</i>
+            </a>
         </h4>
         
     @else
@@ -41,10 +44,14 @@
             {!! $errors->first('real_name', '<p class="help-block">:message</p>') !!}
         </div>
     @endif
+        <div  id="div_real_name" class="d-none faq form-group {{ $errors->has('real_name') ? 'has-error' : ''}}">
+            <label for="real_name" class="control-label translate">{{ 'First name - Surname' }} </label>
+            <input style="border-radius: 25px 0px 25px 25px ;" class="form-control" type="text" id="real_name" value="{{ $real_name }}"  >
+            {!! $errors->first('real_name', '<p class="help-block">:message</p>') !!}
+        </div>
     <!-- เบอร์ -->
     @if(!empty($phone_user))
-        <h6 class="text-center wow fadeInRight">เบอร์โทร:{{$phone_user}}</h6>
-        
+        <h6 id="text_phone_user" class="text-center wow fadeInRight">เบอร์โทร:{{$phone_user}}</h6>
     @else
         <div class="faq form-group {{ $errors->has('phone_user') ? 'has-error' : ''}}">
             <label for="phone_user" class="control-label translate">{{ 'Phone Number' }}</label>
@@ -52,6 +59,12 @@
             {!! $errors->first('phone_user', '<p class="help-block">:message</p>') !!}
         </div>
     @endif
+
+    <div id="div_phone_user" class="d-none faq form-group {{ $errors->has('phone_user') ? 'has-error' : ''}}">
+        <label for="phone_user" class="control-label translate">{{ 'Phone Number' }}</label>
+        <input style="border-radius: 25px 0px 25px 25px ;" class="form-control" type="text" id="phone_user" value="{{ $phone_user }}" pattern="[0-9]{10}">
+        {!! $errors->first('phone_user', '<p class="help-block">:message</p>') !!}
+    </div>
 <br>
 
 <input class="form-control d-none" name="check_in_out" type="text" id="check_in_out" value="" >
@@ -96,6 +109,18 @@
 
 
 <script>
+    function edit_real_name(){
+        document.querySelector("#text_real_name").classList.add('d-none');
+        document.querySelector("#div_real_name").classList.remove('d-none');
+        document.querySelector("#real_name").name = "real_name";
+        document.querySelector("#real_name").required = "true";
+
+
+        document.querySelector("#text_phone_user").classList.add('d-none');
+        document.querySelector("#div_phone_user").classList.remove('d-none');
+        document.querySelector("#phone_user").name = "phone_user";
+    }
+
     function check_in_or_out(data){
 
         if (data === "check_in") {

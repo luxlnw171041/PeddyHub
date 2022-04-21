@@ -12,7 +12,7 @@
                                 <h3>ข้อมูลพื้นฐาน <span class="wow pulse" data-wow-delay="1s"></span></h3>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-md-2 col-sm-2">
+                                <!-- <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'ชื่อผู้ใช้' }}</b></label>
                                     </div>
@@ -22,10 +22,10 @@
                                         <input class="form-control"  name="username" type="text" id="username" value="{{ isset($data->username) ? $data->username : ''}}" readonly>
                                         {!! $errors->first('username', '<p class="help-block">:message</p>') !!}
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'ชื่อ' }}</b></label>
+                                        <label  class="control-label"><b>{{ 'Username' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
@@ -36,7 +36,18 @@
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'วันเกิด' }}</b></label>
+                                        <label  class="control-label"><b>{{ 'First name - Surname' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-10 col-sm-10">
+                                    <div class="form-group">
+                                        <input class="form-control"  name="real_name" type="text" id="real_name" value="{{ isset($data->profile->real_name) ? $data->profile->real_name : ''}}" >
+                                        {!! $errors->first('real_name', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-2 col-sm-2">
+                                    <div class="col-12 col-md-12">
+                                        <label  class="control-label"><b>{{ 'Birthday' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
@@ -47,7 +58,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'เพศ' }}</b></label>
+                                        <label  class="control-label"><b>{{ 'Gender' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
@@ -71,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-12 col-md-12">
-                                    <label  class="control-label"><b>{{ 'รูปภาพ' }}</b></label>
+                                    <label  class="control-label"><b>{{ 'Photo' }}</b></label>
                                 </div>
                                 <div class="col-lg-12 col-12 col-md-10">
                                     <div class="form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
@@ -94,7 +105,7 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'อีเมล' }}</b></label>
+                                        <label  class="control-label"><b>{{ 'Email' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
@@ -105,7 +116,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 12">
-                                        <label  class="control-label"><b>{{ 'เบอร์โทร' }}</b></label>
+                                        <label  class="control-label"><b>{{ 'Mobile number' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
