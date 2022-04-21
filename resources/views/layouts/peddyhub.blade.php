@@ -524,18 +524,28 @@
                 <!--Widgets Section-->
                 <div class="row">
                   <div class="col-12 footer-bottom d-flex justify-content-start" style="padding-bottom:10px;">
-                    <div class="copyright">WWW.PEDDYHUB.COM <span>•</span> 
+                    <div class="copyright text-left">
+                        <span>•</span> WWW.PEDDYHUB.COM 
+                        <br>
+                        <span>•</span> 
                         <a href="{{'privacy_policy'}}">
                             <span>นโยบายเกี่ยวกับข้อมูลส่วนบุคคล</span>
                         </a>
+                        <br>
                         <span>•</span> 
                         <a href="{{'terms_of_service'}}">
                             <span>ข้อกำหนดและเงื่อนไขการใช้บริการ</span>
                         </a>
                     </div>
+                    
                     <div class="col-1 d-none d-lg-block" style="margin-left:10px;">
                         <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
                             <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
+                        </a>
+                    </div>
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
+                        <a href="https://www.viicheck.com" target="bank">
+                            <img width="90%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
                         </a>
                     </div>
                     <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
@@ -569,6 +579,11 @@
                       <div class="col-3" style="margin-left:10px;top:10px;">
                           <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
                               <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
+                          </a>
+                      </div>
+                      <div class="col-3" style="margin-left:10px;">
+                          <a href="https://www.viicheck.com" target="bank">
+                              <img width="90%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
                           </a>
                       </div>
                       <div class="col-3" style="margin-left:10px;">

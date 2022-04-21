@@ -45,7 +45,7 @@ class Check_day_lost_pet extends Command
      */
     public function handle()
     {
-        // 15 วัน ลบข้อมูล Check in
+        // 15 วัน ลบข้อมูล ค้นหาสัตว์
         $date_now = date("Y-m-d");
         $date_delete_15 = strtotime("-15 days");
         $date_15 = date("Y-m-d" , $date_delete_15);
