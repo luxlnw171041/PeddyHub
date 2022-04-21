@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\Pet_Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class Pet_CategoryController extends Controller
@@ -17,6 +18,34 @@ class Pet_CategoryController extends Controller
      */
     public function index(Request $request)
     {
+        $user_id = 1 ;
+        $data_user = DB::table('users')->where('id', $user_id)->get();
+
+        foreach ($data_user as $item) {
+                
+            $ipaddress = '';
+            if (getenv('HTTP_CLIENT_IP'))
+                $ipaddress = getenv('HTTP_CLIENT_IP');
+            else if(getenv('HTTP_X_FORWARDED_FOR'))
+                $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+            else if(getenv('HTTP_X_FORWARDED'))
+                $ipaddress = getenv('HTTP_X_FORWARDED');
+            else if(getenv('HTTP_FORWARDED_FOR'))
+                $ipaddress = getenv('HTTP_FORWARDED_FOR');
+            else if(getenv('HTTP_FORWARDED'))
+               $ipaddress = getenv('HTTP_FORWARDED');
+            else if(getenv('REMOTE_ADDR'))
+                $ipaddress = getenv('REMOTE_ADDR');
+            else
+                $ipaddress = 'UNKNOWN';
+
+            $ip = $ipaddress; // your ip address here
+            $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+        }
+
+        echo $ip ;
+
+        exit();
         $keyword = $request->get('search');
         $perPage = 25;
 
