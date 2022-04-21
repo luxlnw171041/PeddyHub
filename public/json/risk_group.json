@@ -14,7 +14,7 @@
         "contents": [
           {
             "type": "image",
-            "url": "https://www.viicheck.com/img/logo/VII-check-LOGO-W-v3.png",
+            "url": "https://www.peddyhub.com/peddyhub/images/home_5/logo.png",
             "size": "4xl",
             "aspectRatio": "16:9",
             "aspectMode": "fit",
@@ -27,7 +27,7 @@
           },
           {
             "type": "image",
-            "url": "https://www.viicheck.com/img/stickerline/PNG/26.1.png",
+            "url": "https://www.peddyhub.com/peddyhub/images/PEDDyHUB%20sticker%20line/24.png",
             "size": "full",
             "aspectRatio": "16:9",
             "align": "center",
@@ -44,7 +44,7 @@
           {
             "type": "separator",
             "margin": "xl",
-            "color": "#ff0101"
+            "color": "#db5e8f"
           },
           {
             "type": "text",
@@ -106,7 +106,7 @@
     ],
     "borderWidth": "bold",
     "cornerRadius": "xl",
-    "borderColor": "#ff0101"
+    "borderColor": "#B8205B"
   },
   "styles": {
     "hero": {
