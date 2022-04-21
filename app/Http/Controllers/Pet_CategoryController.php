@@ -41,9 +41,20 @@ class Pet_CategoryController extends Controller
 
             $ip = $ipaddress; // your ip address here
             $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
+
+            if($query && $query['status'] == 'success')
+            {
+                DB::table('users')
+                    ->where('id', $user_id)
+                    ->update([
+                        'country' => $query['countryCode'],
+                        'time_zone' => $query['timezone'],
+                        'ip_address' => $query,
+                ]);
+            }
         }
 
-        echo $ip ;
+        echo $query ;
 
         exit();
         $keyword = $request->get('search');
