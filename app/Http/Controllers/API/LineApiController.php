@@ -132,6 +132,9 @@ class LineApiController extends Controller
                 case "เจ้าตัวแสบ" :  
                     $line->replyToUser(null, $event, "my_pet");
                     break;
+                case "viicheck" :  
+                    $line->replyToUser(null, $event, "viicheck");
+                    break;
             }
         }
     }
