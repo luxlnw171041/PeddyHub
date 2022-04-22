@@ -32,12 +32,19 @@ class Check_inController extends Controller
         $select_time_2 = $request->get('select_time_2');
         $select_name = $request->get('select_name');
 
+        $data_user_check_in = profile::where('real_name', $select_name)->get();
+        
+        foreach($data_user_check_in as $item){
+            $id_user_check_in = $item->user_id ;
+        }
        
+        
         // ชื่อ อย่างเดียว
         if ( !empty($select_name) and empty($select_time_1) and empty($select_date) ) {
             $check_in = Check_in::where('check_in_at', $data_user->partner)
-                ->where('user_id','LIKE', "%$select_name%")
-                ->latest()->paginate($perPage);
+            ->where('user_id', $id_user_check_in)
+            ->latest()->paginate($perPage);
+                
         }
         // วันที่ อย่างเดียว
         else if ( !empty($select_date) and empty($select_time_1) and empty($select_name) ) {
@@ -48,7 +55,7 @@ class Check_inController extends Controller
         // วันที่ และ ชื่อ.
         else if ( !empty($select_date) and !empty($select_name) and empty($select_time_1) ) {
             $check_in = Check_in::where('check_in_at', $data_user->partner)
-                ->where('user_id','LIKE', "%$select_name%")
+                ->where('user_id',$id_user_check_in)
                 ->whereDate('created_at', $select_date)
                 ->latest()->paginate($perPage);
         }
@@ -74,7 +81,7 @@ class Check_inController extends Controller
 
             $check_in = Check_in::where('check_in_at', $data_user->partner)
                 ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
-                ->where('user_id','LIKE', "%$select_name%")
+                ->where('user_id', $id_user_check_in)
                 ->latest()->paginate($perPage);
         }
         // ว่าง

@@ -1,7 +1,4 @@
-<style>
-  
-   
-</style>
+
 <div class="d-none">
     <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
         <label for="user_id" class="control-label">{{ 'User Id' }}</label>

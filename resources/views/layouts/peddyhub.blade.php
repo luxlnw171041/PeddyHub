@@ -524,7 +524,7 @@
                 <!--Widgets Section-->
                 <div class="row">
                   <div class="col-12 footer-bottom d-flex justify-content-start" style="padding-bottom:10px;">
-                    <div class="copyright text-left">
+                    <div class="copyright text-left" style="margin-top:-15px;">
                         <span>•</span> WWW.PEDDYHUB.COM 
                         <br>
                         <span>•</span> 
@@ -541,11 +541,6 @@
                     <div class="col-1 d-none d-lg-block" style="margin-left:10px;">
                         <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
                             <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
-                        </a>
-                    </div>
-                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
-                        <a href="https://www.viicheck.com" target="bank">
-                            <img width="90%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
                         </a>
                     </div>
                     <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
@@ -573,17 +568,22 @@
                             <img width="65%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
                         </a>
                     </div>
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-15px;">
+                        <a href="https://facebook.com/Axoticcafe/" target="bank">
+                          <img width="90%" src="{{ asset('peddyhub/images/logo-partner/axotic.png') }}">
+                        </a>
+                    </div>
+                    <div class="col-1 d-none d-lg-block" style="margin-left:10px;top:-20px;">
+                        <a href="https://www.viicheck.com" target="bank">
+                            <img width="90%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
+                        </a>
+                    </div>
                   </div>
                   <div class="col-12 d-block d-md-none" style="padding-bottom:45px;">
                     <div class="row">
                       <div class="col-3" style="margin-left:10px;top:10px;">
                           <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
                               <img width="100%" src="{{ asset('peddyhub/images/home_5/bns_registered.png') }}">
-                          </a>
-                      </div>
-                      <div class="col-3" style="margin-left:10px;">
-                          <a href="https://www.viicheck.com" target="bank">
-                              <img width="90%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
                           </a>
                       </div>
                       <div class="col-3" style="margin-left:10px;">
@@ -609,6 +609,16 @@
                       <div class="col-3" style="margin-left:10px;top:7px;">
                           <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
                               <img width="60%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+                          </a>
+                      </div>
+                      <div class="col-3" style="margin-left:10px;top:15px;">
+                          <a href="https://facebook.com/Axoticcafe/" target="bank">
+                              <img width="90%" src="{{ asset('peddyhub/images/logo-partner/axotic.png') }}">
+                          </a>
+                      </div>
+                      <div class="col-3" style="margin-left:10px;top:15px;">
+                          <a href="https://www.viicheck.com" target="bank">
+                              <img width="90%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
                           </a>
                       </div>
                     </div>
