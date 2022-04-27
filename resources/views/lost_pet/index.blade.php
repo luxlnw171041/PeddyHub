@@ -92,8 +92,20 @@
                 <div class="container">
                     <div class="row" >
                         <div class="col-12 mt-5 wow fadeInRight" >
-                            <a href="{{ url('/lost_pet') }}"  type="button" class="btn-post-one btn-sm"> <b>โพสทั้งหมด</b> </a href="{{ url('/lost_pet') }}">
-                            <a href="{{ url('/my_post') }}" type="button" class="btn-post-two btn-sm"> <b>โพสของฉัน</b> </a href="{{ url('/lost_pet') }}">
+                            <div class="d-block d-md-none">
+                                <div class="row  ">
+                                    <div class="col-6">
+                                        <a href="{{ url('/lost_pet') }}"  type="button" class="btn-post-one btn-sm"> <b>โพสทั้งหมด</b> </a>
+                                    </div>
+                                    <div class="col-6" style="padding-left:0px;">
+                                        <a href="{{ url('/my_post') }}" type="button" class="btn-post-two btn-sm "> <b>โพสของฉัน</b> </a>
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="d-none d-lg-block">
+                                <a href="{{ url('/lost_pet') }}"  type="button" class="btn-post-one btn-sm"> <b>โพสทั้งหมด</b> </a href="{{ url('/lost_pet') }}">
+                                <a href="{{ url('/my_post') }}" type="button" class="btn-post-two btn-sm"> <b>โพสของฉัน</b> </a href="{{ url('/lost_pet') }}">
+                            </div>
                         </div>
                         @foreach($lost_pet as $item)
                             <div class="col-lg-4 col-md-6 col-sm-12">

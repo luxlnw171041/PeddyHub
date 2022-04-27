@@ -538,6 +538,115 @@
 
                 </div>
             </section>
+            <section class="services-section-four">
+            <div class="auto-container">
+                <h2>บริการดีๆจาก Partner ViiCHECK</h2>
+                <div class="row clearfix">
+                    <!--Services Block-->
+                    <div class="services-block col-md-6 col-sm-6 col-xs-12"> 
+                        <a href="services.html">
+                            <div class="inner-box">
+                                <div id="ewan" class="content">
+                                    <div class="icon-box d-none d-lg-block">
+                                        <img  width="18%" src="{{ asset('/peddyhub/images/sticker_vc/2.png') }}" class="img-fluid "  alt="">
+                                    </div>
+                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
+                                        <img  width="50%" src="{{ asset('/peddyhub/images/sticker_vc/2.png') }}" class="img-fluid text-center " alt="">
+                                    </div>
+                                    <h3 style="margin-left:15px;">ติดต่อเจ้าของรถ</h3>
+                                    <div style="margin-left:15px;" class="text">ติดต่อเจ้าของรถได้ง่ายๆ โดยผ่าน Line Official: @Viicheck เพียงแค่สแกน QR-CODE บนสติ๊กเกอร์</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!--Services Block-->
+                    <div class="services-block col-md-6 col-sm-6 col-xs-12">
+                        <div class="inner-box">
+                            <a href="services.html">
+                                <div id="ewan" class="content">
+                                    <div class="icon-box d-none d-lg-block">
+                                        <img width="25%" src="{{ asset('/peddyhub/images/sticker_vc/1.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
+                                        <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/1.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <h3 style="margin-left:15px;">ติดต่อแจ้งเหตุฉุกเฉิน</h3>
+                                    <div style="margin-left:15px;" class="text">ติดต่อแจ้งเหตุฉุกเฉิน 24 ชั่วโมงเพียงแค่กดปุ่มก็จะมีเบอร์ที่จำเป็นแสดงขึ้นมา</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <!--Services Block-->
+                    <div class="services-block col-md-6 col-sm-6 col-xs-12">
+                        <a href="services.html">
+                            <div class="inner-box">
+                                <div id="ewan" class="content">
+                                    <div class="icon-box d-none d-lg-block">
+                                        <img width="18%" src="{{ asset('/peddyhub/images/sticker_vc/7.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
+                                        <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/7.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <h3 style="margin-left:15px;">Check in/out Covid-19</h3>
+                                    <div style="margin-left:15px;" class="text">หายห่วงเรื่องการเข้าสถานที่ต่างๆด้วยระบบจะแจ้งเตือนทันทีเมื่อมีกลุ่มเสี่ยง</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!--Services Block-->
+                    <div class="services-block col-md-6 col-sm-6 col-xs-12">
+                        <a href="services.html">
+                            <div class="inner-box">
+                                <div id="ewan" class="content">
+                                    <div class="icon-box d-none d-lg-block">
+                                        <img width="25%" src="{{ asset('/peddyhub/images/sticker_vc/4.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
+                                        <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/4.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <h3 style="margin-left:15px;">แจ้งเตือน พรบ./ประกัน</h3>
+                                    <div style="margin-left:15px;" class="text">หายห่วงเรื่องลืมต่ออายุ พรบ./ประกันระบบจะแจ้งเตือนเมื่อใกล้วันครบกำหนด</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!--Services Block-->
+                    <div class="services-block col-md-6 col-sm-6 col-xs-12">
+                        <a  href="services.html">
+                            <div  class="inner-box">
+                                <div id="ewan" class="content">
+                                    <div class="icon-box d-none d-lg-block">
+                                        <img width="18%" src="{{ asset('/peddyhub/images/sticker_vc/3.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
+                                        <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/3.png') }}" class="img-fluid" alt="">
+                                    </div>
+                                    <h3 style="margin-left:15px;">ตรวจสอบราคาจากกรมขนส่ง</h3>
+                                    <div  style="margin-left:15px;" class="text">เมื่อคิดจะขายหรือขอสินเชื่อก็สามารถตรวจสอบประมาณราคามาตรฐานได้ตลอด</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!--Services Block-->
+                    <div class="services-block col-md-6 col-sm-6 col-xs-12">
+                        <a href="services.html">
+                            <div class="inner-box">
+                                <div id="ewan" class="content">
+                                    <div class="icon-box d-none d-lg-block">
+                                        <img width="18%" src="{{ asset('/peddyhub/images/sticker_vc/6.png') }}" class="img-fluid" alt="">   
+                                    </div>
+                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
+                                        <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/6.png') }}" class="img-fluid" alt="">   
+                                    </div>
+                                    <h3 style="margin-left:15px;">โปรโมชั่นเกี่ยวกับยานพาหนะ</h3>
+                                    <div style="margin-left:15px;" class="text">โปรโมชั่นของยานพาหนะมากมายที่รอเสนอให้คุณใช้บริการรีบเลยก่อนหมดเวลา !</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
         </div>
 
     @endsection

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <br>
-            <img  width="60%" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/24.png') }}">
+            <img  width="50%" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/24.png') }}">
             <br><br>
             
             @if($type == "CHECK IN")
