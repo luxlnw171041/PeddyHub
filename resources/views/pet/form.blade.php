@@ -3,70 +3,72 @@
         <section class="contact">
             <div class="container">
                 <!-- ข้อมูล USER -->
-                <div id="data_user" class="faq wow fadeInRight">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="heading">
-                            <p class="wow fadeInUp">
-                                <span class="purple"><i class="fas fa-paw"></i></span>
-                                <span class="orange"><i class="fas fa-paw"></i> </span>
-                                <span class="purple"><i class="fas fa-paw"></i> </span>
-                            </p>
-                            <h3>
-                                ข้อมูลของคุณ 
-                                <span class="wow pulse" data-wow-delay="1s"></span>
-                            </h3>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
-                                        <span class="text-danger">*</span>
-                                        @if(!empty(Auth::user()->profile->changwat_th))
-                                            <a class="text-secondary" href="{{ url('/user/' . Auth::user()->id . '/edit') }}" >
-                                                แก้ไขข้อมูล
-                                            </a>
-                                        @endif
-                                    </div>
-                                    <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        @if(!empty(Auth::user()->profile->changwat_th))
-                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
-                                        @else
-                                            <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
-                                                    <option value="" selected>- เลือกจังหวัด -</option>
+                @if(empty(Auth::user()->profile->tambon_th) or empty(Auth::user()->profile->phone))
+                    <div id="data_user" class="faq wow fadeInRight">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="heading">
+                                <p class="wow fadeInUp">
+                                    <span class="purple"><i class="fas fa-paw"></i></span>
+                                    <span class="orange"><i class="fas fa-paw"></i> </span>
+                                    <span class="purple"><i class="fas fa-paw"></i> </span>
+                                </p>
+                                <h3>
+                                    ข้อมูลของคุณ 
+                                    <span class="wow pulse" data-wow-delay="1s"></span>
+                                </h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        <div class="col-12 col-md-12">
+                                            <label  class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
+                                            <span class="text-danger">*</span>
+                                            @if(!empty(Auth::user()->profile->changwat_th))
+                                                <a class="text-secondary" href="{{ url('/user/' . Auth::user()->id . '/edit') }}" >
+                                                    แก้ไขข้อมูล
+                                                </a>
+                                            @endif
+                                        </div>
+                                        <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            @if(!empty(Auth::user()->profile->changwat_th))
+                                                <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
+                                            @else
+                                                <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                                        <option value="" selected>- เลือกจังหวัด -</option>
 
-                                            </select>
-                                        @endif
-                                    </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        @if(!empty(Auth::user()->profile->amphoe_th))
-                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
-                                        @else
-                                            <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
-                                                <option value="" selected>- เลือกอำเภอ -</option>
-                                            </select>
-                                        @endif
-                                    </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        
+                                                </select>
+                                            @endif
+                                        </div>
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            @if(!empty(Auth::user()->profile->amphoe_th))
+                                                <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
+                                            @else
+                                                <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                                    <option value="" selected>- เลือกอำเภอ -</option>
+                                                </select>
+                                            @endif
+                                        </div>
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            
 
-                                        @if(!empty(Auth::user()->profile->tambon_th))
-                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
-                                        @else
-                                            <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
-                                                <option value="" selected>- เลือกตำบล -</option>
-                                            </select>
-                                        @endif
-                                    </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
+                                            @if(!empty(Auth::user()->profile->tambon_th))
+                                                <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
+                                            @else
+                                                <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                                    <option value="" selected>- เลือกตำบล -</option>
+                                                </select>
+                                            @endif
+                                        </div>
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 <!-- จบข้อมูล USER -->
 
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -116,21 +118,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-2">
-                                    <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'ช่วงอายุ ' }}</b></label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-10 col-sm-10">
-                                    <div class="form-group">
-                                        <select name="age" class="form-control" id="age" required>
-                                            <option value='' selected > - โปรดเลือก - </option>
-                                            @foreach (json_decode('{"\u0e40\u0e14\u0e47\u0e01":"\u0e40\u0e14\u0e47\u0e01","\u0e27\u0e31\u0e22\u0e23\u0e38\u0e48\u0e19":"\u0e27\u0e31\u0e22\u0e23\u0e38\u0e48\u0e19","\u0e1c\u0e39\u0e49\u0e43\u0e2b\u0e0d\u0e48":"\u0e1c\u0e39\u0e49\u0e43\u0e2b\u0e0d\u0e48"}', true) as $optionKey => $optionValue)
-                                                <option value="{{ $optionKey }}" {{ (isset($pet->age) && $pet->age == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -162,6 +150,21 @@
                                         </select>
                                     </div>
                                 </div>
+                                <!-- <div class="col-lg-12 col-md-12 col-sm-2">
+                                    <div class="col-12 col-md-12">
+                                        <label  class="control-label"><b>{{ 'ช่วงอายุ ' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-10 col-sm-10">
+                                    <div class="form-group">
+                                        <select name="age" class="form-control" id="age" required>
+                                            <option value='' selected > - โปรดเลือก - </option>
+                                            @foreach (json_decode('{"\u0e40\u0e14\u0e47\u0e01":"\u0e40\u0e14\u0e47\u0e01","\u0e27\u0e31\u0e22\u0e23\u0e38\u0e48\u0e19":"\u0e27\u0e31\u0e22\u0e23\u0e38\u0e48\u0e19","\u0e1c\u0e39\u0e49\u0e43\u0e2b\u0e0d\u0e48":"\u0e1c\u0e39\u0e49\u0e43\u0e2b\u0e0d\u0e48"}', true) as $optionKey => $optionValue)
+                                                <option value="{{ $optionKey }}" {{ (isset($pet->age) && $pet->age == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div> -->
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'ขนาดสัตว์เลี้ยง' }}</b></label>
