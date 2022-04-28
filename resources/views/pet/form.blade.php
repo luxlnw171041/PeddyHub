@@ -214,11 +214,12 @@
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
         let check_changwat_th = document.querySelector('#check_changwat_th');
-
+        select_category();
+        
         if (!check_changwat_th.value) {
             select_province();
         }
-        select_category();
+       
     });
 
     var language_user = document.querySelector('#language_user').value ;
