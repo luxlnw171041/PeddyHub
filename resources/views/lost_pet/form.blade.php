@@ -197,12 +197,22 @@
                 <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
             </a>
         </div>
-        <div class="col-12 text-center">
+        <div class="col-12"><br></div>
+        <div class="col-4 text-center">
             <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
-                <img width="13%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+                <img width="43%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
             </a>
         </div>
-        
+        <div class="col-4 text-center">
+            <a href="https://www.facebook.com/Axoticcafe/" target="bank">
+                <img width="48%" src="{{ asset('peddyhub/images/logo-partner/axotic.png') }}">
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <a href="https://www.viicheck.com" target="bank">
+                <img width="48%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
+            </a>
+        </div>
       </div>
       </div>
     </div>
