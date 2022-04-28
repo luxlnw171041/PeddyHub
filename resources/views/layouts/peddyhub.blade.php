@@ -175,7 +175,7 @@
                                             <li class="d-none"><div id="google_translate_element" onchange="check_language();"></div></li>
                                             <li><a href="{{ url('/') }}">Home page</a></li>
                                             <li>
-                                                <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Comunity</a>
+                                                <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Community</a>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Adoption</a>
