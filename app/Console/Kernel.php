@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\Check_day_lost_pet::class,
-        Commands\check_15_day_check_in::class,
+        Commands\Check_15_day_delete::class,
     ];
 
     /**

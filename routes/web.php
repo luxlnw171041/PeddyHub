@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Home_pageController@home_page');
 Route::get('/home', 'Home_pageController@home_page');
 
-Route::get('/product', function () {
+Route::get('/products', function () {
     return view('product');
 });
 Route::get('/test', function () {
@@ -108,3 +108,5 @@ Route::middleware(['auth', 'role:admin-partner'])->group(function () {
 });
 
 Route::resource('check_in', 'Check_inController')->except(['index','show']);
+
+Route::resource('product', 'ProductController');

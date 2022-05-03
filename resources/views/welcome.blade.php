@@ -538,13 +538,15 @@
 
                 </div>
             </section>
-            <section class="services-section-four">
+            <br><br>
+            <section class="services-section-four"  style="background-color: #FFF6F6;padding-top:20px;padding-bottom:20px;">
             <div class="auto-container">
-                <h2>บริการดีๆจาก Partner ViiCHECK</h2>
+                <h4 class="text-center">บริการดีๆจาก <br class="d-block d-md-none"> Partner ViiCHECK</h4>
+                <br>
                 <div class="row clearfix">
                     <!--Services Block-->
-                    <div class="services-block col-md-6 col-sm-6 col-xs-12"> 
-                        <a href="services.html">
+                    <div class="services-block col-md-6 col-sm-6 col-xs-12" style="border-color:#B8205B;"> 
+                        <a href="https://www.viicheck.com">
                             <div class="inner-box">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">
@@ -562,7 +564,7 @@
                     <!--Services Block-->
                     <div class="services-block col-md-6 col-sm-6 col-xs-12">
                         <div class="inner-box">
-                            <a href="services.html">
+                            <a href="https://www.viicheck.com">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">
                                         <img width="25%" src="{{ asset('/peddyhub/images/sticker_vc/1.png') }}" class="img-fluid" alt="">
@@ -578,24 +580,7 @@
                     </div>
                     <!--Services Block-->
                     <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                        <a href="services.html">
-                            <div class="inner-box">
-                                <div id="ewan" class="content">
-                                    <div class="icon-box d-none d-lg-block">
-                                        <img width="18%" src="{{ asset('/peddyhub/images/sticker_vc/7.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
-                                        <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/7.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <h3 style="margin-left:15px;">Check in/out Covid-19</h3>
-                                    <div style="margin-left:15px;" class="text">หายห่วงเรื่องการเข้าสถานที่ต่างๆด้วยระบบจะแจ้งเตือนทันทีเมื่อมีกลุ่มเสี่ยง</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!--Services Block-->
-                    <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                        <a href="services.html">
+                        <a href="https://www.viicheck.com">
                             <div class="inner-box">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">
@@ -612,24 +597,7 @@
                     </div>
                     <!--Services Block-->
                     <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                        <a  href="services.html">
-                            <div  class="inner-box">
-                                <div id="ewan" class="content">
-                                    <div class="icon-box d-none d-lg-block">
-                                        <img width="18%" src="{{ asset('/peddyhub/images/sticker_vc/3.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="icon-box d-flex justify-content-center d-block d-md-none">
-                                        <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/3.png') }}" class="img-fluid" alt="">
-                                    </div>
-                                    <h3 style="margin-left:15px;">ตรวจสอบราคาจากกรมขนส่ง</h3>
-                                    <div  style="margin-left:15px;" class="text">เมื่อคิดจะขายหรือขอสินเชื่อก็สามารถตรวจสอบประมาณราคามาตรฐานได้ตลอด</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <!--Services Block-->
-                    <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                        <a href="services.html">
+                        <a href="https://www.viicheck.com">
                             <div class="inner-box">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">

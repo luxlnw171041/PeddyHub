@@ -1,0 +1,33 @@
+{
+    "fields": [
+        {
+            "name": "title",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "string"
+        },
+        {
+            "name": "price2",
+            "type": "string"
+        },
+        {
+            "name": "photo",
+            "type": "file"
+        },
+        {
+            "name": "pet_category_id",
+            "type": "integer"
+        },{
+            "name": "link",
+            "type": "string"
+        },{
+            "name": "type",
+            "type": "string"
+        },{
+            "name": "promotion",
+            "type": "string"
+        }
+    ]
+}

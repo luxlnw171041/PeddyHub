@@ -48,7 +48,7 @@
 </head>
 <body style="background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <main style="padding:0px;">
-            <!-- <div class="text-center"><img src="{{ asset('peddyhub/images/logo/logo-2.png') }}" alt="" width="60%"></div> -->
+            <div class="d-flex justify-content-end" style="margin:5px 0px 0px 5px"><img src="{{ asset('peddyhub/images/logo/logo-2.png') }}" alt="" width="35%"></div>
             @yield('content')
         </main>
 </body>
