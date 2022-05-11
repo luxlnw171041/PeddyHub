@@ -541,12 +541,12 @@
             <br><br>
             <section class="services-section-four"  style="background-color: #FFF6F6;padding-top:20px;padding-bottom:20px;">
             <div class="auto-container">
-                <h4 class="text-center">บริการดีๆจาก <br class="d-block d-md-none"> Partner ViiCHECK</h4>
+                <h4 class="text-center">บริการดีๆจาก <br class="d-block d-md-none"> ViiCHECK</h4>
                 <br>
                 <div class="row clearfix">
                     <!--Services Block-->
                     <div class="services-block col-md-6 col-sm-6 col-xs-12" style="border-color:#B8205B;"> 
-                        <a href="https://www.viicheck.com">
+                        <a href="https://lin.ee/y3gA8A3">
                             <div class="inner-box">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">
@@ -564,7 +564,7 @@
                     <!--Services Block-->
                     <div class="services-block col-md-6 col-sm-6 col-xs-12">
                         <div class="inner-box">
-                            <a href="https://www.viicheck.com">
+                            <a href="https://lin.ee/y3gA8A3">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">
                                         <img width="25%" src="{{ asset('/peddyhub/images/sticker_vc/1.png') }}" class="img-fluid" alt="">
@@ -580,7 +580,7 @@
                     </div>
                     <!--Services Block-->
                     <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                        <a href="https://www.viicheck.com">
+                        <a href="https://lin.ee/y3gA8A3">
                             <div class="inner-box">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">
@@ -597,7 +597,7 @@
                     </div>
                     <!--Services Block-->
                     <div class="services-block col-md-6 col-sm-6 col-xs-12">
-                        <a href="https://www.viicheck.com">
+                        <a href="https://lin.ee/y3gA8A3">
                             <div class="inner-box">
                                 <div id="ewan" class="content">
                                     <div class="icon-box d-none d-lg-block">
