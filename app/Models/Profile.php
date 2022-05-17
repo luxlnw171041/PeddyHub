@@ -41,4 +41,7 @@ class Profile extends Model
     public function check_ins(){
         return $this->hasMany('App\Models\Check_in', 'user_id'); 
     } 
+    public function order_products(){
+        return $this->hasMany('App\Models\OrderProduct', 'user_id'); 
+    }
 }

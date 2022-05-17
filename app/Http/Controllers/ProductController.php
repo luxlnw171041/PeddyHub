@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
+use App\Models\Pet_Category;
 use App\Models\Product;
+use App\Models\OrderProduct;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,22 +23,28 @@ class ProductController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+        $requestData = $request->all();
+        $category  = $request->get('pet_category_id');
+        $type  = $request->get('type');
+        
+        $needFilter =  !empty($type) || !empty($category);
+        
+        $count_order = OrderProduct::whereNull('order_id')
+        ->where('user_id', Auth::id())->get()->count();
 
-        if (!empty($keyword)) {
-            $product = Product::where('title', 'LIKE', "%$keyword%")
-                ->orWhere('price', 'LIKE', "%$keyword%")
-                ->orWhere('price2', 'LIKE', "%$keyword%")
-                ->orWhere('photo', 'LIKE', "%$keyword%")
-                ->orWhere('pet_category_id', 'LIKE', "%$keyword%")
-                ->orWhere('link', 'LIKE', "%$keyword%")
-                ->orWhere('type', 'LIKE', "%$keyword%")
-                ->orWhere('promotion', 'LIKE', "%$keyword%")
+// echo "<pre>";
+//         print_r($count_order);
+//         echo "</pre>";
+//         exit();
+        if (!empty($needFilter)) {
+            $product = Product::where('type',    'LIKE', '%' .$type.'%')
+            ->Where('pet_category_id',    'LIKE', '%' .$category.'%')
                 ->latest()->paginate($perPage);
         } else {
             $product = Product::latest()->paginate($perPage);
         }
 
-        return view('product.index', compact('product'));
+        return view('product.index', compact('product','count_order'));
     }
 
     /**
@@ -44,7 +54,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $category = Pet_Category::groupBy('name')->get();
+
+        return view('product.create', compact('category'));
     }
 
     /**
@@ -78,8 +90,8 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findOrFail($id);
-
-        return view('product.show', compact('product'));
+        $data_product = product::inRandomOrder()->limit(15)->get();
+        return view('product.show', compact('product','data_product'));
     }
 
     /**
@@ -91,9 +103,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        $category = Pet_Category::groupBy('name')->get();
+
         $product = Product::findOrFail($id);
 
-        return view('product.edit', compact('product'));
+        return view('product.edit', compact('product','category'));
     }
 
     /**
@@ -131,5 +145,35 @@ class ProductController extends Controller
         Product::destroy($id);
 
         return redirect('product')->with('flash_message', 'Product deleted!');
+    }
+
+    public function product_category(Request $request)
+    {
+        $keyword = $request->get('search');
+        $perPage = 25;
+        $data_manoon = product::where('promotion', "manoon" )->inRandomOrder()->limit(10)->get();
+        $data_promotion = product::where('promotion', "โปรโมชั่น" )->inRandomOrder()->limit(10)->get();
+        $data_new = product::where('promotion', "ใหม่" )->inRandomOrder()->limit(10)->get();
+
+        // echo "<pre>";
+//         print_r($data_promotion);
+//         echo "</pre>";
+//         exit();
+
+        if (!empty($keyword)) {
+            $product = Product::where('title', 'LIKE', "%$keyword%")
+                ->orWhere('price', 'LIKE', "%$keyword%")
+                ->orWhere('price2', 'LIKE', "%$keyword%")
+                ->orWhere('photo', 'LIKE', "%$keyword%")
+                ->orWhere('pet_category_id', 'LIKE', "%$keyword%")
+                ->orWhere('link', 'LIKE', "%$keyword%")
+                ->orWhere('type', 'LIKE', "%$keyword%")
+                ->orWhere('promotion', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            $product = Product::latest()->paginate($perPage);
+        }
+
+        return view('product.product_category', compact('product','data_promotion','data_new','data_manoon'));
     }
 }

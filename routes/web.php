@@ -18,6 +18,11 @@ Route::get('/home', 'Home_pageController@home_page');
 Route::get('/products', function () {
     return view('product');
 });
+// Route::get('product_category', function () {
+//     return view('product.product_category');
+// });
+Route::get('/product_category', 'ProductController@product_category');
+
 Route::get('/test', function () {
     return view('test');
 });
@@ -72,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('lost_pet', 'Lost_PetController');
     Route::get('/blood_bank', 'Blood_bankController@index');
     Route::get('/my_post', 'Lost_PetController@mypost');
+    Route::resource('order-product', 'OrderProductController');
 
 });
 

@@ -61,4 +61,7 @@ class User extends Authenticatable
     public function adoptpet(){
         return $this->hasMany('App\Models\Adoptpet', 'user_id'); 
     }
+    public function order_products(){
+        return $this->hasMany('App\Models\OrderProduct', 'user_id'); 
+    }   
 }

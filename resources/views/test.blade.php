@@ -1,127 +1,174 @@
+
 @extends('layouts.peddyhub')
 
 @section('content')
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,200;1,800&display=swap" rel="stylesheet">
 <style>
-    .shadow-card{
-        box-shadow: 2px 17px 97px -46px rgba(0,0,0,0.72);
-        -webkit-box-shadow: 2px 17px 97px -46px rgba(0,0,0,0.72);
-        -moz-box-shadow: 2px 17px 97px -46px rgba(0,0,0,0.72);
-        border-radius: 25px ;
-    }
-    .shadow-btn{
-    box-shadow: 10px 10px 12px -8px rgba(242,37,37,0.34) inset;
-    -webkit-box-shadow: 10px 10px 12px -8px rgba(242,37,37,0.34) inset;
-    -moz-box-shadow: 10px 10px 12px -8px rgba(242,37,37,0.34) inset;
-            }
-    .shadow-btn-posted{
-    box-shadow: 10px 10px 12px -8px rgba(72,188,166,0.34) inset;
-    -webkit-box-shadow: 10px 10px 12px -8px rgba(72,188,166,0.34) inset;
-    -moz-box-shadow: 10px 10px 12px -8px rgba(72,188,166,0.34) inset;
-            }     
-    .button-expire {
-        background-color: #FFEDED;
-        color: #d9534f;
-        padding: 5px 28px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: default;
-        border: 2px solid #F7DDDD;
-        border-radius: 25px;
-        font-family: 'Sarabun', sans-serif;
-    }
-    .button-post-again {
-        background: none;
-        border: none;
-        color: #5FC5B1;
-        padding: 0px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 12px;
-        cursor: default;
-        border-radius: 25px;
-        font-family: 'Sarabun', sans-serif;
-    }
-    .button-posted {
-        background-color: #DDF3EF;
-        color: #5FC5B1;
-        padding: 5px 28px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: default;
-        border: 2px solid #5FC5B1;
-        border-radius: 25px;
-        font-family: 'Sarabun', sans-serif;
-    }
-    .text-date{
-        font-family: 'Sarabun', sans-serif;
-        margin:0px;
-    }
+    .testimonial{
+            margin: 0 20px 40px;
+        }
+        .testimonial .testimonial-content{
+            padding: 35px 25px 35px 50px;
+            margin-bottom: 35px;
+            background: #fff;
+            position: relative;
+        }
+        .testimonial .testimonial-content:before{
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            border-top: 15px solid #718076;
+            border-left: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+        .testimonial .testimonial-content:after{
+            content: "";
+            position: absolute;
+            bottom: -30px;
+            right: 0;
+            border-top: 15px solid #718076;
+            border-right: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+        }
+        .testimonial-content .testimonial-icon{
+            width: 50px;
+            height: 45px;
+            background: #0CCA4A;
+            text-align: center;
+            font-size: 22px;
+            color: #fff;
+            line-height: 42px;
+            position: absolute;
+            top: 37px;
+            left: -19px;
+        }
+        .testimonial-content .testimonial-icon:before{
+            content: "";
+            border-bottom: 16px solid #05A739;
+            border-left: 18px solid transparent;
+            position: absolute;
+            top: -16px;
+            left: 1px;
+        }
+        .testimonial .description{
+            font-size: 15px;
+            font-style: italic;
+            color: #8a8a8a;
+            line-height: 23px;
+            margin: 0;
+        }
+        .testimonial .title{
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            color: #525252;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            margin: 0 0 5px 0;
+        }
+        .testimonial .post{
+            display: block;
+            font-size: 14px;
+            color: #0CCA4A;
+        }
+        .owl-theme .owl-controls{
+            margin-top: 20px;
+        }
+        .owl-theme .owl-controls .owl-page span{
+            background: #ccc;
+            opacity: 1;
+            transition: all 0.4s ease 0s;
+        }
+        .owl-theme .owl-controls .owl-page.active span,
+        .owl-theme .owl-controls.clickable .owl-page:hover span{
+            background: #0CCA4A;
+        }
 </style>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12 col-md-4 " >
-            <div class="card shadow-card" >
-                <div class="card-body ">
-                    <button type="button" class="button-expire btn-lg shadow-btn"> <b>หมดอายุ</b> </button>
-                    <button type="button" class="button-post-again btn-lg"> <b>โพสอีกครั้ง</b> </button>
-                    <p class="text-date">โพสวันที่ 18/3/2022 </p>
-                    <p class="text-date">โพสหมดอายุแล้วกรุณาโพสใหม่อีกครั้ง</p>
-                    <h5 class="card-title">พริกแกง</h5>
-                    <div class="text-center">
-                        <img src="peddyhub/images/home_5/a.png" height="200px" height="300px" title="Pet"alt="Image of Pet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+</head>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Testimonial</title>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="testimonial-slider" class="owl-carousel">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-quote-left"></i>
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet hendrerit nisi vehicula.
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card shadow-card" >
-                <div class="card-body ">
-                    <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>กำลังโพสอยู่</b> </button>
-                    <p class="text-date">โพสวันที่ 18/3/2022</p>
-                    <p class="text-date">โพสหมดอายุในอีก 10 วัน</p>
-                    <h5 class="card-title  text-date">ลูก้า</h5>
-                    <div class="text-center">
-                        <img src="peddyhub/images/home_5/cat.png" height="200px" title="Pet"alt="Image of Pet">
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-quote-left"></i>
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet hendrerit nisi vehicula.
+                            </p>
+                        </div>
+                        <h3 class="title">Kelle</h3>
+                        <span class="post">Web Designer</span>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-4">
-            <div class="card shadow-card" >
-                <div class="card-body ">
-                    <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>กำลังโพสอยู่</b> </button>
-                    <p class="text-date">โพสวันที่ 18/3/2022</p>
-                    <p class="text-date">โพสหมดอายุในอีก 10 วัน</p>
-                    <h5 class="card-title">โบ้</h5>
-                    <div class="text-center">
-                        <img src="peddyhub/images/home_5/f.png" height="200px" title="Pet"alt="Image of Pet">
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-quote-left"></i>
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet hendrerit nisi vehicula.
+                            </p>
+                        </div>
+                        <h3 class="title">Steven</h3>
+                        <span class="post">Web Developer</span>
                     </div>
-                </div>
-            </div>
-        </div><div class="col-sm-12 col-md-4">
-            <div class="card shadow-card" >
-                <div class="card-body ">
-                    <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>กำลังโพสอยู่</b> </button>
-                    <p class="text-date">โพสวันที่ 18/3/2022</p>
-                    <p class="text-date">โพสหมดอายุในอีก 10 วัน</p>
-                    <h5 class="card-title">จี้</h5>
-                    <div class="text-center">
-                        <img src="peddyhub/images/home_5/f.png" height="200px" title="Pet"alt="Image of Pet">
+
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="testimonial-icon">
+                                <i class="fa fa-quote-left"></i>
+                            </div>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet hendrerit nisi vehicula.
+                            </p>
+                        </div>
+                        <h3 class="title">Peter</h3>
+                        <span class="post">Web Developer</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </body>
+</html>
+
+
+
+<script>
+    $(document).ready(function(){
+        $("#testimonial-slider").owlCarousel({
+            items:3,
+            itemsDesktop:[1000,3],
+            itemsDesktopSmall:[980,2],
+            itemsTablet:[768,2],
+            itemsMobile:[650,1],
+            pagination:true,
+            navigation:false,
+            slideSpeed:1000,
+            autoPlay:true
+        });
+    });
+</script>
 @endsection

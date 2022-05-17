@@ -44,6 +44,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap" rel="stylesheet">
+    <!-- เลื่อนๆ -->
+    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+      <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 </head>
 <style>
     .goog-logo-link {
@@ -689,8 +692,12 @@
     <script src="{{ asset('peddyhub/js/mousewheel.js') }}"></script>
     <script src="{{ asset('peddyhub/js/vivus.min.js') }}"></script>
     <script src="{{ asset('peddyhub/js/validate.js') }}"></script>
-    <script src="{{ asset('peddyhub/js/jquery.countdown.js') }}"></script>
+    <script src="{{ asset('peddyhub/js/jquery.countdown.js') }}"></script> 
+    <!-- // เลื่อนๆ -->
+
+    
     <script type="text/javascript">
+   
     var comboGoogleTradutor = 'null'; //Varialvel global
 
     function googleTranslateElementInit() {

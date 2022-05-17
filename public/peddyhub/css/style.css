@@ -10508,7 +10508,7 @@ ul, p {
 .pet .steps {
     position: relative;
     padding: 0px 0px 75px;
-    margin: 75px 0px 0px;
+    margin: 20px 0px 0px;
     color: var(--pt_black);
 }
 
@@ -11874,7 +11874,22 @@ ul, p {
     border-radius: 50%;
     border-top-right-radius: 0px;
 }
-
+.pet.shop .steps .card .manoon_label {
+    position: absolute;
+    top: 0em;
+    right: 0em;
+    left: auto;
+    background: red;
+    color: white;
+    opacity: .9;
+    z-index: 1;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 50%;
+    border-top-right-radius: 0px;
+}
 .pet.shop .steps .card .new {
     background: var(--pt_purple);
 }
@@ -13062,6 +13077,7 @@ ul, p {
     color: #ffffff !important;
     background: #5FC5B1;
 }
+
 .pet.register .contact .form-check label {
     display: inline;
 }

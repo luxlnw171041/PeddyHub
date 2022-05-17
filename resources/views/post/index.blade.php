@@ -148,15 +148,14 @@
                                        
                                             <hr style="margin:0px 0px 0px 0px; ">
                                             <div class="row d-flex justify-content-center" style="padding:10px;">
-                                                @foreach($LIKE as $asd)
+                                                @foreach($LIKE->take(1) as $asd)
                                                     @if(($asd->post_id  ==  $item->id))
-                                                        @if(($asd->post_id  ==  $item->id))
                                                             <form method="POST" action="{{ url('/like' . '/' . $asd->id) }}" accept-charset="UTF-8" style="display:inline">
                                                                 {{ method_field('DELETE') }}
                                                                 {{ csrf_field() }}
                                                                 <div class="col-5 d-grid gap-2 text-center"><button type="submit" class="btn likebtn btn-lg" ><b> <i class="far fa-heart" style="color:#B8205B;"></i>  &nbsp;ถูกใจแล้ว</b></button></div>
                                                             </form> 
-                                                        @endif
+                                                    @else
                                                     @endif
                                                 @endforeach
                                                 <div class="col-5">
