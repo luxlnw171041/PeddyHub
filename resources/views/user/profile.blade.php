@@ -333,11 +333,11 @@
                                             </div>
                                             <div class="col-10" style="padding-left: 2px;">
                                                 <p style="font-size: 21px;margin:0px;">
-                                                    บัตรประจำตัว{{$item->pet_category->name}}
+                                                    บัตรประจำตัว
                                                 </p>
                                                 <div class="row" style="margin-left:2px;">
                                                     <div class="col-4" style="font-size: 12px;padding: 0px;margin-top:-10px;">
-                                                        <span> <b> เลขประจำตัว{{$item->pet_category->name}}</b></span><br>
+                                                        <span> <b> เลขประจำตัว</b></span><br>
                                                         <span style="color:#B8205B"> <b> indentification Number</b></span>
                                                     </div>
                                                     <div class="col-6" style="padding: 0px;margin-top:-7px;">
