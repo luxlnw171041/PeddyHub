@@ -105,6 +105,7 @@ class PetController extends Controller
     public function show($id)
     {
         $pet = Pet::findOrFail($id);
+        $year = Pet::where('id' , '=' ,$id)->get();
 
         return view('pet.show', compact('pet'));
     }
