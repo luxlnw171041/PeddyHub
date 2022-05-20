@@ -69,7 +69,7 @@ Route::get('/welcome_check_in_line', 'Check_inController@welcome_check_in_line')
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('pet', 'PetController');
+    Route::resource('pet', 'PetController')->except(['show']);
     Route::resource('user', 'UserController');
     Route::resource('profile', 'ProfileController');
     Route::resource('post', 'PostController');
@@ -78,8 +78,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/blood_bank', 'Blood_bankController@index');
     Route::get('/my_post', 'Lost_PetController@mypost');
     Route::resource('order-product', 'OrderProductController');
+    Route::resource('order', 'OrderController');
 
 });
+Route::get('/pet/{id}', 'PetController@show');
 
 
 Route::get('/post', 'PostController@index');
@@ -110,6 +112,7 @@ Route::middleware(['auth', 'role:admin-partner'])->group(function () {
     Route::get('/media', function () {
         return view('partner_admin/media');
     });
+    Route::get('order_admin', 'OrderController@order_admin');
     // Route::get('blood_bank/wait_user', 'Blood_bankController@wait_user');
 });
 
