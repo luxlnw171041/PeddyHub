@@ -40,7 +40,7 @@
     .rotatea {
         display: block;
   transform: rotate(-270deg);
-  width: 449px;
+  width: 500px;
     }
 </style>
 <div class="container rotatea d-block d-md-none notranslate" width="999px" style="margin-left:-45px;">
