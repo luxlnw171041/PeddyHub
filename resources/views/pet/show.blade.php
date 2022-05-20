@@ -43,7 +43,7 @@
   width: 449px;
     }
 </style>
-<div class="container rotatea d-block d-md-none " width="999px" style="margin-left:-45px;">
+<div class="container rotatea d-block d-md-none notranslate" width="999px" style="margin-left:-45px;">
     <div class="card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;">
             <div class="row">
@@ -148,7 +148,7 @@
         </div>
     </div>
 </div>
-<div class="container d-none d-lg-block " >
+<div class="container d-none d-lg-block notranslate" >
     <div class="card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;">
             <div class="row">
