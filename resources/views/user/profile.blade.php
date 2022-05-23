@@ -5,7 +5,7 @@
 
 </section>
 <style>
-     .parent {
+    .parent {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, 0.5fr);
@@ -302,7 +302,7 @@
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div id="card-pet" class="container">
+                            <div id="card-pet" class="container ">
                                 <div class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
                                     <div class="card-body" style="padding:5px;">
                                         <div class="row">
@@ -417,6 +417,16 @@
         </section>
     </div>
 </div>
+<script>
+ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+document.querySelector('#card-pet').classList.add('rotatea');
+  console.log("mobile device");
+}else{
+  console.log("not mobile device");
+document.querySelector('#card-pet').classList.remove('rotatea');
+
+}
+</script>
 @endsection
 
 <!-- <div class="main-wrapper pet tm_profile">
@@ -471,8 +481,3 @@
             </div>
         </section>
     </div> -->
-    <script>
-        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-    document.querySelector('#card-pet').classList.add('rotatea');
-}
-    </script>
