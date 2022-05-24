@@ -39,4 +39,7 @@ class Pet extends Model
     public function Blood_bank(){
         return $this->hasMany('App\Models\Blood_bank', 'pet_id'); 
     } 
+    public function pet_category(){
+        return $this->hasOne('App\Models\Pet_Category', 'pet_category_id'); 
+    } 
 }
