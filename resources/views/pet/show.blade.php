@@ -44,7 +44,7 @@
         width: 500px;
     }
 </style>
-<div class="container rotatea d-block d-md-none notranslate" width="999px" style="margin-left:-68px;margin-top:50px;margin-bottom:50px;">
+<div class="container rotatea d-block d-md-none notranslate" style="margin-left:-68px;margin-top:50px;margin-bottom:50px;">
     <div class="card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;">
             <div class="row">
@@ -109,7 +109,7 @@
 
                     <div class="parent">
                         <div class="div1 text-center">
-                            <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
+                            <!-- <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt=""> -->
                         </div>
                         <div class="div2">
                             <span style="font-size: 12px;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
@@ -180,11 +180,11 @@
                 </div>
                 <div class="col-10" style="padding-left: 2px;">
                     <p style="font-size: 21px;margin:0px;">
-                        บัตรประจำตัว
+                        บัตรประจำตัว{{ $pet->pet_category->name}}
                     </p>
                     <div class="row" style="margin-left:2px;">
                         <div class="col-4" style="font-size: 12px;padding: 0px;margin-top:-10px;">
-                            <span> <b> เลขประจำตัว</b></span><br>
+                            <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
                             <span style="color:#B8205B"> <b> indentification Number</b></span>
                         </div>
                         <div class="col-6" style="padding: 0px;margin-top:-7px;">
@@ -214,7 +214,7 @@
 
                     <div class="parent">
                         <div class="div1 text-center">
-                            <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
+                            <!-- <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt=""> -->
                         </div>
                         <div class="div2">
                             <span style="font-size: 12px;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
@@ -433,4 +433,14 @@
     </div>
 </div>
 </div>
+<script>
+ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+document.querySelector('#card-pet').classList.add('rotatea');
+  console.log("mobile device");
+}else{
+  console.log("not mobile device");
+// document.querySelector('#card-pet').classList.remove('rotatea');
+
+}
+</script>
 @endsection
