@@ -132,5 +132,15 @@ class UserController extends Controller
     {
         //
     }
- 
+    public function user_pet($id)
+    {
+        $user = User::findOrFail($id);
+        $petuser = Pet::where('user_id', $id)->get();
+        // echo "<pre>";
+        // print_r($id);
+        // echo "<pre>";
+        // exit();
+        return view('user/user_pet',compact('user' ,'petuser') );
+
+    }
 }

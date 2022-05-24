@@ -119,3 +119,4 @@ Route::middleware(['auth', 'role:admin-partner'])->group(function () {
 Route::resource('check_in', 'Check_inController')->except(['index','show']);
 
 Route::resource('product', 'ProductController');
+Route::get('/user_pet/{id}', 'UserController@user_pet');
