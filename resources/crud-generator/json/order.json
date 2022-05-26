@@ -1,0 +1,24 @@
+{
+    "fields": [
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        {
+            "name": "total",
+            "type": "float"
+        },
+        {
+            "name": "status",
+            "type": "string"
+        },
+        {
+            "name": "checking_at",
+            "type": "timestamp"
+        },
+        {
+            "name": "tracking",
+            "type": "string"
+        }
+    ]
+}
