@@ -306,8 +306,8 @@
                     </div>
                     <!-- Modal -->
                     <div class="modal fade "  width="500px" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
-                        <div id="modal-card" class="modal-dialog" role="document" width="500px">
-                            <div id="card-pet" class="container rotatea card-pet" width="500px" >
+                        <div id="modal_pet{{$item->id}}" class="modal-dialog" role="document" width="500px">
+                            <div id="card_pet{{$item->id}}" class="container card-pet rotatea" width="500px" >
                                 <div class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
                                     <div class="card-body" style="padding:5px;">
                                         <div class="row">
@@ -416,25 +416,24 @@
                         </div>
                     </div>
                     <!-- end model -->
+                    <script>
+                        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                            document.querySelector('#card_pet{{$item->id}}').classList.add('rotatea');
+                            document.querySelector('#card_pet{{$item->id}}').classList.add('card-pet');
+                        }else{
+                            document.querySelector('#card_pet{{$item->id}}').classList.remove('rotatea');
+                            document.querySelector('#card_pet{{$item->id}}').classList.remove('card-pet');
+                            document.querySelector('#modal_pet{{$item->id}}').classList.add('modal-dialog-centered');
+                           
+                        }
+                        </script>
                     @endforeach
                 </div>
             </div>
         </section>
     </div>
 </div>
-<script>
- if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-document.querySelector('#card-pet').classList.add('rotatea');
-document.querySelector('#card-pet').classList.add('card-pet');
-console.log("mobile device");
 
-}else{
-    document.querySelector('#card-pet').classList.remove('rotatea');
-document.querySelector('#card-pet').classList.remove('card-pet');
-console.log("not mobile device");
-
-}
-</script>
 @endsection
 
 <!-- <div class="main-wrapper pet tm_profile">
