@@ -46,6 +46,11 @@
         transform: rotate(-270deg);
         width: 500px;
     }
+    .card-pet{
+        margin-left:-90px;
+        margin-top:130px;
+        margin-bottom:50px;
+    }
 </style>
 <div class="pet about main-wrapper pet tm_profile">
     <section class="featured">
@@ -300,9 +305,9 @@
                         </div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div id="card-pet" class="container ">
+                    <div class="modal fade "  width="500px" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
+                        <div id="modal-card" class="modal-dialog" role="document" width="500px">
+                            <div id="card-pet" class="container rotatea card-pet" width="500px" >
                                 <div class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
                                     <div class="card-body" style="padding:5px;">
                                         <div class="row">
@@ -420,10 +425,13 @@
 <script>
  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
 document.querySelector('#card-pet').classList.add('rotatea');
-  console.log("mobile device");
+document.querySelector('#card-pet').classList.add('card-pet');
+console.log("mobile device");
+
 }else{
-  console.log("not mobile device");
-document.querySelector('#card-pet').classList.remove('rotatea');
+    document.querySelector('#card-pet').classList.remove('rotatea');
+document.querySelector('#card-pet').classList.remove('card-pet');
+console.log("not mobile device");
 
 }
 </script>
