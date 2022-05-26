@@ -74,6 +74,9 @@ class ProductController extends Controller
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
+        
+
+        $requestData['partner_id'] = Auth::user()->partner;
 
         Product::create($requestData);
 

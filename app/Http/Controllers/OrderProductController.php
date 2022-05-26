@@ -103,7 +103,13 @@ class OrderProductController extends Controller
         
         $orderproduct = OrderProduct::findOrFail($id);
         $orderproduct->update($requestData);
-
+        // echo "<pre>";
+        // print_r($requestData);
+        // echo "</pre>";
+        // exit();
+        if (Auth::user()->role == 'admin-partner') {
+            return redirect('order_admin')->with('flash_message', 'Product deleted!');
+        }
         return redirect('order-product')->with('flash_message', 'OrderProduct updated!');
     }
 

@@ -86,6 +86,16 @@
 						<div class="menu-title">Check In/Out</div>
 					</a>
 				</li>
+				<li class="menu-label" style="font-size:15px;">
+                    Shop 
+                </li>
+                <li>
+					<a href="{{ url('/order_admin') }}">
+						<div class="parent-icon"><i class="fa-solid fa-cart-shopping"></i>
+						</div>
+						<div class="menu-title">Order</div>
+					</a>
+				</li>
                 <li class="menu-label" style="font-size:15px;">
                     การใช้งาน
                 </li>

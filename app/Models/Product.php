@@ -25,9 +25,15 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'price', 'price2', 'photo', 'pet_category_id', 'link', 'type', 'promotion'];
+    protected $fillable = ['title', 'price', 'price2', 'photo', 'pet_category_id', 'link', 'type', 'promotion','partner_id'];
 
     public function order_products(){
         return $this->hasMany('App\Models\OrderProduct', 'product_id'); 
     }  
+    public function images(){
+        return $this->hasMany('Images::class'); 
+    }  
+    public function partner(){
+        return $this->belongsTo('App\Models\Partner', 'partner_id'); 
+    }
 }

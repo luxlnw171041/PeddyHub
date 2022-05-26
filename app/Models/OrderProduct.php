@@ -25,7 +25,7 @@ class OrderProduct extends Model
      *
      * @var array
      */
-    protected $fillable = ['order_id', 'product_id', 'user_id', 'quantity', 'price', 'total'];
+    protected $fillable = ['order_id', 'product_id', 'user_id', 'quantity', 'price', 'total','status','tracking'];
 
     public function product(){
         return $this->belongsTo('App\Models\Product', 'product_id'); 
@@ -35,5 +35,8 @@ class OrderProduct extends Model
     }
     public function profile(){
         return $this->belongsTo('App\Models\Profile', 'user_id'); 
+    }
+    public function order(){
+        return $this->belongsTo('App\Models\Order', 'order_id'); 
     }
 }

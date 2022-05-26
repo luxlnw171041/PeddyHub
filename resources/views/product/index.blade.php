@@ -99,7 +99,7 @@ line-height: 1.625;
                         Peddyhub Shop
                     </div>
                     <p>
-                        <a href="index-5.html" title="Home">HOME</a>
+                        <a href="{{''}}" title="Home">HOME</a>
                         || <span> PET-SHOP </span>
                     </p>
                 </div>
@@ -117,7 +117,7 @@ line-height: 1.625;
                     
                 </a>
                 &nbsp;
-                <a style="font-size:15px;" href="{{ url('/product/create') }}" class="btn main d-none" title="contact">
+                <a style="font-size:15px;" href="{{ url('/product/create') }}" class="btn main" title="contact">
                     เพิ่มสินค้า <i class="fas fa-paw"></i>
                 </a>
             </div>
@@ -202,7 +202,7 @@ line-height: 1.625;
                                                             <input class="d-none" name="total" type="number" id="total" value="" >
                                                             <input class="d-none" name="total_cost" type="number" id="total_cost" value="" >
                                                             <input class="d-none"  name="cost" type="number" id="cost" value="{{ $item->cost }}">
-                                                            <a href="#" title="Add to Cart" onclick="document.getElementById('add{{ $item->id }}').submit()"><i class="fas fa-shopping-cart"></i></a>
+                                                            <a title="Add to Cart" onclick="document.getElementById('add{{ $item->id }}').submit()"><i class="fas fa-shopping-cart"></i></a>
                                                         </form>
                                                     </div>
                                                 </div>

@@ -102,7 +102,10 @@
                                     <li>การจัดส่ง <span style="color:red">เก็บเงินปลายทาง</span></li>
                                     <li>รวมทั้งหมด <span> ฿ {{ number_format($orderproduct->sum('total')) }}</span></li>
                                 </ul>
-                                <a href="pet-checkout.html" class="btn main hvr-rectangle-in">สั่งสินค้า</a>
+                                <form id="buy" method="POST" action="{{ url('/order') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <a  class="btn main hvr-rectangle-in"onclick="document.getElementById('buy').submit()">สั่งสินค้า</a>
+                                </form>
                             </div>
 
                         </div>

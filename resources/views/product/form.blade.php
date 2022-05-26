@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($product->photo) ? $product->photo : ''}}" accept="image/*">
+                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($product->photo) ? $product->photo : ''}}" accept="image/*" >
                                     {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -163,6 +163,8 @@
                     <div class="col-lg-6 col-md-12 col-sm-12"></div>
                 </div>
                 </div>
+                <input class="form-control d-none" name="partner_id" type="number" id="partner_id" value="{{ isset($product->title) ? $product->title : ''}}" >
+           
             <div class="faq wow fadeInRight">
                 <div class="container">
                     <div class="row">
