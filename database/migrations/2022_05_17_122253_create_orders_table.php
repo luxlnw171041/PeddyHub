@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->string('status')->nullable();
             $table->timestamp('checking_at')->nullable();
             $table->string('tracking')->nullable();
+             
             });
     }
 
