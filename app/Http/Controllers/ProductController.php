@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
 use App\Models\Pet_Category;
 use App\Models\Product;
 use App\Models\OrderProduct;
@@ -190,6 +189,14 @@ class ProductController extends Controller
         $user = Auth::user();
         $product_admin = Product::where('partner_id', $user->partner)
         ->orderBy('created_at', 'DESC')->get();
+
+        if (!empty($keyword)) {
+            $product_admin = Product::where('partner_id', $user->partner)
+                ->where('title', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            $product = Product::latest()->paginate($perPage);
+        }
 
         return view('partner_admin.product_admin',compact('product_admin','category'));
     }
