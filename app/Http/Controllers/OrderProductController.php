@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Models\Product;
+use App\Models\User;
 
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
@@ -21,14 +21,13 @@ class OrderProductController extends Controller
     public function index(Request $request)
     {
         $perPage = 25;
-        $real_name = Auth::user()->profile->real_name;
-        $phone_user = Auth::user()->profile->phone;
-
+        $data = Auth::user();
+        
         $orderproduct = OrderProduct::whereNull('order_id')
             ->where('user_id', Auth::id() )
             ->latest()->paginate($perPage);
 
-        return view('order-product.index', compact('orderproduct','real_name','phone_user'));
+        return view('order-product.index', compact('orderproduct','data'));
     }
 
     /**
@@ -83,6 +82,7 @@ class OrderProductController extends Controller
      */
     public function edit($id)
     {
+        $data = User::findOrFail($id);
         $orderproduct = OrderProduct::findOrFail($id);
 
         return view('order-product.edit', compact('orderproduct'));

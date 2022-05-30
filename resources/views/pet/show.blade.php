@@ -59,31 +59,42 @@
                     @endphp
                     @switch( $pet_category )
                     @case (1)
-                    <i class="fas fa-dog" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                    <img  style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"  src="{{ asset('/peddyhub/images/img-icon/dog-1.png') }}" alt="">
+
+                    <!-- <i class="fas fa-dog" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid #B8205B;padding:10px;"></i> -->
                     @break
                     @case (2)
-                    <i class="fas fa-cat " style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                    <img  style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"  src="{{ asset('/peddyhub/images/img-icon/cat-1.png') }}" alt="">
+
+                    <!-- <i class="fas fa-cat " style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i> -->
                     @break
                     @case (3)
-                    <i class="fas fa-dove" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                    <img  style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"  src="{{ asset('/peddyhub/images/img-icon/bird-1.png') }}" alt="">
+
+                    <!-- <i class="fas fa-dove" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i> -->
                     @break
                     @case (4)
-                    <i class="fas fa-fish" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                    <img  style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"  src="{{ asset('/peddyhub/images/img-icon/fish-1.png') }}" alt="">
+
+                    <!-- <i class="fas fa-fish" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i> -->
                     @break
                     @case (5)
-                    <i class="fas fa-rabbit" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                    <img  style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"  src="{{ asset('/peddyhub/images/img-icon/rabbit-1.png') }}" alt="">
+
+                    <!-- <i class="fas fa-rabbit" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i> -->
                     @break
                     @case (6)
-                    <i class="fas fa-spider" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                    <img  style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"  src="{{ asset('/peddyhub/images/img-icon/spider-1.png') }}" alt="">
                     @break
                     @endswitch
                 </div>
-                <div class="col-10" style="padding-left: 2px;">
+                <div class="col-7" style="padding-left: 2px;">
                     <p style="font-size: 21px;margin:0px;">
-                        บัตรประจำตัว{{ $pet->pet_category->name}}
+                        บัตรประจำตัว {{ $pet->pet_category->name}}
                     </p>
+                   
                     <div class="row" style="margin-left:2px;">
-                        <div class="col-4" style="font-size: 12px;padding: 0px;margin-top:-10px;">
+                        <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
                             <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
                             <span style="color:#B8205B"> <b> indentification Number</b></span>
                         </div>
@@ -91,6 +102,9 @@
                             <span> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
                         </div>
                     </div>
+                </div>
+                <div class="col-3 " >
+                    <img style="float: right;" src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" width="80%" alt="">
                 </div>
                 <div class="col-12">
                     <div style="font-size: 12px;">
@@ -114,6 +128,9 @@
 
                     <div class="parent">
                         <div class="div1 text-center">
+                        <a href="{{ url('/user_pet/' . $pet->user_id) }}">
+                                <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
+                            </a>
                             <!-- <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt=""> -->
                         </div>
                         <div class="div2">
@@ -124,8 +141,8 @@
                         <div class="div3 d-flex align-items-end">
                             <img src="{{ url('storage/'.$pet->photo )}}" width="100%" alt="image of pet" title="pet" class="fluid customer">
                         </div>
-                        <div class="div4">
-                            <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 18px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
+                        <div class="div4" style="margin-bottom:15px;">
+                        <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                         </div>
                         <div class="div5">
                             <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($pet->created_at)) }}</b></p>
@@ -154,7 +171,6 @@
         </div>
     </div>
 </div>
-
 <br><br>
 <script>
  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){

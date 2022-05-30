@@ -46,10 +46,11 @@
         transform: rotate(-270deg);
         width: 500px;
     }
-    .card-pet{
-        margin-left:-90px;
-        margin-top:130px;
-        margin-bottom:50px;
+
+    .card-pet {
+        margin-left: -90px;
+        margin-top: 130px;
+        margin-bottom: 50px;
     }
 </style>
 <div class="pet about main-wrapper pet tm_profile">
@@ -305,9 +306,9 @@
                         </div>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade "  width="500px" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
+                    <div class="modal fade " width="500px" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
                         <div id="modal_pet{{$item->id}}" class="modal-dialog" role="document" width="500px">
-                            <div id="card_pet{{$item->id}}" class="container card-pet rotatea" width="500px" >
+                            <div id="card_pet{{$item->id}}" class="container card-pet rotatea" width="500px">
                                 <div class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
                                     <div class="card-body" style="padding:5px;">
                                         <div class="row">
@@ -317,38 +318,42 @@
                                                 @endphp
                                                 @switch( $pet_category )
                                                 @case (1)
-                                                <i class="fas fa-dog" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/dog-1.png') }}" alt="">
                                                 @break
                                                 @case (2)
-                                                <i class="fas fa-cat " style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/cat-1.png') }}" alt="">
                                                 @break
                                                 @case (3)
-                                                <i class="fas fa-dove" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/bird-1.png') }}" alt="">
                                                 @break
                                                 @case (4)
-                                                <i class="fas fa-fish" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/fish-1.png') }}" alt="">
                                                 @break
                                                 @case (5)
-                                                <i class="fas fa-rabbit" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/rabbit-1.png') }}" alt="">
                                                 @break
                                                 @case (6)
-                                                <i class="fas fa-spider" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;"></i>
+                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/spider-1.png') }}" alt="">
                                                 @break
                                                 @endswitch
                                             </div>
-                                            <div class="col-10" style="padding-left: 2px;">
+                                            <div class="col-7" style="padding-left: 2px;">
                                                 <p style="font-size: 21px;margin:0px;">
-                                                    บัตรประจำตัว
+                                                    บัตรประจำตัว {{ $pet->pet_category->name}}
                                                 </p>
+
                                                 <div class="row" style="margin-left:2px;">
-                                                    <div class="col-4" style="font-size: 12px;padding: 0px;margin-top:-10px;">
-                                                        <span> <b> เลขประจำตัว</b></span><br>
+                                                    <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
+                                                        <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
                                                         <span style="color:#B8205B"> <b> indentification Number</b></span>
                                                     </div>
                                                     <div class="col-6" style="padding: 0px;margin-top:-7px;">
-                                                        <span> <b> {{ $item->pet_category_id}} {{ date_format($item->created_at,"Y") }} {{ str_pad($item->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
+                                                        <span> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-3 ">
+                                                <img style="float: right;" src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" width="80%" alt="">
                                             </div>
                                             <div class="col-12">
                                                 <div style="font-size: 12px;">
@@ -382,8 +387,8 @@
                                                     <div class="div3 d-flex align-items-end">
                                                         <img src="{{ url('storage/'.$item->photo )}}" width="100%" alt="image of pet" title="pet" class="fluid customer">
                                                     </div>
-                                                    <div class="div4">
-                                                        <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 18px;"> <b>{{ $item->profile->tambon_th }} {{ $item->profile->amphoe_th }} {{ $item->profile->changwat_th }}</b></span><br>
+                                                    <div class="div4" style="margin-bottom:15px;">
+                                                        <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                                                     </div>
                                                     <div class="div5">
                                                         <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($item->created_at)) }}</b></p>
@@ -417,16 +422,16 @@
                     </div>
                     <!-- end model -->
                     <script>
-                        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                             document.querySelector('#card_pet{{$item->id}}').classList.add('rotatea');
                             document.querySelector('#card_pet{{$item->id}}').classList.add('card-pet');
-                        }else{
+                        } else {
                             document.querySelector('#card_pet{{$item->id}}').classList.remove('rotatea');
                             document.querySelector('#card_pet{{$item->id}}').classList.remove('card-pet');
                             document.querySelector('#modal_pet{{$item->id}}').classList.add('modal-dialog-centered');
-                           
+
                         }
-                        </script>
+                    </script>
                     @endforeach
                 </div>
             </div>

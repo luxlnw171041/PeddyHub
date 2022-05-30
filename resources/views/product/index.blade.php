@@ -186,8 +186,13 @@ line-height: 1.625;
                                                             <i class="fas fa-star"></i>
                                                             <i class="fas fa-star"></i>
                                                         </p> -->
-                                                        <!-- <p class="head"><span>฿1,490</span> ฿1,490</p> -->
-                                                        <p class="head"><span></span> ฿ {{ number_format($item->price) }}</p>
+                                                        
+                                                        @if(!empty($item->price2))
+                                                        <p class="head"><span>฿ {{ number_format($item->price2) }}</span> ฿ {{ number_format($item->price) }}</p>
+                                                        @else
+                                                        <p class="head">฿ {{ number_format($item->price) }}</p>
+                                                        @endif
+                                                        
                                                     </a>
                                                     <br>
                                                     <div class="more">

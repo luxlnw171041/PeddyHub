@@ -7,9 +7,9 @@
 			<div>
 				<h5 class="font-weight-bold mb-0">Recent Orders</h5>
 			</div>
-			<div class="ms-auto">
+			<!-- <div class="ms-auto">
 				<button type="button" class="btn btn-white radius-10">View More</button>
-			</div>
+			</div> -->
 		</div>
 	</div>
 	<div class="card-body">
@@ -20,14 +20,14 @@
 						<th>Photo</th>
 						<th>Product Name</th>
 						<th>Customer</th>
-						<th>order id</th>
+						<th class="text-center">address</th>
 						<th>quantity</th>
 						<th>total</th>
 						<th>Status</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($test as $item)
+					@foreach($order_admin as $item)
 					@if( $item->product->partner_id == $partner_id)
 					<tr>
 						<td>
@@ -37,7 +37,7 @@
 						</td>
 						<td>{{$item->product->title}} {{$item->id}}</td>
 						<td>{{$item->profile->name}}</td>
-						<td>{{$item->order_id}}</td>
+						<td>{{$item->profile->address}} {{$item->profile->tambon_th}}  {{$item->profile->amphoe_th}}  {{$item->profile->changwat_th}} {{$item->profile->zip_code}}</td>
 						<td>{{$item->quantity}} ชิ้น</td>
 						<td>฿ {{ number_format($item->total) }}</td>
 
@@ -60,7 +60,7 @@
 					</tr>
 
 					@endif
-					
+
 					<div class="modal fade" id="order{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog" role="document">
 							<div class="modal-content">
@@ -86,85 +86,9 @@
 								</form>
 							</div>
 						</div>
-					</div>@endforeach
-					<!-- <tr>
-										<td>
-											<div class="product-img bg-transparent border">
-												<img src="assets/images/icons/smartphone.png" class="p-1" alt="">
-											</div>
-										</td>
-										<td>Redmi Airdts</td>
-										<td>Craig Clayton</td>
-										<td>#8627523</td>
-										<td>$59.35</td>
-										<td><a href="javaScript:;" class="btn btn-sm btn-danger radius-30">Cancelled</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="product-img bg-transparent border">
-												<img src="assets/images/icons/mouse.png" class="p-1" alt="">
-											</div>
-										</td>
-										<td>Magic Mouse 2</td>
-										<td>Julia Burke</td>
-										<td>#6875954</td>
-										<td>$42.68</td>
-										<td><a href="javaScript:;" class="btn btn-sm btn-warning radius-30">Pending</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="product-img bg-transparent border">
-												<img src="assets/images/icons/tshirt.png" class="p-1" alt="">
-											</div>
-										</td>
-										<td>Coton-T-Shirt</td>
-										<td>Clark Natela</td>
-										<td>#4587892</td>
-										<td>$32.78</td>
-										<td><a href="javaScript:;" class="btn btn-sm btn-success radius-30">Delivered</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="product-img bg-transparent border">
-												<img src="assets/images/icons/headphones.png" class="p-1" alt="">
-											</div>
-										</td>
-										<td>Headphones 7</td>
-										<td>Robin Mandela</td>
-										<td>#5587426</td>
-										<td>$29.52</td>
-										<td><a href="javaScript:;" class="btn btn-sm btn-success radius-30">Delivered</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="product-img bg-transparent border">
-												<img src="assets/images/icons/mouse.png" class="p-1" alt="">
-											</div>
-										</td>
-										<td>Magic Mouse 2</td>
-										<td>Julia Burke</td>
-										<td>#6875954</td>
-										<td>$42.68</td>
-										<td><a href="javaScript:;" class="btn btn-sm btn-warning radius-30">Pending</a>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="product-img bg-transparent border">
-												<img src="assets/images/icons/tshirt.png" class="p-1" alt="">
-											</div>
-										</td>
-										<td>Coton-T-Shirt</td>
-										<td>Clark Natela</td>
-										<td>#4587892</td>
-										<td>$32.78</td>
-										<td><a href="javaScript:;" class="btn btn-sm btn-success radius-30">Delivered</a>
-										</td>
-									</tr> -->
+					</div>
+					@endforeach
+					
 				</tbody>
 			</table>
 		</div>

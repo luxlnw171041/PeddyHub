@@ -112,14 +112,9 @@ input[type=number]::-webkit-outer-spin-button {
                                         <i class="fas fa-star"></i>
                                         <i class="far fa-star-o"></i>
                                     </span> -->
-                                    <span class="review"> (3 reviews)</span>
                                 </div>
                                 <p>
-                                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                                    ac turpis egestas. Vestibulum tortor quam,
-                                    feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit
-                                    amet quam egestas semper. Aenean ultricies mi
-                                    vitae est. Mauris placerat eleifend leo.
+                                    {{$product->description}}
                                 </p>
 
                                 <!-- <strong class="orange">
@@ -151,7 +146,7 @@ input[type=number]::-webkit-outer-spin-button {
                                     <br>
                                     <div class="button" type="submit">
                                         
-                                        <a href="#" class="btn main hvr-rectangle-in" title="Buy Now" onclick="document.getElementById('add').submit()">
+                                        <a class="btn main hvr-rectangle-in" title="Buy Now" onclick="document.getElementById('add').submit()">
                                             Add to Cart <i class="fas fa-paw"></i>
                                         </a>
                                     </div>

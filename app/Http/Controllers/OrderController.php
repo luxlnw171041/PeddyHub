@@ -149,13 +149,13 @@ class OrderController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
         $user = Auth::id();
-        $test = OrderProduct::orderBy('created_at', 'DESC')->get();
+        $order_admin = OrderProduct::orderBy('created_at', 'DESC')->get();
         $partner = User::where('id' , '=' ,$user)->get('partner');
         foreach ($partner as $key ) {
             $partner_id = $key->partner ;
         }
 
-        return view('partner_admin.order_admin', compact('test','partner_id'));
+        return view('partner_admin.order_admin', compact('order_admin','partner_id'));
 
     }
 }

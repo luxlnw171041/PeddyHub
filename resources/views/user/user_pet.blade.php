@@ -184,7 +184,18 @@
                 </div>
                 <div class="pet_name">
                     <b style="font-family: 'Kanit', sans-serif;font-size:18px">
-                        {{$item->name}}
+                        {{$item->name}} 
+                        @switch($item->gender)
+                            @case ('ชาย')
+                            <i style="color:#62DBFB" class="fa-solid fa-mars"></i>
+                            @break
+                            @case ('หญิง')
+                            <i style="color:#FE7AB6" class="fa-solid fa-venus"></i>
+                            @break
+                            @case ('ไม่ระบุ')
+                            <i style="color:#F3AA0D" class="fa-solid fa-venus-mars"></i>
+                            @break
+                        @endswitch
                     </b>
 
                 </div>
@@ -214,8 +225,8 @@
             </div>
             <div class="pet_infos">
                 <div class="pet_info">
-                    <b style="font-family: 'Kanit', sans-serif;font-size:15px">
-                    เพศ : {{$item->gender}} ,วันเกิด: {{$item->birth}}
+                    <b class="d-flex align-items-end" style="font-family: 'Kanit', sans-serif;font-size:18px;">
+                    <img  style="font-size:18px;" width="29px" src="{{ asset('/peddyhub/images/img-icon/birthday.png') }}" alt="">&nbsp;: {{ thaidate("F Y" , strtotime($item->birth)) }}
                     </b>
                 </div>
             </div>

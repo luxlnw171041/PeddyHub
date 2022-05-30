@@ -79,7 +79,9 @@ class ProductController extends Controller
         $requestData['partner_id'] = Auth::user()->partner;
 
         Product::create($requestData);
-
+        if (Auth::user()->role == 'admin-partner') {
+            return redirect('product_admin')->with('flash_message', 'Product deleted!');
+        }
         return redirect('product')->with('flash_message', 'Product added!');
     }
 
@@ -178,5 +180,25 @@ class ProductController extends Controller
         }
 
         return view('product.product_category', compact('product','data_promotion','data_new','data_manoon'));
+    }
+    public function product_admin(Request $request)
+    {
+        $category = Pet_Category::groupBy('name')->get();
+
+        $keyword = $request->get('search');
+        $perPage = 25;
+        $user = Auth::user();
+        $product_admin = Product::where('partner_id', $user->partner)
+        ->orderBy('created_at', 'DESC')->get();
+
+        if (!empty($keyword)) {
+            $product_admin = Product::where('partner_id', $user->partner)
+                ->where('title', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            $product = Product::latest()->paginate($perPage);
+        }
+
+        return view('partner_admin.product_admin',compact('product_admin','category'));
     }
 }

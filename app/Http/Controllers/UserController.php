@@ -119,7 +119,7 @@ class UserController extends Controller
         $data = User::findOrFail($id);
         $data->update($requestData);
         
-        return redirect('user')->with('flash_message', 'profile updated!');
+        return redirect()->back()->with('flash_message', 'profile updated!');
     }
 
     /**

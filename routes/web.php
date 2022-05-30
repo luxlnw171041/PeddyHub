@@ -114,9 +114,12 @@ Route::middleware(['auth', 'role:admin-partner'])->group(function () {
     });
     Route::get('order_admin', 'OrderController@order_admin');
     // Route::get('blood_bank/wait_user', 'Blood_bankController@wait_user');
+Route::get('/product_admin', 'productController@product_admin');
+
 });
 
 Route::resource('check_in', 'Check_inController')->except(['index','show']);
 
 Route::resource('product', 'ProductController');
 Route::get('/user_pet/{id}', 'UserController@user_pet');
+

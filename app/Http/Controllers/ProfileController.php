@@ -108,6 +108,9 @@ class ProfileController extends Controller
             $requestData['photo'] = $request->file('photo')
                 ->store('storage/uploads', 'public'); 
         }
+        $requestData['tambon_th'] = $requestData['select_tambon']; 
+        $requestData['amphoe_th'] = $requestData['select_amphoe']; 
+        $requestData['changwat_th'] = $requestData['select_province']; 
       
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
@@ -116,7 +119,7 @@ class ProfileController extends Controller
             return Redirect("https://lin.ee/Bvi9Zr9");
         }
         else{
-            return redirect('user')->with('flash_message', 'Profile updated!');
+            return redirect()->back()->with('flash_message', 'Profile updated!');
         }
     }
 

@@ -89,6 +89,13 @@
 				<li class="menu-label" style="font-size:15px;">
                     Shop 
                 </li>
+				<li>
+					<a href="{{ url('/product_admin') }}">
+						<div class="parent-icon"><i class="fa-solid fa-hand-holding-box"></i>
+						</div>
+						<div class="menu-title">Product</div>
+					</a>
+				</li>
                 <li>
 					<a href="{{ url('/order_admin') }}">
 						<div class="parent-icon"><i class="fa-solid fa-cart-shopping"></i>

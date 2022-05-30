@@ -25,7 +25,7 @@ class Profile extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'name', 'photo', 'phone', 'birth', 'sex', 'type', 'language','tambon_th','amphoe_th' ,'changwat_th' ,'check_in_at' ,'real_name' ,'send_covid' ,'check_covid'];
+    protected $fillable = ['user_id', 'name', 'photo', 'phone', 'birth', 'sex', 'type', 'language','tambon_th','amphoe_th' ,'changwat_th' ,'check_in_at' ,'real_name' ,'send_covid' ,'check_covid','address','zip_code'];
 
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 
