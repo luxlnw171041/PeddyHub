@@ -183,6 +183,11 @@
             </a>
         </div>
         <div class="col-3" >
+            <a href="http://www.o2nature.co.th" target="bank">
+                <img width="70%" src="{{ asset('peddyhub/images/logo-partner/o2.png') }}">
+            </a>
+        </div>
+        <div class="col-3" >
             <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
                 <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
             </a>
@@ -192,25 +197,25 @@
                 <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
             </a>
         </div>
+        <div class="col-12"><br></div>
         <div class="col-3" >
             <a href="https://www.facebook.com/neverlandsiberians/" target="bank">
                 <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
             </a>
         </div>
-        <div class="col-12"><br></div>
-        <div class="col-4 text-center">
+        <div class="col-3 text-center">
             <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
-                <img width="43%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+                <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
             </a>
         </div>
-        <div class="col-4 text-center">
+        <div class="col-3 text-center">
             <a href="https://www.facebook.com/Axoticcafe/" target="bank">
-                <img width="48%" src="{{ asset('peddyhub/images/logo-partner/axotic.png') }}">
+                <img width="80%" src="{{ asset('peddyhub/images/logo-partner/axotic.png') }}">
             </a>
         </div>
-        <div class="col-4 text-center">
+        <div class="col-3 text-center">
             <a href="https://www.viicheck.com" target="bank">
-                <img width="48%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
+                <img width="80%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
             </a>
         </div>
       </div>

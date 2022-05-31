@@ -48,6 +48,11 @@
                 <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
             </a>
         </div>
+        <div class="col-3" style="margin-top: 5px;">
+            <a href="http://www.o2nature.co.th" target="bank">
+                <img width="70%" src="{{ asset('peddyhub/images/logo-partner/o2.png') }}">
+            </a>
+        </div>
         <div class="col-3" >
             <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
                 <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
@@ -63,20 +68,20 @@
                 <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
             </a>
         </div>
-        <div class="col-4 d-flex justify-content-end" style="top:7px;">
+        <div class="col-3 d-flex justify-content-end" style="top:7px;">
             <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
-                <img width="45%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
+                <img width="60%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
             </a>
         </div>
-        <div class="col-4 d-flex justify-content-end" style="top:7px;">
+        <div class="col-3 d-flex justify-content-end" style="top:7px;">
             <a href="https://facebook.com/Axoticcafe/" target="bank">
-            <img width="55%" src="{{ asset('peddyhub/images/logo-partner/axotic.png') }}">
+            <img width="80%" src="{{ asset('peddyhub/images/logo-partner/axotic.png') }}">
 
             </a>
         </div>
-        <div class="col-4 d-flex justify-content-start" style="top:7px;">
+        <div class="col-3 d-flex justify-content-start" style="top:7px;">
             <a href="https://www.viicheck.com" target="bank">
-                <img width="50%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
+                <img width="80%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
             </a>
         </div>
       </div>
