@@ -313,6 +313,7 @@ class LineApiController extends Controller
     }
 
 
+    // ตั้งค่าริชเมนูอันใหม่ทั้งระบบ
     public function set_new_richMenu()
     {
         $data_users = Profile::where('type', 'line')->get();
@@ -372,8 +373,7 @@ class LineApiController extends Controller
             $this->set_richmanu_language($provider_id , $richMenuId , $user_language);
 
         }
-
-
+        
         return "OK KUB" ;
     }
     
