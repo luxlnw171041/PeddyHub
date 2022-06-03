@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\User;
+use App\Models\Profile;
 use App\Models\Mylog;
 use App\Models\LineMessagingAPI;
 use Illuminate\Support\Facades\DB;
@@ -309,6 +310,70 @@ class LineApiController extends Controller
         ];
         MyLog::create($data);
 
+    }
+
+
+    public function set_new_richMenu()
+    {
+        $data_users = Profile::where('type', 'line')->get();
+
+        foreach ($data_users as $key) {
+            $user_language = $key->language ;
+            $provider_id = $key->user->provider_id;
+
+        }
+
+        if (empty($user_language)) {
+            // DF ริชเมนู EN 
+            $richMenuId = "richmenu-dbf4820aecd13df1703c12d09322c72b" ;
+        }else {
+            switch ($user_language) {
+                case 'th':
+                    $richMenuId = "richmenu-43ef567de0818cdd79ae24a2d50aa4ee" ;
+                    break;
+                case 'en':
+                    $richMenuId = "richmenu-dbf4820aecd13df1703c12d09322c72b" ;
+                    break;
+                case 'zh-TW':
+                    $richMenuId = "richmenu-d40f5cc58d1c219ddaa6ac0a65bb662f" ;
+                    break;
+                case 'zh-CN':
+                    $richMenuId = "richmenu-6916e86cdfc521df9b56ca28625592f0" ;
+                    break;
+                case 'ja':
+                    $richMenuId = "richmenu-7ec356dfb24f08d9e756a0e2b8a01824" ;
+                    break;
+                case 'ko':
+                    $richMenuId = "richmenu-70c7b6c040ec0b8cc442d484fe14b10d" ;
+                    break;
+                case 'es':
+                    $richMenuId = "richmenu-c809bb15d43d845ffbad0170655b84b5" ;
+                    break;
+                case 'lo':
+                    $richMenuId = "richmenu-c069c7f512440742229c84f2bacac98a" ;
+                    break;
+                case 'my':
+                    $richMenuId = "richmenu-805f223be51bdc874e62d398c0eda1c3" ;
+                    break;
+                case 'de':
+                    $richMenuId = "richmenu-ca6576055a92884a28c29478fb1f4098" ;
+                    break;
+                case 'hi':
+                    $richMenuId = "richmenu-2bbb6e7e290379ec4c6a5eadde431b4e" ;
+                    break;
+                case 'ar':
+                    $richMenuId = "richmenu-e76c82ef1ab500b730fdf03693d18b00" ;
+                    break;
+                case 'ru':
+                    $richMenuId = "richmenu-65256f37cbd6bdcc026e5bcd4dbaa45c" ;
+                    break;
+                
+            }
+        }
+
+        $this->set_richmanu_language($provider_id , $richMenuId , $user_language);
+
+        return "OK KUB" ;
     }
     
 

@@ -125,3 +125,6 @@ Route::get('/user_pet/{id}', 'UserController@user_pet');
 Route::get('/petdating', function () {
     return view('petdating');
 });
+
+//set_new_richMenu
+Route::get('set_new_richMenu', 'API\LineApiController@set_new_richMenu');
