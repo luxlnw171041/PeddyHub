@@ -105,6 +105,10 @@ Route::get('/login_line_blood_bank', 'Blood_bankController@blood_bank_line');// 
 Route::get('/login_line_profile', 'ProfileController@profile_edit_line');// แก้ไขโปรไฟล์
 Route::get('/login_line_profile2', 'ProfileController@profile_edit_line2');
 Route::get('hospital_near', 'Hospital_nearController@index');
+// Route::get('login_line_petdating', 'Hospital_nearController@index'); // petdating
+Route::get('/login_line_petdating', function () {
+    return view('soon');
+});
 
 Route::middleware(['auth', 'role:admin-partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
@@ -122,9 +126,10 @@ Route::resource('check_in', 'Check_inController')->except(['index','show']);
 
 Route::resource('product', 'ProductController');
 Route::get('/user_pet/{id}', 'UserController@user_pet');
-Route::get('/petdating', function () {
-    return view('petdating');
-});
+
+// Route::get('/petdating', function () {
+//     return view('petdating');
+// });
 
 //set_new_richMenu
 Route::get('set_new_richMenu', 'API\LineApiController@set_new_richMenu');
