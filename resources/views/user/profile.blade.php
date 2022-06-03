@@ -52,6 +52,12 @@
         margin-top: 130px;
         margin-bottom: 50px;
     }
+
+    .btn-load-pc {
+        position: absolute;
+        top: 110%;
+        left: 40%;
+    }
 </style>
 <div class="pet about main-wrapper pet tm_profile">
     <section class="featured">
@@ -308,116 +314,118 @@
                     <!-- Modal -->
                     <div class="modal fade " width="500px" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
                         <div id="modal_pet{{$item->id}}" class="modal-dialog" role="document" width="500px">
-                            <div id="card_pet{{$item->id}}" class="container card-pet rotatea" width="500px">
-                                <div class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
-                                    <div class="card-body" style="padding:5px;">
-                                        <div class="row">
-                                            <div class="col-2 text-center d-flex align-items-center">
-                                                @php
-                                                $pet_category = $pet->pet_category_id ;
-                                                @endphp
-                                                @switch( $pet_category )
-                                                @case (1)
-                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/dog-1.png') }}" alt="">
-                                                @break
-                                                @case (2)
-                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/cat-1.png') }}" alt="">
-                                                @break
-                                                @case (3)
-                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/bird-1.png') }}" alt="">
-                                                @break
-                                                @case (4)
-                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/fish-1.png') }}" alt="">
-                                                @break
-                                                @case (5)
-                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/rabbit-1.png') }}" alt="">
-                                                @break
-                                                @case (6)
-                                                <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/spider-1.png') }}" alt="">
-                                                @break
-                                                @endswitch
-                                            </div>
-                                            <div class="col-7" style="padding-left: 2px;">
-                                                <p style="font-size: 21px;margin:0px;">
-                                                    บัตรประจำตัว {{ $pet->pet_category->name}}
-                                                </p>
+                            <div class="modal-content" style=" background-color: transparent;">
+                                <div id="card_pet{{$item->id}}" class="container card-pet rotatea" width="500px">
+                                    <div id="{{$item->name}}" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+                                        <div class="card-body" style="padding:5px;">
+                                            <div class="row">
+                                                <div class="col-2 text-center d-flex align-items-center">
+                                                    @php
+                                                    $pet_category = $pet->pet_category_id ;
+                                                    @endphp
+                                                    @switch( $pet_category )
+                                                    @case (1)
+                                                    <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/dog-1.png') }}" alt="">
+                                                    @break
+                                                    @case (2)
+                                                    <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/cat-1.png') }}" alt="">
+                                                    @break
+                                                    @case (3)
+                                                    <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/bird-1.png') }}" alt="">
+                                                    @break
+                                                    @case (4)
+                                                    <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/fish-1.png') }}" alt="">
+                                                    @break
+                                                    @case (5)
+                                                    <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/rabbit-1.png') }}" alt="">
+                                                    @break
+                                                    @case (6)
+                                                    <img style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/spider-1.png') }}" alt="">
+                                                    @break
+                                                    @endswitch
+                                                </div>
+                                                <div class="col-7" style="padding-left: 2px;">
+                                                    <p style="font-size: 21px;margin:0px;">
+                                                        บัตรประจำตัว {{ $pet->pet_category->name}}
+                                                    </p>
 
-                                                <div class="row" style="margin-left:2px;">
-                                                    <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
-                                                        <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
-                                                        <span style="color:#B8205B"> <b> indentification Number</b></span>
-                                                    </div>
-                                                    <div class="col-6" style="padding: 0px;margin-top:-7px;">
-                                                        <span> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
+                                                    <div class="row" style="margin-left:2px;">
+                                                        <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
+                                                            <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
+                                                            <span style="color:#B8205B"> <b> indentification Number</b></span>
+                                                        </div>
+                                                        <div class="col-6" style="padding: 0px;margin-top:-7px;">
+                                                            <span> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-3 ">
-                                                <img style="float: right;" src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" width="80%" alt="">
-                                            </div>
-                                            <div class="col-12">
-                                                <div style="font-size: 12px;">
-                                                    <span> <b> ชื่อตัวและชื่อสกุล</b></span>
-                                                    <span style="font-size:20px;">
-                                                        <b>
-                                                            @switch( $item->gender )
-                                                            @case ("ชาย")
-                                                            เด็กชาย
-                                                            @break
-                                                            @case ("หญิง")
-                                                            เด็กหญิง
-                                                            @break
-                                                            @endswitch
-                                                            {{$item->name}}
-                                                        </b>
-                                                    </span>
+                                                <div class="col-3 ">
+                                                    <img style="float: right;" src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" width="80%" alt="">
                                                 </div>
-                                            </div>
-                                            <div class="col-12">
+                                                <div class="col-12">
+                                                    <div style="font-size: 12px;">
+                                                        <span> <b> ชื่อตัวและชื่อสกุล</b></span>
+                                                        <span style="font-size:20px;">
+                                                            <b>
+                                                                @switch( $item->gender )
+                                                                @case ("ชาย")
+                                                                เด็กชาย
+                                                                @break
+                                                                @case ("หญิง")
+                                                                เด็กหญิง
+                                                                @break
+                                                                @endswitch
+                                                                {{$item->name}}
+                                                            </b>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
 
-                                                <div class="parent">
-                                                    <div class="div1 text-center">
-                                                        <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
-                                                    </div>
-                                                    <div class="div2">
-                                                        <span style="font-size: 12px;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($item->birth)) }}</b></span><br>
-                                                        <span style="font-size: 12px;color:#B8205B"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->birth)) }}</b></span><br>
-                                                        <span style="font-size: 12px;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $item->profile->phone)  }} </b></span>
-                                                    </div>
-                                                    <div class="div3 d-flex align-items-end">
-                                                        <img src="{{ url('storage/'.$item->photo )}}" width="100%" alt="image of pet" title="pet" class="fluid customer">
-                                                    </div>
-                                                    <div class="div4" style="margin-bottom:15px;">
-                                                        <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
-                                                    </div>
-                                                    <div class="div5">
-                                                        <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($item->created_at)) }}</b></p>
-                                                        <p style="font-size: 13px;margin:0px;"> <b>วันออกบัตร</b></p>
-                                                        <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->created_at)) }}</b></p>
-                                                        <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
-                                                    </div>
-                                                    <div class="div6 text-center ">
-                                                        <br>
-                                                        @if(!empty($item->profile->real_name))
-                                                        <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->real_name }})</b></p>
-                                                        @else
-                                                        <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->name }})</b></p>
-                                                        @endif
-                                                        <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>เจ้าของ</b></p>
-                                                    </div>
-                                                    <div class="div7 text-center">
-                                                        <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
-                                                        <p style="font-size: 13px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
-                                                        <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Lift Time</b></p>
-                                                        <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
+                                                    <div class="parent">
+                                                        <div class="div1 text-center">
+                                                            <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
+                                                        </div>
+                                                        <div class="div2">
+                                                            <span style="font-size: 12px;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($item->birth)) }}</b></span><br>
+                                                            <span style="font-size: 12px;color:#B8205B"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->birth)) }}</b></span><br>
+                                                            <span style="font-size: 12px;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $item->profile->phone)  }} </b></span>
+                                                        </div>
+                                                        <div class="div3 d-flex align-items-end">
+                                                            <img src="{{ url('storage/'.$item->photo )}}" width="100%" alt="image of pet" title="pet" class="fluid customer">
+                                                        </div>
+                                                        <div class="div4" style="margin-bottom:15px;">
+                                                            <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
+                                                        </div>
+                                                        <div class="div5">
+                                                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($item->created_at)) }}</b></p>
+                                                            <p style="font-size: 13px;margin:0px;"> <b>วันออกบัตร</b></p>
+                                                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->created_at)) }}</b></p>
+                                                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
+                                                        </div>
+                                                        <div class="div6 text-center ">
+                                                            <br>
+                                                            @if(!empty($item->profile->real_name))
+                                                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->real_name }})</b></p>
+                                                            @else
+                                                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->name }})</b></p>
+                                                            @endif
+                                                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>เจ้าของ</b></p>
+                                                        </div>
+                                                        <div class="div7 text-center">
+                                                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
+                                                            <p style="font-size: 13px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
+                                                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Lift Time</b></p>
+                                                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <button id="{{$item->name}}" onclick="downloadimage()" class="btn btn-success btn-load-pc">Download</button>
                             </div>
-
                         </div>
                     </div>
                     <!-- end model -->
@@ -430,6 +438,24 @@
                             document.querySelector('#card_pet{{$item->id}}').classList.remove('card-pet');
                             document.querySelector('#modal_pet{{$item->id}}').classList.add('modal-dialog-centered');
 
+                        }
+                    </script>
+                    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+                    <script type="text/javascript">
+                        function downloadimage() {
+                            //var container = document.getElementById("image-wrap"); //specific element on page
+                            var container = document.getElementById(event.srcElement.id); // full page 
+                            html2canvas(container, {
+                                allowTaint: true
+                            }).then(function(canvas) {
+
+                                var link = document.createElement("a");
+                                document.body.appendChild(link);
+                                link.download = "บัตรประจำตัวสัตว์เลี้ยง.png";
+                                link.href = canvas.toDataURL();
+                                link.target = '_blank';
+                                link.click();
+                            });
                         }
                     </script>
                     @endforeach

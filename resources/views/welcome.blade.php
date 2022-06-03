@@ -539,7 +539,7 @@
                 </div>
             </section>
             <br><br>
-            <section class="services-section-four"  style="background-color: #FFF6F6;padding-top:20px;padding-bottom:20px;">
+            <section class="services-section-four"  style="background-color: #ffefef;padding-top:20px;padding-bottom:20px;border-top: 2px solid red;border-bottom: 2px solid red;;">
             <div class="auto-container">
                 <h4 class="text-center">บริการดีๆจาก <br class="d-block d-md-none"> ViiCHECK</h4>
                 <br>
