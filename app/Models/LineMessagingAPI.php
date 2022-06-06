@@ -228,6 +228,7 @@ class LineMessagingAPI extends Model
 
                 for ($i=0; $i < count($data_pet);) { 
                     foreach($data_pet as $item ){
+                        $id[$i] = $item->id;
                         $name[$i] = $item->name;
                         $photo[$i] = $item->photo;
                         $gender[$i] = $item->gender;
@@ -313,10 +314,12 @@ class LineMessagingAPI extends Model
                             }
                             //สัตว์เลี้ยง1
                             $string_json = str_replace("pet_name_1",$name[0],$string_json);
-                            $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);   
+                            $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json); 
+                            $string_json = str_replace("pet_1",$id[0],$string_json);  
                             //สัตว์เลี้ยง2
                             $string_json = str_replace("pet_name_2",$name[1],$string_json);
-                            $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo2,$string_json);  
+                            $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo2,$string_json);
+                            $string_json = str_replace("pet_2",$id[1],$string_json);  
                     break;
                     default: 
                         $template_path = storage_path('../public/json/flex-pet3.json');   
