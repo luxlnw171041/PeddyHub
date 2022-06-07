@@ -52,6 +52,9 @@
     .margin-parent{
         margin-bottom: -20px;
     }
+    .margin-name{
+        margin:21px 0px 0px 0px!important;
+    }
 </style>
 <div id="card_pet" class="container rotatea card-pet d-flex justify-content-center">
     <div id="htmltoimage" class="card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
@@ -100,7 +103,7 @@
                     <div class="row" style="margin-left:2px;">
                         <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
                             <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
-                            <span style="color:#B8205B"> <b> indentification Number</b></span>
+                            <span style="color:#B8205B" class="notranslate"> <b> indentification Number</b></span>
                         </div>
                         <div class="col-6" style="padding: 0px;margin-top:-7px;">
                             <span> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
@@ -138,9 +141,11 @@
                             <!-- <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt=""> -->
                         </div>
                         <div class="div2">
-                            <span style="font-size: 12px;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
-                            <span style="font-size: 12px;color:#B8205B"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->birth)) }}</b></span><br>
-                            <span style="font-size: 12px;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span>
+                            <div id="birth_th">
+                                <span  style="font-size: 12px;"> <b> เกิดวันที่ </b></span > <span> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
+                            </div>
+                            <span style="font-size: 12px;color:#B8205B" class="notranslate"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->birth)) }}</b></span><br>
+                            <p><span style="font-size: 12px;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span></p>
                         </div>
                         <div class="div3 d-flex align-items-end">
                             <img src="{{ url('storage/'.$pet->photo )}}" width="100%" alt="image of pet" title="pet" class="fluid customer">
@@ -149,24 +154,28 @@
                             <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                         </div>
                         <div class="div5">
-                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($pet->created_at)) }}</b></p>
-                            <p style="font-size: 13px;margin:0px;"> <b>วันออกบัตร</b></p>
-                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->created_at)) }}</b></p>
-                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
+                            <div id="create_th">
+                                <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($pet->created_at)) }}</b></p>
+                                <p style="font-size: 13px;margin:0px;"> <b>วันออกบัตร</b></p>
+                            </div>
+                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B" class="notranslate"> <b>{{ date("j M Y" , strtotime($pet->created_at)) }}</b></p>
+                            <p style="font-size: 13px;margin:0px;color:#B8205B" class="notranslate"> <b>Date of Issue</b></p>
                         </div>
                         <div class="div6 text-center ">
                             @if(!empty($pet->profile->real_name))
-                            <p style="font-size: 13px; margin:21px 0px 0px 0px;"> <b>({{ $pet->profile->real_name }})</b></p>
+                            <p id="real_name" style="font-size: 13px; margin:0px" class="notranslate margin-name"> <b>({{ $pet->profile->real_name }})</b></p>
                             @else
-                            <p style="font-size: 13px; margin:21px 0px 0px 0px;"> <b>({{ $pet->profile->name }})</b></p>
+                            <p id="name" style="font-size: 13px;margin:0px" class="notranslate  margin-name"> <b>({{ $pet->profile->name }})</b></p>
                             @endif
-                            <p style="font-size: 13px;line-height: 0.5;margin:0px;color:#B8205B"> <b>เจ้าของ</b></p>
+                            <p style="font-size: 13px;line-height: 0.5;margin:0px;color:#B8205B"> <b id="owner_th">เจ้าของ /</b> <b class="notranslate"> owner</b></p>
                         </div>
                         <div class="div7 text-center">
-                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
-                            <p style="font-size: 13px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
-                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Lift Time</b></p>
-                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
+                            <div id="expiry-th">
+                                <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
+                                <p style="font-size: 13px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
+                            </div>
+                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b class="notranslate">Lift Time</b></p>
+                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b class="notranslate">Date of Expiry</b></p>
                         </div>
                     </div>
                 </div>
@@ -174,21 +183,39 @@
         </div>
     </div>
 </div>
+       @if(Auth::user()) 
+        <input class="form-control d-none" name="language" type="text" id="language" value="{{Auth::user()->profile->language}}" >
+        @endif
+
+
 <br>
 <div class="container d-flex justify-content-center">
 <button onclick="downloadimage()" class="btn btn-success d-none d-lg-block">Download</button>
 </div>
 <br><br>
 <script>
+    var language = document.getElementById("language").value;
+    if (language === "en") {
+        document.querySelector('#birth_th').classList.add('d-none');
+        document.querySelector('#create_th').classList.add('d-none');
+        document.querySelector('#owner_th').classList.add('d-none');
+        document.querySelector('#expiry-th').classList.add('d-none');
+        document.querySelector('#real_name').classList.remove('margin-name');
+        document.querySelector('#name').classList.remove('margin-name');
+
+    }
+  
+</script>
+<script>
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         document.querySelector('#card_pet').classList.add('rotatea');
         document.querySelector('#card_pet').classList.add('card-pet');
         document.querySelector('#parent').classList.add('margin-parent');
+        
     } else {
         document.querySelector('#card_pet').classList.remove('rotatea');
         document.querySelector('#card_pet').classList.remove('card-pet');
         document.querySelector('#parent').classList.remove('margin-parent');
-
     }
 </script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>

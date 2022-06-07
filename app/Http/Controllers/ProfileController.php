@@ -108,10 +108,13 @@ class ProfileController extends Controller
             $requestData['photo'] = $request->file('photo')
                 ->store('storage/uploads', 'public'); 
         }
-        $requestData['tambon_th'] = $requestData['select_tambon']; 
-        $requestData['amphoe_th'] = $requestData['select_amphoe']; 
-        $requestData['changwat_th'] = $requestData['select_province']; 
-      
+
+        if(!empty($requestData['tambon_th'])){
+            $requestData['tambon_th'] = $requestData['select_tambon']; 
+            $requestData['amphoe_th'] = $requestData['select_amphoe']; 
+            $requestData['changwat_th'] = $requestData['select_province']; 
+        }
+        
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
 
