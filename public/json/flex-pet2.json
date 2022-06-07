@@ -68,25 +68,24 @@
                 "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "button",
-                    "style": "link",
-                    "color": "#ffffff",
-                    "height": "sm",
-                    "flex": 0,
-                    "action": {
-                      "type": "uri",
-                      "label": "บัตร",
-                      "uri": "https://www.peddyhub.com/pet/pet_1"
-                    }
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/icons/card.png",
+                    "size": "xxs"
                   }
                 ],
                 "position": "absolute",
                 "cornerRadius": "xxl",
                 "offsetTop": "10px",
-                "offsetStart": "220px",
+                "offsetStart": "210px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
-                "alignItems": "center"
+                "alignItems": "center",
+                "paddingStart": "15px",
+                "paddingEnd": "15px",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/pet/pet_1"
+                }
               }
             ],
             "paddingAll": "0px",
@@ -156,25 +155,24 @@
                 "layout": "horizontal",
                 "contents": [
                   {
-                    "type": "button",
-                    "style": "link",
-                    "color": "#ffffff",
-                    "height": "sm",
-                    "flex": 0,
-                    "action": {
-                      "type": "uri",
-                      "label": "action",
-                      "uri": "https://www.peddyhub.com/pet/pet_2"
-                    }
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/icons/card.png",
+                    "size": "xxs"
                   }
                 ],
                 "position": "absolute",
                 "cornerRadius": "xxl",
                 "offsetTop": "10px",
-                "offsetStart": "220px",
+                "offsetStart": "210px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
-                "alignItems": "center"
+                "alignItems": "center",
+                "paddingStart": "15px",
+                "paddingEnd": "15px",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/pet/pet_2"
+                }
               }
             ],
             "paddingAll": "0px",

@@ -268,7 +268,7 @@ class LineMessagingAPI extends Model
                             if (empty($item->photo)) {
                                 $pet_photo = "https://www.peddyhub.com/peddyhub/images/sticker/catanddog.png" ;
                             }
-
+                            $string_json = str_replace("pet_1",$id[0],$string_json);  
                             $string_json = str_replace("pet_name_1",$name[0],$string_json);
                             $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);    
 
@@ -373,13 +373,16 @@ class LineMessagingAPI extends Model
                         }
                         //สัตว์เลี้ยง1
                         $string_json = str_replace("pet_name_1",$name[0],$string_json);
-                        $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json);   
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet1.jpg",$pet_photo,$string_json); 
+                        $string_json = str_replace("pet_1",$id[0],$string_json);    
                         //สัตว์เลี้ยง2
                         $string_json = str_replace("pet_name_2",$name[1],$string_json);
-                        $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo2,$string_json);  
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet2.jpg",$pet_photo2,$string_json);
+                        $string_json = str_replace("pet_2",$id[1],$string_json);    
                         //สัตว์เลี้ยง3
                         $string_json = str_replace("pet_name_3",$name[2],$string_json);
-                        $string_json = str_replace("https://www.peddyhub.com/img_pet3.jpg",$pet_photo3,$string_json);  
+                        $string_json = str_replace("https://www.peddyhub.com/img_pet3.jpg",$pet_photo3,$string_json);
+                        $string_json = str_replace("pet_3",$id[2],$string_json);    
                     break;
                 }
                 $messages = [ json_decode($string_json, true) ]; 
