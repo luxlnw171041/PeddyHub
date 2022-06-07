@@ -8,6 +8,7 @@
         grid-template-rows: repeat(3, 0.5fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
+        margin-bottom: -10px;
     }
 
     .div1 {
@@ -48,6 +49,9 @@
         margin-left: -68px;
         margin-top: 50px;
         margin-bottom: 50px;
+    }
+    .margin-parent{
+        margin-bottom: -20px;
     }
 </style>
 <div id="card_pet" class="container rotatea card-pet d-flex justify-content-center">
@@ -127,7 +131,7 @@
                 </div>
                 <div class="col-12">
 
-                    <div class="parent">
+                    <div class="parent" id="parent">
                         <div class="div1 text-center">
                             <a href="{{ url('/user_pet/' . $pet->user_id) }}">
                                 <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
@@ -153,7 +157,7 @@
                         </div>
                         <div class="div6 text-center ">
                             @if(!empty($pet->profile->real_name))
-                            <p style="font-size: 13px; line-height: 0.5;margin:21px 0px 0px 0px;"> <b>({{ $pet->profile->real_name }})</b></p>
+                            <p style="font-size: 13px; margin:21px 0px 0px 0px;"> <b>({{ $pet->profile->real_name }})</b></p>
                             @else
                             <p style="font-size: 13px; margin:21px 0px 0px 0px;"> <b>({{ $pet->profile->name }})</b></p>
                             @endif
@@ -173,17 +177,19 @@
 </div>
 <br>
 <div class="container d-flex justify-content-center">
-<button onclick="downloadimage()" class="btn btn-success">Download</button>
+<button onclick="downloadimage()" class="btn btn-success d-none d-lg-block">Download</button>
 </div>
 <br><br>
 <script>
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         document.querySelector('#card_pet').classList.add('rotatea');
         document.querySelector('#card_pet').classList.add('card-pet');
-        console.log("mobile device");
+        document.querySelector('#parent').classList.add('margin-parent');
     } else {
         document.querySelector('#card_pet').classList.remove('rotatea');
         document.querySelector('#card_pet').classList.remove('card-pet');
+        document.querySelector('#parent').classList.remove('margin-parent');
+
     }
 </script>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
