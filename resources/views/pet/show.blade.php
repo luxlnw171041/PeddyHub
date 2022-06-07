@@ -8,7 +8,6 @@
         grid-template-rows: repeat(3, 0.5fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
-        margin-bottom: -10px;
     }
 
     .div1 {
