@@ -68,8 +68,22 @@ class PetController extends Controller
         $requestData = $request->all();
 
         if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')
-            ->store('uploads', 'public');
+            $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_2')) {
+            $requestData['photo_2'] = $request->file('photo_2')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_3')) {
+            $requestData['photo_3'] = $request->file('photo_3')->store('uploads', 'public');
+        }
+        if ($request->hasFile('certificate')) {
+            $requestData['certificate'] = $request->file('certificate')->store('uploads', 'public');
+        }
+        if ($request->hasFile('certificate_2')) {
+            $requestData['certificate_2'] = $request->file('certificate_2')->store('uploads', 'public');
+        }
+        if ($request->hasFile('certificate_3')) {
+            $requestData['certificate_3'] = $request->file('certificate_3')->store('uploads', 'public');
         }
         $requestData['user_id'] = Auth::id(); 
 
@@ -149,10 +163,29 @@ class PetController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')
-                ->store('uploads', 'public');
+        if ($request->hasFile('photo')) {
+            $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
         }
+        if ($request->hasFile('photo_2')) {
+            $requestData['photo_2'] = $request->file('photo_2')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_3')) {
+            $requestData['photo_3'] = $request->file('photo_3')->store('uploads', 'public');
+        }
+        if ($request->hasFile('certificate')) {
+            $requestData['certificate'] = $request->file('certificate')->store('uploads', 'public');
+        }
+        if ($request->hasFile('certificate_2')) {
+            $requestData['certificate_2'] = $request->file('certificate_2')->store('uploads', 'public');
+        }
+        if ($request->hasFile('certificate_3')) {
+            $requestData['certificate_3'] = $request->file('certificate_3')->store('uploads', 'public');
+        }
+            
+        // echo "<pre>";
+        // print_r($requestData);
+        // echo "</pre>";
+        // exit();
         $requestData['user_id'] = Auth::id();
         $pet = Pet::findOrFail($id);
         $pet->update($requestData);

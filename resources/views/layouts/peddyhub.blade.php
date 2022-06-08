@@ -105,7 +105,7 @@
                         </a>
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent"
-                            class="navbar-toggler"><span class="navbar-toggler-icon fa">&#xf0c9;</span>
+                            class="navbar-toggler notranslate"><span class="navbar-toggler-icon fa">&#xf0c9;</span>
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto">

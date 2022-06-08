@@ -58,6 +58,9 @@
         top: 110%;
         left: 40%;
     }
+    .owl-nav{
+        display: none;
+    }
 </style>
 <div class="pet about main-wrapper pet tm_profile">
     <section class="featured">
@@ -243,14 +246,41 @@
                     <div class="col-lg-3 col-md-6 col-sm-12">
                         <div class="member">
                             <div class="image">
-                                @if(!empty($item->photo))
-                                <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="295px" alt="image of pet" title="pet" class="img-fluid customer">
-                                @else
-                                <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" alt="image of client" title="client" class="img-fluid customer">
-                                @endif
+                                <div class="owl-carousel">
+                                    @if(!empty($item->photo))
+                                    <div class="item">
+                                        <div class="testimon">
+                                            <div class="image">
+                                                <img src="{{ url('storage/'.$item->photo )}}" height="300px" alt="image of pet" title="pet" class=" customer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @else
+                                    <img src="{{ url('/peddyhub/images/home_5/team-1.png') }}" height="300px" alt="image of client" title="client" class=" customer">
+                                    @endif
+
+                                    @if(!empty($item->photo_2))
+                                    <div class="item">
+                                        <div class="testimon">
+                                            <div class="image">
+                                                <img src="{{ url('storage/'.$item->photo_2 )}}" height="300px" alt="image of pet" title="pet" class=" customer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    @if(!empty($item->photo_3))
+                                    <div class="item">
+                                        <div class="testimon">
+                                            <div class="image">
+                                                <img src="{{ url('storage/'.$item->photo_3 )}}" height="300px" alt="image of pet" title="pet" class=" customer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="content">
-                                <h4 class="wow fadeInDown text-conter notranslate">
+                                <h6 class="wow fadeInDown text-conter notranslate">
                                     @php
                                     $pet_category = $item->pet_category_id ;
                                     @endphp
@@ -269,7 +299,7 @@
                                     @endswitch
                                     <br class="d-block d-md-none">
                                     <a href="{{ url('/pet/' . $item->id . '/edit') }}">แก้ไข</a>
-                                </h4>
+                                </h6>
                                 <ul style="font-size:20px;">
                                     <li><i class="fas fa-paw"></i>วันเกิด : {{ $item->birth }}</li>
                                     <li><i class="fas fa-paw"></i>ช่วงอายุ : {{ $item->age }}</li>
