@@ -161,6 +161,7 @@ class LineMessagingAPI extends Model
                     "ปริมาณ",
                     "แชร์",
                     "ใช้",
+                    "ชุมชน",
                 ];
 
                 $data_topic = $this->language_for_user($data_Text_topic, $provider_id);
