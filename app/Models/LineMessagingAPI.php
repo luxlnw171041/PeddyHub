@@ -189,6 +189,7 @@ class LineMessagingAPI extends Model
                 $string_json = str_replace("ปริมาณ",$data_topic[4],$string_json);
                 $string_json = str_replace("แชร์",$data_topic[5],$string_json);
                 $string_json = str_replace("ใช้",$data_topic[6],$string_json);
+                $string_json = str_replace("ชุมชน",$data_topic[7],$string_json);
                 
                 $messages = [ json_decode($string_json, true) ]; 
             break;
