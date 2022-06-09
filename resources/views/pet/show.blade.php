@@ -163,7 +163,7 @@
                         </div>
                         <div class="div6 text-center ">
                             @if(!empty($pet->profile->real_name))
-                            <p id="real_name" style="font-size: 13px; margin:0px" class="notranslate margin-name"> <b>({{ $pet->profile->real_name }})</b></p>
+                            <p id="real_name" style="font-size: 13px; margin:0px " class="notranslate margin-name"> <b>({{ $pet->profile->real_name }})</b></p>
                             @else
                             <p id="name" style="font-size: 13px;margin:0px" class="notranslate  margin-name"> <b>({{ $pet->profile->name }})</b></p>
                             @endif
@@ -174,7 +174,7 @@
                                 <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
                                 <p style="font-size: 13px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
                             </div>
-                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b class="notranslate">Lift Time</b></p>
+                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b class="notranslate">Life Time</b></p>
                             <p style="font-size: 13px;margin:0px;color:#B8205B"> <b class="notranslate">Date of Expiry</b></p>
                         </div>
                     </div>

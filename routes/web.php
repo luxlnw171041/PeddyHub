@@ -79,7 +79,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/my_post', 'Lost_PetController@mypost');
     Route::resource('order-product', 'OrderProductController');
     Route::resource('order', 'OrderController');
-
+    Route::get('hospital_near', 'Hospital_nearController@index');
 });
 Route::get('/pet/{id}', 'PetController@show');
 
@@ -104,7 +104,7 @@ Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ต�
 Route::get('/login_line_blood_bank', 'Blood_bankController@blood_bank_line');// หน้าindex ธนาคารเลือด
 Route::get('/login_line_profile', 'ProfileController@profile_edit_line');// แก้ไขโปรไฟล์
 Route::get('/login_line_profile2', 'ProfileController@profile_edit_line2');
-Route::get('hospital_near', 'Hospital_nearController@index');
+
 // Route::get('login_line_petdating', 'Hospital_nearController@index'); // petdating
 Route::get('/login_line_petdating', function () {
     return view('soon');

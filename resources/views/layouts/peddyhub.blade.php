@@ -118,6 +118,9 @@
                                 <li class="nav-item dropdown">
                                     <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Adoption</a>
                                 </li>
+                                <li class="nav-item dropdown">
+                                    <a href="{{ url('/hospital_near') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Hospital Near Me</a>
+                                </li>
                                 @guest
                                     <li class="nav-item dropdown">
                                         <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
@@ -183,7 +186,9 @@
                                             <li class="nav-item dropdown">
                                                 <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Adoption</a>
                                             </li>
-                                            
+                                            <li class="nav-item dropdown">
+                                                <a href="{{ url('/hospital_near') }}" class="hvr-overline-from-center nav-link dropdown-toggle" >Hospital Near Me</a>
+                                            </li>
                                             @guest
                                                 <li class="nav-item dropdown">
                                                     <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle"
