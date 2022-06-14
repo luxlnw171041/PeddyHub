@@ -55,11 +55,14 @@ Route::get('/update_lost_pet/send_line/{id}', 'Lost_PetController@update_lost_pe
 
 Route::get('/select_category/','API\CategoryController@category');
 Route::get('/select_sub_category/{category}','API\CategoryController@sub_category');
+Route::get('/select_size/{size}','API\CategoryController@sub_size');
+Route::get('/select_species/{species}','API\CategoryController@species');
 
 Route::get('/search_name/{name}/{check_in_at}','API\PartnersController@search_name');
 Route::get('/show_group_risk/{id}/{check_in_at}','API\PartnersController@show_group_risk');
 
 Route::post('/send_risk_group', 'API\PartnersController@send_risk_group');
+Route::get('/submit_show_homepage/{partner_id}/{input_show_homepage}', 'API\PartnersController@submit_show_homepage');
 
 
 

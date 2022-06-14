@@ -8,6 +8,11 @@
     <input class="form-control" name="name_area" type="text" id="name_area" value="{{ isset($partner->name_area) ? $partner->name_area : ''}}" >
     {!! $errors->first('name_area', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group {{ $errors->has('link') ? 'has-error' : ''}}">
+    <label for="link" class="control-label">{{ 'ลิงค์' }}</label>
+    <input class="form-control" name="link" type="text" id="link" value="{{ isset($partner->link) ? $partner->link : ''}}" >
+    {!! $errors->first('link', '<p class="help-block">:message</p>') !!}
+</div>
 <div class="form-group {{ $errors->has('phone') ? 'has-error' : ''}}" style="margin-top:10px">
     <label for="phone" class="control-label">{{ 'เบอร์' }}</label>
     <input class="form-control" name="phone" type="text" id="phone" value="{{ isset($partner->phone) ? $partner->phone : ''}}" >

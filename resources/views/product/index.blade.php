@@ -86,8 +86,7 @@ line-height: 1.625;
                 </div>
             </div>
         </div> -->
-    </div>
-    <body>
+    <!-- </div> -->
     <div class="main-wrapper pet shop">
         <section class="featured">
             <div class="crumb">
@@ -116,10 +115,10 @@ line-height: 1.625;
                     <i style="font-size: 25px;vertical-align: middle;margin-left:-10px;" class="fa-solid fa-cart-shopping"></i> 
                     
                 </a>
-                &nbsp;
+                <!-- &nbsp;
                 <a style="font-size:15px;" href="{{ url('/product/create') }}" class="btn main" title="contact">
                     เพิ่มสินค้า <i class="fas fa-paw"></i>
-                </a>
+                </a> -->
             </div>
         </div>
         <section class="steps">
@@ -188,7 +187,7 @@ line-height: 1.625;
                                                         </p> -->
                                                         
                                                         @if(!empty($item->price2))
-                                                        <p class="head"><span>฿ {{ number_format($item->price2) }}</span> ฿ {{ number_format($item->price) }}</p>
+                                                        <p class="head"><span style="margin: 0px;">฿ {{ number_format($item->price2) }}</span> ฿ {{ number_format($item->price) }}</p>
                                                         @else
                                                         <p class="head">฿ {{ number_format($item->price) }}</p>
                                                         @endif

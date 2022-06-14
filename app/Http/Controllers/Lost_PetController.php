@@ -10,6 +10,8 @@ use App\Models\Profile;
 use App\Models\Lost_Pet;
 use App\Models\Pet_Category;
 use App\Models\Pet;
+use App\Models\Partner;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -50,8 +52,10 @@ class Lost_PetController extends Controller
         $user_id = Auth::id();
 
         $select_pet = Pet::where('user_id' , $user_id)->get();
+        $partner = Partner::where('show_homepage' , "show")->get();
 
-        return view('lost_pet.create', compact('select_pet'));
+
+        return view('lost_pet.create', compact('select_pet','partner'));
     }
 
     /**

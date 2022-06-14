@@ -25,7 +25,7 @@ class Partner extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'phone', 'lat', 'lng', 'logo', 'province', 'district ', 'sub_district','name_area'];
+    protected $fillable = ['name', 'phone', 'lat', 'lng', 'logo', 'province', 'district ', 'sub_district','name_area','link'];
 
     public function products(){
         return $this->hasMany('App\Models\Product', 'partner_id'); 

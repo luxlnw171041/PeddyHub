@@ -43,7 +43,20 @@
   <hr class="col-10" style="margin-top:10px;padding:19;left:10px;">
     <div class="col-12" style="margin-bottom:-20px;">
       <div class="row text-center">
-        <div class="col-3" >
+        <div class="col-12 owl-carousel-two align-self-center" style="padding:0px;">
+          <div class="owl-carousel">
+              @foreach($partner as $item)
+              <div class="item" style="padding:0px;z-index:-1;">
+                  <div class="testimon">
+                    <a href="{{$item->link}}" target="bank">
+                      <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                    </a>
+                  </div>
+              </div>
+              @endforeach
+          </div>
+        </div>
+        <!-- <div class="col-3" >
             <a href="https://manoonpetshop.co.th/" target="bank">
                 <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
             </a>
@@ -83,7 +96,7 @@
             <a href="https://www.viicheck.com" target="bank">
                 <img width="80%" src="{{ asset('peddyhub/images/logo-partner/logo-viicheck.png') }}">
             </a>
-        </div>
+        </div> -->
       </div>
     </div>
   <br><br>

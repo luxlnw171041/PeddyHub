@@ -34,4 +34,38 @@ class CategoryController extends Controller
                         ->get();
         return $sub_cat;
     }
+
+    public function sub_size($size)
+    {
+        $pets = Pet_Category::where('id' , $size)->get();
+        foreach ($pets as $pet) {
+                $name_cat = $pet->name ;
+            
+        }
+        $size = DB::table('pet__categories')
+                        ->select('size')
+                        ->where('name', $name_cat)
+                        ->where('size', "!=", null)
+                        ->groupBy('size')
+                        ->orderBy('size', 'asc')
+                        ->get();
+        return $size;
+    }
+
+    public function species($species)
+    {
+        $pets = Pet_Category::where('size' , $species)->get();
+        foreach ($pets as $pet) {
+                $name_size = $pet->size ;
+            
+        }
+        $species = DB::table('pet__categories')
+                        ->select('species')
+                        ->where('size', $name_size)
+                        ->where('species', "!=", null)
+                        ->groupBy('species')
+                        ->orderBy('species', 'asc')
+                        ->get();
+        return $species;
+    }
 }

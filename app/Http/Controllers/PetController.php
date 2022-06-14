@@ -204,7 +204,7 @@ class PetController extends Controller
     {
         Pet::destroy($id);
 
-        return redirect('pet')->with('flash_message', 'Pet deleted!');
+        return redirect()->back()->with('flash_message', 'Pet deleted!');
     }
 
     public function welcome_line()

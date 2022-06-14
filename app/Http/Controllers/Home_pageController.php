@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Pet;
 use App\Models\Post;
+use App\Models\Partner;
 
 class Home_pageController extends Controller
 {
@@ -18,7 +19,8 @@ class Home_pageController extends Controller
         //post
         $data_post = Post::inRandomOrder()->limit(6)->get();
         
-        return view('welcome' ,compact('count_user','count_pet' ,'data_post'));
+        $partner = Partner::get();
+        return view('welcome' ,compact('count_user','count_pet' ,'data_post','partner'));
     }
 
     

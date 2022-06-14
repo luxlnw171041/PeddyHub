@@ -184,12 +184,13 @@ class Check_inController extends Controller
             ->get();   
 
         $check_in_at = $requestData['input_name_partner'] ;
+        $partner = Partner::where('show_homepage' , "show")->get();
 
         $time = str_replace("T"," ",$time);
 
 
         // return redirect('check_in')->with('flash_message', 'Check_in added!');
-        return view('check_in.check_in_finish', compact('time','type','data_in_out','check_in_at'));
+        return view('check_in.check_in_finish', compact('time','type','data_in_out','check_in_at','partner'));
 
     }
 

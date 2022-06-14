@@ -29,8 +29,8 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
-                                    <tr>
-                                        <th>#</th><th>Name</th><th>Actions</th>
+                                    <tr >
+                                        <th class="text-dark">#</th><th class="text-dark">Name</th><th class="text-dark">sub categorie</th><th class="text-dark">size</th><th class="text-dark">species</th><th class="text-dark">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,6 +38,10 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->name }}</td>
+                                        <td>{{ $item->sub_category }}</td>
+                                        <td>{{ $item->size }}</td>
+                                        <td>{{ $item->species }}</td>
+
                                         <td>
                                             <a href="{{ url('/pet_category/' . $item->id) }}" title="View Pet_Category"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/pet_category/' . $item->id . '/edit') }}" title="Edit Pet_Category"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
