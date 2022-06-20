@@ -98,7 +98,7 @@
                             @endforeach -->
                         <div class="content">
                             <div class="name wow fadeInDown">
-                                <a title="name">{{ $data->profile->name }}</a>
+                                <a title="name" class="notranslate">{{ $data->profile->name }}</a>
                                 @switch($data->profile->sex)
                                 @case('ผู้หญิง')
                                 <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
