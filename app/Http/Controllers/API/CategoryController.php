@@ -40,7 +40,6 @@ class CategoryController extends Controller
         $pets = Pet_Category::where('id' , $size)->get();
         foreach ($pets as $pet) {
                 $name_cat = $pet->name ;
-            
         }
         $size = DB::table('pet__categories')
                         ->select('size')
@@ -54,14 +53,14 @@ class CategoryController extends Controller
 
     public function species($species)
     {
-        $pets = Pet_Category::where('size' , $species)->get();
+        $pets = Pet_Category::where('id' , $species)->get();
         foreach ($pets as $pet) {
-                $name_size = $pet->size ;
-            
+                $name = $pet->name ;
         }
+        
         $species = DB::table('pet__categories')
                         ->select('species')
-                        ->where('size', $name_size)
+                        ->where('name', $name)
                         ->where('species', "!=", null)
                         ->groupBy('species')
                         ->orderBy('species', 'asc')

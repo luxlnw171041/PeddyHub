@@ -96,7 +96,35 @@
         background: none;
         color: #B8205B;
     }
+
+    .select2-selection--single {
+        border-radius: 25px 0px 25px 25px !important;
+        padding: 20px !important;
+        width: 100% !important;
+    }
+
+    .selection {
+        margin-top: 0px !important;
+    }
+
+    .select2-container {
+        box-sizing: border-box;
+        margin-top: 10px !important;
+        position: relative;
+        vertical-align: middle;
+        min-width: 100%!important;
+        
+    }
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        display: block;
+        margin-top:-15px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <div class="main-wrapper pet check">
     <div class="pet service">
         <section class="contact">
@@ -329,18 +357,20 @@
                                 <div class="col-6 col-md-12 order-1">
                                     <label class="control-label"><b>{{ 'ประเภท' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
-                                        <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat(); sub_size();" required>
+                                        <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat(); species_select();" required>
                                             <option value='' selected="selected">- โปรดเลือก -</option>
                                         </select>
+
                                         <select style="margin:10px 0px 0px 0px;" id="select_sub_category" name="sub_category" class="form-control d-none">
                                             <option value='' selected="selected">- โปรดเลือก -</option>
                                         </select>
-                                        <select style="margin:10px 0px 0px 0px;" id="select_size" name="size" class="form-control d-none" onchange="species_select();">
+                                        <select style="margin:10px 0px 0px 0px;" id="select_species" name="species" class="form-control d-none" onchange="sub_size();">
                                             <option value='' selected="selected">- โปรดเลือก -</option>
                                         </select>
-                                        <select style="margin:10px 0px 0px 0px;" id="select_species" name="species" class="form-control d-none" >
+                                        <select style="margin:10px 0px 0px 0px;" id="select_size" name="size" class="form-control d-none">
                                             <option value='' selected="selected">- โปรดเลือก -</option>
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-12 order-2">
@@ -571,7 +601,7 @@
         fetch("{{ url('/') }}/api/select_category/")
             .then(response => response.json())
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 select_category.innerHTML = "";
 
                 let option_select = document.createElement("option");
@@ -601,7 +631,7 @@
 
                 let option_select = document.createElement("option");
 
-                
+
                 option_select.text = "- เลือกประเภทย่อย -";
                 option_select.value = "";
                 select_sub_category.add(option_select);
@@ -612,7 +642,7 @@
                     option.value = item.sub_category;
                     select_sub_category.add(option);
                     counter++;
-                    
+
                 }
                 if (counter >= 1) {
                     document.querySelector('#select_sub_category').classList.remove('d-none');
@@ -626,25 +656,24 @@
         let select_category = document.querySelector('#select_category');
         let select_size = document.querySelector('#select_size');
         let counter = 0;
-        
+
         var e = document.getElementById("select_category");
         var value = e.options[e.selectedIndex].value;
         var text = e.options[e.selectedIndex].text;
-        
-        
+
         fetch("{{ url('/') }}/api/select_size" + "/" + select_category.value)
             .then(response => response.json())
             .then(result => {
-                
+
                 select_size.innerHTML = "";
 
                 let option_select = document.createElement("option");
 
                 if (text === 'สุนัข') {
                     option_select.text = "- เลือกขนาด -";
-                }else if(text === 'แมว') {
+                } else if (text === 'แมว') {
                     option_select.text = "- เลือกขน -";
-                }else{
+                } else {
                     option_select.text = "- เลือกประเภทย่อย -";
                 }
                 option_select.value = "";
@@ -656,7 +685,7 @@
                     option.value = item.size;
                     select_size.add(option);
                     counter++;
-                    
+
                 }
                 if (counter >= 1) {
                     document.querySelector('#select_size').classList.remove('d-none');
@@ -665,16 +694,16 @@
                 }
             });
     }
-    
+
     function species_select() {
-        let select_size = document.querySelector('#select_size');
+        let select_category = document.querySelector('#select_category');
         let select_species = document.querySelector('#select_species');
         let counter = 0;
-        
-        fetch("{{ url('/') }}/api/select_species" + "/" + select_size.value)
+
+        fetch("{{ url('/') }}/api/select_species" + "/" + select_category.value)
             .then(response => response.json())
             .then(result => {
-                
+
                 select_species.innerHTML = "";
 
                 let option_select = document.createElement("option");
@@ -691,9 +720,11 @@
                     counter++;
                 }
                 if (counter >= 1) {
-                    document.querySelector('#select_species').classList.remove('d-none');
+                    document.querySelector('.select2-container').classList.remove('d-none');
+
                 } else {
-                    document.querySelector('#select_species').classList.add('d-none');
+                    document.querySelector('.select2-container').classList.add('d-none');
+
                 }
             });
     }
@@ -745,6 +776,10 @@
     }
 
     function petdating() {
-        setCookie("ยินยอมใช้ระบบหาคู่สัตว์เลี้ยง", "ยินยอม", 999 );
+        setCookie("ยินยอมใช้ระบบหาคู่สัตว์เลี้ยง", "ยินยอม", 999);
     }
+</script>
+<script type="text/javascript">
+    $('#select_species').select2();
+    document.querySelector('.select2-container').classList.add('d-none');
 </script>
