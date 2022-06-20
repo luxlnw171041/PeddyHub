@@ -224,30 +224,6 @@
                                         <label class="control-label"><b>{{ 'รูป' }} <span style="color: #B8205B;">* <span style="font-size:13px;">อย่างน้อย 1 รูป</span> </span></b></label><br>
                                     </div>
                                 </div>
-                                <!-- <button class="btn btn-11 " type="reset" 
-                                    onclick="
-                                        document.getElementById('photo').value = ''; 
-                                        document.querySelector('#div_photo_1').classList.remove('d-none');
-                                        document.querySelector('#show_photo').classList.add('d-none');
-                                       
-                                    ">1
-                                </button>
-                                <button class="btn btn-11 " type="reset" 
-                                    onclick="
-                                        document.getElementById('photo_2').value = ''; 
-                                        document.querySelector('#div_photo_2').classList.remove('d-none');
-                                        document.querySelector('#show_photo2').classList.add('d-none');
-                                       
-                                    ">2
-                                </button>
-                                <button class="btn btn-11 " type="reset" 
-                                    onclick="
-                                        document.getElementById('photo_3').value = ''; 
-                                        document.querySelector('#div_photo_3').classList.remove('d-none');
-                                        document.querySelector('#show_photo3').classList.add('d-none');
-                                       
-                                    ">3
-                                </button> -->
                                 <div class="row col-12 m-0 p-0 text-center d-flex justify-content-center">
                                     <label class="col-4" style="padding:0px;" for="photo">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
@@ -263,7 +239,7 @@
                                     <label id="div_photo_2" for="photo_2" class="col-4 d-none" style="padding:0px;">
                                         <div class=" fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="form-control" name="photo_2" type="file" id="photo_2" value="{{ isset($pet->photo_2) ? $pet->photo_2 : ''}}" accept="image/*" onchange="document.getElementById('show_photo2').src = window.URL.createObjectURL(this.files[0])">
+                                                <input class="form-control" name="photo_2" style="margin:20px 0px 10px 0px" type="file" id="photo_2" value="{{ isset($pet->photo_2) ? $pet->photo_2 : ''}}" accept="image/*" onchange="document.getElementById('show_photo2').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
                                             <img class="d-none full_img" style="padding:0px ;object-fit: cover;" width="100%" id="show_photo2" alt="your image" />
                                             <div class="child">
@@ -274,7 +250,7 @@
                                     <label id="div_photo_3" for="photo_3" class="col-4 d-none" style="padding:0px;">
                                         <div class="fill  parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="form-control" name="photo_3" type="file" id="photo_3" value="{{ isset($pet->photo_3) ? $pet->photo_3 : ''}}" accept="image/*" onchange="document.getElementById('show_photo3').src = window.URL.createObjectURL(this.files[0])">
+                                                <input class="form-control" name="photo_3" style="margin:20px 0px 10px 0px" type="file" id="photo_3" value="{{ isset($pet->photo_3) ? $pet->photo_3 : ''}}" accept="image/*" onchange="document.getElementById('show_photo3').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
                                             <img class="d-none full_img" style="padding:0px ;object-fit: cover;" width="100%" id="show_photo3" alt="your image" />
                                             <div class="child">
@@ -292,7 +268,7 @@
                                     <label class="col-4" style="padding:0px;" for="certificate">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="form-control" name="certificate" type="file" id="certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}" accept="image/*" onchange="document.getElementById('show_certificate').src = window.URL.createObjectURL(this.files[0])">
+                                                <input class="form-control" name="certificate" style="margin:20px 0px 10px 0px" type="file" id="certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}" accept="image/*" onchange="document.getElementById('show_certificate').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
                                             <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate" />
                                             <div class="child">
@@ -303,7 +279,7 @@
                                     <label id="div_certificate_2" class="col-4 d-none" style="padding:0px;" for="certificate_2">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="form-control" name="certificate_2" type="file" id="certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate2').src = window.URL.createObjectURL(this.files[0])">
+                                                <input class="form-control" name="certificate_2" style="margin:20px 0px 10px 0px" type="file" id="certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate2').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
                                             <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate2" />
                                             <div class="child">
@@ -314,7 +290,7 @@
                                     <label id="div_certificate_3" class="col-4 d-none" style="padding:0px;" for="certificate_3">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="form-control" name="certificate_3" type="file" id="certificate_3" value="{{ isset($pet->certificate_3) ? $pet->certificate_3 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate3').src = window.URL.createObjectURL(this.files[0])">
+                                                <input class="form-control" name="certificate_3" style="margin:20px 0px 10px 0px" type="file" id="certificate_3" value="{{ isset($pet->certificate_3) ? $pet->certificate_3 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate3').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
                                             <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate3" />
                                             <div class="child">
@@ -332,6 +308,17 @@
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="faq wow fadeInRight">
                             <div class="row">
+                                <div class="col-6 col-md-12 order-2">
+                                    <label class="control-label"><b>{{ 'เพศ' }} <span style="color: #B8205B;">*</span></b></label>
+                                    <div class="form-group">
+                                        <select style="margin:0px;" name="gender" class="form-control" id="gender" required>
+                                            <option value='' selected> - โปรดเลือก - </option>
+                                            @foreach (json_decode('{"\u0e0a\u0e32\u0e22":"\u0e0a\u0e32\u0e22","\u0e2b\u0e0d\u0e34\u0e07":"\u0e2b\u0e0d\u0e34\u0e07","\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38":"\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"}', true) as $optionKey => $optionValue)
+                                            <option value="{{ $optionKey }}" {{ (isset($pet->gender) && $pet->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-6 col-md-12 col-lg-12 order-3">
                                     <label class="control-label"><b>{{ 'วันเกิด' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
@@ -354,7 +341,7 @@
                                         </select>
                                     </div>
                                 </div> -->
-                                <div class="col-6 col-md-12 order-1">
+                                <div class="col-12 col-md-12 order-1">
                                     <label class="control-label"><b>{{ 'ประเภท' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
                                         <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat(); species_select();" required>
@@ -373,17 +360,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-6 col-md-12 order-2">
-                                    <label class="control-label"><b>{{ 'เพศ' }} <span style="color: #B8205B;">*</span></b></label>
-                                    <div class="form-group">
-                                        <select style="margin:0px;" name="gender" class="form-control" id="gender" required>
-                                            <option value='' selected> - โปรดเลือก - </option>
-                                            @foreach (json_decode('{"\u0e0a\u0e32\u0e22":"\u0e0a\u0e32\u0e22","\u0e2b\u0e0d\u0e34\u0e07":"\u0e2b\u0e0d\u0e34\u0e07","\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38":"\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"}', true) as $optionKey => $optionValue)
-                                            <option value="{{ $optionKey }}" {{ (isset($pet->gender) && $pet->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+                               
                                 <!-- <div class="col-6 col-md-12 order-4">
                                     <label class="control-label"><b>{{ 'ขนาดสัตว์เลี้ยง' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
