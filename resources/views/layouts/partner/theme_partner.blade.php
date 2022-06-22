@@ -76,7 +76,7 @@
 			</div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
-				<li class="menu-label" style="font-size:18px;">
+				<li class="menu-label" style="font-size:18px;color:#B8205B">
                     Check In/Out 
                 </li>
                 <li>
@@ -86,7 +86,7 @@
 						<div class="menu-title" style="font-size:18px;">Check In/Out</div>
 					</a>
 				</li>
-				<li class="menu-label" style="font-size:18px;">
+				<li class="menu-label" style="font-size:18px;color:#B8205B">
                     Shop 
                 </li>
 				<li>
@@ -103,7 +103,7 @@
 						<div class="menu-title" style="font-size:18px;">Order</div>
 					</a>
 				</li>
-                <li class="menu-label" style="font-size:18px;">
+                <li class="menu-label" style="font-size:18px;color:#B8205B">
                     การใช้งาน
                 </li>
                 <li>
