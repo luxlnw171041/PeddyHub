@@ -1,9 +1,9 @@
 @extends('layouts.peddyhub')
 
 @section('content')
-<meta property="og:title" content="YOUR TITLE HERE" />
+<meta property="og:title" content="{{pet->name}}" />
 <meta property="og:description" content="YOUR DESCRIPTION HERE" />
-<meta property="og:image" content="YOUR THUMBNAIL URL HERE" />
+<meta property="og:image" content="{{ url('storage/'.$pet->photo )}}" />
 <style>
     .parent {
         display: grid;
