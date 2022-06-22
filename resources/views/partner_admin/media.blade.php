@@ -353,9 +353,9 @@
                 <div class="col-12 col-lg-6">
                     <div class="card shadow-none border radius-15">
                         <div class="card-body">
-                            <div class="d-flex align-items-center">
+                            <div class="d-none d-flex align-items-center">
                                 <div class="ms-auto font-24">
-                                    <a type="button" class="d-none btn radius-10 btn-peddyhub"  href="https://docs.google.com/presentation/d/1JtMgWe0OUg6aIfhp30-grghNkgH2q96MzhFAc7sBKvk/export/pptx') }}" download >
+                                    <a type="button" class="btn radius-10 btn-peddyhub"  href="{{ asset('/peddyhub/images/media/all/peddyhub.zip') }}" download >
                                         <i class="fa-regular fa-download"></i>
                                     </a>
                                     <br>
@@ -364,12 +364,10 @@
                             <h5 class="mt-3 mb-0">วีดีโอนำเสนอ PEDDyHUB</h5>
                             
                             <div>
-                                <a href="#empty">
-                                    <img class="card-img-top" style="width: 100%;height: 300px;object-fit: contain;" src="{{ asset('/peddyhub/images/media/all/sticker/23.png') }}">
-                                </a>
-                                <a href="#present" class="lightbox" id="empty">
-                                    <span style="background-image: url('{{ asset('/peddyhub/images/media/all/sticker/23.png') }}')"></span>
-                                </a>
+                                <iframe width="100%" height="340"
+                                    src="https://www.youtube.com/embed/A14_yhpDaq0">
+                                </iframe>
+                                    
                             </div>
                         </div>
                     </div>
