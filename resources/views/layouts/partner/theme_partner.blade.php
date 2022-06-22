@@ -76,41 +76,41 @@
 			</div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
-				<li class="menu-label" style="font-size:15px;">
+				<li class="menu-label" style="font-size:18px;">
                     Check In/Out 
                 </li>
                 <li>
 					<a href="{{ url('/check_in_admin') }}">
 						<div class="parent-icon"><i class="fa-regular fa-location-dot"></i>
 						</div>
-						<div class="menu-title">Check In/Out</div>
+						<div class="menu-title" style="font-size:18px;">Check In/Out</div>
 					</a>
 				</li>
-				<li class="menu-label" style="font-size:15px;">
+				<li class="menu-label" style="font-size:18px;">
                     Shop 
                 </li>
 				<li>
 					<a href="{{ url('/product_admin') }}">
 						<div class="parent-icon"><i class="fa-solid fa-hand-holding-box"></i>
 						</div>
-						<div class="menu-title">Product</div>
+						<div class="menu-title" style="font-size:18px;">Product</div>
 					</a>
 				</li>
                 <li>
 					<a href="{{ url('/order_admin') }}">
 						<div class="parent-icon"><i class="fa-solid fa-cart-shopping"></i>
 						</div>
-						<div class="menu-title">Order</div>
+						<div class="menu-title" style="font-size:18px;">Order</div>
 					</a>
 				</li>
-                <li class="menu-label" style="font-size:15px;">
+                <li class="menu-label" style="font-size:18px;">
                     การใช้งาน
                 </li>
                 <li>
 					<a href="{{ url('/media') }}">
 						<div class="parent-icon"><i class="fa-regular fa-photo-film"></i>
 						</div>
-						<div class="menu-title">สื่อประชาสัมพันธ์</div>
+						<div class="menu-title" style="font-size:18px;">สื่อประชาสัมพันธ์</div>
 					</a>
 				</li>
 			</ul>
