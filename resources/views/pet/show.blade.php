@@ -1,7 +1,7 @@
 @extends('layouts.peddyhub')
 
 @section('content')
-<meta property="og:title" content="{{pet->name}}" />
+<meta property="og:title" content="{{$pet->name}}" />
 <meta property="og:description" content="YOUR DESCRIPTION HERE" />
 <meta property="og:image" content="{{ url('storage/'.$pet->photo )}}" />
 <style>
@@ -196,6 +196,15 @@
 <button onclick="downloadimage()" class="btn btn-success d-none d-lg-block">Download</button>
 </div>
 <br><br>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <script>
     var language = document.getElementById("language").value;
     if (language === "en") {
