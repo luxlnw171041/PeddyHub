@@ -1,6 +1,9 @@
 @extends('layouts.peddyhub')
 
 @section('content')
+<meta property="og:title" content="YOUR TITLE HERE" />
+<meta property="og:description" content="YOUR DESCRIPTION HERE" />
+<meta property="og:image" content="YOUR THUMBNAIL URL HERE" />
 <style>
     .parent {
         display: grid;
