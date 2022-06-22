@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8">
-  <title>PeddyHub</title>
+  <!-- <title>PeddyHub</title> -->
   <!-- icon -->
 
   <link href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css" rel="stylesheet">
@@ -519,7 +519,9 @@
       </div>
       @endif
       <!--End Header Upper-->
+
       @yield('content')
+      
       <!--Main Footer-->
       <footer class="main-footer">
         <div class="container">
@@ -545,13 +547,13 @@
                 </a>
               </div>
             </div>
-            <div class="col-10 owl-carousel-new align-self-center"style="padding:0px;">
+            <div class="col-10 owl-carousel-new align-self-center" style="padding:0px;">
               <div class="owl-carousel">
-                @php 
+                @php
                 $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
-                  @endphp
+                @endphp
                 @foreach($partner as $item)
-                <div class="item"style="padding:0px;z-index:-1;">
+                <div class="item" style="padding:0px;">
                   <div class="testimon">
                     <a href="{{$item->link}}" target="bank">
                       <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
@@ -559,7 +561,8 @@
                   </div>
                 </div>
 
-              @endforeach
+                @endforeach
+
                 <!-- <div class="item"style="padding:0px;">
                   <div class="testimon">
                     <a href="https://manoonpetshop.co.th/" target="bank">
@@ -625,8 +628,8 @@
                 </div> -->
               </div>
             </div>
- 
-              <!-- <div class="col-12  d-flex justify-content-start" style="padding-bottom:10px;">
+
+            <!-- <div class="col-12  d-flex justify-content-start" style="padding-bottom:10px;">
                 <div class="copyright text-left" style="margin-top:-15px;">
                   <span>•</span> WWW.PEDDYHUB.COM
                   <br>
@@ -740,17 +743,16 @@
         </div>
       </footer>
       <!--End Main Footer-->
-  </div>
-  <!--End pagewrapper-->
-  <!--Scroll to top-->
-  <div class="scroll-to-top scroll-to-target" style="background-color:#B8205B;border-color: #B8205B; " data-bs-target="html">
-    <div class="row">
-      <p style="margin-top:5px; color:white; ">top</p><br>
-      <p style="margin-top:-38px; color:white; font-size:20px" class="icon flaticon-pawprint-1"></p>
-    </div>
-  </div>
-  <!-- Color Palate / Color Switcher -->
-  <!-- <div class="color-palate">
+      <!--End pagewrapper-->
+      <!--Scroll to top-->
+      <div class="scroll-to-top scroll-to-target" style="background-color:#B8205B;border-color: #B8205B; " data-bs-target="html">
+        <div class="row">
+          <p style="margin-top:5px; color:white; ">top</p><br>
+          <p style="margin-top:-38px; color:white; font-size:20px" class="icon flaticon-pawprint-1"></p>
+        </div>
+      </div>
+      <!-- Color Palate / Color Switcher -->
+      <!-- <div class="color-palate">
         <div class="color-trigger">
             <i class="flaticon-pawprint-1"></i>
         </div>
@@ -775,70 +777,70 @@
                 for demonstation purposes.</span>
         </div>
     </div> -->
-  <script src="{{ asset('peddyhub/js/jquery.js') }}"></script>
-  <!--Revolution Slider-->
-  <script src="{{ asset('peddyhub/plugins/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/main-slider-script.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/jquery.fancybox.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/owl.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/jquery-ui.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/appear.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/wow.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/gallery.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/script.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/color-settings.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/jquery.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/mousewheel.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/vivus.min.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/validate.js') }}"></script>
-  <script src="{{ asset('peddyhub/js/jquery.countdown.js') }}"></script>
-  <!-- // เลื่อนๆ -->
+      <script src="{{ asset('peddyhub/js/jquery.js') }}"></script>
+      <!--Revolution Slider-->
+      <script src="{{ asset('peddyhub/plugins/revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/plugins/revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/main-slider-script.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/jquery.fancybox.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/owl.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/jquery-ui.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/appear.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/wow.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/gallery.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/script.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/color-settings.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/jquery.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/owl.carousel.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/mousewheel.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/vivus.min.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/validate.js') }}"></script>
+      <script src="{{ asset('peddyhub/js/jquery.countdown.js') }}"></script>
+      <!-- // เลื่อนๆ -->
 
 
-  <script type="text/javascript">
-    var comboGoogleTradutor = 'null'; //Varialvel global
+      <script type="text/javascript">
+        var comboGoogleTradutor = 'null'; //Varialvel global
 
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'po',
-        // includedLanguages: 'th,en,zh-TW,ja,ko,es',
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-      }, 'google_translate_element');
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({
+            pageLanguage: 'po',
+            // includedLanguages: 'th,en,zh-TW,ja,ko,es',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+          }, 'google_translate_element');
 
-      comboGoogleTradutor = document.getElementById("google_translate_element").querySelector(".goog-te-combo");
-    }
+          comboGoogleTradutor = document.getElementById("google_translate_element").querySelector(".goog-te-combo");
+        }
 
-    function changeEvent(el) {
-      if (el.fireEvent) {
-        el.fireEvent('onchange');
-      } else {
-        var evObj = document.createEvent("HTMLEvents");
+        function changeEvent(el) {
+          if (el.fireEvent) {
+            el.fireEvent('onchange');
+          } else {
+            var evObj = document.createEvent("HTMLEvents");
 
-        evObj.initEvent("change", false, true);
-        el.dispatchEvent(evObj);
-      }
-    }
+            evObj.initEvent("change", false, true);
+            el.dispatchEvent(evObj);
+          }
+        }
 
-    function trocarIdioma(sigla) {
-      if (comboGoogleTradutor) {
-        comboGoogleTradutor.value = sigla;
-        changeEvent(comboGoogleTradutor); //Dispara a troca
-      }
-    }
-  </script>
+        function trocarIdioma(sigla) {
+          if (comboGoogleTradutor) {
+            comboGoogleTradutor.value = sigla;
+            changeEvent(comboGoogleTradutor); //Dispara a troca
+          }
+        }
+      </script>
 
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 
 </body>
