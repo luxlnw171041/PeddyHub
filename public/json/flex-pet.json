@@ -85,6 +85,29 @@
                 "type": "uri",
                 "uri": "https://www.peddyhub.com/pet/pet_1"
               }
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://www.peddyhub.com/peddyhub/images/icons/edit.png",
+                  "size": "20px",
+                  "action": {
+                    "type": "uri",
+                    "uri": "https://www.peddyhub.com/pet/pet_1/edit"
+                  }
+                }
+              ],
+              "position": "absolute",
+              "cornerRadius": "xxl",
+              "offsetTop": "240px",
+              "offsetStart": "240px",
+              "backgroundColor": "#708090cc",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "paddingAll": "10px"
             }
           ],
           "paddingAll": "0px",
