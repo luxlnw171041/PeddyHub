@@ -97,7 +97,7 @@
                     "size": "20px",
                     "action": {
                       "type": "uri",
-                      "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?login=line"
+                      "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?openExternalBrowser=1"
                     }
                   }
                 ],
@@ -207,7 +207,7 @@
                     "size": "20px",
                     "action": {
                       "type": "uri",
-                      "uri": "https://www.peddyhub.com/edit_pet_login/pet_2?login=line"
+                      "uri": "https://www.peddyhub.com/edit_pet_login/pet_2?openExternalBrowser=1"
                     }
                   }
                 ],

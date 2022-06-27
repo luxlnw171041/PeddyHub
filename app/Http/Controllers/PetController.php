@@ -269,7 +269,6 @@ class PetController extends Controller
         // exit();
        
         if(!empty($requestData['login'])){
-
             return Redirect("https://lin.ee/Bvi9Zr9");
         }
         else{
@@ -322,7 +321,7 @@ class PetController extends Controller
         if(Auth::check()){
             return redirect('pet/' . $pet_id . '/edit');
         }else{
-            return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit');
+            return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line');
         }
     }
 }
