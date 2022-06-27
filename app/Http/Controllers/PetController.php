@@ -319,7 +319,7 @@ class PetController extends Controller
     public function edit_pet_login(Request $request , $pet_id)
     {
         if(Auth::check()){
-            return redirect('pet/' . $pet_id . '/edit');
+            return redirect('pet/' . $pet_id . '/edit?login=line');
         }else{
             return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line');
         }
