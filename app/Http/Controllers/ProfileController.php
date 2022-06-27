@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
+use App\Models\LineMessagingAPI;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -119,6 +121,11 @@ class ProfileController extends Controller
         $profile->update($requestData);
 
         if(!empty($requestData['login'])){
+
+            $data_users = User::where('id' , $id)->first();
+            $line = new LineMessagingAPI();
+            $line->send_update_profile($data_users->provider_id);
+
             return Redirect("https://lin.ee/Bvi9Zr9");
         }
         else{
