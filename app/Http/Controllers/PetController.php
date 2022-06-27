@@ -268,8 +268,13 @@ class PetController extends Controller
         // echo "</pre>";
         // exit();
        
+        if(!empty($requestData['login'])){
 
-        return redirect('user')->with('flash_message', 'Pet updated!');
+            return Redirect("https://lin.ee/Bvi9Zr9");
+        }
+        else{
+            return redirect('user')->with('flash_message', 'Pet updated!');
+        }
     }
 
     /**
