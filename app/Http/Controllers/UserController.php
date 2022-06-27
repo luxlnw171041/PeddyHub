@@ -134,13 +134,17 @@ class UserController extends Controller
     }
     public function user_pet($id)
     {
-        $user = User::findOrFail($id);
-        $petuser = Pet::where('user_id', $id)->get();
+        $petuser = Pet::where('id', $id)->get();
+
+        foreach ($petuser as $key ) {
+            $user_id = $key->user_id ;
+        }
+        $user = User::where('id', $user_id)->get();
         // echo "<pre>";
-        // print_r($id);
+        // print_r($user);
         // echo "<pre>";
         // exit();
-        return view('user/user_pet',compact('user' ,'petuser') );
+        return view('user/user_pet',compact('petuser' ,'user') );
 
     }
 }

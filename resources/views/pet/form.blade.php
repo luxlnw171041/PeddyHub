@@ -112,12 +112,13 @@
         margin-top: 10px !important;
         position: relative;
         vertical-align: middle;
-        min-width: 100%!important;
-        
+        min-width: 100% !important;
+
     }
+
     .select2-container .select2-selection--single .select2-selection__rendered {
         display: block;
-        margin-top:-15px!important;
+        margin-top: -15px !important;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap
@@ -130,74 +131,108 @@
         <section class="contact">
             <div class="container">
                 <!-- ข้อมูล USER -->
-                @if(empty(Auth::user()->profile->tambon_th) or empty(Auth::user()->profile->phone))
-                <div id="data_user" class="faq wow fadeInRight">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="heading">
-                            <p class="wow fadeInUp">
-                                <span class="purple"><i class="fas fa-paw"></i></span>
-                                <span class="orange"><i class="fas fa-paw"></i> </span>
-                                <span class="purple"><i class="fas fa-paw"></i> </span>
-                            </p>
-                            <h3>
-                                ข้อมูลของคุณ
-                                <span class="wow pulse" data-wow-delay="1s"></span>
-                            </h3>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-12 col-md-12">
-                                        <label class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
-                                        <span class="text-danger">*</span>
-                                        @if(!empty(Auth::user()->profile->changwat_th))
-                                        <a class="text-secondary" href="{{ url('/user/' . Auth::user()->id . '/edit') }}">
-                                            แก้ไขข้อมูล
-                                        </a>
-                                        @endif
-                                    </div>
-                                    <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        @if(!empty(Auth::user()->profile->changwat_th))
-                                        <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
-                                        @else
-                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
-                                            <option value="" selected>- เลือกจังหวัด -</option>
+                    @if(empty(Auth::user()->profile->tambon_th) 
+                    or empty(Auth::user()->profile->phone)
+                    or empty(Auth::user()->profile->photo_passport)
+                    or empty(Auth::user()->profile->photo_id_card))
+                    <div id="data_user" class="faq wow fadeInRight">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="heading">
+                                <p class="wow fadeInUp">
+                                    <span class="purple"><i class="fas fa-paw"></i></span>
+                                    <span class="orange"><i class="fas fa-paw"></i> </span>
+                                    <span class="purple"><i class="fas fa-paw"></i> </span>
+                                </p>
+                                <h3>
+                                    ข้อมูลของคุณ
+                                    <span class="wow pulse" data-wow-delay="1s"></span>
+                                </h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="row">
+                                        @if(empty(Auth::user()->profile->tambon_th) or empty(Auth::user()->profile->phone))
+                                        <div class="col-12 col-md-12">
+                                            <label class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
+                                            <span class="text-danger">*</span>
+                                            @if(!empty(Auth::user()->profile->changwat_th))
+                                            <a class="text-secondary" href="{{ url('/user/' . Auth::user()->id . '/edit') }}">
+                                                แก้ไขข้อมูล
+                                            </a>
+                                            @endif
+                                        </div>
+                                        <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            @if(!empty(Auth::user()->profile->changwat_th))
+                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
+                                            @else
+                                            <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                                <option value="" selected>- เลือกจังหวัด -</option>
 
-                                        </select>
+                                            </select>
+                                            @endif
+                                        </div>
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            @if(!empty(Auth::user()->profile->amphoe_th))
+                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
+                                            @else
+                                            <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                                <option value="" selected>- เลือกอำเภอ -</option>
+                                            </select>
+                                            @endif
+                                        </div>
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            @if(!empty(Auth::user()->profile->tambon_th))
+                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
+                                            @else
+                                            <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                                <option value="" selected>- เลือกตำบล -</option>
+                                            </select>
+                                            @endif
+                                        </div>
+                                        <div class="col-12 col-md-3" style="margin-top:12px;">
+                                            <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
+                                        </div>
                                         @endif
-                                    </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        @if(!empty(Auth::user()->profile->amphoe_th))
-                                        <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
-                                        @else
-                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
-                                            <option value="" selected>- เลือกอำเภอ -</option>
-                                        </select>
+                                        @if(empty(Auth::user()->profile->photo_id_card))
+                                            <div class="col-12 col-md-4">
+                                                <label class="control-label"><b>{{ 'บัตรประชาชน' }}</b></label>
+                                                <label class="col-12" style="padding:0px;" for="photo_id_card">
+                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                                        <div class="form-group">
+                                                            <input class="form-control" name="photo_id_card" style="margin:20px 0px 10px 0px" type="file" id="photo_id_card" value="{{ Auth::user()->profile->photo_id_card }}" accept="image/*" onchange="document.getElementById('show_photo_id_card').src = window.URL.createObjectURL(this.files[0])">
+                                                        </div>
+                                                        <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_id_card" />
+                                                        <div class="child">
+                                                            <span>เลือกรูป</span>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
                                         @endif
-                                    </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-
-
-                                        @if(!empty(Auth::user()->profile->tambon_th))
-                                        <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
-                                        @else
-                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
-                                            <option value="" selected>- เลือกตำบล -</option>
-                                        </select>
+                                        @if(empty(Auth::user()->profile->photo_passport))
+                                            <div class="col-12 col-md-4">
+                                                <label class="control-label"><b>{{ 'พาสปอร์ต' }}</b></label>
+                                                <label class="col-12" style="padding:0px;" for="photo_passport">
+                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                                        <div class="form-group">
+                                                            <input class="form-control" name="photo_passport" style="margin:20px 0px 10px 0px" type="file" id="photo_passport" value="{{ Auth::user()->profile->photo_passport}}" accept="image/*" onchange="document.getElementById('show_photo_passport').src = window.URL.createObjectURL(this.files[0])">
+                                                        </div>
+                                                        <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_passport" />
+                                                        <div class="child">
+                                                            <span>เลือกรูป</span>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
                                         @endif
-                                    </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endif
                 <!-- จบข้อมูล USER -->
-
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="heading">
                         <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
@@ -224,7 +259,20 @@
                                         <label class="control-label"><b>{{ 'รูป' }} <span style="color: #B8205B;">* <span style="font-size:13px;">อย่างน้อย 1 รูป</span> </span></b></label><br>
                                     </div>
                                 </div>
-                                <div class="row col-12 m-0 p-0 text-center d-flex justify-content-center">
+                                <div class="row col-12 m-0 p-0 text-center ">
+                                    @if(!empty($pet->photo))
+                                    <label class="col-4" style="padding:0px;" for="photo">
+                                        <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="d-none form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo_1').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_1" src="{{ url('storage')}}/{{ $pet->photo }}" />
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    @else
                                     <label class="col-4" style="padding:0px;" for="photo">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
@@ -236,6 +284,32 @@
                                             </div>
                                         </div>
                                     </label>
+                                    @endif
+                                    @if(!empty($pet->photo_2))
+                                    <label id="div_photo_2" for="photo_2" class="col-4" style="padding:0px;">
+                                        <div class=" fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="d-none form-control" name="photo_2" style="margin:20px 0px 10px 0px" type="file" id="photo_2" value="{{ isset($pet->photo_2) ? $pet->photo_2 : ''}}" accept="image/*" onchange="document.getElementById('show_photo_2').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            <img class="full_img" style="padding:0px ;object-fit: cover;" width="100%" id="show_photo_2" alt="your image" src="{{ url('storage')}}/{{ $pet->photo_2 }}" />
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    @elseif(!empty($pet->photo))
+                                    <label id="div_photo_2" for="photo_2" class="col-4 " style="padding:0px;">
+                                        <div class=" fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo_2" style="margin:20px 0px 10px 0px" type="file" id="photo_2" value="{{ isset($pet->photo_2) ? $pet->photo_2 : ''}}" accept="image/*" onchange="document.getElementById('show_photo_2_1').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            <img class="d-none full_img" style="padding:0px ;object-fit: cover;" width="100%" id="show_photo_2_1" alt="your image" />
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    @else
                                     <label id="div_photo_2" for="photo_2" class="col-4 d-none" style="padding:0px;">
                                         <div class=" fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
@@ -247,6 +321,34 @@
                                             </div>
                                         </div>
                                     </label>
+                                    @endif
+
+
+                                    @if(!empty($pet->photo_3))
+                                    <label id="div_photo_3" for="photo_3" class="col-4" style="padding:0px;">
+                                        <div class="fill  parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="d-none form-control" name="photo_3" style="margin:20px 0px 10px 0px" type="file" id="photo_3" value="{{ isset($pet->photo_3) ? $pet->photo_3 : ''}}" accept="image/*" onchange="document.getElementById('show_photo3_1').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            <img class="full_img" style="padding:0px ;object-fit: cover;" width="100%" id="show_photo3_1" alt="your image" src="{{ url('storage')}}/{{ $pet->photo_3 }}" />
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    @elseif(!empty($pet->photo_2))
+                                    <label id="div_photo_3" for="photo_3" class="col-4" style="padding:0px;">
+                                        <div class="fill  parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo_3" style="margin:20px 0px 10px 0px" type="file" id="photo_3" value="{{ isset($pet->photo_3) ? $pet->photo_3 : ''}}" accept="image/*" onchange="document.getElementById('show_photo3').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            <img class="d-none full_img" style="padding:0px ;object-fit: cover;" width="100%" id="show_photo3" alt="your image" />
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    @else
                                     <label id="div_photo_3" for="photo_3" class="col-4 d-none" style="padding:0px;">
                                         <div class="fill  parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
@@ -258,19 +360,109 @@
                                             </div>
                                         </div>
                                     </label>
+                                    @endif
                                 </div>
+                                <div class="row col-4 m-0 p-0 text-center ">
+                                    @if(!empty($pet->photo_medical_certificate))
+                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate">
+                                        <label class="control-label"><b>{{ 'ใบตรวจสุขภาพสัตว์เลี้ยง' }}</b></label>
+                                        <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="d-none form-control" name="photo_medical_certificate" style="margin:20px 0px 10px 0px" type="file" id="photo_medical_certificate" value="{{ isset($pet->photo_medical_certificate) ? $pet->photo_medical_certificate : ''}}" accept="image/*" onchange="document.getElementById('show_photo_medical_certificate_2').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_medical_certificate_2" src="{{ url('storage')}}/{{ $pet->photo_medical_certificate }}" />
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    @else
+                                    <label class="control-label"><b>{{ 'ใบตรวจสุขภาพสัตว์เลี้ยง' }}</b></label>
+                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate">
+                                        <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo_medical_certificate" style="margin:20px 0px 10px 0px" type="file" id="photo_medical_certificate" value="{{ isset($pet->photo_medical_certificate) ? $pet->photo_medical_certificate : ''}}" accept="image/*" onchange="document.getElementById('show_photo_medical_certificate').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_medical_certificate" />
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    @endif
+                                </div>
+
+
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label class="control-label"><b>{{ 'ใบรับรอง' }}</b></label><br>
+                                        <label class="control-label"><b>{{ 'ใบฉีดวัคฉีน' }}</b></label><br>
                                     </div>
                                 </div>
-                                <div class="row col-12 m-0 p-0 text-center d-flex justify-content-center">
+                                <div class="row col-12 m-0 p-0 text-center ">
+                                    <label class="col-4" style="padding:0px;" for="photo_vaccine">
+                                        <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo_vaccine" style="margin:20px 0px 10px 0px" type="file" id="photo_vaccine" value="{{ isset($pet->photo_vaccine) ? $pet->photo_vaccine : ''}}" accept="image/*" onchange="document.getElementById('show_vaccine').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            @if(!empty($pet->photo_vaccine))
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_vaccine" src="{{ url('storage')}}/{{ $pet->photo_vaccine }}" />
+                                            @else
+                                            <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_vaccine" />
+                                            @endif
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label id="div_vaccine_2" class="col-4 d-none" style="padding:0px;" for="photo_vaccine_2">
+                                        <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo_vaccine_2" style="margin:20px 0px 10px 0px" type="file" id="photo_vaccine_2" value="{{ isset($pet->photo_vaccine_2) ? $pet->photo_vaccine_2 : ''}}" accept="image/*" onchange="document.getElementById('show_vaccine2').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            @if(!empty($pet->photo_vaccine_2))
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_vaccine2" src="{{ url('storage')}}/{{ $pet->photo_vaccine_2 }}" />
+                                            @else
+                                            <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_vaccine2" />
+                                            @endif
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label id="div_vaccine_3" class="col-4 d-none" style="padding:0px;" for="photo_vaccine_3">
+                                        <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo_vaccine_3" style="margin:20px 0px 10px 0px" type="file" id="photo_vaccine_3" value="{{ isset($pet->photo_vaccine_3) ? $pet->photo_vaccine_3 : ''}}" accept="image/*" onchange="document.getElementById('show_vaccine3').src = window.URL.createObjectURL(this.files[0])">
+                                            </div>
+                                            @if(!empty($pet->photo_vaccine_3))
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_vaccine3" src="{{ url('storage')}}/{{ $pet->photo_vaccine_3 }}" />
+                                            @else
+                                            <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_vaccine3" />
+                                            @endif
+                                            <div class="child">
+                                                <span>เลือกรูป</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+
+                                <div class="col-lg-12 col-md-2 col-sm-2">
+                                    <div class="col-12 col-md-12">
+                                        <label class="control-label"><b>{{ 'เอกสารอื่นๆ' }}</b></label><br>
+                                    </div>
+                                </div>
+                                <div class="row col-12 m-0 p-0 text-center ">
                                     <label class="col-4" style="padding:0px;" for="certificate">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate" style="margin:20px 0px 10px 0px" type="file" id="certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}" accept="image/*" onchange="document.getElementById('show_certificate').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
+                                            @if(!empty($pet->certificate))
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate" src="{{ url('storage')}}/{{ $pet->certificate }}" />
+                                            @else
                                             <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate" />
+                                            @endif
                                             <div class="child">
                                                 <span>เลือกรูป</span>
                                             </div>
@@ -281,7 +473,11 @@
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_2" style="margin:20px 0px 10px 0px" type="file" id="certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate2').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
+                                            @if(!empty($pet->certificate_2))
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate2" src="{{ url('storage')}}/{{ $pet->certificate_2 }}" />
+                                            @else
                                             <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate2" />
+                                            @endif
                                             <div class="child">
                                                 <span>เลือกรูป</span>
                                             </div>
@@ -292,7 +488,11 @@
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_3" style="margin:20px 0px 10px 0px" type="file" id="certificate_3" value="{{ isset($pet->certificate_3) ? $pet->certificate_3 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate3').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
+                                            @if(!empty($pet->certificate_3))
+                                            <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate3" src="{{ url('storage')}}/{{ $pet->certificate_3 }}" />
+                                            @else
                                             <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_certificate3" />
+                                            @endif
                                             <div class="child">
                                                 <span>เลือกรูป</span>
                                             </div>
@@ -322,7 +522,7 @@
                                 <div class="col-6 col-md-12 col-lg-12 order-3">
                                     <label class="control-label"><b>{{ 'วันเกิด' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
-                                        <input style="margin:0px;" class="form-control" name="birth" type="date" id="birth" value="{{ isset($pet->birth) ? $pet->birth : ''}}">
+                                        <input style="margin:0px;" class="form-control" name="birth" type="date" id="birth" value="{{ isset($pet->birth) ? $pet->birth : ''}}" required>
                                     </div>
                                 </div>
 
@@ -341,6 +541,8 @@
                                         </select>
                                     </div>
                                 </div> -->
+
+
                                 <div class="col-12 col-md-12 order-1">
                                     <label class="control-label"><b>{{ 'ประเภท' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
@@ -360,7 +562,13 @@
 
                                     </div>
                                 </div>
-                               
+                                <div class="col-12 col-md-12 order-4">
+                                    <label class="control-label"><b>{{ 'กรุ๊ปเลือด' }} </label>
+                                    <div class="form-group">
+                                        <input style="margin:0px;" class="form-control" name="blood_type" type="text" id="blood_type" value="{{ isset($pet->blood_type) ? $pet->blood_type : ''}}">
+
+                                    </div>
+                                </div>
                                 <!-- <div class="col-6 col-md-12 order-4">
                                     <label class="control-label"><b>{{ 'ขนาดสัตว์เลี้ยง' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
@@ -382,7 +590,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                            <button class="btn btn-11 " type="reset" onclick="location.href='{{ url('/pet') }}'">Back</button>
+                            <button class="btn btn-11 " type="reset" onclick="history.back()">Back</button>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                             <div class="d-flex justify-content-end">
@@ -421,7 +629,15 @@
     </div>
 </div>
 <input type="text" class="d-none" name="language_user" id="language_user" value="{{ Auth::user()->profile->language }}">
+<input type="text" class="d-none" name="certificate" id="input_certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}">
+<input type="text" class="d-none" name="certificate_2" id="input_certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}">
+<input type="text" class="d-none" name="certificate_3" id="input_certificate_3" value="{{ isset($pet->certificate_3) ? $pet->certificate_3 : ''}}">
+<input type="text" class="d-none" name="photo_vaccine" id="input_vaccine" value="{{ isset($pet->photo_vaccine) ? $pet->photo_vaccine : ''}}">
+<input type="text" class="d-none" name="photo_vaccine_2" id="input_vaccine_2" value="{{ isset($pet->photo_vaccine_2) ? $pet->photo_vaccine_2 : ''}}">
+<input type="text" class="d-none" name="photo_vaccine_3" id="input_vaccine_3" value="{{ isset($pet->photo_vaccine_3) ? $pet->photo_vaccine_3 : ''}}">
+
 <a id="btn_change_language" class="d-none" href=""></a>
+
 
 
 <script>
@@ -433,20 +649,28 @@
 
         }
     });
+
+
     document.getElementById("photo_2").addEventListener("input", function() {
         if (photo_2.value) {
             document.querySelector('#div_photo_3').classList.remove('d-none');
             document.querySelector('#show_photo2').classList.remove('d-none');
             document.querySelector('#photo_2').classList.add('d-none');
-
         }
     });
+    document.getElementById("photo_2").addEventListener("input", function() {
+        if (photo_2.value) {
+            document.querySelector('#div_photo_3').classList.remove('d-none');
+            document.querySelector('#photo_2').classList.add('d-none');
+            document.querySelector('#show_photo_2_1').classList.remove('d-none');
+        }
+    });
+
+
     document.getElementById("photo_3").addEventListener("input", function() {
         if (photo_3.value) {
             document.querySelector('#show_photo3').classList.remove('d-none');
             document.querySelector('#photo_3').classList.add('d-none');
-
-
         }
     });
 </script>
@@ -458,7 +682,7 @@
             document.querySelector('#certificate').classList.add('d-none');
 
         }
-    });
+    });photo_vaccine_2
     document.getElementById("certificate_2").addEventListener("input", function() {
         if (certificate_2.value) {
             document.querySelector('#div_certificate_3').classList.remove('d-none');
@@ -471,13 +695,87 @@
         if (certificate_3.value) {
             document.querySelector('#show_certificate3').classList.remove('d-none');
             document.querySelector('#certificate_3').classList.add('d-none');
+        }
+    });
+    document.getElementById("photo_vaccine").addEventListener("input", function() {
+        if (this.value) {
+            document.querySelector('#div_vaccine_2').classList.remove('d-none');
+            document.querySelector('#show_vaccine').classList.remove('d-none');
+            document.querySelector('#photo_vaccine').classList.add('d-none');
 
+        }
+    });
+    document.getElementById("photo_vaccine_2").addEventListener("input", function() {
+        if (photo_vaccine_2.value) {
+            document.querySelector('#div_vaccine_3').classList.remove('d-none');
+            document.querySelector('#show_vaccine2').classList.remove('d-none');
+            document.querySelector('#photo_vaccine_2').classList.add('d-none');
 
+        }
+    });
+    document.getElementById("photo_vaccine_3").addEventListener("input", function() {
+        if (photo_vaccine_3.value) {
+            document.querySelector('#show_vaccine3').classList.remove('d-none');
+            document.querySelector('#photo_vaccine_3').classList.add('d-none');
+        }
+    });
+    document.getElementById("photo_passport").addEventListener("input", function() {
+        if (photo_passport.value) {
+            document.querySelector('#show_photo_passport').classList.remove('d-none');
+            document.querySelector('#photo_passport').classList.add('d-none');
+        }
+    });
+    document.getElementById("photo_id_card").addEventListener("input", function() {
+        if (photo_id_card.value) {
+            document.querySelector('#show_photo_id_card').classList.remove('d-none');
+            document.querySelector('#photo_id_card').classList.add('d-none');
+        }
+    });
+    document.getElementById("photo_medical_certificate").addEventListener("input", function() {
+        if (photo_medical_certificate.value) {
+            document.querySelector('#show_photo_medical_certificate').classList.remove('d-none');
+            document.querySelector('#photo_medical_certificate').classList.add('d-none');
         }
     });
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
+
+
+        let certificate_1 = document.querySelector('#input_certificate');
+        let certificate_2 = document.querySelector('#input_certificate_2');
+        let certificate_3 = document.querySelector('#input_certificate_3');
+        let vaccine_1 = document.querySelector('#input_vaccine');
+        let vaccine_2 = document.querySelector('#input_vaccine_2');
+        let vaccine_3 = document.querySelector('#input_vaccine_3');
+
+
+        if (certificate_1.value) {
+            document.querySelector('#certificate').classList.add('d-none');
+            document.querySelector('#div_certificate_2').classList.remove('d-none');
+        }
+        if (certificate_2.value) {
+            document.querySelector('#certificate_2').classList.add('d-none');
+            document.querySelector('#div_certificate_3').classList.remove('d-none');
+
+        }
+        if (certificate_3.value) {
+            document.querySelector('#certificate_3').classList.add('d-none');
+        }
+        if (vaccine_1.value) {
+            document.querySelector('#photo_vaccine').classList.add('d-none');
+            document.querySelector('#div_vaccine_2').classList.remove('d-none');
+
+        }if (vaccine_2.value) {
+            document.querySelector('#photo_vaccine_2').classList.add('d-none');
+            document.querySelector('#div_vaccine_3').classList.remove('d-none');
+
+        }if (vaccine_3.value) {
+            document.querySelector('#photo_vaccine_3').classList.add('d-none');
+
+        }
+
+
         // console.log("START");
         let check_changwat_th = document.querySelector('#check_changwat_th');
         select_category();

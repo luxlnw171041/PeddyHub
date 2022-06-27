@@ -138,7 +138,7 @@
 
                     <div class="parent" id="parent">
                         <div class="div1 text-center">
-                            <a href="{{ url('/user_pet/' . $pet->user_id) }}">
+                            <a href="{{ url('/user_pet/' . $pet->id) }}">
                                 <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
                             </a>
                             <!-- <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt=""> -->

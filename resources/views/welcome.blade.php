@@ -7,6 +7,9 @@
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(246deg) brightness(87%) contrast(156%);
     }
 </style>
+<a href="#descript">
+      <div class="scroll-down"></div>
+    </a>
             <div class="slider">
                 <div class="container">
                     <div class="row">
@@ -49,7 +52,7 @@
         </section>
 
 
-        <section class="descript">
+        <section id="descript" class="descript">
             <div class="context">
                 <div class="container">
                     <div class="heading text-center">

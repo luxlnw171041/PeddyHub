@@ -182,11 +182,15 @@
             var windowpos = $(window).scrollTop();
             var siteHeader = $('.main-header');
             var scrollLink = $('.scroll-to-top');
+            var scrolldownLink = $('.scroll-down');
+
             if (windowpos >= 250) {
                 siteHeader.addClass('fixed-header');
+                scrolldownLink.fadeOut(300);
                 scrollLink.fadeIn(300);
             } else {
                 siteHeader.removeClass('fixed-header');
+                scrolldownLink.fadeIn(300);
                 scrollLink.fadeOut(300);
             }
         }

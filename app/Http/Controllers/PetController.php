@@ -85,6 +85,22 @@ class PetController extends Controller
         if ($request->hasFile('certificate_3')) {
             $requestData['certificate_3'] = $request->file('certificate_3')->store('uploads', 'public');
         }
+        if ($request->hasFile('photo_passport')) {
+            $requestData['photo_passport'] = $request->file('photo_passport')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_vaccine')) {
+            $requestData['photo_vaccine'] = $request->file('photo_vaccine')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_vaccine_2')) {
+            $requestData['photo_vaccine_2'] = $request->file('photo_vaccine_2')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_vaccine_3')) {
+            $requestData['photo_vaccine_3'] = $request->file('photo_vaccine_3')->store('uploads', 'public');
+        }
+       
+        if ($request->hasFile('photo_medical_certificate')) {
+            $requestData['photo_medical_certificate'] = $request->file('photo_medical_certificate')->store('uploads', 'public');
+        }
         $requestData['user_id'] = Auth::id(); 
 
         if (!empty($requestData['select_province'])) {
@@ -96,10 +112,28 @@ class PetController extends Controller
                     'changwat_th' => $requestData['select_province'],
                     'amphoe_th' => $requestData['select_amphoe'],
                     'tambon_th' => $requestData['select_tambon'],
-                    'phone' => $requestData['phone_user']
+                    'phone' => $requestData['phone_user'],
                 ]);
         }  
+        if (!empty($requestData['photo_id_card'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'photo_id_card' => $requestData['photo_id_card'] = $request->file('photo_id_card')->store('uploads', 'public')
+                ]);
+        } 
 
+        if (!empty($requestData['photo_passport'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'photo_passport' => $requestData['photo_passport'] = $request->file('photo_passport')->store('uploads', 'public')
+                ]);
+        } 
         
         
         Pet::create($requestData)->update([
@@ -181,14 +215,59 @@ class PetController extends Controller
         if ($request->hasFile('certificate_3')) {
             $requestData['certificate_3'] = $request->file('certificate_3')->store('uploads', 'public');
         }
-            
+        if ($request->hasFile('photo_medical_certificate')) {
+            $requestData['photo_medical_certificate'] = $request->file('photo_medical_certificate')->store('uploads', 'public');
+        } 
+        if ($request->hasFile('photo_vaccine')) {
+            $requestData['photo_vaccine'] = $request->file('photo_vaccine')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_vaccine_2')) {
+            $requestData['photo_vaccine_2'] = $request->file('photo_vaccine_2')->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo_vaccine_3')) {
+            $requestData['photo_vaccine_3'] = $request->file('photo_vaccine_3')->store('uploads', 'public');
+        }   
+        
+
+        $requestData['user_id'] = Auth::id();
+        if (!empty($requestData['select_province'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'changwat_th' => $requestData['select_province'],
+                    'amphoe_th' => $requestData['select_amphoe'],
+                    'tambon_th' => $requestData['select_tambon']
+                ]);
+        } 
+        if (!empty($requestData['photo_id_card'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'photo_id_card' => $requestData['photo_id_card'] = $request->file('photo_id_card')->store('uploads', 'public')
+                ]);
+        } 
+
+        if (!empty($requestData['photo_passport'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'photo_passport' => $requestData['photo_passport'] = $request->file('photo_passport')->store('uploads', 'public')
+                ]);
+        } 
+
+        $pet = Pet::findOrFail($id);
+        $pet->update($requestData);
         // echo "<pre>";
         // print_r($requestData);
         // echo "</pre>";
         // exit();
-        $requestData['user_id'] = Auth::id();
-        $pet = Pet::findOrFail($id);
-        $pet->update($requestData);
+       
 
         return redirect('user')->with('flash_message', 'Pet updated!');
     }
@@ -231,6 +310,14 @@ class PetController extends Controller
             return redirect('/hospital_near');
         }else{
             return redirect('/login/line?redirectTo=hospital_near');
+        }
+    }
+    public function edit_pet_login(Request $request , $pet_id)
+    {
+        if(Auth::check()){
+            return redirect('pet/' . $pet_id . '/edit');
+        }else{
+            return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit');
         }
     }
 }
