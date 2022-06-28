@@ -477,13 +477,13 @@
                                                         <div class="div5">
                                                             <p id="text_btswip{{$item->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($item->created_at)) }}</b></p>
                                                             <p id="text_vswip{{$item->id}}" style="font-size: 11px;margin:0px;"> <b>วันออกบัตร</b></p>
-                                                            <p id="text_beswip{{$item->id}}" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->created_at)) }}</b></p>
-                                                            <p id="text_doiswip{{$item->id}}" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
+                                                            <p id="text_beswip{{$item->id}}" class="notranslate" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->created_at)) }}</b></p>
+                                                            <p id="text_doiswip{{$item->id}}" class="notranslate" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
                                                         </div>
                                                         <div class="div6 text-center ">
                                                             <br>
                                                             @if(!empty($item->profile->real_name))
-                                                            <p  style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->real_name }})</b></p>
+                                                            <p  style="font-size: 11px; line-height: 0.5;margin:0px;" class="notranslate"> <b>({{ $item->profile->real_name }})</b></p>
                                                             @else
                                                             <p  style="font-size: 11px; line-height: 0.5;margin:0px;"class="notranslate"> <b>({{ $item->profile->name }})</b></p>
                                                             @endif
@@ -492,8 +492,8 @@
                                                         <div class="div7 text-center text-card">
                                                             <p id="text_tswip{{$item->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
                                                             <p id="text_wswip{{$item->id}}" style="font-size: 10px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
-                                                            <p id="text_lswip{{$item->id}}" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Life Time</b></p>
-                                                            <p id="text_dswip{{$item->id}}" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
+                                                            <p id="text_lswip{{$item->id}}" class="notranslate" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Life Time</b></p>
+                                                            <p id="text_dswip{{$item->id}}" class="notranslate" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
                                                         </div>
                                                     </div>
                                                 </div>
