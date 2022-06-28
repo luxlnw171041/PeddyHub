@@ -136,10 +136,22 @@ class PetController extends Controller
         } 
         
         
-        Pet::create($requestData)->update([
-            'pet_category_id' => $requestData['pet_category_id'],
-            'sub_category' => $requestData['sub_category'],
-        ]);
+        Pet::create($requestData);
+
+        $data_pet_last = Pet::latest()->first();
+        $url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/user_pet/" . $data_pet_last->id . "&chs=500x500&choe=UTF-8" ;
+
+        $img = storage_path("app/public")."/uploads". "/" . 'pet_id_' . $data_pet_last->id  . '.png';
+        // Save image
+        file_put_contents($img, file_get_contents($url));
+
+        DB::table('pets')
+              ->where('id', $data_pet_last->id)
+              ->update([
+                'qr_code' => "uploads/" . 'pet_id_' . $data_pet_last->id  . '.png',
+          ]);
+
+
         return redirect('user')->with('flash_message', 'Pet added!');
     }
 

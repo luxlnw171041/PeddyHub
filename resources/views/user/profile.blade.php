@@ -462,7 +462,7 @@
                                                     <div class="parent">
                                                         <div class="div1 text-center">
                                                             <a href="{{ url('/user_pet/' . $item->id) }}">
-                                                                <img width="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt="">
+                                                                <img width="80px" src="{{ url('storage/'.$item->qr_code )}}" alt="">
                                                             </a>
                                                         </div>
                                                         <div class="div2">
