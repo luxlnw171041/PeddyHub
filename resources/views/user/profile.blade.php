@@ -428,10 +428,10 @@
                                                     <div class="row" style="margin-left:2px;">
                                                         <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
                                                             <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
-                                                            <span style="color:#B8205B"> <b> indentification Number</b></span>
+                                                            <span style="color:#B8205B"> <b> indentification </b></span>
                                                         </div>
                                                         <div class="col-6" style="padding: 0px;margin-top:-7px;">
-                                                            <span> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
+                                                            <span style="font-size: 11px;" id="text_number{{$item->id}}"> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($item->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -464,9 +464,9 @@
                                                             </a>
                                                         </div>
                                                         <div class="div2">
-                                                            <span style="font-size: 12px;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($item->birth)) }}</b></span><br>
-                                                            <span style="font-size: 12px;color:#B8205B"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->birth)) }}</b></span><br>
-                                                            <span style="font-size: 12px;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $item->profile->phone)  }} </b></span>
+                                                            <span style="font-size: 13px;"> <b> เกิดวันที่ </b></span> <span style="font-size:14px"> <b>{{ thaidate("j M Y" , strtotime($item->birth)) }}</b></span><br>
+                                                            <span style="font-size: 13px;color:#B8205B"> <b> Birth </b></span> <span style="color:#B8205B; font-size:14px"> <b>{{ date("j M Y" , strtotime($item->birth)) }}</b></span><br>
+                                                            <span style="font-size: 13px;"> <b> เบอร์ </b></span> <span style="font-size:14px"> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $item->profile->phone)  }} </b></span>
                                                         </div>
                                                         <div class="div3 d-flex align-items-end">
                                                             <img src="{{ url('storage/'.$item->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px;" width="100%" alt="image of pet" title="pet" class="fluid customer">
@@ -475,25 +475,25 @@
                                                             <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                                                         </div>
                                                         <div class="div5">
-                                                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($item->created_at)) }}</b></p>
-                                                            <p style="font-size: 13px;margin:0px;"> <b>วันออกบัตร</b></p>
-                                                            <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->created_at)) }}</b></p>
-                                                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
+                                                            <p id="text_btswip{{$item->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($item->created_at)) }}</b></p>
+                                                            <p id="text_vswip{{$item->id}}" style="font-size: 11px;margin:0px;"> <b>วันออกบัตร</b></p>
+                                                            <p id="text_beswip{{$item->id}}" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($item->created_at)) }}</b></p>
+                                                            <p id="text_doiswip{{$item->id}}" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
                                                         </div>
                                                         <div class="div6 text-center ">
                                                             <br>
                                                             @if(!empty($item->profile->real_name))
-                                                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->real_name }})</b></p>
+                                                            <p  style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->real_name }})</b></p>
                                                             @else
-                                                            <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>({{ $item->profile->name }})</b></p>
+                                                            <p  style="font-size: 11px; line-height: 0.5;margin:0px;"class="notranslate"> <b>({{ $item->profile->name }})</b></p>
                                                             @endif
-                                                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b>เจ้าของ</b></p>
+                                                            <p id="text_jswip{{$item->id}}" style="font-size: 11px;margin:0px;color:#B8205B" > <b>เจ้าของ</b></p>
                                                         </div>
                                                         <div class="div7 text-center text-card">
-                                                            <p id="text_tswip{{$item->id}}" style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
-                                                            <p id="text_wswip{{$item->id}}" style="font-size: 13px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
-                                                            <p id="text_lswip{{$item->id}}" style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Lift Time</b></p>
-                                                            <p id="text_dswip{{$item->id}}" style="font-size: 13px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
+                                                            <p id="text_tswip{{$item->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
+                                                            <p id="text_wswip{{$item->id}}" style="font-size: 10px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
+                                                            <p id="text_lswip{{$item->id}}" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Life Time</b></p>
+                                                            <p id="text_dswip{{$item->id}}" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -533,6 +533,16 @@
                             document.querySelector('#swip{{$item->id}}').classList.add('d-none');
                             document.querySelector('#card_petswip{{$item->id}}').classList.remove('rotatea');
                             document.querySelector('#card_petswip{{$item->id}}').classList.remove('card-pet');
+                            document.querySelector("#text_number{{$item->id}}").style.fontSize = "17px";
+                            document.querySelector("#text_jswip{{$item->id}}").style.fontSize = "13px";
+                            document.querySelector("#text_doiswip{{$item->id}}").style.fontSize = "13px";
+                            document.querySelector("#text_beswip{{$item->id}}").style.fontSize = "13px";
+                            document.querySelector("#text_vswip{{$item->id}}").style.fontSize = "13px";
+                            document.querySelector("#text_btswip{{$item->id}}").style.fontSize = "13px";
+                            document.querySelector('#text_tswip{{$item->id}}').style.fontSize = "13px";
+                            document.querySelector('#text_wswip{{$item->id}}').style.fontSize = "13px";
+                            document.querySelector('#text_lswip{{$item->id}}').style.fontSize = "13px";
+                            document.querySelector('#text_dswip{{$item->id}}').style.fontSize = "13px";
                             // document.querySelector('#modal_pet{{$item->id}}').classList.add('modal-dialog-centered');
 
                         }
