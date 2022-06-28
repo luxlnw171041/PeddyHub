@@ -39,10 +39,10 @@
                 "position": "absolute",
                 "cornerRadius": "xxl",
                 "offsetTop": "10px",
-                "offsetStart": "55px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
-                "alignItems": "center"
+                "alignItems": "center",
+                "offsetEnd": "10px"
               },
               {
                 "type": "box",
@@ -70,22 +70,21 @@
                   {
                     "type": "image",
                     "url": "https://www.peddyhub.com/peddyhub/images/icons/card.png",
-                    "size": "xxs"
+                    "size": "27px"
                   }
                 ],
                 "position": "absolute",
                 "cornerRadius": "xxl",
-                "offsetTop": "10px",
-                "offsetStart": "210px",
+                "offsetTop": "60px",
+                "offsetStart": "10px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
                 "alignItems": "center",
-                "paddingStart": "15px",
-                "paddingEnd": "15px",
                 "action": {
                   "type": "uri",
                   "uri": "https://www.peddyhub.com/pet/pet_1"
-                }
+                },
+                "paddingAll": "7px"
               },
               {
                 "type": "box",
@@ -103,11 +102,57 @@
                 ],
                 "position": "absolute",
                 "cornerRadius": "xxl",
-                "offsetTop": "240px",
-                "offsetStart": "240px",
+                "offsetTop": "210px",
+                "offsetStart": "10px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
                 "alignItems": "center",
+                "paddingAll": "10px"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/icons/airplane.png",
+                    "size": "20px"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "110px",
+                "offsetStart": "10px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?edit=airplane"
+                },
+                "paddingAll": "10px"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/icons/check.png",
+                    "size": "20px"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "160px",
+                "offsetStart": "10px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/pet/pet_1"
+                },
                 "paddingAll": "10px"
               }
             ],
@@ -149,10 +194,10 @@
                 "position": "absolute",
                 "cornerRadius": "xxl",
                 "offsetTop": "10px",
-                "offsetStart": "55px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
-                "alignItems": "center"
+                "alignItems": "center",
+                "offsetEnd": "10px"
               },
               {
                 "type": "box",
@@ -179,30 +224,6 @@
                 "contents": [
                   {
                     "type": "image",
-                    "url": "https://www.peddyhub.com/peddyhub/images/icons/card.png",
-                    "size": "xxs"
-                  }
-                ],
-                "position": "absolute",
-                "cornerRadius": "xxl",
-                "offsetTop": "10px",
-                "offsetStart": "210px",
-                "backgroundColor": "#708090cc",
-                "justifyContent": "center",
-                "alignItems": "center",
-                "paddingStart": "15px",
-                "paddingEnd": "15px",
-                "action": {
-                  "type": "uri",
-                  "uri": "https://www.peddyhub.com/pet/pet_2"
-                }
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "image",
                     "url": "https://www.peddyhub.com/peddyhub/images/icons/edit.png",
                     "size": "20px",
                     "action": {
@@ -213,11 +234,80 @@
                 ],
                 "position": "absolute",
                 "cornerRadius": "xxl",
-                "offsetTop": "240px",
-                "offsetStart": "240px",
+                "offsetTop": "210px",
+                "offsetStart": "10px",
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
                 "alignItems": "center",
+                "paddingAll": "10px"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/icons/card.png",
+                    "size": "27px"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "60px",
+                "offsetStart": "10px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/pet/pet_2"
+                },
+                "paddingAll": "7px"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/icons/airplane.png",
+                    "size": "20px"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "110px",
+                "offsetStart": "10px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/edit_pet_login/pet_2?edit=airplane"
+                },
+                "paddingAll": "10px"
+              },
+              {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://www.peddyhub.com/peddyhub/images/icons/check.png",
+                    "size": "20px"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "xxl",
+                "offsetTop": "160px",
+                "offsetStart": "10px",
+                "backgroundColor": "#708090cc",
+                "justifyContent": "center",
+                "alignItems": "center",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/pet/pet_1"
+                },
                 "paddingAll": "10px"
               }
             ],
