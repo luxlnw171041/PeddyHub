@@ -491,7 +491,7 @@
                                                         </div>
                                                         <div class="div7 text-center text-card">
                                                             <p id="text_tswip{{$item->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
-                                                            <p id="text_wswip{{$item->id}}" style="font-size: 10px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
+                                                            <p id="text_wswip{{$item->id}}" style="font-size: 10px;margin:0px;"> <b>วันหมดอายุ</b></p>
                                                             <p id="text_lswip{{$item->id}}" class="notranslate" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Life Time</b></p>
                                                             <p id="text_dswip{{$item->id}}" class="notranslate" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
                                                         </div>
