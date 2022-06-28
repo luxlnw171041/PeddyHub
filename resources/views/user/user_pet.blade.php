@@ -212,7 +212,7 @@
             </div>
 
             <div class="account">
-                <b style="font-family: 'Kanit', sans-serif;font-size:18px">
+                <b style="font-family: 'Kanit', sans-serif;font-size:18px" class="notranslate">
                     @if(!empty($item->profile->real_name))
                     {{$item->profile->real_name}}
                     @else
