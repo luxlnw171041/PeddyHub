@@ -473,7 +473,7 @@
                                                         <div class="div3 d-flex align-items-end">
                                                             <img src="{{ url('storage/'.$item->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px;" width="100%" alt="image of pet" title="pet" class="fluid customer">
                                                         </div>
-                                                        <div class="div4">
+                                                        <div class="div4"  style="margin-bottom:15px;">
                                                             <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                                                         </div>
                                                         <div class="div5">
