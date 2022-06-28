@@ -471,8 +471,8 @@
                                                         <div class="div3 d-flex align-items-end">
                                                             <img src="{{ url('storage/'.$item->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px;" width="100%" alt="image of pet" title="pet" class="fluid customer">
                                                         </div>
-                                                        <div class="div4" style="margin-bottom:15px;">
-                                                            <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
+                                                        <div class="div4">
+                                                            <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span>
                                                         </div>
                                                         <div class="div5">
                                                             <p id="text_btswip{{$item->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($item->created_at)) }}</b></p>
@@ -530,7 +530,7 @@
                             document.querySelector('#text_dswip{{$item->id}}').classList.add('text-card');
 
                         } else {
-                            document.querySelector('#swip{{$item->id}}').classList.add('d-none');
+                            // document.querySelector('#swip{{$item->id}}').classList.add('d-none');
                             document.querySelector('#card_petswip{{$item->id}}').classList.remove('rotatea');
                             document.querySelector('#card_petswip{{$item->id}}').classList.remove('card-pet');
                             document.querySelector("#text_number{{$item->id}}").style.fontSize = "17px";
