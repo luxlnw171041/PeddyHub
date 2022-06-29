@@ -102,7 +102,11 @@
               "backgroundColor": "#708090cc",
               "justifyContent": "center",
               "alignItems": "center",
-              "paddingAll": "10px"
+              "paddingAll": "10px",
+              "action": {
+                "type": "uri",
+                "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?openExternalBrowser=1&edit=plane"
+              }
             },
             {
               "type": "box",
