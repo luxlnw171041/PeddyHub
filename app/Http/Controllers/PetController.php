@@ -272,15 +272,12 @@ class PetController extends Controller
                     'photo_passport' => $requestData['photo_passport'] = $request->file('photo_passport')->store('uploads', 'public')
                 ]);
         } 
-// echo "<pre>";
-//         print_r($requestData);
-//         echo "</pre>";
-//         exit();
+        $login  = $request->get('login');
         $pet = Pet::findOrFail($id);
         $pet->update($requestData);
         
        
-        if(!empty($requestData['login'])){
+        if(!empty($login)){
             return Redirect("https://lin.ee/Bvi9Zr9");
         }
         else{
@@ -331,15 +328,17 @@ class PetController extends Controller
     public function edit_pet_login(Request $request , $pet_id)
     {
         $edit  = $request->get('edit');
+
         if(Auth::check()){
-            if(!empty($requestData['edit'])){
+            if(!empty($edit)){
                 return redirect('pet/' . $pet_id . '/edit?login=line&' .$edit.'');
             }
             else{
                 return redirect('pet/' . $pet_id . '/edit?login=line');
             }
+            
         }else{
-            if(!empty($requestData['edit'])){
+            if(!empty($edit)){
                 return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line&' .$edit.'');
             }
             else{

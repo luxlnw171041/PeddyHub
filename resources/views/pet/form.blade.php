@@ -666,7 +666,7 @@
 <input type="text" class="d-none" name="photo_vaccine" id="input_vaccine" value="{{ isset($pet->photo_vaccine) ? $pet->photo_vaccine : ''}}">
 <input type="text" class="d-none" name="photo_vaccine_2" id="input_vaccine_2" value="{{ isset($pet->photo_vaccine_2) ? $pet->photo_vaccine_2 : ''}}">
 <input type="text" class="d-none" name="photo_vaccine_3" id="input_vaccine_3" value="{{ isset($pet->photo_vaccine_3) ? $pet->photo_vaccine_3 : ''}}">
-<input type="text" name="login" class="d-none" id="login" value="{{request()->get('login')}}">
+
 <a id="btn_change_language" class="d-none" href=""></a>
 
 
