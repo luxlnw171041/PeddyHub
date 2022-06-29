@@ -331,9 +331,9 @@ class PetController extends Controller
     public function edit_pet_login(Request $request , $pet_id)
     {
         if(Auth::check()){
-                return redirect('pet/' . $pet_id . '/edit?login=linea');
+                return redirect('pet/' . $pet_id . '/edit?login=line');
         }else{
-                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=linea');
+                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line');
         }
     }
     public function edit_pet_airplane_login(Request $request , $pet_id)
@@ -341,7 +341,7 @@ class PetController extends Controller
         if(Auth::check()){
                 return redirect('pet/' . $pet_id . '/edit?login=line&edit=airplane');
         }else{
-                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line&edit=airplane');
+                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?edit=airplane&login=line');
         }
     }
 }
