@@ -105,7 +105,7 @@
               "paddingAll": "10px",
               "action": {
                 "type": "uri",
-                "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?openExternalBrowser=1&edit=plane"
+                "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?openExternalBrowser=1&edit=airplane"
               }
             },
             {
