@@ -65,6 +65,8 @@ Route::get('/welcome_line_pet', 'PetController@welcome_line_pet');
 Route::get('/welcome_line_pet', 'PetController@welcome_line_pet');
 Route::get('/welcome_line_edit_pet', 'PetController@welcome_line_edit_pet');
 Route::get('/edit_pet_login/{pet_id}', 'PetController@edit_pet_login');
+Route::get('/edit_pet_airplane_login/{pet_id}', 'PetController@edit_pet_airplane_login');
+
 
 Route::get('/welcome_check_in_line', 'Check_inController@welcome_check_in_line');
 

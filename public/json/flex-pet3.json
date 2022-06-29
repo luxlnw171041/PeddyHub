@@ -127,7 +127,7 @@
               "offsetStart": "10px",
               "action": {
                 "type": "uri",
-                "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?edit=airplane"
+                "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_1?openExternalBrowser=1"
               },
               "paddingAll": "10px"
             },
@@ -282,7 +282,7 @@
               "offsetStart": "10px",
               "action": {
                 "type": "uri",
-                "uri": "https://www.peddyhub.com/edit_pet_login/pet_2?edit=airplane"
+                "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_2?openExternalBrowser=1"
               },
               "paddingAll": "10px"
             },
@@ -460,7 +460,7 @@
               "offsetStart": "10px",
               "action": {
                 "type": "uri",
-                "uri": "https://www.peddyhub.com/edit_pet_login/pet_3?edit=airplane"
+                "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_3?openExternalBrowser=1"
               },
               "paddingAll": "10px"
             }

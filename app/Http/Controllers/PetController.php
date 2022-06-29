@@ -272,10 +272,12 @@ class PetController extends Controller
                     'photo_passport' => $requestData['photo_passport'] = $request->file('photo_passport')->store('uploads', 'public')
                 ]);
         } 
-        $login  = $request->get('login');
+        
+
         $pet = Pet::findOrFail($id);
         $pet->update($requestData);
         
+       $login  = $request->get('login');
        
         if(!empty($login)){
             return Redirect("https://lin.ee/Bvi9Zr9");
@@ -283,6 +285,7 @@ class PetController extends Controller
         else{
             return redirect('user')->with('flash_message', 'Pet updated!');
         }
+
     }
 
     /**
@@ -327,24 +330,18 @@ class PetController extends Controller
     }
     public function edit_pet_login(Request $request , $pet_id)
     {
-        $edit  = $request->get('edit');
-
         if(Auth::check()){
-            if(!empty($edit)){
-                return redirect('pet/' . $pet_id . '/edit?login=line&edit=' .$edit.'');
-            }
-            else{
                 return redirect('pet/' . $pet_id . '/edit?login=line');
-            }
-
         }else{
-            if(!empty($edit)){
-                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line&edit=' .$edit.'');
-            }
-            else{
                 return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line');
-            }
-            
+        }
+    }
+    public function edit_pet_airplane_login(Request $request , $pet_id)
+    {
+        if(Auth::check()){
+                return redirect('pet/' . $pet_id . '/edit?login=line&edit=airplane');
+        }else{
+                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line&edit=airplane');
         }
     }
 }
