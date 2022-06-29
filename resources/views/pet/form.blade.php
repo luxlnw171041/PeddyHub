@@ -124,6 +124,7 @@
         white-space: nowrap
     }
 </style>
+
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 <div class="main-wrapper pet check">
@@ -131,106 +132,130 @@
         <section class="contact">
             <div class="container">
                 <!-- ข้อมูล USER -->
-                    @if(empty(Auth::user()->profile->tambon_th) 
-                    or empty(Auth::user()->profile->phone)
-                    or empty(Auth::user()->profile->photo_passport)
-                    or empty(Auth::user()->profile->photo_id_card))
-                    <div id="data_user" class="faq wow fadeInRight">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="heading">
-                                <p class="wow fadeInUp">
-                                    <span class="purple"><i class="fas fa-paw"></i></span>
-                                    <span class="orange"><i class="fas fa-paw"></i> </span>
-                                    <span class="purple"><i class="fas fa-paw"></i> </span>
-                                </p>
-                                <h3>
-                                    ข้อมูลของคุณ
-                                    <span class="wow pulse" data-wow-delay="1s"></span>
-                                </h3>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="row">
-                                        @if(empty(Auth::user()->profile->tambon_th) or empty(Auth::user()->profile->phone))
-                                        <div class="col-12 col-md-12">
-                                            <label class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
-                                            <span class="text-danger">*</span>
-                                            @if(!empty(Auth::user()->profile->changwat_th))
-                                            <a class="text-secondary" href="{{ url('/user/' . Auth::user()->id . '/edit') }}">
-                                                แก้ไขข้อมูล
-                                            </a>
-                                            @endif
-                                        </div>
-                                        <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
-                                        <div class="col-12 col-md-3" style="margin-top:12px;">
-                                            @if(!empty(Auth::user()->profile->changwat_th))
-                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
-                                            @else
-                                            <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
-                                                <option value="" selected>- เลือกจังหวัด -</option>
-
-                                            </select>
-                                            @endif
-                                        </div>
-                                        <div class="col-12 col-md-3" style="margin-top:12px;">
-                                            @if(!empty(Auth::user()->profile->amphoe_th))
-                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
-                                            @else
-                                            <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
-                                                <option value="" selected>- เลือกอำเภอ -</option>
-                                            </select>
-                                            @endif
-                                        </div>
-                                        <div class="col-12 col-md-3" style="margin-top:12px;">
-                                            @if(!empty(Auth::user()->profile->tambon_th))
-                                            <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
-                                            @else
-                                            <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
-                                                <option value="" selected>- เลือกตำบล -</option>
-                                            </select>
-                                            @endif
-                                        </div>
-                                        <div class="col-12 col-md-3" style="margin-top:12px;">
-                                            <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
-                                        </div>
-                                        @endif
-                                        @if(empty(Auth::user()->profile->photo_id_card))
-                                            <div class="col-12 col-md-4">
-                                                <label class="control-label"><b>{{ 'บัตรประชาชน' }}</b></label>
-                                                <label class="col-12" style="padding:0px;" for="photo_id_card">
-                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
-                                                        <div class="form-group">
-                                                            <input class="form-control" name="photo_id_card" style="margin:20px 0px 10px 0px" type="file" id="photo_id_card" value="{{ Auth::user()->profile->photo_id_card }}" accept="image/*" onchange="document.getElementById('show_photo_id_card').src = window.URL.createObjectURL(this.files[0])">
-                                                        </div>
-                                                        <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_id_card" />
-                                                        <div class="child">
-                                                            <span>เลือกรูป</span>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        @endif
-                                        @if(empty(Auth::user()->profile->photo_passport))
-                                            <div class="col-12 col-md-4">
-                                                <label class="control-label"><b>{{ 'พาสปอร์ต' }}</b></label>
-                                                <label class="col-12" style="padding:0px;" for="photo_passport">
-                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
-                                                        <div class="form-group">
-                                                            <input class="form-control" name="photo_passport" style="margin:20px 0px 10px 0px" type="file" id="photo_passport" value="{{ Auth::user()->profile->photo_passport}}" accept="image/*" onchange="document.getElementById('show_photo_passport').src = window.URL.createObjectURL(this.files[0])">
-                                                        </div>
-                                                        <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_passport" />
-                                                        <div class="child">
-                                                            <span>เลือกรูป</span>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                            </div>
+                @if(empty(Auth::user()->profile->tambon_th)
+                or empty(Auth::user()->profile->phone))
+                <div id="data_user" class="faq wow fadeInRight">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="heading">
+                            <p class="wow fadeInUp">
+                                <span class="purple"><i class="fas fa-paw"></i></span>
+                                <span class="orange"><i class="fas fa-paw"></i> </span>
+                                <span class="purple"><i class="fas fa-paw"></i> </span>
+                            </p>
+                            <h3>
+                                ข้อมูลของคุณ
+                                <span class="wow pulse" data-wow-delay="1s"></span>
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    @if(empty(Auth::user()->profile->tambon_th) or empty(Auth::user()->profile->phone))
+                                    <div class="col-12 col-md-12">
+                                        <label class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
+                                        <span class="text-danger">*</span>
+                                        @if(!empty(Auth::user()->profile->changwat_th))
+                                        <a class="text-secondary" href="{{ url('/user/' . Auth::user()->id . '/edit') }}">
+                                            แก้ไขข้อมูล
+                                        </a>
                                         @endif
                                     </div>
+                                    <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->changwat_th))
+                                        <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
+                                        @else
+                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                            <option value="" selected>- เลือกจังหวัด -</option>
+
+                                        </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->amphoe_th))
+                                        <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
+                                        @else
+                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                            <option value="" selected>- เลือกอำเภอ -</option>
+                                        </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->tambon_th))
+                                        <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
+                                        @else
+                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                            <option value="" selected>- เลือกตำบล -</option>
+                                        </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                @endif
+                @if( request()->get('edit') == 'airplane')
+                @if(empty(Auth::user()->profile->photo_passport)
+                or empty(Auth::user()->profile->photo_id_card))
+                <div id="data_user" class="faq wow fadeInRight">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="heading">
+                            <p class="wow fadeInUp">
+                                <span class="purple"><i class="fas fa-paw"></i></span>
+                                <span class="orange"><i class="fas fa-paw"></i> </span>
+                                <span class="purple"><i class="fas fa-paw"></i> </span>
+                            </p>
+                            <h3>
+                                เอกสารเดินทาง
+                                <span class="wow pulse" data-wow-delay="1s"></span>
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    @if(empty(Auth::user()->profile->photo_id_card))
+                                    <div class="col-12 col-md-4">
+                                        <label class="control-label"><b>{{ 'บัตรประชาชน' }}</b></label>
+                                        <label class="col-12" style="padding:0px;" for="photo_id_card">
+                                            <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="photo_id_card" style="margin:20px 0px 10px 0px" type="file" id="photo_id_card" value="{{ Auth::user()->profile->photo_id_card }}" accept="image/*" onchange="document.getElementById('show_photo_id_card').src = window.URL.createObjectURL(this.files[0])">
+                                                </div>
+                                                <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_id_card" />
+                                                <div class="child">
+                                                    <span>เลือกรูป</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    @endif
+                                    @if(empty(Auth::user()->profile->photo_passport))
+                                    <div class="col-12 col-md-4">
+                                        <label class="control-label"><b>{{ 'พาสปอร์ต' }}</b></label>
+                                        <label class="col-12" style="padding:0px;" for="photo_passport">
+                                            <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                                <div class="form-group">
+                                                    <input class="form-control" name="photo_passport" style="margin:20px 0px 10px 0px" type="file" id="photo_passport" value="{{ Auth::user()->profile->photo_passport}}" accept="image/*" onchange="document.getElementById('show_photo_passport').src = window.URL.createObjectURL(this.files[0])">
+                                                </div>
+                                                <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_passport" />
+                                                <div class="child">
+                                                    <span>เลือกรูป</span>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endif
                 @endif
                 <!-- จบข้อมูล USER -->
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -362,6 +387,7 @@
                                     </label>
                                     @endif
                                 </div>
+                                @if( request()->get('edit') == 'airplane')
                                 <div class="row col-4 m-0 p-0 text-center ">
                                     @if(!empty($pet->photo_medical_certificate))
                                     <label class="col-12" style="padding:0px;" for="photo_medical_certificate">
@@ -445,7 +471,7 @@
                                         </div>
                                     </label>
                                 </div>
-                                
+
 
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
@@ -499,6 +525,7 @@
                                         </div>
                                     </label>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -513,6 +540,10 @@
                                     <div class="form-group">
                                         <select style="margin:0px;" name="gender" class="form-control" id="gender" required>
                                             <option value='' selected> - โปรดเลือก - </option>
+                                            <!-- <option value='ชาย'>Male</option>
+                                            <option value='หญิง'>Female</option>
+                                            <option value='ไม่ระบุ'>Not Specified</option> -->
+
                                             @foreach (json_decode('{"\u0e0a\u0e32\u0e22":"\u0e0a\u0e32\u0e22","\u0e2b\u0e0d\u0e34\u0e07":"\u0e2b\u0e0d\u0e34\u0e07","\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38":"\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"}', true) as $optionKey => $optionValue)
                                             <option value="{{ $optionKey }}" {{ (isset($pet->gender) && $pet->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                             @endforeach
@@ -635,7 +666,7 @@
 <input type="text" class="d-none" name="photo_vaccine" id="input_vaccine" value="{{ isset($pet->photo_vaccine) ? $pet->photo_vaccine : ''}}">
 <input type="text" class="d-none" name="photo_vaccine_2" id="input_vaccine_2" value="{{ isset($pet->photo_vaccine_2) ? $pet->photo_vaccine_2 : ''}}">
 <input type="text" class="d-none" name="photo_vaccine_3" id="input_vaccine_3" value="{{ isset($pet->photo_vaccine_3) ? $pet->photo_vaccine_3 : ''}}">
-
+<input type="text" name="login" class="d-none" id="login" value="{{request()->get('login')}}">
 <a id="btn_change_language" class="d-none" href=""></a>
 
 
@@ -649,8 +680,6 @@
 
         }
     });
-
-
     document.getElementById("photo_2").addEventListener("input", function() {
         if (photo_2.value) {
             document.querySelector('#div_photo_3').classList.remove('d-none');
@@ -674,51 +703,8 @@
         }
     });
 </script>
+
 <script>
-    document.getElementById("certificate").addEventListener("input", function() {
-        if (this.value) {
-            document.querySelector('#div_certificate_2').classList.remove('d-none');
-            document.querySelector('#show_certificate').classList.remove('d-none');
-            document.querySelector('#certificate').classList.add('d-none');
-
-        }
-    });photo_vaccine_2
-    document.getElementById("certificate_2").addEventListener("input", function() {
-        if (certificate_2.value) {
-            document.querySelector('#div_certificate_3').classList.remove('d-none');
-            document.querySelector('#show_certificate2').classList.remove('d-none');
-            document.querySelector('#certificate_2').classList.add('d-none');
-
-        }
-    });
-    document.getElementById("certificate_3").addEventListener("input", function() {
-        if (certificate_3.value) {
-            document.querySelector('#show_certificate3').classList.remove('d-none');
-            document.querySelector('#certificate_3').classList.add('d-none');
-        }
-    });
-    document.getElementById("photo_vaccine").addEventListener("input", function() {
-        if (this.value) {
-            document.querySelector('#div_vaccine_2').classList.remove('d-none');
-            document.querySelector('#show_vaccine').classList.remove('d-none');
-            document.querySelector('#photo_vaccine').classList.add('d-none');
-
-        }
-    });
-    document.getElementById("photo_vaccine_2").addEventListener("input", function() {
-        if (photo_vaccine_2.value) {
-            document.querySelector('#div_vaccine_3').classList.remove('d-none');
-            document.querySelector('#show_vaccine2').classList.remove('d-none');
-            document.querySelector('#photo_vaccine_2').classList.add('d-none');
-
-        }
-    });
-    document.getElementById("photo_vaccine_3").addEventListener("input", function() {
-        if (photo_vaccine_3.value) {
-            document.querySelector('#show_vaccine3').classList.remove('d-none');
-            document.querySelector('#photo_vaccine_3').classList.add('d-none');
-        }
-    });
     document.getElementById("photo_passport").addEventListener("input", function() {
         if (photo_passport.value) {
             document.querySelector('#show_photo_passport').classList.remove('d-none');
@@ -731,17 +717,17 @@
             document.querySelector('#photo_id_card').classList.add('d-none');
         }
     });
-    document.getElementById("photo_medical_certificate").addEventListener("input", function() {
-        if (photo_medical_certificate.value) {
-            document.querySelector('#show_photo_medical_certificate').classList.remove('d-none');
-            document.querySelector('#photo_medical_certificate').classList.add('d-none');
-        }
-    });
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
 
+        // console.log("START");
+        let check_changwat_th = document.querySelector('#check_changwat_th');
+        select_category();
 
+        if (!check_changwat_th.value) {
+            select_province();
+        }
         let certificate_1 = document.querySelector('#input_certificate');
         let certificate_2 = document.querySelector('#input_certificate_2');
         let certificate_3 = document.querySelector('#input_certificate_3');
@@ -766,22 +752,15 @@
             document.querySelector('#photo_vaccine').classList.add('d-none');
             document.querySelector('#div_vaccine_2').classList.remove('d-none');
 
-        }if (vaccine_2.value) {
+        }
+        if (vaccine_2.value) {
             document.querySelector('#photo_vaccine_2').classList.add('d-none');
             document.querySelector('#div_vaccine_3').classList.remove('d-none');
 
-        }if (vaccine_3.value) {
+        }
+        if (vaccine_3.value) {
             document.querySelector('#photo_vaccine_3').classList.add('d-none');
 
-        }
-
-
-        // console.log("START");
-        let check_changwat_th = document.querySelector('#check_changwat_th');
-        select_category();
-
-        if (!check_changwat_th.value) {
-            select_province();
         }
 
     });
@@ -1057,4 +1036,57 @@
 <script type="text/javascript">
     $('#select_species').select2();
     document.querySelector('.select2-container').classList.add('d-none');
+</script>
+<script>
+    document.getElementById("certificate").addEventListener("input", function() {
+        if (this.value) {
+            document.querySelector('#div_certificate_2').classList.remove('d-none');
+            document.querySelector('#show_certificate').classList.remove('d-none');
+            document.querySelector('#certificate').classList.add('d-none');
+
+        }
+    });
+    document.getElementById("certificate_2").addEventListener("input", function() {
+        if (certificate_2.value) {
+            document.querySelector('#div_certificate_3').classList.remove('d-none');
+            document.querySelector('#show_certificate2').classList.remove('d-none');
+            document.querySelector('#certificate_2').classList.add('d-none');
+
+        }
+    });
+    document.getElementById("certificate_3").addEventListener("input", function() {
+        if (certificate_3.value) {
+            document.querySelector('#show_certificate3').classList.remove('d-none');
+            document.querySelector('#certificate_3').classList.add('d-none');
+        }
+    });
+    document.getElementById("photo_vaccine").addEventListener("input", function() {
+        if (this.value) {
+            document.querySelector('#div_vaccine_2').classList.remove('d-none');
+            document.querySelector('#show_vaccine').classList.remove('d-none');
+            document.querySelector('#photo_vaccine').classList.add('d-none');
+
+        }
+    });
+    document.getElementById("photo_vaccine_2").addEventListener("input", function() {
+        if (photo_vaccine_2.value) {
+            document.querySelector('#div_vaccine_3').classList.remove('d-none');
+            document.querySelector('#show_vaccine2').classList.remove('d-none');
+            document.querySelector('#photo_vaccine_2').classList.add('d-none');
+
+        }
+    });
+    document.getElementById("photo_vaccine_3").addEventListener("input", function() {
+        if (photo_vaccine_3.value) {
+            document.querySelector('#show_vaccine3').classList.remove('d-none');
+            document.querySelector('#photo_vaccine_3').classList.add('d-none');
+        }
+    });
+    document.getElementById("photo_medical_certificate").addEventListener("input", function() {
+        if (photo_medical_certificate.value) {
+
+            document.querySelector('#show_photo_medical_certificate').classList.remove('d-none');
+            document.querySelector('#photo_medical_certificate').classList.add('d-none');
+        }
+    });
 </script>
