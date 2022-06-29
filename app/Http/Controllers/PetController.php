@@ -331,15 +331,15 @@ class PetController extends Controller
 
         if(Auth::check()){
             if(!empty($edit)){
-                return redirect('pet/' . $pet_id . '/edit?login=line&' .$edit.'');
+                return redirect('pet/' . $pet_id . '/edit?login=line&edit=' .$edit.'');
             }
             else{
                 return redirect('pet/' . $pet_id . '/edit?login=line');
             }
-            
+
         }else{
             if(!empty($edit)){
-                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line&' .$edit.'');
+                return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line&edit=' .$edit.'');
             }
             else{
                 return redirect('login/line?redirectTo=pet/' . $pet_id . '/edit?login=line');
