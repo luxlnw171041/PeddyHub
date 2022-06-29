@@ -70,6 +70,23 @@ font-family: 'Kaushan Script', sans-serif;*/
 
  ***/
 
+ /* spin animation */
+ .line-spinner {
+    width: 30px;
+    height: 30px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-right: 5px solid #B8205B;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+ /* end spin animation */
 
  .modal-backdrop {
     display: none;

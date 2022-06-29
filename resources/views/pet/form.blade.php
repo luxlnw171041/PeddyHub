@@ -578,14 +578,30 @@
                                     <label class="control-label"><b>{{ 'ประเภท' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
                                         <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat(); species_select();" required>
+                                            @if(!empty($pet->pet_category_id))
+                                                <option class="notranslate" value="{{ $pet->pet_category_id }}" selected>{{$pet->pet_category->name}}</option>
+                                            @else
+                                                <option class="translate" value="" selected> - โปรดเลือก - </option> 
+                                            @endif
                                             <option value='' selected="selected">- โปรดเลือก -</option>
+                                        
                                         </select>
 
                                         <select style="margin:10px 0px 0px 0px;" id="select_sub_category" name="sub_category" class="form-control d-none">
-                                            <option value='' selected="selected">- โปรดเลือก -</option>
+                                            @if(!empty($pet->size))
+                                                <option class="notranslate" value="{{ $pet->size }}" selected>{{$pet->size}}</option>
+                                            @elseif(!empty($pet->sub_category))
+                                                <option class="notranslate" value="{{ $pet->sub_category }}" selected>{{$pet->sub_category}}</option>
+                                            @else
+                                                <option class="translate" value="" selected> - โปรดเลือก - </option> 
+                                            @endif
                                         </select>
                                         <select style="margin:10px 0px 0px 0px;" id="select_species" name="species" class="form-control d-none" onchange="sub_size();">
-                                            <option value='' selected="selected">- โปรดเลือก -</option>
+                                            @if(!empty($pet->species))
+                                                <option class="notranslate" value="{{ $pet->species }}" selected>{{$pet->species}}</option>
+                                            @else
+                                                <option class="translate" value="" selected> - โปรดเลือก - </option> 
+                                            @endif
                                         </select>
                                         <select style="margin:10px 0px 0px 0px;" id="select_size" name="size" class="form-control d-none">
                                             <option value='' selected="selected">- โปรดเลือก -</option>
@@ -625,7 +641,9 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                             <div class="d-flex justify-content-end">
-                                <button type="submit" class="btn btn-11 form-control" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">Update</button>
+                                <button  type="button" class="btn btn-11" data-toggle="modal" data-target="#modal_thx" onclick="submitform()">Update</button>
+
+                                <button id="btn-submit-form" type="submit" class="btn btn-11 form-control d-none" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">Update</button>
                             </div>
                         </div>
                     </div>
@@ -634,6 +652,8 @@
         </section>
     </div>
 </div>
+
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary d-none" id="btn-submit" data-toggle="modal" data-target="#exampleModalCenter">
 </button>
@@ -654,6 +674,41 @@
                         <a href="{{ url('/')}}" style="font-family: 'Sarabun', sans-serif;" type="button" class="btn btn-nosubmit"> <u> ไม่ยินยอม</u></a>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade " data-keyboard="false" id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="d-flex justify-content-end" style="padding: 15px;">
+                <div class="line-spinner"></div>
+            </div>
+            <div class="modal-body text-center">
+                <img width="60%" src="{{ asset('peddyhub/images/home_5/preloader.gif') }}">
+                <br>
+                <center style="margin-top:15px;">
+                    <h6 style="font-family: 'Kanit', sans-serif;">กำลังโหลด โปรดรอสักครู่..</h6>
+                </center>
+                <br>
+                <h5 style="font-family: 'Kanit', sans-serif;">สนับสนุนโดย</h5>
+                <div class="col-12 owl-carousel-two align-self-center" style="padding:0px;">
+                    <div class="owl-carousel">
+                        @php
+                            $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
+                        @endphp
+                        @foreach($partner as $item)
+                        <div class="item" style="padding:0px;z-index:-1;">
+                            <div class="testimon">
+                                <a href="{{$item->link}}" target="bank">
+                                    <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                </a>
+                            </div>
+                        </div>
+
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
@@ -718,6 +773,47 @@
         }
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+let certificate_1 = document.querySelector('#input_certificate');
+let certificate_2 = document.querySelector('#input_certificate_2');
+let certificate_3 = document.querySelector('#input_certificate_3');
+let vaccine_1 = document.querySelector('#input_vaccine');
+let vaccine_2 = document.querySelector('#input_vaccine_2');
+let vaccine_3 = document.querySelector('#input_vaccine_3');
+
+
+if (certificate_1.value) {
+    document.querySelector('#certificate').classList.add('d-none');
+    document.querySelector('#div_certificate_2').classList.remove('d-none');
+}
+if (certificate_2.value) {
+    document.querySelector('#certificate_2').classList.add('d-none');
+    document.querySelector('#div_certificate_3').classList.remove('d-none');
+
+}
+if (certificate_3.value) {
+    document.querySelector('#certificate_3').classList.add('d-none');
+}
+if (vaccine_1.value) {
+    document.querySelector('#photo_vaccine').classList.add('d-none');
+    document.querySelector('#div_vaccine_2').classList.remove('d-none');
+
+}
+if (vaccine_2.value) {
+    document.querySelector('#photo_vaccine_2').classList.add('d-none');
+    document.querySelector('#div_vaccine_3').classList.remove('d-none');
+
+}
+if (vaccine_3.value) {
+    document.querySelector('#photo_vaccine_3').classList.add('d-none');
+
+}
+
+});
+</script>
+
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
 
@@ -728,41 +824,6 @@
         if (!check_changwat_th.value) {
             select_province();
         }
-        let certificate_1 = document.querySelector('#input_certificate');
-        let certificate_2 = document.querySelector('#input_certificate_2');
-        let certificate_3 = document.querySelector('#input_certificate_3');
-        let vaccine_1 = document.querySelector('#input_vaccine');
-        let vaccine_2 = document.querySelector('#input_vaccine_2');
-        let vaccine_3 = document.querySelector('#input_vaccine_3');
-
-
-        if (certificate_1.value) {
-            document.querySelector('#certificate').classList.add('d-none');
-            document.querySelector('#div_certificate_2').classList.remove('d-none');
-        }
-        if (certificate_2.value) {
-            document.querySelector('#certificate_2').classList.add('d-none');
-            document.querySelector('#div_certificate_3').classList.remove('d-none');
-
-        }
-        if (certificate_3.value) {
-            document.querySelector('#certificate_3').classList.add('d-none');
-        }
-        if (vaccine_1.value) {
-            document.querySelector('#photo_vaccine').classList.add('d-none');
-            document.querySelector('#div_vaccine_2').classList.remove('d-none');
-
-        }
-        if (vaccine_2.value) {
-            document.querySelector('#photo_vaccine_2').classList.add('d-none');
-            document.querySelector('#div_vaccine_3').classList.remove('d-none');
-
-        }
-        if (vaccine_3.value) {
-            document.querySelector('#photo_vaccine_3').classList.add('d-none');
-
-        }
-
     });
 
     var language_user = document.querySelector('#language_user').value;
@@ -1089,4 +1150,9 @@
             document.querySelector('#photo_medical_certificate').classList.add('d-none');
         }
     });
+</script>
+<script>
+    function submitform() {
+        document.querySelector('#btn-submit-form').click();
+    }
 </script>
