@@ -116,7 +116,11 @@
                   {
                     "type": "image",
                     "url": "https://www.peddyhub.com/peddyhub/images/icons/airplane.png",
-                    "size": "20px"
+                    "size": "20px",
+                    "action": {
+                      "type": "uri",
+                      "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_1?openExternalBrowser=1"
+                    }
                   }
                 ],
                 "position": "absolute",
@@ -126,10 +130,6 @@
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
                 "alignItems": "center",
-                "action": {
-                  "type": "uri",
-                  "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_1?openExternalBrowser=1"
-                },
                 "paddingAll": "10px"
               },
               {
@@ -271,7 +271,11 @@
                   {
                     "type": "image",
                     "url": "https://www.peddyhub.com/peddyhub/images/icons/airplane.png",
-                    "size": "20px"
+                    "size": "20px",
+                    "action": {
+                      "type": "uri",
+                      "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_2?openExternalBrowser=1"
+                    }
                   }
                 ],
                 "position": "absolute",
@@ -281,10 +285,6 @@
                 "backgroundColor": "#708090cc",
                 "justifyContent": "center",
                 "alignItems": "center",
-                "action": {
-                  "type": "uri",
-                  "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_2?openExternalBrowser=1"
-                },
                 "paddingAll": "10px"
               },
               {
