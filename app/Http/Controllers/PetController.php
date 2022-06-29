@@ -277,9 +277,7 @@ class PetController extends Controller
         $pet = Pet::findOrFail($id);
         $pet->update($requestData);
         
-       $login  = $request->get('login');
-       
-        if(!empty($login)){
+        if(!empty($requestData['login'])){
             return Redirect("https://lin.ee/Bvi9Zr9");
         }
         else{
