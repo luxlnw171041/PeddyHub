@@ -175,40 +175,42 @@
     </div>
     <div class="row">
         @foreach($my_post as $item)
-            <div class="col-sm-12 col-md-4 " >
-                <div class="card shadow-card" >
-                    <div class="card-body ">
-                        @switch($item->status)
-                            @case('show')
-                                <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>กำลังโพสอยู่</b> </button>
-                            @break
-                            <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
-                            <!-- เอาอันนี้แหละ -->
-                            @case('expire')
-                                <button type="button" class="button-expire btn-lg shadow-btn"> <b>หมดอายุ</b> </button>
-                                <button type="button" class="button-post-again btn-lg" onclick="modal_check_send_line('{{ $item->id }}');">
-                                    <b>โพสอีกครั้ง</b> 
-                                </button>
-                            @break
-                        @endswitch
-                        <p class="text-date">โพสวันที่ {{ $item->updated_at->format('d/m/Y') }} </p>
-                        @switch($item->status)
-                            @case('show')
-                            <p class="text-date">โพสหมดอายุในอีก <b class="text-danger">{{ number_format((strtotime($item->updated_at) - strtotime($date_15)) /  ( 60 * 60 * 24 )) }}</b> วัน</p>
-                            @break
-                            <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
-                            <!-- เอาอันนี้แหละ -->
-                            @case('expire')
-                                <p class="text-date">โพสหมดอายุแล้วกรุณาโพสใหม่อีกครั้ง</p>
-                            @break
-                        @endswitch
-                        <h5 class="card-title">{{$item->pet->name}}</h5>
-                        <div class="text-center">
-                            <img src="{{ url('storage/'.$item->pet->photo )}}" height="200px" height="300px" title="Pet"alt="Image of Pet">
+            @if($item->status == "show" or $item->status == "expire")
+                <div class="col-sm-12 col-md-4 " >
+                    <div class="card shadow-card" >
+                        <div class="card-body ">
+                            @switch($item->status)
+                                @case('show')
+                                    <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>กำลังโพสอยู่</b> </button>
+                                @break
+                                <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
+                                <!-- เอาอันนี้แหละ -->
+                                @case('expire')
+                                    <button type="button" class="button-expire btn-lg shadow-btn"> <b>หมดอายุ</b> </button>
+                                    <button type="button" class="button-post-again btn-lg" onclick="modal_check_send_line('{{ $item->id }}');">
+                                        <b>โพสอีกครั้ง</b> 
+                                    </button>
+                                @break
+                            @endswitch
+                            <p class="text-date">โพสวันที่ {{ $item->updated_at->format('d/m/Y') }} </p>
+                            @switch($item->status)
+                                @case('show')
+                                <p class="text-date">โพสหมดอายุในอีก <b class="text-danger">{{ number_format((strtotime($item->updated_at) - strtotime($date_15)) /  ( 60 * 60 * 24 )) }}</b> วัน</p>
+                                @break
+                                <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
+                                <!-- เอาอันนี้แหละ -->
+                                @case('expire')
+                                    <p class="text-date">โพสหมดอายุแล้วกรุณาโพสใหม่อีกครั้ง</p>
+                                @break
+                            @endswitch
+                            <h5 class="card-title">{{$item->pet->name}}</h5>
+                            <div class="text-center">
+                                <img src="{{ url('storage/'.$item->pet->photo )}}" height="200px" height="300px" title="Pet"alt="Image of Pet">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         @endforeach
     </div>
 </div>

@@ -301,6 +301,15 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
+
+        DB::table('lost__pets')
+        ->where([ 
+                ['pet_id', $id],
+            ])
+        ->update([
+            'status' => "delete",
+        ]);
+
         Pet::destroy($id);
 
         return redirect()->back()->with('flash_message', 'Pet deleted!');
