@@ -344,9 +344,21 @@
                                     
                                 </h6>
                                 <ul style="font-size:20px;">
-                                    <li><i class="fas fa-paw"></i>วันเกิด : {{ thaidate("j/m/Y" , strtotime($item->birth)) }}</li>
-                                    <li><i class="fas fa-paw"></i>อายุ : {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y ขวบ, %m เดือน')}}</li>
+                                    <li><i class="fas fa-paw"></i>วันเกิด : {{ thaidate("j/m/Y" , strtotime($item->birth)) }}</li> 
+                                    <li><i class="fas fa-paw"></i>
+                                        อายุ : 
+                                        @if(\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
+                                            {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
+                                        @endif
+                                        @if(\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
+                                            {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                        @endif
+                                        @if( \Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0)
+                                            {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%d')}} วัน
+                                        @endif
+                                    </li>
                                 </ul>
+                                
                                 
                                 <div class="row">
                                     <div class="col-md-6 col-6 col-lg-6 d-flex justify-content-center" style="padding: 0px;">

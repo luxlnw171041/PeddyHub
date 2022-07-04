@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image as Image;
-
+use Carbon\Carbon;
 class UserController extends Controller
 {
     /**
@@ -18,6 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        
         $id = Auth::id();
         $data = User::findOrFail($id);
         $petuser = Pet::where('user_id', $id)->get();
@@ -135,16 +136,21 @@ class UserController extends Controller
     public function user_pet($id)
     {
         $petuser = Pet::where('id', $id)->get();
+        $now = Carbon::now();
+        
+
 
         foreach ($petuser as $key ) {
-            $user_id = $key->user_id ;
+            $user_id = $key->user_id ; 
+            $birth = Carbon::parse($key->birth);
+
         }
         $user = User::where('id', $user_id)->get();
-        // echo "<pre>";
-        // print_r($user);
-        // echo "<pre>";
-        // exit();
-        return view('user/user_pet',compact('petuser' ,'user') );
+        $birth_month = $birth->diffInMonths($now)% 12;
+        $birth_year = $birth->diffInYears($now);
+        $birth_day = $birth->diffInDays($now);
+
+        return view('user/user_pet',compact('petuser' ,'user' ,'birth_month' ,'birth_year','birth_day','now') );
 
     }
 }

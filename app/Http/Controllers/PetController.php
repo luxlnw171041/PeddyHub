@@ -52,7 +52,10 @@ class PetController extends Controller
         $category = Pet_Category::all(['id', 'name']);
 
         $user = Auth::user();
-        return view('pet.create' , compact('category'));
+        $pet_category_id = 0;
+        $photo = 0;
+
+        return view('pet.create' , compact('category' ,'pet_category_id','photo'));
     }
 
     /**
@@ -192,7 +195,10 @@ class PetController extends Controller
 
        }else{
             $pet = Pet::findOrFail($id);
-            return view('pet.edit', compact('pet' ,'category'));
+            $pet_category_id = $pet->pet_category_id;
+            $photo = $pet->photo;
+
+            return view('pet.edit', compact('pet' ,'category','pet_category_id','photo'));
        }
         
     }

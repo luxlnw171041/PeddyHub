@@ -165,7 +165,7 @@
                                         @if(!empty(Auth::user()->profile->changwat_th))
                                         <input class="form-control" type="text" value="{{ Auth::user()->profile->changwat_th }}" readonly>
                                         @else
-                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A(); check();" required>
                                             <option value="" selected>- เลือกจังหวัด -</option>
 
                                         </select>
@@ -175,7 +175,7 @@
                                         @if(!empty(Auth::user()->profile->amphoe_th))
                                         <input class="form-control" type="text" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
                                         @else
-                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T(); check();" required>
                                             <option value="" selected>- เลือกอำเภอ -</option>
                                         </select>
                                         @endif
@@ -184,13 +184,13 @@
                                         @if(!empty(Auth::user()->profile->tambon_th))
                                         <input class="form-control" type="text" value="{{ Auth::user()->profile->tambon_th }}" readonly>
                                         @else
-                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng(); check();" required>
                                             <option value="" selected>- เลือกตำบล -</option>
                                         </select>
                                         @endif
                                     </div>
                                     <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
+                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}"onchange="check();">
                                     </div>
                                     @endif
                                 </div>
@@ -221,7 +221,7 @@
                                     @if(empty(Auth::user()->profile->photo_id_card))
                                     <div class="col-12 col-md-4">
                                         <label class="control-label"><b>{{ 'บัตรประชาชน' }}</b></label>
-                                        <label class="col-12" style="padding:0px;" for="photo_id_card">
+                                        <label class="col-12" style="padding:0px;" for="photo_id_card" onchange="check();">
                                             <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                                 <div class="form-group">
                                                     <input class="form-control" name="photo_id_card" style="margin:20px 0px 10px 0px" type="file" id="photo_id_card" value="{{ Auth::user()->profile->photo_id_card }}" accept="image/*" onchange="document.getElementById('show_photo_id_card').src = window.URL.createObjectURL(this.files[0])">
@@ -237,7 +237,7 @@
                                     @if(empty(Auth::user()->profile->photo_passport))
                                     <div class="col-12 col-md-4">
                                         <label class="control-label"><b>{{ 'พาสปอร์ต' }}</b></label>
-                                        <label class="col-12" style="padding:0px;" for="photo_passport">
+                                        <label class="col-12" style="padding:0px;" for="photo_passport" onchange="check();">
                                             <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                                 <div class="form-group">
                                                     <input class="form-control" name="photo_passport" style="margin:20px 0px 10px 0px" type="file" id="photo_passport" value="{{ Auth::user()->profile->photo_passport}}" accept="image/*" onchange="document.getElementById('show_photo_passport').src = window.URL.createObjectURL(this.files[0])">
@@ -276,7 +276,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10 ">
                                     <div class="form-group">
-                                        <input style="margin:0px;" class="form-control" name="name" type="text" id="name" value="{{ isset($pet->name) ? $pet->name : ''}}" required>
+                                        <input style="margin:0px;" class="form-control" name="name" type="text" id="name" value="{{ isset($pet->name) ? $pet->name : ''}}" required onchange="check();">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
@@ -286,10 +286,10 @@
                                 </div>
                                 <div class="row col-12 m-0 p-0 text-center ">
                                     @if(!empty($pet->photo))
-                                    <label class="col-4" style="padding:0px;" for="photo">
+                                    <label class="col-4" style="padding:0px;" for="photo"  onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="d-none form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo_1').src = window.URL.createObjectURL(this.files[0])">
+                                                <input class="d-none form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo_1').src = window.URL.createObjectURL(this.files[0])" >
                                             </div>
                                             <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_1" src="{{ url('storage')}}/{{ $pet->photo }}" />
                                             <div class="child">
@@ -298,10 +298,10 @@
                                         </div>
                                     </label>
                                     @else
-                                    <label class="col-4" style="padding:0px;" for="photo">
+                                    <label class="col-4" style="padding:0px;" for="photo"  onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0])" required>
+                                                <input class="form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
                                             <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo" />
                                             <div class="child">
@@ -311,7 +311,7 @@
                                     </label>
                                     @endif
                                     @if(!empty($pet->photo_2))
-                                    <label id="div_photo_2" for="photo_2" class="col-4" style="padding:0px;">
+                                    <label id="div_photo_2" for="photo_2" class="col-4" style="padding:0px;" onchange="check();">
                                         <div class=" fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="d-none form-control" name="photo_2" style="margin:20px 0px 10px 0px" type="file" id="photo_2" value="{{ isset($pet->photo_2) ? $pet->photo_2 : ''}}" accept="image/*" onchange="document.getElementById('show_photo_2').src = window.URL.createObjectURL(this.files[0])">
@@ -323,7 +323,7 @@
                                         </div>
                                     </label>
                                     @elseif(!empty($pet->photo))
-                                    <label id="div_photo_2" for="photo_2" class="col-4 " style="padding:0px;">
+                                    <label id="div_photo_2" for="photo_2" class="col-4 " style="padding:0px;" onchange="check();">
                                         <div class=" fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_2" style="margin:20px 0px 10px 0px" type="file" id="photo_2" value="{{ isset($pet->photo_2) ? $pet->photo_2 : ''}}" accept="image/*" onchange="document.getElementById('show_photo_2_1').src = window.URL.createObjectURL(this.files[0])">
@@ -335,7 +335,7 @@
                                         </div>
                                     </label>
                                     @else
-                                    <label id="div_photo_2" for="photo_2" class="col-4 d-none" style="padding:0px;">
+                                    <label id="div_photo_2" for="photo_2" class="col-4 d-none" style="padding:0px;" onchange="check();">
                                         <div class=" fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_2" style="margin:20px 0px 10px 0px" type="file" id="photo_2" value="{{ isset($pet->photo_2) ? $pet->photo_2 : ''}}" accept="image/*" onchange="document.getElementById('show_photo2').src = window.URL.createObjectURL(this.files[0])">
@@ -350,7 +350,7 @@
 
 
                                     @if(!empty($pet->photo_3))
-                                    <label id="div_photo_3" for="photo_3" class="col-4" style="padding:0px;">
+                                    <label id="div_photo_3" for="photo_3" class="col-4" style="padding:0px;" onchange="check();">
                                         <div class="fill  parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="d-none form-control" name="photo_3" style="margin:20px 0px 10px 0px" type="file" id="photo_3" value="{{ isset($pet->photo_3) ? $pet->photo_3 : ''}}" accept="image/*" onchange="document.getElementById('show_photo3_1').src = window.URL.createObjectURL(this.files[0])">
@@ -362,7 +362,7 @@
                                         </div>
                                     </label>
                                     @elseif(!empty($pet->photo_2))
-                                    <label id="div_photo_3" for="photo_3" class="col-4" style="padding:0px;">
+                                    <label id="div_photo_3" for="photo_3" class="col-4" style="padding:0px;" onchange="check();">
                                         <div class="fill  parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_3" style="margin:20px 0px 10px 0px" type="file" id="photo_3" value="{{ isset($pet->photo_3) ? $pet->photo_3 : ''}}" accept="image/*" onchange="document.getElementById('show_photo3').src = window.URL.createObjectURL(this.files[0])">
@@ -374,7 +374,7 @@
                                         </div>
                                     </label>
                                     @else
-                                    <label id="div_photo_3" for="photo_3" class="col-4 d-none" style="padding:0px;">
+                                    <label id="div_photo_3" for="photo_3" class="col-4 d-none" style="padding:0px;" onchange="check();">
                                         <div class="fill  parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_3" style="margin:20px 0px 10px 0px" type="file" id="photo_3" value="{{ isset($pet->photo_3) ? $pet->photo_3 : ''}}" accept="image/*" onchange="document.getElementById('show_photo3').src = window.URL.createObjectURL(this.files[0])">
@@ -390,7 +390,7 @@
                                 @if( request()->get('edit') == 'airplane')
                                 <div class="row col-4 m-0 p-0 text-center ">
                                     @if(!empty($pet->photo_medical_certificate))
-                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate">
+                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate"onchange="check();">
                                         <label class="control-label"><b>{{ 'ใบตรวจสุขภาพสัตว์เลี้ยง' }}</b></label>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
@@ -404,7 +404,7 @@
                                     </label>
                                     @else
                                     <label class="control-label"><b>{{ 'ใบตรวจสุขภาพสัตว์เลี้ยง' }}</b></label>
-                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate">
+                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate" onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_medical_certificate" style="margin:20px 0px 10px 0px" type="file" id="photo_medical_certificate" value="{{ isset($pet->photo_medical_certificate) ? $pet->photo_medical_certificate : ''}}" accept="image/*" onchange="document.getElementById('show_photo_medical_certificate').src = window.URL.createObjectURL(this.files[0])">
@@ -419,13 +419,14 @@
                                 </div>
 
 
-                                <div class="col-lg-12 col-md-2 col-sm-2">
+                                <!-- <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
                                         <label class="control-label"><b>{{ 'ใบฉีดวัคฉีน' }}</b></label><br>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="row col-12 m-0 p-0 text-center ">
-                                    <label class="col-4" style="padding:0px;" for="photo_vaccine">
+                                    <label class="col-4" style="padding:0px;" for="photo_vaccine"onchange="check();">
+                                    <label class="control-label"><b>{{ 'วัคซีนพิษสุนัขบ้า' }}</b></label><br>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_vaccine" style="margin:20px 0px 10px 0px" type="file" id="photo_vaccine" value="{{ isset($pet->photo_vaccine) ? $pet->photo_vaccine : ''}}" accept="image/*" onchange="document.getElementById('show_vaccine').src = window.URL.createObjectURL(this.files[0])">
@@ -440,7 +441,8 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_vaccine_2" class="col-4 d-none" style="padding:0px;" for="photo_vaccine_2">
+                                    <label id="div_vaccine_2" class="col-4" style="padding:0px;" for="photo_vaccine_2"onchange="check();">
+                                        <label class="control-label"><b>{{ 'วัคซีนเห็บหมัด' }}</b></label><br>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_vaccine_2" style="margin:20px 0px 10px 0px" type="file" id="photo_vaccine_2" value="{{ isset($pet->photo_vaccine_2) ? $pet->photo_vaccine_2 : ''}}" accept="image/*" onchange="document.getElementById('show_vaccine2').src = window.URL.createObjectURL(this.files[0])">
@@ -455,7 +457,8 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_vaccine_3" class="col-4 d-none" style="padding:0px;" for="photo_vaccine_3">
+                                    <label id="div_vaccine_3" class="col-4" style="padding:0px;" for="photo_vaccine_3"onchange="check();">
+                                        <label class="control-label"><b>{{ 'ใบฉีดวัคฉีนอื่นๆ' }}</b></label><br>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_vaccine_3" style="margin:20px 0px 10px 0px" type="file" id="photo_vaccine_3" value="{{ isset($pet->photo_vaccine_3) ? $pet->photo_vaccine_3 : ''}}" accept="image/*" onchange="document.getElementById('show_vaccine3').src = window.URL.createObjectURL(this.files[0])">
@@ -479,7 +482,7 @@
                                     </div>
                                 </div>
                                 <div class="row col-12 m-0 p-0 text-center ">
-                                    <label class="col-4" style="padding:0px;" for="certificate">
+                                    <label class="col-4" style="padding:0px;" for="certificate"onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate" style="margin:20px 0px 10px 0px" type="file" id="certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}" accept="image/*" onchange="document.getElementById('show_certificate').src = window.URL.createObjectURL(this.files[0])">
@@ -494,7 +497,7 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_certificate_2" class="col-4 d-none" style="padding:0px;" for="certificate_2">
+                                    <label id="div_certificate_2" class="col-4 d-none" style="padding:0px;" for="certificate_2"onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_2" style="margin:20px 0px 10px 0px" type="file" id="certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate2').src = window.URL.createObjectURL(this.files[0])">
@@ -509,7 +512,7 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_certificate_3" class="col-4 d-none" style="padding:0px;" for="certificate_3">
+                                    <label id="div_certificate_3" class="col-4 d-none" style="padding:0px;" for="certificate_3"onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_3" style="margin:20px 0px 10px 0px" type="file" id="certificate_3" value="{{ isset($pet->certificate_3) ? $pet->certificate_3 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate3').src = window.URL.createObjectURL(this.files[0])">
@@ -538,7 +541,7 @@
                                 <div class="col-6 col-md-12 order-2">
                                     <label class="control-label"><b>{{ 'เพศ' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
-                                        <select style="margin:0px;" name="gender" class="form-control" id="gender" required>
+                                        <select style="margin:0px;" name="gender" class="form-control" id="gender" required onchange="check();">
                                             <option value='' selected> - โปรดเลือก - </option>
                                             <!-- <option value='ชาย'>Male</option>
                                             <option value='หญิง'>Female</option>
@@ -553,10 +556,37 @@
                                 <div class="col-6 col-md-12 col-lg-12 order-3">
                                     <label class="control-label"><b>{{ 'วันเกิด' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
-                                        <input style="margin:0px;" class="form-control" name="birth" type="date" id="birth" value="{{ isset($pet->birth) ? $pet->birth : ''}}" required>
+                                        <input style="margin:0px;" class="form-control" name="birth" type="date" id="birth" value="{{ isset($pet->birth) ? $pet->birth : ''}}" required onchange="check();">
                                     </div>
                                 </div>
-
+                                @if( request()->get('edit') == 'airplane')
+                                    <div class="col-12 col-md-12 col-lg-12 order-5">
+                                        <label class="control-label"><b>{{ 'วัคซีนพิษสุนัขบ้า' }} </b></label>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <input style="margin:0px;" class="form-control" name="date_vaccine_rabies" type="text" id="date_vaccine_rabies" value="{{ isset($pet->date_vaccine_rabies) ? $pet->date_vaccine_rabies : ''}}"placeholder="ฉีดครั้งล่าสุด" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input style="margin:0px;" class="form-control" name="date_next_rabies" type="text" id="date_next_rabies" value="{{ isset($pet->date_next_rabies) ? $pet->date_next_rabies : ''}}"placeholder="ฉีดครั้งถัดไป" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12 col-lg-12 order-6">
+                                        <label class="control-label"><b>{{ 'วัคซีนเห็บหมัด' }} </b></label>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <input style="margin:0px;" class="form-control" name="date_vaccine_flea" type="text" id="date_vaccine_flea" value="{{ isset($pet->date_vaccine_flea) ? $pet->date_vaccine_flea : ''}}"placeholder="ฉีดครั้งล่าสุด" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
+                                                </div>
+                                                <div class="col-6">
+                                                    <input style="margin:0px;" class="form-control" name="date_next_flea" type="text" id="date_next_flea" value="{{ isset($pet->date_next_flea) ? $pet->date_next_flea : ''}}" placeholder="ฉีดครั้งถัดไป" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <!-- <div class="col-lg-12 col-md-12 col-sm-2">
                                     <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'ช่วงอายุ ' }}</b></label>
@@ -577,30 +607,28 @@
                                 <div class="col-12 col-md-12 order-1">
                                     <label class="control-label"><b>{{ 'ประเภท' }} <span style="color: #B8205B;">*</span></b></label>
                                     <div class="form-group">
-                                        <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat(); species_select();" required>
+                                        <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat(); species_select(); check();" required>
                                             @if(!empty($pet->pet_category_id))
-                                                <option class="notranslate" value="{{ $pet->pet_category_id }}" selected>{{$pet->pet_category->name}}</option>
+                                            <option class="notranslate" value="{{ $pet->pet_category_id }}" selected>{{$pet->pet_category->name}}</option>
                                             @else
-                                                <option class="translate" value="" selected> - โปรดเลือก - </option> 
+                                            <option class="translate" value="" selected> - โปรดเลือก - </option>
                                             @endif
-                                            <option value='' selected="selected">- โปรดเลือก -</option>
-                                        
                                         </select>
 
                                         <select style="margin:10px 0px 0px 0px;" id="select_sub_category" name="sub_category" class="form-control d-none">
                                             @if(!empty($pet->size))
-                                                <option class="notranslate" value="{{ $pet->size }}" selected>{{$pet->size}}</option>
+                                            <option class="notranslate" value="{{ $pet->size }}" selected>{{$pet->size}}</option>
                                             @elseif(!empty($pet->sub_category))
-                                                <option class="notranslate" value="{{ $pet->sub_category }}" selected>{{$pet->sub_category}}</option>
+                                            <option class="notranslate" value="{{ $pet->sub_category }}" selected>{{$pet->sub_category}}</option>
                                             @else
-                                                <option class="translate" value="" selected> - โปรดเลือก - </option> 
+                                            <option class="translate" value="" selected> - โปรดเลือก - </option>
                                             @endif
                                         </select>
                                         <select style="margin:10px 0px 0px 0px;" id="select_species" name="species" class="form-control d-none" onchange="sub_size();">
                                             @if(!empty($pet->species))
-                                                <option class="notranslate" value="{{ $pet->species }}" selected>{{$pet->species}}</option>
+                                            <option class="notranslate" value="{{ $pet->species }}" selected>{{$pet->species}}</option>
                                             @else
-                                                <option class="translate" value="" selected> - โปรดเลือก - </option> 
+                                            <option class="translate" value="" selected> - โปรดเลือก - </option>
                                             @endif
                                         </select>
                                         <select style="margin:10px 0px 0px 0px;" id="select_size" name="size" class="form-control d-none">
@@ -612,7 +640,7 @@
                                 <div class="col-12 col-md-12 order-4">
                                     <label class="control-label"><b>{{ 'กรุ๊ปเลือด' }} </label>
                                     <div class="form-group">
-                                        <input style="margin:0px;" class="form-control" name="blood_type" type="text" id="blood_type" value="{{ isset($pet->blood_type) ? $pet->blood_type : ''}}">
+                                        <input style="margin:0px;" class="form-control" name="blood_type" type="text" id="blood_type" value="{{ isset($pet->blood_type) ? $pet->blood_type : ''}}"onchange="check();">
 
                                     </div>
                                 </div>
@@ -641,7 +669,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                             <div class="d-flex justify-content-end">
-                                <button  type="button" class="btn btn-11" data-toggle="modal" data-target="#modal_thx" onclick="submitform()">Update</button>
+                                <button id="btn-modal" type="button" class="btn btn-11" data-toggle="modal" data-target="#modal_thx" onclick="submitform()" disabled>Update</button>
 
                                 <button id="btn-submit-form" type="submit" class="btn btn-11 form-control d-none" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">Update</button>
                             </div>
@@ -679,7 +707,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade " data-keyboard="false" id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<div class="modal fade " data-keyboard="false" id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="d-flex justify-content-end" style="padding: 15px;">
@@ -696,7 +724,7 @@
                 <div class="col-12 owl-carousel-two align-self-center" style="padding:0px;">
                     <div class="owl-carousel">
                         @php
-                            $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
+                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
                         @endphp
                         @foreach($partner as $item)
                         <div class="item" style="padding:0px;z-index:-1;">
@@ -721,6 +749,8 @@
 <input type="text" class="d-none" name="photo_vaccine" id="input_vaccine" value="{{ isset($pet->photo_vaccine) ? $pet->photo_vaccine : ''}}">
 <input type="text" class="d-none" name="photo_vaccine_2" id="input_vaccine_2" value="{{ isset($pet->photo_vaccine_2) ? $pet->photo_vaccine_2 : ''}}">
 <input type="text" class="d-none" name="photo_vaccine_3" id="input_vaccine_3" value="{{ isset($pet->photo_vaccine_3) ? $pet->photo_vaccine_3 : ''}}">
+<input type="text" class="d-none" name="input_photo" id="input_photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}">
+
 <input type="text" name="login" class="d-none" id="login" value="{{request()->get('login')}}">
 <a id="btn_change_language" class="d-none" href=""></a>
 
@@ -776,42 +806,42 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-let certificate_1 = document.querySelector('#input_certificate');
-let certificate_2 = document.querySelector('#input_certificate_2');
-let certificate_3 = document.querySelector('#input_certificate_3');
-let vaccine_1 = document.querySelector('#input_vaccine');
-let vaccine_2 = document.querySelector('#input_vaccine_2');
-let vaccine_3 = document.querySelector('#input_vaccine_3');
+        let certificate_1 = document.querySelector('#input_certificate');
+        let certificate_2 = document.querySelector('#input_certificate_2');
+        let certificate_3 = document.querySelector('#input_certificate_3');
+        let vaccine_1 = document.querySelector('#input_vaccine');
+        let vaccine_2 = document.querySelector('#input_vaccine_2');
+        let vaccine_3 = document.querySelector('#input_vaccine_3');
 
 
-if (certificate_1.value) {
-    document.querySelector('#certificate').classList.add('d-none');
-    document.querySelector('#div_certificate_2').classList.remove('d-none');
-}
-if (certificate_2.value) {
-    document.querySelector('#certificate_2').classList.add('d-none');
-    document.querySelector('#div_certificate_3').classList.remove('d-none');
+        if (certificate_1.value) {
+            document.querySelector('#certificate').classList.add('d-none');
+            document.querySelector('#div_certificate_2').classList.remove('d-none');
+        }
+        if (certificate_2.value) {
+            document.querySelector('#certificate_2').classList.add('d-none');
+            document.querySelector('#div_certificate_3').classList.remove('d-none');
 
-}
-if (certificate_3.value) {
-    document.querySelector('#certificate_3').classList.add('d-none');
-}
-if (vaccine_1.value) {
-    document.querySelector('#photo_vaccine').classList.add('d-none');
-    document.querySelector('#div_vaccine_2').classList.remove('d-none');
+        }
+        if (certificate_3.value) {
+            document.querySelector('#certificate_3').classList.add('d-none');
+        }
+        if (vaccine_1.value) {
+            document.querySelector('#photo_vaccine').classList.add('d-none');
+            document.querySelector('#div_vaccine_2').classList.remove('d-none');
 
-}
-if (vaccine_2.value) {
-    document.querySelector('#photo_vaccine_2').classList.add('d-none');
-    document.querySelector('#div_vaccine_3').classList.remove('d-none');
+        }
+        if (vaccine_2.value) {
+            document.querySelector('#photo_vaccine_2').classList.add('d-none');
+            document.querySelector('#div_vaccine_3').classList.remove('d-none');
 
-}
-if (vaccine_3.value) {
-    document.querySelector('#photo_vaccine_3').classList.add('d-none');
+        }
+        if (vaccine_3.value) {
+            document.querySelector('#photo_vaccine_3').classList.add('d-none');
 
-}
+        }
 
-});
+    });
 </script>
 
 <script>
@@ -916,8 +946,9 @@ if (vaccine_3.value) {
         fetch("{{ url('/') }}/api/select_category/")
             .then(response => response.json())
             .then(result => {
-                // console.log(result);
-                select_category.innerHTML = "";
+                if (!{{$pet_category_id}}) {
+                    select_category.innerHTML = "";
+                }
 
                 let option_select = document.createElement("option");
                 option_select.text = "- เลือกประเภท -";
@@ -932,11 +963,13 @@ if (vaccine_3.value) {
                 }
 
             });
+
     }
 
     function sub_cat() {
         let select_category = document.querySelector('#select_category');
         let select_sub_category = document.querySelector('#select_sub_category');
+
         let counter = 0;
         fetch("{{ url('/') }}/api/select_sub_category" + "/" + select_category.value)
             .then(response => response.json())
@@ -965,6 +998,8 @@ if (vaccine_3.value) {
                     document.querySelector('#select_sub_category').classList.add('d-none');
                 }
             });
+
+
     }
 
     function sub_size() {
@@ -1154,5 +1189,22 @@ if (vaccine_3.value) {
 <script>
     function submitform() {
         document.querySelector('#btn-submit-form').click();
+    }
+</script>
+<script>
+    function check() {
+       console.log("aa");
+        let name = document.querySelector('#name');
+        let photo = document.querySelector('#photo');
+        let gender = document.querySelector('#gender');
+        let birth = document.querySelector('#birth');
+        let select_category = document.querySelector('#select_category');
+        if (name.value !== "" && gender.value !== "" && birth.value !== "" && birth.value !== "" && select_category.value !== "") {
+            if ("{{$photo}}" !== '0' || photo.value) {
+            document.getElementById("btn-modal").disabled = false;
+            }
+        }
+        
+        
     }
 </script>
