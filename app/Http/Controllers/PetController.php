@@ -142,7 +142,7 @@ class PetController extends Controller
         Pet::create($requestData);
 
         $data_pet_last = Pet::latest()->first();
-        $url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/user_pet/" . $data_pet_last->id . "&chs=500x500&choe=UTF-8" ;
+        $url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/user_pet/" . $data_pet_last->id . "&chs=500x500&choe=UTF-8&chld=M|0" ;
 
         $img = storage_path("app/public")."/uploads". "/" . 'pet_id_' . $data_pet_last->id  . '.png';
         // Save image

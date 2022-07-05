@@ -190,7 +190,7 @@
                                         @endif
                                     </div>
                                     <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}"onchange="check();">
+                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}" onchange="check();">
                                     </div>
                                     @endif
                                 </div>
@@ -263,6 +263,13 @@
                         <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
                             </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
                         <h3>ข้อมูลสัตว์เลี้ยง <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                        @if( request()->get('edit') != 'airplane')
+                        <div class="faq wow fadeInRight">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-11" onclick="location.href='?edit=airplane'">เพิ่มเอกสารเดินทาง</button>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
@@ -286,10 +293,10 @@
                                 </div>
                                 <div class="row col-12 m-0 p-0 text-center ">
                                     @if(!empty($pet->photo))
-                                    <label class="col-4" style="padding:0px;" for="photo"  onchange="check();">
+                                    <label class="col-4" style="padding:0px;" for="photo" onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
-                                                <input class="d-none form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo_1').src = window.URL.createObjectURL(this.files[0])" >
+                                                <input class="d-none form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo_1').src = window.URL.createObjectURL(this.files[0])">
                                             </div>
                                             <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_1" src="{{ url('storage')}}/{{ $pet->photo }}" />
                                             <div class="child">
@@ -298,7 +305,7 @@
                                         </div>
                                     </label>
                                     @else
-                                    <label class="col-4" style="padding:0px;" for="photo"  onchange="check();">
+                                    <label class="col-4" style="padding:0px;" for="photo" onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" style="margin:20px 0px 10px 0px" name="photo" type="file" id="photo" value="{{ isset($pet->photo) ? $pet->photo : ''}}" accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0])">
@@ -390,7 +397,7 @@
                                 @if( request()->get('edit') == 'airplane')
                                 <div class="row col-4 m-0 p-0 text-center ">
                                     @if(!empty($pet->photo_medical_certificate))
-                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate"onchange="check();">
+                                    <label class="col-12" style="padding:0px;" for="photo_medical_certificate" onchange="check();">
                                         <label class="control-label"><b>{{ 'ใบตรวจสุขภาพสัตว์เลี้ยง' }}</b></label>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
@@ -425,8 +432,8 @@
                                     </div>
                                 </div> -->
                                 <div class="row col-12 m-0 p-0 text-center ">
-                                    <label class="col-4" style="padding:0px;" for="photo_vaccine"onchange="check();">
-                                    <label class="control-label"><b>{{ 'วัคซีนพิษสุนัขบ้า' }}</b></label><br>
+                                    <label class="col-4" style="padding:0px;" for="photo_vaccine" onchange="check(); document.querySelector('#date_vaccine_rabies').focus();">
+                                        <label class="control-label"><b>{{ 'วัคซีนพิษสุนัขบ้า' }}</b></label><br>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="photo_vaccine" style="margin:20px 0px 10px 0px" type="file" id="photo_vaccine" value="{{ isset($pet->photo_vaccine) ? $pet->photo_vaccine : ''}}" accept="image/*" onchange="document.getElementById('show_vaccine').src = window.URL.createObjectURL(this.files[0])">
@@ -441,7 +448,7 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_vaccine_2" class="col-4" style="padding:0px;" for="photo_vaccine_2"onchange="check();">
+                                    <label id="div_vaccine_2" class="col-4" style="padding:0px;" for="photo_vaccine_2" onchange="check(); document.querySelector('#date_vaccine_flea').focus();">
                                         <label class="control-label"><b>{{ 'วัคซีนเห็บหมัด' }}</b></label><br>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
@@ -457,7 +464,7 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_vaccine_3" class="col-4" style="padding:0px;" for="photo_vaccine_3"onchange="check();">
+                                    <label id="div_vaccine_3" class="col-4" style="padding:0px;" for="photo_vaccine_3" onchange="check();">
                                         <label class="control-label"><b>{{ 'ใบฉีดวัคฉีนอื่นๆ' }}</b></label><br>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
@@ -482,7 +489,7 @@
                                     </div>
                                 </div>
                                 <div class="row col-12 m-0 p-0 text-center ">
-                                    <label class="col-4" style="padding:0px;" for="certificate"onchange="check();">
+                                    <label class="col-4" style="padding:0px;" for="certificate" onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate" style="margin:20px 0px 10px 0px" type="file" id="certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}" accept="image/*" onchange="document.getElementById('show_certificate').src = window.URL.createObjectURL(this.files[0])">
@@ -497,7 +504,7 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_certificate_2" class="col-4 d-none" style="padding:0px;" for="certificate_2"onchange="check();">
+                                    <label id="div_certificate_2" class="col-4 d-none" style="padding:0px;" for="certificate_2" onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_2" style="margin:20px 0px 10px 0px" type="file" id="certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate2').src = window.URL.createObjectURL(this.files[0])">
@@ -512,7 +519,7 @@
                                             </div>
                                         </div>
                                     </label>
-                                    <label id="div_certificate_3" class="col-4 d-none" style="padding:0px;" for="certificate_3"onchange="check();">
+                                    <label id="div_certificate_3" class="col-4 d-none" style="padding:0px;" for="certificate_3" onchange="check();">
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_3" style="margin:20px 0px 10px 0px" type="file" id="certificate_3" value="{{ isset($pet->certificate_3) ? $pet->certificate_3 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate3').src = window.URL.createObjectURL(this.files[0])">
@@ -560,32 +567,32 @@
                                     </div>
                                 </div>
                                 @if( request()->get('edit') == 'airplane')
-                                    <div class="col-12 col-md-12 col-lg-12 order-5">
-                                        <label class="control-label"><b>{{ 'วัคซีนพิษสุนัขบ้า' }} </b></label>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <input style="margin:0px;" class="form-control" name="date_vaccine_rabies" type="text" id="date_vaccine_rabies" value="{{ isset($pet->date_vaccine_rabies) ? $pet->date_vaccine_rabies : ''}}"placeholder="ฉีดครั้งล่าสุด" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
-                                                </div>
-                                                <div class="col-6">
-                                                    <input style="margin:0px;" class="form-control" name="date_next_rabies" type="text" id="date_next_rabies" value="{{ isset($pet->date_next_rabies) ? $pet->date_next_rabies : ''}}"placeholder="ฉีดครั้งถัดไป" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
-                                                </div>
+                                <div class="col-12 col-md-12 col-lg-12 order-5">
+                                    <label class="control-label"><b>{{ 'วัคซีนพิษสุนัขบ้า' }} </b></label>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input style="margin:0px;" class="form-control" name="date_vaccine_rabies" type="text" id="date_vaccine_rabies" value="{{ isset($pet->date_vaccine_rabies) ? $pet->date_vaccine_rabies : ''}}" placeholder="ฉีดครั้งล่าสุด" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
+                                            </div>
+                                            <div class="col-6">
+                                                <input style="margin:0px;" class="form-control" name="date_next_rabies" type="text" id="date_next_rabies" value="{{ isset($pet->date_next_rabies) ? $pet->date_next_rabies : ''}}" placeholder="ฉีดครั้งถัดไป" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-12 col-lg-12 order-6">
-                                        <label class="control-label"><b>{{ 'วัคซีนเห็บหมัด' }} </b></label>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <input style="margin:0px;" class="form-control" name="date_vaccine_flea" type="text" id="date_vaccine_flea" value="{{ isset($pet->date_vaccine_flea) ? $pet->date_vaccine_flea : ''}}"placeholder="ฉีดครั้งล่าสุด" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
-                                                </div>
-                                                <div class="col-6">
-                                                    <input style="margin:0px;" class="form-control" name="date_next_flea" type="text" id="date_next_flea" value="{{ isset($pet->date_next_flea) ? $pet->date_next_flea : ''}}" placeholder="ฉีดครั้งถัดไป" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
-                                                </div>
+                                </div>
+                                <div class="col-12 col-md-12 col-lg-12 order-6">
+                                    <label class="control-label"><b>{{ 'วัคซีนเห็บหมัด' }} </b></label>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input style="margin:0px;" class="form-control" name="date_vaccine_flea" type="text" id="date_vaccine_flea" value="{{ isset($pet->date_vaccine_flea) ? $pet->date_vaccine_flea : ''}}" placeholder="ฉีดครั้งล่าสุด" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
+                                            </div>
+                                            <div class="col-6">
+                                                <input style="margin:0px;" class="form-control" name="date_next_flea" type="text" id="date_next_flea" value="{{ isset($pet->date_next_flea) ? $pet->date_next_flea : ''}}" placeholder="ฉีดครั้งถัดไป" onMouseOver="(this.type='date')" onMouseOut="(this.type='text')" onchange="check();">
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 @endif
                                 <!-- <div class="col-lg-12 col-md-12 col-sm-2">
                                     <div class="col-12 col-md-12">
@@ -640,7 +647,7 @@
                                 <div class="col-12 col-md-12 order-4">
                                     <label class="control-label"><b>{{ 'กรุ๊ปเลือด' }} </label>
                                     <div class="form-group">
-                                        <input style="margin:0px;" class="form-control" name="blood_type" type="text" id="blood_type" value="{{ isset($pet->blood_type) ? $pet->blood_type : ''}}"onchange="check();">
+                                        <input style="margin:0px;" class="form-control" name="blood_type" type="text" id="blood_type" value="{{ isset($pet->blood_type) ? $pet->blood_type : ''}}" onchange="check();">
 
                                     </div>
                                 </div>
@@ -847,13 +854,14 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
 
-        // console.log("START");
+        console.log("START");
         let check_changwat_th = document.querySelector('#check_changwat_th');
         select_category();
 
         if (!check_changwat_th.value) {
             select_province();
         }
+        
     });
 
     var language_user = document.querySelector('#language_user').value;
@@ -949,7 +957,6 @@
                 if (!{{$pet_category_id}}) {
                     select_category.innerHTML = "";
                 }
-
                 let option_select = document.createElement("option");
                 option_select.text = "- เลือกประเภท -";
                 option_select.value = "";
@@ -1193,7 +1200,7 @@
 </script>
 <script>
     function check() {
-       console.log("aa");
+        console.log("aa");
         let name = document.querySelector('#name');
         let photo = document.querySelector('#photo');
         let gender = document.querySelector('#gender');
@@ -1201,10 +1208,10 @@
         let select_category = document.querySelector('#select_category');
         if (name.value !== "" && gender.value !== "" && birth.value !== "" && birth.value !== "" && select_category.value !== "") {
             if ("{{$photo}}" !== '0' || photo.value) {
-            document.getElementById("btn-modal").disabled = false;
+                document.getElementById("btn-modal").disabled = false;
             }
         }
-        
-        
+
+
     }
 </script>

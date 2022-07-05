@@ -378,7 +378,16 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12" style="margin-top:10px;">
+                                    <div class="d-flex justify-content-center" style="padding: 0px;">
+                                        <div class="button wow fadeInUp d-flex justify-content-start ">
+                                            <a href="{{ url('/pet/' . $item->id . '/edit?edit=airplane') }}" class="btn main d-flex align-items-end" >
+                                                เพิ่มเอกสารสำหรับเดินทาง &nbsp;<i class="fas fa-paw"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="col-12" style="margin-bottom:-20px;">
                                         <div class="collapse" id="collapseExample{{$item->id}}">
                                             <div class="row" style="margin-top: 10px;">
                                                 <div class="col" style="padding: 0px;">
@@ -474,7 +483,8 @@
                                                     <div class="parent">
                                                         <div class="div1 text-center">
                                                             <a href="{{ url('/user_pet/' . $item->id) }}">
-                                                                <img width="80px" src="{{ url('storage/'.$item->qr_code )}}" alt="">
+                                                                <img style="position:relative ;"width="80px" src="{{ url('storage/'.$item->qr_code )}}" alt="">
+                                                                <img  style="position:absolute ;margin-left:-52px;margin-top:28px;" width="25px" src="{{ url('/peddyhub/images/logo/logo-5.png') }}" alt="">
                                                             </a>
                                                         </div>
                                                         <div class="div2">
@@ -526,13 +536,11 @@
                     <!-- end model -->
                     <script>
                         function swipside() {
-                            console.log("swip" + event.srcElement.id)
+                            document.getElementById("text_number" + event.srcElement.id).classList.toggle('text-number');
                             document.getElementById("text_t" + event.srcElement.id).classList.toggle('text-card');
                             document.getElementById("text_w" + event.srcElement.id).classList.toggle('text-card');
                             document.getElementById("text_l" + event.srcElement.id).classList.toggle('text-card');
                             document.getElementById("text_d" + event.srcElement.id).classList.toggle('text-card');
-                            document.getElementById("text_number" + event.srcElement.id).classList.toggle('text-number');
-
                             var element = document.getElementById("card_pet" + event.srcElement.id);
                             element.classList.toggle("rotatea");
                             element.classList.toggle("card-pet");

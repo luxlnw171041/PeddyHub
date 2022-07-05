@@ -260,7 +260,7 @@
 
     .check {
         border-left: 2px solid #e9e9e9;
-        padding: 0px 20px 10px 34px;
+        padding: 0px 20px 10px 30px;
         color: black;
         margin: 10px 0px 10px 35px;
     }
@@ -478,7 +478,8 @@
             <span class="text-checklist">วัคซีน</span>
         </div>
         <div class="check">
-            <div class="row"> 
+            
+            <div class="row" style="margin-bottom: 10px;"> 
                 @if((strtotime($item->date_next_rabies) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
                     <div class="col-2" style="margin-top: 2px;">
                         <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
@@ -499,9 +500,9 @@
                         </span>
                         <br>
                         @if(!empty($item->date_next_rabies))
-                        <span class="text-danger" style="margin-left:10px;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
+                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
                         @else
-                        <span class="text-danger" style="margin-left:10px;">ไม่มีข้อมูล</span>
+                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
                         @endif
                     </div>
                 @else
@@ -523,11 +524,14 @@
                             @endif
                         </span>
                         <br>
-                        <span class="text-success" style="margin-left:10px;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
+                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
                     </div>
                 @endif
             </div>
-            <div class="row">
+
+
+
+            <div class="row" style="margin-bottom: 10px;">
                 @if((strtotime($item->date_next_flea) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
                     <div class="col-2" style="margin-top: 2px;">
                         <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
@@ -548,9 +552,9 @@
                         </span>
                         <br>
                         @if(!empty($item->date_next_flea))
-                        <span class="text-danger" style="margin-left:10px;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
+                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
                         @else
-                        <span class="text-danger" style="margin-left:10px;">ไม่มีข้อมูล</span>
+                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
                         @endif
                     </div>
                 @else
@@ -568,11 +572,11 @@
                                 <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_2 }}')"></span>
                             </a>
                             @else
-                            <i class="fa-light fa-eye text-danger" ></i>
+                            <i class="fa-light fa-eye-slash text-danger" ></i>
                             @endif
                         </span>
                         <br>
-                        <span class="text-success" style="margin-left:10px;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
+                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
                     </div>
                 @endif
             </div>
