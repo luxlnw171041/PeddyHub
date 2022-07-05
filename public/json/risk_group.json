@@ -53,8 +53,15 @@
           },
           {
             "type": "text",
-            "text": "text_01",
+            "text": "text_00",
             "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "text_01",
+            "wrap": true,
+            "color": "#B22222",
+            "weight": "bold"
           },
           {
             "type": "text",

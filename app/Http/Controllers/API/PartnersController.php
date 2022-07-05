@@ -284,10 +284,11 @@ class PartnersController extends Controller
                 $string_json = str_replace("check_in_area",$check_in_at,$string_json);
                 $string_json = str_replace("xxx",$profile->name,$string_json);
 
-                $string_json = str_replace("text_01",$data_topic[1],$string_json);
+                $string_json = str_replace("text_00",$data_topic[1],$string_json);
                 $string_json = str_replace("text_02",$data_topic[2],$string_json);
                 $string_json = str_replace("text_03",$data_topic[3],$string_json);
                 $string_json = str_replace("ตามวัน / เวลาด้านล่าง",$data_topic[4],$string_json);
+                $string_json = str_replace("text_01",$data_topic[5],$string_json);
 
                 $string_json = str_replace("text_time_1",$text_time_1,$string_json);
                 $string_json = str_replace("text_time_2",$text_time_2,$string_json);
