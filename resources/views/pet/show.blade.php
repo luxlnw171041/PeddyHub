@@ -174,7 +174,7 @@
 </div>
 <div id="card_pet" class="container rotatea card-pet d-flex justify-content-center">
     <div id="htmltoimage" class="d-none d-lg-block card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:10px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
-        <div class="card-body" style="padding:5px;">
+        <div class="card-body" style="padding:0px;">
             <div class="row">
                 <div class="col-2 text-center d-flex align-items-center">
                     @php
