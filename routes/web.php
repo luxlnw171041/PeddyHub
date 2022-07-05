@@ -137,3 +137,5 @@ Route::get('/user_pet/{id}', 'UserController@user_pet');
 
 //set_new_richMenu
 Route::get('set_new_richMenu', 'API\LineApiController@set_new_richMenu');
+
+Route::resource('disease', 'DiseaseController');

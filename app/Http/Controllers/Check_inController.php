@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Check_in;
 use App\Models\Partner;
 use App\Models\User;
+use App\Models\Disease;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -89,7 +90,9 @@ class Check_inController extends Controller
             $check_in = Check_in::where('check_in_at', $data_user->partner)->latest()->paginate($perPage);
         }
 
-        return view('check_in.index', compact('check_in','check_in_at'));
+        $diseases = Disease::where('status' , 'show')->orderBy('name' , 'ASC')->get();
+
+        return view('check_in.index', compact('check_in','check_in_at','diseases'));
     }
 
     /**

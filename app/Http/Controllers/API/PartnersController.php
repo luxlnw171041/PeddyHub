@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\LineMessagingAPI;
 use App\Http\Controllers\API\API_Time_zone;
 use App\Models\Mylog;
+use App\Models\Disease;
 
 use App\Models\Check_in;
 use App\Models\Partner;
@@ -28,7 +29,7 @@ class PartnersController extends Controller
         return $data ;
     }
 
-    public function show_group_risk($user_id , $check_in_at)
+    public function show_group_risk($user_id , $check_in_at , $name_disease)
     {
         DB::table('profiles')
           ->where('id', $user_id)
@@ -150,6 +151,7 @@ class PartnersController extends Controller
                         "real_name" => $data_user->real_name,
                         "phone" => $data_user->phone,
                         "check_in_at" => $check_in_at,
+                        "name_disease" => $name_disease,
                     ];
                 }
             
@@ -170,6 +172,7 @@ class PartnersController extends Controller
 
         $count_user = count($data);
         $check_in_at = $data[0]['check_in_at'] ;
+        $name_disease = $data[0]['name_disease'] ;
 
         for ($i=0; $i < $count_user ; $i++) { 
 
@@ -200,6 +203,9 @@ class PartnersController extends Controller
                     $check_in_at = $key->name ;
                 }
 
+                $data_disease['name'] = $name_disease;
+                Disease::firstOrCreate($data_disease);
+
                 $zx=0;
                 foreach ($data_in_outs as $data_in_out ) {
                     $text_time[$zx] = date("d/m/Y H:i" , strtotime($data_in_out->created_at)) ;
@@ -229,13 +235,33 @@ class PartnersController extends Controller
                 // $API_Time_zone = new API_Time_zone();
                 // $time_zone = $API_Time_zone->change_Time_zone($profile->user->time_zone);
 
-                $data_topic = [
-                    "เรียนคุณ",
-                    "ด้วยสถานการณ์การระบาดของ Coronavirus Disease 2019 (COVID -19) ขณะนี้ท่านอยู่ในกลุ่มเสี่ยง",
-                    "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
-                    "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อไวรัสโคโรนา กรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
-                    "วัน / เวลา",
-                ];
+                // $data_topic = [
+                //     "เรียนคุณ",
+                //     "ด้วยสถานการณ์การระบาดของ Coronavirus Disease 2019 (COVID -19) ขณะนี้ท่านอยู่ในกลุ่มเสี่ยง",
+                //     "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
+                //     "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อไวรัสโคโรนา กรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
+                //     "วัน / เวลา",
+                // ];
+
+                if ($name_disease == 'covid') {
+                    $data_topic = [
+                            "เรียนคุณ",
+                            "ด้วยสถานการณ์การระบาดของ Coronavirus Disease 2019 (COVID -19) ขณะนี้ท่านอยู่ในกลุ่มเสี่ยง",
+                            "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
+                            "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อไวรัสโคโรนา กรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
+                            "วัน / เวลา",
+                            $name_disease,
+                        ];
+                }else{
+                    $data_topic = [
+                            "เรียนคุณ",
+                            "ขณะนี้มีการระบาดของ",
+                            "เนื่องจาก ท่านได้ Scan เข้าพื้นที่",
+                            "จึงขอความร่วมมือในการปฏิบัติตามมาตราการเร่งด่วนในการป้องกันและควบคุมโรคติดต่อกรุณาทำการตรวจเช็คและเฝ้าระวังตามพระราชบัญญัติโรคติดต่อ พ.ศ.2558",
+                            "วัน / เวลา",
+                            $name_disease,
+                        ];
+                }
 
                 for ($xi=0; $xi < count($data_topic); $xi++) { 
 
