@@ -48,7 +48,7 @@
     }
 
     .card-pet {
-        margin-left: -68px;
+        margin-left: -50px;
         margin-top: 50px;
         margin-bottom: 50px;
     }
@@ -61,7 +61,7 @@
         margin: 21px 0px 0px 0px !important;
     }
 </style>
-<div id="card_petswip{{$pet->id}}" class="container d-block d-md-none" width="500px" style="padding:0px;margin-top:100px">
+<div id="card_petswip{{$pet->id}}" class="container d-block d-md-none" width="500px" style="padding:5px;margin-top:100px">
     <div id="aa" class="card col-lg-12 col-12 "  style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;" >
             <div class="row">
@@ -173,7 +173,7 @@
     </div>
 </div>
 <div id="card_pet" class="container rotatea card-pet d-flex justify-content-center">
-    <div id="htmltoimage" class="d-none d-lg-block card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+    <div id="htmltoimage" class="d-none d-lg-block card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:10px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;">
             <div class="row">
                 <div class="col-2 text-center d-flex align-items-center">
@@ -248,7 +248,6 @@
                     </div>
                 </div>
                 <div class="col-12">
-
                     <div class="parent" id="parent">
                         <div class="div1 text-center">
                             <a href="{{ url('/user_pet/' . $pet->id) }}">
@@ -265,7 +264,7 @@
                             <p><span style="font-size: 12px;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span></p>
                         </div>
                         <div class="div3 d-flex align-items-end">
-                            <img src="{{ url('storage/'.$pet->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px;" width="100%" alt="image of pet" title="pet" class="fluid customer">
+                            <img src="{{ url('storage/'.$pet->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px; margin-bottom:10px" width="100%" alt="image of pet" title="pet" class="fluid customer">
                         </div>
                         <div class="div4" style="margin-bottom:15px;">
                             <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
@@ -300,7 +299,7 @@
         </div>
     </div>
 </div>
-<br>
+<br><br>
 <center>
 <button onclick="swipside()" class="text-center btn btn-success d-block d-md-none">แนวนอน</button>
 </center>
