@@ -28,6 +28,9 @@ class Check_inController extends Controller
 
         $check_in_at = $data_user->partner;
 
+        $data_partner = Partner::where('id' , $check_in_at)->first();
+        $name_partner = $data_partner->name ;
+
         $select_date = $request->get('select_date');
         $select_time_1 = $request->get('select_time_1');
         $select_time_2 = $request->get('select_time_2');
@@ -38,24 +41,40 @@ class Check_inController extends Controller
         foreach($data_user_check_in as $item){
             $id_user_check_in = $item->user_id ;
         }
+
+        $request_name_area = $request->get('name_area');
+        $text_name_area = null ;
+
+        if ($request_name_area == 'all') {
+            $id_partner_name_area = $name_partner ;
+            $text_name_area = "ทั้งหมด" ;
+
+        }else{
+            $data_partner_name_area = Partner::where('id' , $request_name_area)->get();
+            $id_partner_name_area = $request_name_area ;
+            foreach ($data_partner_name_area as $data_name_area) {
+                $text_name_area = $data_name_area->name_area ;
+            }
+
+        }
        
         
         // ชื่อ อย่างเดียว
         if ( !empty($select_name) and empty($select_time_1) and empty($select_date) ) {
-            $check_in = Check_in::where('check_in_at', $data_user->partner)
+            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
             ->where('user_id', $id_user_check_in)
             ->latest()->paginate($perPage);
                 
         }
         // วันที่ อย่างเดียว
         else if ( !empty($select_date) and empty($select_time_1) and empty($select_name) ) {
-            $check_in = Check_in::where('check_in_at', $data_user->partner)
+            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
                 ->whereDate('created_at', $select_date)
                 ->latest()->paginate($perPage);
         }
         // วันที่ และ ชื่อ.
         else if ( !empty($select_date) and !empty($select_name) and empty($select_time_1) ) {
-            $check_in = Check_in::where('check_in_at', $data_user->partner)
+            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
                 ->where('user_id',$id_user_check_in)
                 ->whereDate('created_at', $select_date)
                 ->latest()->paginate($perPage);
@@ -68,7 +87,7 @@ class Check_inController extends Controller
             $date_and_time_2 =  $select_date . " " . $select_time_2 ;
             $date_and_time_2 = date("Y/m/d H:i" , strtotime($date_and_time_2));
 
-            $check_in = Check_in::where('check_in_at', $data_user->partner)
+            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
                 ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
                 ->latest()->paginate($perPage);
         }
@@ -80,19 +99,26 @@ class Check_inController extends Controller
             $date_and_time_2 =  $select_date . " " . $select_time_2 ;
             $date_and_time_2 = date("Y/m/d H:i" , strtotime($date_and_time_2));
 
-            $check_in = Check_in::where('check_in_at', $data_user->partner)
+            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
                 ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
                 ->where('user_id', $id_user_check_in)
                 ->latest()->paginate($perPage);
         }
         // ว่าง
         else {
-            $check_in = Check_in::where('check_in_at', $data_user->partner)->latest()->paginate($perPage);
+            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")->latest()->paginate($perPage);
         }
+
+        // ส่งค่าไปใช้งานฝนหน้า blade
+
+        $data_name_area_all = Partner::where('name' , $name_partner)
+            ->where('name_area' , '!=' , null)
+            ->orderBy('name_area' , 'ASC')
+            ->get();
 
         $diseases = Disease::where('status' , 'show')->orderBy('name' , 'ASC')->get();
 
-        return view('check_in.index', compact('check_in','check_in_at','diseases'));
+        return view('check_in.index', compact('check_in','check_in_at','diseases','id_partner_name_area','text_name_area','data_name_area_all'));
     }
 
     /**
@@ -130,6 +156,10 @@ class Check_inController extends Controller
         }else if($requestData['check_in_out'] == "check_out"){
             $requestData['time_in'] = null ;
         }
+
+        $data_partner = Partner::where('id' , $requestData['check_in_at'])->first();
+        $requestData['partner_id'] = $requestData['check_in_at'] ;
+        $requestData['check_in_at'] = $requestData['check_in_at'] . "(" . $data_partner->name . ")" ;
         
         Check_in::create($requestData);
 

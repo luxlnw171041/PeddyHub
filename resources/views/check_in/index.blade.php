@@ -78,18 +78,43 @@
     }
 }
 </style>
+
+@php
+    if(is_int($id_partner_name_area)){
+        $id_partner_name_area = $id_partner_name_area ;
+    }else{
+        $id_partner_name_area = 'all' ;
+    }
+@endphp
+
+    <form style="float: left;" method="GET" action="{{ url('/check_in_admin') }}" accept-charset="UTF-8" class="col-12 form-inline float-right" role="search">
+
     <div class="card radius-10 d-none d-lg-block" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
         <div class="card-header border-bottom-0 bg-transparent">
             <div class="d-flex align-items-center">
                 <div class="row col-12">
                     <div class="col-12">
                         <div class="row col-12">
-                            <div class="col-9">
-                                <h3 style="margin-top: 8px;" class="font-weight-bold mb-0">
-                                    ค้นหา
-                                </h3>
+                            <div class="col-12">
+                                <h3 style="margin-top: 10px;">กรุณาเลือกพื้นที่</h3>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
+                                <select style="margin-left: 10px;margin-top: 10px;" class="form-control" name="name_area" id="name_area" value="{{ request('name_area') }}" onchange="document.querySelector('#btn_submit_search').click();">
+                                    @if(!empty($text_name_area))
+                                        <option value="{{ request('name_area') }}" selected>{{ $text_name_area }}</option>
+                                    @else
+                                        <option value="" selected>- กรุณาเลือกพื้นที่ -</option>
+                                    @endif
+                                    <option value="all"> ทั้งหมด </option>
+                                    @foreach($data_name_area_all as $name_area)
+                                        <option value="{{ $name_area->id }}">{{ $name_area->name_area }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <!--  -->
+                            </div>
+                            <div class="col-4">
                                 <a style="float: right;margin-top: 15px;" type="button" data-toggle="modal" data-target="#covid">
                                     <button class="btn btn-warning btn-sm">
                                         <i class="fas fa-head-side-virus"></i> ค้นหาผู้ติดเชื้อ !
@@ -98,47 +123,45 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row col-12">
+                        <div class="row col-12" id="filter_data">
                             <center>
-                                <form style="float: left;" method="GET" action="{{ url('/check_in_admin') }}" accept-charset="UTF-8" class="col-12 form-inline float-right" role="search">
-                                    <div class="row col-12">
-                                        <div class="col-md-2">
-                                            <label  class="control-label">{{ 'วันที่' }}</label>
-                                            <input class="form-control" type="date" name="select_date" id="select_date" value="{{ request('select_date') }}">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label  class="control-label">{{ 'เวลา' }}</label>
-                                            <input class="form-control" type="time" name="select_time_1" id="select_time_1" value="{{ request('select_time_1') }}" onchange="document.querySelector('#select_time_2').required = true,document.querySelector('#select_date').required = true;">
-                                        </div>
-                                        <div class="col-1">
-                                            <center>
-                                                <br>
-                                                <label style="margin-top:7px;" class="control-label">{{ 'ถึง' }}</label>
-                                            </center>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label  class="control-label">{{ 'เวลา' }}</label>
-                                            <input class="form-control" type="time" name="select_time_2" id="select_time_2" value="{{ request('select_time_2') }}">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label  class="control-label">{{ 'ชื่อ' }}</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" name="select_name" id="select_name" placeholder="ค้นหาชื่อ..." value="{{ request('select_name') }}">
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
+                                <div class="row col-12" >
+                                    <div class="col-md-2">
+                                        <label  class="control-label">{{ 'วันที่' }}</label>
+                                        <input class="form-control" type="date" name="select_date" id="select_date" value="{{ request('select_date') }}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label  class="control-label">{{ 'เวลา' }}</label>
+                                        <input class="form-control" type="time" name="select_time_1" id="select_time_1" value="{{ request('select_time_1') }}" onchange="document.querySelector('#select_time_2').required = true,document.querySelector('#select_date').required = true;">
+                                    </div>
+                                    <div class="col-1">
+                                        <center>
                                             <br>
-                                            <span class="input-group-append">
-                                                <button class="btn btn-info text-white" type="submit">
-                                                    <i class="fa fa-search"></i>ค้นหา
-                                                </button>
-                                            </span>
-                                            <a class="btn btn-danger "href="{{ url('/check_in_admin') }}" >
-                                                ล้างการค้นหา
-                                            </a>
+                                            <label style="margin-top:7px;" class="control-label">{{ 'ถึง' }}</label>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label  class="control-label">{{ 'เวลา' }}</label>
+                                        <input class="form-control" type="time" name="select_time_2" id="select_time_2" value="{{ request('select_time_2') }}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label  class="control-label">{{ 'ชื่อ' }}</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="select_name" id="select_name" placeholder="ค้นหาชื่อ..." value="{{ request('select_name') }}">
                                         </div>
                                     </div>
-                                </form>
+                                    <div class="col-3">
+                                        <br>
+                                        <span class="input-group-append">
+                                            <button id="btn_submit_search" class="btn btn-info text-white" type="submit">
+                                                <i class="fa fa-search"></i>ค้นหา
+                                            </button>
+                                        </span>
+                                        <a class="btn btn-danger "href="{{ url('/check_in_admin') }}" >
+                                            ล้างการค้นหา
+                                        </a>
+                                    </div>
+                                </div>
                             </center>
                         </div>
                     </div>
@@ -149,7 +172,7 @@
     </div>
 
     <br>
-    <div class="card radius-10 d-none d-lg-block" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
+    <div id="data_check_in" class="card radius-10 d-none" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
         <div class="card-body">
             <div class="table-responsive">
                 <div class="row col-12">
@@ -172,6 +195,7 @@
                             <th>ชื่อ</th>
                             <th>เวลาเข้า - ออก</th>
                             <th>เบอร์</th>
+                            <th>สถานที่</th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
@@ -200,6 +224,14 @@
                                 <td>
                                     @if(!empty($item->profile->phone))
                                         <b>{{ $item->profile->phone}}</b>
+                                    @endif
+                                </td>
+
+                                <td>
+                                    @if(!empty($item->partner->name_area))
+                                        <b>{{ $item->partner->name_area}}</b>
+                                    @else
+                                        -
                                     @endif
                                 </td>
                             </tr>
@@ -419,6 +451,8 @@
                 <button id="close_madal_send_finish" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 
     </div>
+
+</form>
         <!-- <div class="container">
             <div class="row">
 
@@ -479,6 +513,17 @@
         </div> -->
 
 <script>
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+            // console.log("START");
+            @if(!empty($text_name_area))
+                document.querySelector('#data_check_in').classList.remove('d-none');
+                document.querySelector('#filter_data').classList.remove('collapse');
+            @else
+                document.querySelector('#data_check_in').classList.add('d-none');
+                document.querySelector('#filter_data').classList.add('collapse');
+            @endif
+        });
 
     function report_disease(name_disease){
         // console.log(name_disease);
