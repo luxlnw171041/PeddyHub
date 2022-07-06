@@ -129,6 +129,7 @@ class ImageController extends Controller
 
         // logo partner
         $logo_partner = Image::make( storage_path("app/public") . "/" .  $img_logo_partner );
+        $logo_partner->resize(250, 250);
         $image->insert($logo_partner,'top-right', 40, 20);
 
         if($cuont_name_partner >= 37){
