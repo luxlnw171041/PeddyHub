@@ -426,6 +426,7 @@ class LineMessagingAPI extends Model
         $date_now = date("Y-m-d");
         $date_add = strtotime("+1 Day");
         $next_day = date("Y-m-d" , $date_add);
+
         $rabies = pet::where('date_next_rabies' , "==" , $next_day)
             ->where('provider_id', 'LIKE', "%U%")
             ->whereNull('rabies')
@@ -483,10 +484,9 @@ class LineMessagingAPI extends Model
                 "content" => json_encode($result, JSON_UNESCAPED_UNICODE),
             ];
 
-            DB::table('register_cars')
-                ->where('registration_number', $item->registration_number)
-                ->where('province', $item->province)
-                ->update(['alert_act' => $date_now]);
+            DB::table('pets')
+                ->where('id', $item->id)
+                ->update(['rabies' => $date_now]);
 
             MyLog::create($data);
         }
