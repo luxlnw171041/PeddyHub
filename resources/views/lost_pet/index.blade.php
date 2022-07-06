@@ -145,7 +145,17 @@
                                                         <i class="fa-solid fa-genderless text-secondary" style="font-size:20px;"></i> &nbsp;&nbsp;&nbsp;
                                                     @break
                                                 @endswitch
-                                                <b class="text-secondary">ขนาด : {{ $item->pet->size }}</b>
+                                                <b class="text-secondary">อายุ : 
+                                                @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
+                                                    {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
+                                                @endif
+                                                @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
+                                                    {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                                @endif
+                                                @if( \Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0)
+                                                    {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%d')}} วัน
+                                                @endif
+                                                </b>
                                             </div>
                                         </div>
                                     </div>
