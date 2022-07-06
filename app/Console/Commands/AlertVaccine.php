@@ -13,7 +13,7 @@ class AlertVaccine extends Command
      * @var string
      */
     // protected $signature = 'command:name'; ($signature ชื่อสำหรับเรียกใช้ command)
-    protected $signature = 'cron:alert_vaccine_next_day';
+    protected $signature = 'cron:alert_vaccine';
 
     /**
      * The console command description.

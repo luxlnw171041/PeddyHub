@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('cron:check_15days_lost__pets')->everyMinute()->withoutOverlapping(5);
         $schedule->command('cron:check_15day_sendcovid_and_check_in')->everyMinute()->withoutOverlapping(5);
-        $schedule->command('cron:alert_vaccine_next_day')->everyMinute()->withoutOverlapping(5);
+        $schedule->command('cron:alert_vaccine')->everyMinute()->withoutOverlapping(5);
 
     }
 
