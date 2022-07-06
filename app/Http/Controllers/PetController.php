@@ -278,11 +278,17 @@ class PetController extends Controller
                     'photo_passport' => $requestData['photo_passport'] = $request->file('photo_passport')->store('uploads', 'public')
                 ]);
         } 
-        
 
         $pet = Pet::findOrFail($id);
         $pet->update($requestData);
-        
+
+        DB::table('pets')
+                ->where('id', $id)
+                ->update(['rabies' => null]);
+        DB::table('pets')
+                ->where('id', $id)
+                ->update(['flea' => null]);
+                
         if(!empty($requestData['login'])){
             return Redirect("https://lin.ee/Bvi9Zr9");
         }

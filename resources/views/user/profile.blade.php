@@ -491,6 +491,10 @@
                                                             <span style="font-size: 13px;"> <b> เกิดวันที่ </b></span> <span style="font-size:14px"> <b>{{ thaidate("j M Y" , strtotime($item->birth)) }}</b></span><br>
                                                             <span style="font-size: 13px;color:#B8205B"> <b> Birth </b></span> <span style="color:#B8205B; font-size:14px"> <b>{{ date("j M Y" , strtotime($item->birth)) }}</b></span><br>
                                                             <span style="font-size: 13px;"> <b> เบอร์ </b></span> <span style="font-size:14px"> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $item->profile->phone)  }} </b></span>
+                                                            @if(!empty($item->blood_type))
+                                                            <br>
+                                                            <span style="font-size: 13px;"> <b> กรุ๊ปเลือด </b></span> <span style="font-size:14px"> <b> {{ $item->blood_type  }} </b></span>
+                                                            @endif
                                                         </div>
                                                         <div class="div3 d-flex align-items-end">
                                                             <img src="{{ url('storage/'.$item->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px;" width="100%" alt="image of pet" title="pet" class="fluid customer">

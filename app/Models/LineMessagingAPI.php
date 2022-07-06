@@ -421,6 +421,77 @@ class LineMessagingAPI extends Model
         return $result;
     }
 
+    public function alert_vaccine()
+    {
+        $date_now = date("Y-m-d");
+        $date_add = strtotime("+1 Day");
+        $next_day = date("Y-m-d" , $date_add);
+        $rabies = pet::where('date_next_rabies' , "==" , $next_day)
+            ->where('provider_id', 'LIKE', "%U%")
+            ->whereNull('rabies')
+            ->get();
+
+        foreach ($rabies as $item) {
+
+            $data_Text_topic = [
+                    "แจ้งเตือนการฉีดวัคซีน",
+                    "ฉีดวัคซีนพิษสุนัขบ้า",
+                    "พรุ่งนี้",
+                    "กำหนดฉีดวันที่",
+                    "สัตว์เลี้ยง",
+                    "แก้ไขวันที่ฉีดวัคซีน",
+                ];
+
+            $data_topic = $this->language_for_user($data_Text_topic, $item->provider_id);
+
+            $template_path = storage_path('../public/json/flex-act.json');   
+            $string_json = file_get_contents($template_path);
+            $string_json = str_replace("แจ้งเตือนการฉีดวัคซีน",$data_topic[0],$string_json);
+            $string_json = str_replace("ฉีดวัคซีนพิษสุนัขบ้า",$data_topic[1],$string_json);
+            $string_json = str_replace("พรุ่งนี้",$data_topic[2],$string_json);
+            $string_json = str_replace("กำหนดฉีดวันที่",$data_topic[3],$string_json);
+            $string_json = str_replace("date_time",$item->date_next_rabies,$string_json);
+            $string_json = str_replace("สัตว์เลี้ยง",$data_topic[4],$string_json);
+            $string_json = str_replace("แก้ไขวันที่ฉีดวัคซีน",$data_topic[5],$string_json);
+            $string_json = str_replace("pet_id",$item->id,$string_json); 
+            $string_json = str_replace("pet_name",$item->name,$string_json); 
+            $string_json = str_replace("https://www.peddyhub.com/peddyhub/images/sticker/01.png","https://www.peddyhub.com/storage/".$item->photo,$string_json);
+
+            $messages = [ json_decode($string_json, true) ];
+
+            $body = [
+                "to" => $item->provider_id,
+                "messages" => $messages,
+            ];
+
+            $opts = [
+                'http' =>[
+                    'method'  => 'POST',
+                    'header'  => "Content-Type: application/json \r\n".
+                                'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                    'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                ]
+            ];
+                                
+            $context  = stream_context_create($opts);
+            $url = "https://api.line.me/v2/bot/message/push";
+            $result = file_get_contents($url, false, $context);
+
+            //SAVE LOG
+            $data = [
+                "title" => "https://api.line.me/v2/bot/message/push",
+                "content" => json_encode($result, JSON_UNESCAPED_UNICODE),
+            ];
+
+            DB::table('register_cars')
+                ->where('registration_number', $item->registration_number)
+                ->where('province', $item->province)
+                ->update(['alert_act' => $date_now]);
+
+            MyLog::create($data);
+        }
+    }
+
 	public function send_lost_pet($data)
 	{
         $data_users = User::where('id', $data['user_id'])->get();

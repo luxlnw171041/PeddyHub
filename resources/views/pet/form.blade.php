@@ -123,6 +123,49 @@
         text-overflow: ellipsis;
         white-space: nowrap
     }
+    
+.input-wrapper input {
+  height: 100%;
+  text-overflow: ellipsis;
+  font-family: inherit;
+  background: none;
+  color: inherit;
+  top: 0;
+  left: 0;
+  font-size: inherit;
+  line-height: inherit;
+  padding: inherit;
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.size-span {
+  font-family: inherit;
+  white-space: pre;
+  height: 1em;
+  display: inline-block;
+  font-size: inherit;
+  line-height: inherit;
+  box-sizing: border-box;
+  position: relative;
+  opacity: 0;
+  min-width: 60px;
+  user-select: none;
+  vertical-align: top;
+}
+
+.input-wrapper {
+  position: relative;
+  box-sizing: border-box;
+  line-height: 1em;
+  font-size: 14px;
+  padding: 4px 8px;
+  display: inline-block;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 </style>
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
@@ -481,15 +524,27 @@
                                         </div>
                                     </label>
                                 </div>
-
-
-                                <div class="col-lg-12 col-md-2 col-sm-2">
-                                    <div class="col-12 col-md-12">
-                                        <label class="control-label"><b>{{ 'เอกสารอื่นๆ' }}</b></label><br>
-                                    </div>
-                                </div>
                                 <div class="row col-12 m-0 p-0 text-center ">
                                     <label class="col-4" style="padding:0px;" for="certificate" onchange="check();">
+                                        <div class="col-12 text-center" style="margin-bottom:10px;padding:0px;">
+                                            <div class="col-12 d-flex justify-content-center" style="padding: 0px;">
+                                                <!-- <label class="control-label"><b>{{ 'เอกสารอื่นๆ' }}</b></label> -->
+                                                @if(!empty($pet->name_certificate))
+                                                <div class="input-wrapper">
+                                                    <span class="size-span"></span>
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;width:auto" class="form-control" name="name_certificate" type="text" id="name_certificate" value="{{ isset($pet->name_certificate) ? $pet->name_certificate : '' }}" onchange="check();">
+                                                </div>
+                                                <i class="fa-light fa-pen " style="vertical-align: text-bottom;"></i>
+                                                @else
+                                                <div class="input-wrapper">
+                                                    <span class="size-span"></span>
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate" type="text" id="name_certificate" value="เอกสารอื่นๆ1" onchange="check();">
+                                                </div>
+                                                <i class="fa-light fa-pen"></i>
+                                                @endif
+                                                <br>
+                                            </div>
+                                        </div>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate" style="margin:20px 0px 10px 0px" type="file" id="certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}" accept="image/*" onchange="document.getElementById('show_certificate').src = window.URL.createObjectURL(this.files[0])">
@@ -505,6 +560,25 @@
                                         </div>
                                     </label>
                                     <label id="div_certificate_2" class="col-4 d-none" style="padding:0px;" for="certificate_2" onchange="check();">
+                                        <div class="col-12 text-center" style="margin-bottom:10px;padding:0px;">
+                                            <div class="col-12 d-flex justify-content-center" style="padding: 0px;">
+                                                <!-- <label class="control-label"><b>{{ 'เอกสารอื่นๆ' }}</b></label> -->
+                                                @if(!empty($pet->name_certificate_2))
+                                                <div class="input-wrapper">
+                                                    <span class="size-span"></span>
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;width:auto" class="form-control" name="name_certificate_2" type="text" id="name_certificate_2" value="{{ isset($pet->name_certificate_2) ? $pet->name_certificate_2 : '' }}" onchange="check();">
+                                                </div>
+                                                <i class="fa-light fa-pen " style="vertical-align: text-bottom;"></i>
+                                                @else
+                                                <div class="input-wrapper">
+                                                    <span class="size-span"></span>
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate_2" type="text" id="name_certificate_2" value="เอกสารอื่นๆ2" onchange="check();">
+                                                </div>
+                                                <i class="fa-light fa-pen"></i>
+                                                @endif
+                                                <br>
+                                            </div>
+                                        </div>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_2" style="margin:20px 0px 10px 0px" type="file" id="certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate2').src = window.URL.createObjectURL(this.files[0])">
@@ -520,6 +594,25 @@
                                         </div>
                                     </label>
                                     <label id="div_certificate_3" class="col-4 d-none" style="padding:0px;" for="certificate_3" onchange="check();">
+                                        <div class="col-12 text-center" style="margin-bottom:10px;padding:0px;">
+                                            <div class="col-12 d-flex justify-content-center" style="padding: 0px;">
+                                                <!-- <label class="control-label"><b>{{ 'เอกสารอื่นๆ' }}</b></label> -->
+                                                @if(!empty($pet->name_certificate_3))
+                                                <div class="input-wrapper">
+                                                    <span class="size-span"></span>
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;width:auto" class="form-control" name="name_certificate_3" type="text" id="name_certificate_3" value="{{ isset($pet->name_certificate_3) ? $pet->name_certificate_3 : '' }}" onchange="check();">
+                                                </div>
+                                                <i class="fa-light fa-pen " style="vertical-align: text-bottom;"></i>
+                                                @else
+                                                <div class="input-wrapper">
+                                                    <span class="size-span"></span>
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate_3" type="text" id="name_certificate_3" value="เอกสารอื่นๆ3" onchange="check();">
+                                                </div>
+                                                <i class="fa-light fa-pen"></i>
+                                                @endif
+                                                <br>
+                                            </div>
+                                        </div>
                                         <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
                                             <div class="form-group">
                                                 <input class="form-control" name="certificate_3" style="margin:20px 0px 10px 0px" type="file" id="certificate_3" value="{{ isset($pet->certificate_3) ? $pet->certificate_3 : ''}}" accept="image/*" onchange="document.getElementById('show_certificate3').src = window.URL.createObjectURL(this.files[0])">
@@ -749,6 +842,7 @@
         </div>
     </div>
 </div>
+<input class="form-control" name="provider_id" type="hidden" id="provider_id" value="{{ isset($pet->provider_id) ? $pet->provider_id : Auth::user()->provider_id}}"  readonly>
 <input type="text" class="d-none" name="language_user" id="language_user" value="{{ Auth::user()->profile->language }}">
 <input type="text" class="d-none" name="certificate" id="input_certificate" value="{{ isset($pet->certificate) ? $pet->certificate : ''}}">
 <input type="text" class="d-none" name="certificate_2" id="input_certificate_2" value="{{ isset($pet->certificate_2) ? $pet->certificate_2 : ''}}">
@@ -988,7 +1082,8 @@
 
 
                 option_select.text = "- เลือกประเภทย่อย -";
-                option_select.value = "";
+                
+                option_select.value = "";option_select.value = "asdas";
                 select_sub_category.add(option_select);
 
                 for (let item of result) {
@@ -997,7 +1092,6 @@
                     option.value = item.sub_category;
                     select_sub_category.add(option);
                     counter++;
-
                 }
                 if (counter >= 1) {
                     document.querySelector('#select_sub_category').classList.remove('d-none');
@@ -1214,4 +1308,10 @@
 
 
     }
+</script>
+<script>
+    const spanElement = document.querySelector('.size-span');
+    function updateChange(event) {
+    const value = event.target.value;
+    spanElement.innerText = value;}
 </script>

@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\Check_day_lost_pet::class,
         Commands\Check_15_day_delete::class,
+        Commands\AlertVaccine::class,
     ];
 
     /**
@@ -28,6 +29,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('cron:check_15days_lost__pets')->everyMinute()->withoutOverlapping(5);
         $schedule->command('cron:check_15day_sendcovid_and_check_in')->everyMinute()->withoutOverlapping(5);
+        $schedule->command('cron:alert_vaccine_next_day')->everyMinute()->withoutOverlapping(5);
 
     }
 

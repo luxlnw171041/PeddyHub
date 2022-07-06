@@ -481,7 +481,7 @@
             
             <div class="row" style="margin-bottom: 10px;"> 
                 @if((strtotime($item->date_next_rabies) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
-                    <div class="col-2" style="margin-top: 2px;">
+                    <div class="col-2 d-flex align-items-center">
                         <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
@@ -500,13 +500,14 @@
                         </span>
                         <br>
                         @if(!empty($item->date_next_rabies))
+                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_rabies)) }}</span><br>
                         <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
                         @else
                         <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
                         @endif
                     </div>
                 @else
-                    <div class="col-2" style="margin-top: 2px;">
+                    <div class="col-2 d-flex align-items-center">
                         <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
@@ -524,6 +525,7 @@
                             @endif
                         </span>
                         <br>
+                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_rabies)) }}</span><br>
                         <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
                     </div>
                 @endif
@@ -533,7 +535,7 @@
 
             <div class="row" style="margin-bottom: 10px;">
                 @if((strtotime($item->date_next_flea) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
-                    <div class="col-2" style="margin-top: 2px;">
+                    <div class="col-2 d-flex align-items-center">
                         <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
@@ -552,13 +554,14 @@
                         </span>
                         <br>
                         @if(!empty($item->date_next_flea))
+                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_flea)) }}</span><br>
                         <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
                         @else
                         <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
                         @endif
                     </div>
                 @else
-                    <div class="col-2" style="margin-top: 2px;">
+                    <div class="col-2 d-flex align-items-center">
                         <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
@@ -576,6 +579,7 @@
                             @endif
                         </span>
                         <br>
+                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span><br>
                         <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
                     </div>
                 @endif
@@ -609,7 +613,11 @@
         <div class="check">
             <a href="#certificate">
                 <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                @if(!empty($item->name_certificate))
+                    <span class="text-checklist">{{$item->name_certificate}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                @else
                 <span class="text-checklist">เอกสาร 1</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                @endif
             </a>
             <a href="#img-photo-certificate" class="lightbox" id="certificate">
                 <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate }}')"></span>
@@ -619,7 +627,11 @@
             <br>
             <a href="#certificate_2">
                 <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
+                @if(!empty($item->name_certificate_2))
+                    <span class="text-checklist">{{$item->name_certificate_2}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                @else
                 <span class="text-checklist">เอกสาร 2</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                @endif
             </a>
             <a href="#img-photo-certificate_2" class="lightbox" id="certificate_2">
                 <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_2 }}')"></span>
@@ -630,7 +642,11 @@
             <br>
             <a href="#certificate_3">
                 <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;border:1px solid #E6F9F5;"></i>
+                @if(!empty($item->name_certificate_3))
+                    <span class="text-checklist">{{$item->name_certificate_3}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                @else
                 <span class="text-checklist">เอกสาร 3</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                @endif
             </a>
             <a href="#img-photo-certificate_3" class="lightbox" id="certificate_3">
                 <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_3 }}')"></span>
