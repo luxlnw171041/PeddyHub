@@ -445,7 +445,7 @@ class LineMessagingAPI extends Model
 
             $data_topic = $this->language_for_user($data_Text_topic, $item->provider_id);
 
-            $template_path = storage_path('../public/json/flex-alert-vaccine.json');   
+            $template_path = storage_path('../public/json/flex-alert-vaccine-rabies.json');   
             $string_json = file_get_contents($template_path);
             $string_json = str_replace("แจ้งเตือนการฉีดวัคซีน",$data_topic[0],$string_json);
             $string_json = str_replace("ฉีดวัคซีนพิษสุนัขบ้า",$data_topic[1],$string_json);
@@ -479,16 +479,16 @@ class LineMessagingAPI extends Model
             $result = file_get_contents($url, false, $context);
 
             //SAVE LOG
-            $data = [
-                "title" => "https://api.line.me/v2/bot/message/push",
-                "content" => json_encode($result, JSON_UNESCAPED_UNICODE),
+            $data_save_log = [
+                "title" => "แจ้งเตือนฉีดวัคซีน",
+                "content" => $item->username . " - " . $item->provider_id,
             ];
-
+            
             DB::table('pets')
                 ->where('id', $item->id)
                 ->update(['rabies' => $date_now]);
 
-            MyLog::create($data);
+            MyLog::create($data_save_log);
         }
     }
 
