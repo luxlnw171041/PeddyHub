@@ -431,7 +431,7 @@ class LineMessagingAPI extends Model
             ->where('provider_id', 'LIKE', "%U%")
             ->whereNull('rabies')
             ->get();
-
+        
         foreach ($rabies as $item) {
 
             $data_Text_topic = [
@@ -448,13 +448,11 @@ class LineMessagingAPI extends Model
             $template_path = storage_path('../public/json/flex-alert-vaccine-rabies.json');   
             $string_json = file_get_contents($template_path);
             
-            $date_vaccine = $item->date_next_rabies->format('d/m/Y');
-
             $string_json = str_replace("แจ้งเตือนการฉีดวัคซีน",$data_topic[0],$string_json);
             $string_json = str_replace("ฉีดวัคซีนพิษสุนัขบ้า",$data_topic[1],$string_json);
             $string_json = str_replace("พรุ่งนี้",$data_topic[2],$string_json);
             $string_json = str_replace("กำหนดฉีดวันที่",$data_topic[3],$string_json);
-            $string_json = str_replace("date_time",$date_vaccine,$string_json);
+            $string_json = str_replace("date_time",$item->date_next_rabies->format('d/m/Y'),$string_json);
             $string_json = str_replace("สัตว์เลี้ยง",$data_topic[4],$string_json);
             $string_json = str_replace("แก้ไขวันที่ฉีดวัคซีน",$data_topic[5],$string_json);
             $string_json = str_replace("pet_id",$item->id,$string_json); 
