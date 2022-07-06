@@ -117,6 +117,8 @@ Route::get('/login_line_petdating', function () {
 Route::middleware(['auth', 'role:admin-partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
     Route::get('check_in_admin', 'Check_inController@index');
+    Route::get('/check_in/gallery', 'Check_inController@gallery');
+
     Route::get('/media', function () {
         return view('partner_admin/media');
     });

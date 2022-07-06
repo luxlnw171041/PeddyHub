@@ -86,6 +86,20 @@
 						<div class="menu-title" style="font-size:18px;">Check In/Out</div>
 					</a>
 				</li>
+				<li>
+					<a href="{{ url('/check_in/add_new_check_in') }}">
+						<div class="parent-icon"><i class="fas fa-qrcode"></i>
+						</div>
+						<div class="menu-title">เพิ่มจุด Check in</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{ url('/check_in/gallery') }}">
+						<div class="parent-icon"><i class="far fa-images"></i>
+						</div>
+						<div class="menu-title">คลังภาพ Check in</div>
+					</a>
+				</li>
 				<li class="menu-label" style="font-size:18px;color:#B8205B">
                     Shop 
                 </li>

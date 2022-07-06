@@ -287,6 +287,7 @@ class Check_inController extends Controller
 
         return redirect('check_in')->with('flash_message', 'Check_in deleted!');
     }
+
     public function welcome_check_in_line(Request $request)
     {
         $location = $request->get('location');
@@ -296,6 +297,18 @@ class Check_inController extends Controller
         }else{
             return redirect('/login/line?redirectTo=check_in/create?location=' . $location);
         }
+    }
+
+    function gallery(Request $request){
+        
+        $data_user = Auth::user();
+        $data_partners = Partner::where("id", $data_user->partner)->first();
+        $name_partner = $data_partners->name ;
+
+        $all_areas = Partner::where("name", $name_partner)->get();
+
+        return view('check_in.gallery', compact('all_areas'));
+
     }
 
 }
