@@ -427,7 +427,7 @@ class LineMessagingAPI extends Model
         $date_add = strtotime("+1 Day");
         $next_day = date("Y-m-d" , $date_add);
 
-        $rabies = pet::where('date_next_rabies' , "==" , $next_day)
+        $rabies = pet::where('date_next_rabies' , "<=" , $next_day)
             ->where('provider_id', 'LIKE', "%U%")
             ->whereNull('rabies')
             ->get();
@@ -447,6 +447,7 @@ class LineMessagingAPI extends Model
 
             $template_path = storage_path('../public/json/flex-alert-vaccine-rabies.json');   
             $string_json = file_get_contents($template_path);
+            
             $string_json = str_replace("แจ้งเตือนการฉีดวัคซีน",$data_topic[0],$string_json);
             $string_json = str_replace("ฉีดวัคซีนพิษสุนัขบ้า",$data_topic[1],$string_json);
             $string_json = str_replace("พรุ่งนี้",$data_topic[2],$string_json);
