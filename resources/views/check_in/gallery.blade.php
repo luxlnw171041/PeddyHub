@@ -55,14 +55,14 @@
                 <div class="d-flex align-items-center">
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-8">
                                 @if(!empty($all_area->name_area))
                                     <h5 class="mb-1">พื้นที่ : <b class="text-info">{{ $all_area->name_area }}</b></h5>
                                 @else
                                     <h5 class="mb-1">พื้นที่ : <b class="text-info">รวม</b></h5>
                                 @endif
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <span class="btn btn-sm btn-primary main-shadow main-radius" style="float: right;width: 100%;" data-toggle="collapse" href="#coll_gen_qr_{{ $all_area->id }}" role="button" aria-expanded="false" aria-controls="coll_gen_qr_{{ $all_area->id }}">
                                     สร้าง QR-Code
                                 </span>
@@ -92,7 +92,7 @@
                 </div>
                 <br>
                 <div class="row text-center">
-                    <div class="col-6">
+                    <div class="col-12">
                         
                        <!-- link to light box -->
                        <a href="#artwork_{{ $loop->iteration }}" class="btn-outline-dark">
@@ -107,22 +107,6 @@
                         <!-- download btn -->
                         <a class="btn btn-outline-danger px-3 radius-30 mt-3" href="{{ url('storage') }}/check_in/artwork_{{ $all_area->name }}_{{ $text_name_area }}.png" download><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
                         <a class="btn btn-outline-warning px-3 radius-30 mt-3" href="#artwork_{{ $loop->iteration }}" ><img  src="{{ asset('peddyhub/images/icons/zoom-in.png') }}" width="18px" alt=""></a>
-                        
-                    </div>
-                    <div class="col-6 ">
-                        <!-- link to light box -->
-                        <a href="#flag{{ $loop->iteration }}">
-                            <img class="main-shadow main-radius" src="{{ url('storage') }}/check_in/artwork_flag{{ $all_area->name }}_{{ $text_name_area }}.png" style="background-color: red;width: 33%;">
-                        </a>
-
-                        <!-- light box -->
-                        <a href="##" class="lightbox" id="flag{{ $loop->iteration }}">
-                            <span style="background-image: url(' {{ url('storage') }}/check_in/artwork_flag{{ $all_area->name }}_{{ $text_name_area }}.png')"></span>
-                        </a>
-                        <br>
-                        <!-- download btn -->
-                        <a class="btn btn-outline-danger px-3 radius-30 mt-3" href="{{ url('storage') }}/check_in/artwork_flag{{ $all_area->name }}_{{ $text_name_area }}.png" download><i class="fa-solid fa-download"></i> ดาวน์โหลด</a>
-                        <a class="btn btn-outline-warning px-3 radius-30 mt-3" href="#flag{{ $loop->iteration }}" ><img  src="{{ asset('peddyhub/images/icons/zoom-in.png') }}" width="18px" alt=""></a>
                         
                     </div>
 
@@ -172,10 +156,10 @@
         }).then(function (response){
             return response.text();
         }).then(function(text){
-            console.log(text);
+            // console.log(text);
             let url_img = "{{ url('storage') }}/" + "check_in/" + text;
 
-            // change_color_theme("check_in/" + text, name_area, name , id);
+            change_color_theme("check_in/" + text, name_area, name , id);
 
         }).catch(function(error){
             // console.error(error);
@@ -185,7 +169,6 @@
 
     function change_color_theme(url_img, name_area, name, id)
     {
-        // console.log('change_color_theme');
         let color_theme = document.querySelector('#color_theme_'+id) ;
 
         let name_partner = name ;
@@ -196,7 +179,6 @@
         }else{
             name_new_check_in = null ;
         }
-
 
         let data = {
             'color_theme' : color_theme.value,
@@ -214,8 +196,8 @@
         }).then(function (response){
             return response.text();
         }).then(function(text){
-            // console.log(text);
-            window.location.reload(true);
+            console.log(text);
+            // window.location.reload(true);
 
         }).catch(function(error){
             console.error(error);

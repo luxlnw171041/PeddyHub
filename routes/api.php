@@ -65,6 +65,7 @@ Route::post('/send_risk_group', 'API\PartnersController@send_risk_group');
 Route::get('/submit_show_homepage/{partner_id}/{input_show_homepage}', 'API\PartnersController@submit_show_homepage');
 
 Route::post('/save_img_url', 'API\ImageController@save_img_url');
+Route::post('/admin_create_img_check_in', 'API\ImageController@admin_create_img_check_in');
 
 
 
