@@ -493,7 +493,7 @@ class LineMessagingAPI extends Model
         }
 
 
-        $flea = pet::where('date_next_flea' , "<=" , $next_day)
+        $flea = pet::where('date_next_flea' , $next_day)
             ->where('provider_id', 'LIKE', "%U%")
             ->whereNull('flea')
             ->get();
