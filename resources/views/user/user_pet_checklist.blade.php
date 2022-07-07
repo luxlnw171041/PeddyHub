@@ -215,6 +215,22 @@
         padding: 0px 20px 10px 20px;
     }
 
+    .pet-profile {
+        padding-top: 20px;
+    }
+
+    .photo-pet {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .photo-qrcode {
+        width: 50px;
+        height: 50px;
+        border-radius: 10%;
+    }
+
     .icon-checklist {
         padding: 10px;
         border-radius: 50%;
@@ -268,48 +284,73 @@
 
 <div class="container">
     <div class="shadow chechlist col-12 col-lg-4">
-        <div class="header-checklist">
-            <h4>Check List</h4>
-        </div>
-        <div class="text-center">
-            <span class="text-header-checklist">เอกสารเจ้าของ</span>
-        </div>
-        @foreach($user as $item)
-        <div class="content-checklist">
-            @if(!empty($item->profile->photo_id_card))
-            <a href="#photo-id_card">
-                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+        @foreach($user as $key)
+            @foreach($petuser as $item)
+                <div class="pet-profile">
+                    <div class="row">
+                        <div class="col-4" style="padding:0px 10px;">
+                            <img class="photo-pet" src="{{ url('storage')}}/{{ $item->photo }}" alt="">
+                        </div>
+                        <div class="col " style="padding:0px;margin-top:30px;">
+                            <span class="text-checklist" style="font-size: 27px;line-height: 0.5;">{{$item->name}}</span><br>
+                            <span class="text-checklist">เจ้าของ : {{$key->profile->name}}</span>
+                        </div>
+                        <div style="position: absolute;margin-left:280px;">
+                            <a href="#photo-qr_code">
+                                <img class="photo-qrcode" src="{{ url('storage')}}/{{ $item->qr_code_checklist }}" alt="">
+                            </a>
+                            <a href="#img-photo-qr_code" class="lightbox" id="photo-qr_code">
+                                <span style="background-image: url('{{ url('storage')}}/{{ $item->qr_code_checklist }}')"></span>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            @endforeach
+            <div class="header-checklist">
+                <h4>Check List</h4>
+            </div>
+            <div class="text-center">
+                <span class="text-header-checklist">เอกสารเจ้าของ</span>
+            </div>
+
+            <div class="content-checklist">
+                @if(!empty($key->profile->photo_id_card))
+                <a href="#photo-id_card">
+                    <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                    <span class="text-checklist">บัตรประชาชน</span>
+                    <i class="fa-light fa-eye" style="color:blue;"></i>
+                </a>
+                <a href="#img-photo-id_card" class="lightbox" id="photo-id_card">
+                    <span style="background-image: url('{{ url('storage')}}/{{ $key->profile->photo_id_card }}')"></span>
+                </a>
+                @else
+                <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
                 <span class="text-checklist">บัตรประชาชน</span>
-                <i class="fa-light fa-eye" style="color:blue;"></i>
-            </a>
-            <a href="#img-photo-id_card" class="lightbox" id="photo-id_card">
-                <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_id_card }}')"></span>
-            </a>
-            @else
-            <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
-            <span class="text-checklist">บัตรประชาชน</span>
-            @endif
-        </div>
-        <div class="content-checklist">
-            @if(!empty($item->profile->photo_passport))
-            <a href="#photo-passport">
-                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
-                <span class="text-checklist">พาสปอร์ต</span> <i class="fa-light fa-eye" style="color:blue;"></i>
-            </a>
-            <a href="#img-photo-passport" class="lightbox" id="photo-passport">
-                <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_passport }}')"></span>
-            </a>
-            @else
-            <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
-            <span class="text-checklist">พาสปอร์ต</span>
-            @endif
-        </div>
+                @endif
+            </div>
+            <div class="content-checklist">
+                @if(!empty($key->profile->photo_passport))
+                <a href="#photo-passport">
+                    <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                    <span class="text-checklist">พาสปอร์ต</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                </a>
+                <a href="#img-photo-passport" class="lightbox" id="photo-passport">
+                    <span style="background-image: url('{{ url('storage')}}/{{ $key->profile->photo_passport }}')"></span>
+                </a>
+                @else
+                <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+                <span class="text-checklist">พาสปอร์ต</span>
+                @endif
+            </div>
         @endforeach
         <div class="text-center">
             <div class="row"></div>
             <span class="text-header-checklist">เอกสารสัตว์เลี้ยง</span>
         </div>
-        @foreach($petuser as $item)
+
         <div class="content-checklist">
             @if($birth_month >= 2 )
             <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
@@ -354,186 +395,183 @@
             <span class="text-checklist">วัคซีน</span>
         </div>
         <div class="check">
-            
-            <div class="row" style="margin-bottom: 10px;"> 
-                @if((strtotime($item->date_next_rabies) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
-                    <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
-                    </div>
-                    <div class="col">
-                        <span class="text-checklist">
-                            วัคซีนพิษสุนัขบ้า
-                            @if(!empty($item->photo_vaccine))
-                            <a href="#photo-vaccine">
-                                <i class="fa-light fa-eye" style="color:blue;"></i>
-                            </a>
-                            <a href="#img-photo-vaccine" class="lightbox" id="photo-vaccine">
-                                <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine }}')"></span>
-                            </a>
-                            @else
-                            <i class="fa-light fa-eye-slash text-danger" ></i>
-                            @endif
-                        </span>
-                        <br>
-                        @if(!empty($item->date_next_rabies))
-                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_rabies)) }}</span><br>
-                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
-                        @else
-                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
-                        @endif
-                    </div>
-                @else
-                    <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
-                    </div>
-                    <div class="col">
-                        <span class="text-checklist">
-                            วัคซีนพิษสุนัขบ้า 
-                            @if(!empty($item->photo_vaccine))
-                            <a href="#photo-vaccine">
-                                <i class="fa-light fa-eye" style="color:blue;"></i>
-                            </a>
-                            <a href="#img-photo-vaccine" class="lightbox" id="photo-vaccine">
-                                <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine }}')"></span>
-                            </a>
-                            @else
-                            <i class="fa-light fa-eye-slash text-danger" ></i>
-                            @endif
-                        </span>
-                        <br>
-                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_rabies)) }}</span><br>
-                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
-                    </div>
-                @endif
-            </div>
-
-
 
             <div class="row" style="margin-bottom: 10px;">
-                @if((strtotime($item->date_next_flea) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
-                    <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
-                    </div>
-                    <div class="col">
-                        <span class="text-checklist">
-                            วัคซีนเห็บหมัด
-                            @if(!empty($item->photo_vaccine_2))
-                            <a href="#photo-vaccine_2">
-                             <i class="fa-light fa-eye" style="color:blue;"></i>
-                            </a>
-                            <a href="#img-photo-vaccine_2" class="lightbox" id="photo-vaccine_2">
-                                <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_2 }}')"></span>
-                            </a>
-                            @else
-                            <i class="fa-light fa-eye-slash text-danger" ></i>
-                            @endif
-                        </span>
-                        <br>
-                        @if(!empty($item->date_next_flea))
-                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_flea)) }}</span><br>
-                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
-                        @else
-                        <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
-                        @endif
-                    </div>
+                @if((strtotime($item->date_next_rabies) - strtotime($now))/ ( 60 * 60 * 24 ) <= 0) <div class="col-2 d-flex align-items-center">
+                    <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+            </div>
+            <div class="col">
+                <span class="text-checklist">
+                    วัคซีนพิษสุนัขบ้า
+                    @if(!empty($item->photo_vaccine))
+                    <a href="#photo-vaccine">
+                        <i class="fa-light fa-eye" style="color:blue;"></i>
+                    </a>
+                    <a href="#img-photo-vaccine" class="lightbox" id="photo-vaccine">
+                        <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine }}')"></span>
+                    </a>
+                    @else
+                    <i class="fa-light fa-eye-slash text-danger"></i>
+                    @endif
+                </span>
+                <br>
+                @if(!empty($item->date_next_rabies))
+                <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_rabies)) }}</span><br>
+                <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
                 @else
-                    <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
-                    </div>
-                    <div class="col">
-                        <span class="text-checklist">
-                            วัคซีนเห็บหมัด
-                            @if(!empty($item->photo_vaccine_2))
-                            <a href="#photo-vaccine_2">
-                             <i class="fa-light fa-eye" style="color:blue;"></i>
-                            </a>
-                            <a href="#img-photo-vaccine_2" class="lightbox" id="photo-vaccine_2">
-                                <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_2 }}')"></span>
-                            </a>
-                            @else
-                            <i class="fa-light fa-eye-slash text-danger" ></i>
-                            @endif
-                        </span>
-                        <br>
-                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span><br>
-                        <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
-                    </div>
+                <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
                 @endif
             </div>
-            <div class="row">
-                @if(!empty($item->photo_vaccine_3))
-                    <div class="col-2" style="margin-top: 2px;">
-                        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
-                    </div>
-                    <div class="col" style="margin-top:10px;">
-                        <span class="text-checklist">
-                            วัคซีนอื่นๆ
-                            <a href="#photo-vaccine_3">
-                             <i class="fa-light fa-eye" style="color:blue;"></i>
-                            </a>
-                            <a href="#img-photo-vaccine_3" class="lightbox" id="photo-vaccine_3">
-                                <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_3 }}')"></span>
-                            </a>
-                           
-                        </span>
-                    </div>
-                @endif
-            </div>
-        </div>
-
-        @if(!empty($item->certificate))
-        <div class="content-checklist">
-            <i class="icon-checklist fa-light fa-file-certificate bg-secondary" style="padding:10px 11px 10px 11px;"></i>
-            <span class="text-checklist">เอกสารอื่นๆ</span>
-        </div>
-        <div class="check">
-            <a href="#certificate">
+            @else
+            <div class="col-2 d-flex align-items-center">
                 <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
-                @if(!empty($item->name_certificate))
-                    <span class="text-checklist">{{$item->name_certificate}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
-                @else
-                <span class="text-checklist">เอกสาร 1</span> <i class="fa-light fa-eye" style="color:blue;"></i>
-                @endif
-            </a>
-            <a href="#img-photo-certificate" class="lightbox" id="certificate">
-                <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate }}')"></span>
-            </a>
-
-            @if(!empty($item->certificate_2))
-            <br>
-            <a href="#certificate_2">
-                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
-                @if(!empty($item->name_certificate_2))
-                    <span class="text-checklist">{{$item->name_certificate_2}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
-                @else
-                <span class="text-checklist">เอกสาร 2</span> <i class="fa-light fa-eye" style="color:blue;"></i>
-                @endif
-            </a>
-            <a href="#img-photo-certificate_2" class="lightbox" id="certificate_2">
-                <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_2 }}')"></span>
-            </a>
+            </div>
+            <div class="col">
+                <span class="text-checklist">
+                    วัคซีนพิษสุนัขบ้า
+                    @if(!empty($item->photo_vaccine))
+                    <a href="#photo-vaccine">
+                        <i class="fa-light fa-eye" style="color:blue;"></i>
+                    </a>
+                    <a href="#img-photo-vaccine" class="lightbox" id="photo-vaccine">
+                        <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine }}')"></span>
+                    </a>
+                    @else
+                    <i class="fa-light fa-eye-slash text-danger"></i>
+                    @endif
+                </span>
+                <br>
+                <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_rabies)) }}</span><br>
+                <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_rabies)) }}</span>
+            </div>
             @endif
+        </div>
 
-            @if(!empty($item->certificate_3))
-            <br>
-            <a href="#certificate_3">
-                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
-                @if(!empty($item->name_certificate_3))
-                    <span class="text-checklist">{{$item->name_certificate_3}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+
+
+        <div class="row" style="margin-bottom: 10px;">
+            @if((strtotime($item->date_next_flea) - strtotime($now))/ ( 60 * 60 * 24 ) <= 0) <div class="col-2 d-flex align-items-center">
+                <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+        </div>
+        <div class="col">
+            <span class="text-checklist">
+                วัคซีนเห็บหมัด
+                @if(!empty($item->photo_vaccine_2))
+                <a href="#photo-vaccine_2">
+                    <i class="fa-light fa-eye" style="color:blue;"></i>
+                </a>
+                <a href="#img-photo-vaccine_2" class="lightbox" id="photo-vaccine_2">
+                    <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_2 }}')"></span>
+                </a>
                 @else
-                <span class="text-checklist">เอกสาร 3</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+                <i class="fa-light fa-eye-slash text-danger"></i>
                 @endif
-            </a>
-            <a href="#img-photo-certificate_3" class="lightbox" id="certificate_3">
-                <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_3 }}')"></span>
-            </a>
+            </span>
+            <br>
+            @if(!empty($item->date_next_flea))
+            <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_vaccine_flea)) }}</span><br>
+            <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
+            @else
+            <span class="text-danger" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ไม่มีข้อมูล</span>
             @endif
+        </div>
+        @else
+        <div class="col-2 d-flex align-items-center">
+            <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+        </div>
+        <div class="col">
+            <span class="text-checklist">
+                วัคซีนเห็บหมัด
+                @if(!empty($item->photo_vaccine_2))
+                <a href="#photo-vaccine_2">
+                    <i class="fa-light fa-eye" style="color:blue;"></i>
+                </a>
+                <a href="#img-photo-vaccine_2" class="lightbox" id="photo-vaccine_2">
+                    <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_2 }}')"></span>
+                </a>
+                @else
+                <i class="fa-light fa-eye-slash text-danger"></i>
+                @endif
+            </span>
+            <br>
+            <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งล่าสุด : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span><br>
+            <span class="text-success" style="margin-left:10px;font-family: 'Kanit', sans-serif;">ครั้งถัดไป : {{ thaidate("j/m/Y" , strtotime($item->date_next_flea)) }}</span>
         </div>
         @endif
-        @endforeach
-        <br>
     </div>
-    <!-- </div> -->
+    <div class="row">
+        @if(!empty($item->photo_vaccine_3))
+        <div class="col-2" style="margin-top: 2px;">
+            <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+        </div>
+        <div class="col" style="margin-top:10px;">
+            <span class="text-checklist">
+                วัคซีนอื่นๆ
+                <a href="#photo-vaccine_3">
+                    <i class="fa-light fa-eye" style="color:blue;"></i>
+                </a>
+                <a href="#img-photo-vaccine_3" class="lightbox" id="photo-vaccine_3">
+                    <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_3 }}')"></span>
+                </a>
+
+            </span>
+        </div>
+        @endif
+    </div>
+</div>
+
+@if(!empty($item->certificate))
+<div class="content-checklist">
+    <i class="icon-checklist fa-light fa-file-certificate bg-secondary" style="padding:10px 11px 10px 11px;"></i>
+    <span class="text-checklist">เอกสารอื่นๆ</span>
+</div>
+<div class="check">
+    <a href="#certificate">
+        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+        @if(!empty($item->name_certificate))
+        <span class="text-checklist">{{$item->name_certificate}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+        @else
+        <span class="text-checklist">เอกสาร 1</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+        @endif
+    </a>
+    <a href="#img-photo-certificate" class="lightbox" id="certificate">
+        <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate }}')"></span>
+    </a>
+
+    @if(!empty($item->certificate_2))
+    <br>
+    <a href="#certificate_2">
+        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
+        @if(!empty($item->name_certificate_2))
+        <span class="text-checklist">{{$item->name_certificate_2}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+        @else
+        <span class="text-checklist">เอกสาร 2</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+        @endif
+    </a>
+    <a href="#img-photo-certificate_2" class="lightbox" id="certificate_2">
+        <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_2 }}')"></span>
+    </a>
+    @endif
+
+    @if(!empty($item->certificate_3))
+    <br>
+    <a href="#certificate_3">
+        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
+        @if(!empty($item->name_certificate_3))
+        <span class="text-checklist">{{$item->name_certificate_3}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+        @else
+        <span class="text-checklist">เอกสาร 3</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+        @endif
+    </a>
+    <a href="#img-photo-certificate_3" class="lightbox" id="certificate_3">
+        <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_3 }}')"></span>
+    </a>
+    @endif
+</div>
+@endif
+<br>
+</div>
+<!-- </div> -->
 
 </div>
 <br><br>
