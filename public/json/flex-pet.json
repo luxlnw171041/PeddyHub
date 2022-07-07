@@ -2,199 +2,200 @@
   "type": "flex",
   "altText": "เจ้าตัวแสบ",
   "contents": {
-    "type": "carousel",
-    "contents": [
-      {
-        "type": "bubble",
-        "body": {
-          "type": "box",
-          "layout": "horizontal",
-          "contents": [
-            {
-              "type": "image",
-              "size": "full",
-              "aspectMode": "fit",
-              "aspectRatio": "1:1",
-              "gravity": "top",
-              "url": "https://www.peddyhub.com/img_pet1.jpg"
-            },
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "link",
-                  "color": "#ffffff",
-                  "height": "sm",
-                  "flex": 0,
-                  "action": {
-                    "type": "postback",
-                    "label": "pet_name_1",
-                    "data": "hello"
-                  }
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectMode": "fit",
+            "aspectRatio": "1:1",
+            "gravity": "top",
+            "url": "https://www.peddyhub.com/img_pet1.jpg"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "button",
+                "style": "link",
+                "color": "#ffffff",
+                "height": "sm",
+                "flex": 0,
+                "action": {
+                  "type": "postback",
+                  "label": "pet_name_1",
+                  "data": "hello"
                 }
-              ],
-              "position": "absolute",
-              "cornerRadius": "xxl",
-              "offsetTop": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "offsetEnd": "10px"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male.png",
-                  "size": "20px"
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "xxl",
-              "offsetTop": "10px",
-              "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "10px"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/peddyhub/images/icons/card.png",
-                  "size": "27px"
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "xxl",
-              "offsetTop": "60px",
-              "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "7px",
-              "action": {
-                "type": "uri",
-                "uri": "https://www.peddyhub.com/pet/pet_1"
               }
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "size": "20px",
-                  "url": "https://www.peddyhub.com/peddyhub/images/icons/airplane.png"
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "xxl",
-              "offsetTop": "110px",
-              "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "10px",
-              "action": {
-                "type": "uri",
-                "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_1?openExternalBrowser=1"
+            ],
+            "position": "absolute",
+            "cornerRadius": "xxl",
+            "offsetTop": "10px",
+            "backgroundColor": "#708090cc",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "offsetEnd": "10px"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male.png",
+                "size": "20px"
               }
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/peddyhub/images/icons/check.png",
-                  "size": "20px",
-                  "action": {
-                    "type": "uri",
-                    "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?openExternalBrowser=1"
-                  }
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "xxl",
-              "offsetTop": "160px",
-              "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "10px"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/peddyhub/images/icons/edit.png",
-                  "size": "20px",
-                  "action": {
-                    "type": "uri",
-                    "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?openExternalBrowser=1"
-                  }
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "xxl",
-              "offsetTop": "210px",
-              "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "10px"
+            ],
+            "position": "absolute",
+            "cornerRadius": "xxl",
+            "offsetTop": "10px",
+            "offsetStart": "10px",
+            "backgroundColor": "#708090cc",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "paddingAll": "10px"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://www.peddyhub.com/peddyhub/images/icons/card.png",
+                "size": "27px"
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "xxl",
+            "offsetTop": "60px",
+            "offsetStart": "10px",
+            "backgroundColor": "#708090cc",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "paddingAll": "7px",
+            "action": {
+              "type": "uri",
+              "uri": "https://www.peddyhub.com/pet/pet_1"
             }
-          ],
-          "paddingAll": "0px",
-          "backgroundColor": "#000000"
-        }
-      },
-      {
-        "type": "bubble",
-        "body": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "box",
-              "layout": "vertical",
-              "contents": [
-                {
-                  "type": "button",
-                  "action": {
-                    "type": "uri",
-                    "label": "ดูเพิ่มเติม",
-                    "uri": "https://www.peddyhub.com/welcome_line_pet"
-                  },
-                  "style": "link",
-                  "color": "#ffffff",
-                  "height": "sm",
-                  "flex": 0
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "xxl",
-              "offsetTop": "130px",
-              "offsetStart": "110px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "size": "20px",
+                "url": "https://www.peddyhub.com/peddyhub/images/icons/airplane.png"
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "xxl",
+            "offsetTop": "110px",
+            "offsetStart": "10px",
+            "backgroundColor": "#708090cc",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "paddingAll": "10px",
+            "action": {
+              "type": "uri",
+              "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_1?openExternalBrowser=1"
             }
-          ],
-          "paddingAll": "0px",
-          "backgroundColor": "#000000"
-        }
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://www.peddyhub.com/peddyhub/images/icons/check.png",
+                "size": "20px",
+                "action": {
+                  "type": "message",
+                  "label": "Check list",
+                  "text": "Check list"
+                }
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "xxl",
+            "offsetTop": "160px",
+            "offsetStart": "10px",
+            "backgroundColor": "#708090cc",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "paddingAll": "10px"
+          },
+          {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://www.peddyhub.com/peddyhub/images/icons/edit.png",
+                "size": "20px",
+                "action": {
+                  "type": "uri",
+                  "uri": "https://www.peddyhub.com/edit_pet_login/pet_1?openExternalBrowser=1"
+                }
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "xxl",
+            "offsetTop": "210px",
+            "offsetStart": "10px",
+            "backgroundColor": "#708090cc",
+            "justifyContent": "center",
+            "alignItems": "center",
+            "paddingAll": "10px"
+          }
+        ],
+        "paddingAll": "0px",
+        "backgroundColor": "#000000"
       }
-    ]
-  }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "uri",
+                  "label": "ดูเพิ่มเติม",
+                  "uri": "https://www.peddyhub.com/welcome_line_pet"
+                },
+                "style": "link",
+                "color": "#ffffff",
+                "height": "sm",
+                "flex": 0
+              }
+            ],
+            "position": "absolute",
+            "cornerRadius": "xxl",
+            "offsetTop": "130px",
+            "offsetStart": "110px",
+            "backgroundColor": "#708090cc",
+            "justifyContent": "center",
+            "alignItems": "center"
+          }
+        ],
+        "paddingAll": "0px",
+        "backgroundColor": "#000000"
+      }
+    }
+  ]
+}
 }
