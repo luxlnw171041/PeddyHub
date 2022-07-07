@@ -29,12 +29,12 @@ class ImageController extends Controller
         // Save image
         file_put_contents($img, file_get_contents($url));
 
-        $watermark = Image::make(public_path('peddyhub/images/logologo-5.png'));
-        $watermark->resize(50,50);
+        // $watermark = Image::make(public_path('peddyhub/images/logologo-5.png'));
+        // $watermark->resize(50,50);
 
-        $image = Image::make( $img );
-        $image->insert($watermark);
-        $image->save();
+        // $image = Image::make( $img );
+        // $image->insert($watermark);
+        // $image->save();
 
         return 'check_in_' . $name_partner . '_' . $name_new_check_in . '.png';
 
