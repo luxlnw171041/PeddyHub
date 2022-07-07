@@ -286,7 +286,7 @@
                     </div> -->
                 <div class="row">
                     @foreach($petuser as $item)
-                    <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="member">
                             <div class="image">
                                 <div class="owl-carousel">
@@ -484,7 +484,6 @@
                                                         <div class="div1 text-center">
                                                             <a href="{{ url('/user_pet/' . $item->id) }}">
                                                                 <img style="position:relative ;"width="80px" src="{{ url('storage/'.$item->qr_code )}}" alt="">
-                                                                <img  style="position:absolute ;margin-left:-52px;margin-top:28px;" width="25px" src="{{ url('/peddyhub/images/logo/logo-5.png') }}" alt="">
                                                             </a>
                                                         </div>
                                                         <div class="div2">
