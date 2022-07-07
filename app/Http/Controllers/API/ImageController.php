@@ -35,8 +35,8 @@ class ImageController extends Controller
 
     function hex2rgba($color, $opacity = false) {
  
-        $default = '255,0,0';
-     
+        $default = '184,32,91';
+        
         //Return default if no color provided
         if(empty($color))
               return $default; 
