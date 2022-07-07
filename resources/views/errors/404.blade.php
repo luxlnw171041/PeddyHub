@@ -19,8 +19,6 @@
     <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
-
-
 <body>
     <div class="main-wrapper pet error">
 
@@ -31,24 +29,19 @@
             </div>
             <div class="crumb">
                 <div class="container">
-                    <h1>
-                        PeddyHub <span class="wow pulse" data-wow-delay="1s"> Error </span>
-                    </h1>
-                    <div class="bg_tran">
-                        PeddyHub Error
-                    </div>
-                    <p>
-                        <a href="{{ url('/') }}" title="Home">HOME</a>
-                        || <span> ERROR-404 </span>
-                    </p>
+                    <center>
+                        <h1 class="yellow">ERROR-404</h1>
+                    </center>
                 </div>
             </div>
 
         </section>
+
         <section class="error">
             <div class="container">
                 <div class="content text-center">
-                    <div class="an_image an_image_hz_ps_left an_image_vt_ps_middle an_image_anime_delay_300 an_image_anime_duration_1500 an_image_anime_style_ease_out_sine"
+                    <img style="width:80%;" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/09.png') }}">
+                    <div style="margin-top: -25px;" class="an_image an_image_hz_ps_left an_image_vt_ps_middle an_image_anime_delay_300 an_image_anime_duration_1500 an_image_anime_style_ease_out_sine"
                         data-speed="1.2">
                         <div class="an_image_image" data-speed="1.2">
                             <div class="pt_image">
@@ -59,16 +52,17 @@
                             </div>
                         </div>
                     </div>
-                    <h2 class="yellow">404</h2>
-                    <h4>PAGE NOT <span> FOUND </span></h4>
-                    <h5 class="mb-5">Oops, the page you are looking for does not exit.</h5>
-                    <a href="{{ url('/') }}" class="btn main"><i class="fas fa-paw mr-2"></i> Back to Home</a>
-                    <div class="an_image an_image_hz_ps_right an_image_vt_ps_middle an_image_anime_delay_300 an_image_anime_duration_1500 an_image_anime_style_ease_out_sine"
+                    <h3>PAGE NOT <span> FOUND </span></h3>
+                    <h4 class="mb-5">ไม่สามารถเปิดหน้านี้ได้</h4>
+                    <p style="margin-top: -35px;">ลิงก์อาจจะเสีย หรือคุณไม่มีสิทธิ์เข้าถึง หรือเพจอาจถูกลบออกแล้ว โปรดตรวจดูว่าลิงก์ที่คุณพยายามเปิดว่าเป็นลิงก์ที่ถูกต้อง</p>
+                    <a href="{{ url('/') }}" class="btn main"> กลับหน้าแรก</a>
+
+                    <div style="margin-top: -30px;" class="an_image an_image_hz_ps_right an_image_vt_ps_middle an_image_anime_delay_300 an_image_anime_duration_1500 an_image_anime_style_ease_out_sine"
                         data-speed="1.2">
                         <div class="an_image_image" data-speed="1.2">
                             <div class="pt_image">
                                 <span>
-                                    <img src="peddyhub/images/home_5/ball.png" title="Pet" alt="Image of Pet" class="ball">
+                                    <img   src="peddyhub/images/home_5/ball.png" title="Pet" alt="Image of Pet" class="ball">
                                 </span>
                             </div>
                         </div>
