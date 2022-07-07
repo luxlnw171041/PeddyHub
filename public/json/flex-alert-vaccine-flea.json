@@ -1,0 +1,150 @@
+{
+    "type": "flex",
+    "altText": "แจ้งเตือนฉีดวัคซีนเห็บ-หมัด",
+    "contents": {
+        "type": "bubble",
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "md",
+            "contents": [
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "image",
+                            "url": "https://www.peddyhub.com/peddyhub/images/logo/logo-2.png",
+                            "size": "4xl",
+                            "aspectRatio": "16:9",
+                            "aspectMode": "fit",
+                            "action": {
+                                "type": "uri",
+                                "label": "action",
+                                "uri": "https://www.viicheck.com/"
+                            }
+                        },
+                        {
+                            "type": "text",
+                            "text": "แจ้งเตือนการฉีดวัคซีน",
+                            "align": "center",
+                            "weight": "bold",
+                            "size": "xl"
+                        },
+                        {
+                            "type": "image",
+                            "url": "https://www.peddyhub.com/peddyhub/images/PEDDyHUB%20sticker%20line/26.png",
+                            "size": "full",
+                            "aspectRatio": "16:9",
+                            "aspectMode": "fit",
+                            "action": {
+                                "type": "uri",
+                                "label": "action",
+                                "uri": "https://www.viicheck.com/"
+                            },
+                            "offsetBottom": "lg",
+                            "offsetTop": "10px"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "text": "ฉีดวัคซีนเห็บ-หมัด",
+                    "align": "center",
+                    "size": "lg",
+                    "weight": "bold"
+                },
+                {
+                    "type": "text",
+                    "text": "พรุ่งนี้",
+                    "weight": "bold",
+                    "size": "3xl",
+                    "align": "center",
+                    "decoration": "underline"
+                },
+                {
+                    "type": "text",
+                    "text": "กำหนดฉีดวันที่ date_time",
+                    "align": "center",
+                    "size": "lg",
+                    "weight": "bold"
+                },
+                {
+                    "type": "text",
+                    "text": "สัตว์เลี้ยง",
+                    "weight": "bold",
+                    "size": "xxl",
+                    "align": "start"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "image",
+                                    "url": "https://www.peddyhub.com/peddyhub/images/sticker/01.png",
+                                    "aspectMode": "cover",
+                                    "size": "full"
+                                }
+                            ],
+                            "width": "72px",
+                            "height": "72px",
+                            "cornerRadius": "100px"
+                        },
+                        {
+                            "type": "box",
+                            "layout": "vertical",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "pet_name",
+                                    "weight": "bold",
+                                    "size": "xl"
+                                }
+                            ],
+                            "justifyContent": "space-evenly",
+                            "paddingStart": "10px"
+                        }
+                    ],
+                    "action": {
+                        "type": "uri",
+                        "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_id?openExternalBrowser=1"
+                    }
+                },
+                {
+                    "type": "separator",
+                    "margin": "xxl"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "uri",
+                                "label": "แก้ไขวันที่ฉีดวัคซีน",
+                                "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_id?openExternalBrowser=1"
+                            },
+                            "style": "primary",
+                            "color": "#b8205b"
+                        }
+                    ],
+                    "margin": "xxl"
+                }
+            ],
+            "borderWidth": "bold",
+            "cornerRadius": "xl",
+            "borderColor": "#b8205b"
+        },
+        "styles": {
+            "hero": {
+                "backgroundColor": "#ff0101"
+            }
+        }
+    }
+}
