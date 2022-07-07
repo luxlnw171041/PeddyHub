@@ -57,7 +57,7 @@
           <div class="col-md-12">
             @php
             $user = \Illuminate\Support\Facades\Auth::user();
-            $partner = \App\Models\partner::where('id' , '=' ,$user->partner)->get();
+            $partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
             @endphp
             <h1 style="font-family: 'Prompt', sans-serif;text-shadow: 4px 4px 4px rgba(150, 150, 150, 1);margin-top:25px;"> <b>ยินดีต้อนรับ </b> </h1>
             <h1 style="font-family: 'Prompt', sans-serif;text-shadow: 4px 4px 4px rgba(150, 150, 150, 1);margin-top:25px;"> 

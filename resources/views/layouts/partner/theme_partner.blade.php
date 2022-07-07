@@ -68,7 +68,7 @@
                         <a href="{{ url('/partner_index') }}" >
 						@php
 						$user = \Illuminate\Support\Facades\Auth::user();
-						$partner = \App\Models\partner::where('id' , '=' ,$user->partner)->get();
+						$partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
 						@endphp
 						<a href="{{ url('/partner_index') }}" >
                             <h4 style="color:#b8205b;font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
