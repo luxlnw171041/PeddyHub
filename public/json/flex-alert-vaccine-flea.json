@@ -56,7 +56,7 @@
                 },
                 {
                     "type": "text",
-                    "text": "พรุ่งนี้",
+                    "text": "อาทิตย์หน้า",
                     "weight": "bold",
                     "size": "3xl",
                     "align": "center",
@@ -131,7 +131,23 @@
                                 "uri": "https://www.peddyhub.com/edit_pet_airplane_login/pet_id?openExternalBrowser=1"
                             },
                             "style": "primary",
-                            "color": "#b8205b"
+                            "color": "#b8205b",
+                            "height": "sm"
+                        },
+                        {
+                            "type": "separator",
+                            "margin": "10px"
+                        },
+                        {
+                            "type": "button",
+                            "action": {
+                                "type": "uri",
+                                "label": "โรงพยาบาลสัตว์ใกล้ฉัน",
+                                "uri": "http://www.peddyhub.com/login_line_near_hospital?openExternalBrowser=1"
+                            },
+                            "height": "sm",
+                            "style": "primary",
+                            "color": "#224B89"
                         }
                     ],
                     "margin": "xxl"

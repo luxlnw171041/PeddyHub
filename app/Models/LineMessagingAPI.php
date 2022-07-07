@@ -437,7 +437,7 @@ class LineMessagingAPI extends Model
             $data_Text_topic = [
                     "แจ้งเตือนการฉีดวัคซีน",
                     "ฉีดวัคซีนพิษสุนัขบ้า",
-                    "พรุ่งนี้",
+                    "อาทิตย์หน้า",
                     "กำหนดฉีดวันที่",
                     "สัตว์เลี้ยง",
                     "แก้ไขวันที่ฉีดวัคซีน",
@@ -450,7 +450,7 @@ class LineMessagingAPI extends Model
             
             $string_json = str_replace("แจ้งเตือนการฉีดวัคซีน",$data_topic[0],$string_json);
             $string_json = str_replace("ฉีดวัคซีนพิษสุนัขบ้า",$data_topic[1],$string_json);
-            $string_json = str_replace("พรุ่งนี้",$data_topic[2],$string_json);
+            $string_json = str_replace("อาทิตย์หน้า",$data_topic[2],$string_json);
             $string_json = str_replace("กำหนดฉีดวันที่",$data_topic[3],$string_json);
             $string_json = str_replace("date_time",$item->date_next_rabies,$string_json);
             $string_json = str_replace("สัตว์เลี้ยง",$data_topic[4],$string_json);
@@ -503,7 +503,7 @@ class LineMessagingAPI extends Model
             $data_Text_topic = [
                     "แจ้งเตือนการฉีดวัคซีน",
                     "ฉีดวัคซีนเห็บ-หมัด",
-                    "พรุ่งนี้",
+                    "อาทิตย์หน้า",
                     "กำหนดฉีดวันที่",
                     "สัตว์เลี้ยง",
                     "แก้ไขวันที่ฉีดวัคซีน",
@@ -516,7 +516,7 @@ class LineMessagingAPI extends Model
             
             $string_json = str_replace("แจ้งเตือนการฉีดวัคซีน",$data_topic[0],$string_json);
             $string_json = str_replace("ฉีดวัคซีนเห็บ-หมัด",$data_topic[1],$string_json);
-            $string_json = str_replace("พรุ่งนี้",$data_topic[2],$string_json);
+            $string_json = str_replace("อาทิตย์หน้า",$data_topic[2],$string_json);
             $string_json = str_replace("กำหนดฉีดวันที่",$data_topic[3],$string_json);
             $string_json = str_replace("date_time",$item->date_next_flea,$string_json);
             $string_json = str_replace("สัตว์เลี้ยง",$data_topic[4],$string_json);
