@@ -18,7 +18,7 @@
             "height": "sm",
             "action": {
               "type": "uri",
-              "label": "action",
+              "label": "ดูข้อมูล",
               "uri": "https://www.peddyhub.com/view_qr_code_checklist/pet_id"
             },
             "color": "#76d128"
