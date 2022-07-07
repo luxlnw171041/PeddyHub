@@ -427,7 +427,7 @@ class LineMessagingAPI extends Model
         $date_add = strtotime("+1 Day");
         $next_day = date("Y-m-d" , $date_add);
 
-        $rabies = pet::where('date_next_rabies' , "=" , $next_day)
+        $rabies = pet::where('date_next_rabies' , "<=" , $next_day)
             ->where('provider_id', 'LIKE', "%U%")
             ->whereNull('rabies')
             ->get();
@@ -493,7 +493,7 @@ class LineMessagingAPI extends Model
         }
 
 
-        $flea = pet::where('date_next_flea' , "=" , $next_day)
+        $flea = pet::where('date_next_flea' , "<=" , $next_day)
             ->where('provider_id', 'LIKE', "%U%")
             ->whereNull('flea')
             ->get();
@@ -502,7 +502,7 @@ class LineMessagingAPI extends Model
 
             $data_Text_topic = [
                     "แจ้งเตือนการฉีดวัคซีน",
-                    "ฉีดวัคซีนพิษสุนัขบ้า",
+                    "ฉีดวัคซีนเห็บ-หมัด",
                     "พรุ่งนี้",
                     "กำหนดฉีดวันที่",
                     "สัตว์เลี้ยง",
@@ -553,7 +553,7 @@ class LineMessagingAPI extends Model
             
             DB::table('pets')
                 ->where('id', $item->id)
-                ->update(['rabies' => $date_now]);
+                ->update(['flea' => $date_now]);
 
             MyLog::create($data_save_log);
         }
