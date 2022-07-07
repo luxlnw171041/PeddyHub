@@ -6,13 +6,14 @@
   "hero": {
     "type": "image",
     "url": "https://www.peddyhub.com/storage/photo_qr_code",
-    "size": "full",
+    "size": "5xl",
     "aspectRatio": "1:1",
     "aspectMode": "fit",
     "action": {
       "type": "uri",
       "uri": "http://linecorp.com/"
-    }
+    },
+    "offsetTop": "md"
   },
   "footer": {
     "type": "box",
