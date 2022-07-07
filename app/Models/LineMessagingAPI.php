@@ -518,7 +518,7 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("ฉีดวัคซีนเห็บ-หมัด",$data_topic[1],$string_json);
             $string_json = str_replace("พรุ่งนี้",$data_topic[2],$string_json);
             $string_json = str_replace("กำหนดฉีดวันที่",$data_topic[3],$string_json);
-            $string_json = str_replace("date_time",$item->date_next_rabies,$string_json);
+            $string_json = str_replace("date_time",$item->date_next_flea,$string_json);
             $string_json = str_replace("สัตว์เลี้ยง",$data_topic[4],$string_json);
             $string_json = str_replace("แก้ไขวันที่ฉีดวัคซีน",$data_topic[5],$string_json);
             $string_json = str_replace("pet_id",$item->id,$string_json); 
