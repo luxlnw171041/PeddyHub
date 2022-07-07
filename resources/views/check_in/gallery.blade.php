@@ -156,10 +156,10 @@
         }).then(function (response){
             return response.text();
         }).then(function(text){
-            // console.log(text);
+            console.log(text);
             let url_img = "{{ url('storage') }}/" + "check_in/" + text;
 
-            change_color_theme("check_in/" + text, name_area, name , id);
+            // change_color_theme("check_in/" + text, name_area, name , id);
 
         }).catch(function(error){
             // console.error(error);
