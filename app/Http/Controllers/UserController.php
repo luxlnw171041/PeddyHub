@@ -153,4 +153,43 @@ class UserController extends Controller
         return view('user/user_pet',compact('petuser' ,'user' ,'birth_month' ,'birth_year','birth_day','now') );
 
     }
+
+    public function user_pet_checklist($pet_id)
+    {
+        $user = Auth::user();
+
+        $data_pet = Pet::where('id' , $pet_id)->first();
+        $data_user = User::where('id' , $data_pet->user_id)->first();
+
+        if ($user->id == $data_user->id or $user->role == "admin-partner" or $user->role == "partner")
+        {
+            $petuser = Pet::where('id', $pet_id)->get();
+            $now = Carbon::now();
+            
+            foreach ($petuser as $key ) {
+                $user_id = $key->user_id ; 
+                $birth = Carbon::parse($key->birth);
+
+            }
+            $user = User::where('id', $user_id)->get();
+            $birth_month = $birth->diffInMonths($now)% 12;
+            $birth_year = $birth->diffInYears($now);
+            $birth_day = $birth->diffInDays($now);
+
+            return view('user/user_pet_checklist',compact('petuser' ,'user' ,'birth_month' ,'birth_year','birth_day','now') );
+            
+        }else{
+            return view('errors/404');
+        }
+
+    }
+
+    public function view_qr_code_checklist(Request $request , $pet_id)
+    {
+        if(Auth::check()){
+            return redirect('user_pet_checklist/' . $pet_id);
+        }else{
+            return redirect('login/line?redirectTo=user_pet_checklist/' . $pet_id);
+        }
+    }
 }

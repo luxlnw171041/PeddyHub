@@ -118,6 +118,7 @@ Route::middleware(['auth', 'role:admin-partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
     Route::get('check_in_admin', 'Check_inController@index');
     Route::get('/check_in/gallery', 'Check_inController@gallery');
+    Route::get('/check_in/add_new_check_in', 'Check_inController@add_new_check_in');
     Route::get('/partner_index', function () {
         return view('partner_admin/partner_index');
     });
@@ -134,6 +135,8 @@ Route::resource('check_in', 'Check_inController')->except(['index','show']);
 
 Route::resource('product', 'ProductController');
 Route::get('/user_pet/{id}', 'UserController@user_pet');
+Route::get('/user_pet_checklist/{id}', 'UserController@user_pet_checklist');
+Route::get('/view_qr_code_checklist/{id}', 'UserController@view_qr_code_checklist');
 
 // Route::get('/petdating', function () {
 //     return view('petdating');

@@ -142,6 +142,8 @@ class PetController extends Controller
         Pet::create($requestData);
 
         $data_pet_last = Pet::latest()->first();
+
+        // QR-Code ในบัตรประจำตัวสัตว์เลี้ยง
         $url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/user_pet/" . $data_pet_last->id . "&chs=500x500&choe=UTF-8&chld=M|0" ;
 
         $img = storage_path("app/public")."/uploads". "/" . 'pet_id_' . $data_pet_last->id  . '.png';
@@ -154,6 +156,20 @@ class PetController extends Controller
                 'qr_code' => "uploads/" . 'pet_id_' . $data_pet_last->id  . '.png',
           ]);
 
+        // ------------------------------
+
+        // QR-Code Check List
+        $url_checklist = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/view_qr_code_checklist/" . $data_pet_last->id . "&chs=500x500&choe=UTF-8&chld=M|0" ;
+
+        $img_checklist = storage_path("app/public")."/uploads". "/" . 'qr_code_checklist_pet_id_' . $data_pet_last->id  . '.png';
+        // Save image
+        file_put_contents($img_checklist, file_get_contents($url_checklist));
+
+        DB::table('pets')
+              ->where('id', $data_pet_last->id)
+              ->update([
+                'qr_code_checklist' => "uploads/" . 'qr_code_checklist_pet_id_' . $data_pet_last->id  . '.png',
+          ]);
 
         return redirect('user')->with('flash_message', 'Pet added!');
     }

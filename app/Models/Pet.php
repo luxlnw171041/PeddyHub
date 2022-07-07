@@ -27,7 +27,7 @@ class Pet extends Model
      */
     protected $fillable = ['user_id', 'name', 'birth', 'photo', 'gender', 'size', 'age' ,'pet_category_id','sub_category','photo_2','photo_3','certificate','certificate_2','certificate_3',
     'species','blood_type','photo_medical_certificate','photo_vaccine','photo_vaccine_2','photo_vaccine_3','qr_code','date_vaccine_rabies','date_next_rabies','date_vaccine_flea','date_next_flea',
-    'name_certificate','name_certificate_2','name_certificate_3','rabies','flea','provider_id'];
+    'name_certificate','name_certificate_2','name_certificate_3','rabies','flea','provider_id','qr_code_checklist'];
     
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id'); 

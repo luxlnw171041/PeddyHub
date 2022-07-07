@@ -424,7 +424,7 @@ class LineMessagingAPI extends Model
     public function alert_vaccine()
     {
         $date_now = date("Y-m-d");
-        $date_add = strtotime("+1 Day");
+        $date_add = strtotime("+7 Day");
         $next_day = date("Y-m-d" , $date_add);
 
         $rabies = pet::where('date_next_rabies' , "<=" , $next_day)

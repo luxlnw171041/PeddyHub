@@ -299,6 +299,22 @@ class Check_inController extends Controller
         }
     }
 
+    function add_new_check_in(Request $request){
+        
+        $data_user = Auth::user();
+
+        $data_partners = Partner::where("id", $data_user->partner)
+            ->where("name_area", null)
+            ->get();
+            
+        // foreach ($data_partners as $key) {
+        //     $logo_partner = $key->logo ;
+        // }
+
+        return view('check_in.add_new_check_in');
+
+    }
+
     function gallery(Request $request){
         
         $data_user = Auth::user();

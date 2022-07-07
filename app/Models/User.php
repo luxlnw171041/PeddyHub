@@ -63,5 +63,9 @@ class User extends Authenticatable
     }
     public function order_products(){
         return $this->hasMany('App\Models\OrderProduct', 'user_id'); 
-    }   
+    }  
+
+    // public function partner(){
+    //     return $this->hasOne('App\Models\Partner', 'id' , 'partner'); 
+    // } 
 }

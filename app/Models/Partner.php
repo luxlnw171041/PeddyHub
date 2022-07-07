@@ -30,4 +30,9 @@ class Partner extends Model
     public function products(){
         return $this->hasMany('App\Models\Product', 'partner_id'); 
     }  
+
+    // public function user(){
+    //     return $this->belongsTo('App\Models\User', 'partner'); 
+    // }
+
 }
