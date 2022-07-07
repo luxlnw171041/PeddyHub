@@ -206,6 +206,19 @@ class LineMessagingAPI extends Model
 
                 $messages = [ json_decode($string_json, true) ]; 
             break;
+            case 'check_list':
+                $template_path = storage_path('../public/json/select_checklist.json');   
+                $string_json = file_get_contents($template_path);
+                $string_json = str_replace("pet_id",$user_id,$string_json);
+
+                $messages = [ json_decode($string_json, true) ]; 
+            break;
+            case 'qr_code_checklist':
+                $template_path = storage_path('../public/json/select_checklist.json');   
+                $string_json = file_get_contents($template_path);
+
+                $messages = [ json_decode($string_json, true) ]; 
+            break;
             case 'Chinese':
                 $provider_id = $event["source"]['userId'];
                 $user = User::where('provider_id', $provider_id)->get();

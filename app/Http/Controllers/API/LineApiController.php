@@ -67,6 +67,13 @@ class LineApiController extends Controller
             case "Chinese" : 
                 $line->replyToUser(null, $event, "Chinese");
                 break;
+            case "qr_code_checklist" : 
+                $line->replyToUser(null, $event, "qr_code_checklist");
+                break;
+            case "check_list" :  
+                $line->replyToUser(null, $event, "check_list");
+                break;
+
         }   
 
     }

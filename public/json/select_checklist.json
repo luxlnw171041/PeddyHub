@@ -1,0 +1,52 @@
+{
+    "type": "flex",
+    "altText": "select checklist",
+    "contents": {
+  "type": "bubble",
+  "footer": {
+    "type": "box",
+    "layout": "horizontal",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "height": "sm",
+            "action": {
+              "type": "uri",
+              "label": "action",
+              "uri": "https://www.peddyhub.com/view_qr_code_checklist/pet_id"
+            },
+            "color": "#76d128"
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "button",
+            "style": "link",
+            "height": "sm",
+            "action": {
+              "type": "postback",
+              "label": "QR-Code",
+              "data": "qr_code_checklist"
+            },
+            "color": "#000000"
+          }
+        ],
+        "borderWidth": "light",
+        "borderColor": "#000000",
+        "cornerRadius": "md"
+      }
+    ],
+    "flex": 0
+  }
+}
+}
