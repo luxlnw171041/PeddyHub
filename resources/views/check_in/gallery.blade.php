@@ -137,7 +137,7 @@
         // console.log(name_new_check_in);
         // console.log(type_partner);
 
-        url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/check_in/create?location=" + id + "&chs=500x500&choe=UTF-8" ;
+        url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/welcome_check_in_line?location=" + id + "&chs=500x500&choe=UTF-8" ;
 
         // console.log(url);
 

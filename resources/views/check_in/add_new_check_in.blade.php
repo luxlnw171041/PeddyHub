@@ -169,7 +169,7 @@
                 console.log(id_latest);
 
                 let url = "" ;
-                url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/check_in/create?location=" + id_latest + "&chs=500x500&choe=UTF-8" ;
+                url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/welcome_check_in_line?location=" + id_latest + "&chs=500x500&choe=UTF-8" ;
 
                 console.log(url);
 
@@ -255,8 +255,6 @@
 
                 // let url_img_theme_new = "{{ url('/') }}/img/check_in/theme/test_1.png" ;
                 let url_img_theme_new = "{{ url('storage') }}/" + "check_in"+ "/" + "artwork_" +  name_partner.value + '_' + name_new_check_in.value + '.png';
-
-                let url_img_theme_new_flag = "{{ url('storage') }}/" + "check_in"+ "/" + "artwork_flag" +  name_partner.value + '_' + name_new_check_in.value + '.png';
 
                 let img_theme_new = document.querySelector('#img_theme_new');
                     img_theme_new.src = url_img_theme_new ;
