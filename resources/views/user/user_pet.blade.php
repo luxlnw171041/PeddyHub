@@ -462,9 +462,12 @@
 
         <div class="content-checklist">
             @if(!empty($item->photo_medical_certificate))
-            <a href="#photo-1">
+            <a href="#photo-medical_certificate">
                 <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                 <span class="text-checklist">ใบรับรองแพทย์</span> <i class="fa-light fa-eye" style="color:blue;"></i>
+            </a>
+            <a href="#img-photo-medical_certificate" class="lightbox" id="photo-medical_certificate">
+                <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_medical_certificate }}')"></span>
             </a>
             @else
             <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
@@ -712,30 +715,6 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        @if(!empty($item->profile->photo_passport))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  1;" class="img_name shadow">พาสสปอต</span>
-            <a href="#photo-passport">
-                <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->profile->photo_passport }}">
-            </a>
-            <a href="#img-photo-passport" class="lightbox" id="photo-passport">
-                <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_passport }}')"></span>
-            </a>
-        </div>
-        @endif
-        @if(!empty($item->profile->photo_id_card))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  1;" class="img_name shadow">บัตรประชาชน</span>
-            <a href="#photo-id-card">
-                <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->profile->photo_id_card }}">
-            </a>
-            <a href="#img-photo-id-card" class="lightbox" id="photo-id-card">
-                <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_id_card }}')"></span>
-            </a>
-        </div>
-        @endif
-    </div>
     @endforeach
     <br><br>
     <h5>สัตว์เลี้ยง</h5>
@@ -797,132 +776,6 @@
         </div>
     </div>
     <br><br><br>
-    <!-- <br>
-    <div class="row">
-        @if(!empty($item->photo_medical_certificate))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  1;" class="img_name shadow">ใบรับรองแพทย์</span>
-            <img style="z-index:  5;" class="shadow img_cer" src="{{ url('storage')}}/{{ $item->photo_medical_certificate }}">
-        </div>
-        @endif
-        @if(!empty($item->photo_vaccine))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  -1;position: static;" class="img_name shadow">ใบฉีดวัคฉีน 1</span>
-            <img style="z-index:  9;position: static;" class="shadow img_cer" src="{{ url('storage')}}/{{ $item->photo_vaccine }}">
-        </div>
-        @endif
-        @if(!empty($item->photo_vaccine_2))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  1;" class="img_name shadow">ใบฉีดวัคฉีน 2</span>
-            <img style="z-index:  5;" class="shadow img_cer" src="{{ url('storage')}}/{{ $item->photo_vaccine_2 }}">
-        </div>
-        @endif
-        @if(!empty($item->photo_vaccine_3))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  1;" class="img_name shadow">ใบฉีดวัคฉีน 3</span>
-            <img style="z-index:  5;" class="shadow img_cer" src="{{ url('storage')}}/{{ $item->photo_vaccine_3 }}">
-        </div>
-        @endif
-        @if(!empty($item->certificate))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  -1;position: static;" class="img_name shadow">เอกสารอื่นๆ 1</span>
-            <img style="z-index:  9;position: static;" class="shadow img_cer" src="{{ url('storage')}}/{{ $item->certificate }}">
-        </div>
-        @endif
-        @if(!empty($item->certificate_2))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  1;" class="img_name shadow">เอกสารอื่นๆ 2</span>
-            <img style="z-index:  5;" class="shadow img_cer" src="{{ url('storage')}}/{{ $item->certificate_2 }}">
-        </div>
-        @endif
-        @if(!empty($item->certificate_3))
-        <div class="col-12 col-md-4 col-lg-4" style="margin-top:25px;">
-            <span style="z-index:  1;" class="img_name shadow">เอกสารอื่นๆ 3</span>
-            <img style="z-index:  5;" class="shadow img_cer" src="{{ url('storage')}}/{{ $item->certificate_3 }}">
-        </div>
-        @endif
-    </div> -->
-    <div class="container">
-        <div class="grid-container">
-            @if(!empty($item->photo_medical_certificate))
-            <div style="margin-top:25px;">
-                <span style="z-index:  1;" class="img_name shadow">ใบรับรองแพทย์</span>
-                <a href="#photo-1">
-                    <img style="z-index:  5;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->photo_medical_certificate }}">
-                </a>
-                <a href="#img-photo-1" class="lightbox" id="photo-1">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_medical_certificate }}')"></span>
-                </a>
-            </div>
-            @endif
-            @if(!empty($item->photo_vaccine))
-            <div style="margin-top:25px;">
-                <span style="z-index:  -1;position: static;" class="img_name shadow">ใบฉีดวัคฉีน 1</span>
-                <a href="#photo-2">
-                    <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->photo_vaccine }}">
-                </a>
-                <a href="#img-photo-2" class="lightbox" id="photo-2">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine }}')"></span>
-                </a>
-            </div>
-            @endif
-            @if(!empty($item->photo_vaccine_2))
-            <div style="margin-top:25px;">
-                <span style="z-index:  1;" class="img_name shadow">ใบฉีดวัคฉีน 2</span>
-                <a href="#photo-3">
-                    <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->photo_vaccine_2 }}">
-                </a>
-                <a href="#img-photo-3" class="lightbox" id="photo-3">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_2 }}')"></span>
-                </a>
-            </div>
-            @endif
-            @if(!empty($item->photo_vaccine_3))
-            <div style="margin-top:25px;">
-                <span style="z-index:  1;" class="img_name shadow">ใบฉีดวัคฉีน 3</span>
-                <a href="#photo-4">
-                    <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->photo_vaccine_3 }}">
-                </a>
-                <a href="#img-photo-4" class="lightbox" id="photo-4">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_vaccine_3 }}')"></span>
-                </a>
-            </div>
-            @endif
-            @if(!empty($item->certificate))
-            <div style="margin-top:25px;">
-                <span style="z-index:  -1;position: static;" class="img_name shadow">เอกสารอื่นๆ 1</span>
-                <a href="#photo-5">
-                    <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->certificate }}">
-                </a>
-                <a href="#img-photo-5" class="lightbox" id="photo-5">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate }}')"></span>
-                </a>
-            </div>
-            @endif
-            @if(!empty($item->certificate_2))
-            <div style="margin-top:25px;">
-                <span style="z-index:  1;" class="img_name shadow">เอกสารอื่นๆ 2</span>
-                <a href="#photo-6">
-                    <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->certificate_2 }}">
-                </a>
-                <a href="#img-photo-6" class="lightbox" id="photo-6">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_2 }}')"></span>
-                </a>
-            </div>
-            @endif
-            @if(!empty($item->certificate_3))
-            <div style="margin-top:25px;">
-                <span style="z-index:  1;" class="img_name shadow">เอกสารอื่นๆ 3</span>
-                <a href="#photo-7">
-                    <img style="z-index:  9;position: static;" class="shadow img_cer grid-item " src="{{ url('storage')}}/{{ $item->certificate_3 }}">
-                </a>
-                <a href="#img-photo-7" class="lightbox" id="photo-7">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->certificate_3 }}')"></span>
-                </a>
-            </div>
-            @endif
-        </div>
-    </div>
     @endforeach
 </div>
 <br><br>
