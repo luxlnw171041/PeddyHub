@@ -63,17 +63,19 @@ class LineApiController extends Controller
     {
         $line = new LineMessagingAPI();
 
-        switch($event["postback"]["data"]){
+        $data_postback_explode = explode("/",$event["postback"]["data"]);
+        $data_postback = $data_postback_explode[0] ;
+
+        switch($data_postback){
             case "Chinese" : 
                 $line->replyToUser(null, $event, "Chinese");
                 break;
-            case "qr_code_checklist" : 
-                $line->replyToUser(null, $event, "qr_code_checklist");
-                break;
             case "check_list" :  
-                $line->replyToUser(null, $event, "check_list");
+                $line->replyToUser($data_postback_explode[1], $event, "check_list");
                 break;
-
+            case "qr_code_checklist" : 
+                $line->replyToUser($data_postback_explode[1], $event, "qr_code_checklist");
+                break;
         }   
 
     }

@@ -150,9 +150,9 @@
             "justifyContent": "center",
             "alignItems": "center",
             "action": {
-              "type": "message",
-              "label": "Check list",
-              "text": "Check list"
+              "type": "postback",
+              "label": "check_list",
+              "data": "check_list/pet_1"
             },
             "paddingAll": "10px"
           }
@@ -306,9 +306,9 @@
             "justifyContent": "center",
             "alignItems": "center",
             "action": {
-              "type": "message",
-              "label": "Check list",
-              "text": "Check list"
+              "type": "postback",
+              "label": "check_list",
+              "data": "check_list/pet_2"
             },
             "paddingAll": "10px"
           }

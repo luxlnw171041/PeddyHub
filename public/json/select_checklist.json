@@ -36,7 +36,7 @@
             "action": {
               "type": "postback",
               "label": "QR-Code",
-              "data": "qr_code_checklist"
+              "data": "qr_code_checklist/pet_id"
             },
             "color": "#000000"
           }
