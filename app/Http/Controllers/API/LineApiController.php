@@ -70,12 +70,6 @@ class LineApiController extends Controller
             case "Chinese" : 
                 $line->replyToUser(null, $event, "Chinese");
                 break;
-            case "check_list" :  
-                $line->replyToUser($data_postback_explode[1], $event, "check_list");
-                break;
-            case "qr_code_checklist" : 
-                $line->replyToUser($data_postback_explode[1], $event, "qr_code_checklist");
-                break;
         }   
 
     }

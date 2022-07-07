@@ -117,9 +117,9 @@
                 "url": "https://www.peddyhub.com/peddyhub/images/icons/check.png",
                 "size": "20px",
                 "action": {
-                  "type": "postback",
-                  "label": "check_list",
-                  "data": "check_list/pet_1"
+                  "type": "uri",
+                  "label": "action",
+                  "uri": "https://www.peddyhub.com/view_qr_code_checklist/pet_1"
                 }
               }
             ],

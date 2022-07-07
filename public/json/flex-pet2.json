@@ -150,9 +150,9 @@
             "justifyContent": "center",
             "alignItems": "center",
             "action": {
-              "type": "postback",
-              "label": "check_list",
-              "data": "check_list/pet_1"
+              "type": "uri",
+              "label": "action",
+              "uri": "https://www.peddyhub.com/view_qr_code_checklist/pet_1"
             },
             "paddingAll": "10px"
           }
@@ -306,9 +306,9 @@
             "justifyContent": "center",
             "alignItems": "center",
             "action": {
-              "type": "postback",
-              "label": "check_list",
-              "data": "check_list/pet_2"
+              "type": "uri",
+              "label": "action",
+              "uri": "https://www.peddyhub.com/view_qr_code_checklist/pet_2"
             },
             "paddingAll": "10px"
           }
