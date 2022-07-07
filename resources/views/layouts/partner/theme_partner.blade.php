@@ -65,9 +65,17 @@
                         
                     </div>
                     <div>
-                        <a href="{{ url('') }}" >
-						<img src="{{ url('/peddyhub/images/logo/logo-4.png') }}" width="" alt="image of logo" title="logo"
-                                class="img-fluid d-inline-block align-middle mr-2">
+                        <a href="{{ url('/partner_index') }}" >
+						@php
+						$user = \Illuminate\Support\Facades\Auth::user();
+						$partner = \App\Models\partner::where('id' , '=' ,$user->partner)->get();
+						@endphp
+						<a href="{{ url('/partner_index') }}" >
+                            <h4 style="color:#b8205b;font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
+								@foreach($partner as $item)
+									{{$item->name}}
+								@endforeach
+							</h4>
                         </a>
                     </div>
                 <div class="toggle-icon ms-auto">

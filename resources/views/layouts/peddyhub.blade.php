@@ -134,7 +134,7 @@
                     @if(Auth::user()->role == "admin" )
                     <li><a href="{{ url('/text_topic') }}">admin</a></li>
                     @elseif(Auth::user()->role == "admin-partner" )
-                    <li><a href="{{ url('/check_in_admin') }}">admin-partner</a></li>
+                    <li><a href="{{ url('/partner_index') }}">admin-partner</a></li>
                     @endif
                     <li>
                       <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -751,6 +751,7 @@
           <p style="margin-top:-38px; color:white; font-size:20px" class="icon flaticon-pawprint-1"></p>
         </div>
       </div>
+            
       <!-- Color Palate / Color Switcher -->
       <!-- <div class="color-palate">
         <div class="color-trigger">
