@@ -220,8 +220,8 @@
     }
 
     .photo-pet {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         border-radius: 50%;
     }
 
@@ -298,7 +298,7 @@
                 <div class="pet-profile">
                     <div class="row">
                         <div class="col-4" style="padding:0px 10px;">
-                            <img class="photo-pet" src="{{ url('storage')}}/{{ $item->photo }}" alt="">
+                            <img class="photo-pet" style="margin-top:10px" src="{{ url('storage')}}/{{ $item->photo }}" alt="">
                         </div>
                         <div class="col " style="padding:0px;margin-top:30px;">
                             <span class="text-checklist" style="font-size: 27px;line-height: 0.5;">{{$item->name}}</span><br>
