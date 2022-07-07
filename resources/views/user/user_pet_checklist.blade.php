@@ -267,133 +267,6 @@
 </style>
 
 <div class="container">
-    <!-- <div class="row">
-        <div class="shadow chechlist col-12 col-lg-4">
-            <div class="header-checklist">
-                <h4>Check List</h4>
-            </div>
-            <div class="text-center">
-                <span class="text-header-checklist">เอกสารเจ้าของ</span>
-            </div>
-            <br>
-            @foreach($user as $item)
-            <div class="content-checklist">
-                <i class="icon-checklist fa-light fa-id-card" style="background-color: #b8205b;"></i>
-                <span class="text-checklist">บัตรประชาชน</span>
-            </div>
-            <div class="check">
-                @if(!empty($item->profile->photo_id_card))
-                <a href="#photo-id-card">
-                    <i class="icon-checklist fa-light fa-check" style="background-color: #2FC8AC;padding:10px 12px 10px 12px"></i>
-                    <span class="text-checklist">
-                        อัพโหลดแล้ว <i class="fa-light fa-eye" style="color:blue;"></i>
-                    </span>
-                </a>
-                <a href="#img-photo-id-card" class="lightbox" id="photo-id-card">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_id_card }}')"></span>
-                </a>
-                @else
-                <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
-                    <span class="text-checklist">
-                        ยังไม่อัพโหลด
-                    </span>
-                @endif
-            </div>
-            <div class="content-checklist">
-                <i class="icon-checklist fa-light fa-passport" style="background-color: #b8205b;padding:10px 12px 10px 12px"></i>
-                <span class="text-checklist">พาสปอร์ต</span>
-            </div>
-            <div class="check">
-                @if(!empty($item->profile->photo_passport))
-                <a href="#photo-passport1">
-                    <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
-                        <span class="text-checklist">
-                            อัพโหลดแล้ว <i class="fa-light fa-eye" style="color:blue;"></i>
-                        </span>
-                </a>
-                <a href="#img-photo-passport" class="lightbox" id="photo-passport1">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_passport }}')"></span>
-                </a>
-                @else
-                <i class="icon-checklist fa-solid fa-exclamation" style="background-color: #F9371C;padding:10px 18px 10px 18px"></i>
-                    <span class="text-checklist">
-                        ยังไม่อัพโหลด 
-                    </span>
-                @endif
-            </div>
-            @endforeach
-            <div class="text-center">
-                <div class="row"></div>
-                <span class="text-header-checklist">เอกสารสัตว์เลี้ยง</span>
-            </div>
-            <br>
-            @foreach($petuser as $item)
-            <div class="content-checklist">
-                <i class="icon-checklist fa-light fa-baby-carriage" style="background-color: #b8205b;"></i>
-                <span class="text-checklist">อายุ</span>
-            </div>
-            <div class="check">
-                @if($birth_month >= 2 )
-                <i class="icon-checklist fa-light fa-check" style="background-color: #2FC8AC;padding:10px 12px 10px 12px"></i>
-                @else
-                <i class="icon-checklist fa-solid fa-exclamation" style="background-color: #F9371C;padding:10px 18px 10px 18px"></i>
-                @endif
-                <span class="text-checklist">
-                    อายุ :
-                    @if($birth_year != 0 )
-                    {{$birth_year}} ขวบ
-                    @endif
-                    @if($birth_month != 0 )
-                    {{$birth_month}} เดือน
-                    @endif
-                    @if( $birth_year == 0 & $birth_month == 0)
-                    {{$birth_day}} วัน
-                    @endif
-                </span>
-            </div>
-            <div class="content-checklist">
-                <i class="icon-checklist fa-light fa-file-lines" style="background-color: #b8205b;padding:10px 12px 10px 12px"></i>
-                <span class="text-checklist">ใบรับรองแพทย์</span>
-            </div>
-            <div class="check">
-                @if(!empty($item->photo_medical_certificate))
-                <a href="#photo-1">
-                    <i class="icon-checklist fa-light fa-check" style="background-color: #2FC8AC;padding:10px 12px 10px 12px"></i>
-                    <span class="text-checklist">
-                        อัพโหลดแล้ว <i class="fa-light fa-eye" style="color:blue;"></i>
-                    </span>
-                </a>
-                @else
-                <i class="icon-checklist fa-solid fa-exclamation" style="background-color: #F9371C;padding:10px 18px 10px 18px"></i>
-                <span class="text-checklist">
-                    ยังไม่อัพโหลด
-                </span>
-                @endif
-            </div>
-            <div class="content-checklist">
-                <i class="icon-checklist fa-light fa-syringe" style="background-color: #b8205b;padding:10px 11px 10px 11px;"></i>
-                <span class="text-checklist">วัคซีน</span>
-            </div>
-            <div class="check">
-                <i class="icon-checklist fa-light fa-check" style="background-color: #2FC8AC;padding:10px 12px 10px 12px"></i>
-                <span class="text-checklist">
-                    วัคซีนเห็บหมัด
-                </span>
-                <br><br>
-                <i class="icon-checklist fa-solid fa-exclamation" style="background-color: #F9371C;padding:10px 18px 10px 18px"></i>
-                <span class="text-checklist">
-                    วัคซีนพิษสุนัขบ้า
-                </span>
-            </div>
-            @endforeach
-            <br>
-        </div> -->
-
-
-
-
-
-
     <div class="shadow chechlist col-12 col-lg-4">
         <div class="header-checklist">
             <h4>Check List</h4>
@@ -405,7 +278,7 @@
         <div class="content-checklist">
             @if(!empty($item->profile->photo_id_card))
             <a href="#photo-id_card">
-                <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                 <span class="text-checklist">บัตรประชาชน</span>
                 <i class="fa-light fa-eye" style="color:blue;"></i>
             </a>
@@ -413,21 +286,21 @@
                 <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_id_card }}')"></span>
             </a>
             @else
-            <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+            <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
             <span class="text-checklist">บัตรประชาชน</span>
             @endif
         </div>
         <div class="content-checklist">
             @if(!empty($item->profile->photo_passport))
             <a href="#photo-passport">
-                <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                 <span class="text-checklist">พาสปอร์ต</span> <i class="fa-light fa-eye" style="color:blue;"></i>
             </a>
             <a href="#img-photo-passport" class="lightbox" id="photo-passport">
                 <span style="background-image: url('{{ url('storage')}}/{{ $item->profile->photo_passport }}')"></span>
             </a>
             @else
-            <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+            <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
             <span class="text-checklist">พาสปอร์ต</span>
             @endif
         </div>
@@ -439,7 +312,7 @@
         @foreach($petuser as $item)
         <div class="content-checklist">
             @if($birth_month >= 2 )
-            <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+            <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
             <span class="text-checklist">อายุ</span>
             <span class="text-checklist">
                 @if($birth_year != 0 )
@@ -450,7 +323,7 @@
                 @endif
             </span>
             @else
-            <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+            <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
             <span class="text-checklist">อายุ</span>
             <span class="text-checklist" style="color:red;">
                 @if( $birth_year == 0 & $birth_month == 0)
@@ -463,14 +336,14 @@
         <div class="content-checklist">
             @if(!empty($item->photo_medical_certificate))
             <a href="#photo-medical_certificate">
-                <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                 <span class="text-checklist">ใบรับรองแพทย์</span> <i class="fa-light fa-eye" style="color:blue;"></i>
             </a>
             <a href="#img-photo-medical_certificate" class="lightbox" id="photo-medical_certificate">
                 <span style="background-image: url('{{ url('storage')}}/{{ $item->photo_medical_certificate }}')"></span>
             </a>
             @else
-            <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+            <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
             <span class="text-checklist">
                 ใบรับรองแพทย์
             </span>
@@ -485,7 +358,7 @@
             <div class="row" style="margin-bottom: 10px;"> 
                 @if((strtotime($item->date_next_rabies) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
                     <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+                        <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
                         <span class="text-checklist">
@@ -511,7 +384,7 @@
                     </div>
                 @else
                     <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
                         <span class="text-checklist">
@@ -539,7 +412,7 @@
             <div class="row" style="margin-bottom: 10px;">
                 @if((strtotime($item->date_next_flea) - strtotime($now))/  ( 60 * 60 * 24 ) <= 0)
                     <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-exclamation" style="color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+                        <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
                         <span class="text-checklist">
@@ -565,7 +438,7 @@
                     </div>
                 @else
                     <div class="col-2 d-flex align-items-center">
-                        <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                     </div>
                     <div class="col">
                         <span class="text-checklist">
@@ -590,7 +463,7 @@
             <div class="row">
                 @if(!empty($item->photo_vaccine_3))
                     <div class="col-2" style="margin-top: 2px;">
-                        <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                        <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                     </div>
                     <div class="col" style="margin-top:10px;">
                         <span class="text-checklist">
@@ -615,7 +488,7 @@
         </div>
         <div class="check">
             <a href="#certificate">
-                <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
                 @if(!empty($item->name_certificate))
                     <span class="text-checklist">{{$item->name_certificate}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
                 @else
@@ -629,7 +502,7 @@
             @if(!empty($item->certificate_2))
             <br>
             <a href="#certificate_2">
-                <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
+                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
                 @if(!empty($item->name_certificate_2))
                     <span class="text-checklist">{{$item->name_certificate_2}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
                 @else
@@ -644,7 +517,7 @@
             @if(!empty($item->certificate_3))
             <br>
             <a href="#certificate_3">
-                <i class="icon-checklist fa-solid fa-check" style="color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;border:1px solid #E6F9F5;"></i>
+                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;margin-top:10px;"></i>
                 @if(!empty($item->name_certificate_3))
                     <span class="text-checklist">{{$item->name_certificate_3}}</span> <i class="fa-light fa-eye" style="color:blue;"></i>
                 @else
