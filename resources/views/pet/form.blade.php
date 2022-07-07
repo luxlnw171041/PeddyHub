@@ -769,7 +769,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                             <div class="d-flex justify-content-end">
-                                <button id="btn-modal" type="button" class="btn btn-11" data-toggle="modal" data-target="#modal_thx" onclick="submitform()" >Update</button>
+                                <button id="btn-modal" type="button" class="btn btn-11" data-toggle="modal" data-target="#modal_thx" onclick="submitform()" disabled>Update</button>
 
                                 <button id="btn-submit-form" type="submit" class="btn btn-11 form-control d-none" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">Update</button>
                             </div>
