@@ -9,6 +9,7 @@ use App\Models\Pet;
 use App\Models\Pet_Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class PetController extends Controller
 {
@@ -150,6 +151,13 @@ class PetController extends Controller
         // Save image
         file_put_contents($img, file_get_contents($url));
 
+        $qr_code_card = Image::make( $img );
+        
+        //logo peddyhub
+        $logo_ph = Image::make(public_path('peddyhub/images/logo/logo-5.png'));
+        $logo_ph->resize(80,80);
+        $qr_code_card->insert($logo_ph,'center')->save();
+
         DB::table('pets')
               ->where('id', $data_pet_last->id)
               ->update([
@@ -164,6 +172,9 @@ class PetController extends Controller
         $img_checklist = storage_path("app/public")."/uploads". "/" . 'qr_code_checklist_pet_id_' . $data_pet_last->id  . '.png';
         // Save image
         file_put_contents($img_checklist, file_get_contents($url_checklist));
+
+        $qr_code_checklist = Image::make( $img_checklist );
+        $qr_code_checklist->insert($logo_ph,'center')->save();
 
         DB::table('pets')
               ->where('id', $data_pet_last->id)

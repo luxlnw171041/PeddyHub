@@ -29,12 +29,12 @@ class ImageController extends Controller
         // Save image
         file_put_contents($img, file_get_contents($url));
 
-        // $watermark = Image::make(public_path('peddyhub/images/logologo-5.png'));
-        // $watermark->resize(50,50);
+        $qr_code = Image::make( storage_path("app/public")."/check_in". "/" . 'check_in_' . $name_partner . '_' . $name_new_check_in . '.png' );
 
-        // $image = Image::make( $img );
-        // $image->insert($watermark);
-        // $image->save();
+        //logo peddyhub
+        $logo_ph = Image::make(public_path('peddyhub/images/logo/logo-5.png'));
+        $logo_ph->resize(80,80);
+        $qr_code->insert($logo_ph,'center')->save();
 
         return 'check_in_' . $name_partner . '_' . $name_new_check_in . '.png';
 
@@ -125,6 +125,7 @@ class ImageController extends Controller
 
         // QR-code
         $watermark_2 = Image::make( storage_path("app/public") . "/" .  $url_img );
+
         $image->insert($watermark_2 ,'bottom-right', 840, 175);
 
         // หัวภาพ
