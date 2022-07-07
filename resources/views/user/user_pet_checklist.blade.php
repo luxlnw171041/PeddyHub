@@ -286,6 +286,15 @@
     <div class="shadow chechlist col-12 col-lg-4">
         @foreach($user as $key)
             @foreach($petuser as $item)
+                <div class="d-flex justify-content-end" style="padding-top:10px;margin-bottom:-70px;">
+                    <a href="#photo-qr_code">
+                        <img class="photo-qrcode" src="{{ url('storage')}}/{{ $item->qr_code_checklist }}" alt="">
+                    </a>
+                    <a href="#img-photo-qr_code" class="lightbox" id="photo-qr_code">
+                        <span style="background-image: url('{{ url('storage')}}/{{ $item->qr_code_checklist }}')"></span>
+                    </a>
+
+                </div>
                 <div class="pet-profile">
                     <div class="row">
                         <div class="col-4" style="padding:0px 10px;">
@@ -295,15 +304,7 @@
                             <span class="text-checklist" style="font-size: 27px;line-height: 0.5;">{{$item->name}}</span><br>
                             <span class="text-checklist">เจ้าของ : {{$key->profile->name}}</span>
                         </div>
-                        <div style="position: absolute;margin-left:280px;">
-                            <a href="#photo-qr_code">
-                                <img class="photo-qrcode" src="{{ url('storage')}}/{{ $item->qr_code_checklist }}" alt="">
-                            </a>
-                            <a href="#img-photo-qr_code" class="lightbox" id="photo-qr_code">
-                                <span style="background-image: url('{{ url('storage')}}/{{ $item->qr_code_checklist }}')"></span>
-                            </a>
-
-                        </div>
+                        
 
                     </div>
 
