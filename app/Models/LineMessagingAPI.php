@@ -427,7 +427,7 @@ class LineMessagingAPI extends Model
         $date_add = strtotime("+7 Day");
         $next_day = date("Y-m-d" , $date_add);
 
-        $rabies = pet::where('date_next_rabies' , "<=" , $next_day)
+        $rabies = pet::where('date_next_rabies' , $next_day)
             ->where('provider_id', 'LIKE', "%U%")
             ->whereNull('rabies')
             ->get();
