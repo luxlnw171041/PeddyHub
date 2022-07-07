@@ -23,16 +23,16 @@
                             <br>
                         </div>
                         <div class="col-6 text-center">
-                            <img class="main-shadow main-radius" src="{{ url('/img/check_in/theme/artwork_check_in_EX.png') }}" width="80%">
+                            <img class="main-shadow main-radius" src="{{ url('peddyhub/images/check_in/theme/artwork_1-0.png') }}" width="80%">
                             <br><br><br>
-                            <p style="width:30%;" class="btn btn-danger main-shadow main-radius" onclick="select_theme_qr('1')">
+                            <p style="width:30%;background-color: #B8205B;" class="btn text-white main-shadow main-radius" onclick="select_theme_qr('1')">
                                 เลือก
                             </p>
                         </div>
                         <div class="col-6 text-center">
-                            <img class="main-shadow main-radius" src="{{ url('/img/check_in/theme/art_work_check_in_EX_V3000.png') }}" width="80%">
+                            <img class="main-shadow main-radius" src="{{ url('peddyhub/images/check_in/theme/artwork_2-0.png') }}" width="80%">
                             <br><br><br>
-                            <p style="width:30%;" class="btn btn-danger main-shadow main-radius" onclick="select_theme_qr('2')">
+                            <p style="width:30%;background-color: #B8205B;" class="btn text-white main-shadow main-radius" onclick="select_theme_qr('2')">
                                 เลือก
                             </p>
                         </div>
@@ -40,10 +40,10 @@
 
                     <div id="add_area_ok" class="col-12 d-none">
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-12">
                                 <div class="row">
                                     <div class="col-2">
-                                        <img class="d-none" id="img_str_load" src="{{ url('/img/stickerline/PNG/25.png') }}" width="100%">
+                                        <img class="d-none" id="img_str_load" src="{{ url('peddyhub\images\PEDDyHUB sticker line/04.png') }}" width="100%">
                                     </div>
                                     <div class="col-10">
                                         <h3 class="text-success" style="margin-top:20px;">
@@ -67,23 +67,12 @@
                                             <br><br>
                                             <img id="img_theme_new" class="d-none main-shadow main-radius"  src="" width="65%">
                                             <br><br>
-                                            <a id="download_img_theme_new" href="" class="btn btn-danger text-white d-none" download="">
+                                            <a style="background-color:#B8205B;" id="download_img_theme_new" href="" class="btn text-white d-none" download="">
                                                 ดาวน์โหลด
                                             </a>
                                         </center>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- รูปธง -->
-                            <div class="col-3">
-                                <center>
-                                    <br><br><br><br>
-                                    <img id="img_flag_theme_new" class="d-none main-shadow main-radius"  src="" width="80%">
-                                    <br><br>
-                                    <a id="download_img_flag_theme_new" href="" class="btn btn-danger text-white d-none" download="">
-                                        ดาวน์โหลด
-                                    </a>
-                                </center>
                             </div>
                         </div>
                     </div>
@@ -92,11 +81,11 @@
                         <div id="div_create_qr" class="col-6">
                             <div id="have_area" class="d-none">
                                 <h3 class="text-danger" style="margin-top:20px;">มีพื้นที่นี้แล้ว</h3>
-                                <p>หากมีข้อสงสัยกรุณาติดต่อทีมงาน ViiCHECK</p>
+                                <p>หากมีข้อสงสัยกรุณาติดต่อทีมงาน PEDDyHUB</p>
                             </div>
 
                             <div id="div_input_data_qr" class="">
-                                <input type="text" class="form-control d-none" id="name_partner" name="name_partner" value="{{ Auth::user()->organization }}">
+                                <input type="text" class="form-control d-none" id="name_partner" name="name_partner" value="{{ $data_partners->name }}">
 
                                 <label class="control-label" for="name_new_check_in">พื้นที่ Check in</label><span class="text-danger">*</span>
                                 <input type="text" class="form-control" id="name_new_check_in" name="name_new_check_in" placeholder="กรอกชื่อจุด Check in เช่น ชื่ออาคารหรือพื้นที่ย่อย" onchange="document.querySelector('#tag_a_qr').classList.remove('d-none');">
@@ -153,10 +142,10 @@
         let img_theme_old = document.querySelector('#img_theme_old') ;
 
             if (num_of_theme === '1') {
-                img_theme_old.src = "{{ url('/img/check_in/theme/artwork_check_in_EX.png') }}" ;
+                img_theme_old.src = "{{ url('peddyhub/images/check_in/theme/artwork_1-0.png') }}" ;
             }
             if (num_of_theme === '2'){
-                img_theme_old.src = "{{ url('/img/check_in/theme/art_work_check_in_EX_V3000.png') }}" ;
+                img_theme_old.src = "{{ url('peddyhub/images/check_in/theme/artwork_2-0.png') }}" ;
             }
 
         document.querySelector('#div_select_theme_qr').classList.add('d-none');
@@ -174,44 +163,49 @@
         let name_partner = document.querySelector('#name_partner') ;
         let name_partner_re = name_partner.value.replaceAll(' ' , '_');
 
-        let url = "" ;
+        fetch("{{ url('/') }}/api/create_new_area_check_in/"+name_partner_re+"/"+name_new_check_in )
+            .then(response => response.text())
+            .then(id_latest => {
+                console.log(id_latest);
 
-        url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.viicheck.com/check_in/create?location=University:" + name_partner_re + "-" +name_new_check_in + "&chs=500x500&choe=UTF-8" ;
+                let url = "" ;
+                url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/check_in/create?location=" + id_latest + "&chs=500x500&choe=UTF-8" ;
 
-            // console.log(url);
+                console.log(url);
 
-        let data = {
-            'url' : url,
-            'name_partner' : name_partner.value,
-            'name_new_check_in' : name_new_check_in,
-        };
+                let data = {
+                    'url' : url,
+                    'name_partner' : name_partner.value,
+                    'name_new_check_in' : name_new_check_in,
+                };
 
-        fetch("{{ url('/') }}/api/save_img_url", {
-            method: 'post',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(function (response){
-            return response.text();
-        }).then(function(text){
-            // console.log(text);
-            let url_img = "{{ url('storage') }}/" + "check_in/" + text;
-            // console.log(url_img);
+                fetch("{{ url('/') }}/api/save_img_url", {
+                    method: 'post',
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function (response){
+                    return response.text();
+                }).then(function(text){
+                    // console.log(text);
+                    let url_img = "{{ url('storage') }}/" + "check_in/" + text;
+                    // console.log(url_img);
 
-            // let img_qr_code = document.querySelector('#img_qr_code') ;
-            //     img_qr_code.src = url_img;
-            //     // img_qr_code.classList.remove('d-none');
+                    // let img_qr_code = document.querySelector('#img_qr_code') ;
+                    //     img_qr_code.src = url_img;
+                    //     // img_qr_code.classList.remove('d-none');
 
-            // let download_img_qr_code = document.querySelector('#download_img_qr_code') ;
-            //     download_img_qr_code.href = url_img;
-            //     // download_img_qr_code.classList.remove('d-none');
+                    // let download_img_qr_code = document.querySelector('#download_img_qr_code') ;
+                    //     download_img_qr_code.href = url_img;
+                    //     // download_img_qr_code.classList.remove('d-none');
 
-            change_color_theme("check_in/" + text);
+                    change_color_theme("check_in/" + text);
 
 
-        }).catch(function(error){
-            // console.error(error);
+                }).catch(function(error){
+                    // console.error(error);
+                });
         });
 
     }
@@ -234,7 +228,6 @@
             'name_partner' : name_partner.value,
             'name_new_check_in' : name_new_check_in.value,
             'url_img' : url_img,
-            'type_of' : "check_in",
             'num_theme_qr' : num_theme_qr.value,
         };
 
@@ -271,19 +264,11 @@
                 let download_img_theme_new = document.querySelector('#download_img_theme_new');
                     download_img_theme_new.href = url_img_theme_new ;
 
-                let img_flag_theme_new = document.querySelector('#img_flag_theme_new');
-                    img_flag_theme_new.src = url_img_theme_new_flag ;
-
-                let download_img_flag_theme_new = document.querySelector('#download_img_flag_theme_new');
-                    download_img_flag_theme_new.href = url_img_theme_new_flag ;
                 
                 // img_qr_code.classList.remove('d-none');
                 img_theme_new.classList.remove('d-none');
-                img_flag_theme_new.classList.remove('d-none');
                 download_img_theme_new.classList.remove('d-none');
                 document.querySelector('#img_str_load').classList.remove('d-none');
-                // document.querySelector('#download_img_qr_code').classList.remove('d-none');
-                document.querySelector('#download_img_flag_theme_new').classList.remove('d-none');
             }
 
 

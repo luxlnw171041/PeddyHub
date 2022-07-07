@@ -201,4 +201,205 @@ class ImageController extends Controller
         return "OK";
     }
 
+    function create_img_check_in()
+    {
+        $json = file_get_contents("php://input");
+        $data = json_decode($json, true);
+
+        $color_theme = $data['color_theme'];
+        $name_partner = $data['name_partner'];
+        $name_new_check_in = $data['name_new_check_in'];
+        $url_img = $data['url_img'];
+        $num_theme_qr = $data['num_theme_qr'];
+
+        $data_partners = Partner::where("name", $name_partner)->where('name_area' , null)->first();
+
+        $img_logo_partner = $data_partners->logo ;
+
+        $color_hex = $this->hex2rgba($color_theme) ;
+        $color_sp = explode(",",$color_hex);
+        $color_1 = intval($color_sp[0] / 255 * 100);
+        $color_2 = intval($color_sp[1] / 255 * 100);
+        $color_3 = intval($color_sp[2] / 255 * 100);
+
+        // นับตัวอักษร
+        function utf8_strlen($s) {
+            $c = strlen($s); $l = 0;
+                for ($i = 0; $i < $c; ++$i)
+                    if ((ord($s[$i]) & 0xC0) != 0x80) ++$l;
+            return $l;
+        }
+
+        $cuont_name_partner =  utf8_strlen($name_partner);
+        $cuont_name_new_check_in =  utf8_strlen($name_new_check_in);
+
+        // Theme 1
+        if ($num_theme_qr == '1') {
+            // เรียกรูปภาพใส่ $image // logo viicheck && sticker
+            $image = Image::make(public_path('peddyhub/images/check_in/theme/artwork_1-2.png'));
+
+            $image->orientate();
+
+            // QR-code
+            $watermark_2 = Image::make( storage_path("app/public") . "/" .  $url_img );
+            $image->insert($watermark_2 ,'bottom-right', 385, 150);
+
+            // หัวภาพ
+            $watermark = Image::make(public_path('peddyhub/images/check_in/theme/artwork_1-1.png'));
+            // ระบายสี
+            $watermark->colorize( $color_1 , $color_2 , $color_3 );
+            // $watermark->colorize( 50, 0, 0 );
+            $image->insert($watermark);
+
+            // logo partner
+            $logo_partner = Image::make( storage_path("app/public") . "/" .  $img_logo_partner );
+            $logo_partner->resize(250,250);
+            $image->insert($logo_partner,'top-right', 40, 20);
+
+            if($cuont_name_partner >= 37){
+                $image->text($name_partner, 530, 205, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(48);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }elseif($cuont_name_partner >= 30 && $cuont_name_partner < 37){
+                $image->text($name_partner, 530, 205, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(55);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }elseif($cuont_name_partner < 30) {
+                $image->text($name_partner, 530, 205, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(65);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }
+
+            if ($name_new_check_in != 'รวม') {
+
+                if($cuont_name_new_check_in >= 30){
+                    $image->text($name_new_check_in, 760, 800, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(29);
+                        $font->color('#000000');
+                        $font->align('center');
+                        $font->valign('top');
+                    });
+                }elseif($cuont_name_new_check_in >= 20 && $cuont_name_new_check_in < 30){
+                    $image->text($name_new_check_in, 760, 800, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(35);
+                        $font->color('#000000');
+                        $font->align('center');
+                        $font->valign('top');
+                    });
+                }elseif($cuont_name_new_check_in < 20) {
+                    $image->text($name_new_check_in, 760, 800, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(45);
+                        $font->color('#000000');
+                        $font->align('center');
+                        $font->valign('top');
+                    });
+                }
+
+            }
+
+            $image->save( storage_path("app/public")."/check_in". "/" . 'artwork_' . $name_partner . '_' . $name_new_check_in . '.png' );
+        }
+
+        // Theme 2
+        if ($num_theme_qr == '2') {
+            // เรียกรูปภาพใส่ $image // logo viicheck && sticker
+            $image = Image::make(public_path('peddyhub/images/check_in/theme/artwork_2-2.png'));
+            $image->orientate();
+
+            // QR-code
+            $watermark_2 = Image::make( storage_path("app/public") . "/" .  $url_img );
+            $image->insert($watermark_2 ,'bottom-right', 840, 175);
+
+            // หัวภาพ
+            $watermark = Image::make(public_path('peddyhub/images/check_in/theme/artwork_2-1.png'));
+            // ระบายสี
+            $watermark->colorize( $color_1 , $color_2 , $color_3 );
+            // $watermark->colorize( 50, 0, 0 );
+            $image->insert($watermark);
+
+            // logo partner
+            $logo_partner = Image::make( storage_path("app/public") . "/" .  $img_logo_partner );
+            $logo_partner->resize(250,250);
+            $image->insert($logo_partner,'top-right', 40, 20);
+
+            if($cuont_name_partner >= 37){
+                $image->text($name_partner, 530, 205, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(48);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }elseif($cuont_name_partner >= 30 && $cuont_name_partner < 37){
+                $image->text($name_partner, 530, 205, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(55);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }elseif($cuont_name_partner < 30) {
+                $image->text($name_partner, 530, 205, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(65);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }
+
+            if ($name_new_check_in != 'รวม') {
+
+                if($cuont_name_new_check_in >= 30){
+                    $image->text($name_new_check_in, 300, 800, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(29);
+                        $font->color('#000000');
+                        $font->align('center');
+                        $font->valign('top');
+                    });
+                }elseif($cuont_name_new_check_in >= 20 && $cuont_name_new_check_in < 30){
+                    $image->text($name_new_check_in, 300, 800, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(35);
+                        $font->color('#000000');
+                        $font->align('center');
+                        $font->valign('top');
+                    });
+                }elseif($cuont_name_new_check_in < 20) {
+                    $image->text($name_new_check_in, 300, 800, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(45);
+                        $font->color('#000000');
+                        $font->align('center');
+                        $font->valign('top');
+                    });
+                }
+
+            }
+
+            $image->save( storage_path("app/public")."/check_in". "/" . 'artwork_' . $name_partner . '_' . $name_new_check_in . '.png' );
+
+        }
+
+        return "OK";
+    
+        
+    }
+
 }

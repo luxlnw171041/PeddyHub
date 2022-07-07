@@ -301,17 +301,15 @@ class Check_inController extends Controller
 
     function add_new_check_in(Request $request){
         
-        $data_user = Auth::user();
 
-        $data_partners = Partner::where("id", $data_user->partner)
-            ->where("name_area", null)
-            ->get();
+        $data_user = Auth::user();
+        $data_partners = Partner::where("id", $data_user->partner)->first();
             
         // foreach ($data_partners as $key) {
         //     $logo_partner = $key->logo ;
         // }
 
-        return view('check_in.add_new_check_in');
+        return view('check_in.add_new_check_in', compact('data_partners'));
 
     }
 
@@ -324,6 +322,28 @@ class Check_inController extends Controller
         $all_areas = Partner::where("name", $name_partner)->get();
 
         return view('check_in.gallery', compact('all_areas'));
+
+    }
+
+    function create_new_area_check_in($name_partner , $name_new_check_in){
+
+        $name_partner = str_replace("_" , " " , $name_partner);
+        $name_new_check_in = str_replace("_" , " " , $name_new_check_in);
+
+        $data_partners = Partner::where("name", $name_partner)->where('name_area' , null)->first();
+
+        // สร้างพาร์ทเนอร์ย่อย
+        $requestData['name'] = $name_partner ;
+        $requestData['phone'] = $data_partners->phone ;
+        $requestData['name_area'] = $name_new_check_in ;
+        $requestData['logo'] = $data_partners->logo ;
+
+        Partner::firstOrCreate($requestData);
+
+        $data_partner_last = Partner::where("name", $name_partner)->latest()->first();
+        $id = $data_partner_last->id;
+
+        return $id;
 
     }
 
