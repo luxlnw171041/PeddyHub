@@ -72,6 +72,7 @@
         font-size: 17px !important;
     }
 </style>
+
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v14.0&appId=556579368207089&autoLogAppEvents=1" nonce="plRRkMCA"></script>
 <div class="pet about main-wrapper pet tm_profile">
@@ -361,6 +362,13 @@
                                 
                                 
                                 <div class="row">
+                                <!-- <div class="">
+                                    <button onclick="myFunction()" id="{{$item->id}}" class="w3-button w3-black">Click me</button>
+                                    <div id="demo{{$item->id}}" class="w3-dropdown-content w3-bar-block  w3-animate-zoom">
+                                        <a href="#" style="color: #b8205b; border-radius: 20%;" class="w3-bar-item w3-button">Link 1</a>
+                                        <a href="#" style="color: #b8205b; border-radius: 20px 0px 0px 20px;padding:0px;background-color: transparent;" class="w3-bar-item w3-button">Link 2</a>
+                                    </div>
+                                </div> -->
                                     <div class="col-md-6 col-6 col-lg-6 d-flex justify-content-center" style="padding: 0px;">
                                         <div class="button wow fadeInUp d-flex justify-content-start ">
                                             <a href="" class="btn main d-flex align-items-end" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">
@@ -398,8 +406,8 @@
                                                     </form>
                                                 </div>
                                                 <div class="col" style="padding: 0px;">
-                                                    <a href="{{ url('/pet/' . $item->id . '/edit') }} " class="btn main">
-                                                        ทำจี้ &nbsp;<i class="fas fa-paw"></i>
+                                                    <a href="{{ url('/user_pet_checklist/'.$item->id) }} " class="btn main">
+                                                        CheckList &nbsp;<i class="fas fa-paw"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -536,6 +544,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <!-- end model -->
                     <script>
                         function swipside() {
@@ -594,6 +603,16 @@
                             });
                         }
                     </script>
+                    <script>
+                        function myFunction() {
+                        var x = document.getElementById("demo" + event.srcElement.id);
+                        if (x.className.indexOf("w3-show") == -1) {
+                            x.className += " w3-show";
+                        } else { 
+                            x.className = x.className.replace(" w3-show", "");
+                        }
+                        }
+                    </script>
                     @endforeach
                 </div>
             </div>
@@ -601,6 +620,10 @@
     </div>
 </div>
 
+
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 @endsection
 
 <!-- <div class="main-wrapper pet tm_profile">

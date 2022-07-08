@@ -355,24 +355,22 @@
 
         <div class="content-checklist">
             @if($birth_month >= 2 )
-            <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
-            <span class="text-checklist">อายุ</span>
-            <span class="text-checklist">
-                @if($birth_year != 0 )
-                {{$birth_year}} ขวบ
-                @endif
-                @if($birth_month != 0 )
-                {{$birth_month}} เดือน
-                @endif
-            </span>
+                <i class="icon-checklist fa-solid fa-check" style="border:#2FC8AC 1px solid;color:#2FC8AC;background-color: #E6F9F5;padding:10px 12px 10px 12px;font-weight: 1000;"></i>
+                <span class="text-checklist">อายุ</span>
+                <span class="text-checklist">
+                    @if($birth_year != '0' )
+                    {{$birth_year}} ขวบ
+                    @endif
+                    @if($birth_month != '0' )
+                    {{$birth_month}} เดือน
+                    @endif
+                </span>
             @else
-            <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
-            <span class="text-checklist">อายุ</span>
-            <span class="text-checklist" style="color:red;">
-                @if( $birth_year == 0 & $birth_month == 0)
-                {{$birth_day}} วัน
-                @endif
-                @endif
+                <i class="icon-checklist fa-solid fa-exclamation" style="border:#F9371C 1px solid;color:#F9371C;background-color: #FFE8EA;padding:10px 18px 10px 18px;font-weight: 1000;"></i>
+                <span class="text-checklist">อายุ</span>
+                <span class="text-checklist" style="color:red;">
+                    {{$birth_day}} วัน
+            @endif
             </span>
         </div>
 

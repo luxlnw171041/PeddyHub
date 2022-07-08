@@ -538,7 +538,7 @@
                                                 @else
                                                 <div class="input-wrapper">
                                                     <span class="size-span"></span>
-                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate" type="text" id="name_certificate" value="เอกสารอื่นๆ1" onchange="check();">
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate" type="text" id="name_certificate" placeholder="เอกสารอื่นๆ1" value="" onchange="check();">
                                                 </div>
                                                 <i class="fa-light fa-pen"></i>
                                                 @endif
@@ -572,7 +572,7 @@
                                                 @else
                                                 <div class="input-wrapper">
                                                     <span class="size-span"></span>
-                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate_2" type="text" id="name_certificate_2" value="เอกสารอื่นๆ2" onchange="check();">
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate_2" type="text" id="name_certificate_2"  placeholder="เอกสารอื่นๆ2" value="" onchange="check();">
                                                 </div>
                                                 <i class="fa-light fa-pen"></i>
                                                 @endif
@@ -606,7 +606,7 @@
                                                 @else
                                                 <div class="input-wrapper">
                                                     <span class="size-span"></span>
-                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate_3" type="text" id="name_certificate_3" value="เอกสารอื่นๆ3" onchange="check();">
+                                                    <input oninput="updateChange(event)" style="margin:0px;padding: 0px;border:none;background:none;border-radius:0px;" class="form-control" name="name_certificate_3" type="text" id="name_certificate_3"  placeholder="เอกสารอื่นๆ3" value="" onchange="check();">
                                                 </div>
                                                 <i class="fa-light fa-pen"></i>
                                                 @endif
@@ -647,7 +647,11 @@
                                             <option value='หญิง'>Female</option>
                                             <option value='ไม่ระบุ'>Not Specified</option> -->
 
-                                            @foreach (json_decode('{"\u0e0a\u0e32\u0e22":"\u0e0a\u0e32\u0e22","\u0e2b\u0e0d\u0e34\u0e07":"\u0e2b\u0e0d\u0e34\u0e07","\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38":"\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"}', true) as $optionKey => $optionValue)
+                                            @foreach (json_decode('{
+                                                "ชาย":"เพศชาย",
+                                                "หญิง":"เพศหญิง",
+                                                "ไม่ระบุ":"ไม่ระบุ"}',
+                                            true) as $optionKey => $optionValue)
                                             <option value="{{ $optionKey }}" {{ (isset($pet->gender) && $pet->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                             @endforeach
                                         </select>
@@ -1081,7 +1085,7 @@
                 }
 
             });
-
+            
     }
 
     function sub_cat() {
@@ -1116,7 +1120,7 @@
                     document.querySelector('#select_sub_category').classList.add('d-none');
                 }
             });
-
+            change_language_user();
 
     }
 
