@@ -410,7 +410,7 @@
                                         <h5>ค้นหาชื่อ</h5>
                                     </div>
                                     <div class="col-3">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="ค้นหาจากชื่อ..." oninput="search_name('{{ $check_in_at }}');">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="ค้นหาจากชื่อ..." oninput="search_name('{{ $id_partner_name_area }}','{{ $text_name_area }}');">
                                     </div>
                                 </div>
                             </div>
@@ -545,12 +545,15 @@
     }
 
 
-    function search_name(check_in_at){
+    function search_name(id_partner_name_area , text_name_area){
+
+        // console.log("id >> " + id_partner_name_area);
+        // console.log("name_area >> " + text_name_area);
 
         let name_disease = document.querySelector('#name_disease').value;
         let name = document.querySelector('#name');
 
-        fetch("{{ url('/') }}/api/search_name/"+ name.value + "/" + check_in_at)
+        fetch("{{ url('/') }}/api/search_name/"+ id_partner_name_area + "/" + text_name_area + "/" + name.value)
             .then(response => response.json())
             .then(result => {
                 // console.log(result);
@@ -652,7 +655,7 @@
                                 btn_data.setAttributeNode(style_btn_data);
 
                             let btn_data_onclick = document.createAttribute("onclick");
-                                btn_data_onclick.value = "show_group_risk("+ item.id +",'" + check_in_at + "');";
+                                btn_data_onclick.value = "show_group_risk("+ item.id +",'" + id_partner_name_area + "');";
                                 btn_data.setAttributeNode(btn_data_onclick);  
                                 
                                 div_data_btn.appendChild(btn_data);
@@ -670,13 +673,13 @@
         });
     }
 
-    function show_group_risk(id , check_in_at){
+    function show_group_risk(id , id_partner_name_area){
         let div_content_search_name = document.querySelector('#div_content_search_name');
             div_content_search_name.textContent = "" ;
 
         let name_disease = document.querySelector('#name_disease').value ;
 
-        fetch("{{ url('/') }}/api/show_group_risk/" + id + "/" + check_in_at+"/"+name_disease)
+        fetch("{{ url('/') }}/api/show_group_risk/" + id + "/" + id_partner_name_area+"/"+name_disease)
             .then(response => response.json())
             .then(result => {
             // console.log(result);
@@ -834,20 +837,21 @@
         }).then(function (response){
             return response.text();
         }).then(function(text){
-            // console.log(text);
-            document.querySelector('#close_madal_main').click();
-            let div_content_search_std = document.querySelector('#div_content_search_std');
-                div_content_search_std.textContent = "" ;
-
-            document.querySelector('#btn_modal_send_finish').click();
+            console.log(text);
             
-                var delayInMilliseconds = 3000; 
-                    setTimeout(function() {
-                      document.querySelector('#close_madal_send_finish').click();
-                    }, delayInMilliseconds);
+            // document.querySelector('#close_madal_main').click();
+            // let div_content_search_std = document.querySelector('#div_content_search_std');
+            //     div_content_search_std.textContent = "" ;
+
+            // document.querySelector('#btn_modal_send_finish').click();
+            
+            //     var delayInMilliseconds = 3000; 
+            //         setTimeout(function() {
+            //           document.querySelector('#close_madal_send_finish').click();
+            //         }, delayInMilliseconds);
 
         }).catch(function(error){
-            // console.error(error);
+            console.error(error);
         });
     }
 

@@ -16,21 +16,35 @@ use App\Models\Partner;
 
 class PartnersController extends Controller
 {
-    public function search_name($name , $check_in_at)
+    public function search_name($id_partner_name_area , $text_name_area , $name)
     {
-        $data = DB::table('profiles')
-            ->join('check_ins', 'profiles.id', '=', 'check_ins.user_id')
-            ->select('profiles.*')
-            ->where("check_ins.partner_id", $check_in_at)
-            ->where("profiles.real_name" , 'LIKE', "%$name%")
-            ->groupBy('profiles.id')
-            ->get();
+        if ($text_name_area == "ทั้งหมด") {
+
+            $data = DB::table('profiles')
+                ->join('check_ins', 'profiles.id', '=', 'check_ins.user_id')
+                ->select('profiles.*')
+                ->where("check_ins.check_in_at", 'LIKE', "%$id_partner_name_area%")
+                ->where("profiles.real_name" , 'LIKE', "%$name%")
+                ->groupBy('profiles.id')
+                ->get();
+
+        }else{
+            $data = DB::table('profiles')
+                ->join('check_ins', 'profiles.id', '=', 'check_ins.user_id')
+                ->select('profiles.*')
+                ->where("check_ins.partner_id", $id_partner_name_area)
+                ->where("profiles.real_name" , 'LIKE', "%$name%")
+                ->groupBy('profiles.id')
+                ->get();
+        }
 
         return $data ;
     }
 
-    public function show_group_risk($user_id , $check_in_at , $name_disease)
+    public function show_group_risk($user_id , $id_partner_name_area , $name_disease)
     {
+        // แก้ check_in_at เป็น id_partner_name_area
+
         DB::table('profiles')
           ->where('id', $user_id)
           ->update([
@@ -42,7 +56,7 @@ class PartnersController extends Controller
         $data_user_risk_groups = array();
         
         $groupBy_date = Check_in::where("user_id" , $user_id)
-            ->where("check_in_at", $check_in_at)
+            ->where("check_in_at", 'LIKE', "%$id_partner_name_area%")
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))
             ->get();
 
@@ -57,7 +71,7 @@ class PartnersController extends Controller
 
             $time_in_of_date = Check_in::where("user_id" , $user_id)
                 ->select('time_in')
-                ->where("check_in_at", $check_in_at)
+                ->where("check_in_at", 'LIKE', "%$id_partner_name_area%")
                 ->where("time_in", "!=" , null)
                 ->whereDate('created_at', date("Y/m/d" , strtotime($key->created_at )))
                 ->orderBy('time_in', 'desc')
@@ -70,7 +84,7 @@ class PartnersController extends Controller
 
             $time_out_of_date = Check_in::where("user_id" , $user_id)
                 ->select('time_out')
-                ->where("check_in_at", $check_in_at)
+                ->where("check_in_at", 'LIKE', "%$id_partner_name_area%")
                 ->where("time_out", "!=" , null)
                 ->whereDate('created_at', date("Y/m/d" , strtotime($key->created_at )))
                 ->orderBy('time_out', 'desc')
@@ -117,7 +131,7 @@ class PartnersController extends Controller
             
 
             $risk_groups = Check_in::where("user_id" ,"!=" , $user_id)
-                ->where("check_in_at", $check_in_at)
+                ->where("check_in_at", 'LIKE', "%$id_partner_name_area%")
                 ->whereBetween('created_at', [$date_time_in, $date_time_out])
                 ->groupBy('user_id')
                 ->get();
@@ -150,7 +164,7 @@ class PartnersController extends Controller
                         "name" => $data_user->name,
                         "real_name" => $data_user->real_name,
                         "phone" => $data_user->phone,
-                        "check_in_at" => $check_in_at,
+                        "check_in_at" => $id_partner_name_area,
                         "name_disease" => $name_disease,
                     ];
                 }
@@ -173,6 +187,11 @@ class PartnersController extends Controller
         $count_user = count($data);
         $check_in_at = $data[0]['check_in_at'] ;
         $name_disease = $data[0]['name_disease'] ;
+
+        echo "<pre>";
+        print_r($data);
+        echo "<pre>";
+        exit();
 
         for ($i=0; $i < $count_user ; $i++) { 
 

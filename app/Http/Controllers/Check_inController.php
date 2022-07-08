@@ -25,10 +25,10 @@ class Check_inController extends Controller
         $requestData = $request->all();
         $perPage = 25;
         $data_user = Auth::user();
-
         $check_in_at = $data_user->partner;
 
         $data_partner = Partner::where('id' , $check_in_at)->first();
+        $id_partner = $data_partner->id ;
         $name_partner = $data_partner->name ;
 
         $select_date = $request->get('select_date');
@@ -44,20 +44,26 @@ class Check_inController extends Controller
 
         $request_name_area = $request->get('name_area');
         $text_name_area = null ;
+        $id_partner_name_area =  null ;
 
         if ($request_name_area == 'all') {
-            $id_partner_name_area = $name_partner ;
+            $id_partner_name_area = $id_partner ;
             $text_name_area = "ทั้งหมด" ;
-
         }else{
             $data_partner_name_area = Partner::where('id' , $request_name_area)->get();
-            $id_partner_name_area = $request_name_area ;
             foreach ($data_partner_name_area as $data_name_area) {
                 $text_name_area = $data_name_area->name_area ;
+                $id_partner_name_area = $data_name_area->id ;
             }
-
         }
-       
+
+        // echo "request >> " . $request_name_area;
+        // echo "<br>";
+        // echo "text_name_area >> " . $text_name_area;
+        // echo "<br>";
+        // echo "id_partner_name_area >> " . $id_partner_name_area;
+        // echo "<br>";
+        // exit();
         
         // ชื่อ อย่างเดียว
         if ( !empty($select_name) and empty($select_time_1) and empty($select_date) ) {
@@ -158,23 +164,26 @@ class Check_inController extends Controller
         }
 
         $data_partner = Partner::where('id' , $requestData['check_in_at'])->first();
+        $partner_partner = Partner::where('name' , $data_partner->name)->where('name_area' ,null)->first();
         $requestData['partner_id'] = $requestData['check_in_at'] ;
-        $requestData['check_in_at'] = $requestData['check_in_at'] . "(" . $data_partner->name . ")" ;
+        $requestData['check_in_at'] = $requestData['check_in_at'] . "(" . $partner_partner->name . " " . $partner_partner->id . ")" ;
         
         Check_in::create($requestData);
 
         $data_user = Profile::where('id' , $requestData['user_id'])->get();
-        
+        $check_in_at_re = explode("(",$requestData['check_in_at']) ;
+        $id_check_in_at = $check_in_at_re[0];
+
         foreach ($data_user as $user) {
             if (empty($user->check_in_at)) {
-                $check_in_all = array($requestData['check_in_at']) ;
+                $check_in_all = array($id_check_in_at) ;
             }else{
                 $check_in_all = json_decode($user->check_in_at) ;
-                if (in_array($requestData['check_in_at'] , $check_in_all)){
+                if (in_array($id_check_in_at , $check_in_all)){
                     $check_in_all = $check_in_all ;
                 }
                 else{   
-                    array_push($check_in_all , $requestData['check_in_at']) ;
+                    array_push($check_in_all , $id_check_in_at) ;
                 }
             }
         }
