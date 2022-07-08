@@ -21,7 +21,7 @@ class PartnersController extends Controller
         $data = DB::table('profiles')
             ->join('check_ins', 'profiles.id', '=', 'check_ins.user_id')
             ->select('profiles.*')
-            ->where("check_ins.check_in_at", 'LIKE', "%$check_in_at%")
+            ->where("check_ins.partner_id", $check_in_at)
             ->where("profiles.real_name" , 'LIKE', "%$name%")
             ->groupBy('profiles.id')
             ->get();
