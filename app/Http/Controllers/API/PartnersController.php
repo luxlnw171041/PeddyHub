@@ -185,13 +185,13 @@ class PartnersController extends Controller
         $data = json_decode($json, true);
 
         $count_user = count($data);
-        $check_in_at = $data[0]['check_in_at'] ;
+        $id_partner_name_area = $data[0]['check_in_at'] ;
         $name_disease = $data[0]['name_disease'] ;
+
 
         echo "<pre>";
         print_r($data);
         echo "<pre>";
-        exit();
 
         for ($i=0; $i < $count_user ; $i++) { 
 
@@ -212,14 +212,17 @@ class PartnersController extends Controller
                 $user_language = $profile->language ;
 
                 $data_in_outs = Check_in::where('user_id', $profile->id)
-                    ->where('check_in_at', $check_in_at)
+                    ->where('check_in_at', 'LIKE', "%$id_partner_name_area%")
                     ->latest()
                     ->take(3)
                     ->get();
 
-                $data_location_check_in = Partner::where('id' , $check_in_at)->get();
-                foreach ($data_location_check_in as $key) {
-                    $check_in_at = $key->name ;
+                $data_location_check_in = Partner::where('id' , $id_partner_name_area)->first();
+
+                if (!empty($data_location_check_in->name_area)) {
+                    $check_in_at = $data_location_check_in->name . " - " . $data_location_check_in->name_area ;
+                }else{
+                    $check_in_at = $data_location_check_in->name ;
                 }
 
                 $data_disease['name'] = $name_disease;
