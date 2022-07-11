@@ -140,15 +140,6 @@
             <div class="pet job">
                 <section class="job">
                     <div class="container">
-                        <!-- <div class="heading text-center">
-                            <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
-                                    class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
-                                        class="fas fa-paw"></i> </span></p>
-                            <h2 class="wow fadeInDown">Find The Most <span class="wow pulse" data-wow-delay="1s">
-                                    Exciting News</span></h2>
-                        </div> -->
-                       
-                        
                         <div class="row mt-5">
                             @foreach($post as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
@@ -176,7 +167,9 @@
                                                     <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                                                     <div class="dropdown-menu dropdown-primary">
-                                                        <a class="dropdown-item" href="#" ><i class="fa-solid fa-copy"></i>&nbsp;&nbsp;คัดลอก</a>
+                                                        <a class="dropdown-item" href="#" >
+                                                            <i class="fa-solid fa-copy"></i>&nbsp;&nbsp;คัดลอก
+                                                        </a>
                                                         @if(($id  ==  $item->user_id))
                                                             <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
                                                             <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
@@ -197,21 +190,24 @@
                                             </div>
                                         </div>
                                         <div class="image">
-                                                <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
-<!--                                                 
-                                            <div class="label">
-                                                <ul>
-                                                    <li class="date">{{ $item->created_at->format('d') }}</li>
-                                                    <li>{{ $item->created_at->format('M') }}</li>
-                                                    
-                                                </ul>
-                                            </div> -->
+                                            <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
                                         </div>
-                                        <div class="desc" style="padding-bottom:0px;">
-                                            <p class="mb-0 col-md-10 col-10" style="z-index:1;">
-                                                <!-- <span class="category">Pet Care</span> -->
-                                                <span class="comment">20 Comments</span>
-                                                <span class="like">192 Likes</span>
+                                        <div style="padding:10px;">
+                                            <p style="z-index:1;color: #B8205B;">
+                                                @php
+                                                    if(!empty($item->like_all)){
+                                                        $like_all_arr = json_decode($item->like_all) ;
+                                                        $count_like = count($like_all_arr) ;
+                                                    }else{
+                                                        $count_like = "ถูกใจเป็นคนแรก" ;
+                                                    }
+                                                @endphp
+                                                <span class="like notranslate">
+                                                    <i class="fa-solid fa-heart"></i> {{ $count_like }}
+                                                </span>
+                                                <span style="float:right;" class="comment">
+                                                    ความคิดเห็น&nbsp;<span id="span_conut_comment">20</span>&nbsp;รายการ
+                                                </span>
                                             </p>
                                             
                                                 
@@ -227,22 +223,36 @@
                                                 <a href="{{ url('/post/' . $item->id) }}" class="btn main register">Read More</a><br>
                                             </div> -->
                                         </div>
-                                       
-                                            <hr style="margin:0px 0px 0px 0px; ">
-                                            <div class="row d-flex justify-content-center" style="padding:10px;">
-                                                <div class="col-5">
-                                                    <div class="d-grid  text-center"><button type="submit" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button></div>
-                                                </div>
-                                                <!-- <div class="col-4 d-grid gap-2">
-                                                    <button type="button" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button>
-                                                </div> -->
-                                                <!-- <div class="col-4 d-grid gap-2">
-                                                    <button type="button" class="btn likebtn btn-lg" ><b> <i class="fas fa-heart"></i>  &nbsp;ถูกใจ</b></button>
-                                                </div> -->
-                                                <div class="col-7 d-grid ">
-                                                    <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}"><b><i class="fas fa-comment-dots"></i> แสดงความคิดเห็น</b></button>
+                                        <hr style="margin:0px 0px 0px 0px; ">
+                                        <div class="row d-flex justify-content-center" style="padding:10px;">
+                                            <div class="col-5">
+                                                <div class="d-grid  text-center">
+                                                    <button type="submit" class="btn btn-lg likebtn" >
+                                                        <b > <i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                    </button>
+
+                                                    <!-- @if(!empty($item->like_all))
+                                                        @php
+                                                            $like_all_arr = json_decode($item->like_all) ;
+                                                        @endphp
+                                                        @if(in_array($user->id , $like_all_arr))
+                                                            <button  type="submit" class="btn btn-lg likebtn" onclick="un_user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
+                                                                <b id="btn_for_un_like_{{ $item->id }}" style="color: #B8205B;"> <i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                            </button>
+                                                        @endif
+                                                    @else
+                                                        <button  type="submit" class="btn likebtn btn-lg" onclick="user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
+                                                            <b id="btn_for_like_{{ $item->id }}"> <i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                        </button>
+                                                    @endif -->
                                                 </div>
                                             </div>
+                                            <div class="col-7 d-grid ">
+                                                <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}">
+                                                    <b><i class="fas fa-comment-dots"></i> &nbsp; แสดงความคิดเห็น</b>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -389,16 +399,52 @@
 @endsection
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        console.log("START");
+        // console.log("START");
         add_color();
         
     });
     function add_color(){
-        console.log("add_color");
+        // console.log("add_color");
         document.querySelector('#btn_a_all').classList.add('btn-style-two');
         document.querySelector('#btn_a_all').classList.remove('btn-outline-two');
         document.querySelector('#btn_a_all_pc').classList.add('btn-style-two');
         document.querySelector('#btn_a_all_pc').classList.remove('btn-outline-two');
         
+    }
+
+    function user_like_post(user_id , post_id){
+        // console.log(user_id);
+        // console.log(post_id);
+
+        fetch("{{ url('/') }}/api/user_like_post/"+ user_id + "/" + post_id)
+            .then(response => response.text())
+            .then(result => {
+                // console.log(result);
+                if (result === 'ok') {
+                    let btn_for_like = document.querySelector('#btn_for_like_'+post_id);
+                    let style_btn = document.createAttribute("style");
+                        style_btn.value = "color: #B8205B;";
+                    btn_for_like.setAttributeNode(style_btn);
+                }
+
+        });
+    }
+
+    function un_user_like_post(user_id , post_id){
+        // console.log(user_id);
+        // console.log(post_id);
+
+        fetch("{{ url('/') }}/api/un_user_like_post/"+ user_id + "/" + post_id)
+            .then(response => response.text())
+            .then(result => {
+                // console.log(result);
+                if (result === 'ok') {
+                    let btn_for_un_like_ = document.querySelector('#btn_for_un_like_'+post_id);
+                    let style_btn = document.createAttribute("style");
+                        style_btn.value = "color: none;";
+                    btn_for_un_like_.setAttributeNode(style_btn);
+                }
+
+        });
     }
 </script>

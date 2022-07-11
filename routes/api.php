@@ -69,6 +69,9 @@ Route::post('/admin_create_img_check_in', 'API\ImageController@admin_create_img_
 Route::post('/create_img_check_in', 'API\ImageController@create_img_check_in');
 Route::get('/create_new_area_check_in/{name_partner}/{name_new_check_in}', 'Check_inController@create_new_area_check_in');
 
+Route::get('/user_like_post/{user_id}/{post_id}', 'PostController@user_like_post');
+Route::get('/un_user_like_post/{user_id}/{post_id}', 'PostController@un_user_like_post');
+
 
 
 
