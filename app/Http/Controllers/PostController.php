@@ -26,6 +26,8 @@ class PostController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
         $id = Auth::id();
+        $user = Auth::user();
+
         $category  = $request->get('pet_category_id');
         $comment = Comment::all(['id', 'post_id' ,'user_id' ,'content' ,'created_at']);
         
@@ -38,7 +40,9 @@ class PostController extends Controller
             $post = Post::latest()->paginate($perPage);
         }
 
-        return view('post.index', compact('post' ,'id' ,'comment' ));
+        $select_category = Pet_Category::groupBy('name')->get();
+
+        return view('post.index', compact('post' ,'id' ,'comment' ,'user','select_category'));
     }
 
     /**
@@ -66,9 +70,35 @@ class PostController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
+
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
+        }
+
+        switch ($requestData['pet_category_id']) {
+            case 'สุนัข':
+                $requestData['pet_category_id'] = 1 ;
+                break;
+            case 'แมว':
+                $requestData['pet_category_id'] = 2 ;
+                break;
+            case 'นก':
+                $requestData['pet_category_id'] = 3 ;
+                break;
+            case 'ปลา':
+                $requestData['pet_category_id'] = 4 ;
+                break;
+            case 'สัตว์เล็ก':
+                $requestData['pet_category_id'] = 5 ;
+                break;
+            case 'Exotic':
+                $requestData['pet_category_id'] = 6 ;
+                break;
+            
+            default:
+                $requestData['pet_category_id'] = null ;
+                break;
         }
         
         $requestData['user_id'] = Auth::id();   
