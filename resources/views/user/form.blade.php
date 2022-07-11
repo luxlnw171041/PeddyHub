@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->profile->email ) ? $data->profile->email  : ''}}" readonly>
+                                        <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->email ) ? $data->email  : ''}}" readonly>
                                         {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
@@ -213,6 +213,39 @@
                                 <input class="form-control" name="language" type="hidden" id="language" value="{{ isset($data->profile->language) ? $data->profile->language : ''}}">
                                             {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
                             </div>
+                            <div class="heading">
+                                <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
+                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span
+                                        class="purple"><i class="fas fa-paw"></i> </span></p>
+                                <h3>ที่อยู่ <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                            </div>
+                            <div>
+                            <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 col-md-12">
+                                        <label class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
+                                    </div>
+                                    <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
+                                    <div class="col-12 col-md-4" style="margin-top:12px;">
+                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                            <option value="" selected>- เลือกจังหวัด -</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-4" style="margin-top:12px;">
+                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                            <option value="" selected>- เลือกอำเภอ -</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-md-4" style="margin-top:12px;">
+                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                            <option value="" selected>- เลือกตำบล -</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -233,13 +266,14 @@
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-
+    document.addEventListener('DOMContentLoaded', (event) => { console.log("START");
+        let check_changwat_th = document.querySelector('#check_changwat_th');
+        select_province();
         let input_language = document.querySelector('#language');
         change_color_img(input_language.value);
-
-        // console.log("START");
         add_color();
+       
+        
         
         
     });
@@ -562,5 +596,92 @@
               break;
           }
 
+    }
+    function select_province() {
+        let select_province = document.querySelector('#select_province');
+
+        fetch("{{ url('/') }}/api/select_province/")
+            .then(response => response.json())
+            .then(result => {
+                select_province.innerHTML = "";
+                let option_select = document.createElement("option");
+                option_select.text = "- เลือกจังหวัด -";
+                option_select.value = "";
+                select_province.add(option_select);
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.changwat_th;
+                    option.value = item.changwat_th;
+                    select_province.add(option);
+                }
+            });
+    }
+
+    function select_A() {
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+
+        fetch("{{ url('/') }}/api/select_amphoe" + "/" + select_province.value)
+            .then(response => response.json())
+            .then(result => {
+                //console.log(result);
+
+                select_amphoe.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                option_select.text = "- เลือกอำเภอ -";
+                option_select.value = "";
+                select_amphoe.add(option_select);
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.amphoe_th;
+                    option.value = item.amphoe_th;
+                    select_amphoe.add(option);
+                }
+            });
+
+        change_language_user();
+    }
+
+    function select_T() {
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+        let select_tambon = document.querySelector('#select_tambon');
+
+        fetch("{{ url('/') }}/api/select_tambon" + "/" + select_province.value + "/" + select_amphoe.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_tambon.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                option_select.text = "- เลือกตำบล -";
+                option_select.value = "";
+                select_tambon.add(option_select);
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.tambon_th;
+                    option.value = item.tambon_th;
+                    select_tambon.add(option);
+                }
+            });
+
+        change_language_user();
+
+    }
+
+    function change_language_user() {
+        let btn_change_language = document.querySelector('#btn_change_language');
+        btn_change_language.href = "javascript:trocarIdioma('" + language_user + "')";
+
+        var delayInMilliseconds = 1000; //1.5 second
+
+        setTimeout(function() {
+            document.querySelector('#btn_change_language').click();
+        }, delayInMilliseconds);
     }
 </script>

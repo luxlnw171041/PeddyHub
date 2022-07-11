@@ -111,7 +111,7 @@ class ProfileController extends Controller
                 ->store('storage/uploads', 'public'); 
         }
 
-        if(!empty($requestData['tambon_th'])){
+        if(!empty($requestData['select_tambon'])){
             $requestData['tambon_th'] = $requestData['select_tambon']; 
             $requestData['amphoe_th'] = $requestData['select_amphoe']; 
             $requestData['changwat_th'] = $requestData['select_province']; 
@@ -119,7 +119,7 @@ class ProfileController extends Controller
         
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
-
+        
         if(!empty($requestData['login'])){
 
             $data_users = User::where('id' , $id)->first();
