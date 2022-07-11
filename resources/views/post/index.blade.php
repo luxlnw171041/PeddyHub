@@ -63,7 +63,7 @@
                         <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;" src="{{ url('storage')}}/{{ $user->profile->photo }}">
                     </div>
                     <div class="col-9">
-                        <button style="margin-top:8px;width: 100%;" class="btn btn-outline-secondary" onclick="document.querySelector('#btn_modal_pot').click();">แชร์ความน่ารักของเจ้าตัวแสบ</button>
+                        <button style="margin-top:8px;width: 100%;" class="btn btn-outline-secondary" onclick="document.querySelector('#btn_modal_pot').click();">แชร์ความน่ารักเจ้าตัวแสบ</button>
                     </div>
                 </div>
                 <br>
@@ -102,6 +102,7 @@
                                 </div>
                                 <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_pot"/>
                             </div>
+                            <br>
                             <div class="row">
                                 <div class="col-6">
                                     <span style="width:100%;" class="btn btn-sm btn-info" onclick="document.querySelector('#photo').click();">
