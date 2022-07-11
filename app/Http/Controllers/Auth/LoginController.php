@@ -160,9 +160,16 @@ class LoginController extends Controller
             // AVATAR
             if (!empty($data->avatar)) {
                 $user->avatar = $data->avatar;
+
+                $url = $data->avatar;
+                $img = storage_path("app/public")."/uploads". "/" . 'photo' . $data->id . '.png';
+                // Save image
+                file_put_contents($img, file_get_contents($url));
+                $photo = "/uploads". "/" . 'photo' . $data->id . '.png';
             }
             else if (empty($data->avatar)) {
                 $user->avatar = "กรุณาเพิ่มรูปโปรไฟล์";
+                $photo = null ;
             }
             $user->save();
 
@@ -172,6 +179,7 @@ class LoginController extends Controller
                 "user_id" => $data_user->id,
                 "name" => $data->name,
                 "type" => $type,
+                "photo" => $photo,
             ];
             Profile::create($profile);
         }
