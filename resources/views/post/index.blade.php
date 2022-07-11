@@ -148,23 +148,8 @@
                                        
                                             <hr style="margin:0px 0px 0px 0px; ">
                                             <div class="row d-flex justify-content-center" style="padding:10px;">
-                                                @foreach($LIKE->take(1) as $asd)
-                                                    @if(($asd->post_id  ==  $item->id))
-                                                            <form method="POST" action="{{ url('/like' . '/' . $asd->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                                {{ method_field('DELETE') }}
-                                                                {{ csrf_field() }}
-                                                                <div class="col-5 d-grid gap-2 text-center"><button type="submit" class="btn likebtn btn-lg" ><b> <i class="far fa-heart" style="color:#B8205B;"></i>  &nbsp;ถูกใจแล้ว</b></button></div>
-                                                            </form> 
-                                                    @else
-                                                    @endif
-                                                @endforeach
                                                 <div class="col-5">
-                                                    <form method="POST" action="{{ url('/like') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                                                        {{ csrf_field() }}
-                                                        <div class="d-grid  text-center"><button type="submit" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button></div>
-                                                        <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
-                                                        <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >     
-                                                    </form> 
+                                                    <div class="d-grid  text-center"><button type="submit" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button></div>
                                                 </div>
                                                 <!-- <div class="col-4 d-grid gap-2">
                                                     <button type="button" class="btn likebtn btn-lg" ><b> <i class="far fa-heart"></i>  &nbsp;ถูกใจ</b></button>

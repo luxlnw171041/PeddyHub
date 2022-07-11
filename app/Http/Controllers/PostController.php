@@ -26,7 +26,6 @@ class PostController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
         $id = Auth::id();
-        $LIKE = Like::where('user_id', $id)->get();
         $category  = $request->get('pet_category_id');
         $comment = Comment::all(['id', 'post_id' ,'user_id' ,'content' ,'created_at']);
         
@@ -39,7 +38,7 @@ class PostController extends Controller
             $post = Post::latest()->paginate($perPage);
         }
 
-        return view('post.index', compact('post' ,'id' ,'comment'  ,'LIKE' ));
+        return view('post.index', compact('post' ,'id' ,'comment' ));
     }
 
     /**
