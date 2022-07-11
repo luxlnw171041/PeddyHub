@@ -229,26 +229,26 @@ class PostController extends Controller
 
     public function un_user_like_post($user_id , $post_id)
     {
-        $data_posts = Post::where('id' , $post_id)->get();
+        // $data_posts = Post::where('id' , $post_id)->get();
 
-        foreach ($data_posts as $item) {
+        // foreach ($data_posts as $item) {
 
-            $like_all_arr = json_decode($item->like_all) ;
+        //     $like_all_arr = json_decode($item->like_all) ;
             
-            // if (in_array($user_id , $like_all_arr)){
-            //     $like_all_arr = $like_all_arr ;
-            // }
-            // else{   
-            //     array_push($like_all_arr , $user_id) ;
-            // }
+        //     // if (in_array($user_id , $like_all_arr)){
+        //     //     $like_all_arr = $like_all_arr ;
+        //     // }
+        //     // else{   
+        //     //     array_push($like_all_arr , $user_id) ;
+        //     // }
 
-        }
+        // }
 
-        DB::table('posts')
-            ->where('id', $post_id)
-            ->update([
-                'like_all' => $like_all_arr,
-        ]);
+        // DB::table('posts')
+        //     ->where('id', $post_id)
+        //     ->update([
+        //         'like_all' => $like_all_arr,
+        // ]);
 
         return "ok" ;
     }

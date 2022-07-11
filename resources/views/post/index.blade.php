@@ -227,24 +227,27 @@
                                         <div class="row d-flex justify-content-center" style="padding:10px;">
                                             <div class="col-5">
                                                 <div class="d-grid  text-center">
-                                                    <button type="submit" class="btn btn-lg likebtn" >
-                                                        <b > <i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
-                                                    </button>
-
-                                                    <!-- @if(!empty($item->like_all))
+                                                    @if(!empty($item->like_all))
                                                         @php
                                                             $like_all_arr = json_decode($item->like_all) ;
                                                         @endphp
                                                         @if(in_array($user->id , $like_all_arr))
-                                                            <button  type="submit" class="btn btn-lg likebtn" onclick="un_user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
-                                                                <b id="btn_for_un_like_{{ $item->id }}" style="color: #B8205B;"> <i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                            <button class="btn btn-lg likebtn" id="btn_for_like_{{ $item->id }}" style="color: #B8205B;"
+                                                                    onclick="un_user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
+                                                                <b><i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                            </button>
+                                                        @else
+                                                            <button class="btn likebtn btn-lg" id="btn_for_like_{{ $item->id }}"
+                                                                    onclick="user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
+                                                                <b><i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
                                                             </button>
                                                         @endif
                                                     @else
-                                                        <button  type="submit" class="btn likebtn btn-lg" onclick="user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
-                                                            <b id="btn_for_like_{{ $item->id }}"> <i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                        <button class="btn likebtn btn-lg" id="btn_for_like_{{ $item->id }}"
+                                                                onclick="user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
+                                                            <b><i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
                                                         </button>
-                                                    @endif -->
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-7 d-grid ">
@@ -422,9 +425,14 @@
                 // console.log(result);
                 if (result === 'ok') {
                     let btn_for_like = document.querySelector('#btn_for_like_'+post_id);
+
                     let style_btn = document.createAttribute("style");
                         style_btn.value = "color: #B8205B;";
                     btn_for_like.setAttributeNode(style_btn);
+
+                    let onclick_btn = document.createAttribute("onclick")
+                        onclick_btn.value = "un_user_like_post('" + user_id +"' , '" + post_id + "');";
+                    btn_for_like.setAttributeNode(onclick_btn);
                 }
 
         });
@@ -439,10 +447,15 @@
             .then(result => {
                 // console.log(result);
                 if (result === 'ok') {
-                    let btn_for_un_like_ = document.querySelector('#btn_for_un_like_'+post_id);
+                    let btn_for_like = document.querySelector('#btn_for_like_'+post_id);
+
                     let style_btn = document.createAttribute("style");
                         style_btn.value = "color: none;";
-                    btn_for_un_like_.setAttributeNode(style_btn);
+                    btn_for_like.setAttributeNode(style_btn);
+
+                    let onclick_btn = document.createAttribute("onclick")
+                        onclick_btn.value = "user_like_post('" + user_id +"' , '" + post_id + "');";
+                    btn_for_like.setAttributeNode(onclick_btn);
                 }
 
         });
