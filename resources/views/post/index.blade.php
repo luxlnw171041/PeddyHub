@@ -43,7 +43,7 @@
   font-family: 'Kanit', sans-serif;" 
 
   class="alert alert-primary  hide" role="alert">
-    <center>คัดลอกลิงก์เรียบร้อยแล้ว</center>
+    <center>คัดลอกลิงก์แล้ว</center>
 </div>
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp justify-content-end" style="margin-bottom:-50px">  

@@ -26,9 +26,12 @@
                                     </span>
                                     <span class="share">
                                         <span class="heading"> Share This Post: </span>
-                                        <a href="#" title="facebook"><i class="fas fa-facebook"></i></a>
-                                        <a href="#" title="twitter"><i class="fas fa-twitter"></i></a>
-                                        <a href="#" title="instagram"><i class="fas fa-instagram"></i></a>
+                                        <a href="#" style="background-color:lightsteelblue !important;">
+                                            <i class="fa-brands fa-facebook-square"></i>
+                                        </a>
+                                        <a href="#" style="background-color:lightseagreen !important;">
+                                            <i class="fa-brands fa-line"></i>
+                                        </a>
                                     </span>
                                     <div class="comments mt-2">
                                         <h5>
@@ -115,11 +118,7 @@
                                                     <input class="d-none" name="user_id" type="number" id="user_id" value="{{$user_id}}" >                                
                                                     <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $post->id }}" >  
                                                     <div class="col-lg-12 col-md-12 col-sm-12">
-                                                        <div class="form-group">
-                                                            <textarea name="content" id="content" cols="30" rows="5"
-                                                                class="form-control"
-                                                                placeholder="แสดงความคิดเห็น..."></textarea>
-                                                        </div>
+                                                        <textarea name="content" id="content" placeholder="แสดงความคิดเห็น..."></textarea>
                                                     </div>
                                                 </div>
                                                 <button type="submit" class="btn btn-11">แสดงความคิดเห็น</button>
