@@ -68,8 +68,72 @@
 
     .text-card {
         font-size: 11px !important;
-    }.text_number{
+    }
+
+    .text_number {
         font-size: 17px !important;
+    }
+
+    .arrow {
+        width: 13px;
+        transition: transform 0.3s ease;
+        color: #B8205B;
+    }
+
+    .arrow.open {
+        transform: rotate(180deg);
+    }
+
+    .btn-dropdown {
+        color: #6C6185;
+        font-size: 18px;
+        background: white;
+        padding: 10px 30px;
+        box-shadow: 3px 3px 30px rgba(118, 96, 168, 0.2);
+        border-radius: 15px;
+        display: inline-block;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+        margin-bottom: 15px;
+    }
+
+    .btn-dropdown:hover {
+        color: #B8205B;
+        transform: translateY(3px);
+        box-shadow: 3px 3px 30px rgba(118, 96, 168, 0.17);
+    }
+
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    .menu {
+        color: #E3DFE9;
+        font-size: 18px;
+        background: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 15px;
+        transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease 0.15s;
+        transform-origin: center top;
+        transform: scale(0.01);
+        box-shadow: 3px 3px 30px rgba(118, 96, 168, 0.15);
+    }
+
+    .item-dd {
+        position: relative;
+        color: #6C6185;
+        text-decoration: none;
+        display: block;
+        padding: 12.5px 30px;
+        transition: color 0.2s ease, background-color 0.2s ease, padding-left 0.2s ease;
+        overflow: hidden;
+    }
+
+    .item-dd:hover {
+        color: #b8205b;
+        padding-left: 35px;
+        background: #F1F1F1;
     }
 </style>
 
@@ -111,7 +175,7 @@
                             @endforeach -->
                         <div class="content">
                             <div class="name wow fadeInDown">
-                                <a title="name" class="notranslate">{{ $data->profile->name }}</a>
+                                <a title="name" style="font-family: 'Kanit', sans-serif;" class="notranslate">{{ $data->profile->name }}</a>
                                 @switch($data->profile->sex)
                                 @case('ผู้หญิง')
                                 <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
@@ -138,7 +202,7 @@
                                     <div class="spec card">
                                         <ul>
                                             <li>
-                                                <h5>ข้อมูลส่วนตัว &nbsp;
+                                                <h5 style="font-family: 'Kanit', sans-serif;">ข้อมูลส่วนตัว &nbsp;
                                                     @switch($data->profile->language)
                                                     @case('en')
                                                     <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
@@ -209,44 +273,44 @@
                                                     </a>
                                                 </h5>
                                             </li>
-                                            <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> username: </span> {{ $data->username }}</li>
-                                            <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> วันเกิด: </span> {{ $data->profile->birth }}</li>
-                                            <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> อีเมล: </span> {{ $data->email }}</li>
-                                            <li style="font-size:22px;"><i class="fas fa-paw yellow me-2"></i> <span> เบอร์: </span>{{ $data->profile->phone }}</li>
+                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> username: </span> {{ $data->username }}</li>
+                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> วันเกิด: </span>{{ thaidate("j F Y" , strtotime($data->profile->birth)) }}</li>
+                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> อีเมล: </span> {{ $data->email }}</li>
+                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> เบอร์: </span>{{ $data->profile->phone }}</li>
                                         </ul>
 
                                     </div>
                                 </div>
                                 @if(!empty($data->profile->photo_id_card))
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="spec card">
-                                            <ul>
-                                                <li>
-                                                    <h5>บัตรประชาชน
-                                                    </h5>
-                                                </li>
-                                                <li>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="spec card">
+                                        <ul>
+                                            <li>
+                                                <h5 style="font-family: 'Kanit', sans-serif;">บัตรประชาชน
+                                                </h5>
+                                            </li>
+                                            <li>
                                                 <img style="z-index:  5;" class="shadow img_cer" src="{{ url('storage')}}/{{ $data->profile->photo_id_card }}">
-                                                </li>
-                                            </ul>
-                                        </div>
+                                            </li>
+                                        </ul>
                                     </div>
+                                </div>
                                 @endif
                                 @if(!empty($data->profile->photo_passport))
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="spec card">
-                                            <ul>
-                                                <li>
-                                                    <h5>พาสปอร์ต
-                                                    </h5>
-                                                </li>
-                                                <li>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="spec card">
+                                        <ul>
+                                            <li>
+                                                <h5 style="font-family: 'Kanit', sans-serif;">พาสปอร์ต
+                                                </h5>
+                                            </li>
+                                            <li>
                                                 <img style="z-index:  5;" class="shadow img_cer" src="{{ url('storage')}}/{{ $data->profile->photo_passport }}">
-                                                </li>
-                                            </ul>
+                                            </li>
+                                        </ul>
 
-                                        </div>
                                     </div>
+                                </div>
                                 @endif
                             </div>
                         </div>
@@ -269,7 +333,7 @@
 
     <div class="button wow fadeInUp ">
         <div class="container  d-flex justify-content-end">
-            <a style="font-size:15px;" href="{{ url('/pet/create') }}" class="btn main" title="contact">
+            <a style="font-size:15px;font-family: 'Kanit', sans-serif;" href="{{ url('/pet/create') }}" class="btn main" title="contact">
                 เพิ่มสัตว์เลี้ยง <i class="fas fa-paw"></i>
             </a>
         </div>
@@ -295,7 +359,7 @@
                                     <div class="item">
                                         <div class="testimon">
                                             <div class="image">
-                                                <img src="{{ url('storage/'.$item->photo )}}" height="300px" alt="image of pet" title="pet" class=" customer">
+                                                <img style="object-fit: cover;" src="{{ url('storage/'.$item->photo )}}" height="300px" alt="image of pet" title="pet" class=" customer">
                                             </div>
                                         </div>
                                     </div>
@@ -307,7 +371,7 @@
                                     <div class="item">
                                         <div class="testimon">
                                             <div class="image">
-                                                <img src="{{ url('storage/'.$item->photo_2 )}}" height="300px" alt="image of pet" title="pet" class=" customer">
+                                                <img style="object-fit: cover;" src="{{ url('storage/'.$item->photo_2 )}}" height="300px" alt="image of pet" title="pet" class=" customer">
                                             </div>
                                         </div>
                                     </div>
@@ -316,7 +380,7 @@
                                     <div class="item">
                                         <div class="testimon">
                                             <div class="image">
-                                                <img src="{{ url('storage/'.$item->photo_3 )}}" height="300px" alt="image of pet" title="pet" class=" customer">
+                                                <img style="object-fit: cover;" src="{{ url('storage/'.$item->photo_3 )}}" height="300px" alt="image of pet" title="pet" class=" customer">
                                             </div>
                                         </div>
                                     </div>
@@ -324,7 +388,7 @@
                                 </div>
                             </div>
                             <div class="content">
-                                <h6 class="wow fadeInDown text-conter notranslate">
+                                <h6 class="wow fadeInDown text-conter notranslate" style="font-family: 'Kanit', sans-serif;">
                                     @php
                                     $pet_category = $item->pet_category_id ;
                                     @endphp
@@ -342,34 +406,39 @@
                                     @break
                                     @endswitch
                                     <br class="d-block d-md-none">
-                                    
+
                                 </h6>
-                                <ul style="font-size:20px;">
-                                    <li><i class="fas fa-paw"></i>วันเกิด : {{ thaidate("j/m/Y" , strtotime($item->birth)) }}</li> 
-                                    <li><i class="fas fa-paw"></i>
-                                        อายุ : 
+                                <ul style="font-size:20px;font-family: 'Kanit', sans-serif;">
+                                    <li><i class="fas fa-paw"></i>วันเกิด : {{ thaidate("j/m/Y" , strtotime($item->birth)) }}</li>
+                                    <li><i class="fas fa-paw"></i>อายุ :
                                         @if(\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
-                                            {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
+                                        {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ
                                         @endif
                                         @if(\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
-                                            {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                        {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
                                         @endif
                                         @if( \Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0)
-                                            {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%d')}} วัน
+                                        {{\Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%d')}} วัน
                                         @endif
                                     </li>
+                                    @if(!empty($item->blood_type))
+                                    <li><i class="fas fa-paw"></i>กรุ๊ปเลือด : {{$item->blood_type}}</li>
+                                    @endif
+                                    @if($item->pet_category->name == "สุนัข" or $item->pet_category->name == "แมว")
+                                    <li><i class="fas fa-paw"></i>พันธุ์ : {{$item->species}}</li>
+                                    @endif
+
+                                    @if(empty($item->blood_type))
+                                    <br class="d-none d-lg-block">
+                                    @endif
+                                    @if($item->pet_category->name !== 'สุนัข' && $item->pet_category->name !== 'แมว')
+                                    <br class="d-none d-lg-block">
+                                    @endif
                                 </ul>
-                                
-                                
-                                <div class="row">
-                                <!-- <div class="">
-                                    <button onclick="myFunction()" id="{{$item->id}}" class="w3-button w3-black">Click me</button>
-                                    <div id="demo{{$item->id}}" class="w3-dropdown-content w3-bar-block  w3-animate-zoom">
-                                        <a href="#" style="color: #b8205b; border-radius: 20%;" class="w3-bar-item w3-button">Link 1</a>
-                                        <a href="#" style="color: #b8205b; border-radius: 20px 0px 0px 20px;padding:0px;background-color: transparent;" class="w3-bar-item w3-button">Link 2</a>
-                                    </div>
-                                </div> -->
-                                    <div class="col-md-6 col-6 col-lg-6 d-flex justify-content-center" style="padding: 0px;">
+
+
+
+                                <!-- <div class="col-md-6 col-6 col-lg-6 d-flex justify-content-center" style="padding: 0px;">
                                         <div class="button wow fadeInUp d-flex justify-content-start ">
                                             <a href="" class="btn main d-flex align-items-end" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">
                                                 ดูบัตร &nbsp;<i class="fas fa-paw"></i>
@@ -412,9 +481,39 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div> -->
+
+                            </div>
+                            <div class="row d-flex align-items-end">
+                                <div class="col-6  d-flex align-items-end">
+                                    <div class="btn-group">
+                                        <button type="button" id="{{$item->id}}" style="font-family: 'Kanit', sans-serif;" class=" btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="arrow()">
+                                            ข้อมูล &nbsp;
+                                            <i id="arrow{{$item->id}}" class="fa-solid fa-angle-up arrow"></i>
+                                        </button>
+                                        <div class="dropdown-menu menu">
+                                            <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit') }}" style="font-family: 'Kanit', sans-serif;" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">บัตรประจำตัวสัตว์เลี้ยง</a>
+                                            <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit?edit=airplane') }}" style="font-family: 'Kanit', sans-serif;">เอกสารเดินทาง</a>
+                                        </div>
                                     </div>
                                 </div>
-
+                                <div class="col-6 d-flex align-items-end">
+                                    <div class="btn-group">
+                                        <button type="button" id="{{$item->id}}" style="font-family: 'Kanit', sans-serif;" class=" btn-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="arrow_edit()">
+                                            แก้ไข &nbsp;
+                                            <i id="arrow_edit{{$item->id}}" class="fa-solid fa-angle-up arrow"></i>
+                                        </button>
+                                        <div class="dropdown-menu menu">
+                                            <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit') }}" style="font-family: 'Kanit', sans-serif;">แก้ไขข้อมูล</a>
+                                            <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit?edit=airplane') }}" style="font-family: 'Kanit', sans-serif;">แก้ไขเอกสารเดินทาง</a>
+                                            <form id="myform" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <a class="dropdown-item item-dd" href="javascript:;" style="font-family: 'Kanit', sans-serif;" onclick="this.parentNode.submit();">ลบ</a>
+                                                <form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -426,7 +525,7 @@
                                     <div id="{{$item->name}}" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
                                         <div class="card-body" style="padding:5px;">
                                             <div class="row">
-                                                <div class="col-2 text-center d-flex align-items-center"  style="padding-right:0px;">
+                                                <div class="col-2 text-center d-flex align-items-center" style="padding-right:0px;">
                                                     @php
                                                     $pet_category = $pet->pet_category_id ;
                                                     @endphp
@@ -491,7 +590,7 @@
                                                     <div class="parent">
                                                         <div class="div1 text-center">
                                                             <a href="{{ url('/user_pet/' . $item->id) }}">
-                                                                <img style="position:relative ;"width="80px" src="{{ url('storage/'.$item->qr_code )}}" alt="">
+                                                                <img style="position:relative ;" width="80px" src="{{ url('storage/'.$item->qr_code )}}" alt="">
                                                             </a>
                                                         </div>
                                                         <div class="div2">
@@ -506,7 +605,7 @@
                                                         <div class="div3 d-flex align-items-end">
                                                             <img src="{{ url('storage/'.$item->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px;" width="100%" alt="image of pet" title="pet" class="fluid customer">
                                                         </div>
-                                                        <div class="div4"  style="margin-bottom:15px;">
+                                                        <div class="div4" style="margin-bottom:15px;">
                                                             <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                                                         </div>
                                                         <div class="div5">
@@ -518,11 +617,11 @@
                                                         <div class="div6 text-center ">
                                                             <br>
                                                             @if(!empty($item->profile->real_name))
-                                                            <p  style="font-size: 11px; line-height: 0.5;margin:0px;" class="notranslate"> <b>({{ $item->profile->real_name }})</b></p>
+                                                            <p style="font-size: 11px; line-height: 0.5;margin:0px;" class="notranslate"> <b>({{ $item->profile->real_name }})</b></p>
                                                             @else
-                                                            <p  style="font-size: 11px; line-height: 0.5;margin:0px;"class="notranslate"> <b>({{ $item->profile->name }})</b></p>
+                                                            <p style="font-size: 11px; line-height: 0.5;margin:0px;" class="notranslate"> <b>({{ $item->profile->name }})</b></p>
                                                             @endif
-                                                            <p id="text_jswip{{$item->id}}" style="font-size: 11px;margin:0px;color:#B8205B" > <b>เจ้าของ</b></p>
+                                                            <p id="text_jswip{{$item->id}}" style="font-size: 11px;margin:0px;color:#B8205B"> <b>เจ้าของ</b></p>
                                                         </div>
                                                         <div class="div7 text-center text-card">
                                                             <p id="text_tswip{{$item->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
@@ -540,11 +639,11 @@
                                 <button id="{{$item->name}}" onclick="downloadimage()" class="btn btn-success btn-load-pc">Download</button>
                                 <button id="swip{{$item->id}}" onclick="swipside()" style="margin-left:-100px;" class="btn btn-success btn-load-pc">แนวนอน</button>
                                 <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" style="margin-left:120px;" href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=www.peddyhub.com/pet/{{$item->id}}&p[images][0]=http://www.peddyhub.com/{{ url('storage/'.$item->photo )}}&p[title]={{$item->name}}มีบัตรประจำตัวแล้วนะ!&p[summary]=Recent+events+have+revealed+how+market-driven+education+policies,+deceivingly+labeled+as+%22reform,%22+are+revealing+their+truly+destructive+effects+on+the+streets+and+in+the+corridors+of+government:" class="fb-xfbml-parse-ignore btn btn-success btn-load-pc">แชร์</a></div>
-                                
+
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- end model -->
                     <script>
                         function swipside() {
@@ -605,12 +704,12 @@
                     </script>
                     <script>
                         function myFunction() {
-                        var x = document.getElementById("demo" + event.srcElement.id);
-                        if (x.className.indexOf("w3-show") == -1) {
-                            x.className += " w3-show";
-                        } else { 
-                            x.className = x.className.replace(" w3-show", "");
-                        }
+                            var x = document.getElementById("demo" + event.srcElement.id);
+                            if (x.className.indexOf("w3-show") == -1) {
+                                x.className += " w3-show";
+                            } else {
+                                x.className = x.className.replace(" w3-show", "");
+                            }
                         }
                     </script>
                     @endforeach
@@ -619,7 +718,15 @@
         </section>
     </div>
 </div>
+<script>
+    function arrow() {
+        document.getElementById("arrow" + event.srcElement.id).classList.toggle('open');
+    }
 
+    function arrow_edit() {
+        document.getElementById("arrow_edit" + event.srcElement.id).classList.toggle('open');
+    }
+</script>
 
 
 

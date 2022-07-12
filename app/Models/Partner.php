@@ -25,12 +25,15 @@ class Partner extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'phone', 'lat', 'lng', 'logo', 'province', 'district ', 'sub_district','name_area','link'];
+    protected $fillable = ['name', 'phone', 'lat', 'lng', 'logo', 'province', 'district ', 'sub_district','name_area','link','color_navbar',
+    'class_color_menu'];
 
     public function products(){
         return $this->hasMany('App\Models\Product', 'partner_id'); 
     }  
-
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'partner'); 
+    }
     // public function user(){
     //     return $this->belongsTo('App\Models\User', 'partner'); 
     // }

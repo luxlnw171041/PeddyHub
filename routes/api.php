@@ -71,6 +71,10 @@ Route::get('/create_new_area_check_in/{name_partner}/{name_new_check_in}', 'Chec
 
 Route::get('/user_like_post/{user_id}/{post_id}', 'PostController@user_like_post');
 Route::get('/un_user_like_post/{user_id}/{post_id}', 'PostController@un_user_like_post');
+Route::get('/check_data_partner/{user_organization}','API\PartnersController@check_data_partner');
+Route::get('/change_color_navbar/{color_navbar}/{name_partner}', 'API\PartnersController@change_color_navbar');
+Route::get('/change_color_menu/{color_navbar}/{name_partner}/{class_color_menu}', 'API\PartnersController@change_color_menu');
+
 
 
 

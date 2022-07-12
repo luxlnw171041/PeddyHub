@@ -62,7 +62,7 @@ class PartnerController extends Controller
             $requestData['logo'] = $request->file('logo')
                 ->store('uploads', 'public');
         }
-
+        $requestData['class_color_menu'] = "other";
         Partner::create($requestData);
 
         return redirect('partner')->with('flash_message', 'Partner added!');

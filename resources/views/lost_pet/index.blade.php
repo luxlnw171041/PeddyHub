@@ -164,23 +164,19 @@
                                     </div>
                                     <div style="padding-top:10px;padding-left:20px;">
                                         <div class="row col-12">
-                                            <!-- <a href="{{ url('/lost_pet/' . $item->id) }}" class="col-6 main-shadow main-radius btn btn-info">
-                                                รายละเอียด
-                                            </a>
-                                            <a href="tel:{{ $item->profile->phone }}" class="col-6 main-shadow main-radius btn btn-info" >
-                                                ติดต่อ
-                                            </a> -->
                                             <div class="card-body d-flex justify-content-between"style="padding:10px;">
                                                 <a href="{{ url('/lost_pet/' . $item->id) }}" class="btn btn-outline-peddyhub">
                                                     <b class="text-b-lost_pet"><i class="fa-solid fa-file-lines icon-menu-lost_pet"></i>  <br>
                                                         รายละเอียด
                                                     </b>
                                                 </a>
+                                                @if(!empty( $item->profile->phone ))
                                                 <a href="tel:{{ $item->profile->phone }}" class="btn btn-outline-peddyhub-call">
                                                     <b class="text-b-lost_pet"> <i class="fa-solid fa-phone icon-menu-lost_pet"></i> <br> 
                                                         ติดต่อ
                                                     </b>
                                                 </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

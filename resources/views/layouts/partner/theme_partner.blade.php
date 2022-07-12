@@ -56,32 +56,30 @@
 
 <body>
 	<!--wrapper-->
-	
+	@php
+	$user = \Illuminate\Support\Facades\Auth::user();
+	$partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
+	@endphp
+	@foreach($partner as $item)
 	<div class="wrapper">
 		<!--sidebar wrapper -->
-		<div class="sidebar-wrapper" data-simplebar="true">
-			<div class="sidebar-header">
-                    <div>
-                        
-                    </div>
-                    <div>
-                        <a href="{{ url('/partner_index') }}" >
-						@php
-						$user = \Illuminate\Support\Facades\Auth::user();
-						$partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
-						@endphp
-						<a href="{{ url('/partner_index') }}" >
-                            <h4 style="color:#b8205b;font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
-								@foreach($partner as $item)
-									{{$item->name}}
-								@endforeach
-							</h4>
-                        </a>
-                    </div>
-                <div class="toggle-icon ms-auto">
-                    <i class='bx bx-first-page'></i>
-                </div>
+		<div id="switcher-wrapper_menu" class="sidebar-wrapper" data-simplebar="true">
+						
+			<div class="sidebar-header"id="header-wrapper_menu">
+				<div>
+					<a href="{{ url('/partner_index') }}" >
+						<img src="{{ url('storage')}}/{{ $item->logo }}" class="logo-icon" alt="logo icon">
+					</a>
+				</div>
+				<div>
+					<a href="{{ url('/partner_index') }}" >
+						<h4 class="logo-text" style="white-space: nowrap; width: 150px; overflow: hidden;text-overflow: clip; ">{{$item->name}}</h4>
+					</a>
+				</div>
+				<div class="toggle-icon ms-auto"><i class="bx bx-first-page"></i>
+				</div>
 			</div>
+			@endforeach
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
 				<li class="menu-label" style="font-size:18px;color:#B8205B">
@@ -141,7 +139,7 @@
 		<!--end sidebar wrapper -->
 		<!--start header -->
 		<header style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
-                <div class="topbar d-flex align-items-center" >
+                <div id="div_color_navbar" class="topbar d-flex align-items-center" style="">
 				<nav class="navbar navbar-expand" >
 					<div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
 					</div>
@@ -190,100 +188,111 @@
 	
 	<!--end wrapper-->
 	<!--start switcher-->
-	<!-- <div class="switcher-wrapper">
-		<div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
-		</div>
+	<div class="switcher-wrapper">
+		@if(Auth::check())
+            @if(Auth::user()->role == "admin-partner")
+				<div id="div_switcher" class="switcher-btn" onclick="change_color();" style=""> 
+					<i class='bx bx-cog bx-spin'></i>
+				</div>
+			@endif
+		@endif
 		<div class="switcher-body">
 			<div class="d-flex align-items-center">
-				<h5 class="mb-0 text-uppercase">Theme Customizer</h5>
+				<h5 class="mb-0 text-uppercase">เครื่องมือปรับแต่งธีม</h5>
 				<button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
 			</div>
 			<hr/>
-			<h6 class="mb-0">Theme Styles</h6>
-			<hr/>
-			<div class="d-flex align-items-center justify-content-between">
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" checked>
-					<label class="form-check-label" for="lightmode">Light</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="darkmode">
-					<label class="form-check-label" for="darkmode">Dark</label>
-				</div>
-				<div class="form-check">
-					<input class="form-check-input" type="radio" name="flexRadioDefault" id="semidark">
-					<label class="form-check-label" for="semidark">Semi Dark</label>
-				</div>
-			</div>
-			<hr/>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
-				<label class="form-check-label" for="minimaltheme">Minimal Theme</label>
-			</div>
-			<hr/>
-			<h6 class="mb-0">Header Colors</h6>
+			<h6 class="mb-0">
+				พื้นหลังส่วนหัว
+				<i class="fas fa-sync-alt btn" style="float: right;" onclick="random_color();"></i>
+			</h6>
 			<hr/>
 			<div class="header-colors-indigators">
 				<div class="row row-cols-auto g-3">
 					<div class="col">
-						<div class="indigator headercolor1" id="headercolor1"></div>
+						<div class="indigator" id="color_item_1"></div>
 					</div>
 					<div class="col">
-						<div class="indigator headercolor2" id="headercolor2"></div>
+						<div class="indigator" id="color_item_2"></div>
 					</div>
 					<div class="col">
-						<div class="indigator headercolor3" id="headercolor3"></div>
+						<div class="indigator" id="color_item_3"></div>
 					</div>
 					<div class="col">
-						<div class="indigator headercolor4" id="headercolor4"></div>
+						<div class="indigator" id="color_item_4"></div>
 					</div>
 					<div class="col">
-						<div class="indigator headercolor5" id="headercolor5"></div>
+						<div class="indigator" id="color_item_5"></div>
 					</div>
 					<div class="col">
-						<div class="indigator headercolor6" id="headercolor6"></div>
+						<div class="indigator" id="color_item_6"></div>
 					</div>
 					<div class="col">
-						<div class="indigator headercolor7" id="headercolor7"></div>
+						<div class="indigator" id="color_item_7"></div>
 					</div>
 					<div class="col">
-						<div class="indigator headercolor8" id="headercolor8"></div>
+						<div class="indigator" id="color_item_8"></div>
+					</div>
+					<div class="col">
+						<div class="row">
+							<div class="col-5">
+								<div style="float: right;" class="indigator" id="color_item_Ex"></div>
+							</div>
+							<div class="col-7">
+								<input style="margin-top:5px;" type="text" class="form-control" id="code_color" name="code_color" placeholder="color code" oninput="add_color_item_Ex();">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<hr/>
-			<h6 class="mb-0">Sidebar Backgrounds</h6>
+			<h6 class="mb-0">พื้นหลังแถบเมนู</h6>
 			<hr/>
 			<div class="header-colors-indigators">
 				<div class="row row-cols-auto g-3">
 					<div class="col">
-						<div class="indigator sidebarcolor1" id="sidebarcolor1"></div>
+						<div class="indigator sidebarcolor1" id="sidebarcolor1" onclick="add_input_color_menu('1')"></div>
 					</div>
 					<div class="col">
-						<div class="indigator sidebarcolor2" id="sidebarcolor2"></div>
+						<div class="indigator sidebarcolor2" id="sidebarcolor2" onclick="add_input_color_menu('2')"></div>
 					</div>
 					<div class="col">
-						<div class="indigator sidebarcolor3" id="sidebarcolor3"></div>
+						<div class="indigator sidebarcolor3" id="sidebarcolor3" onclick="add_input_color_menu('3')"></div>
 					</div>
 					<div class="col">
-						<div class="indigator sidebarcolor4" id="sidebarcolor4"></div>
+						<div class="indigator sidebarcolor4" id="sidebarcolor4" onclick="add_input_color_menu('4')"></div>
 					</div>
 					<div class="col">
-						<div class="indigator sidebarcolor5" id="sidebarcolor5"></div>
+						<div class="indigator sidebarcolor5" id="sidebarcolor5" onclick="add_input_color_menu('5')"></div>
 					</div>
 					<div class="col">
-						<div class="indigator sidebarcolor6" id="sidebarcolor6"></div>
+						<div class="indigator sidebarcolor6" id="sidebarcolor6" onclick="add_input_color_menu('6')"></div>
 					</div>
 					<div class="col">
-						<div class="indigator sidebarcolor7" id="sidebarcolor7"></div>
+						<div class="indigator sidebarcolor7" id="sidebarcolor7" onclick="add_input_color_menu('7')"></div>
 					</div>
 					<div class="col">
-						<div class="indigator sidebarcolor8" id="sidebarcolor8"></div>
+						<div class="indigator sidebarcolor8" id="sidebarcolor8" onclick="add_input_color_menu('8')"></div>
 					</div>
 				</div>
 			</div>
+			<hr/>
+			<hr/>
+			<h6 type="button" class="mb-0" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+				<i class="fab fa-line text-success" style="font-size: 25px;"></i> ตั้งค่ากลุ่มไลน์
+				<a type="button" style="float:right;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-sort-down"></i>
+            </a>
+			</h6>
+            <div class="collapse" id="collapseExample">
+            	<br>
+                <ul id="ul_group_line" class="list-group">
+                	
+				</ul>
+            </div>
+			<hr/>
 		</div>
-	</div> -->
+	</div>
 	
 	<!--end switcher-->
     <!-- modal_change_color -->
@@ -407,6 +416,12 @@
     </div>
   </div>
 </div>
+@foreach($partner as $item)
+<input type="text" class="" name="user_organization" id="user_organization" value="{{ $item->name }}">
+@endforeach
+<input id="color_of_partner" type="text" class="d-none" name="" value="">
+<input id="class_color_menu" type="text" class="d-none" name="" value="">
+<input id="check_name_partner" type="hidden" name="" value="">
 	<!-- Bootstrap JS -->
 	<script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}"></script>
 	<!--plugins-->
@@ -431,7 +446,283 @@
 	<script src="{{ asset('admin/js/index.js') }}"></script>
 	<!--app JS-->
 	<script src="{{ asset('admin/js/app.js') }}"></script>
-    
+    <script>
+		document.addEventListener('DOMContentLoaded', (event) => {
+			// console.log("START");
+			check_data_partner();
+    	});
+
+		function change_color()
+    {
+        let delayInMilliseconds = 500; //0.5 second
+
+        setTimeout(function() {
+            random_color();
+        }, delayInMilliseconds);
+
+    }
+
+	function check_data_partner()
+    {
+    	let user_organization = document.querySelector('#user_organization').value ;
+    	// console.log(user_organization);
+
+    	fetch("{{ url('/') }}/api/check_data_partner/" + user_organization)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+                console.log(result[0]['class_color_menu']);
+                let delayInMilliseconds = 200; 
+
+		        setTimeout(function() {
+		        	if (result[0]['class_color_menu'] !== "other"){
+			    		document.querySelector('#sidebarcolor' + result[0]['class_color_menu'] ).click();
+		        	}
+		        }, delayInMilliseconds);
+                document.querySelector('#color_of_partner').value = result[0]['name'];
+                document.querySelector('#check_name_partner').value = result[0]['name'];
+                document.querySelector('#class_color_menu').value = result[0]['class_color_menu'];
+                document.querySelector('#div_color_navbar').style = "background: " + result[0]['color_navbar'] + ";" ;
+                document.querySelector('#div_switcher').style = "background: " + result[0]['color_navbar'] + ";" ;
+				
+		});
+    }
+	function change_color()
+    {
+        let delayInMilliseconds = 500; //0.5 second
+
+        setTimeout(function() {
+            random_color();
+        }, delayInMilliseconds);
+
+    }
+	function add_color_item_Ex()
+    {
+    	let code_color = document.querySelector('#code_color').value ;
+
+    	let color_item_Ex = document.querySelector('#color_item_Ex');
+            let color_item_Ex_style = document.createAttribute("style");
+                color_item_Ex_style.value = "background-color:" + code_color + " ;";
+                color_item_Ex.setAttributeNode(color_item_Ex_style); 
+            let click_color_item_Ex = document.createAttribute("onclick");
+                click_color_item_Ex.value = "add_input_color('" + code_color + "')";
+                 color_item_Ex.setAttributeNode(click_color_item_Ex); 
+    }
+
+    function add_color_item_Ex_menu()
+    {
+    	let code_color_menu = document.querySelector('#code_color_menu').value ;
+
+    	let color_item_Ex_menu = document.querySelector('#color_item_Ex_menu');
+    		color_item_Ex_menu.style = "";
+    		color_item_Ex_menu.onclick = "";
+
+            let color_item_Ex_style_menu = document.createAttribute("style");
+                color_item_Ex_style_menu.value = "background-color:" + code_color_menu + " ;";
+                color_item_Ex_menu.setAttributeNode(color_item_Ex_style_menu); 
+            let click_color_item_Ex_menu = document.createAttribute("onclick");
+                click_color_item_Ex_menu.value = "add_input_color_menu('" + code_color_menu + "')";
+                 color_item_Ex_menu.setAttributeNode(click_color_item_Ex_menu); 
+    }
+
+    function random_color()
+    {
+        let letters = '0123456789ABCDEF'.split('');
+        let color = '#';
+
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        add_color_to_item(color)
+    }
+
+    function add_color_to_item(color)
+    {
+        let text_color = color.split('');
+
+        let color_1 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "FF" ;
+        let color_2 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "CC" ;
+        let color_3 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "99" ;
+        let color_4 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "77" ;
+        let color_5 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "55" ;
+        let color_6 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "33" ;
+        let color_7 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "11" ;
+        let color_8 = text_color[0] + text_color[1] + text_color[2] + text_color[3] + text_color[4] + "00" ;
+
+        // 1
+        let color_item_1 = document.querySelector('#color_item_1');
+            let color_item_1_style = document.createAttribute("style");
+                color_item_1_style.value = "background-color:" + color_1 + " ;";
+                color_item_1.setAttributeNode(color_item_1_style); 
+            let click_color_item_1 = document.createAttribute("onclick");
+                click_color_item_1.value = "add_input_color('" + color_1 + "')";
+                 color_item_1.setAttributeNode(click_color_item_1); 
+
+        // 2
+        let color_item_2 = document.querySelector('#color_item_2');
+            let color_item_2_style = document.createAttribute("style");
+                color_item_2_style.value = "background-color:" + color_2 + " ;";
+                color_item_2.setAttributeNode(color_item_2_style); 
+            let click_color_item_2 = document.createAttribute("onclick");
+                click_color_item_2.value = "add_input_color('" + color_2 + "')";
+                 color_item_2.setAttributeNode(click_color_item_2); 
+
+        // 3
+        let color_item_3 = document.querySelector('#color_item_3');
+            let color_item_3_style = document.createAttribute("style");
+                color_item_3_style.value = "background-color:" + color_3 + " ;";
+                color_item_3.setAttributeNode(color_item_3_style); 
+            let click_color_item_3 = document.createAttribute("onclick");
+                click_color_item_3.value = "add_input_color('" + color_3 + "')";
+                 color_item_3.setAttributeNode(click_color_item_3); 
+
+        // 4
+        let color_item_4 = document.querySelector('#color_item_4');
+            let color_item_4_style = document.createAttribute("style");
+                color_item_4_style.value = "background-color:" + color_4 + " ;";
+                color_item_4.setAttributeNode(color_item_4_style); 
+            let click_color_item_4 = document.createAttribute("onclick");
+                click_color_item_4.value = "add_input_color('" + color_4 + "')";
+                 color_item_4.setAttributeNode(click_color_item_4); 
+
+        // 5
+        let color_item_5 = document.querySelector('#color_item_5');
+            let color_item_5_style = document.createAttribute("style");
+                color_item_5_style.value = "background-color:" + color_5 + " ;";
+                color_item_5.setAttributeNode(color_item_5_style); 
+            let click_color_item_5 = document.createAttribute("onclick");
+                click_color_item_5.value = "add_input_color('" + color_5 + "')";
+                 color_item_5.setAttributeNode(click_color_item_5); 
+
+        // 6
+        let color_item_6 = document.querySelector('#color_item_6');
+            let color_item_6_style = document.createAttribute("style");
+                color_item_6_style.value = "background-color:" + color_6 + " ;";
+                color_item_6.setAttributeNode(color_item_6_style); 
+            let click_color_item_6 = document.createAttribute("onclick");
+                click_color_item_6.value = "add_input_color('" + color_6 + "')";
+                 color_item_6.setAttributeNode(click_color_item_6); 
+
+        // 7
+        let color_item_7 = document.querySelector('#color_item_7');
+            let color_item_7_style = document.createAttribute("style");
+                color_item_7_style.value = "background-color:" + color_7 + " ;";
+                color_item_7.setAttributeNode(color_item_7_style); 
+            let click_color_item_7 = document.createAttribute("onclick");
+                click_color_item_7.value = "add_input_color('" + color_7 + "')";
+                 color_item_7.setAttributeNode(click_color_item_7); 
+
+        // 8
+        let color_item_8 = document.querySelector('#color_item_8');
+            let color_item_8_style = document.createAttribute("style");
+                color_item_8_style.value = "background-color:" + color_8 + " ;";
+                color_item_8.setAttributeNode(color_item_8_style); 
+            let click_color_item_8 = document.createAttribute("onclick");
+                click_color_item_8.value = "add_input_color('" + color_8 + "')";
+                 color_item_8.setAttributeNode(click_color_item_8); 
+
+    }
+
+    function add_input_color(color)
+    {
+    	let div_color_navbar = document.querySelector('#div_color_navbar');
+    		div_color_navbar.style = "";
+    		div_color_navbar.style = "background-color:" + color + " ;";
+
+    	let div_switcher = document.querySelector('#div_switcher');
+    		div_switcher.style = "";
+    		div_switcher.style = "background-color:" + color + " ;";
+
+    		div_switcher
+
+            color = color.replace("#","_");
+
+    	let color_of_partner = document.querySelector('#color_of_partner');
+            color_of_partner = color_of_partner.value.replaceAll(" ","_");
+
+        fetch("{{ url('/') }}/api/change_color_navbar/"+ color + "/" + color_of_partner);
+    }
+
+    function add_input_color_menu(color)
+    {
+    	var header_wrapper_menu = document.querySelector('#header-wrapper_menu');
+
+    	switch (color) {
+			case "1":
+			    color = "#null" ;
+			    class_color_menu = "1"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			case "2":
+			    color = "#null" ;
+			    class_color_menu = "2"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			case "3":
+			    color = "#null" ;
+			    class_color_menu = "3"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			case "4":
+			    color = "#null" ;
+			    class_color_menu = "4"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			case "5":
+			    color = "#null" ;
+			    class_color_menu = "5"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			case "6":
+			    color = "#null" ;
+			    class_color_menu = "6"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			case "7":
+			    color = "#null" ;
+			    class_color_menu = "7"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			case "8":
+			    color = "#null" ;
+			    class_color_menu = "8"
+			    	header_wrapper_menu.style = "" ;
+			break;
+			default:
+			    color = color ;
+			    class_color_menu = "other"
+
+			    let html_class = document.querySelector('#html_class');
+
+		    	let html_class_class_1 = document.createAttribute("class");
+            		html_class_class_1.value = "";
+            		html_class.setAttributeNode(html_class_class_1);
+
+            	let html_class_class_2 = document.createAttribute("class");
+            		html_class_class_2.value = "";
+            		html_class.setAttributeNode(html_class_class_2); 
+
+			    let switcher_wrapper_menu = document.querySelector('#switcher-wrapper_menu');
+			    	switcher_wrapper_menu.style = "" ;
+			    	switcher_wrapper_menu.style = "background-color: " + color + ";" ;
+
+			    	header_wrapper_menu.style = "" ;
+			    	header_wrapper_menu.style = "background-color: " + color + ";" ;
+
+			    	
+		}
+
+    	// console.log(color);
+    	// console.log(class_color_menu);
+
+        color = color.replace("#","_");
+
+    	let color_of_partner = document.querySelector('#color_of_partner');
+            color_of_partner = color_of_partner.value.replaceAll(" ","_");
+			console.log(color_of_partner);
+        fetch("{{ url('/') }}/api/change_color_menu/"+ color + "/" + color_of_partner + "/" + class_color_menu);
+    }
+	</script>
 </body>
 
 </html>

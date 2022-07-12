@@ -7,8 +7,7 @@
                         <div class="faq wow fadeInRight">
                             <div class="heading">
                                 <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
-                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span
-                                        class="purple"><i class="fas fa-paw"></i> </span></p>
+                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
                                 <h3>ข้อมูลพื้นฐาน <span class="wow pulse" data-wow-delay="1s"></span></h3>
                             </div>
                             <div class="row">
@@ -25,45 +24,45 @@
                                 </div> -->
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'Username' }}</b></label>
+                                        <label class="control-label"><b>{{ 'Username' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control"  name="name" type="text" id="name" value="{{ isset($data->profile->name) ? $data->profile->name : ''}}" >
+                                        <input class="form-control" name="name" type="text" id="name" value="{{ isset($data->username) ? $data->username : ''}}" readonly>
                                         {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'First name - Surname' }}</b></label>
+                                        <label class="control-label"><b>{{ 'name' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control"  name="real_name" type="text" id="real_name" value="{{ isset($data->profile->real_name) ? $data->profile->real_name : ''}}" >
+                                        <input class="form-control" name="name" type="text" id="name" value="{{ isset($data->profile->name) ? $data->profile->name : ''}}">
                                         {!! $errors->first('real_name', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'Birthday' }}</b></label>
+                                        <label class="control-label"><b>{{ 'Birthday' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group">
-                                    <input class="form-control" name="birth" type="date" id="birth" value="{{ isset($data->profile->birth) ? $data->profile->birth : ''}}" >
+                                        <input class="form-control" name="birth" type="date" id="birth" value="{{ isset($data->profile->birth) ? $data->profile->birth : ''}}">
                                         {!! $errors->first('birth', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-2 col-sm-2">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'Gender' }}</b></label>
+                                        <label class="control-label"><b>{{ 'Gender' }}</b></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-10 col-sm-10">
                                     <div class="form-group {{ $errors->has('sex') ? 'has-error' : ''}}">
-                                        <select name="sex" class="form-control"  id="sex" onchange="if(this.value=='3'){ 
+                                        <select name="sex" class="form-control" id="sex" onchange="if(this.value=='3'){ 
                                                 document.querySelector('#masseng_label').classList.remove('d-none'),
                                                 document.querySelector('#masseng_input').classList.remove('d-none'),
                                                 document.querySelector('#masseng').focus();
@@ -71,24 +70,56 @@
                                                 document.querySelector('#masseng_label').classList.add('d-none'),
                                                 document.querySelector('#masseng_input').classList.add('d-none')
                                             }">
-                                            <option value="" selected >
-                                                - โปรดเลือก - 
-                                            </option>  
-                                                @foreach (json_decode('{"ผู้ชาย":"ผู้ชาย","ผู้หญิง":"ผู้หญิง","ไม่ต้องการตอบ":"ไม่ต้องการตอบ"}', true) as $optionKey => $optionValue)
-                                            <option  ption value="{{ $optionKey }}"  {{ (isset($data->profile->sex) && $data->profile->sex == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
-                                                @endforeach
+                                            <option value="" selected>
+                                                - โปรดเลือก -
+                                            </option>
+                                            @foreach (json_decode('{"ผู้ชาย":"ผู้ชาย","ผู้หญิง":"ผู้หญิง","ไม่ต้องการตอบ":"ไม่ต้องการตอบ"}', true) as $optionKey => $optionValue)
+                                            <option ption value="{{ $optionKey }}" {{ (isset($data->profile->sex) && $data->profile->sex == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                                            @endforeach
                                         </select>
                                         {!! $errors->first('massengbox', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-12 col-md-12">
-                                    <label  class="control-label"><b>{{ 'Photo' }}</b></label>
+                                    <label class="control-label"><b>{{ 'Photo' }}</b></label>
                                 </div>
                                 <div class="col-lg-12 col-12 col-md-10">
                                     <div class="form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
-                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($data->profile->photo) ? $data->profile->photo : ''}}" accept="image/*" multiple="multiple">
+                                        <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($data->profile->photo) ? $data->profile->photo : ''}}" accept="image/*" multiple="multiple">
                                         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
                                     </div>
+                                </div>
+                                <div class="heading">
+                                    <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
+                                        </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
+                                    <h3>ข้อมูลติดต่อ <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-2">
+                                        <div class="col-12 col-md-12">
+                                            <label class="control-label"><b>{{ 'Email' }}</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-10 col-sm-10">
+                                        <div class="form-group">
+                                            <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->email ) ? $data->email  : ''}}">
+                                            {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-2 col-sm-2">
+                                        <div class="col-12 12">
+                                            <label class="control-label"><b>{{ 'Mobile number' }}</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-10 col-sm-10">
+                                        <div class="form-group">
+                                            <input class="form-control" name="phone" type="number" id="phone" value="{{ isset($data->profile->phone) ? $data->profile->phone : ''}}">
+                                            {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
+                                        </div>
+                                    </div>
+                                    @if(!empty($login))
+                                    <input class="form-control d-none" name="login" type="text" id="login" value="line">
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -98,153 +129,175 @@
                         <div class="faq wow fadeInRight">
                             <div class="heading">
                                 <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
-                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span
-                                        class="purple"><i class="fas fa-paw"></i> </span></p>
-                                <h3>ข้อมูลติดต่อ <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
+                                <h3>ข้อมูลอื่นๆ <span class="wow pulse" data-wow-delay="1s"></span></h3>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-2">
-                                    <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'Email' }}</b></label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-10 col-sm-10">
-                                    <div class="form-group">
-                                        <input class="form-control" name="email" type="text" id="email" value="{{ isset($data->email ) ? $data->email  : ''}}" readonly>
-                                        {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-2 col-sm-2">
-                                    <div class="col-12 12">
-                                        <label  class="control-label"><b>{{ 'Mobile number' }}</b></label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-10 col-sm-10">
-                                    <div class="form-group">
-                                        <input class="form-control" name="phone" type="number" id="phone" value="{{ isset($data->profile->phone) ? $data->profile->phone : ''}}" >
-                                        {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            @if(!empty($login))
-                                <input class="form-control d-none" name="login" type="text" id="login" value="line" >
-                            @endif
-                            </div>
-                            <div class="heading">
-                                <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
-                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span
-                                        class="purple"><i class="fas fa-paw"></i> </span></p>
-                                <h3>ภาษา <span class="wow pulse" data-wow-delay="1s"></span></h3>
-                            </div>
-                            <div class="row d-flex align-items-center" style="margin-top:-20px;">
-                                <!-- <div class="col-md-4 col-lg-2 col-4">
-                                    <img class="btn" id="img_flag_en" style="filter: grayscale(100%);"  width="85" src="{{ url('/peddyhub/images/national-flag/flex-en.png') }}" onclick="change_language('en' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-md-4 col-lg-2 col-4" style="top:2px">
-                                    <img class="btn" id="img_flag_zh_TW" style="filter: grayscale(100%);"  width="85" src="{{ url('/peddyhub/images/national-flag/flex-zh-TW.png') }}" onclick="change_language('zh-TW' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-4 col-md-4 col-lg-2" style="top:4px">
-                                    <img class="btn" id="img_flag_in" style="filter: grayscale(100%); " width="82" src="{{ url('/peddyhub/images/national-flag/flex-in.png') }}" onclick="change_language('hi' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-4 col-md-4 col-lg-2" style="top:5px;right:-2px;">
-                                    <img class="btn" id="img_flag_ae" style="filter: grayscale(100%);"  width="79" src="{{ url('/peddyhub/images/national-flag/flex-ar.png') }}" onclick="change_language('ar' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-4 col-md-4 col-lg-2" style="top:5px;right:-2px;">
-                                    <img class="btn" id="img_flag_ru" style="filter: grayscale(100%); " width="79"  src="{{ url('/peddyhub/images/national-flag/flex-ru.png') }}" onclick="change_language('ru' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-md-4 col-lg-2 col-4" style="top:2px">
-                                    <img class="btn" id="img_flag_es" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-es.png') }}" onclick="change_language('es' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-md-4 col-lg-2 col-4" style="top:2px">
-                                    <img class="btn" id="img_flag_de" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-de.png') }}" onclick="change_language('de' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-md-4 col-lg-2 col-4">
-                                    <img class="btn" id="img_flag_ja" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-ja.png') }}" onclick="change_language('ja' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-md-4 col-lg-2 col-4">
-                                    <img class="btn" id="img_flag_ko" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-ko.png') }}" onclick="change_language('ko' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-4 col-md-4 col-lg-2" >
-                                    <img class="btn" id="img_flag_th" style="filter: grayscale(100%); " width="85" src="{{ url('/peddyhub/images/national-flag/flex-th.png') }}" onclick="change_language('th' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-4 col-md-4 col-lg-2">
-                                    <img class="btn" id="img_flag_lo" style="filter: grayscale(100%);"  width="85" src="{{ url('/peddyhub/images/national-flag/flex-la.png') }}" onclick="change_language('lo' , '{{ $data->id }}');">
-                                </div>
-                                <div class="col-4 col-md-4 col-lg-2 " >
-                                    <img class="btn" id="img_flag_my" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-mm.png') }}" onclick="change_language('my' , '{{ $data->id }}');">
-                                </div> -->
-                                <div class="row d-flex align-items-end">
-                                    <div class="col-md-4 col-lg-3 col-4" style="top:2px">
-                                        <img class="btn" id="img_flag_en" style="filter: grayscale(100%);"  src="{{ url('/peddyhub/images/national-flag/pet-en.png') }}" onclick="change_language('en' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-md-4 col-lg-3 col-4" >
-                                        <img class="btn" id="img_flag_zh_TW" style="filter: grayscale(100%);" src="{{ url('/peddyhub/images/national-flag/pet-zh-TW.png') }}" onclick="change_language('zh-TW' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-md-4 col-lg-3 col-4">
-                                        <img class="btn" id="img_flag_ko" style="filter: grayscale(100%); "   src="{{ url('/peddyhub/images/national-flag/pet-ko.png') }}" onclick="change_language('ko' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-4 col-md-4 col-lg-3" >
-                                        <img class="btn" id="img_flag_th" style="filter: grayscale(100%); "  src="{{ url('/peddyhub/images/national-flag/pet-th.png') }}" onclick="change_language('th' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-4 col-md-4 col-lg-3" style="top:5px;right:-2px;">
-                                        <img class="btn" id="img_flag_ae" style="filter: grayscale(100%);"  src="{{ url('/peddyhub/images/national-flag/pet-ar.png') }}" onclick="change_language('ar' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-4 col-md-4 col-lg-3" style="top:4px">
-                                        <img class="btn" id="img_flag_in" style="filter: grayscale(100%);"  src="{{ url('/peddyhub/images/national-flag/pet-in.png') }}" onclick="change_language('hi' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-md-4 col-lg-3 col-4">
-                                        <img class="btn" id="img_flag_ja" style="filter: grayscale(100%); "   src="{{ url('/peddyhub/images/national-flag/pet-jp.png') }}" onclick="change_language('ja' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-4 col-md-4 col-lg-2 d-none" style="top:5px;right:-2px;">
-                                        <img class="btn" id="img_flag_ru" style="filter: grayscale(100%); " width="79"  src="{{ url('/peddyhub/images/national-flag/flex-ru.png') }}" onclick="change_language('ru' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-md-4 col-lg-2 col-4 d-none" style="top:2px">
-                                        <img class="btn" id="img_flag_es" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-es.png') }}" onclick="change_language('es' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-md-4 col-lg-2 col-4 d-none" style="top:2px">
-                                        <img class="btn" id="img_flag_de" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-de.png') }}" onclick="change_language('de' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-4 col-md-4 col-lg-2 d-none">
-                                        <img class="btn" id="img_flag_lo" style="filter: grayscale(100%);"  width="85" src="{{ url('/peddyhub/images/national-flag/flex-la.png') }}" onclick="change_language('lo' , '{{ $data->id }}');">
-                                    </div>
-                                    <div class="col-4 col-md-4 col-lg-2  d-none" >
-                                        <img class="btn" id="img_flag_my" style="filter: grayscale(100%); " width="85"  src="{{ url('/peddyhub/images/national-flag/flex-mm.png') }}" onclick="change_language('my' , '{{ $data->id }}');">
-                                    </div>
-                                </div>
-                                <input class="form-control" name="language" type="hidden" id="language" value="{{ isset($data->profile->language) ? $data->profile->language : ''}}">
-                                            {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
-                            </div>
-                            <div class="heading">
-                                <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
-                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span
-                                        class="purple"><i class="fas fa-paw"></i> </span></p>
-                                <h3>ที่อยู่ <span class="wow pulse" data-wow-delay="1s"></span></h3>
-                            </div>
-                            <div>
-                            <div class="row">
                             <div class="col-12">
                                 <div class="row">
                                     <div class="col-12 col-md-12">
+                                        <label class="control-label"><b>{{ 'ชื่อ-นามสกุล' }}</b></label>
+                                    </div>
+                                    <div class="col-12">
+                                        <input class="form-control" name="real_name" type="text" id="real_name" value="{{ isset($data->profile->real_name) ? $data->profile->real_name : ''}}">
+                                        {!! $errors->first('real_name', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                        <div class="col-6">
+                                            <label class="control-label"><b>{{ 'บัตรประชาชน' }}</b></label>
+                                            <label class="col-12" style="padding:0px;" for="photo_id_card">
+                                                <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                                    @if(!empty($data->profile->photo_id_card))
+                                                    <div class="form-group">
+                                                        <input class=" d-none form-control" name="photo_id_card" style="margin:20px 0px 10px 0px" type="file" id="photo_id_card" value="{{ $data->profile->photo_id_card }}" accept="image/*" onchange="document.getElementById('show_photo_id_card').src = window.URL.createObjectURL(this.files[0])">
+                                                    </div>
+                                                    <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_id_card" src="{{ url('storage')}}/{{ $data->profile->photo_id_card }}" />
+                                                    @else
+                                                    <div class="form-group">
+                                                        <input class="form-control" name="photo_id_card" style="margin:20px 0px 10px 0px" type="file" id="photo_id_card" value="{{ $data->profile->photo_id_card }}" accept="image/*" onchange="document.getElementById('show_photo_id_card').src = window.URL.createObjectURL(this.files[0])">
+                                                    </div>
+                                                    <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_id_card" />
+                                                    @endif
+                                                    <div class="child">
+                                                        <span>เลือกรูป</span>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="control-label"><b>{{ 'พาสปอร์ต' }}</b></label>
+                                            <label class="col-12" style="padding:0px;" for="photo_passport">
+                                                <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;">
+                                                    @if(!empty($data->profile->photo_id_card))
+                                                    <div class="form-group">
+                                                        <input class="d-none form-control" name="photo_passport" style="margin:20px 0px 10px 0px" type="file" id="photo_passport" value="{{ $data->profile->photo_passport}}" accept="image/*" onchange="document.getElementById('show_photo_passport').src = window.URL.createObjectURL(this.files[0])">
+                                                    </div>
+                                                    <img class="full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_passport" src="{{ url('storage')}}/{{ $data->profile->photo_passport }}" />
+                                                    <div class="child">
+                                                        <span>เลือกรูป</span>
+                                                    </div>
+                                                    @else
+                                                    <div class="form-group">
+                                                        <input class="form-control" name="photo_passport" style="margin:20px 0px 10px 0px" type="file" id="photo_passport" value="{{ $data->profile->photo_passport}}" accept="image/*" onchange="document.getElementById('show_photo_passport').src = window.URL.createObjectURL(this.files[0])">
+                                                    </div>
+                                                    <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_passport" />
+                                                    <div class="child">
+                                                        <span>เลือกรูป</span>
+                                                    </div>
+                                                    @endif
+                                                </div>
+                                            </label>
+                                        </div>
+                                    <div class="col-12 col-md-12">
                                         <label class="control-label"><b>{{ 'ที่อยู่ปัจจุบันของคุณ' }}</b></label>
+                                        <span class="text-danger">*</span>
+                                        @if(!empty(Auth::user()->profile->changwat_th))
+                                        <a style="color: #b8205b;" onclick="edit_address()">
+                                            แก้ไขข้อมูล
+                                        </a>
+                                        @endif
                                     </div>
                                     <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
-                                    <div class="col-12 col-md-4" style="margin-top:12px;">
-                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->changwat_th))
+                                        <input class="form-control" type="text" id="input_province" value="{{ Auth::user()->profile->changwat_th }}" readonly>
+                                        <select name="select_province" id="select_province" class="d-none form-control" onchange="select_A(); check();">
                                             <option value="" selected>- เลือกจังหวัด -</option>
                                         </select>
+                                        @else
+                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A(); check();" required>
+                                            <option value="" selected>- เลือกจังหวัด -</option>
+                                        </select>
+                                        @endif
                                     </div>
-                                    <div class="col-12 col-md-4" style="margin-top:12px;">
-                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->amphoe_th))
+                                        <input class="form-control" type="text" id="input_amphoe" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
+                                        <select name="select_amphoe" id="select_amphoe" class="d-none form-control" onchange="select_T(); check();">
                                             <option value="" selected>- เลือกอำเภอ -</option>
                                         </select>
+                                        @else
+                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T(); check();" required>
+                                            <option value="" selected>- เลือกอำเภอ -</option>
+                                        </select>
+                                        @endif
                                     </div>
-                                    <div class="col-12 col-md-4" style="margin-top:12px;">
-                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        @if(!empty(Auth::user()->profile->tambon_th))
+                                        <input class="form-control" type="text" id="input_tambon" value="{{ Auth::user()->profile->tambon_th }}" readonly>
+                                        <select name="select_tambon" id="select_tambon" class="d-none form-control" onchange="select_lat_lng(); check();">
                                             <option value="" selected>- เลือกตำบล -</option>
                                         </select>
+                                        @else
+                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng(); check();" required>
+                                            <option value="" selected>- เลือกตำบล -</option>
+                                        </select>
+                                        @endif
+                                    </div>
+                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                        <div class="faq ">
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                    <textarea style="border-radius: 25px 0px 25px 25px ;" name="address" class="form-control" rows="3" type="text" id="address" value="{{ $data->profile->address }}" placeholder="รายละเอียดที่อยู่"></textarea>
+                                                    {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6 col-lg-6 faq form-group {{ $errors->has('zip_code') ? 'has-error' : ''}}" style="margin-top:12px;">
+                                        <input style="border-radius: 25px 0px 25px 25px ;" class="form-control" name="zip_code" type="tel" id="zip_code" value="{{ $data->profile->zip_code }}" maxlength="5" placeholder="รหัสไปรษณีย์">
+                                        {!! $errors->first('zip_code', '<p class="help-block">:message</p>') !!}
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <br>
+                            <div class="heading">
+                                <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
+                                    </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
+                                <h3>ภาษา <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                            </div>
+                            <div class="row d-flex align-items-center" style="margin-top:-20px;">
+                                <div class="row d-flex align-items-end">
+                                    <div class="col-md-4 col-lg-3 col-4">
+                                        <img class="btn" id="img_flag_en" width="90%" style="filter: grayscale(100%);" src="{{ url('/peddyhub/images/national-flag/flex/flex-en.png') }}" onclick="change_language('en' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 col-4">
+                                        <img class="btn" id="img_flag_zh_TW" width="90%" style="filter: grayscale(100%);" src="{{ url('/peddyhub/images/national-flag/flex/flex-cn.png') }}" onclick="change_language('zh-TW' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 col-4">
+                                        <img class="btn" id="img_flag_ko" width="90%" style="filter: grayscale(100%); " src="{{ url('/peddyhub/images/national-flag/flex/flex-ko.png') }}" onclick="change_language('ko' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-4 col-md-4 col-lg-3">
+                                        <img class="btn" id="img_flag_th" width="90%" style="filter: grayscale(100%); " src="{{ url('/peddyhub/images/national-flag/flex/flex-th.png') }}" onclick="change_language('th' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-4 col-md-4 col-lg-3" >
+                                        <img class="btn" id="img_flag_ae" width="90%" style="filter: grayscale(100%);" src="{{ url('/peddyhub/images/national-flag/flex/flex-ar.png') }}" onclick="change_language('ar' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-4 col-md-4 col-lg-3" >
+                                        <img class="btn" id="img_flag_in" width="90%" style="filter: grayscale(100%);" src="{{ url('/peddyhub/images/national-flag/flex/flex-in.png') }}" onclick="change_language('hi' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 col-4">
+                                        <img class="btn" id="img_flag_ja" width="90%" style="filter: grayscale(100%); " src="{{ url('/peddyhub/images/national-flag/flex/flex-ja.png') }}" onclick="change_language('ja' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-4 col-md-4 col-lg-3 " >
+                                        <img class="btn" id="img_flag_ru" width="90%" style="filter: grayscale(100%); " src="{{ url('/peddyhub/images/national-flag/flex/flex-ru.png') }}" onclick="change_language('ru' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 col-4 ">
+                                        <img class="btn" id="img_flag_es" width="90%" style="filter: grayscale(100%); "  src="{{ url('/peddyhub/images/national-flag/flex/flex-es.png') }}" onclick="change_language('es' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-md-4 col-lg-3 col-4 " >
+                                        <img class="btn" id="img_flag_de" width="90%" style="filter: grayscale(100%); "  src="{{ url('/peddyhub/images/national-flag/flex/flex-de.png') }}" onclick="change_language('de' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-4 col-md-4 col-lg-3 ">
+                                        <img class="btn" id="img_flag_lo" width="90%" style="filter: grayscale(100%);"  src="{{ url('/peddyhub/images/national-flag/flex/flex-lo.png') }}" onclick="change_language('lo' , '{{ $data->id }}');">
+                                    </div>
+                                    <div class="col-4 col-md-4 col-lg-3  ">
+                                        <img class="btn" id="img_flag_my" width="90%" style="filter: grayscale(100%); "  src="{{ url('/peddyhub/images/national-flag/flex/flex-mm.png') }}" onclick="change_language('my' , '{{ $data->id }}');">
+                                    </div>
+                                </div>
+                                <input class="form-control" name="language" type="hidden" id="language" value="{{ isset($data->profile->language) ? $data->profile->language : ''}}">
+                                {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
                     </div>
@@ -252,11 +305,15 @@
             </div>
             <div class="faq wow fadeInRight">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        @if( request()->get('login') == 'line')
+                        <button class="btn btn-11" type="reset" onclick="location.href='{{ url('https://lin.ee/Bvi9Zr9') }}'">กลับ</button>
+                        @else
                         <button class="btn btn-11" type="reset" onclick="location.href='{{ url('/user') }}'">กลับ</button>
+                        @endif
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
-                        <div class="d-flex justify-content-end" >
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-11 form-control" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">บันทึก</button>
                         </div>
                     </div>
@@ -266,18 +323,20 @@
     </div>
 </div>
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => { console.log("START");
+    document.addEventListener('DOMContentLoaded', (event) => {
+        console.log("START");
         let check_changwat_th = document.querySelector('#check_changwat_th');
         select_province();
         let input_language = document.querySelector('#language');
         change_color_img(input_language.value);
         add_color();
-       
-        
-        
-        
+
+
+
+
     });
-    function add_color(){
+
+    function add_color() {
         // console.log("add_color");
         document.querySelector('#btn_profile').classList.add('btn-danger');
         document.querySelector('#btn_profile').classList.remove('btn-outline-danger');
@@ -285,69 +344,67 @@
         document.querySelector('#btn_a_profile').classList.remove('text-danger');
     }
 
-    function change_language(language , user_id)
-    {
+    function change_language(language, user_id) {
         let input_language = document.querySelector('#language');
-            input_language.value = language ;
-            change_color_img(language);
+        input_language.value = language;
+        change_color_img(language);
 
-            fetch("{{ url('/') }}/api/change_language/" + language + "/"  + user_id);
+        fetch("{{ url('/') }}/api/change_language/" + language + "/" + user_id);
 
-            switch(language) {
+        switch (language) {
             case 'th':
                 alert("เปลี่ยนภาษาเรียบร้อย");
                 document.querySelector('#btn_change_language_th').click();
-              break;
+                break;
             case 'en':
                 alert("The language has been changed successfully.");
                 document.querySelector('#btn_change_language_en').click();
-              break;
+                break;
             case 'zh-TW':
                 alert("語言已成功更改。");
                 document.querySelector('#btn_change_language_zh-TW').click();
-              break;
+                break;
             case 'ja':
                 alert("言語は正常に変更されました。");
                 document.querySelector('#btn_change_language_ja').click();
-              break;
+                break;
             case 'ko':
                 alert("언어가 성공적으로 변경되었습니다.");
                 document.querySelector('#btn_change_language_ko').click();
-              break;
+                break;
             case 'es':
                 alert("El idioma se ha cambiado correctamente.");
                 document.querySelector('#btn_change_language_es').click();
-              break;
+                break;
             case 'lo':
                 alert("ພາສາໄດ້ຖືກປ່ຽນແປງຢ່າງສໍາເລັດຜົນ.");
                 document.querySelector('#btn_change_language_lo').click();
-              break;
+                break;
             case 'my':
                 alert("ဘာသာစကားကို အောင်မြင်စွာ ပြောင်းလဲပြီးပါပြီ။.");
                 document.querySelector('#btn_change_language_my').click();
-              break;
+                break;
             case 'de':
                 alert("Die Sprache wurde erfolgreich geändert.");
                 document.querySelector('#btn_change_language_de').click();
-            break;
+                break;
             case 'hi':
                 alert("सफलतापूर्वक भाषा बदलें");
                 document.querySelector('#btn_change_language_hi').click();
-            break;
+                break;
             case 'ar':
                 alert("تغيير اللغة بنجاح");
                 document.querySelector('#btn_change_language_ar').click();
-            break;
+                break;
             case 'ru':
                 alert("Изменить язык успешно");
                 document.querySelector('#btn_change_language_ru').click();
-            break;
-          }
+                break;
+        }
 
     }
 
-    function change_color_img(language)
-    {
+    function change_color_img(language) {
         let img_th = document.querySelector('#img_flag_th');
         let img_en = document.querySelector('#img_flag_en');
         let img_zh_TW = document.querySelector('#img_flag_zh_TW');
@@ -361,45 +418,45 @@
         let img_ae = document.querySelector('#img_flag_ae');
         let img_ru = document.querySelector('#img_flag_ru');
 
-        let style_gray_th= document.createAttribute("style");
-            style_gray_th.value = "filter: grayscale(100%);";
+        let style_gray_th = document.createAttribute("style");
+        style_gray_th.value = "filter: grayscale(100%);";
 
-        let style_gray_en= document.createAttribute("style");
-            style_gray_en.value = "filter: grayscale(100%);";
+        let style_gray_en = document.createAttribute("style");
+        style_gray_en.value = "filter: grayscale(100%);";
 
-        let style_gray_zh_TW= document.createAttribute("style");
-            style_gray_zh_TW.value = "filter: grayscale(100%);";
+        let style_gray_zh_TW = document.createAttribute("style");
+        style_gray_zh_TW.value = "filter: grayscale(100%);";
 
-        let style_gray_ja= document.createAttribute("style");
-            style_gray_ja.value = "filter: grayscale(100%);";
+        let style_gray_ja = document.createAttribute("style");
+        style_gray_ja.value = "filter: grayscale(100%);";
 
-        let style_gray_ko= document.createAttribute("style");
-            style_gray_ko.value = "filter: grayscale(100%);";
+        let style_gray_ko = document.createAttribute("style");
+        style_gray_ko.value = "filter: grayscale(100%);";
 
-        let style_gray_es= document.createAttribute("style");
-            style_gray_es.value = "filter: grayscale(100%);";
+        let style_gray_es = document.createAttribute("style");
+        style_gray_es.value = "filter: grayscale(100%);";
 
-        let style_gray_lo= document.createAttribute("style");
-            style_gray_lo.value = "filter: grayscale(100%);";
+        let style_gray_lo = document.createAttribute("style");
+        style_gray_lo.value = "filter: grayscale(100%);";
 
-        let style_gray_my= document.createAttribute("style");
-            style_gray_my.value = "filter: grayscale(100%);";
-        
-        let style_gray_de= document.createAttribute("style");
-            style_gray_de.value = "filter: grayscale(100%);";
+        let style_gray_my = document.createAttribute("style");
+        style_gray_my.value = "filter: grayscale(100%);";
 
-        let style_gray_in= document.createAttribute("style");
-            style_gray_in.value = "filter: grayscale(100%);";
+        let style_gray_de = document.createAttribute("style");
+        style_gray_de.value = "filter: grayscale(100%);";
 
-        let style_gray_ae= document.createAttribute("style");
-            style_gray_ae.value = "filter: grayscale(100%);";
+        let style_gray_in = document.createAttribute("style");
+        style_gray_in.value = "filter: grayscale(100%);";
 
-        let style_gray_ru= document.createAttribute("style");
-            style_gray_ru.value = "filter: grayscale(100%);";
+        let style_gray_ae = document.createAttribute("style");
+        style_gray_ae.value = "filter: grayscale(100%);";
 
-        switch(language) {
+        let style_gray_ru = document.createAttribute("style");
+        style_gray_ru.value = "filter: grayscale(100%);";
+
+        switch (language) {
             case 'th':
-                let attr_th = img_th.getAttributeNode("style");   
+                let attr_th = img_th.getAttributeNode("style");
                 img_th.removeAttributeNode(attr_th);
 
                 img_en.setAttributeNode(style_gray_en);
@@ -413,9 +470,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'en':
-                let attr_en = img_en.getAttributeNode("style");   
+                let attr_en = img_en.getAttributeNode("style");
                 img_en.removeAttributeNode(attr_en);
 
                 img_th.setAttributeNode(style_gray_th);
@@ -429,9 +486,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'zh-TW':
-                let attr_zh_TW = img_zh_TW.getAttributeNode("style");   
+                let attr_zh_TW = img_zh_TW.getAttributeNode("style");
                 img_zh_TW.removeAttributeNode(attr_zh_TW);
 
                 img_th.setAttributeNode(style_gray_th);
@@ -445,9 +502,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'ja':
-                let attr_ja = img_ja.getAttributeNode("style");   
+                let attr_ja = img_ja.getAttributeNode("style");
                 img_ja.removeAttributeNode(attr_ja);
 
                 img_th.setAttributeNode(style_gray_th);
@@ -461,9 +518,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'ko':
-                let attr_ko = img_ko.getAttributeNode("style");   
+                let attr_ko = img_ko.getAttributeNode("style");
                 img_ko.removeAttributeNode(attr_ko);
 
                 img_th.setAttributeNode(style_gray_th);
@@ -477,9 +534,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'es':
-                let attr_es = img_es.getAttributeNode("style");   
+                let attr_es = img_es.getAttributeNode("style");
                 img_es.removeAttributeNode(attr_es);
 
                 img_th.setAttributeNode(style_gray_th);
@@ -493,9 +550,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'lo':
-                let attr_lo = img_lo.getAttributeNode("style");   
+                let attr_lo = img_lo.getAttributeNode("style");
                 img_lo.removeAttributeNode(attr_lo);
 
                 img_th.setAttributeNode(style_gray_th);
@@ -509,9 +566,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'my':
-                let attr_my = img_my.getAttributeNode("style");   
+                let attr_my = img_my.getAttributeNode("style");
                 img_my.removeAttributeNode(attr_my);
 
                 img_th.setAttributeNode(style_gray_th);
@@ -525,9 +582,9 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
+                break;
             case 'de':
-                let attr_de = img_de.getAttributeNode("style");   
+                let attr_de = img_de.getAttributeNode("style");
                 img_de.removeAttributeNode(attr_de);
 
                 img_my.setAttributeNode(style_gray_my);
@@ -541,10 +598,10 @@
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
-              
+                break;
+
             case 'hi':
-                let attr_in = img_in.getAttributeNode("style");   
+                let attr_in = img_in.getAttributeNode("style");
                 img_in.removeAttributeNode(attr_in);
 
                 img_my.setAttributeNode(style_gray_my);
@@ -558,10 +615,10 @@
                 img_de.setAttributeNode(style_gray_de);
                 img_ae.setAttributeNode(style_gray_ae);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
-          
-          case 'ar':
-                let attr_ae = img_ae.getAttributeNode("style");   
+                break;
+
+            case 'ar':
+                let attr_ae = img_ae.getAttributeNode("style");
                 img_ae.removeAttributeNode(attr_ae);
 
                 img_my.setAttributeNode(style_gray_my);
@@ -575,11 +632,11 @@
                 img_de.setAttributeNode(style_gray_de);
                 img_in.setAttributeNode(style_gray_in);
                 img_ru.setAttributeNode(style_gray_ru);
-              break;
-        
+                break;
 
-          case 'ru':
-                let attr_ru = img_ru.getAttributeNode("style");   
+
+            case 'ru':
+                let attr_ru = img_ru.getAttributeNode("style");
                 img_ru.removeAttributeNode(attr_ru);
 
                 img_my.setAttributeNode(style_gray_my);
@@ -593,10 +650,11 @@
                 img_de.setAttributeNode(style_gray_de);
                 img_in.setAttributeNode(style_gray_in);
                 img_ae.setAttributeNode(style_gray_ae);
-              break;
-          }
+                break;
+        }
 
     }
+
     function select_province() {
         let select_province = document.querySelector('#select_province');
 
@@ -684,4 +742,30 @@
             document.querySelector('#btn_change_language').click();
         }, delayInMilliseconds);
     }
+
+    function edit_address() {
+        document.querySelector('#input_province').classList.add('d-none');
+        document.querySelector('#input_amphoe').classList.add('d-none');
+        document.querySelector('#input_tambon').classList.add('d-none');
+
+        document.querySelector('#select_province').classList.remove('d-none');
+        document.querySelector('#select_amphoe').classList.remove('d-none');
+        document.querySelector('#select_tambon').classList.remove('d-none');
+
+
+    }
+</script>
+<script>
+    document.getElementById("photo_passport").addEventListener("input", function() {
+        if (photo_passport.value) {
+            document.querySelector('#show_photo_passport').classList.remove('d-none');
+            document.querySelector('#photo_passport').classList.add('d-none');
+        }
+    });
+    document.getElementById("photo_id_card").addEventListener("input", function() {
+        if (photo_id_card.value) {
+            document.querySelector('#show_photo_id_card').classList.remove('d-none');
+            document.querySelector('#photo_id_card').classList.add('d-none');
+        }
+    });
 </script>

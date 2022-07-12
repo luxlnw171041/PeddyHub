@@ -372,4 +372,45 @@ class PartnersController extends Controller
 
         return "OK" ;
     }
+    public function check_data_partner($user_organization)
+    {
+        $data_partners = Partner::where("name", $user_organization)
+            ->where("name_area", null)
+            ->get();
+
+        return $data_partners;
+    }
+    public function change_color_menu($color_menu , $partner , $class_color_menu)
+    {
+        $color_menu = str_replace("_","#",$color_menu);
+        if ($color_menu == "#null") {
+            $color_menu = null ;
+        }
+
+        $partner = str_replace("_"," ",$partner);
+
+        DB::table('partners')
+              ->where('name', $partner)
+              ->where("name_area", null)
+              ->update([
+                'color' => $color_menu,
+                'class_color_menu' => $class_color_menu,
+        ]);
+
+        return $color_menu ;
+    }
+    public function change_color_navbar($color_navbar , $partner)
+    {
+        $color_navbar = str_replace("_","#",$color_navbar);
+        $partner = str_replace("_"," ",$partner);
+
+        DB::table('partners')
+              ->where('name', $partner)
+              ->where("name_area", null)
+              ->update([
+                'color_navbar' => $color_navbar,
+        ]);
+
+        return $color_navbar ;
+    }
 }

@@ -92,7 +92,8 @@ class UserController extends Controller
         if (Auth::id() == $id )
         {
              $data = User::findOrFail($id);
-            return view('user/edit', compact('data','login'));
+             $changwat = $data->profile->changwat_th;
+            return view('user/edit', compact('data','login','changwat'));
             
         }
         else
@@ -113,8 +114,9 @@ class UserController extends Controller
         $requestData = $request->all();
                 if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
-                ->store('storage/uploads', 'public'); 
+                ->store('uploads', 'public'); 
         }
+        
         
 
         $data = User::findOrFail($id);
@@ -175,7 +177,13 @@ class UserController extends Controller
             $birth_month = $birth->diffInMonths($now)% 12;
             $birth_year = $birth->diffInYears($now);
             $birth_day = $birth->diffInDays($now);
+        //      echo "<pre>";
+        // print_r($birth_day);
+        // print_r($birth_month);
+        // print_r($birth_year);
 
+        // echo "</pre>";
+        // exit();
             return view('user/user_pet_checklist',compact('petuser' ,'user' ,'birth_month' ,'birth_year','birth_day','now') );
             
         }else{

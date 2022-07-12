@@ -9,6 +9,7 @@ use App\Models\Profile;
 use App\Models\LineMessagingAPI;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -108,7 +109,7 @@ class ProfileController extends Controller
         $requestData = $request->all();
                 if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
-                ->store('storage/uploads', 'public'); 
+                ->store('uploads', 'public'); 
         }
 
         if(!empty($requestData['select_tambon'])){
@@ -116,7 +117,27 @@ class ProfileController extends Controller
             $requestData['amphoe_th'] = $requestData['select_amphoe']; 
             $requestData['changwat_th'] = $requestData['select_province']; 
         }
+        if ($request->hasFile('photo_id_card')) {
+            $requestData['photo_id_card'] = $request->file('photo_id_card')
+                ->store('uploads', 'public'); 
+        }
+        if ($request->hasFile('photo_passport')) {
+            $requestData['photo_passport'] = $request->file('photo_passport')
+                ->store('uploads', 'public'); 
+        }
+
+        $requestData['user_id'] = Auth::id(); 
         
+        if (!empty($requestData['email'])) {
+            DB::table('users')
+                ->where([ 
+                        ['id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'email' => $requestData['email'],
+                ]);
+        }  
+         
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
         
