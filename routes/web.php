@@ -89,6 +89,7 @@ Route::get('/pet/{id}', 'PetController@show');
 
 
 Route::get('/post', 'PostController@index');
+Route::get('login_line/post', 'PostController@login_line_post');
 
 
 Route::resource('comment', 'CommentController');

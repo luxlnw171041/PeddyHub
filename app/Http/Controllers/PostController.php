@@ -268,4 +268,13 @@ class PostController extends Controller
 
         return "ok" ;
     }
+
+    public function login_line_post()
+    {
+        if(Auth::check()){
+            return redirect('post');
+        }else{
+            return redirect('login/line?redirectTo=post');
+        }
+    }
 }
