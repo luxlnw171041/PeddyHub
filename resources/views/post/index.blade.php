@@ -3,66 +3,28 @@
 @section('content')
 
 <style>
-    .likebtn{
-        background-color: transparent;
-        color:#53565B;
-        font-family: 'Sarabun', sans-serif;
-        font-size:14px;
+   .likebtn{
+    background-color: transparent;
+    color:#53565B;
+    font-family: 'Sarabun', sans-serif;
+    font-size:14px;
 
-    }
-    .show {
-        -o-transition: opacity 1s;
-        -moz-transition: opacity 1s;
-        -webkit-transition: opacity 1s;
-        transition: opacity 1s;
-        opacity:1;
-    }
-    .hide {
-        opacity:0;
-        -o-transition: opacity 1s;
-        -moz-transition: opacity 1s;
-        -webkit-transition: opacity 1s;
-        transition: opacity 1s;
-    }
-    .likebtn:hover {
-        background-color: #F2F2F2; color:black ;
-    }
-
-    .lightbox {
-        /* Default to hidden */
-        display: none;
-
-        /* Overlay entire screen */
-        position: fixed;
-        z-index: 999;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-
-        /* A bit of padding around image */
-        padding: 1em;
-
-        /* Translucent background */
-        background: rgba(0, 0, 0, 0.8);
-    }
-
-    /* Unhide the lightbox when it's the target */
-    .lightbox:target {
-        display: block;
-    }
-
-    .lightbox span {
-        /* Full width and height */
-        display: block;
-        width: 100%;
-        height: 100%;
-
-        /* Size and position background image */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
+   }
+   .show {
+      -o-transition: opacity 1s;
+      -moz-transition: opacity 1s;
+      -webkit-transition: opacity 1s;
+      transition: opacity 1s;
+      opacity:1;
+  }
+  .hide {
+      opacity:0;
+      -o-transition: opacity 1s;
+      -moz-transition: opacity 1s;
+      -webkit-transition: opacity 1s;
+      transition: opacity 1s;
+  }
+.likebtn:hover {background-color: #F2F2F2; color:black ;}
 
 
 /* .likebtn:active {
@@ -206,9 +168,6 @@
                         <div class="row mt-5">
                             @foreach($post as $item)
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <a href="##" class="lightbox" id="show_photo_post_{{ $item->id }}">
-                                        <span style="background-image: url('{{ url('storage/'.$item->photo )}}')"></span>
-                                    </a>
                                     <div class="card" id="id{{ $item->id }}">
                                         <div  style="padding-top:10px;padding-left:20px;">
                                             <div class="row">
@@ -250,15 +209,15 @@
                                                 </div>
                                                 <div class="col-12" style="padding:0px 0px 0px 20px">
                                                     <a href="{{ url('/post/' . $item->id) }}" title="">
-                                                        <p style="font-size:20px;">{{ $item->detail }} </p>
+                                                    
+                                                        <p class="head mt-1 mb-0">{{ $item->detail }} </p>
                                                     </a>
                                                 </div>
+                                                
                                             </div>
                                         </div>
-                                        <div>
-                                            <a href="#show_photo_post_{{ $item->id }}" class="btn-outline-dark">
-                                                <img src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet">
-                                            </a>
+                                        <div class="image">
+                                            <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
                                         </div>
                                         <div style="padding:10px;">
                                             <p style="z-index:1;color: #B8205B;">
