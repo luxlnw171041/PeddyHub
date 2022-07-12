@@ -10,7 +10,20 @@
     font-size:14px;
 
    }
-
+   .show {
+      -o-transition: opacity 1s;
+      -moz-transition: opacity 1s;
+      -webkit-transition: opacity 1s;
+      transition: opacity 1s;
+      opacity:1;
+  }
+  .hide {
+      opacity:0;
+      -o-transition: opacity 1s;
+      -moz-transition: opacity 1s;
+      -webkit-transition: opacity 1s;
+      transition: opacity 1s;
+  }
 .likebtn:hover {background-color: #F2F2F2; color:black ;}
 
 
@@ -20,7 +33,18 @@
   transform: translateY(4px) !important;;
 } */
 </style>
+<div id="copy_sucess" style="position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999; 
+  background-color: #242424;padding:15px; 
+  border-radius:10px;color:white;
+  font-family: 'Kanit', sans-serif;" 
 
+  class="alert alert-primary  hide" role="alert">
+    <center>คัดลอกลิงก์เรียบร้อยแล้ว</center>
+</div>
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp justify-content-end" style="margin-bottom:-50px">  
         <div class="container">
@@ -36,9 +60,7 @@
                 </div>
                 </div>
             </div> -->
-            <div style="position: absolute;z-index: 999;" class="alert alert-primary" role="alert">
-                คัดลอกลิงก์เรียบร้อยแล้ว
-            </div>
+            
             <div class="row col-12">
                 @include ('menubar.menu')
             </div>
@@ -528,7 +550,11 @@
 
         /* Copy the text inside the text field */
         navigator.clipboard.writeText(copyText);
-          
+        var copy_sucess = document.getElementById("copy_sucess");
+        copy_sucess.className = "show";
+        setTimeout(function () {
+            copy_sucess.className = 'hide';
+        }, 2000);
     }
 
 </script>
