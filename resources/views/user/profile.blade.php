@@ -482,7 +482,6 @@
                                             </div>
                                         </div>
                                     </div> -->
-
                             </div>
                             <div class="row d-flex align-items-end">
                                 <div class="col-6  d-flex align-items-end">
@@ -509,8 +508,8 @@
                                             <form id="myform" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <a class="dropdown-item item-dd" href="javascript:;" style="font-family: 'Kanit', sans-serif;" onclick="this.parentNode.submit();">ลบ</a>
-                                                <form>
+                                                <a class="dropdown-item item-dd"  style="font-family: 'Kanit', sans-serif;" href="javascript:void()" onclick="document.getElementById('myform').submit();">ลบ</a>
+                                            <form>
                                         </div>
                                     </div>
                                 </div>

@@ -610,7 +610,7 @@ img {
     text-transform: uppercase;
     line-height: 65px;
     text-align: center;
-    z-index: 99999;
+    z-index: 999;
     cursor: pointer;
     border-radius: 50px;
     background: #B81F5B;
