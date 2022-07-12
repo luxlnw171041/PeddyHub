@@ -13,6 +13,7 @@
 
 .likebtn:hover {background-color: #F2F2F2; color:black ;}
 
+
 /* .likebtn:active {
   background-color: #3e8e41 !important;;
   box-shadow: 0 5px #666 !important;;
@@ -35,7 +36,9 @@
                 </div>
                 </div>
             </div> -->
-
+            <div style="position: absolute;z-index: 999;" class="alert alert-primary" role="alert">
+                คัดลอกลิงก์เรียบร้อยแล้ว
+            </div>
             <div class="row col-12">
                 @include ('menubar.menu')
             </div>
@@ -167,7 +170,7 @@
                                                     <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
                                                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                                                     <div class="dropdown-menu dropdown-primary">
-                                                        <a class="dropdown-item" href="#" >
+                                                        <a class="dropdown-item" onclick="copy_link('{{ $item->id }}');">
                                                             <i class="fa-solid fa-copy text-info"></i>&nbsp;&nbsp;คัดลอกลิงก์
                                                         </a>
                                                         @if(($id  ==  $item->user_id))
@@ -207,8 +210,16 @@
                                                 <span class="like notranslate">
                                                     <i class="fa-solid fa-heart"></i> <span id="span_count_like_{{ $item->id }}">{{ $count_like }}</span>
                                                 </span>
-                                                <span style="float:right;" class="comment">
-                                                    ความคิดเห็น&nbsp;<span id="span_conut_comment">20</span>&nbsp;
+                                                @php
+                                                    $all_comment = \App\Models\Comment::where(['post_id' => $item->id])->get();
+                                                    if(count($all_comment) == 0){
+                                                        $count_all_comment = "ยังไม่มีความคิดเห็น";
+                                                    }else{
+                                                        $count_all_comment = "ความคิดเห็น " . count($all_comment);
+                                                    }
+                                                @endphp
+                                                <span style="float:right;" class="comment" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}">
+                                                    {{ $count_all_comment }}&nbsp;
                                                 </span>
                                             </p>
                                             
@@ -366,7 +377,6 @@
                 </section>
             </div>
         </div>
-   
 
 
     <!-- <div class="container">
@@ -511,4 +521,14 @@
 
         });
     }
+
+    function copy_link(post_id) {
+        /* Get the text field */
+        var copyText = "https://www.peddyhub.com/post/" + post_id;
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText);
+          
+    }
+
 </script>
