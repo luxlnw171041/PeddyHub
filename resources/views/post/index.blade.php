@@ -168,14 +168,16 @@
                                                     aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
                                                     <div class="dropdown-menu dropdown-primary">
                                                         <a class="dropdown-item" href="#" >
-                                                            <i class="fa-solid fa-copy"></i>&nbsp;&nbsp;คัดลอก
+                                                            <i class="fa-solid fa-copy text-info"></i>&nbsp;&nbsp;คัดลอกลิงก์
                                                         </a>
                                                         @if(($id  ==  $item->user_id))
-                                                            <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
+                                                            <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fa-solid fa-pen-to-square text-warning"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
                                                             <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                                 {{ method_field('DELETE') }}
                                                                 {{ csrf_field() }}
-                                                                <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;ลบโพสต์</button>
+                                                                <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                                                    <i class="fa-solid fa-trash-can text-danger"></i>&nbsp;&nbsp;ลบโพสต์
+                                                                </button>
                                                             </form>
                                                         @endif
                                                     </div>
@@ -225,7 +227,7 @@
                                         </div>
                                         <hr style="margin:0px 0px 0px 0px; ">
                                         <div class="row d-flex justify-content-center" style="padding:10px;">
-                                            <div class="col-5">
+                                            <div class="col-3">
                                                 @if(Auth::check())
                                                 <div class="d-grid  text-center">
                                                     @if(!empty($item->like_all))
@@ -235,26 +237,51 @@
                                                         @if(in_array($user->id , $like_all_arr))
                                                             <button class="btn btn-lg likebtn" id="btn_for_like_{{ $item->id }}" style="color: #B8205B;"
                                                                     onclick="un_user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
-                                                                <b><i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                                <b>
+                                                                    <i class="far fa-heart"></i>
+                                                                    <br>
+                                                                    ถูกใจ
+                                                                </b>
                                                             </button>
                                                         @else
                                                             <button class="btn likebtn btn-lg" id="btn_for_like_{{ $item->id }}"
                                                                     onclick="user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
-                                                                <b><i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                                <b>
+                                                                    <i class="far fa-heart"></i>
+                                                                    <br>
+                                                                    ถูกใจ
+                                                                </b>
                                                             </button>
                                                         @endif
                                                     @else
                                                         <button class="btn likebtn btn-lg" id="btn_for_like_{{ $item->id }}"
                                                                 onclick="user_like_post('{{ $user->id }}' , '{{ $item->id }}');">
-                                                            <b><i class="far fa-heart"></i> &nbsp; ถูกใจ</b>
+                                                            <b>
+                                                                <i class="far fa-heart"></i>
+                                                                <br>
+                                                                ถูกใจ
+                                                            </b>
                                                         </button>
                                                     @endif
                                                 </div>
                                                 @endif
                                             </div>
-                                            <div class="col-7 d-grid ">
+                                            <div class="col-6 d-grid ">
                                                 <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}">
-                                                    <b><i class="fas fa-comment-dots"></i> &nbsp; แสดงความคิดเห็น</b>
+                                                    <b>
+                                                        <i class="fas fa-comment-dots"></i>
+                                                        <br>
+                                                        แสดงความคิดเห็น
+                                                     </b>
+                                                </button>
+                                            </div>
+                                            <div class="col-3 d-grid ">
+                                                <button class="btn likebtn btn-lg" >
+                                                    <b>
+                                                        <i class="fa-solid fa-share-all"></i>
+                                                        <br>
+                                                        แชร์
+                                                    </b>
                                                 </button>
                                             </div>
                                         </div>
