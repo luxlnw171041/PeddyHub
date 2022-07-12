@@ -99,11 +99,11 @@
                     {{ csrf_field() }}
 
                     <!-- Modal -->
-                    <div class="modal fade" id="modal_pot" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal fade" id="modal_pot" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle_new_post" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">สร้างโพสต์</h5>
+                            <h5 class="modal-title" id="exampleModalScrollableTitle_new_post">สร้างโพสต์</h5>
                             <span class="close notranslate" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </span>
@@ -322,7 +322,7 @@
                                 </div>
 
                                 <!-- modal -->
-                                <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" style="z-index: index 9;00000;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" style="z-index:999 !important;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
@@ -331,36 +331,47 @@
                                             <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div class="modal-body card" style="border:none;padding:15px;margin-top: -5px;">
                                             <div class="row">
                                                 <!-- <span class="category">Pet Care</span> -->
                                                 @foreach($comment as $data)
                                                     @if(($data->post_id  ==  $item->id))
-                                                        <div class="col-2 text-center" style="padding:0px;margin-top:10px;">
-                                                            @if(!empty($data->profile->photo))
-                                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $data->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
-                                                            @else
-                                                            <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="peddyhub/images/home_5/icon1.png" alt="image of client" title="client" class="img-fluid customer">
-                                                            @endif
-                                                            </div>
-                                                            <div class="col-9" style="padding:0px">
-                                                                <p style="margin-bottom:-25px;">
+                                                        <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
+                                                            <center>
+                                                                @if(!empty($data->profile->photo))
+                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="{{ url('storage')}}/{{ $data->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                                @else
+                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" alt="image of client" title="client" class="img-fluid customer">
+                                                                @endif
+                                                            </center>
+                                                        </div>
+                                                        <div class="col-10">
+                                                            <p>
+                                                                <b class="notranslate">
                                                                     @if(!empty($item->profile->name))
                                                                         {{ $item->profile->name }}
                                                                     @else
                                                                         Guest
                                                                     @endif
-                                                                </p> 
-                                                                <div class="card">
-                                                                    <div class="card-body">
-                                                                        {{$data->content}}
-                                                                    </div>
-                                                                </div> 
-                                                            
+                                                                </b>
+                                                                <br>
+                                                                {{$data->content}}
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="row">
+                                                                <div class="col-6 ">
+                                                                    <p class="text-secondary" style="font-size: 14px;">
+                                                                        <span onclick="user_like_comment();">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <p class="text-secondary" style="font-size: 14px;float: right;">
+                                                                        {{ $data->created_at->diffForHumans() }} 
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-1"></div>
-                                                            <div class="col-1"></div>
-                                                            <div class="col-10 d-flex justify-content-end">{{ $data->created_at->diffForHumans() }}</div>
+                                                        </div>
                                                     @endif
                                                             
                                                 @endforeach
@@ -372,15 +383,17 @@
 
                                                 <div class="row col-12" style="padding:5px;">
                                                     @if(Auth::check())
-                                                        <div class="col-10" style="padding:0px;">
+                                                        <div class="col-9" style="padding:0px;">
                                                             {{ csrf_field() }}
                                                             <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
                                                             <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
                                                             <input class="form-control" name="content" type="text" id="content" value="" >
 
                                                         </div>
-                                                        <div class="col-2">
-                                                            <button type="submit" class="btn btn-primary" style="border-radius: 50%;"><i class="fas fa-arrow-right"></i></button>
+                                                        <div class="col-3">
+                                                            <button type="submit" class="btn btn-primary" style="border-radius: 50%;margin-top: 5px;">
+                                                                <i class="fas fa-arrow-right"></i>
+                                                            </button>
                                                         </div>
                                                     @else
                                                     <h6 class="text-center">เข้าสู่ระบบเพื่อคอมเมนต์</h6>    
@@ -542,6 +555,11 @@
                 }
 
         });
+    }
+
+    function user_like_comment()
+    {
+        console.log("lhjkll");
     }
 
     function copy_link(post_id) {
