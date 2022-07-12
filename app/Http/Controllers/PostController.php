@@ -229,26 +229,42 @@ class PostController extends Controller
 
     public function un_user_like_post($user_id , $post_id)
     {
-        // $data_posts = Post::where('id' , $post_id)->get();
+        $data_posts = Post::where('id' , $post_id)->first();
 
-        // foreach ($data_posts as $item) {
+        if (!empty($data_posts->like_all)) {
 
-        //     $like_all_arr = json_decode($item->like_all) ;
+            $like_all_arr = json_decode($data_posts->like_all) ;
             
-        //     // if (in_array($user_id , $like_all_arr)){
-        //     //     $like_all_arr = $like_all_arr ;
-        //     // }
-        //     // else{   
-        //     //     array_push($like_all_arr , $user_id) ;
-        //     // }
+            if (count($like_all_arr) === 1) {
+                $like_arr = null ;
+            }else{
+                foreach (array_keys($like_all_arr, $user_id, true) as $key) {
+                    unset($like_all_arr[$key]);
+                }
 
-        // }
+                $like_arr = null ;
+                foreach ($like_all_arr as $key) {
+                    if (empty($like_arr)) {
+                        $like_arr = array($key) ;
+                    }else{
+                        if (in_array($key , $like_arr)){
+                            $like_arr = $like_arr ;
+                        }
+                        else{   
+                            array_push($like_arr , $key) ;
+                        }
+                    }
+                }
+            }
 
-        // DB::table('posts')
-        //     ->where('id', $post_id)
-        //     ->update([
-        //         'like_all' => $like_all_arr,
-        // ]);
+            
+
+            DB::table('posts')
+                ->where('id', $post_id)
+                ->update([
+                    'like_all' => $like_arr,
+            ]);
+        }
 
         return "ok" ;
     }

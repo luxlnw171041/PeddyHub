@@ -203,10 +203,10 @@
                                                     }
                                                 @endphp
                                                 <span class="like notranslate">
-                                                    <i class="fa-solid fa-heart"></i> {{ $count_like }}
+                                                    <i class="fa-solid fa-heart"></i> <span id="span_count_like_{{ $item->id }}">{{ $count_like }}</span>
                                                 </span>
                                                 <span style="float:right;" class="comment">
-                                                    ความคิดเห็น&nbsp;<span id="span_conut_comment">20</span>&nbsp;รายการ
+                                                    ความคิดเห็น&nbsp;<span id="span_conut_comment">20</span>&nbsp;
                                                 </span>
                                             </p>
                                             
@@ -226,6 +226,7 @@
                                         <hr style="margin:0px 0px 0px 0px; ">
                                         <div class="row d-flex justify-content-center" style="padding:10px;">
                                             <div class="col-5">
+                                                @if(Auth::check())
                                                 <div class="d-grid  text-center">
                                                     @if(!empty($item->like_all))
                                                         @php
@@ -249,6 +250,7 @@
                                                         </button>
                                                     @endif
                                                 </div>
+                                                @endif
                                             </div>
                                             <div class="col-7 d-grid ">
                                                 <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}">
@@ -418,6 +420,17 @@
     function user_like_post(user_id , post_id){
         // console.log(user_id);
         // console.log(post_id);
+        let span_count_like = document.querySelector('#span_count_like_' + post_id);
+            // console.log("span_count_like >>> " + span_count_like.innerText);
+
+        let sum = 0 ;
+        if (span_count_like.innerText === "ถูกใจเป็นคนแรก") {
+            sum = 1;
+        }else{
+            sum = parseInt(span_count_like.innerText) + 1;
+        }
+
+        document.querySelector('#span_count_like_' + post_id).innerText = sum.toString();
 
         fetch("{{ url('/') }}/api/user_like_post/"+ user_id + "/" + post_id)
             .then(response => response.text())
@@ -441,6 +454,17 @@
     function un_user_like_post(user_id , post_id){
         // console.log(user_id);
         // console.log(post_id);
+        let span_count_like = document.querySelector('#span_count_like_' + post_id);
+        // console.log(span_count_like.innerText);
+
+        let sum = 0 ;
+        sum = parseInt(span_count_like.innerText) - 1;
+        
+        if (sum === 0) {
+            document.querySelector('#span_count_like_' + post_id).innerText = "ถูกใจเป็นคนแรก";
+        }else{
+            document.querySelector('#span_count_like_' + post_id).innerText = sum.toString();
+        }
 
         fetch("{{ url('/') }}/api/un_user_like_post/"+ user_id + "/" + post_id)
             .then(response => response.text())
