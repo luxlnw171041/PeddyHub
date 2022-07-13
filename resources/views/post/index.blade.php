@@ -337,9 +337,9 @@
                                     </div>
                                 </div>
 
-                                <!-- modal -->
-                                <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalScrollableTitle">ความคิดเห็น</h5>
@@ -347,71 +347,70 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                        <div class="modal-body card" style="border:none;padding:15px;margin-top: -5px;">
-                                            <div class="row" id="content_comment_{{ $item->id }}">
-
+                                            <div class="modal-body" style="border:none;padding:15px;margin-top: -5px;">
                                                 <!-- -------------- ตัวอย่าง -------------- -->
-                                                <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
-                                                    <center>
-                                                        <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
-                                                    </center>
-                                                </div>
-                                                <div class="col-10">
-                                                    <p>
-                                                        <b class="notranslate">
-                                                            ชื่อคน Comment
-                                                        </b>
-                                                        <i style="float:right;" class="fa-solid fa-ellipsis-vertical"></i>
-                                                        <br>
-                                                        ตัวอย่างการ Comment
-                                                    </p>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <div class="col-6 ">
-                                                            <p class="text-secondary" style="font-size: 14px;">
-                                                                <span id="comment_id_6" onclick="user_like_comment('6' , '{{ Auth::user()->id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span id="count_like_comment_6" style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <p class="text-secondary" style="font-size: 14px;float: right;">
-                                                                เวลาที่ผ่านไป 
-                                                            </p>
+                                                <div id="EX_test_comment" class="row">
+                                                    <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
+                                                        <center>
+                                                            <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
+                                                        </center>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <p>
+                                                            <b class="notranslate">
+                                                                ชื่อคน Comment
+                                                            </b>
+                                                            <i style="float:right;" class="fa-solid fa-ellipsis-vertical"></i>
+                                                            <br>
+                                                            ตัวอย่างการ Comment
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="row">
+                                                            <div class="col-6 ">
+                                                                <p class="text-secondary" style="font-size: 14px;">
+                                                                    <span id="comment_id_6" onclick="user_like_comment('6' , '{{ Auth::user()->id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span id="count_like_comment_6" style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <p class="text-secondary" style="font-size: 14px;float: right;">
+                                                                    เวลาที่ผ่านไป 
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- ------------ จบตัวอย่าง ------------ -->
-                                            </div>  
-                                        </div>
-                                        
-                                        <form method="POST" action="{{ url('/comment') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                                            <div class="modal-footer" style="padding:5px;">
 
-                                                <div class="row col-12" style="padding:5px;">
-                                                    @if(Auth::check())
-                                                        <div class="col-9" style="padding:0px;">
-                                                            {{ csrf_field() }}
-                                                            <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
-                                                            <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
-                                                            <input class="form-control" name="content_{{ $item->id }}" type="text" id="content_{{ $item->id }}" value="" oninput="check_input_content_comment('{{ $item->id }}');">
+                                                <!-- ALL COMMENT -->
+                                                <div class="row" id="content_comment_{{ $item->id }}"></div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        @if(Auth::check())
+                                                            <div class="col-9" style="padding:0px;">
+                                                                {{ csrf_field() }}
+                                                                <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
+                                                                <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
+                                                                <input class="form-control" name="content_{{ $item->id }}" type="text" id="content_{{ $item->id }}" value="" oninput="check_input_content_comment('{{ $item->id }}');">
 
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled>
-                                                                <i class="fas fa-arrow-right text-white"></i>
-                                                            </button>
-                                                        </div>
-                                                    @else
-                                                    <h6 class="text-center">เข้าสู่ระบบเพื่อคอมเมนต์</h6>    
-                                                    @endif
+                                                            </div>
+                                                            <div class="col-3">
+                                                                <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled>
+                                                                    <i class="fas fa-arrow-right text-white"></i>
+                                                                </button>
+                                                            </div>
+                                                        @else
+                                                            <h6 class="text-center">เข้าสู่ระบบเพื่อคอมเมนต์</h6>    
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                        
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- endmodal -->
+                                <!-- endmodal -->
                             @endforeach
                         </div>
                     </div>
