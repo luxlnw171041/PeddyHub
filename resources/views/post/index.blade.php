@@ -384,6 +384,9 @@
 
                                                 <!-- ALL COMMENT -->
                                                 <div class="row" id="content_comment_{{ $item->id }}"></div>
+                                                <!-- ไปล่างสุด -->
+                                                <a id="btn_a_last_modal" href="#last_modal" class="d-none"></a>
+                                                <div id="last_modal"></div>
                                             </div>
                                             <div class="modal-footer">
                                                 <div class="col-12">
@@ -391,13 +394,12 @@
                                                         @if(Auth::check())
                                                             <div class="col-10" style="padding:0px;">
                                                                 {{ csrf_field() }}
-                                                                <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
-                                                                <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
+                                                                <input class="d-none" name="user_id_{{ $item->id }}" type="number" id="user_id_{{ $item->id }}" value="{{$id}}" >                                 
                                                                 <input class="form-control" name="content_{{ $item->id }}" type="text" id="content_{{ $item->id }}" value="" oninput="check_input_content_comment('{{ $item->id }}');">
 
                                                             </div>
                                                             <div class="col-2">
-                                                                <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled>
+                                                                <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled onclick="submit_input_content_comment('{{ $item->id }}');">
                                                                     <i class="fas fa-arrow-right text-white"></i>
                                                                 </button>
                                                             </div>
@@ -417,68 +419,8 @@
                 </section>
             </div>
         </div>
-
-
-    <!-- <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Post</div>
-                    <div class="card-body">
-                        <a href="{{ url('/post/create') }}" class="btn btn-success btn-sm" title="Add New Post">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-
-                        <form method="GET" action="{{ url('/post') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
-                                <span class="input-group-append">
-                                    <button class="btn btn-secondary" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-
-                        <br/>
-                        <br/>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th><th>User Id</th><th>Detail</th><th>Photo</th><th>Video</th><th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($post as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->user_id }}</td><td>{{ $item->detail }}</td><td><img src="{{ url('storage/'.$item->photo )}}" width="295px" alt="image of pet" title="pet" class="img-fluid customer"></td><td>{{ $item->video }}</td>
-                                        <td>
-                                            <a href="{{ url('/post/' . $item->id) }}" title="View Post"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/post/' . $item->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                                            <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button  type="submit" class="asText" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                            <div class="pagination-wrapper"> {!! $post->appends(['search' => Request::get('search')])->render() !!} </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 @endsection
+
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
@@ -504,6 +446,32 @@
         }else{
             btn_submit_content.disabled = true ;
         }
+    }
+
+    function submit_input_content_comment(post_id)
+    {
+        let content = document.querySelector('#content_' + post_id) ;
+        let user_id = document.querySelector('#user_id_' + post_id) ;
+        let btn_submit_content = document.querySelector('#btn_submit_content_' + post_id) ;
+
+        fetch("{{ url('/') }}/api/submit_input_content_comment/"+ user_id.value + "/" + post_id + "/" + content.value)
+            .then(response => response.text())
+            .then(result => {
+                // console.log(result);
+                if (result === 'ok') {
+                    content.value = null ;
+                    let div_content_comment = document.querySelector('#content_comment_' + post_id) ;
+                        div_content_comment.innerHTML = "" ;
+                    show_all_comment(post_id);
+
+                    var delayInMilliseconds = 1500;
+                    setTimeout(function() {
+                        document.querySelector('#btn_a_last_modal').click();
+                    }, delayInMilliseconds);
+                }
+
+        });
+
     }
 
     function user_like_post(user_id , post_id){

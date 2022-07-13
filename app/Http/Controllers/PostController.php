@@ -326,7 +326,7 @@ class PostController extends Controller
                     }
                 }
             }
-            
+
             DB::table('comments')
                 ->where('id', $comment_id)
                 ->update([
@@ -349,7 +349,7 @@ class PostController extends Controller
     public function show_all_comment($post_id)
     {
         $data_comment = Comment::where('post_id' , $post_id)
-                ->orderBy('id')
+                ->orderBy('id' , 'ASC')
                 ->get();
 
         return $data_comment ;
@@ -359,6 +359,18 @@ class PostController extends Controller
     {
         $data_profile = Profile::where('user_id' , $user_id)->get();
         return $data_profile ;
+    }
+
+    public function submit_input_content_comment($user_id , $post_id , $content)
+    {
+        $data = [] ;
+        $data['content'] = $content ;
+        $data['user_id'] = $user_id ;
+        $data['post_id'] = $post_id ;
+
+        Comment::create($data);
+
+        return "ok" ;
     }
 
 }
