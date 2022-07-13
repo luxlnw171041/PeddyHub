@@ -196,9 +196,9 @@
                                         @endif
                                     </div>
                                     <input class="d-none" type="text" id="check_changwat_th" value="{{ Auth::user()->profile->changwat_th }}">
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                    <div class="col-12 col-md-4" style="margin-top:12px;">
                                         @if(!empty(Auth::user()->profile->changwat_th))
-                                        <input class="form-control" type="text" id="input_province" value="{{ Auth::user()->profile->changwat_th }}" readonly>
+                                        <input onclick="edit_province()" class="form-control" type="text" id="input_province" value="{{ Auth::user()->profile->changwat_th }}" >
                                         <select name="select_province" id="select_province" class="d-none form-control" onchange="select_A(); check();">
                                             <option value="" selected>- เลือกจังหวัด -</option>
                                         </select>
@@ -208,9 +208,9 @@
                                         </select>
                                         @endif
                                     </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                    <div class="col-12 col-md-4" style="margin-top:12px;">
                                         @if(!empty(Auth::user()->profile->amphoe_th))
-                                        <input class="form-control" type="text" id="input_amphoe" value="{{ Auth::user()->profile->amphoe_th }}" readonly>
+                                        <input onclick="edit_amphoe()" class="form-control" type="text" id="input_amphoe" value="{{ Auth::user()->profile->amphoe_th }}" >
                                         <select name="select_amphoe" id="select_amphoe" class="d-none form-control" onchange="select_T(); check();">
                                             <option value="" selected>- เลือกอำเภอ -</option>
                                         </select>
@@ -220,9 +220,9 @@
                                         </select>
                                         @endif
                                     </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
+                                    <div class="col-12 col-md-4" style="margin-top:12px;">
                                         @if(!empty(Auth::user()->profile->tambon_th))
-                                        <input class="form-control" type="text" id="input_tambon" value="{{ Auth::user()->profile->tambon_th }}" readonly>
+                                        <input onclick="edit_tambon()" class="form-control" type="text" id="input_tambon" value="{{ Auth::user()->profile->tambon_th }}" >
                                         <select name="select_tambon" id="select_tambon" class="d-none form-control" onchange="select_lat_lng(); check();">
                                             <option value="" selected>- เลือกตำบล -</option>
                                         </select>
@@ -231,9 +231,6 @@
                                             <option value="" selected>- เลือกตำบล -</option>
                                         </select>
                                         @endif
-                                    </div>
-                                    <div class="col-12 col-md-3" style="margin-top:12px;">
-                                        <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}">
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="faq ">
@@ -768,4 +765,18 @@
             document.querySelector('#photo_id_card').classList.add('d-none');
         }
     });
+</script>
+<script>
+function edit_province() {
+    document.querySelector('#select_province').classList.remove('d-none');
+    document.querySelector('#input_province').classList.add('d-none');
+}
+function edit_amphoe() {
+    document.querySelector('#select_amphoe').classList.remove('d-none');
+    document.querySelector('#input_amphoe').classList.add('d-none');
+}
+function edit_tambon() {
+    document.querySelector('#select_tambon').classList.remove('d-none');
+    document.querySelector('#input_tambon').classList.add('d-none');
+}
 </script>

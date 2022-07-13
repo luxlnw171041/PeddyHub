@@ -83,6 +83,16 @@
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
 				<li class="menu-label" style="font-size:18px;color:#B8205B">
+                    Admin
+                </li>
+                <li>
+					<a href="{{ url('/manage_user_partner') }}">
+						<div class="parent-icon"><i class="fa-solid fa-users-gear"></i>
+						</div>
+						<div class="menu-title" style="font-size:18px;">จัดการผู้ใช้</div>
+					</a>
+				</li>
+				<li class="menu-label" style="font-size:18px;color:#B8205B">
                     Check In/Out 
                 </li>
                 <li>

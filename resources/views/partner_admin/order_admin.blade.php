@@ -7,9 +7,13 @@
 			<div>
 				<h5 class="font-weight-bold mb-0">Recent Orders</h5>
 			</div>
-			<!-- <div class="ms-auto">
-				<button type="button" class="btn btn-white radius-10">View More</button>
-			</div> -->
+			<div class="ms-auto">
+				<a type="button" data-toggle="modal" data-target="#order">
+					<button class="btn btn-primary btn-sm">
+						<i class="fas fa-info-circle"></i>วิธีใช้
+					</button>
+				</a>
+			</div>
 		</div>
 	</div>
 	<div class="card-body">
@@ -35,8 +39,8 @@
 								<img src="{{ url('storage/'.$item->product->photo )}}" class="p-1" alt="">
 							</div>
 						</td>
-						<td>{{$item->product->title}} {{$item->id}}</td>
-						<td>{{$item->profile->name}}</td>
+						<td>{{$item->product->title}}</td>
+						<td>{{$item->profile->real_name}}</td>
 						<td>{{$item->profile->address}} {{$item->profile->tambon_th}}  {{$item->profile->amphoe_th}}  {{$item->profile->changwat_th}} {{$item->profile->zip_code}}</td>
 						<td>{{$item->quantity}} ชิ้น</td>
 						<td>฿ {{ number_format($item->total) }}</td>
@@ -93,5 +97,32 @@
 			</table>
 		</div>
 	</div>
+</div>
+<div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">รายการสั่งซื้อ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center><img src="{{ asset('/peddyhub/images/how_to_use/order/1.png') }}" style="border: 2px solid #555;" width="80%" alt="Card image cap"></center><br>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">1.photo : ภาพสินค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">2.Product Name : ชื่อสินค้าที่ต้องจัดส่ง</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">3.Customer : ชื่อลูกค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">4.Address : ที่อยู่จัดส่ง</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">5.Quantity : จำนวนที่ต้องจัดส่ง</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">6.Total : ราคา</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">7.Status : สถานะการจัดส่ง หากจัดส่งสินค้าแล้วให้กดที่ปุ่มจัดส่งสินค้าและกรอกหมายเลขพัสดุเพื่อให้ลูกค้าติดตามพัสดุได้</h5>
+
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

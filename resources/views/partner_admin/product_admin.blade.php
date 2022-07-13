@@ -12,6 +12,11 @@
                             <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="btn btn-primary mb-3 mb-lg-0"><i class="bx bxs-plus-square"></i>New Product</a>
                         </div>
                         <div class="col-lg-9 col-xl-10">
+                            <a style="float: right;" type="button" data-toggle="modal" data-target="#product">
+                                <button class="btn btn-primary btn-md">
+                                    <i class="fas fa-info-circle"></i>วิธีใช้
+                                </button>
+                            </a>
                             <form class="float-lg-end" method="GET" action="{{ url('/product_admin') }}" accept-charset="UTF-8" role="search">
                                 <div class="row row-cols-lg-auto g-2">
                                     <div class="col-12">
@@ -24,7 +29,7 @@
                         </div>
                         <div class="collapse col-12" id="collapseExample">
                             <div class="card">
-                                <div class="card-body p-4">
+                                <div class="card-body" style="padding: 10px 0px 10px 0px;">
                                     <h5 class="card-title">Add New Product</h5>
                                     <hr>
                                     <div class="form-body mt-4">
@@ -85,7 +90,7 @@
                                                             </div>
                                                              -->
                                                             <div class="col-12">
-                                                                <label for="inputVendor" class="form-label">ประเภทสัตว์</label>
+                                                                <label for="inputVendor" class="form-label">animal type</label>
                                                                 <select name="pet_category_id" class="form-control" required>
                                                                     <option value='' selected="selected">โปรดเลือก</option>
                                                                     @foreach($category as $item)
@@ -136,9 +141,11 @@
         <div class="col">
             <div class="card">
                 <img src="{{ url('storage/'.$item->photo )}}" width="266px" height="266px" class="card-img-top" alt="...">
+                @if(!empty($item->promotion))
                 <div class="">
                     <div class="position-absolute top-0 end-0 m-3 "><span class="" style="border-radius: 25px;border: 1px solid black;padding:10px;background-color:white;">{{$item->promotion}}</span></div>
                 </div>
+                @endif
                 <div class="card-body">
                     <h6 class="card-title cursor-pointer">{{$item->title}}</h6>
                     <div class="clearfix">
@@ -166,6 +173,36 @@
     </div>
     <!--end row-->
  
+</div>
+<div class="modal fade" id="product" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">เพิ่มสินค้า</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center><img src="{{ asset('/peddyhub/images/how_to_use/product/1.png') }}" style="border: 2px solid #555;" width="80%" alt="Card image cap"></center><br>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">1.ค้นหารายการสินค้าจากชื่อสินค้าตามคำที่กำหนด</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">2.Product Title : กรอกชื่อสินค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">3.Description : กรอกรายละเอียดสินค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">4.Product Images : เพิ่มรูปสินค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">5.Product Tags : เลือกป้ายสินค้า เช่น สินค้าใหม่ หรือสินค้าโปรโมชั่น</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">6.Price : กรอกราคาสินค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">7.Compare Price : กรอกราคาสินค้าก่อนลดราคา</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">8.animal Type : เลือกประเภทสัตว์ที่ใช้สินค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">9.Product Type : เลือกประเภทสินค้า</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">10.Save Product : เมื่อกรอกข้อมูลครบถ้วนแล้วให้กดที่ปุ่มSave Product</h5>
+
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     document.getElementById('tag').addEventListener('change', function() {

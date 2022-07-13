@@ -38,7 +38,17 @@
         background-size: contain;
     }
 </style>
-<div class="row row-cols-1 row-cols-md-2 row-cols-xl-2">
+<div class="col-12">
+    <a style="float: right;" type="button" data-toggle="modal" data-target="#gallery">
+        <button class="btn btn-primary btn-sm">
+            <i class="fas fa-info-circle"></i>วิธีใช้
+        </button>
+    </a>
+    <br>
+    <br>
+</div>
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-2 ">
+    
     @foreach($all_areas as $all_area)
     @php
         $img_name_area = str_replace(" ","_" ,$all_area->name_area) ;
@@ -76,7 +86,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="">
-                                                <input type="text" class="form-control" id="color_theme_{{ $all_area->id }}" name="color_theme_{{ $all_area->id }}" value="" placeholder="กรอกโค้ดสี เช่น #F15423" style="float: right;">
+                                                <input type="text" class="form-control" id="color_theme_{{ $all_area->id }}" name="color_theme_{{ $all_area->id }}" value="" placeholder="กรอกโค้ดสี เช่น #B8205B" style="float: right;">
                                             </div>
                                         </div>
                                         <div class="col-2">
@@ -116,7 +126,30 @@
     </div>
     @endforeach
 </div>
-
+<div class="modal fade" id="gallery" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">คลังภาพ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center><img src="{{ asset('/peddyhub/images/how_to_use/gallery/1.png') }}" style="border: 2px solid #555;" width="60%" alt="Card image cap"></center><br>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">1.หากมีพื้นที่แล้วแต่ยังไม่มี QR-Code ของพื้นที่ หรือต้องการเปลี่ยนสีของ QR-Code ให้กดที่ปุ่มสร้าง QR-Code</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">2.กรอกโค้ดสี : กรอกโค้ดสีที่ต้องการ เช่น #B8205B</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">3.เมื่อกรอกโค้ดสีแล้วให้กดที่ปุ่มยืนยันเพื่อสร้าง QR-Code ใหม่</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">4.กดที่ปุ่มดาวน์โหลดเพื่อโหลดเป็นไฟล์ภาพ</h5>
+                <h5 style="text-indent:20px;font-family: 'Prompt', sans-serif; margin-bottom: 10px;">5.กดที่ปุ่มแว่นขยายเพื่อดูรูปภาพขนาดใหญ่</h5>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     
     function gen_qr_code(name_area, name , id){
