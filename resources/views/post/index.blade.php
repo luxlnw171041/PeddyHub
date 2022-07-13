@@ -648,7 +648,7 @@
                 // console.log(result);
 
                 let div_content_comment = document.querySelector('#content_comment_' + post_id) ;
-
+                    div_content_comment.innerHTML = "" ;
                 for (let item of result) {
 
                     // col-2 img profile
