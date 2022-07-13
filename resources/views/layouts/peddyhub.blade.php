@@ -745,7 +745,7 @@
       <!--End Main Footer-->
       <!--End pagewrapper-->
       <!--Scroll to top-->
-      <div class="scroll-to-top scroll-to-target" style="background-color:#B8205B;border-color: #B8205B; " data-bs-target="html">
+      <div id="btn_to_top" class="scroll-to-top scroll-to-target" style="background-color:#B8205B;border-color: #B8205B; " data-bs-target="html">
         <div class="row">
           <p style="margin-top:5px; color:white; ">top</p><br>
           <p style="margin-top:-38px; color:white; font-size:20px" class="icon flaticon-pawprint-1"></p>

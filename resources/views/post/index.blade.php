@@ -229,7 +229,7 @@
                                                         $count_like = "ถูกใจเป็นคนแรก" ;
                                                     }
                                                 @endphp
-                                                <span class="like notranslate">
+                                                <span class="like notranslate" data-toggle="modal" data-target="#modal_name_like">
                                                     <i class="fa-solid fa-heart"></i> <span id="span_count_like_{{ $item->id }}">{{ $count_like }}</span>
                                                 </span>
                                                 @php
@@ -240,11 +240,27 @@
                                                         $count_all_comment = "ความคิดเห็น " . count($all_comment);
                                                     }
                                                 @endphp
-                                                <span style="float:right;" class="comment" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}">
+                                                <span style="float:right;" class="comment" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}" onclick="document.querySelector('#btn_to_top').classList.add('d-none'),show_all_comment('{{ $item->id }}');">
                                                     {{ $count_all_comment }}&nbsp;
                                                 </span>
                                             </p>
                                             
+                                            <!-- Modal ผู้ที่ถูกใจ -->
+                                            <div class="modal fade" id="modal_name_like" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">ผู้ที่ถูกใจ</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    <!--  -->
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
                                                 
                                             <!-- <a href="{{ url('/post/' . $item->id) }}" title="">
                                                 <p class="head mt-1 mb-0">{{ $item->detail }}
@@ -300,7 +316,7 @@
                                                 @endif
                                             </div>
                                             <div class="col-6 d-grid ">
-                                                <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}">
+                                                <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}" onclick="document.querySelector('#btn_to_top').classList.add('d-none'),show_all_comment('{{ $item->id }}');">
                                                     <b>
                                                         <i class="fas fa-comment-dots"></i>
                                                         <br>
@@ -322,26 +338,27 @@
                                 </div>
 
                                 <!-- modal -->
-                                <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" style="z-index:999 !important;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-scrollable" role="document">
                                         <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalScrollableTitle">ความคิดเห็น</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalScrollableTitle">ความคิดเห็น</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.querySelector('#btn_to_top').classList.remove('d-none');">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
                                         <div class="modal-body card" style="border:none;padding:15px;margin-top: -5px;">
-                                            <div class="row">
+                                            <div class="row" id="content_comment_{{ $item->id }}">
                                                 <!-- <span class="category">Pet Care</span> -->
+
                                                 @foreach($comment as $data)
                                                     @if(($data->post_id  ==  $item->id))
                                                         <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
                                                             <center>
                                                                 @if(!empty($data->profile->photo))
-                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="{{ url('storage')}}/{{ $data->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="{{ url('storage')}}/{{ $data->profile->photo }}" class="img-fluid customer">
                                                                 @else
-                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" alt="image of client" title="client" class="img-fluid customer">
+                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
                                                                 @endif
                                                             </center>
                                                         </div>
@@ -355,7 +372,7 @@
                                                                     @endif
                                                                 </b>
                                                                 <br>
-                                                                {{$data->content}}
+                                                                {{ $data->content }}
                                                             </p>
                                                         </div>
                                                         <div class="col-12">
@@ -373,7 +390,6 @@
                                                             </div>
                                                         </div>
                                                     @endif
-                                                            
                                                 @endforeach
                                             </div>  
                                         </div>
@@ -387,7 +403,7 @@
                                                             {{ csrf_field() }}
                                                             <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
                                                             <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
-                                                            <input class="form-control" name="content" type="text" id="content" value="" >
+                                                            <input class="form-control" name="content" type="text" id="content" value=""  required>
 
                                                         </div>
                                                         <div class="col-3">
@@ -405,7 +421,7 @@
                                     </div>
                                 </div>
                             </div>
-                                <!-- endmodal -->
+                            <!-- endmodal -->
                             @endforeach
                         </div>
                     </div>
@@ -478,8 +494,8 @@
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
         add_color();
-        
     });
+
     function add_color(){
         // console.log("add_color");
         document.querySelector('#btn_a_all').classList.add('btn-style-two');
@@ -559,7 +575,7 @@
 
     function user_like_comment()
     {
-        console.log("lhjkll");
+        console.log("user_like_comment");
     }
 
     function copy_link(post_id) {
@@ -573,6 +589,217 @@
         setTimeout(function () {
             copy_sucess.className = 'hide';
         }, 2000);
+    }
+
+    function show_all_comment(post_id)
+    {
+        console.log(post_id);
+        fetch("{{ url('/') }}/api/show_all_comment/"+ post_id)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+
+                let div_content_comment = document.querySelector('#content_comment_' + post_id) ;
+
+                for (let item of result) {
+                    // col-2 img profile
+                    let div_col_2 = document.createElement("div");
+                    let class_div_col_2 = document.createAttribute("class");
+                        class_div_col_2.value = "col-2 text-center" ;
+                    div_col_2.setAttributeNode(class_div_col_2);
+                    let style_div_col_2 = document.createAttribute("style");
+                        style_div_col_2.value = "padding:0px;margin-top:5px;" ;
+                    div_col_2.setAttributeNode(style_div_col_2);
+                    
+                    // ดึงข้อมูลโปรไฟล์
+                    fetch("{{ url('/') }}/api/show_data_profile/"+ item.user_id)
+                        .then(response => response.json())
+                        .then(data_profile => {
+                            console.log(data_profile);
+                            // center ครอบ img profile
+                            let center_col_2 = document.createElement("center");
+                                div_col_2.appendChild(center_col_2);
+                            // img profile
+                            let img_col_2 = document.createElement("img");
+                            let style_img_col_2 = document.createAttribute("style");
+                                style_img_col_2.value = "border-radius: 50%;object-fit:cover; width:40px;height:40px;";
+                            img_col_2.setAttributeNode(style_img_col_2);
+                            let src_img_col_2 = document.createAttribute("src");
+                                if (data_profile[0]['photo'] != null) {
+                                    src_img_col_2.value = "{{ url('storage')}}/" + data_profile[0]['photo'];
+                                }else{
+                                    src_img_col_2.value = "peddyhub/images/home_5/icon1.png";
+                                }
+                            img_col_2.setAttributeNode(src_img_col_2);
+                            let class_img_col_2 = document.createAttribute("class");
+                                class_img_col_2.value = "img-fluid customer" ;
+                            // เพิ่ม img ใน center
+                            center_col_2.appendChild(img_col_2);
+
+                            // col-10 name profile
+                            let div_col_10 = document.createElement("div");
+                            let class_div_col_10 = document.createAttribute("class");
+                                class_div_col_10.value = "col-10" ;
+                            div_col_10.setAttributeNode(class_div_col_10);
+
+                            let p_col_10 = document.createElement("p");
+                            div_col_10.appendChild(p_col_10);
+
+                            let b_col_10 = document.createElement("b");
+                            p_col_10.appendChild(b_col_10);
+
+                            let class_b_col_10 = document.createAttribute("class");
+                                class_b_col_10.value = "notranslate" ;
+                            b_col_10.setAttributeNode(class_b_col_10);
+
+                            let name_user = "" ;
+                            if (data_profile[0]['name'] != null) {
+                                name_user = data_profile[0]['name'];
+                            }else{
+                                name_user = "Guest";
+                            }
+                            
+                            b_col_10.innerHTML = name_user ;
+
+                            let br_col_10 = document.createElement("br");
+                            p_col_10.appendChild(br_col_10);
+
+                            p_col_10.innerHTML = p_col_10.innerHTML + item.content ;
+
+                            // col-12 btn like
+                            let div_col_12 = document.createElement("div");
+                            let class_div_col_12 = document.createAttribute("class");
+                                class_div_col_12.value = "col-12" ;
+                            div_col_12.setAttributeNode(class_div_col_12);
+
+                            let div_col_12_row = document.createElement("div");
+                            div_col_12.appendChild(div_col_12_row);
+
+                            let class_div_col_12_row = document.createAttribute("class");
+                                class_div_col_12_row.value = "row" ;
+                            div_col_12_row.setAttributeNode(class_div_col_12_row);
+
+                            let div_col_6_1 = document.createElement("div");
+                            div_col_12_row.appendChild(div_col_6_1);
+
+                            let class_div_col_6_1 = document.createAttribute("class");
+                                class_div_col_6_1.value = "col-6" ;
+                            div_col_6_1.setAttributeNode(class_div_col_6_1);
+
+                            let p_col_6_1 = document.createElement("p");
+                            div_col_6_1.appendChild(p_col_6_1);
+
+                            let class_div_col_6_p = document.createAttribute("class");
+                                class_div_col_6_p.value = "text-secondary" ;
+                            p_col_6_1.setAttributeNode(class_div_col_6_p);
+
+                            let style_div_col_6_p = document.createAttribute("style");
+                                style_div_col_6_p.value = "font-size: 14px;" ;
+                            p_col_6_1.setAttributeNode(style_div_col_6_p);
+
+                            let span_1_col_6_1 = document.createElement("span");
+                            p_col_6_1.appendChild(span_1_col_6_1);
+
+                            let onclick_span_1_col_6_1 = document.createAttribute("onclick");
+                                onclick_span_1_col_6_1.value = "user_like_comment();" ;
+                            span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
+
+                            span_1_col_6_1.innerHTML = "ถูกใจ" ;
+
+                            p_col_6_1.innerHTML = p_col_6_1.innerHTML + "&nbsp;&nbsp; | &nbsp;&nbsp;" ;
+
+                            let span_2_col_6_1 = document.createElement("span");
+                            p_col_6_1.appendChild(span_2_col_6_1);
+
+                            let style_span_2_col_6_1 = document.createAttribute("style");
+                                style_span_2_col_6_1.value = "color: #B8205B;" ;
+                            span_2_col_6_1.setAttributeNode(style_span_2_col_6_1);
+
+                            let i_span_2_col_6_1 = document.createElement("i");
+                            span_2_col_6_1.appendChild(i_span_2_col_6_1);
+
+                            let class_i_span_2_col_6_1 = document.createAttribute("class");
+                                class_i_span_2_col_6_1.value = "far fa-heart" ;
+                            i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
+
+                            span_2_col_6_1.innerHTML = span_2_col_6_1.innerHTML + "&nbsp;&nbsp;" + " ตัวนับถูกใจเม้น"; 
+
+                            let div_col_6_2 = document.createElement("div");
+                            div_col_12_row.appendChild(div_col_6_2);
+
+                            let class_div_col_6_2 = document.createAttribute("class");
+                                class_div_col_6_2.value = "col-6" ;
+                            div_col_6_2.setAttributeNode(class_div_col_6_2);
+
+                            let p_col_6_2 = document.createElement("p");
+                            div_col_6_2.appendChild(p_col_6_2);
+
+                            let class_p_col_6_2 = document.createAttribute("class");
+                                class_p_col_6_2.value = "text-secondary" ;
+                            p_col_6_2.setAttributeNode(class_p_col_6_2);
+
+                            let style_p_col_6_2 = document.createAttribute("style");
+                                style_p_col_6_2.value = "font-size: 14px;float: right;" ;
+                            p_col_6_2.setAttributeNode(style_p_col_6_2);
+
+                            date_diffForHumans(item.created_at);
+                            p_col_6_2.innerHTML =  item.created_at ;
+
+                            // add ใน div_content_comment
+                            div_content_comment.appendChild(div_col_2);
+                            div_content_comment.appendChild(div_col_10);
+                            div_content_comment.appendChild(div_col_12);
+                    });
+                    
+                    
+                }
+
+        });
+    }
+
+    function date_diffForHumans(date){
+        console.log("date data old >> " + date)
+
+        let date_sp = date.split(".");
+        date = date_sp[0];
+        date = date.replaceAll("T" , " ");
+        date = date.replaceAll("-" , "");
+        date = date.replaceAll(" " , "");
+        date = date.replaceAll(":" , "");
+        date = parseInt(date);
+
+        // Make a fuzzy time
+        var delta = Math.round((Date.now() - date) / 1000);
+
+        console.log("date data >> " + date)
+
+        console.log("date now  >> " + Date.now())
+
+
+        var minute = 60,
+            hour = minute * 60,
+            day = hour * 24,
+            week = day * 7;
+
+        var fuzzy;
+
+        if (delta < 30) {
+            fuzzy = 'just then.';
+        } else if (delta < minute) {
+            fuzzy = delta + ' seconds ago.';
+        } else if (delta < 2 * minute) {
+            fuzzy = 'a minute ago.'
+        } else if (delta < hour) {
+            fuzzy = Math.floor(delta / minute) + ' minutes ago.';
+        } else if (Math.floor(delta / hour) == 1) {
+            fuzzy = '1 hour ago.'
+        } else if (delta < day) {
+            fuzzy = Math.floor(delta / hour) + ' hours ago.';
+        } else if (delta < day * 2) {
+            fuzzy = 'yesterday';
+        }
+
+        console.log(fuzzy);
     }
 
 </script>

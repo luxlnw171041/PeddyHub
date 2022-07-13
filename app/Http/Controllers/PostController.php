@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Post;
+use App\Models\Profile;
 use App\Models\Comment;
 use App\Models\Pet_Category;
 use Illuminate\Http\Request;
@@ -257,8 +258,6 @@ class PostController extends Controller
                 }
             }
 
-            
-
             DB::table('posts')
                 ->where('id', $post_id)
                 ->update([
@@ -277,4 +276,17 @@ class PostController extends Controller
             return redirect('login/line?redirectTo=post');
         }
     }
+
+    public function show_all_comment($post_id)
+    {
+        $data_comment = Comment::where('post_id' , $post_id)->get();
+        return $data_comment ;
+    }
+
+    public function show_data_profile($user_id)
+    {
+        $data_profile = Profile::where('user_id' , $user_id)->get();
+        return $data_profile ;
+    }
+
 }
