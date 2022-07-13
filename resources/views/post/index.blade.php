@@ -393,11 +393,11 @@
                                                             {{ csrf_field() }}
                                                             <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
                                                             <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
-                                                            <input class="form-control" name="content" type="text" id="content" value=""  oninput="check_input_content_comment();">
+                                                            <input class="form-control" name="content_{{ $item->id }}" type="text" id="content_{{ $item->id }}" value="" oninput="check_input_content_comment('{{ $item->id }}');">
 
                                                         </div>
                                                         <div class="col-3">
-                                                            <button id="btn_submit_content" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled>
+                                                            <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled>
                                                                 <i class="fas fa-arrow-right text-white"></i>
                                                             </button>
                                                         </div>
@@ -495,10 +495,10 @@
         
     }
 
-    function check_input_content_comment()
+    function check_input_content_comment(post_id)
     {
-        let content = document.querySelector('#content') ;
-        let btn_submit_content = document.querySelector('#btn_submit_content') ;
+        let content = document.querySelector('#content_' + post_id) ;
+        let btn_submit_content = document.querySelector('#btn_submit_content_' + post_id) ;
 
         if (content.value) {
             btn_submit_content.disabled = false ;
