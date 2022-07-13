@@ -297,6 +297,46 @@ class PostController extends Controller
         return "ok" ;
     }
 
+    public function un_user_like_comment($comment_id,$user_id)
+    {
+        $data_comment = Comment::where('id' , $comment_id)->first();
+
+        if (!empty($data_comment->like_all)) {
+
+            $like_all_arr = json_decode($data_comment->like_all) ;
+            
+            if (count($like_all_arr) === 1) {
+                $like_arr = null ;
+            }else{
+                foreach (array_keys($like_all_arr, $user_id, true) as $key) {
+                    unset($like_all_arr[$key]);
+                }
+
+                $like_arr = null ;
+                foreach ($like_all_arr as $key) {
+                    if (empty($like_arr)) {
+                        $like_arr = array($key) ;
+                    }else{
+                        if (in_array($key , $like_arr)){
+                            $like_arr = $like_arr ;
+                        }
+                        else{   
+                            array_push($like_arr , $key) ;
+                        }
+                    }
+                }
+            }
+
+            DB::table('comments')
+                ->where('id', $comment_id)
+                ->update([
+                    'like_all' => $like_arr,
+            ]);
+        }
+
+        return "ok" ;
+    }
+
     public function login_line_post()
     {
         if(Auth::check()){
@@ -308,7 +348,10 @@ class PostController extends Controller
 
     public function show_all_comment($post_id)
     {
-        $data_comment = Comment::where('post_id' , $post_id)->orderBy('id' , 'DESC')->get();
+        $data_comment = Comment::where('post_id' , $post_id)
+                ->orderBy('id')
+                ->get();
+
         return $data_comment ;
     }
 

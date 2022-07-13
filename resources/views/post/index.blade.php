@@ -369,7 +369,7 @@
                                                     <div class="row">
                                                         <div class="col-6 ">
                                                             <p class="text-secondary" style="font-size: 14px;">
-                                                                <span id="comment_id_6" onclick="user_like_comment('6' , '{{ Auth::user()->id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
+                                                                <span id="comment_id_6" onclick="user_like_comment('6' , '{{ Auth::user()->id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span id="count_like_comment_6" style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
                                                             </p>
                                                         </div>
                                                         <div class="col-6">
@@ -392,12 +392,12 @@
                                                             {{ csrf_field() }}
                                                             <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
                                                             <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
-                                                            <input class="form-control" name="content" type="text" id="content" value=""  required>
+                                                            <input class="form-control" name="content" type="text" id="content" value=""  oninput="check_input_content_comment();">
 
                                                         </div>
                                                         <div class="col-3">
-                                                            <button type="submit" class="btn btn-primary" style="border-radius: 50%;margin-top: 5px;">
-                                                                <i class="fas fa-arrow-right"></i>
+                                                            <button id="btn_submit_content" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled>
+                                                                <i class="fas fa-arrow-right text-white"></i>
                                                             </button>
                                                         </div>
                                                     @else
@@ -494,6 +494,18 @@
         
     }
 
+    function check_input_content_comment()
+    {
+        let content = document.querySelector('#content') ;
+        let btn_submit_content = document.querySelector('#btn_submit_content') ;
+
+        if (content.value) {
+            btn_submit_content.disabled = false ;
+        }else{
+            btn_submit_content.disabled = true ;
+        }
+    }
+
     function user_like_post(user_id , post_id){
         // console.log(user_id);
         // console.log(post_id);
@@ -564,8 +576,30 @@
 
     function user_like_comment(comment_id , user_id)
     {
-        console.log("comment_id >> " + comment_id);
-        console.log("user_id >> " + user_id);
+        // console.log(comment_id);
+        // console.log(user_id);
+        let count_like_comment = document.querySelector('#count_like_comment_' + comment_id);
+            console.log(count_like_comment.innerText);
+        let sum = 0 ;
+
+        if (count_like_comment.innerText === "0") {
+            sum = 1;
+        }else{
+            sum = parseInt(count_like_comment.innerText) + 1;
+        }
+
+        count_like_comment.innerHTML = "";
+
+        let i_span_2_col_6_1 = document.createElement("i");
+            count_like_comment.appendChild(i_span_2_col_6_1);
+
+        let class_i_span_2_col_6_1 = document.createAttribute("class");
+            class_i_span_2_col_6_1.value = "far fa-heart" ;
+        i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
+
+        count_like_comment.innerHTML = count_like_comment.innerHTML + "&nbsp;&nbsp;" + " " + sum.toString();
+
+        // count_like_comment.innerText = sum.toString();
 
         fetch("{{ url('/') }}/api/user_like_comment/"+ comment_id + "/" + user_id)
             .then(response => response.text())
@@ -590,6 +624,25 @@
     function un_user_like_comment(comment_id , user_id)
     {
         console.log("un_user_like_comment");
+
+        fetch("{{ url('/') }}/api/un_user_like_comment/"+ comment_id + "/" + user_id)
+            .then(response => response.text())
+            .then(result => {
+                console.log(result);
+
+                if (result === 'ok') {
+                    let btn_like_comment = document.querySelector('#comment_id_' + comment_id);
+
+                    let style_btn = document.createAttribute("style");
+                        style_btn.value = "color: #B8205B;";
+                    btn_like_comment.setAttributeNode(style_btn);
+
+                    let onclick_btn = document.createAttribute("onclick")
+                        onclick_btn.value = "un_user_like_comment('" + comment_id +"' , '" + user_id + "');";
+                    btn_like_comment.setAttributeNode(onclick_btn);
+                }
+
+        });
     }
 
     function copy_link(post_id) {
@@ -611,12 +664,11 @@
         fetch("{{ url('/') }}/api/show_all_comment/"+ post_id)
             .then(response => response.json())
             .then(result => {
-                console.log(result);
+                // console.log(result);
 
                 let div_content_comment = document.querySelector('#content_comment_' + post_id) ;
 
                 for (let item of result) {
-                    console.log("ID >> " + item.id);
 
                     // col-2 img profile
                     let div_col_2 = document.createElement("div");
@@ -729,12 +781,8 @@
                             let span_1_col_6_1 = document.createElement("span");
                             p_col_6_1.appendChild(span_1_col_6_1);
 
-                            let onclick_span_1_col_6_1 = document.createAttribute("onclick");
-                                onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
-                            span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
-
                             let id_span_1_col_6_1 = document.createAttribute("id");
-                                id_span_1_col_6_1.value = "comment_id_('"+item.id+"');" ;
+                                id_span_1_col_6_1.value = "comment_id_"+ item.id;
                             span_1_col_6_1.setAttributeNode(id_span_1_col_6_1);
 
                             if (like_all[item.id]) {
@@ -743,7 +791,19 @@
                                     let style_span_1_col_6_1 = document.createAttribute("style");
                                         style_span_1_col_6_1.value = "color: #B8205B;" ;
                                     span_1_col_6_1.setAttributeNode(style_span_1_col_6_1);
+
+                                    let onclick_span_1_col_6_1 = document.createAttribute("onclick");
+                                        onclick_span_1_col_6_1.value = "un_user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
+                                    span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
+                                }else{
+                                    let onclick_span_1_col_6_1 = document.createAttribute("onclick");
+                                        onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
+                                    span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
                                 }
+                            }else{
+                                let onclick_span_1_col_6_1 = document.createAttribute("onclick");
+                                        onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
+                                    span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
                             }
 
                             span_1_col_6_1.innerHTML = "ถูกใจ" ;
