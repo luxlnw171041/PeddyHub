@@ -507,7 +507,7 @@
         let btn_modal = document.querySelector('#btn_modal');
 
         let a_href = document.createAttribute("href");
-        a_href.value = "{{ url('/users_email_unique') }}?type_user=" + type_user;
+        a_href.value = "{{ url('/create_user_partner') }}?type_user=" + type_user;
 
         btn_modal.setAttributeNode(a_href); 
 
