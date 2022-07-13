@@ -349,48 +349,37 @@
                                             </div>
                                         <div class="modal-body card" style="border:none;padding:15px;margin-top: -5px;">
                                             <div class="row" id="content_comment_{{ $item->id }}">
-                                                <!-- <span class="category">Pet Care</span> -->
 
-                                                @foreach($comment as $data)
-                                                    @if(($data->post_id  ==  $item->id))
-                                                        <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
-                                                            <center>
-                                                                @if(!empty($data->profile->photo))
-                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="{{ url('storage')}}/{{ $data->profile->photo }}" class="img-fluid customer">
-                                                                @else
-                                                                    <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
-                                                                @endif
-                                                            </center>
-                                                        </div>
-                                                        <div class="col-10">
-                                                            <p>
-                                                                <b class="notranslate">
-                                                                    @if(!empty($item->profile->name))
-                                                                        {{ $item->profile->name }}
-                                                                    @else
-                                                                        Guest
-                                                                    @endif
-                                                                </b>
-                                                                <br>
-                                                                {{ $data->content }}
+                                                <!-- -------------- ตัวอย่าง -------------- -->
+                                                <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
+                                                    <center>
+                                                        <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
+                                                    </center>
+                                                </div>
+                                                <div class="col-10">
+                                                    <p>
+                                                        <b class="notranslate">
+                                                            ชื่อคน Comment
+                                                        </b>
+                                                        <br>
+                                                        ตัวอย่างการ Comment
+                                                    </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div class="col-6 ">
+                                                            <p class="text-secondary" style="font-size: 14px;">
+                                                                <span id="comment_id_6" onclick="user_like_comment('6' , '{{ Auth::user()->id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
                                                             </p>
                                                         </div>
-                                                        <div class="col-12">
-                                                            <div class="row">
-                                                                <div class="col-6 ">
-                                                                    <p class="text-secondary" style="font-size: 14px;">
-                                                                        <span onclick="user_like_comment();">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
-                                                                    </p>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <p class="text-secondary" style="font-size: 14px;float: right;">
-                                                                        {{ $data->created_at->diffForHumans() }} 
-                                                                    </p>
-                                                                </div>
-                                                            </div>
+                                                        <div class="col-6">
+                                                            <p class="text-secondary" style="font-size: 14px;float: right;">
+                                                                เวลาที่ผ่านไป 
+                                                            </p>
                                                         </div>
-                                                    @endif
-                                                @endforeach
+                                                    </div>
+                                                </div>
+                                                <!-- ------------ จบตัวอย่าง ------------ -->
                                             </div>  
                                         </div>
                                         
@@ -573,9 +562,34 @@
         });
     }
 
-    function user_like_comment()
+    function user_like_comment(comment_id , user_id)
     {
-        console.log("user_like_comment");
+        console.log("comment_id >> " + comment_id);
+        console.log("user_id >> " + user_id);
+
+        fetch("{{ url('/') }}/api/user_like_comment/"+ comment_id + "/" + user_id)
+            .then(response => response.text())
+            .then(result => {
+                console.log(result);
+
+                if (result === 'ok') {
+                    let btn_like_comment = document.querySelector('#comment_id_' + comment_id);
+
+                    let style_btn = document.createAttribute("style");
+                        style_btn.value = "color: #B8205B;";
+                    btn_like_comment.setAttributeNode(style_btn);
+
+                    let onclick_btn = document.createAttribute("onclick")
+                        onclick_btn.value = "un_user_like_comment('" + comment_id +"' , '" + user_id + "');";
+                    btn_like_comment.setAttributeNode(onclick_btn);
+                }
+
+        });
+    }
+
+    function un_user_like_comment(comment_id , user_id)
+    {
+        console.log("un_user_like_comment");
     }
 
     function copy_link(post_id) {
@@ -593,7 +607,7 @@
 
     function show_all_comment(post_id)
     {
-        console.log(post_id);
+        // console.log(post_id);
         fetch("{{ url('/') }}/api/show_all_comment/"+ post_id)
             .then(response => response.json())
             .then(result => {
@@ -602,6 +616,8 @@
                 let div_content_comment = document.querySelector('#content_comment_' + post_id) ;
 
                 for (let item of result) {
+                    console.log("ID >> " + item.id);
+
                     // col-2 img profile
                     let div_col_2 = document.createElement("div");
                     let class_div_col_2 = document.createAttribute("class");
@@ -610,12 +626,25 @@
                     let style_div_col_2 = document.createAttribute("style");
                         style_div_col_2.value = "padding:0px;margin-top:5px;" ;
                     div_col_2.setAttributeNode(style_div_col_2);
+
+                    // นับ comment
+                    let count_like_comment = [] ;
+                    let like_all = [] ;
+                    if (item.like_all != null) {
+                        like_all[item.id] = item.like_all ;
+
+                        let count_like_comment_arr = like_all[item.id].split(",");
+
+                        count_like_comment[item.id] = count_like_comment_arr.length;
+                    }else{
+                        count_like_comment[item.id] = "0" ;
+                    }
                     
                     // ดึงข้อมูลโปรไฟล์
                     fetch("{{ url('/') }}/api/show_data_profile/"+ item.user_id)
                         .then(response => response.json())
                         .then(data_profile => {
-                            console.log(data_profile);
+                            // console.log(data_profile);
                             // center ครอบ img profile
                             let center_col_2 = document.createElement("center");
                                 div_col_2.appendChild(center_col_2);
@@ -701,8 +730,21 @@
                             p_col_6_1.appendChild(span_1_col_6_1);
 
                             let onclick_span_1_col_6_1 = document.createAttribute("onclick");
-                                onclick_span_1_col_6_1.value = "user_like_comment();" ;
+                                onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
                             span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
+
+                            let id_span_1_col_6_1 = document.createAttribute("id");
+                                id_span_1_col_6_1.value = "comment_id_('"+item.id+"');" ;
+                            span_1_col_6_1.setAttributeNode(id_span_1_col_6_1);
+
+                            if (like_all[item.id]) {
+                                let iii = like_all[item.id].includes("{{ Auth::user()->id }}");
+                                if (iii) {
+                                    let style_span_1_col_6_1 = document.createAttribute("style");
+                                        style_span_1_col_6_1.value = "color: #B8205B;" ;
+                                    span_1_col_6_1.setAttributeNode(style_span_1_col_6_1);
+                                }
+                            }
 
                             span_1_col_6_1.innerHTML = "ถูกใจ" ;
 
@@ -715,6 +757,10 @@
                                 style_span_2_col_6_1.value = "color: #B8205B;" ;
                             span_2_col_6_1.setAttributeNode(style_span_2_col_6_1);
 
+                            let id_span_2_col_6_1 = document.createAttribute("id");
+                                id_span_2_col_6_1.value = "count_like_comment_"+item.id ;
+                            span_2_col_6_1.setAttributeNode(id_span_2_col_6_1);
+
                             let i_span_2_col_6_1 = document.createElement("i");
                             span_2_col_6_1.appendChild(i_span_2_col_6_1);
 
@@ -722,7 +768,7 @@
                                 class_i_span_2_col_6_1.value = "far fa-heart" ;
                             i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
 
-                            span_2_col_6_1.innerHTML = span_2_col_6_1.innerHTML + "&nbsp;&nbsp;" + " ตัวนับถูกใจเม้น"; 
+                            span_2_col_6_1.innerHTML = span_2_col_6_1.innerHTML + "&nbsp;&nbsp;" + " " + count_like_comment[item.id]; 
 
                             let div_col_6_2 = document.createElement("div");
                             div_col_12_row.appendChild(div_col_6_2);
@@ -742,8 +788,8 @@
                                 style_p_col_6_2.value = "font-size: 14px;float: right;" ;
                             p_col_6_2.setAttributeNode(style_p_col_6_2);
 
-                            date_diffForHumans(item.created_at);
-                            p_col_6_2.innerHTML =  item.created_at ;
+                            let past_time = date_diffForHumans(item.created_at);
+                            p_col_6_2.innerHTML =  past_time ;
 
                             // add ใน div_content_comment
                             div_content_comment.appendChild(div_col_2);
@@ -758,23 +804,15 @@
     }
 
     function date_diffForHumans(date){
-        console.log("date data old >> " + date)
 
-        let date_sp = date.split(".");
-        date = date_sp[0];
-        date = date.replaceAll("T" , " ");
-        date = date.replaceAll("-" , "");
-        date = date.replaceAll(" " , "");
-        date = date.replaceAll(":" , "");
-        date = parseInt(date);
+        let new_date = new Date(date);
 
+        let date_sp_1 = date.split("T");
+        let date_sp_2 = date_sp_1[0].split("-");
+
+        let date_else = date_sp_2[2] + "-" + date_sp_2[1] + "-" + date_sp_2[0] ;
         // Make a fuzzy time
-        var delta = Math.round((Date.now() - date) / 1000);
-
-        console.log("date data >> " + date)
-
-        console.log("date now  >> " + Date.now())
-
+        var delta = Math.round((+new Date - new_date) / 1000);
 
         var minute = 60,
             hour = minute * 60,
@@ -784,22 +822,24 @@
         var fuzzy;
 
         if (delta < 30) {
-            fuzzy = 'just then.';
+            fuzzy = 'ขณะนี้';
         } else if (delta < minute) {
-            fuzzy = delta + ' seconds ago.';
+            fuzzy = delta + ' วินาทีที่แล้ว';
         } else if (delta < 2 * minute) {
-            fuzzy = 'a minute ago.'
+            fuzzy = 'นาทีที่แล้ว'
         } else if (delta < hour) {
-            fuzzy = Math.floor(delta / minute) + ' minutes ago.';
+            fuzzy = Math.floor(delta / minute) + ' นาทีที่แล้ว';
         } else if (Math.floor(delta / hour) == 1) {
-            fuzzy = '1 hour ago.'
+            fuzzy = '1 ชั่วโมงที่แล้ว'
         } else if (delta < day) {
-            fuzzy = Math.floor(delta / hour) + ' hours ago.';
+            fuzzy = Math.floor(delta / hour) + ' ชั่วโมงที่แล้ว';
         } else if (delta < day * 2) {
-            fuzzy = 'yesterday';
+            fuzzy = 'เมื่อวาน';
+        } else{
+            fuzzy = date_else;
         }
 
-        console.log(fuzzy);
+        return fuzzy ;
     }
 
 </script>
