@@ -361,6 +361,7 @@
                                                         <b class="notranslate">
                                                             ชื่อคน Comment
                                                         </b>
+                                                        <i style="float:right;" class="fa-solid fa-ellipsis-vertical"></i>
                                                         <br>
                                                         ตัวอย่างการ Comment
                                                     </p>
