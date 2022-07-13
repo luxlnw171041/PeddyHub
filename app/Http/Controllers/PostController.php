@@ -297,14 +297,14 @@ class PostController extends Controller
         return "ok" ;
     }
 
-    public function un_user_like_comment($comment_id,$user_id)
+    public function un_user_like_comment($comment_id , $user_id)
     {
         $data_comment = Comment::where('id' , $comment_id)->first();
 
         if (!empty($data_comment->like_all)) {
 
             $like_all_arr = json_decode($data_comment->like_all) ;
-            
+
             if (count($like_all_arr) === 1) {
                 $like_arr = null ;
             }else{
@@ -326,7 +326,7 @@ class PostController extends Controller
                     }
                 }
             }
-
+            
             DB::table('comments')
                 ->where('id', $comment_id)
                 ->update([

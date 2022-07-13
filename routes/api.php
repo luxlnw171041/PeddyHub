@@ -74,7 +74,7 @@ Route::get('/user_like_post/{user_id}/{post_id}', 'PostController@user_like_post
 Route::get('/un_user_like_post/{user_id}/{post_id}', 'PostController@un_user_like_post');
 // like comment
 Route::get('/user_like_comment/{comment_id}/{user_id}', 'PostController@user_like_comment');
-Route::get('/un_user_like_comment/{comment_id}/{user_id}', 'PostController@user_like_comment');
+Route::get('/un_user_like_comment/{comment_id}/{user_id}', 'PostController@un_user_like_comment');
 
 Route::get('/show_all_comment/{post_id}', 'PostController@show_all_comment');
 Route::get('/show_data_profile/{user_id}', 'PostController@show_data_profile');

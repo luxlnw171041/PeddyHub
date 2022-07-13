@@ -579,7 +579,7 @@
         // console.log(comment_id);
         // console.log(user_id);
         let count_like_comment = document.querySelector('#count_like_comment_' + comment_id);
-            console.log(count_like_comment.innerText);
+            // console.log(count_like_comment.innerText);
         let sum = 0 ;
 
         if (count_like_comment.innerText === "0") {
@@ -599,12 +599,10 @@
 
         count_like_comment.innerHTML = count_like_comment.innerHTML + "&nbsp;&nbsp;" + " " + sum.toString();
 
-        // count_like_comment.innerText = sum.toString();
-
         fetch("{{ url('/') }}/api/user_like_comment/"+ comment_id + "/" + user_id)
             .then(response => response.text())
             .then(result => {
-                console.log(result);
+                // console.log(result);
 
                 if (result === 'ok') {
                     let btn_like_comment = document.querySelector('#comment_id_' + comment_id);
@@ -623,22 +621,37 @@
 
     function un_user_like_comment(comment_id , user_id)
     {
-        console.log("un_user_like_comment");
+        let count_like_comment = document.querySelector('#count_like_comment_' + comment_id);
+            // console.log(count_like_comment.innerText);
+        let sum = 0 ;
+
+        sum = parseInt(count_like_comment.innerText) - 1;
+
+        count_like_comment.innerHTML = "";
+
+        let i_span_2_col_6_1 = document.createElement("i");
+            count_like_comment.appendChild(i_span_2_col_6_1);
+
+        let class_i_span_2_col_6_1 = document.createAttribute("class");
+            class_i_span_2_col_6_1.value = "far fa-heart" ;
+        i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
+
+        count_like_comment.innerHTML = count_like_comment.innerHTML + "&nbsp;&nbsp;" + " " + sum.toString();
 
         fetch("{{ url('/') }}/api/un_user_like_comment/"+ comment_id + "/" + user_id)
             .then(response => response.text())
             .then(result => {
-                console.log(result);
+                // console.log(result);
 
                 if (result === 'ok') {
                     let btn_like_comment = document.querySelector('#comment_id_' + comment_id);
 
                     let style_btn = document.createAttribute("style");
-                        style_btn.value = "color: #B8205B;";
+                        style_btn.value = "color: none;";
                     btn_like_comment.setAttributeNode(style_btn);
 
                     let onclick_btn = document.createAttribute("onclick")
-                        onclick_btn.value = "un_user_like_comment('" + comment_id +"' , '" + user_id + "');";
+                        onclick_btn.value = "user_like_comment('" + comment_id +"' , '" + user_id + "');";
                     btn_like_comment.setAttributeNode(onclick_btn);
                 }
 
