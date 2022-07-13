@@ -389,14 +389,14 @@
                                                 <div class="col-12">
                                                     <div class="row">
                                                         @if(Auth::check())
-                                                            <div class="col-9" style="padding:0px;">
+                                                            <div class="col-10" style="padding:0px;">
                                                                 {{ csrf_field() }}
                                                                 <input class="d-none" name="user_id" type="number" id="user_id" value="{{$id}}" >                                
                                                                 <input class="d-none" name="post_id" type="number" id="post_id" value="{{ $item->id }}" >  
                                                                 <input class="form-control" name="content_{{ $item->id }}" type="text" id="content_{{ $item->id }}" value="" oninput="check_input_content_comment('{{ $item->id }}');">
 
                                                             </div>
-                                                            <div class="col-3">
+                                                            <div class="col-2">
                                                                 <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled>
                                                                     <i class="fas fa-arrow-right text-white"></i>
                                                                 </button>
