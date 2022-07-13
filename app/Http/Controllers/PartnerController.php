@@ -184,13 +184,9 @@ class PartnerController extends Controller
         foreach ($data_partners as $data_partner) {
             $partners = $data_partner->name ;
         }
-// echo "<pre>";
-//         print_r($type_user);
-//         echo "<pre>";
-//         exit;
+
         $name = uniqid($partners.'-');
         $username = $name ;
-        $email = "กรุณาเพิ่มอีเมล" ;
         $type = "web" ;
 
         $password = uniqid();
@@ -203,6 +199,8 @@ class PartnerController extends Controller
         $user->email = "กรุณาเพิ่มอีเมล";
         $user->role = $type_user;
         $user->partner = $data_user->partner;
+        $user->creator = $data_user->id;
+        $user->status = "active";
         $user->save();
 
         $profile = new Profile();
