@@ -62,7 +62,7 @@
                                     </h4>
                                 </a>
                                 <ul style="font-size:22px;">
-                                    <li><i class="fas fa-paw"></i> {{ $item->size }}</li>
+                                    <li><i class="fas fa-paw"></i> ขนาด{{ $item->size }}</li>
                                     <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
                                 </ul>
 
