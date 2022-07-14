@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control" name="titel" type="text" id="titel" value="{{ isset($adoptpet->titel) ? $adoptpet->titel : ''}}" required>
+                                        <input class="form-control" name="titel" type="text" id="titel" value="{{ isset($adoptpet->titel) ? $adoptpet->titel : ''}}" required onchange="check();" onchange="check();">
                                     </div>
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-lg-11 col-md-11 col-sm-11">
                                     <div class="form-group">
-                                        <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($adoptpet->photo) ? $adoptpet->photo : ''}}" required >
+                                        <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($adoptpet->photo) ? $adoptpet->photo : ''}}" required onchange="check();" >
                                     </div>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-1">
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <select name="pet_category_id" class="form-control" required>
+                                    <select name="pet_category_id" id="pet_category_id" class="form-control" required onchange="check();">
                                         <option value='' selected="selected">โปรดเลือก</option>
                                         @foreach($category as $item)
                                             <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
@@ -125,7 +125,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <select name="gender" class="form-control" id="gender" required>
+                                        <select name="gender" class="form-control" id="gender" required onchange="check();">
                                             <option value='' selected > - โปรดเลือก - </option>
                                             @foreach (json_decode('{"\u0e0a\u0e32\u0e22":"\u0e0a\u0e32\u0e22","\u0e2b\u0e0d\u0e34\u0e07":"\u0e2b\u0e0d\u0e34\u0e07","\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38":"\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"}', true) as $optionKey => $optionValue)
                                                 <option value="{{ $optionKey }}" {{ (isset($adoptpet->gender) && $adoptpet->gender == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                    <select name="size" class="form-control" id="size" required>
+                                    <select name="size" class="form-control" id="size" required onchange="check();">
                                         <option value='' selected > - โปรดเลือก - </option>
                                         @foreach (json_decode('{"\u0e40\u0e25\u0e47\u0e01\u0e21\u0e32\u0e01":"\u0e40\u0e25\u0e47\u0e01\u0e21\u0e32\u0e01","\u0e40\u0e25\u0e47\u0e01":"\u0e40\u0e25\u0e47\u0e01","\u0e01\u0e25\u0e32\u0e07":"\u0e01\u0e25\u0e32\u0e07","\u0e43\u0e2b\u0e0d\u0e48":"\u0e43\u0e2b\u0e0d\u0e48","\u0e43\u0e2b\u0e0d\u0e48\u0e21\u0e32\u0e01":"\u0e43\u0e2b\u0e0d\u0e48\u0e21\u0e32\u0e01"}', true) as $optionKey => $optionValue)
                                             <option value="{{ $optionKey }}" {{ (isset($adoptpet->size) && $adoptpet->size == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
@@ -161,7 +161,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                    <select name="age" class="form-control" id="age" required>
+                                    <select name="age" class="form-control" id="age" required onchange="check();">
                                         <option value='' selected >
                                                 - โปรดเลือก - 
                                         </option>
@@ -202,7 +202,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
                             <div class="d-flex justify-content-end" >
-                            <button id="modal_submit" type="button" class="btn  btn-11 " data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
+                            <button disabled id="modal_submit" type="button" class="btn  btn-11 " data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
                                 โพส
                                 </button>
                             <button id="lost_pet_submit" type="submit" class="btn btn-11 form-control d-none" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}"></button>
@@ -225,33 +225,40 @@
             <img width="60%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/03.png') }}">
             <br><br>
             <h5>สนับสนุนโดย</h5>
-            <div class="row">
-        <div class="col-3" >
-            <a href="https://manoonpetshop.co.th/" target="bank">
-                <img width="100%" src="{{ asset('peddyhub/images/logo-partner/logomanoonpetshop2.png') }}">
-            </a>
-        </div>
-        <div class="col-3" >
-            <a href="https://facebook.com/DogInTownCafeEkkamai/?_rdc=1&_rdr" target="bank">
-                <img width="100%" src="{{ asset('peddyhub/images/logo-partner/dogintown.jpg') }}">
-            </a>
-        </div>
-        <div class="col-3" style="top:3px;">
-            <a href="https://facebook.com/catsanovabkk/" target="bank">
-                <img width="80%" src="{{ asset('peddyhub/images/logo-partner/Catsanova.png') }}">
-            </a>
-        </div>
-        <div class="col-3" >
-            <a href="https://www.facebook.com/neverlandsiberians/" target="bank">
-                <img width="60%" src="{{ asset('peddyhub/images/logo-partner/turelove.jpg') }}">
-            </a>
-        </div>
-        <div class="col-12 text-center">
-            <a href="https://www.facebook.com/caturdaycatcafe/" target="bank">
-                <img width="13%" src="{{ asset('peddyhub/images/logo-partner/Caturday.png') }}">
-            </a>
-        </div>
-      </div>
+            <div class="col-12 owl-carousel-two align-self-center" style="padding:0px;">
+                    <div class="owl-carousel">
+                        @php
+                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
+                        @endphp
+                        @foreach($partner as $item)
+                            @if($item->id % 2 == 0)
+                            <div class="item" style="padding:0px;z-index:-1;">
+                                <div class="testimon">
+                                    <a href="{{$item->link}}" target="bank">
+                                        <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                    </a>
+                                </div>
+                            </div>
+                            @endif
+                        @endforeach
+                    </div>
+                    <div class="owl-carousel">
+                        @php
+                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
+                        @endphp
+                        @foreach($partner as $item)
+                            @if($item->id % 2 != 0)
+                                <div class="item" style="padding:0px;z-index:-1;">
+                                    <div class="testimon">
+                                        <a href="{{$item->link}}" target="bank">
+                                            <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
 
       </div>
     </div>
@@ -319,5 +326,22 @@
     setTimeout(function(){ 
           document.getElementById("lost_pet_submit").click(); 
         }, 3000);
+    }
+</script>
+<script>
+      function check() {
+        let titel = document.querySelector('#titel');
+        let photo = document.querySelector('#photo');
+        let gender = document.querySelector('#gender');
+        let age = document.querySelector('#age');
+        let size = document.querySelector('#size');
+        let pet_category_id = document.querySelector('#pet_category_id');
+
+        if (titel.value !== "" && photo.value !== "" && gender.value !== "" && age.value !== ""  && size.value !== "" && pet_category_id.value !== "") {
+        
+                document.getElementById("modal_submit").disabled = false;
+        }
+
+
     }
 </script>
