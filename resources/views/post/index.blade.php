@@ -19,6 +19,7 @@
     }
 
     .hide {
+        display: none;
         opacity:0;
         -o-transition: opacity 1s;
         -moz-transition: opacity 1s;
@@ -45,7 +46,7 @@
 } */
 </style>
 <div id="copy_sucess" style="position: fixed;
-  top: 90%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999; 
@@ -53,11 +54,11 @@
   border-radius:10px;color:white;
   font-family: 'Kanit', sans-serif;" 
 
-  class="alert alert-primary  hide" role="alert">
+  class="alert alert-primary hide" role="alert">
     <center>คัดลอกลิงก์แล้ว</center>
 </div>
 <div id="please_login" style="position: fixed;
-  top: 90%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999; 
@@ -65,7 +66,7 @@
   border-radius:10px;color:white;
   font-family: 'Kanit', sans-serif;" 
 
-  class="alert alert-primary  hide" role="alert">
+  class="alert alert-primary hide" role="alert">
     <center>เข้าสู่ระบบเพื่อใช้งาน</center>
 </div>
 <div class="main-wrapper pet blog">
@@ -143,10 +144,11 @@
                             </div>
                             <br>
                             <textarea class="col-12" id="detail" name="detail"  placeholder="เล่าถึงความน่ารักของเจ้าตัวแสบ"></textarea>
+                            <i id="i_xmark" class="fa-solid fa-xmark text-white d-none" style="position: absolute; z-index:99;right: 30px;top: 155px;" onclick="i_xmark_photo();"></i>
 
                             <div class="fill parent">
                                 <div class="form-group">
-                                    <input class="form-control d-none" name="photo" style="margin:20px 0px 10px 0px" type="file" id="photo" value="" accept="image/*" onchange="document.getElementById('show_photo_pot').src = window.URL.createObjectURL(this.files[0]),document.querySelector('#show_photo_pot').classList.remove('d-none');">
+                                    <input class="form-control d-none" name="photo" style="margin:20px 0px 10px 0px" type="file" id="photo" value="" accept="image/*" onchange="document.getElementById('show_photo_pot').src = window.URL.createObjectURL(this.files[0]),document.querySelector('#show_photo_pot').classList.remove('d-none'),document.querySelector('#i_xmark').classList.remove('d-none');">
                                 </div>
                                 <img class="d-none full_img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_pot"/>
                             </div>
@@ -170,7 +172,14 @@
                           <div style="border-top: 1px solid pink;">
                             <center>
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                                <button style="background-color: #B8205B;width: 90%;margin-top: 20px;" type="submit" class="btn text-white" value="{{ 'create' }}">โพสต์</button>
+                                <button id="btn_submit_post_create" type="submit" class="btn text-white" value="{{ 'create' }}"
+                                    style="background-color: #B8205B;width: 90%;margin-top: 20px;">
+                                    โพสต์
+                                </button>
+                                <button id="btn_submit_post_edit" type="submit" class="btn text-white d-none" value="{{ 'edit' }}"
+                                    style="background-color: #B8205B;width: 90%;margin-top: 20px;">
+                                    แก้ไขโพสต์
+                                </button>
                             </center>
                             <br>
                           </div>
@@ -219,7 +228,10 @@
                                                             <i class="fa-solid fa-copy text-info"></i>&nbsp;&nbsp;คัดลอกลิงก์
                                                         </a>
                                                         @if(($id  ==  $item->user_id))
-                                                            <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fa-solid fa-pen-to-square text-warning"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
+                                                            <!-- <a class="dropdown-item" href="{{ url('/post/' . $item->id . '/edit') }}"><i class="fa-solid fa-pen-to-square text-warning"></i>&nbsp;&nbsp;แก้ไขโพสต์</a> -->
+                                                            <a class="dropdown-item" onclick="edit_post('{{ $item->id }}');">
+                                                                <i class="fa-solid fa-pen-to-square text-warning"></i>&nbsp;&nbsp;แก้ไขโพสต์
+                                                            </a>
                                                             <form method="POST" action="{{ url('/post' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                                 {{ method_field('DELETE') }}
                                                                 {{ csrf_field() }}
@@ -363,6 +375,7 @@
                                             </div>
                                             <div class="modal-body" style="border:none;padding:15px;margin-top: -5px;">
                                                 <!-- -------------- ตัวอย่าง -------------- -->
+                                                @if($id == "1" or $id == "2")
                                                 <div id="EX_test_comment" class="row d-">
                                                     <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
                                                         <center>
@@ -401,6 +414,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                                 <!-- ------------ จบตัวอย่าง ------------ -->
 
                                                 <!-- ALL COMMENT -->
@@ -478,6 +492,30 @@
         document.querySelector('#btn_a_all_pc').classList.add('btn-style-two');
         document.querySelector('#btn_a_all_pc').classList.remove('btn-outline-two');
         
+    }
+
+    function i_xmark_photo()
+    {
+        document.querySelector('#show_photo_pot').classList.add('d-none');
+        document.querySelector('#photo').value = null ;
+        document.querySelector('#i_xmark').classList.add('d-none');
+    }
+
+    function edit_post(post_id)
+    {
+        console.log(post_id);
+        fetch("{{ url('/') }}/api/edit_post/"+ post_id)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+
+        });
+
+        document.querySelector('#btn_modal_pot').click();
+        document.querySelector('#btn_submit_post_create').classList.add('d-none');
+        document.querySelector('#btn_submit_post_edit').classList.remove('d-none');
+
+        // document.querySelector('#detail').value;
     }
 
     function check_input_content_comment(post_id)

@@ -199,6 +199,13 @@ class PostController extends Controller
         return view('post.show',compact('query'));
     }
 
+    public function edit_post($post_id)
+    {
+        $data_edit_post = Post::where('id' , $post_id)->first();
+
+        return $data_edit_post ;
+    }
+
     public function user_like_post($user_id , $post_id)
     {
         $data_posts = Post::where('id' , $post_id)->get();
