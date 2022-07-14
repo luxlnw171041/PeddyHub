@@ -25,8 +25,8 @@
                 <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
                         class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
                             class="fas fa-paw"></i> </span></p>
-                <h2 class="wow fadeInDown">Ready to Adopt <span class="wow pulse" data-wow-delay="1s">
-                        Pets</span>
+                <h2 class="wow fadeInDown">Ready for  <span class="wow pulse" data-wow-delay="1s">
+                        Adoption</span>
                 </h2>
             </div>
             <div class="row">
