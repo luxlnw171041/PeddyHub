@@ -71,12 +71,16 @@
                                             <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
                                         @endif
                                     </div>
+                                    @php
+                                        $profile = $adoptpet->user;
+                                    @endphp
                                     <div class="col-5">
-                                        <h6>{{$adoptpet->user->name}}</h6>
+                                        <h6 class="notranslate">{{$profile->profile->name}}</h6>
                                         <p style="margin:0px;">{{ $adoptpet->user->created_at->diffForHumans() }}</p>
                                     </div>
                                     <div class="col-5">
-                                    <button type="button" class="btn btn-outline-primary">ติดต่อ</button>
+                                    
+                                    <a href="tel: {{$profile->profile->phone}}"  type="button" class="btn btn-outline-primary">ติดต่อ</a>
                                     </div>
                                 </div>
                                 
@@ -116,8 +120,8 @@
                                     </p>
                                 @endif
                                 <div class="button">
-                                    <a href="#" class="btn main" title="Buy Now">
-                                        Adopt Pet <i class="fas fa-paw"></i>
+                                    <a href="tel: {{$profile->profile->phone}}" class="btn main" >
+                                        ติดต่อสอบถาม <i class="fas fa-paw"></i>
                                     </a>
                                 </div>
                             </div>
@@ -128,7 +132,7 @@
             </div>
         </section>
 
-        <div class="pet service">
+        <!-- <div class="pet service">
 
             <section class="steps">
                 <div class="container">
@@ -205,7 +209,7 @@
                     </div>
                 </div>
             </section>
-        </div>
+        </div> -->
     </div>
 
     <!-- <div class="container">

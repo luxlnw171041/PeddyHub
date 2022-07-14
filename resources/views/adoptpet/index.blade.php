@@ -67,7 +67,7 @@
                                 </ul>
 
                                 <div class="button wow fadeInUp">
-                                    <a href="pet-profile.html" class="btn main" title="contact">
+                                    <a href="{{ url('/adoptpet/' . $item->id) }}" class="btn main" title="contact">
                                         Adopt me <i class="fas fa-paw"></i>
                                     </a>
                                 </div>
