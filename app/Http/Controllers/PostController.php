@@ -201,7 +201,7 @@ class PostController extends Controller
 
     public function edit_post($post_id)
     {
-        $data_edit_post = Post::where('id' , $post_id)->first();
+        $data_edit_post = Post::where('id' , $post_id)->get();
 
         return $data_edit_post ;
     }

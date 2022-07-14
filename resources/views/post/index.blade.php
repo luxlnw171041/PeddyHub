@@ -117,7 +117,7 @@
                 </div>
                 <br>
                 <!-- Button trigger modal -->
-                <button id="btn_modal_pot" type="button" data-toggle="modal" data-target="#modal_pot"></button>
+                <button id="btn_modal_pot" type="button" data-toggle="modal" data-target="#modal_pot" onclick="document.querySelector('#btn_submit_post_create').classList.remove('d-none'),document.querySelector('#btn_submit_post_edit').classList.add('d-none');"></button>
 
                 <form method="POST" action="{{ url('/post') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -504,18 +504,23 @@
     function edit_post(post_id)
     {
         console.log(post_id);
-        fetch("{{ url('/') }}/api/edit_post/"+ post_id)
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-
-        });
 
         document.querySelector('#btn_modal_pot').click();
         document.querySelector('#btn_submit_post_create').classList.add('d-none');
         document.querySelector('#btn_submit_post_edit').classList.remove('d-none');
 
-        // document.querySelector('#detail').value;
+        fetch("{{ url('/') }}/api/edit_post/"+ post_id)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+
+                for(let item of result){
+                    console.log(item.id)
+                    document.querySelector('#exampleModalScrollableTitle_new_post').innerHTML = "แก้ไขโพสต์" ;
+                }
+
+        });
+
     }
 
     function check_input_content_comment(post_id)

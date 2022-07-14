@@ -88,7 +88,7 @@
                             <br>
                             <div class="spec">
                                 <div class="name">
-                                    <h3>ชื่อ: <span> {{$adoptpet->titel}} </span>
+                                    <h3>ชื่อ: <span class="notranslate"> {{$adoptpet->titel}} </span>
                                         @switch($adoptpet->gender)
                                             @case('หญิง')
                                             <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
