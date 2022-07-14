@@ -150,8 +150,9 @@ class ProfileController extends Controller
             return Redirect("https://lin.ee/Bvi9Zr9");
         }
         else{
-            return redirect()->back()->with('flash_message', 'Profile updated!');
+            return redirect('user')->with('flash_message', 'Pet updated!');
         }
+        
     }
 
     /**

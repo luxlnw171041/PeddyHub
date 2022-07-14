@@ -338,6 +338,7 @@
             </a>
         </div>
     </div>
+   
     <div class="pet about second">
         <section class="team">
             <div class="container">
@@ -435,53 +436,6 @@
                                     <br class="d-none d-lg-block">
                                     @endif
                                 </ul>
-
-
-
-                                <!-- <div class="col-md-6 col-6 col-lg-6 d-flex justify-content-center" style="padding: 0px;">
-                                        <div class="button wow fadeInUp d-flex justify-content-start ">
-                                            <a href="" class="btn main d-flex align-items-end" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">
-                                                ดูบัตร &nbsp;<i class="fas fa-paw"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-6 col-lg-6 d-flex justify-content-center" style="padding: 0px;">
-                                        <div class="button wow fadeInUp d-flex justify-content-start ">
-                                            <a href="{{ url('/pet/' . $item->id . '/edit') }} " class="btn main d-flex align-items-end" title="contact">
-                                                แก้ไข &nbsp;<i class="fas fa-paw"></i>
-                                            </a>
-                                            <a class="d-flex align-items-center" style="margin-left:10px;" data-toggle="collapse" href="#collapseExample{{$item->id}}">
-                                                <i class="fa-solid fa-angles-down"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-12" style="margin-top:10px;">
-                                    <div class="d-flex justify-content-center" style="padding: 0px;">
-                                        <div class="button wow fadeInUp d-flex justify-content-start ">
-                                            <a href="{{ url('/pet/' . $item->id . '/edit?edit=airplane') }}" class="btn main d-flex align-items-end" >
-                                                เพิ่มเอกสารสำหรับเดินทาง &nbsp;<i class="fas fa-paw"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="col-12" style="margin-bottom:-20px;">
-                                        <div class="collapse" id="collapseExample{{$item->id}}">
-                                            <div class="row" style="margin-top: 10px;">
-                                                <div class="col" style="padding: 0px;">
-                                                    <form id="myform" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                        {{ method_field('DELETE') }}
-                                                        {{ csrf_field() }}
-                                                        <a href="javascript:;" type="submit" class="btn main" title="Delete Pet" onclick="this.parentNode.submit();">ลบ</a>
-                                                    </form>
-                                                </div>
-                                                <div class="col" style="padding: 0px;">
-                                                    <a href="{{ url('/user_pet_checklist/'.$item->id) }} " class="btn main">
-                                                        CheckList &nbsp;<i class="fas fa-paw"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                             </div>
                             <div class="row d-flex align-items-end">
                                 <div class="col-6  d-flex align-items-end">
@@ -505,10 +459,16 @@
                                         <div class="dropdown-menu menu">
                                             <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit') }}" style="font-family: 'Kanit', sans-serif;">แก้ไขข้อมูล</a>
                                             <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit?edit=airplane') }}" style="font-family: 'Kanit', sans-serif;">แก้ไขเอกสารเดินทาง</a>
-                                            <form id="myform" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                            <form class="d-none" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <a class="dropdown-item item-dd"  style="font-family: 'Kanit', sans-serif;" href="javascript:void()" onclick="document.getElementById('myform').submit();">ลบ</a>
+                                                <button  type="submit" class="btn dropdown-item item-dd d-none" title="Delete Mypet" onclick="return confirm(&quot;Confirm delete ?&quot;)"> ลบ</button>
+                                            </form>
+                                            
+                                            <form method="POST" action="{{ url('/pet/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn dropdown-item item-dd" title="Delete Mypet" onclick="return confirm(&quot;Confirm delete ?&quot;)"> ลบ</button>
                                             <form>
                                         </div>
                                     </div>

@@ -39,8 +39,8 @@
                             <th>ประเภท</th>
                             <th>เบอร์</th>
                             <th>สถานะ</th>
-                            <!-- <th>การใช้งาน</th>
-                            <th>ผู้สร้าง</th> -->
+                            <th>การใช้งาน</th>
+                            <th>ผู้สร้าง</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,7 +76,7 @@
                                         @break
                                     @endswitch
                                 </td>
-                                <!-- <td class="text-center">
+                                <td class="text-center">
                                     @switch($item->status)
                                         @case('active')
                                             <a href="#" class="btn btn-sm btn-success radius-30" ><i class="bx bx-check-double"></i>Active</a>
@@ -92,7 +92,7 @@
                                             <i class="far fa-eye text-primary"></i>
                                         </a>
                                     @endif
-                                </td> -->
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -260,7 +260,7 @@
                               </div>
                               <div class="modal-body">
                                 <center>
-                                    <img width="50%" src="{{ asset('/img/stickerline/PNG/7.png') }}">
+                                <img width="60%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/04.png') }}">
                                     <br><br>
                                     <h5 class="text-danger">ยืนยันการสร้างสมาชิก</h5>
                                     <br>
@@ -383,7 +383,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <center>
-                                            <img width="50%" src="{{ asset('/img/stickerline/PNG/7.png') }}">
+                                        <img width="60%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/04.png') }}">
                                             <br><br>
                                             <h5 class="text-danger">ยืนยันการสร้างสมาชิก</h5>
                                             <br>
