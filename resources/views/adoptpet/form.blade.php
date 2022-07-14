@@ -15,9 +15,9 @@
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="faq wow fadeInRight">
                             <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'ชื่อ' }}</b></label><span style="color: #B8205B;">*</span>
+                                        <label  class="control-label"><b>{{ 'ชื่อ' }}</b><span style="color: #B8205B;">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-10">
@@ -104,7 +104,7 @@
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="faq wow fadeInRight">
                             <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-12 col-md-12">
                                         <label  class="control-label"><b>{{ 'ประเภท' }}</b><span style="color: #B8205B;">*</span></label>
                                     </div>
