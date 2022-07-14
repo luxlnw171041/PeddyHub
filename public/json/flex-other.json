@@ -21,7 +21,7 @@
             "action": {
               "type": "uri",
               "label": "action",
-              "uri": "https://www.viicheck.com/"
+              "uri": "https://www.peddyhub.com/"
             }
           },
           {
@@ -33,7 +33,7 @@
             "action": {
               "type": "uri",
               "label": "action",
-              "uri": "https://www.viicheck.com/"
+              "uri": "https://www.peddyhub.com/"
             },
             "offsetBottom": "md"
           }

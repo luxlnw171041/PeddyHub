@@ -4,28 +4,39 @@
 
 <style>
    .likebtn{
-    background-color: transparent;
-    color:#53565B;
-    font-family: 'Sarabun', sans-serif;
-    font-size:14px;
+        background-color: transparent;
+        color:#53565B;
+        font-family: 'Sarabun', sans-serif;
+        font-size:14px;
+    }
 
-   }
-   .show {
-      -o-transition: opacity 1s;
-      -moz-transition: opacity 1s;
-      -webkit-transition: opacity 1s;
-      transition: opacity 1s;
-      opacity:1;
-  }
-  .hide {
-      opacity:0;
-      -o-transition: opacity 1s;
-      -moz-transition: opacity 1s;
-      -webkit-transition: opacity 1s;
-      transition: opacity 1s;
-  }
-.likebtn:hover {background-color: #F2F2F2; color:black ;}
+    .show {
+        -o-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+        transition: opacity 1s;
+        opacity:1;
+    }
 
+    .hide {
+        opacity:0;
+        -o-transition: opacity 1s;
+        -moz-transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+        transition: opacity 1s;
+    }
+
+    .likebtn:hover {
+        background-color: #F2F2F2; color:black ;
+    }
+    
+    .modal-bottom {
+        position:fixed;
+        width: 100%;
+        top:auto;
+        bottom:0;
+        z-index:999999;
+    }
 
 /* .likebtn:active {
   background-color: #3e8e41 !important;;
@@ -44,6 +55,18 @@
 
   class="alert alert-primary  hide" role="alert">
     <center>คัดลอกลิงก์แล้ว</center>
+</div>
+<div id="please_login" style="position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999; 
+  background-color: #242424;padding:15px; 
+  border-radius:10px;color:white;
+  font-family: 'Kanit', sans-serif;" 
+
+  class="alert alert-primary  hide" role="alert">
+    <center>เข้าสู่ระบบเพื่อใช้งาน</center>
 </div>
 <div class="main-wrapper pet blog">
     <div class="button wow fadeInUp justify-content-end" style="margin-bottom:-50px">  
@@ -229,7 +252,7 @@
                                                         $count_like = "ถูกใจเป็นคนแรก" ;
                                                     }
                                                 @endphp
-                                                <span class="like notranslate" data-toggle="modal" data-target="#modal_name_like">
+                                                <span class="like notranslate">
                                                     <i class="fa-solid fa-heart"></i> <span id="span_count_like_{{ $item->id }}">{{ $count_like }}</span>
                                                 </span>
                                                 @php
@@ -244,23 +267,6 @@
                                                     {{ $count_all_comment }}&nbsp;
                                                 </span>
                                             </p>
-                                            
-                                            <!-- Modal ผู้ที่ถูกใจ -->
-                                            <div class="modal fade" id="modal_name_like" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                              <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                                <div class="modal-content">
-                                                  <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">ผู้ที่ถูกใจ</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                      <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                  </div>
-                                                  <div class="modal-body">
-                                                    <!--  -->
-                                                  </div>
-                                                </div>
-                                              </div>
-                                            </div>
                                                 
                                             <!-- <a href="{{ url('/post/' . $item->id) }}" title="">
                                                 <p class="head mt-1 mb-0">{{ $item->detail }}
@@ -313,6 +319,14 @@
                                                         </button>
                                                     @endif
                                                 </div>
+                                                @else
+                                                    <button class="btn likebtn btn-lg" onclick="user_like_post('0' , '0');">
+                                                        <b>
+                                                            <i class="far fa-heart"></i>
+                                                            <br>
+                                                            ถูกใจ
+                                                        </b>
+                                                    </button>
                                                 @endif
                                             </div>
                                             <div class="col-6 d-grid ">
@@ -349,18 +363,25 @@
                                             </div>
                                             <div class="modal-body" style="border:none;padding:15px;margin-top: -5px;">
                                                 <!-- -------------- ตัวอย่าง -------------- -->
-                                                <div id="EX_test_comment" class="row d-none">
+                                                <div id="EX_test_comment" class="row d-">
                                                     <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
                                                         <center>
                                                             <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
                                                         </center>
                                                     </div>
                                                     <div class="col-10">
+                                                        <div class="dropdown" style="z-index: 9999;">
+                                                            <i style="float:right;" class="fa-solid fa-ellipsis-vertical" id="dropdown_delete_comment" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                            <div class="dropdown-menu" aria-labelledby="dropdown_delete_comment">
+                                                                <button class="dropdown-item" data-toggle="modal" data-target="#modal_delete_comment">
+                                                                    <i class="fa-solid fa-trash-can text-danger"></i> &nbsp;ลบความคิดเห็น
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                         <p>
                                                             <b class="notranslate">
                                                                 ชื่อคน Comment
                                                             </b>
-                                                            <i style="float:right;" class="fa-solid fa-ellipsis-vertical"></i>
                                                             <br>
                                                             ตัวอย่างการ Comment
                                                         </p>
@@ -369,7 +390,7 @@
                                                         <div class="row">
                                                             <div class="col-6 ">
                                                                 <p class="text-secondary" style="font-size: 14px;">
-                                                                    <span id="comment_id_6" onclick="user_like_comment('6' , '{{ Auth::user()->id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span id="count_like_comment_6" style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
+                                                                    <span id="comment_id_6" onclick="user_like_comment('6' , '{{ $id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span id="count_like_comment_6" style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
                                                                 </p>
                                                             </div>
                                                             <div class="col-6">
@@ -413,6 +434,29 @@
                                     </div>
                                 </div>
                                 <!-- endmodal -->
+                                <div class="col-12">
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modal_delete_comment" tabindex="-1" aria-labelledby="ModalLabeldelete_comment" aria-hidden="true">
+                                      <!-- มือถือ -->
+                                      <div class="modal-dialog modal-bottom">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="ModalLabeldelete_comment">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            ...
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -477,23 +521,24 @@
     function user_like_post(user_id , post_id){
         // console.log(user_id);
         // console.log(post_id);
-        let span_count_like = document.querySelector('#span_count_like_' + post_id);
-            // console.log("span_count_like >>> " + span_count_like.innerText);
-
-        let sum = 0 ;
-        if (span_count_like.innerText === "ถูกใจเป็นคนแรก") {
-            sum = 1;
-        }else{
-            sum = parseInt(span_count_like.innerText) + 1;
-        }
-
-        document.querySelector('#span_count_like_' + post_id).innerText = sum.toString();
 
         fetch("{{ url('/') }}/api/user_like_post/"+ user_id + "/" + post_id)
             .then(response => response.text())
             .then(result => {
                 // console.log(result);
                 if (result === 'ok') {
+                    let span_count_like = document.querySelector('#span_count_like_' + post_id);
+                        // console.log("span_count_like >>> " + span_count_like.innerText);
+
+                    let sum = 0 ;
+                    if (span_count_like.innerText === "ถูกใจเป็นคนแรก") {
+                        sum = 1;
+                    }else{
+                        sum = parseInt(span_count_like.innerText) + 1;
+                    }
+
+                    document.querySelector('#span_count_like_' + post_id).innerText = sum.toString();
+
                     let btn_for_like = document.querySelector('#btn_for_like_'+post_id);
 
                     let style_btn = document.createAttribute("style");
@@ -503,6 +548,12 @@
                     let onclick_btn = document.createAttribute("onclick")
                         onclick_btn.value = "un_user_like_post('" + user_id +"' , '" + post_id + "');";
                     btn_for_like.setAttributeNode(onclick_btn);
+                }else{
+                    var please_login = document.getElementById("please_login");
+                        please_login.className = "show";
+                    setTimeout(function () {
+                        please_login.className = 'hide';
+                    }, 2000);
                 }
 
         });
@@ -511,23 +562,25 @@
     function un_user_like_post(user_id , post_id){
         // console.log(user_id);
         // console.log(post_id);
-        let span_count_like = document.querySelector('#span_count_like_' + post_id);
-        // console.log(span_count_like.innerText);
-
-        let sum = 0 ;
-        sum = parseInt(span_count_like.innerText) - 1;
-        
-        if (sum === 0) {
-            document.querySelector('#span_count_like_' + post_id).innerText = "ถูกใจเป็นคนแรก";
-        }else{
-            document.querySelector('#span_count_like_' + post_id).innerText = sum.toString();
-        }
 
         fetch("{{ url('/') }}/api/un_user_like_post/"+ user_id + "/" + post_id)
             .then(response => response.text())
             .then(result => {
                 // console.log(result);
                 if (result === 'ok') {
+
+                    let span_count_like = document.querySelector('#span_count_like_' + post_id);
+                    // console.log(span_count_like.innerText);
+
+                    let sum = 0 ;
+                    sum = parseInt(span_count_like.innerText) - 1;
+                    
+                    if (sum === 0) {
+                        document.querySelector('#span_count_like_' + post_id).innerText = "ถูกใจเป็นคนแรก";
+                    }else{
+                        document.querySelector('#span_count_like_' + post_id).innerText = sum.toString();
+                    }
+
                     let btn_for_like = document.querySelector('#btn_for_like_'+post_id);
 
                     let style_btn = document.createAttribute("style");
@@ -537,6 +590,12 @@
                     let onclick_btn = document.createAttribute("onclick")
                         onclick_btn.value = "user_like_post('" + user_id +"' , '" + post_id + "');";
                     btn_for_like.setAttributeNode(onclick_btn);
+                }else{
+                    var please_login = document.getElementById("please_login");
+                        please_login.className = "show";
+                    setTimeout(function () {
+                        please_login.className = 'hide';
+                    }, 2000);
                 }
 
         });
@@ -546,26 +605,6 @@
     {
         // console.log(comment_id);
         // console.log(user_id);
-        let count_like_comment = document.querySelector('#count_like_comment_' + comment_id);
-            // console.log(count_like_comment.innerText);
-        let sum = 0 ;
-
-        if (count_like_comment.innerText === "0") {
-            sum = 1;
-        }else{
-            sum = parseInt(count_like_comment.innerText) + 1;
-        }
-
-        count_like_comment.innerHTML = "";
-
-        let i_span_2_col_6_1 = document.createElement("i");
-            count_like_comment.appendChild(i_span_2_col_6_1);
-
-        let class_i_span_2_col_6_1 = document.createAttribute("class");
-            class_i_span_2_col_6_1.value = "far fa-heart" ;
-        i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
-
-        count_like_comment.innerHTML = count_like_comment.innerHTML + "&nbsp;&nbsp;" + " " + sum.toString();
 
         fetch("{{ url('/') }}/api/user_like_comment/"+ comment_id + "/" + user_id)
             .then(response => response.text())
@@ -573,6 +612,28 @@
                 // console.log(result);
 
                 if (result === 'ok') {
+
+                    let count_like_comment = document.querySelector('#count_like_comment_' + comment_id);
+                        // console.log(count_like_comment.innerText);
+                    let sum = 0 ;
+
+                    if (count_like_comment.innerText === "0") {
+                        sum = 1;
+                    }else{
+                        sum = parseInt(count_like_comment.innerText) + 1;
+                    }
+
+                    count_like_comment.innerHTML = "";
+
+                    let i_span_2_col_6_1 = document.createElement("i");
+                        count_like_comment.appendChild(i_span_2_col_6_1);
+
+                    let class_i_span_2_col_6_1 = document.createAttribute("class");
+                        class_i_span_2_col_6_1.value = "far fa-heart" ;
+                    i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
+
+                    count_like_comment.innerHTML = count_like_comment.innerHTML + "&nbsp;&nbsp;" + " " + sum.toString();
+
                     let btn_like_comment = document.querySelector('#comment_id_' + comment_id);
 
                     let style_btn = document.createAttribute("style");
@@ -582,6 +643,12 @@
                     let onclick_btn = document.createAttribute("onclick")
                         onclick_btn.value = "un_user_like_comment('" + comment_id +"' , '" + user_id + "');";
                     btn_like_comment.setAttributeNode(onclick_btn);
+                }else{
+                    var please_login = document.getElementById("please_login");
+                        please_login.className = "show";
+                    setTimeout(function () {
+                        please_login.className = 'hide';
+                    }, 2000);
                 }
 
         });
@@ -589,29 +656,30 @@
 
     function un_user_like_comment(comment_id , user_id)
     {
-        let count_like_comment = document.querySelector('#count_like_comment_' + comment_id);
-            // console.log(count_like_comment.innerText);
-        let sum = 0 ;
-
-        sum = parseInt(count_like_comment.innerText) - 1;
-
-        count_like_comment.innerHTML = "";
-
-        let i_span_2_col_6_1 = document.createElement("i");
-            count_like_comment.appendChild(i_span_2_col_6_1);
-
-        let class_i_span_2_col_6_1 = document.createAttribute("class");
-            class_i_span_2_col_6_1.value = "far fa-heart" ;
-        i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
-
-        count_like_comment.innerHTML = count_like_comment.innerHTML + "&nbsp;&nbsp;" + " " + sum.toString();
-
         fetch("{{ url('/') }}/api/un_user_like_comment/"+ comment_id + "/" + user_id)
             .then(response => response.text())
             .then(result => {
                 // console.log(result);
 
                 if (result === 'ok') {
+
+                    let count_like_comment = document.querySelector('#count_like_comment_' + comment_id);
+                        // console.log(count_like_comment.innerText);
+                    let sum = 0 ;
+
+                    sum = parseInt(count_like_comment.innerText) - 1;
+
+                    count_like_comment.innerHTML = "";
+
+                    let i_span_2_col_6_1 = document.createElement("i");
+                        count_like_comment.appendChild(i_span_2_col_6_1);
+
+                    let class_i_span_2_col_6_1 = document.createAttribute("class");
+                        class_i_span_2_col_6_1.value = "far fa-heart" ;
+                    i_span_2_col_6_1.setAttributeNode(class_i_span_2_col_6_1);
+
+                    count_like_comment.innerHTML = count_like_comment.innerHTML + "&nbsp;&nbsp;" + " " + sum.toString();
+
                     let btn_like_comment = document.querySelector('#comment_id_' + comment_id);
 
                     let style_btn = document.createAttribute("style");
@@ -621,6 +689,12 @@
                     let onclick_btn = document.createAttribute("onclick")
                         onclick_btn.value = "user_like_comment('" + comment_id +"' , '" + user_id + "');";
                     btn_like_comment.setAttributeNode(onclick_btn);
+                }else{
+                    var please_login = document.getElementById("please_login");
+                        please_login.className = "show";
+                    setTimeout(function () {
+                        please_login.className = 'hide';
+                    }, 2000);
                 }
 
         });
@@ -632,6 +706,7 @@
 
         /* Copy the text inside the text field */
         navigator.clipboard.writeText(copyText);
+
         var copy_sucess = document.getElementById("copy_sucess");
         copy_sucess.className = "show";
         setTimeout(function () {
@@ -767,23 +842,23 @@
                             span_1_col_6_1.setAttributeNode(id_span_1_col_6_1);
 
                             if (like_all[item.id]) {
-                                let iii = like_all[item.id].includes("{{ Auth::user()->id }}");
+                                let iii = like_all[item.id].includes("{{ $id }}");
                                 if (iii) {
                                     let style_span_1_col_6_1 = document.createAttribute("style");
                                         style_span_1_col_6_1.value = "color: #B8205B;" ;
                                     span_1_col_6_1.setAttributeNode(style_span_1_col_6_1);
 
                                     let onclick_span_1_col_6_1 = document.createAttribute("onclick");
-                                        onclick_span_1_col_6_1.value = "un_user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
+                                        onclick_span_1_col_6_1.value = "un_user_like_comment('"+item.id+"'" + ",'{{ $id }}');" ;
                                     span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
                                 }else{
                                     let onclick_span_1_col_6_1 = document.createAttribute("onclick");
-                                        onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
+                                        onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ $id }}');" ;
                                     span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
                                 }
                             }else{
                                 let onclick_span_1_col_6_1 = document.createAttribute("onclick");
-                                        onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ Auth::user()->id }}');" ;
+                                        onclick_span_1_col_6_1.value = "user_like_comment('"+item.id+"'" + ",'{{ $id }}');" ;
                                     span_1_col_6_1.setAttributeNode(onclick_span_1_col_6_1);
                             }
 
