@@ -45,7 +45,7 @@
                                     <!-- icon_categorie -->
                                    
 
-                                    <h4 class="wow fadeInDown">
+                                    <h4 class="wow fadeInDown notranslate">
                                          @include ('menubar.icon_categorie')
                                         {{ $item->titel }}
                                         @switch($item->gender)
