@@ -8,7 +8,7 @@
 <meta property="og:description" content="YOUR DESCRIPTION HERE" />
 <meta property="og:image" content="YOUR THUMBNAIL URL HERE" />
 <style>
-    .parent {
+    .parents {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, 0.5fr);
@@ -350,6 +350,7 @@
                                 Pets</span>
                         </h2>
                     </div> -->
+                    
                 <div class="row">
                     @foreach($petuser as $item)
                     <div class="col-lg-4 col-md-6 col-sm-12">
@@ -459,17 +460,12 @@
                                         <div class="dropdown-menu menu">
                                             <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit') }}" style="font-family: 'Kanit', sans-serif;">แก้ไขข้อมูล</a>
                                             <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit?edit=airplane') }}" style="font-family: 'Kanit', sans-serif;">แก้ไขเอกสารเดินทาง</a>
-                                            <form class="d-none" method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                          
+                                            <form method="POST" action="{{ url('/pet' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}
                                                 {{ csrf_field() }}
-                                                <button  type="submit" class="btn dropdown-item item-dd d-none" title="Delete Mypet" onclick="return confirm(&quot;Confirm delete ?&quot;)"> ลบ</button>
+                                                <button type="submit" class="btn dropdown-item item-dd" title="Delete MyPet" onclick="return confirm(&quot;Confirm delete?&quot;)"> ลบ</button>
                                             </form>
-                                            
-                                            <form method="POST" action="{{ url('/pet/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn dropdown-item item-dd" title="Delete Mypet" onclick="return confirm(&quot;Confirm delete ?&quot;)"> ลบ</button>
-                                            <form>
                                         </div>
                                     </div>
                                 </div>
@@ -546,7 +542,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <div class="parent">
+                                                    <div class="parents">
                                                         <div class="div1 text-center">
                                                             <a href="{{ url('/user_pet/' . $item->id) }}">
                                                                 <img style="position:relative ;" width="80px" src="{{ url('storage/'.$item->qr_code )}}" alt="">
@@ -596,7 +592,7 @@
                                 </div>
                                 <br>
                                 <button id="{{$item->name}}" onclick="downloadimage()" class="btn btn-success btn-load-pc">Download</button>
-                                <button id="swip{{$item->id}}" onclick="swipside()" style="margin-left:-100px;" class="btn btn-success btn-load-pc">แนวนอน</button>
+                                <span id="swip{{$item->id}}" onclick="swipside()" style="margin-left:-100px;" class="btn btn-success btn-load-pc">แนวนอน</span>
                                 <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" style="margin-left:120px;" href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=www.peddyhub.com/pet/{{$item->id}}&p[images][0]=http://www.peddyhub.com/{{ url('storage/'.$item->photo )}}&p[title]={{$item->name}}มีบัตรประจำตัวแล้วนะ!&p[summary]=Recent+events+have+revealed+how+market-driven+education+policies,+deceivingly+labeled+as+%22reform,%22+are+revealing+their+truly+destructive+effects+on+the+streets+and+in+the+corridors+of+government:" class="fb-xfbml-parse-ignore btn btn-success btn-load-pc">แชร์</a></div>
 
                             </div>
