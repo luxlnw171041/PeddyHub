@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-10">
                                     <div class="form-group">
-                                        <input class="form-control" name="titel" type="text" id="titel" value="{{ isset($adoptpet->titel) ? $adoptpet->titel : ''}}" required onchange="check();" onchange="check();">
+                                        <input class="form-control" name="titel" type="text" id="titel" value="{{ isset($adoptpet->titel) ? $adoptpet->titel : ''}}" required onchange="check();">
                                     </div>
                                 </div>
                             </div>
