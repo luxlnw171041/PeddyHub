@@ -33,7 +33,9 @@
     
     .modal-bottom {
         position:fixed;
-        width: 100%;
+        width: 90%;
+        right: auto;
+        left: auto;
         top:auto;
         bottom:0;
         z-index:999999;
@@ -45,6 +47,7 @@
   transform: translateY(4px) !important;;
 } */
 </style>
+
 <div id="copy_sucess" style="position: fixed;
   top: 80%;
   left: 50%;
@@ -116,15 +119,13 @@
         
     }
 
-    function i_xmark_photo()
-    {
+    function i_xmark_photo(){
         document.querySelector('#show_photo_pot').classList.add('d-none');
         document.querySelector('#photo').value = null ;
         document.querySelector('#i_xmark').classList.add('d-none');
     }
 
-    function edit_post(post_id)
-    {
+    function edit_post(post_id){
         console.log(post_id);
 
         document.querySelector('#btn_modal_pot').click();
@@ -140,7 +141,6 @@
                     console.log(item.id)
                     document.querySelector('#exampleModalScrollableTitle_new_post').innerHTML = "แก้ไขโพสต์" ;
                 }
-
         });
 
     }

@@ -21,7 +21,9 @@
                     </div>
                     <div class="col-1" style="padding:0px;">
                         <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                        aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </a>
                         <div class="dropdown-menu dropdown-primary">
                             <a class="dropdown-item" onclick="copy_link('{{ $item->id }}');">
                                 <i class="fa-solid fa-copy text-info"></i>&nbsp;&nbsp;คัดลอกลิงก์
@@ -146,9 +148,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>    
 
-    <!-- Modal -->
+    <!-- Modal Comment -->
     <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
@@ -232,4 +234,27 @@
             </div>
         </div>
     </div>
+    <!-- endmodal comment -->
+
+    <!-- Modal delete comment-->
+    <div class="modal fade" id="modal_delete_comment" tabindex="-1" aria-labelledby="ModalLabeldelete_comment" aria-hidden="true">
+      <div class="modal-dialog modal-bottom">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalLabeldelete_comment">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END Modal delete comment-->
 @endforeach
