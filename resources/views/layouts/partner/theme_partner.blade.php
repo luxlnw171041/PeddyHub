@@ -82,6 +82,7 @@
 			@endforeach
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
+				@if (Auth::user()->role == 'admin-partner')
 				<li class="menu-label" style="font-size:18px;color:#B8205B">
                     Admin
                 </li>
@@ -92,6 +93,7 @@
 						<div class="menu-title" style="font-size:18px;">จัดการผู้ใช้</div>
 					</a>
 				</li>
+				@endif
 				<li class="menu-label" style="font-size:18px;color:#B8205B">
                     Check In/Out 
                 </li>
