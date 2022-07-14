@@ -135,6 +135,8 @@
                     <li><a href="{{ url('/text_topic') }}">admin</a></li>
                     @elseif(Auth::user()->role == "admin-partner" )
                     <li><a href="{{ url('/partner_index') }}">admin-partner</a></li>
+                    @elseif(Auth::user()->role == "partner" )
+                    <li><a href="{{ url('/partner_index') }}">admin-partner</a></li>
                     @endif
                     <li>
                       <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
