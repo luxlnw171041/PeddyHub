@@ -4,7 +4,7 @@
           $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
         @endphp
         @foreach($partner as $item)
-            @if($item->id % 2 == 0)
+            @if($loop->iteration % 2 != 0)
             <div class="item" style="padding:5px;z-index:-1;">
                 <div class="testimon">
                     <a href="{{$item->link}}" target="bank">
@@ -20,7 +20,7 @@
           $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->get()
         @endphp
         @foreach($partner as $item)
-            @if($item->id % 2 != 0)
+            @if($loop->iteration % 2 == 0)
                 <div class="item" style="padding:5px;z-index:-1;">
                     <div class="testimon">
                         <a href="{{$item->link}}" target="bank">
