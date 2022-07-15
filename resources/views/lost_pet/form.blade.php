@@ -269,8 +269,8 @@
                                 ในการลงประกาศตามหาเจ้าตัวแสบระบบจะขึ้นประกาศบนหน้าฟีดไว้เป็นเวลา <span class="text-danger"><b>15 วัน</b></span> หลังจากนั้นคุณสามารถรีโพสใหม่ได้ที่หน้า <a href="{{ url('/my_post') }}"><u>โพสของฉัน</u></a>
                             </p>
                         </div>
-                        <div class="text-center">
-                            <b class="text-center">สนับสนุนโดย</b>
+                        <div class="modal-body text-center">
+                            <b>สนับสนุนโดย</b>
                             @include ('layouts.partner_2_row')
                             <button type="button" class="btn btn-primary d-none">Save changes</button>
                         </div>
