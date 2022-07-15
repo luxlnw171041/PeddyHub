@@ -5,7 +5,7 @@
         @endphp
         @foreach($partner as $item)
             @if($item->id % 2 == 0)
-            <div class="item" style="padding:0px;z-index:-1;">
+            <div class="item" style="padding:5px;z-index:-1;">
                 <div class="testimon">
                     <a href="{{$item->link}}" target="bank">
                         <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
@@ -21,7 +21,7 @@
         @endphp
         @foreach($partner as $item)
             @if($item->id % 2 != 0)
-                <div class="item" style="padding:0px;z-index:-1;">
+                <div class="item" style="padding:5px;z-index:-1;">
                     <div class="testimon">
                         <a href="{{$item->link}}" target="bank">
                             <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
