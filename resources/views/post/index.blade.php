@@ -125,10 +125,27 @@
         document.querySelector('#i_xmark').classList.add('d-none');
     }
 
-    function edit_post(post_id){
-        console.log(post_id);
+    function new_post()
+    {
+        document.querySelector('#form_new_or_edit_post').action = "{{ url('/post') }}" ;
+
+        document.querySelector('#btn_submit_post_create').classList.remove('d-none');
+        document.querySelector('#btn_submit_post_edit').classList.add('d-none');
+        document.querySelector('#Title_new_post').innerHTML = "สร้างโพสต์" ;
+        document.querySelector('#span_cat_pet').innerHTML = "ทั้งหมด" ;
+        document.querySelector('#detail').value = "" ;
+        document.querySelector('#photo').value = "" ;
+        document.querySelector('#show_photo_pot').src = "" ;
+        document.querySelector('#show_photo_pot').classList.add('d-none');
 
         document.querySelector('#btn_modal_pot').click();
+    }
+
+    function edit_post(post_id)
+    {
+        // console.log(post_id);
+        document.querySelector('#form_new_or_edit_post').action = "{{ url('/post/') }}" + "/" + post_id ;
+
         document.querySelector('#btn_submit_post_create').classList.add('d-none');
         document.querySelector('#btn_submit_post_edit').classList.remove('d-none');
 
@@ -138,10 +155,40 @@
                 console.log(result);
 
                 for(let item of result){
-                    console.log(item.id)
-                    document.querySelector('#exampleModalScrollableTitle_new_post').innerHTML = "แก้ไขโพสต์" ;
+                    // console.log(item.pet_category_id)
+                    switch(item.pet_category_id) {
+                        case 1:
+                            document.querySelector('#span_cat_pet').innerHTML = "สุนัข" ;
+                        break;
+                        case 2:
+                            document.querySelector('#span_cat_pet').innerHTML = "แมว" ;
+                        break;
+                        case 3:
+                            document.querySelector('#span_cat_pet').innerHTML = "นก" ;
+                        break;
+                        case 4:
+                            document.querySelector('#span_cat_pet').innerHTML = "ปลา" ;
+                        break;
+                        case 5:
+                            document.querySelector('#span_cat_pet').innerHTML = "สัตว์เล็ก" ;
+                        break;
+                        case 6:
+                            document.querySelector('#span_cat_pet').innerHTML = "Exotic" ;
+                        break;
+
+                        default:
+                            document.querySelector('#span_cat_pet').innerHTML = "ทั้งหมด" ;
+                    }
+
+                    document.querySelector('#Title_new_post').innerHTML = "แก้ไขโพสต์" ;
+                    document.querySelector('#detail').value = item.detail ;
+                    // document.querySelector('#photo').value = item.photo ;
+                    document.querySelector('#show_photo_pot').src = "{{ url('storage')}}/"  + item.photo ;
+                    document.querySelector('#show_photo_pot').classList.remove('d-none');
                 }
         });
+
+        document.querySelector('#btn_modal_pot').click();
 
     }
 

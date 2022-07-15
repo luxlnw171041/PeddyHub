@@ -201,7 +201,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6"> 
                             <div class="d-flex justify-content-end" >
-                            <button disabled id="modal_submit" type="button" class="btn  btn-11 " data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
+                            <button disabled id="modal_submit" type="button" class="btn  btn-11 " data-toggle="modal" data-target="#modal_get_information" onclick="submit_form_lost_pet();">
                                 โพส
                                 </button>
                             <button id="lost_pet_submit" type="submit" class="btn btn-11 form-control d-none" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}"></button>
@@ -213,8 +213,6 @@
         </section>
     </div>
 </div>
-
-
 
 <div class="modal fade"  id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

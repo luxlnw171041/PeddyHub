@@ -7,22 +7,24 @@
                 <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;" src="{{ url('storage')}}/{{ $user->profile->photo }}">
             </div>
             <div class="col-9">
-                <button style="margin-top:8px;width: 100%;" class="btn btn-outline-secondary" onclick="document.querySelector('#btn_modal_pot').click();">แชร์ความน่ารักเจ้าตัวแสบ</button>
+                <button style="margin-top:8px;width: 100%;" class="btn btn-outline-secondary" onclick="new_post();" >
+                    แชร์ความน่ารักเจ้าตัวแสบ
+                </button>
             </div>
         </div>
         <br>
         <!-- Button trigger modal -->
-        <button id="btn_modal_pot" type="button" data-toggle="modal" data-target="#modal_pot" onclick="document.querySelector('#btn_submit_post_create').classList.remove('d-none'),document.querySelector('#btn_submit_post_edit').classList.add('d-none');"></button>
+        <button id="btn_modal_pot" type="button" data-toggle="modal" data-target="#modal_pot"></button>
 
-        <form method="POST" action="{{ url('/post') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+        <form id="form_new_or_edit_post" method="POST" action="" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <!-- Modal -->
-            <div class="modal fade" id="modal_pot" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle_new_post" aria-hidden="true">
+            <div class="modal fade" id="modal_pot" tabindex="-1" role="dialog" aria-labelledby="Title_new_post" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalScrollableTitle_new_post">สร้างโพสต์</h5>
+                    <h5 class="modal-title" id="Title_new_post"></h5>
                     <span class="close notranslate" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </span>
@@ -34,7 +36,7 @@
                         </div>
                         <div class="col-9">
                             <h5 class="notranslate">{{ $user->profile->name  }}</h5>
-                            <span>ประเภท : <span id="span_cat_pet" class="text-info">ทั้งหมด</span></span>
+                            <span>ประเภท : <span id="span_cat_pet" class="text-info"></span></span>
                         </div>
                     </div>
                     <br>

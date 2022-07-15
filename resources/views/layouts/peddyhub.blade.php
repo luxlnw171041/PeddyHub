@@ -523,6 +523,45 @@
       <!--End Header Upper-->
 
       @yield('content')
+
+      <!-- MODAL THANK YOU -->
+      <div class="modal fade" id="modal_get_information" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <h4>ได้รับข้อมูลเรียบร้อยแล้ว</h4>
+                <br>
+                <img width="50%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/03.png') }}">
+                <br>
+                <h5>สนับสนุนโดย</h5>
+                  @include ('layouts.partner_2_row')
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END MODAL THANK YOU -->
+
+      <!-- MODAL LOADNING -->
+      <div class="modal fade " data-keyboard="false" id="modal_loadning" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="d-flex justify-content-end" style="padding: 15px;">
+                    <div class="line-spinner"></div>
+                </div>
+                <div class="modal-body text-center">
+                    <img width="60%" src="{{ asset('peddyhub/images/home_5/preloader.gif') }}">
+                    <br>
+                    <center style="margin-top:15px;">
+                        <h6 style="font-family: 'Kanit', sans-serif;">กำลังโหลด โปรดรอสักครู่..</h6>
+                    </center>
+                    <br>
+                    <h5 style="font-family: 'Kanit', sans-serif;">สนับสนุนโดย</h5>
+                    @include ('layouts.partner_2_row')
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- END MODAL LOADNING -->
       
       <!--Main Footer-->
       <footer class="main-footer">
