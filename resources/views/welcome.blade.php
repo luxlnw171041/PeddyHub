@@ -210,7 +210,7 @@
                                                 <img  class="icon" width="80px;" src="peddyhub/images/home_5/svg/home.svg"  alt="Kiwi standing on oval">
 
                                             <div class="num">
-                                                <span class="counting-value" style="font-size: 35px;">{{$count_pet * 3}}</span>
+                                                <span class="counting-value" style="font-size: 35px;">{{ 100 + ($count_pet * 3) }}</span>
                                                 <span style="font-size: 35px;">+</span>
                                             </div>
                                             <div class="description" style="font-size: 15px;margin-top:5px;">สัตว์เลี้ยงลงทะเบียน</div>
@@ -230,7 +230,7 @@
                                         <div class="box user">
                                                 <img class="icon" width="80px;" src="peddyhub/images/home_5/svg/user.svg"  alt="Kiwi standing on oval">
                                             <div class="num">
-                                                <span class="counting-value" style="font-size: 35px;">{{$count_user + 300}}</span>
+                                                <span class="counting-value" style="font-size: 35px;">{{ $count_user + 300 }}</span>
                                                 <span style="font-size: 35px;">+</span>
                                             </div>
                                             <div class="description" style="font-size: 15px;margin-top:5px;">ผู้ใช้</div>
