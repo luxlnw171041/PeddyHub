@@ -96,6 +96,9 @@ class PostController extends Controller
             case 'Exotic':
                 $requestData['pet_category_id'] = 6 ;
                 break;
+            case 'ทั่วไป':
+                $requestData['pet_category_id'] = null ;
+                break;
             
             default:
                 $requestData['pet_category_id'] = null ;
@@ -149,13 +152,47 @@ class PostController extends Controller
      * @return \Illuminate\View\View
      */
     public function edit($id)
-    {
-        $category = Pet_Category::groupBy('name')->get();
+    {   
+        $user_id = Auth::id();
+        $user = Auth::user();
+
         $post = Post::findOrFail($id);
+
+        switch ($post->pet_category_id) {
+            case 1:
+                $post->pet_category_id = 'สุนัข';
+                break;
+            case 2:
+                $post->pet_category_id = 'แมว' ;
+                break;
+            case 3:
+                $post->pet_category_id = 'นก' ;
+                break;
+            case 4:
+                $post->pet_category_id = 'ปลา' ;
+                break;
+            case 5:
+                $post->pet_category_id = 'สัตว์เล็ก' ;
+                break;
+            case 6:
+                $post->pet_category_id = 'Exotic' ;
+                break;
+            
+            default:
+                $post->pet_category_id = 'ทั่วไป' ;
+                break;
+        }
+
+        // echo "<pre>";
+        // print_r($post);
+        // echo "<pre>";
+        // exit();
+
+        $select_category = Pet_Category::groupBy('name')->get();
         
-        return view('post.edit', compact('post' ,'category'));
-       
+        return view('post.edit', compact('post' , 'user_id' ,'user' ,'select_category'));
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -168,15 +205,45 @@ class PostController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('photo')) {
+
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
-                ->store('uploads', 'public');
+            ->store('uploads', 'public');
         }
 
         $post = Post::findOrFail($id);
+
+        switch ($requestData['pet_category_id']) {
+            case 'สุนัข':
+                $requestData['pet_category_id'] = 1 ;
+                break;
+            case 'แมว':
+                $requestData['pet_category_id'] = 2 ;
+                break;
+            case 'นก':
+                $requestData['pet_category_id'] = 3 ;
+                break;
+            case 'ปลา':
+                $requestData['pet_category_id'] = 4 ;
+                break;
+            case 'สัตว์เล็ก':
+                $requestData['pet_category_id'] = 5 ;
+                break;
+            case 'Exotic':
+                $requestData['pet_category_id'] = 6 ;
+                break;
+            case 'ทั่วไป':
+                $requestData['pet_category_id'] = null ;
+                break;
+            
+            default:
+                $requestData['pet_category_id'] = null ;
+                break;
+        }
+
         $post->update($requestData);
 
-        return redirect('post')->with('flash_message', 'Post updated!');
+        return redirect('/post'. '#id' . $id )->with('flash_message', 'Post updated!');
     }
 
     /**
@@ -356,6 +423,7 @@ class PostController extends Controller
     public function show_all_comment($post_id)
     {
         $data_comment = Comment::where('post_id' , $post_id)
+                ->where('status' , "show")
                 ->orderBy('id' , 'ASC')
                 ->get();
 
@@ -374,8 +442,20 @@ class PostController extends Controller
         $data['content'] = $content ;
         $data['user_id'] = $user_id ;
         $data['post_id'] = $post_id ;
+        $data['status'] =  "show";
 
         Comment::create($data);
+
+        return "ok" ;
+    }
+
+    public function delete_comment($comment_id)
+    {
+        DB::table('comments')
+            ->where('id', $comment_id)
+            ->update([
+                'status' => "not_show",
+        ]);
 
         return "ok" ;
     }

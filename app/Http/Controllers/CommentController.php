@@ -53,6 +53,8 @@ class CommentController extends Controller
     {
         
         $requestData = $request->all();
+
+        $requestData['status'] = "show";
         
         Comment::create($requestData);
 

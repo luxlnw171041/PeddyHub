@@ -79,6 +79,8 @@ Route::get('/user_like_comment/{comment_id}/{user_id}', 'PostController@user_lik
 Route::get('/un_user_like_comment/{comment_id}/{user_id}', 'PostController@un_user_like_comment');
 // add comment
 Route::get('/submit_input_content_comment/{user_id}/{post_id}/{content}', 'PostController@submit_input_content_comment');
+// delete comment
+Route::get('/delete_comment/{comment_id}', 'PostController@delete_comment');
 
 Route::get('/show_all_comment/{post_id}', 'PostController@show_all_comment');
 Route::get('/show_data_profile/{user_id}', 'PostController@show_data_profile');

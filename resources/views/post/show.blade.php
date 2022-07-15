@@ -13,8 +13,7 @@
                                     <div class="image d-flex justify-content-center">
                                         <img src="{{ url('storage/'.$post->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
                                     </div>
-                                    <h4 class="mt-4 mb-2">{{ $post->detail}}
-                                    </h4>
+                                    <p class="mt-1 mb-0">{{ $post->detail }} </p>
                                 </div>
                                 <div class="elements">
                                     <span class="tags">

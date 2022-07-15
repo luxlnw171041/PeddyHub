@@ -25,7 +25,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['content', 'user_id', 'post_id','like_all'];
+    protected $fillable = ['content', 'user_id', 'post_id','like_all','status'];
 
     public function post(){
         return $this->belongsTo('App\Models\Post', 'post_id'); 
