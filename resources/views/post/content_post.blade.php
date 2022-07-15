@@ -164,7 +164,7 @@
                 <div class="modal-body" style="border:none;padding:15px;margin-top: -5px;">
                     <!-- -------------- ตัวอย่าง -------------- -->
                     @if($id == "1" or $id == "2")
-                    <div id="EX_test_comment" class="row d-">
+                    <div id="EX_test_comment" class="row d-none">
                         <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
                             <center>
                                 <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
