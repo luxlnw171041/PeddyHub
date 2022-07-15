@@ -238,7 +238,7 @@
                 <div class="row ">
                     <div class="col-1"></div>
                     <!-- Button trigger modal -->
-                    <button id="modal_submit" type="button" class="d-none btn btn-primary button-three" data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
+                    <button id="modal_submit" type="button" class="d-none btn btn-primary button-three" data-toggle="modal" data-target="#modal_get_information" onclick="submit_form_lost_pet();">
                         แจ้งน้องหาย
                     </button>
                     <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
@@ -269,8 +269,10 @@
                                 ในการลงประกาศตามหาเจ้าตัวแสบระบบจะขึ้นประกาศบนหน้าฟีดไว้เป็นเวลา <span class="text-danger"><b>15 วัน</b></span> หลังจากนั้นคุณสามารถรีโพสใหม่ได้ที่หน้า <a href="{{ url('/my_post') }}"><u>โพสของฉัน</u></a>
                             </p>
                         </div>
-                        <div class="modal-footer d-none">
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                        <div class="text-center">
+                            <b class="text-center">สนับสนุนโดย</b>
+                            @include ('layouts.partner_2_row')
+                            <button type="button" class="btn btn-primary d-none">Save changes</button>
                         </div>
                     </div>
                 </div>

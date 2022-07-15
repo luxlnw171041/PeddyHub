@@ -532,7 +532,7 @@
               <h4>ได้รับข้อมูลเรียบร้อยแล้ว</h4>
                 <br>
                 <img width="50%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/03.png') }}">
-                <br>
+                <br><br>
                 <h5>สนับสนุนโดย</h5>
                   @include ('layouts.partner_2_row')
             </div>
@@ -552,10 +552,10 @@
                     <img width="60%" src="{{ asset('peddyhub/images/home_5/preloader.gif') }}">
                     <br>
                     <center style="margin-top:15px;">
-                        <h6 style="font-family: 'Kanit', sans-serif;">กำลังโหลด โปรดรอสักครู่..</h6>
+                        <h6>กำลังโหลด โปรดรอสักครู่..</h6>
                     </center>
                     <br>
-                    <h5 style="font-family: 'Kanit', sans-serif;">สนับสนุนโดย</h5>
+                    <h5>สนับสนุนโดย</h5>
                     @include ('layouts.partner_2_row')
                 </div>
             </div>
