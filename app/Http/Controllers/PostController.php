@@ -446,7 +446,9 @@ class PostController extends Controller
 
         Comment::create($data);
 
-        return "ok" ;
+        $data_comment_lsat = Comment::latest()->first();
+
+        return $data_comment_lsat ;
     }
 
     public function delete_comment($comment_id)
