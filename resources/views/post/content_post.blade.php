@@ -255,9 +255,9 @@
 @endforeach
 
 @if(Auth::check())
-    <input type="text" name="id_user" id="id_user" value="{{ $id }}">
+    <input class="d-none" type="text" name="id_user" id="id_user" value="{{ $id }}">
 @else
-    <input type="text" name="id_user" id="id_user" value="0">
+    <input class="d-none" type="text" name="id_user" id="id_user" value="0">
 @endif
 
 <script>
