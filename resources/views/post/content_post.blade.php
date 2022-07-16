@@ -254,6 +254,12 @@
     <!-- END Modal delete comment-->
 @endforeach
 
+@if(Auth::check())
+    <input type="text" name="id_user" id="id_user" value="{{ $id }}">
+@else
+    <input type="text" name="id_user" id="id_user" value="0">
+@endif
+
 <script>
 
     function delete_comment(comment_id)
@@ -306,6 +312,8 @@
         let content = document.querySelector('#content_' + post_id) ;
         let user_id = document.querySelector('#user_id_' + post_id) ;
         let btn_submit_content = document.querySelector('#btn_submit_content_' + post_id) ;
+
+        let id_user = document.querySelector('#id_user').value;
 
         fetch("{{ url('/') }}/api/submit_input_content_comment/"+ user_id.value + "/" + post_id + "/" + content.value)
             .then(response => response.json())
@@ -385,7 +393,7 @@
                             div_col_10.setAttributeNode(class_div_col_10);
                             
                             // div dropdown delete comment
-                            if ( {{ $id }} === result.user_id ) {
+                            if ( id_user === result.user_id ) {
 
                                 let dropdown_col_10 = document.createElement("div");
                                 div_col_10.appendChild(dropdown_col_10);
@@ -817,6 +825,7 @@
 
     function show_all_comment(post_id)
     {
+        let id_user = document.querySelector('#id_user').value;
         // console.log(post_id);
         fetch("{{ url('/') }}/api/show_all_comment/"+ post_id)
             .then(response => response.json())
@@ -892,7 +901,7 @@
                             div_col_10.setAttributeNode(class_div_col_10);
                             
                             // div dropdown delete comment
-                            if ( {{ $id }} === item.user_id ) {
+                            if ( id_user === item.user_id ) {
 
                                 let dropdown_col_10 = document.createElement("div");
                                 div_col_10.appendChild(dropdown_col_10);
