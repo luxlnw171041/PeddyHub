@@ -393,7 +393,7 @@
                             div_col_10.setAttributeNode(class_div_col_10);
                             
                             // div dropdown delete comment
-                            if ( id_user === result.user_id ) {
+                            if ( parseInt(id_user) === result.user_id ) {
 
                                 let dropdown_col_10 = document.createElement("div");
                                 div_col_10.appendChild(dropdown_col_10);
@@ -901,7 +901,7 @@
                             div_col_10.setAttributeNode(class_div_col_10);
                             
                             // div dropdown delete comment
-                            if ( id_user === item.user_id ) {
+                            if ( parseInt(id_user) === item.user_id ) {
 
                                 let dropdown_col_10 = document.createElement("div");
                                 div_col_10.appendChild(dropdown_col_10);
