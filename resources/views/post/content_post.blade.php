@@ -51,7 +51,9 @@
             </div>
             @if(!empty($item->photo))
             <div class="image">
-                <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
+                <a href="{{ url('/post/' . $item->id) }}" title="">
+                    <img class="imgf" src="{{ url('storage/'.$item->photo )}}" width="400px" height="300px" alt="image of pet" title="pet" class="img-fluid customer">
+                </a>
             </div>
             @endif
             <div style="padding:10px;">
@@ -139,7 +141,7 @@
                     </button>
                 </div>
                 <div class="col-3 d-grid ">
-                    <button class="btn likebtn btn-lg" >
+                    <button class="btn likebtn btn-lg d-none" >
                         <b>
                             <i class="fa-solid fa-share-all"></i>
                             <br>
