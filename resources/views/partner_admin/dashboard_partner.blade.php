@@ -14,7 +14,9 @@
                             <div class="flex-grow-1">
                                 <p class="mb-0">รายการสั่งซื้อใน 28 วัน</p>
                                 <h4 class="font-weight-bold">{{$order_28}} </h4>
-                                <p class=" mb-0 font-13"><span class="text-success">{{ number_format(($order_28/$count_order)*100,1) }}% </span>จากทั้งหมด {{$count_order}}</p>
+                                @if(!empty($count_order))
+                                    <p class=" mb-0 font-13"><span class="text-success">{{ number_format(($order_28/$count_order)*100,1) }}% </span>จากทั้งหมด {{$count_order}}</p>
+                                @endif
                             </div>
                             <div class="widgets-icons bg-gradient-cosmic text-white"><i class="fa-regular fa-arrow-trend-up"></i>
                             </div>
@@ -29,7 +31,9 @@
                             <div class="flex-grow-1">
                                 <p class="mb-0">ลูกค้าใน 28 วัน </p>
                                 <h4 class="font-weight-bold">{{$count_customer}}</h4>
-                                <p class="text-secondary mb-0 font-13"><span class="text-success">{{ number_format(($customer_28/$count_customer)*100,1) }}%</span> จากทั้งหมด {{$count_customer}}</p>
+                                @if(!empty($count_customer))
+                                    <p class="text-secondary mb-0 font-13"><span class="text-success">{{ number_format(($customer_28/$count_customer)*100,1) }}%</span> จากทั้งหมด {{$count_customer}}</p>
+                                @endif
                             </div>
                             <div class="widgets-icons bg-gradient-burning text-white"><i class="bx bx-group"></i>
                             </div>
@@ -61,7 +65,9 @@
                             <div class="flex-grow-1">
                                 <p class="mb-0">revenue 28 วัน</p>
                                 <h4 class="font-weight-bold">{{ number_format($revenue_28) }}</h4>
-                                <p class="text-secondary mb-0 font-13"><span class="text-success">{{ number_format(($revenue_28/$revenue)*100,1) }}%</span> จากทั้งหมด {{ number_format($revenue)}}</p>
+                                @if(!empty($revenue))
+                                    <p class="text-secondary mb-0 font-13"><span class="text-success">{{ number_format(($revenue_28/$revenue)*100,1) }}%</span> จากทั้งหมด {{ number_format($revenue)}}</p>
+                                @endif
                             </div>
                             <div class="widgets-icons bg-gradient-kyoto text-white"><i class="bx bxs-cube"></i>
                             </div>
@@ -212,15 +218,17 @@
                     </div>
                     <div class="dashboard-top-countries mb-3 p-3 ps ps--active-y">
                         @foreach($checkin_today as $item)
-                        <div class="row mb-4">
-                            <div class="col">
-                                <p class="mb-2">{{$item->area_name}} <strong class="float-end">{{$item->count_checkin}}</strong></p>
-                                <div class="progress radius-10" style="height:6px;">
-                                    <div class="progress-bar bg-gradient-blues" role="progressbar" style="width: {{$item->count_checkin /$checkin_today_count*100,1 }}%"></div>
+                            @if(!empty($checkin_today_count))
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <p class="mb-2">{{$item->area_name}} <strong class="float-end">{{$item->count_checkin}}</strong></p>
+                                    <div class="progress radius-10" style="height:6px;">
+                                        <div class="progress-bar bg-gradient-blues" role="progressbar" style="width: {{$item->count_checkin /$checkin_today_count*100,1 }}%"></div>
+                                    </div>
+                                    
                                 </div>
-                                
                             </div>
-                        </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
