@@ -339,18 +339,18 @@ class PartnerController extends Controller
         ->get()->count();
 
         $checkin_today = Check_in::join('partners', 'check_ins.partner_id', '=', 'partners.id') 
+        ->whereDate('check_ins.created_at' , $date_now)
+        ->where('check_ins.check_in_at', 'LIKE', "%$data_user->partner%")
         ->selectRaw('COALESCE(count(check_ins.check_in_at),0) count_checkin')
         ->selectRaw('COALESCE((partners.name_area),0) area_name')
-        ->where('check_ins.check_in_at', 'LIKE', "%$data_user->partner%")
-        ->whereDate('check_ins.created_at' , $date_now)
+        ->groupBy("partners.name_area")
+        ->orderBy('count_checkin','desc')
         ->get();
-     
           $count_checkin = $checkin->pluck('count_checkin');
             $area_name = $checkin->pluck('area_name');
           
             
-    // echo "$checkin_today_count";
-    //     exit;
+   
 
         return view('partner_admin.dashboard_partner'  ,compact('checkin_today','checkin_today_count','area_name','count_checkin','checkin','customer','top_product','revenue_28','customer_28','order_28','count_product' ,'count_order' ,'count_customer' ,'revenue','order_today','customer_today','revenue_today'));
     }

@@ -212,7 +212,7 @@
                                 </div>
                             </div>
                             <div class="font-22 ms-auto">
-                                <h2 class="mb-0">{{$checkin_today_count}} ครั้ง</h2>
+                                <h4 class="mb-0">{{$checkin_today_count}} ครั้ง</h4>
                             </div>
                         </div>
                     </div>
@@ -221,11 +221,14 @@
                             @if(!empty($checkin_today_count))
                             <div class="row mb-4">
                                 <div class="col">
-                                    <p class="mb-2">{{$item->area_name}} <strong class="float-end">{{$item->count_checkin}}</strong></p>
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-secondary">{{$item->area_name}}</div>
+                                        <div class="ms-auto pe-4">{{$item->count_checkin}} ครั้ง</div>
+                                        <div>{{ number_format(($item->count_checkin/$checkin_today_count)*100,1) }}%</span></div>
+                                    </div>
                                     <div class="progress radius-10" style="height:6px;">
                                         <div class="progress-bar bg-gradient-blues" role="progressbar" style="width: {{$item->count_checkin /$checkin_today_count*100,1 }}%"></div>
                                     </div>
-                                    
                                 </div>
                             </div>
                             @endif

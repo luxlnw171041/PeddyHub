@@ -83,7 +83,7 @@
 	
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
-				<li class="d-none">
+				<li>
 					<a href="{{ url('/dashboard_partner') }}">
 						<div class="parent-icon"><i class="fa-regular fa-house"></i>
 						</div>
