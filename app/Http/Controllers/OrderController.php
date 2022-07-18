@@ -72,13 +72,15 @@ class OrderController extends Controller
     {
         
         $requestData = $request->all();
-        
+
+        $order = Order::create($requestData);
         OrderProduct::whereNull('order_id')
             ->where('user_id', Auth::id() )
             ->update([
-                'status' => 'created'
+                'status' => 'created',
+                'order_id'=> $order->id
             ]);
-
+            
 
         return redirect('order')->with('flash_message', 'Order added!');
     }

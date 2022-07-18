@@ -326,8 +326,6 @@ $id_partner_name_area = 'all' ;
                                 @if(!empty($item->time_in))
                                 <b class="text-success">เข้า : {{ date("d/m/Y H:i" , strtotime($item->time_in)) }}</b>
                                 @endif
-
-
                                 @if(!empty($item->time_out))
                                 <b class="text-danger">ออก : {{ date("d/m/Y H:i" , strtotime($item->time_out)) }}</b>
                                 @endif

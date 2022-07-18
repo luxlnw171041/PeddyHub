@@ -80,8 +80,16 @@
 				</div>
 			</div>
 			@endforeach
+	
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
+						<li>
+					<a href="{{ url('/dashboard_partner') }}">
+						<div class="parent-icon"><i class="fa-regular fa-house"></i>
+						</div>
+						<div class="menu-title" style="font-size:18px;">Dashboard</div>
+					</a>
+				</li>
 				@if (Auth::user()->role == 'admin-partner')
 				<li class="menu-label" style="font-size:18px;color:#B8205B">
                     Admin
@@ -288,21 +296,6 @@
 					</div>
 				</div>
 			</div>
-			<hr/>
-			<hr/>
-			<h6 type="button" class="mb-0" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-				<i class="fab fa-line text-success" style="font-size: 25px;"></i> ตั้งค่ากลุ่มไลน์
-				<a type="button" style="float:right;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <i class="fas fa-sort-down"></i>
-            </a>
-			</h6>
-            <div class="collapse" id="collapseExample">
-            	<br>
-                <ul id="ul_group_line" class="list-group">
-                	
-				</ul>
-            </div>
-			<hr/>
 		</div>
 	</div>
 	
@@ -452,7 +445,13 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script>
+    <script src="{{ asset('admin/assets/js/index2.js') }}"></script>
+        <script>
+            new PerfectScrollbar('.customers-list');
+            new PerfectScrollbar('.store-metrics');
+            new PerfectScrollbar('.product-list');
+        </script>
+	<script>
 		new PerfectScrollbar('.dashboard-top-countries');
 	</script>
 	<script src="{{ asset('admin/js/index.js') }}"></script>

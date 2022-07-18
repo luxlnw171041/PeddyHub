@@ -40,7 +40,11 @@
 							</div>
 						</td>
 						<td>{{$item->product->title}}</td>
+						@if(!empty($item->profile->real_name))
 						<td>{{$item->profile->real_name}}</td>
+						@else
+						<td>{{$item->profile->name}}</td>
+						@endif
 						<td>{{$item->profile->address}} {{$item->profile->tambon_th}}  {{$item->profile->amphoe_th}}  {{$item->profile->changwat_th}} {{$item->profile->zip_code}}</td>
 						<td>{{$item->quantity}} ชิ้น</td>
 						<td>฿ {{ number_format($item->total) }}</td>

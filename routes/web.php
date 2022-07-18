@@ -132,6 +132,7 @@ Route::middleware(['auth', 'role:admin-partner,partner'])->group(function () {
     Route::get('order_admin', 'OrderController@order_admin');
     // Route::get('blood_bank/wait_user', 'Blood_bankController@wait_user');
 Route::get('/product_admin', 'ProductController@product_admin');
+Route::get('/dashboard_partner', 'PartnerController@dashboard_partner');
 
 });
 

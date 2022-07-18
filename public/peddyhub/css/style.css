@@ -598,7 +598,10 @@ img {
 ====================================================================
 
 ***/
-
+.modal .fade {
+    z-index: 10000000 !important;
+  }
+  
 .scroll-to-top {
     position: fixed;
     bottom: 15px;
@@ -610,7 +613,7 @@ img {
     text-transform: uppercase;
     line-height: 65px;
     text-align: center;
-    z-index: 999;
+    z-index: 9999;
     cursor: pointer;
     border-radius: 50px;
     background: #B81F5B;
