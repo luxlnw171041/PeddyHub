@@ -3,7 +3,7 @@
 @section('content')
 
 @php
-    $post =  \App\Models\Post::where(['id' => '7'])->first() ;
+    $post =  \App\Models\Post::where(['id' => '1'])->first() ;
     $query = \App\Models\Post::all(['id', 'detail' ,'photo' ,'created_at']);
     $user_id = Illuminate\Support\Facades\Auth::id();
 @endphp
