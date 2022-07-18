@@ -83,9 +83,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/my_post', 'Lost_PetController@mypost');
     Route::resource('order-product', 'OrderProductController');
     Route::resource('order', 'OrderController');
-    Route::get('hospital_near', 'Hospital_nearController@index');
 });
+
 Route::get('/pet/{id}', 'PetController@show');
+Route::get('hospital_near', 'Hospital_nearController@index');
 
 
 Route::get('/post', 'PostController@index');
