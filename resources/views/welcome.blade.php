@@ -27,9 +27,15 @@
                                 ศูนย์รวมบริการ ข้อมูล และ community สำหรับคนรักสัตว์ 
                                 peddy hub ครบจบในที่เดียว !!!</p>
                                 <div class="button wow fadeInUp">
-                                    <a href="{{'login'}}?redirectTo={{ url('/') }}/pet/create" class="btn main" title="contact">
-                                        Register <i class="fas fa-paw"></i>
-                                    </a>
+                                    @if(Auth::check())
+                                        <a href="{{ url('/pet/create') }}" class="btn main" title="contact">
+                                            Register <i class="fas fa-paw"></i>
+                                        </a>
+                                    @else
+                                        <a href="{{'login'}}?redirectTo={{ url('/') }}/pet/create" class="btn main" title="contact">
+                                            Register <i class="fas fa-paw"></i>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
