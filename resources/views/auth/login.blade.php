@@ -148,12 +148,12 @@
                                                 <span class="wow pulse" data-wow-delay="1s"> Or Sign Up Using </span>
                                             </p>
                                             <center class="justify-content-xl-between" style="margin-top:10px;">
-                                                <a href="{{ route('login.facebook') }}">
+                                                <!-- <a href="{{ route('login.facebook') }}">
                                                     <span class="fa-stack fa-lg wow fadeInUp">
                                                         <i class="fa fa-circle fa-stack-2x " style="color:#4267B2;"></i>
                                                         <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
                                                     </span>  
-                                                </a>
+                                                </a> -->
                                                 <a href="{{ route('login.google') }}?redirectTo={{ request('redirectTo') }}"> 
                                                     <span class="fa-stack fa-lg wow fadeInUp">
                                                         <i class="fa fa-circle fa-stack-2x" style="color:#db4a39;"></i>
