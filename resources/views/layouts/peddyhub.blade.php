@@ -123,7 +123,7 @@
                 </li>
                 @guest
                 <li class="nav-item dropdown">
-                  <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle">เข้าสู่ระบบ</a>
+                  <a href="{{ route('login') }}?redirectTo={{ url()->full() }}" class="hvr-overline-from-center nav-link dropdown-toggle">เข้าสู่ระบบ</a>
                 </li>
                 @else
                 <li class="nav-item dropdown">

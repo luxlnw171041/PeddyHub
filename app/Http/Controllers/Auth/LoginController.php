@@ -19,7 +19,7 @@ class LoginController extends Controller
   
     use AuthenticatesUsers;
     
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
     
     /**
@@ -49,7 +49,21 @@ class LoginController extends Controller
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
-            return redirect()->route('home');
+            // return redirect()->route('home');
+            $backurl = $_SERVER['HTTP_REFERER'] ;
+
+            $redirectTo = parse_url($backurl, PHP_URL_QUERY);
+
+            if (!empty($redirectTo)) {
+                $backurl_split = explode('redirectTo=', $redirectTo, 2);
+                $back = $backurl_split[1];
+                // return $back;
+                return redirect($back);
+            }else{
+                // return $backurl;
+                return redirect($backurl);
+            }
+
         }else{
             return redirect()->route('login')
                 ->with('error','Email-Address And Password Are Wrong.');
