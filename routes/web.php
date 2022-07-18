@@ -92,6 +92,10 @@ Route::get('hospital_near', 'Hospital_nearController@index');
 Route::get('/post', 'PostController@index');
 Route::get('login_line/post', 'PostController@login_line_post');
 
+// TEST SHOW POST
+Route::get('/test_show_post', function () {
+    return view('post/test_show_post');
+});
 
 // Route::resource('comment', 'CommentController');
 // Route::get('comment/{id}', 'CommentController@test');
