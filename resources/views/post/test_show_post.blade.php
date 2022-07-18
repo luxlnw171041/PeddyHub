@@ -122,8 +122,21 @@
                                                 <div class="item" style="padding:5px;z-index:-1;">
                                                     <div class="testimon">
                                                         <a href="{{ url('/lost_pet/' . $item->id) }}" target="bank">
-                                                            <img class="main-shadow main-radius" style="width: 100%;border-radius: 50%;" src="{{ url('storage/'.$item->photo )}}">
-                                                            <p>ชื่อ : {{ $item->pet->name }}</p>
+                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
+                                                            <br>
+                                                            <center>
+                                                                <span class="text-dark">
+                                                                    <b>{{ $item->pet->name }}</b>
+                                                                </span>
+                                                                <br>
+                                                                <span>
+                                                                    <i class="fa-solid fa-location-dot text-danger"></i> &nbsp;{{ $item->pet->name }}
+                                                                </span>
+                                                                <br><br>
+                                                                <a href="tel:{{ $item->profile->phone }}" class="btn btn-sm btn-outline-success main-shadow main-radius" style="width:100%;">
+                                                                    <i class="fa-solid fa-phone"></i> &nbsp;ติดต่อ
+                                                                </a>
+                                                            </center>
 
                                                         </a>
                                                     </div>
@@ -132,6 +145,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
                             
                                 <div class="adopt_gallery">
                                     <h5>For Adoption</h5>
