@@ -141,7 +141,7 @@
                             
                                 <div class="adopt_gallery">
                                     <h5 class="translate">
-                                        Find homes for pets
+                                        Find homes pets
                                         <a style="font-size:12px;float: right;margin-top: 4px;" href="{{ url('/adoptpet') }}" class="text-secondary">
                                             <i class="fa-solid fa-angles-right"></i>
                                         </a>
