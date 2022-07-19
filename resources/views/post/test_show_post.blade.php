@@ -179,27 +179,27 @@
                                     <h5 class="translate">Other posts</h5>
                                     @foreach($query->random(3) as $data)
                                     <div class="card">
-                                        <div class="row">
-                                            <div class="col-5">
-                                                <div style="margin-top:20px;">
-                                                    <center>
-                                                        <a href="{{ url('/post/' . $data->id) }}" title="Image">
+                                        <a href="{{ url('/post/' . $data->id) }}" class="text-secondary">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div style="margin-top:20px;">
+                                                        <center>
                                                             <img class="main-shadow" src="{{ url('storage/'.$data->photo )}}" style="border-radius: 10%;object-fit:cover; width:80px;height:80px;">
-                                                        </a>
-                                                    </center>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                                <div  class="col-7">
+                                                    <div style="margin-top:10px;">
+                                                        <span style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;"> {{$data->detail}} </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div style="float: right;margin-right: 8px;" class="purple date">
+                                                        {{ $data->created_at->thaidate('j M Y') }}
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-7">
-                                                <div style="margin-top:10px;margin-left: -20px;">
-                                                    <span> {{$data->detail}} </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div style="float: right;margin-right: 8px;" class="purple date">
-                                                    {{ $data->created_at->thaidate('j M Y') }}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
                                     @endforeach
                                 </div>

@@ -1,7 +1,6 @@
 @extends('layouts.peddyhub')
 
 @section('content')
-
 <div class="main-wrapper pet b_profile">
         <div class="pet blog_right">
             <section class="job">
@@ -21,7 +20,7 @@
                                             </span>
                                         </div>
                                         <div class="col-6">
-                                            <div style="float: right;">
+                                            <div style="float: right;" class="d-none">
                                                 <i class="fa-solid fa-share-nodes"></i>&nbsp;
                                                 <i class="fa-brands fa-facebook-square text-primary"></i>
                                             </div>
@@ -33,50 +32,47 @@
                                 </div>
                                 <div class="elements">
                                     <div class="comments mt-2">
-                                        <h6>
-                                            ความคิดเห็น
-                                        </h6>
-                                        @foreach($comment as $data)
-                                            @if(($data->post_id  ==  $post->id))
-                                                <div class="comment">
-                                                    <div class="image pr-4 pt-3 col-11" style="margin-top:-10px;"> 
-                                                        @if(!empty($data->profile->photo))
-                                                            <img class="img-fluid" src="{{ url('storage')}}/{{ $data->profile->photo }}"alt="Image of Author" title="Author" width="125" height="100">
-                                                        @else
-                                                            <img class="img-fluid" src="{{ url('peddyhub/images/home_5/icon1.png')}}"alt="Image of Author" title="Author" width="125" height="100">
-                                                        @endif
+                                        <h6>ความคิดเห็น</h6>
+                                        <!-- -------------- ตัวอย่าง -------------- -->
+                                        <div id="EX_test_comment" class="row d-none">
+                                            <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
+                                                <center>
+                                                    <img style="border-radius: 50%;object-fit:cover;width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
+                                                </center>
+                                            </div>
+                                            <div class="col-10">
+                                                <div class="dropdown" style="z-index: 9999;">
+                                                    <i style="float:right;" class="fa-solid fa-ellipsis-vertical" id="dropdown_delete_comment_id_6" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdown_delete_comment_id_6">
+                                                        <button class="dropdown-item" data-toggle="modal" data-target="#modal_delete_comment_id_6">
+                                                            <i class="fa-solid fa-trash-can text-danger"></i> &nbsp;ลบความคิดเห็น
+                                                        </button>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-11">
-                                                        <div class="context">
-                                                        <h5>{{$data->profile->name}}</h5>
-                                                        <p class="mb-0">
-                                                            <span>{{ $data->created_at->thaidate('j M Y') }}</span> 
-                                                        </p>
-                                                        <p>
-                                                        {{$data->content}}
-                                                        </p>
-                                                    </div>
-                                                        </div>
-                                                        <div class="col-1">
-                                                        @if(($user_id  ==  $data->user_id))
-                                                            <a  type="button dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                                                            <div class="dropdown-menu dropdown-primary">
-                                                                <a class="dropdown-item" href="{{ url('/comment/' . $data->id . '/edit') }}"><i class="fas fa-pen-square" aria-hidden="true"></i>&nbsp;&nbsp;แก้ไขโพสต์</a>
-                                                                <form method="POST" action="{{ url('/comment' . '/' . $data->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                                    {{ method_field('DELETE') }}
-                                                                    {{ csrf_field() }}
-                                                                    <button  type="submit" class="dropdown-item" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="" aria-hidden="true"></i>&nbsp;&nbsp;ลบโพสต์</button>
-                                                                </form>
-                                                            </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                    
                                                 </div>
-                                            @endif        
-                                        @endforeach
+                                                <p>
+                                                    <b class="notranslate">
+                                                        ชื่อคน Comment
+                                                    </b>
+                                                    <br>
+                                                    ตัวอย่างการ Comment
+                                                </p>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-6 ">
+                                                        <p class="text-secondary" style="font-size: 14px;">
+                                                            <span id="comment_id_6" onclick="user_like_comment('6' , '{{ $user_id }}');">ถูกใจ</span> &nbsp;&nbsp; | &nbsp;&nbsp; <span id="count_like_comment_6" style="color: #B8205B;"><i class="far fa-heart"></i> &nbsp;&nbsp; 1</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p class="text-secondary" style="font-size: 14px;float: right;">
+                                                            เวลาที่ผ่านไป 
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- --------------------------------------------------- -->
                                     </div>
                                     <div class="form mt-4">
                                         @if(Auth::check())
@@ -94,9 +90,7 @@
                                         @else
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group">
-                                                    <textarea name="content" id="content" cols="30" rows="5"
-                                                        class="form-control"
-                                                        placeholder="เข้าสู่ระบบเพื่อแสดงความคิดเห็น..." disabled></textarea>
+                                                    <textarea name="content" id="content" class="form-control"placeholder="เข้าสู่ระบบเพื่อแสดงความคิดเห็น..." disabled></textarea>
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-11 disabled" >เข้าสู่ระบบเพื่อแสดงความคิดเห็น</button>
@@ -105,200 +99,104 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="r_sidebar mt-4">
-                                <!-- <form action="" method="post">
-                                    <div class="form-group">
-                                        <input type="search" name="search" id="search" class="form-control"
-                                            placeholder="Search">
-                                        <button type="submit" class="form-control"><i
-                                                class="fas fa-search"></i></button>
-                                    </div>
-                                </form> -->
                                 <div class="categories">
-                                    <h5>Categories</h5>
-                                    <ul>
-                                        <li class="py-1"><a href="#" title="Pets Lover"><i
-                                                    class="orange fas fa-paw"></i>Pets
-                                                Lover</a></li>
-                                        <li class="py-1"><a href="#" title="Cats & Dog Foods"><i
-                                                    class="orange fas fa-paw"></i>Cats
-                                                & Dog Foods</a></li>
-                                        <li class="py-1"><a href="#" title="Other Pets"><i
-                                                    class="orange fas fa-paw"></i>Other
-                                                Pets</a></li>
-                                        <li class="py-1"><a href="#" title="Pets Health"><i
-                                                    class="orange fas fa-paw"></i>Pets
-                                                Health</a></li>
-                                        <li class="py-1"><a href="#" title="Homemade & DIY"><i
-                                                    class="orange fas fa-paw"></i>Homemade & DIY</a>
-                                        </li>
-                                        <li class="py-1"><a href="#" title="Pets Adoption"><i
-                                                    class="orange fas fa-paw"></i>Pets
-                                                Adoption</a></li>
-                                        <li class="py-1"><a href="#" title="Vaccine Care"><i
-                                                    class="orange fas fa-paw"></i>Vaccine
-                                                Care</a></li>
-                                    </ul>
-                                </div>
-                                
-                                <div class="adopt_gallery">
-                                    <h5>For Adoption</h5>
-                                    <ul>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tags">
-                                    <h5>Tags</h5>
-                                    <p class="mt-3">
-                                        <a href="#" title="Pet">Pet Lovers</a>
-                                        <a href="#" title="Cat">Cat</a>
-                                        <a href="#" title="Grooming">Grooming</a>
-                                        <a href="#" title="Pet">Pet Care</a>
-                                        <a href="#" title="Pet">Pet Lovers</a>
-                                    </p>
-                                </div>
-                                <div class="recent">
-                                    <h5>Recent Posts</h5>
-                                    @foreach($query->   random(3) as $data)
-                                    
-                                    <div class="card">
-                                        <div class="post">
-                                            <a href="{{ url('/post/' . $data->id) }}" title="Image">
-                                                <img src="{{ url('storage/'.$data->photo )}}"  width="100px" height="100px"alt="Image of Post" title="Post" class="img-fluid">
-                                            </a>
+                                    <h5 class="translate">Find a pet</h5>
+                                    <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
+                                        <div class="owl-carousel">
+                                            @foreach($lost_pets as $item)
+                                                <div class="item" style="padding:5px;z-index:-1;">
+                                                    <div class="testimon">
+                                                        <center>
+                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
+                                                            <br>
+                                                            <span class="text-dark">
+                                                                <b>{{ $item->pet->name }}</b>
+                                                            </span>
+                                                            <br>
+                                                            <span>
+                                                                <i class="fa-solid fa-location-dot text-danger"></i> &nbsp;{{ $item->changwat_th }}
+                                                            </span>
+                                                            <br>
+                                                            <a href="{{ url('/lost_pet/' . $item->id) }}" target="bank">
+                                                                <span class="text-secondary" style="font-size:12px;">
+                                                                    <i class="fa-solid fa-eye"></i> &nbsp;รายละเอียด
+                                                                </span>
+                                                            </a>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        <div class="context">
-                                            <div class="content">
-                                                <a href="blog-profile.html" title="Post">
-                                                    <p>
-                                                        {{$data->detail}}
-                                                    </p>
-                                                </a>
-                                                <div class="purple date">{{ $data->created_at->thaidate('j M Y') }}
+                                    </div>
+                                </div>
+                                <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
+                            
+                                <div class="adopt_gallery">
+                                    <h5 class="translate">Find homes for pets</h5>
+                                    <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
+                                        <div class="owl-carousel">
+                                            @foreach($adoptpets as $item)
+                                                <div class="item" style="padding:5px;z-index:-1;">
+                                                    <div class="testimon">
+                                                        <center>
+                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
+                                                            <br>
+                                                            <span class="text-dark notranslate">
+                                                                <b>{{ $item->titel }}</b>
+                                                            </span>
+                                                            <br>
+                                                            <a href="{{ url('/adoptpet/' . $item->id) }}" target="bank">
+                                                                <span class="text-secondary" style="font-size:12px;">
+                                                                    <i class="fa-solid fa-eye"></i> &nbsp;รายละเอียด
+                                                                </span>
+                                                            </a>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
+
+                                <div class="recent">
+                                    <h5 class="translate">Other posts</h5>
+                                    @foreach($query->random(3) as $data)
+                                    <div class="card">
+                                        <a href="{{ url('/post/' . $data->id) }}" class="text-secondary">
+                                            <div class="row">
+                                                <div class="col-5">
+                                                    <div style="margin-top:20px;">
+                                                        <center>
+                                                            <img class="main-shadow" src="{{ url('storage/'.$data->photo )}}" style="border-radius: 10%;object-fit:cover; width:80px;height:80px;">
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                                <div  class="col-7">
+                                                    <div style="margin-top:10px;">
+                                                        <span style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;"> {{$data->detail}} </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div style="float: right;margin-right: 8px;" class="purple date">
+                                                        {{ $data->created_at->thaidate('j M Y') }}
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                     @endforeach
-                                    <!-- <div class="card">
-                                        <div class="post">
-                                            <a href="blog-profile.html" title="Image">
-                                                <img src="{{ asset('peddyhub/images/home_5/event-3-post.png') }}" alt="Image of Post" title="Post" class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="context">
-                                            <div class="content">
-                                                <a href="blog-profile.html" title="Post">
-                                                    <p>
-                                                        Considering At Aesthetic <br> More Some Dreamed
-                                                    </p>
-                                                </a>
-                                                <div class="purple date">Feb 28, 2021</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="post">
-                                            <a href="blog-profile.html" title="Image">
-                                                <img src="{{ asset('peddyhub/images/home_5/event-3-post.png') }}" alt="Image of Post" title="Post" class="img-fluid">
-                                            </a>
-                                        </div>
-                                        <div class="context">
-                                            <div class="content">
-                                                <a href="blog-profile.html" title="Post">
-                                                    <p>
-                                                        Considering At Aesthetic <br> More Some Dreamed
-                                                    </p>
-                                                </a>
-                                                <div class="purple date">Feb 28, 2021</div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                 </div>
+
+                                <!-- <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
+
+                                <div class="tags">
+                                    <h5>new product</h5>
+                                </div> -->
+
                             </div>
                         </div>
                     </div>
@@ -307,40 +205,4 @@
         </div>
     </div>
 
-    <!-- <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Post {{ $post->id }}</div>
-                    <div class="card-body">
-
-                        <a href="{{ url('/post') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/post/' . $post->id . '/edit') }}" title="Edit Post"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                        <form method="POST" action="{{ url('post' . '/' . $post->id) }}" accept-charset="UTF-8" style="display:inline">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Post" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                        </form>
-                        <br/>
-                        <br/>
-
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <th>ID</th><td>{{ $post->id }}</td>
-                                    </tr>
-                                    <tr><th> User Id </th><td> {{ $post->user_id }} </td></tr><tr><th> Detail </th><td> {{ $post->detail }} </td></tr><tr><th> Photo </th><td> {{ $post->photo }} </td></tr><tr><th> Video </th><td> {{ $post->video }} </td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 @endsection

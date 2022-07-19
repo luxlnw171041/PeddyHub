@@ -11,6 +11,8 @@ use App\Models\Pet_Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pet;
+use App\Models\Adoptpet;
+use App\Models\Lost_Pet;
 use App\Models\Like;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image as Image;
@@ -140,8 +142,10 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
         $query = Post::all(['id', 'detail' ,'photo' ,'created_at']);
+        $adoptpets = Adoptpet::inRandomOrder()->get();
+        $lost_pets = Lost_Pet::where('status' , 'show')->inRandomOrder()->get();
 
-        return view('post.show', compact('post' , 'query' ,'comment' , 'user_id' ));
+        return view('post.show', compact('post' , 'query' ,'comment' , 'user_id' ,'adoptpets','lost_pets'));
     }
 
     /**
