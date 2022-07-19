@@ -110,7 +110,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="r_sidebar mt-4">
                                 <div class="categories">
-                                    <h5>Find a pet</h5>
+                                    <h5 class="translate">Find a pet</h5>
                                     <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
                                         <div class="owl-carousel">
                                             @php
@@ -145,7 +145,7 @@
                                 <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
                             
                                 <div class="adopt_gallery">
-                                    <h5>Find homes for pets</h5>
+                                    <h5 class="translate">Find homes for pets</h5>
                                     <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
                                         <div class="owl-carousel">
                                             @php
@@ -176,7 +176,7 @@
                                 <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
 
                                 <div class="recent">
-                                    <h5>Other posts</h5>
+                                    <h5 class="translate">Other posts</h5>
                                     @foreach($query->random(3) as $data)
                                     <div class="card">
                                         <div class="row">
