@@ -27,7 +27,7 @@
                                             </span>
                                         </div>
                                         <div class="col-6">
-                                            <div style="float: right;">
+                                            <div style="float: right;" class="d-none">
                                                 <i class="fa-solid fa-share-nodes"></i>&nbsp;
                                                 <i class="fa-brands fa-facebook-square text-primary"></i>
                                             </div>
@@ -97,9 +97,7 @@
                                         @else
                                             <div class="col-lg-12 col-md-12 col-sm-12">
                                                 <div class="form-group">
-                                                    <textarea name="content" id="content" cols="30" rows="5"
-                                                        class="form-control"
-                                                        placeholder="เข้าสู่ระบบเพื่อแสดงความคิดเห็น..." disabled></textarea>
+                                                    <textarea name="content" id="content" class="form-control"placeholder="เข้าสู่ระบบเพื่อแสดงความคิดเห็น..." disabled></textarea>
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-11 disabled" >เข้าสู่ระบบเพื่อแสดงความคิดเห็น</button>
@@ -112,7 +110,7 @@
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="r_sidebar mt-4">
                                 <div class="categories">
-                                    <h5>ประกาศหาน้องหาย</h5>
+                                    <h5>Find a pet</h5>
                                     <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
                                         <div class="owl-carousel">
                                             @php
@@ -121,24 +119,23 @@
                                             @foreach($lost_pets as $item)
                                                 <div class="item" style="padding:5px;z-index:-1;">
                                                     <div class="testimon">
-                                                        <a href="{{ url('/lost_pet/' . $item->id) }}" target="bank">
+                                                        <center>
                                                             <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
                                                             <br>
-                                                            <center>
-                                                                <span class="text-dark">
-                                                                    <b>{{ $item->pet->name }}</b>
+                                                            <span class="text-dark">
+                                                                <b>{{ $item->pet->name }}</b>
+                                                            </span>
+                                                            <br>
+                                                            <span>
+                                                                <i class="fa-solid fa-location-dot text-danger"></i> &nbsp;{{ $item->changwat_th }}
+                                                            </span>
+                                                            <br>
+                                                            <a href="{{ url('/lost_pet/' . $item->id) }}" target="bank">
+                                                                <span class="text-secondary" style="font-size:12px;">
+                                                                    <i class="fa-solid fa-eye"></i> &nbsp;รายละเอียด
                                                                 </span>
-                                                                <br>
-                                                                <span>
-                                                                    <i class="fa-solid fa-location-dot text-danger"></i> &nbsp;{{ $item->pet->name }}
-                                                                </span>
-                                                                <br><br>
-                                                                <a href="tel:{{ $item->profile->phone }}" class="btn btn-sm btn-outline-success main-shadow main-radius" style="width:100%;">
-                                                                    <i class="fa-solid fa-phone"></i> &nbsp;ติดต่อ
-                                                                </a>
-                                                            </center>
-
-                                                        </a>
+                                                            </a>
+                                                        </center>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -148,128 +145,71 @@
                                 <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
                             
                                 <div class="adopt_gallery">
-                                    <h5>For Adoption</h5>
-                                    <ul>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="image">
-                                                <figure class="imghvr-slide-down">
-                                                    <img src="{{ asset('peddyhub/images/home_5/reviewer-2.png') }}" alt="Image of pet" title="Pet"
-                                                        class="img-fluid">
-                                                    <figcaption class="text-center">
-                                                        <div class="icon">
-                                                            <i class="fas fa-camera"></i>
-                                                        </div>
-                                                    </figcaption>
-                                                    <a href="#"></a>
-                                                </figure>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tags">
-                                    <h5>Tags</h5>
-                                    <p class="mt-3">
-                                        <a href="#" title="Pet">Pet Lovers</a>
-                                        <a href="#" title="Cat">Cat</a>
-                                        <a href="#" title="Grooming">Grooming</a>
-                                        <a href="#" title="Pet">Pet Care</a>
-                                        <a href="#" title="Pet">Pet Lovers</a>
-                                    </p>
-                                </div>
-                                <div class="recent">
-                                    <h5>Recent Posts</h5>
-                                    @foreach($query->   random(3) as $data)
-                                    
-                                    <div class="card">
-                                        <div class="post">
-                                            <a href="{{ url('/post/' . $data->id) }}" title="Image">
-                                                <img src="{{ url('storage/'.$data->photo )}}"  width="100px" height="100px"alt="Image of Post" title="Post" class="img-fluid">
-                                            </a>
+                                    <h5>Find homes for pets</h5>
+                                    <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
+                                        <div class="owl-carousel">
+                                            @php
+                                              $adoptpets = \App\Models\Adoptpet::inRandomOrder()->get();
+                                            @endphp
+                                            @foreach($adoptpets as $item)
+                                                <div class="item" style="padding:5px;z-index:-1;">
+                                                    <div class="testimon">
+                                                        <center>
+                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
+                                                            <br>
+                                                            <span class="text-dark notranslate">
+                                                                <b>{{ $item->titel }}</b>
+                                                            </span>
+                                                            <br>
+                                                            <a href="{{ url('/adoptpet/' . $item->id) }}" target="bank">
+                                                                <span class="text-secondary" style="font-size:12px;">
+                                                                    <i class="fa-solid fa-eye"></i> &nbsp;รายละเอียด
+                                                                </span>
+                                                            </a>
+                                                        </center>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                        <div class="context">
-                                            <div class="content">
-                                                <a href="blog-profile.html" title="Post">
-                                                    <p>
-                                                        {{$data->detail}}
-                                                    </p>
-                                                </a>
-                                                <div class="purple date">{{ $data->created_at->thaidate('j M Y') }}
+                                    </div>
+                                </div>
+                                <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
+
+                                <div class="recent">
+                                    <h5>Other posts</h5>
+                                    @foreach($query->random(3) as $data)
+                                    <div class="card">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <div style="margin-top:20px;">
+                                                    <center>
+                                                        <a href="{{ url('/post/' . $data->id) }}" title="Image">
+                                                            <img class="main-shadow" src="{{ url('storage/'.$data->photo )}}" style="border-radius: 10%;object-fit:cover; width:80px;height:80px;">
+                                                        </a>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                            <div class="col-7">
+                                                <div style="margin-top:10px;margin-left: -20px;">
+                                                    <span> {{$data->detail}} </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div style="float: right;margin-right: 8px;" class="purple date">
+                                                    {{ $data->created_at->thaidate('j M Y') }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     @endforeach
                                 </div>
+
+                                <!-- <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
+
+                                <div class="tags">
+                                    <h5>new product</h5>
+                                </div> -->
+
                             </div>
                         </div>
                     </div>

@@ -125,8 +125,8 @@ class PostController extends Controller
         $user_id = Auth::id();
         
         $posts = Post::where('id' , '=' ,$id)->get();
+
         $likePost = Post::find($id);
-        $likeCtr = Like::where(['post_id' => $likePost->id] )->count();
 
         if (!empty($keyword)) {
             $post = Post::where('user_id', 'LIKE', "%$keyword%")
@@ -141,7 +141,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $query = Post::all(['id', 'detail' ,'photo' ,'created_at']);
 
-        return view('post.show', compact('post' , 'query' ,'comment' , 'user_id' ,'likeCtr' ));
+        return view('post.show', compact('post' , 'query' ,'comment' , 'user_id' ));
     }
 
     /**

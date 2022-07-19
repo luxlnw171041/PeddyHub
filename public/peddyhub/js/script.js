@@ -653,21 +653,21 @@ $(document).ready(function () {
       responsive: {
         0: {
           margin: 20,
-          items: 3
+          items: 2
         },
         700: {
           margin: 20,
           stagePadding: 0,
-          items: 3
+          items: 2
         },
         600: {
           margin: 20,
-          items: 3
+          items: 2
         },
         1000: {
           margin: 0,
           stagePadding: 0,
-          items: 3
+          items: 2
         }
       }
     });
