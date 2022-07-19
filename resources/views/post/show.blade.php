@@ -103,14 +103,19 @@
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="r_sidebar mt-4">
                                 <div class="categories">
-                                    <h5 class="translate">Find a pet</h5>
+                                    <h5 class="translate">
+                                        Find a pet
+                                        <a style="font-size:12px;float: right;margin-top: 4px;" href="{{ url('/lost_pet') }}" class="text-secondary">
+                                            <i class="fa-solid fa-angles-right"></i>
+                                        </a>
+                                    </h5>
                                     <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
                                         <div class="owl-carousel">
                                             @foreach($lost_pets as $item)
                                                 <div class="item" style="padding:5px;z-index:-1;">
                                                     <div class="testimon">
                                                         <center>
-                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
+                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:70px;height:70px;" src="{{ url('storage/'.$item->photo )}}">
                                                             <br>
                                                             <span class="text-dark notranslate">
                                                                 <b>{{ $item->pet->name }}</b>
@@ -135,14 +140,19 @@
                                 <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
                             
                                 <div class="adopt_gallery">
-                                    <h5 class="translate">Find homes for pets</h5>
+                                    <h5 class="translate">
+                                        Find homes for pets
+                                        <a style="font-size:12px;float: right;margin-top: 4px;" href="{{ url('/adoptpet') }}" class="text-secondary">
+                                            <i class="fa-solid fa-angles-right"></i>
+                                        </a>
+                                    </h5>
                                     <div class="col-12 owl-carousel-lostpet align-self-center" style="padding:0px;">
                                         <div class="owl-carousel">
                                             @foreach($adoptpets as $item)
                                                 <div class="item" style="padding:5px;z-index:-1;">
                                                     <div class="testimon">
                                                         <center>
-                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
+                                                            <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:70px;height:70px;" src="{{ url('storage/'.$item->photo )}}">
                                                             <br>
                                                             <span class="text-dark notranslate">
                                                                 <b>{{ $item->titel }}</b>
@@ -163,21 +173,26 @@
                                 <hr class="text-secondary" style="border-width: 1px;border: solid;border-color: pink;">
 
                                 <div class="recent">
-                                    <h5 class="translate">Other posts</h5>
+                                    <h5 class="translate">
+                                        Other posts
+                                        <a style="font-size:12px;float: right;margin-top: 4px;" href="{{ url('/post') }}" class="text-secondary">
+                                            <i class="fa-solid fa-angles-right"></i>
+                                        </a>
+                                    </h5>
                                     @foreach($query->random(3) as $data)
                                     <div class="card">
                                         <a href="{{ url('/post/' . $data->id) }}" class="text-secondary">
                                             <div class="row">
-                                                <div class="col-5">
-                                                    <div style="margin-top:20px;">
+                                                <div class="col-4">
+                                                    <div style="margin-top:20px;margin-left: 8px;">
                                                         <center>
-                                                            <img class="main-shadow" src="{{ url('storage/'.$data->photo )}}" style="border-radius: 10%;object-fit:cover; width:80px;height:80px;">
+                                                            <img class="main-shadow" src="{{ url('storage/'.$data->photo )}}" style="border-radius: 10%;object-fit:cover; width:50px;height:50px;">
                                                         </center>
                                                     </div>
                                                 </div>
-                                                <div  class="col-7">
+                                                <div  class="col-8">
                                                     <div style="margin-top:10px;">
-                                                        <span style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;"> {{$data->detail}} </span>
+                                                        <span style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;"> {{$data->detail}} </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
