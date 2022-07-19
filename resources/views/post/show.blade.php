@@ -112,7 +112,7 @@
                                                         <center>
                                                             <img class="main-shadow" style="border-radius: 50%;object-fit:cover; width:100px;height:100px;" src="{{ url('storage/'.$item->photo )}}">
                                                             <br>
-                                                            <span class="text-dark">
+                                                            <span class="text-dark notranslate">
                                                                 <b>{{ $item->pet->name }}</b>
                                                             </span>
                                                             <br>
