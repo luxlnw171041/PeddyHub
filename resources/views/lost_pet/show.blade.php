@@ -54,12 +54,30 @@
                                     <h4>ชื่อ: <strong>{{ $lost_pet->pet->name }}</strong></h4>
                                     <ul class="petdetails" >
                                         <li style="font-size:15px;">ประเภท: <strong>{{ $lost_pet->pet_category->name }}</strong></li>
-                                        <li style="font-size:15px;">ช่วงอายุ: <strong>{{ $lost_pet->pet->age }}</strong></li>
-                                        <li style="font-size:15px;">เพศ: <strong>{{ $lost_pet->pet->gender }}</strong></li>
+                                        @if($lost_pet->pet_category->name == "สุนัข" or $lost_pet->pet_category->name == "แมว")
+                                        <li>พันธุ์ : <strong>{{$lost_pet->pet->species}} </strong></li>
+                                        @endif
+                                        @if(!empty($lost_pet->pet->size))
                                         <li style="font-size:15px;">ขนาด: <strong>{{ $lost_pet->pet->size }}</strong></li>
+                                        @endif
+                                        <li style="font-size:15px;">อายุ: <strong>
+                                        @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
+                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ
+                                        @endif
+                                        @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
+                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                        @endif
+                                        @if( \Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0)
+                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d')}} วัน
+                                        @endif
+                                        </strong></li>
+                                        <li style="font-size:15px;">เพศ: <strong>{{ $lost_pet->pet->gender }}</strong></li>
+                                        
+                                        @if(!empty($lost_pet->detail))
                                         <li style="font-size:15px;">คำอธิบาย <br>
                                             <strong>{{ $lost_pet->detail }}</strong>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

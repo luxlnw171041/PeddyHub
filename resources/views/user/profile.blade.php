@@ -447,7 +447,7 @@
                                         </button>
                                         <div class="dropdown-menu menu">
                                             <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit') }}" style="font-family: 'Kanit', sans-serif;" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">บัตรประจำตัวสัตว์เลี้ยง</a>
-                                            <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit?edit=airplane') }}" style="font-family: 'Kanit', sans-serif;">เอกสารเดินทาง</a>
+                                            <a class="dropdown-item item-dd" href="{{ url('/user_pet_checklist/' . $item->id) }}" style="font-family: 'Kanit', sans-serif;">เอกสารเดินทาง</a>
                                         </div>
                                     </div>
                                 </div>
@@ -472,12 +472,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Modal -->
+  
                     <div class="modal fade " width="500px" id="exampleModalCenter{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter{{$item->id}}" aria-hidden="true">
                         <div id="modal_pet{{$item->id}}" class="modal-dialog modal-dialog-centered" role="document" width="500px">
                             <div class="modal-content" style=" background-color: transparent;">
                                 <div id="card_petswip{{$item->id}}" class="container " width="500px" style="padding:0px;">
-                                    <div id="{{$item->name}}" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+                                    <div id="น้อง{{$item->name}}" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
                                         <div class="card-body" style="padding:5px;">
                                             <div class="row">
                                                 <div class="col-2 text-center d-flex align-items-center" style="padding-right:0px;">
@@ -592,26 +592,49 @@
                                 </div>
                                 <br>
                                 <button id="{{$item->name}}" onclick="downloadimage()" class="btn btn-success btn-load-pc">Download</button>
-                                <span id="swip{{$item->id}}" onclick="swipside()" style="margin-left:-100px;" class="btn btn-success btn-load-pc">แนวนอน</span>
-                                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" style="margin-left:120px;" href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=www.peddyhub.com/pet/{{$item->id}}&p[images][0]=http://www.peddyhub.com/{{ url('storage/'.$item->photo )}}&p[title]={{$item->name}}มีบัตรประจำตัวแล้วนะ!&p[summary]=Recent+events+have+revealed+how+market-driven+education+policies,+deceivingly+labeled+as+%22reform,%22+are+revealing+their+truly+destructive+effects+on+the+streets+and+in+the+corridors+of+government:" class="fb-xfbml-parse-ignore btn btn-success btn-load-pc">แชร์</a></div>
+                                <span id="swip{{$item->id}}" onclick="swipside(); namebtn();" style="margin-left:-100px;" class="btn btn-success btn-load-pc">แนวนอน</span>
+                                <div id="sharebtn" class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" style="margin-left:120px;" href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=www.peddyhub.com/pet/{{$item->id}}&p[images][0]=http://www.peddyhub.com/{{ url('storage/'.$item->photo )}}&p[title]={{$item->name}}มีบัตรประจำตัวแล้วนะ!&p[summary]=Recent+events+have+revealed+how+market-driven+education+policies,+deceivingly+labeled+as+%22reform,%22+are+revealing+their+truly+destructive+effects+on+the+streets+and+in+the+corridors+of+government:" class="fb-xfbml-parse-ignore btn btn-success btn-load-pc">แชร์</a></div>
 
                             </div>
                         </div>
                     </div>
-
+<style>
+    .swip{
+        margin-left:-50px !important;
+    }.sharebtn{
+        margin-left:80px !important;
+    }
+</style>
                     <!-- end model -->
                     <script>
                         function swipside() {
-                            document.getElementById("text_number" + event.srcElement.id).classList.toggle('text-number');
-                            document.getElementById("text_t" + event.srcElement.id).classList.toggle('text-card');
-                            document.getElementById("text_w" + event.srcElement.id).classList.toggle('text-card');
-                            document.getElementById("text_l" + event.srcElement.id).classList.toggle('text-card');
-                            document.getElementById("text_d" + event.srcElement.id).classList.toggle('text-card');
+                            document.getElementById('{{$item->name}}').classList.toggle('d-none');
+                            document.getElementById("text_number"+event.srcElement.id).classList.toggle('text-number');
+                            document.getElementById("text_t"+event.srcElement.id).classList.toggle('text-card');
+                            document.getElementById("text_w"+event.srcElement.id).classList.toggle('text-card');
+                            document.getElementById("text_l"+event.srcElement.id).classList.toggle('text-card');
+                            document.getElementById("text_d"+event.srcElement.id).classList.toggle('text-card');
+                            
+                            console.log("น้อง"+'{{$item->name}}')
+                            document.getElementById(event.srcElement.id).classList.toggle('swip');
+                            document.getElementById("sharebtn").classList.toggle('sharebtn');
+                            
                             var element = document.getElementById("card_pet" + event.srcElement.id);
                             element.classList.toggle("rotatea");
                             element.classList.toggle("card-pet");
                         }
                     </script>
+                    <script>
+                        function namebtn() {
+                        var x = document.getElementById(event.srcElement.id);
+                        if (x.innerHTML === "แนวนอน") {
+                            x.innerHTML = "แนวตั้ง";
+                            
+                        } else {
+                            x.innerHTML = "แนวนอน";
+                        }
+                        }
+                        </script>
                     <script>
                         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                             document.querySelector('#text_tswip{{$item->id}}').classList.add('text-card');
@@ -642,7 +665,7 @@
                     <script type="text/javascript">
                         function downloadimage() {
                             //var container = document.getElementById("image-wrap"); //specific element on page
-                            var container = document.getElementById(event.srcElement.id); // full page 
+                            var container = document.getElementById("น้อง"+event.srcElement.id); // full page 
                             let petname = event.srcElement.id;
                             html2canvas(container, {
                                 allowTaint: true

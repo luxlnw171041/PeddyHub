@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Adoptpet;
 use App\Models\Pet_Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdoptpetController extends Controller
 {
@@ -55,7 +56,12 @@ class AdoptpetController extends Controller
     public function store(Request $request)
     {
         $requestData['user_id'] = Auth::id();   
-        $requestData = $request->all();
+ 
+        $requestData = $request->all();       
+        // echo "<pre>";
+        // print_r($requestData);
+        // echo "<pre>";
+        // exit;
                 if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
@@ -76,6 +82,15 @@ class AdoptpetController extends Controller
             $requestData['photo4'] = $request->file('photo4')
                 ->store('uploads', 'public');
         }
+        if (!empty($requestData['phone_user'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'phone' => $requestData['phone_user'],
+                ]);
+        }  
         Adoptpet::create($requestData);
 
         return redirect('adoptpet')->with('flash_message', 'Adoptpet added!');
@@ -125,7 +140,15 @@ class AdoptpetController extends Controller
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
-
+        if (!empty($requestData['phone'])) {
+            DB::table('profiles')
+                ->where([ 
+                        ['user_id', $requestData['user_id']],
+                    ])
+                ->update([
+                    'phone' => $requestData['phone_user'],
+                ]);
+        } 
         $adoptpet = Adoptpet::findOrFail($id);
         $adoptpet->update($requestData);
 

@@ -91,7 +91,7 @@
 					</a>
 				</li>
 				@if (Auth::user()->role == 'admin-partner')
-				<li class="menu-label" style="font-size:18px;color:#B8205B">
+				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
                     Admin
                 </li>
                 <li>
@@ -102,7 +102,7 @@
 					</a>
 				</li>
 				@endif
-				<li class="menu-label" style="font-size:18px;color:#B8205B">
+				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
                     Check In/Out 
                 </li>
                 <li>
@@ -126,7 +126,7 @@
 						<div class="menu-title">คลังภาพ Check in</div>
 					</a>
 				</li>
-				<li class="menu-label" style="font-size:18px;color:#B8205B">
+				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
                     Shop 
                 </li>
 				<li>
@@ -143,7 +143,7 @@
 						<div class="menu-title" style="font-size:18px;">Order</div>
 					</a>
 				</li>
-                <li class="menu-label" style="font-size:18px;color:#B8205B">
+                <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
                     การใช้งาน
                 </li>
                 <li>
@@ -151,6 +151,13 @@
 						<div class="parent-icon"><i class="fa-regular fa-photo-film"></i>
 						</div>
 						<div class="menu-title" style="font-size:18px;">สื่อประชาสัมพันธ์</div>
+					</a>
+				</li>
+				<li>
+					<a href="{{ url('/how_to_use_partner') }}">
+						<div class="parent-icon"><i class="fa-regular fa-book"></i>
+						</div>
+						<div class="menu-title" style="font-size:18px;">วิธีใช้งาน</div>
 					</a>
 				</li>
 			</ul>

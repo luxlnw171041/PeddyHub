@@ -190,6 +190,27 @@
                             </div>
                         </div>
                     </div>
+                    @if(empty(Auth::user()->profile->phone))
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="faq wow fadeInRight">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="col-12 col-md-12">
+                                        <label  class="control-label"><b>{{ 'เบอร์ติดต่อ' }}</b></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                    <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}" onchange="check();">
+                                        {!! $errors->first('detail', '<p class="help-block">:message</p>') !!}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @else
+                    <input type="text" name="phone_user" id="phone_user" class="d-none form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}" onchange="check();">
+                    @endif
                     <div class="col-lg-6 col-md-12 col-sm-12"></div>
                 </div>
                 </div>
@@ -332,9 +353,11 @@
         let gender = document.querySelector('#gender');
         let age = document.querySelector('#age');
         let size = document.querySelector('#size');
+        let phone = document.querySelector('#phone_user');
+
         let pet_category_id = document.querySelector('#pet_category_id');
 
-        if (titel.value !== "" && photo.value !== "" && gender.value !== "" && age.value !== ""  && size.value !== "" && pet_category_id.value !== "") {
+        if (phone.value !== "" && titel.value !== "" && photo.value !== "" && gender.value !== "" && age.value !== ""  && size.value !== "" && pet_category_id.value !== "") {
         
                 document.getElementById("modal_submit").disabled = false;
         }

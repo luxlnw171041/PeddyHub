@@ -9,7 +9,7 @@
 			</div>
 			<div class="ms-auto">
 				<a type="button" data-toggle="modal" data-target="#order">
-					<button class="btn btn-primary btn-sm">
+					<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#order">
 						<i class="fas fa-info-circle"></i>วิธีใช้
 					</button>
 				</a>
