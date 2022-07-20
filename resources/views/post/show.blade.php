@@ -814,12 +814,12 @@
     function show_all_comment(post_id)
     {
         let id_user = document.querySelector('#id_user').value;
-        console.log("post_id >> " + post_id);
-        console.log("id_user >> " + id_user);
+        // console.log("post_id >> " + post_id);
+        // console.log("id_user >> " + id_user);
         fetch("{{ url('/') }}/api/show_all_comment/"+ post_id)
             .then(response => response.json())
             .then(result => {
-                console.log(result);
+                // console.log(result);
 
                 let div_content_comment = document.querySelector('#content_comment_' + post_id) ;
                     div_content_comment.innerHTML = "" ;
