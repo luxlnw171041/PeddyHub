@@ -134,6 +134,8 @@
         color: #b8205b;
         padding-left: 35px;
         background: #F1F1F1;
+    }.sharebtn{
+        margin-left: 10px !important;
     }
 </style>
 
@@ -591,21 +593,16 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button id="{{$item->name}}" onclick="downloadimage()" class="btn btn-success btn-load-pc">Download</button>
-                                <span id="swip{{$item->id}}" onclick="swipside(); namebtn();" style="margin-left:-100px;" class="btn btn-success btn-load-pc">แนวนอน</span>
-                                <div id="sharebtn" class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large"><a target="_blank" style="margin-left:120px;" href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=www.peddyhub.com/pet/{{$item->id}}&p[images][0]=http://www.peddyhub.com/{{ url('storage/'.$item->photo )}}&p[title]={{$item->name}}มีบัตรประจำตัวแล้วนะ!&p[summary]=Recent+events+have+revealed+how+market-driven+education+policies,+deceivingly+labeled+as+%22reform,%22+are+revealing+their+truly+destructive+effects+on+the+streets+and+in+the+corridors+of+government:" class="fb-xfbml-parse-ignore btn btn-success btn-load-pc">แชร์</a></div>
+                                
+                                <button id="{{$item->name}}" style="border-radius: 25px;" onclick="downloadimage()" class="btn btn-success btn-load-pc">Download</button>
+                                <span id="swip{{$item->id}}"onclick="swipside(); namebtn();" style="margin-left:-100px;border-radius: 25px;" class="btn btn-success btn-load-pc">แนวตั้ง</span>
+                                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large">
+                                    <a target="_blank" id="sharebtn"  style="margin-left:120px;border-radius: 25px;" href="https://www.facebook.com/sharer/sharer.php?s=100&p[url]=www.peddyhub.com/pet/{{$item->id}}&p[images][0]=http://www.peddyhub.com/{{ url('storage/'.$item->photo )}}&p[title]={{$item->name}}มีบัตรประจำตัวแล้วนะ!&p[summary]=Recent+events+have+revealed+how+market-driven+education+policies,+deceivingly+labeled+as+%22reform,%22+are+revealing+their+truly+destructive+effects+on+the+streets+and+in+the+corridors+of+government:" class="fb-xfbml-parse-ignore btn btn-success btn-load-pc">
+                                    แชร์</a></div>
 
                             </div>
                         </div>
                     </div>
-<style>
-    .swip{
-        margin-left:-50px !important;
-    }.sharebtn{
-        margin-left:80px !important;
-    }
-</style>
-                    <!-- end model -->
                     <script>
                         function swipside() {
                             document.getElementById('{{$item->name}}').classList.toggle('d-none');
@@ -614,11 +611,8 @@
                             document.getElementById("text_w"+event.srcElement.id).classList.toggle('text-card');
                             document.getElementById("text_l"+event.srcElement.id).classList.toggle('text-card');
                             document.getElementById("text_d"+event.srcElement.id).classList.toggle('text-card');
-                            
-                            console.log("น้อง"+'{{$item->name}}')
                             document.getElementById(event.srcElement.id).classList.toggle('swip');
                             document.getElementById("sharebtn").classList.toggle('sharebtn');
-                            
                             var element = document.getElementById("card_pet" + event.srcElement.id);
                             element.classList.toggle("rotatea");
                             element.classList.toggle("card-pet");
@@ -626,15 +620,15 @@
                     </script>
                     <script>
                         function namebtn() {
-                        var x = document.getElementById(event.srcElement.id);
-                        if (x.innerHTML === "แนวนอน") {
-                            x.innerHTML = "แนวตั้ง";
-                            
-                        } else {
-                            x.innerHTML = "แนวนอน";
+                            var x = document.getElementById(event.srcElement.id);
+                            if (x.innerHTML === "แนวตั้ง") {
+                                x.innerHTML = "แนวนอน";
+                                
+                            } else {
+                                x.innerHTML = "แนวตั้ง";
+                            }
                         }
-                        }
-                        </script>
+                    </script>
                     <script>
                         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
                             document.querySelector('#text_tswip{{$item->id}}').classList.add('text-card');
@@ -664,6 +658,7 @@
                     <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
                     <script type="text/javascript">
                         function downloadimage() {
+                            console.log(event.srcElement.id)
                             //var container = document.getElementById("image-wrap"); //specific element on page
                             var container = document.getElementById("น้อง"+event.srcElement.id); // full page 
                             let petname = event.srcElement.id;
