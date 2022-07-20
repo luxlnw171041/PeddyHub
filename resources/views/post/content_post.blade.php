@@ -84,9 +84,9 @@
             </div>
             <hr style="margin:0px 0px 0px 0px; ">
             <div class="row d-flex justify-content-center" style="padding:10px;">
-                <div class="col-3">
+                <div class="col-6 text-center ">
                     @if(Auth::check())
-                    <div class="d-grid  text-center">
+                    <div class="d-grid">
                         @if(!empty($item->like_all))
                             @php
                                 $like_all_arr = json_decode($item->like_all) ;
@@ -140,15 +140,15 @@
                          </b>
                     </button>
                 </div>
-                <div class="col-3 d-grid ">
-                    <button class="btn likebtn btn-lg d-none" >
+                <!-- <div class="col-3 d-grid d-none">
+                    <button class="btn likebtn btn-lg" >
                         <b>
                             <i class="fa-solid fa-share-all"></i>
                             <br>
                             แชร์
                         </b>
                     </button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>    
@@ -169,7 +169,7 @@
                     <div id="EX_test_comment" class="row d-none">
                         <div class="col-2 text-center" style="padding:0px;margin-top:5px;">
                             <center>
-                                <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="peddyhub/images/home_5/icon1.png" class="img-fluid customer">
+                                <img style="border-radius: 50%;object-fit:cover; width:40px;height:40px;"  src="{{ url('/peddyhub/images/home_5/icon1.png') }}" class="img-fluid customer">
                             </center>
                         </div>
                         <div class="col-10">
@@ -295,7 +295,7 @@
         let onclick_btn_cf_delete_comment = document.createAttribute("onclick");
             onclick_btn_cf_delete_comment.value = "delete_comment('" + comment_id + "')" ;
         btn_cf_delete_comment.setAttributeNode(onclick_btn_cf_delete_comment);
-}
+    }
 
     function check_input_content_comment(post_id)
     {
@@ -380,7 +380,7 @@
                                 if (data_profile[0]['photo'] != null) {
                                     src_img_col_2.value = "{{ url('storage')}}/" + data_profile[0]['photo'];
                                 }else{
-                                    src_img_col_2.value = "peddyhub/images/home_5/icon1.png";
+                                    src_img_col_2.value = "{{ url('/peddyhub/images/home_5/icon1.png')}}";
                                 }
                             img_col_2.setAttributeNode(src_img_col_2);
                             let class_img_col_2 = document.createAttribute("class");
@@ -540,6 +540,10 @@
                             let id_span_1_col_6_1 = document.createAttribute("id");
                                 id_span_1_col_6_1.value = "comment_id_"+ result.id;
                             span_1_col_6_1.setAttributeNode(id_span_1_col_6_1);
+
+                            let class_span_1_col_6_1 = document.createAttribute("class");
+                                class_span_1_col_6_1.value = "btn btn-sm";
+                            span_1_col_6_1.setAttributeNode(class_span_1_col_6_1);
 
                             if (like_all[result.id]) {
                                 let iii = like_all[result.id].includes("{{ $id }}");
@@ -888,7 +892,7 @@
                                 if (data_profile[0]['photo'] != null) {
                                     src_img_col_2.value = "{{ url('storage')}}/" + data_profile[0]['photo'];
                                 }else{
-                                    src_img_col_2.value = "peddyhub/images/home_5/icon1.png";
+                                    src_img_col_2.value = "{{ url('/peddyhub/images/home_5/icon1.png')}}";
                                 }
                             img_col_2.setAttributeNode(src_img_col_2);
                             let class_img_col_2 = document.createAttribute("class");
@@ -1048,6 +1052,10 @@
                             let id_span_1_col_6_1 = document.createAttribute("id");
                                 id_span_1_col_6_1.value = "comment_id_"+ item.id;
                             span_1_col_6_1.setAttributeNode(id_span_1_col_6_1);
+
+                            let class_span_1_col_6_1 = document.createAttribute("class");
+                                class_span_1_col_6_1.value = "btn btn-sm";
+                            span_1_col_6_1.setAttributeNode(class_span_1_col_6_1);
 
                             if (like_all[item.id]) {
                                 let iii = like_all[item.id].includes("{{ $id }}");
