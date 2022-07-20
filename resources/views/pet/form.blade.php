@@ -1052,7 +1052,7 @@
 
                 option_select.text = "- เลือกประเภทย่อย -";
                 
-                option_select.value = "";option_select.value = "asdas";
+                option_select.value = "";
                 select_sub_category.add(option_select);
 
                 for (let item of result) {
