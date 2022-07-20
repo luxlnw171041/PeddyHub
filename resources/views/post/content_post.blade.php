@@ -380,7 +380,7 @@
                                 if (data_profile[0]['photo'] != null) {
                                     src_img_col_2.value = "{{ url('storage')}}/" + data_profile[0]['photo'];
                                 }else{
-                                    src_img_col_2.value = "{{ url('/peddyhub/images/home_5/icon1.png')}}";
+                                    src_img_col_2.value = "peddyhub/images/home_5/icon1.png";
                                 }
                             img_col_2.setAttributeNode(src_img_col_2);
                             let class_img_col_2 = document.createAttribute("class");
@@ -540,10 +540,6 @@
                             let id_span_1_col_6_1 = document.createAttribute("id");
                                 id_span_1_col_6_1.value = "comment_id_"+ result.id;
                             span_1_col_6_1.setAttributeNode(id_span_1_col_6_1);
-
-                            let class_span_1_col_6_1 = document.createAttribute("class");
-                                class_span_1_col_6_1.value = "btn btn-sm";
-                            span_1_col_6_1.setAttributeNode(class_span_1_col_6_1);
 
                             if (like_all[result.id]) {
                                 let iii = like_all[result.id].includes("{{ $id }}");
@@ -892,7 +888,7 @@
                                 if (data_profile[0]['photo'] != null) {
                                     src_img_col_2.value = "{{ url('storage')}}/" + data_profile[0]['photo'];
                                 }else{
-                                    src_img_col_2.value = "{{ url('/peddyhub/images/home_5/icon1.png')}}";
+                                    src_img_col_2.value = "peddyhub/images/home_5/icon1.png";
                                 }
                             img_col_2.setAttributeNode(src_img_col_2);
                             let class_img_col_2 = document.createAttribute("class");
@@ -1052,10 +1048,6 @@
                             let id_span_1_col_6_1 = document.createAttribute("id");
                                 id_span_1_col_6_1.value = "comment_id_"+ item.id;
                             span_1_col_6_1.setAttributeNode(id_span_1_col_6_1);
-
-                            let class_span_1_col_6_1 = document.createAttribute("class");
-                                class_span_1_col_6_1.value = "btn btn-sm";
-                            span_1_col_6_1.setAttributeNode(class_span_1_col_6_1);
 
                             if (like_all[item.id]) {
                                 let iii = like_all[item.id].includes("{{ $id }}");
