@@ -19,12 +19,12 @@
     }
 
     .hide {
-        display: none;
         opacity:0;
         -o-transition: opacity 1s;
         -moz-transition: opacity 1s;
         -webkit-transition: opacity 1s;
-        transition: opacity 1s;
+        visibility: hidden  opacity 1s; 
+        transition: visibility 1s, opacity 1s ;
     }
 
     .likebtn:hover {
@@ -41,6 +41,7 @@
         z-index:999999;
     }
 
+    แล้วตรงlogin likeอะ ในclass hide ลองใส่ visibility: hidden;  opacity 1s; transition: visibility 1s, opacity 1s ; มันจะใช้ได้ปะ
 /* .likebtn:active {
   background-color: #3e8e41 !important;;
   box-shadow: 0 5px #666 !important;;
