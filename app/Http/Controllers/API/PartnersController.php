@@ -393,7 +393,7 @@ class PartnersController extends Controller
               ->where('name', $partner)
               ->where("name_area", null)
               ->update([
-                'color' => $color_menu,
+                // 'color' => $color_menu,
                 'class_color_menu' => $class_color_menu,
         ]);
 

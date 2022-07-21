@@ -91,7 +91,7 @@
 					</a>
 				</li>
 				@if (Auth::user()->role == 'admin-partner')
-				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
+				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Admin
                 </li>
                 <li>
@@ -102,7 +102,7 @@
 					</a>
 				</li>
 				@endif
-				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
+				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Check In/Out 
                 </li>
                 <li>
@@ -126,7 +126,7 @@
 						<div class="menu-title">คลังภาพ Check in</div>
 					</a>
 				</li>
-				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
+				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Shop 
                 </li>
 				<li>
@@ -143,7 +143,7 @@
 						<div class="menu-title" style="font-size:18px;">Order</div>
 					</a>
 				</li>
-                <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;">
+                <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     การใช้งาน
                 </li>
                 <li>
@@ -180,7 +180,9 @@
 					</div>
 					<div class="user-box dropdown">
 						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->username }}
+                        <span class="text-secondary" style="text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+                        	{{ Auth::user()->profile->name }}
+                        </span>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
@@ -730,14 +732,17 @@
 			    	
 		}
 
-    	// console.log(color);
-    	// console.log(class_color_menu);
+    	
 
         color = color.replace("#","_");
 
     	let color_of_partner = document.querySelector('#color_of_partner');
             color_of_partner = color_of_partner.value.replaceAll(" ","_");
-			console.log(color_of_partner);
+
+		// console.log(color);
+  //   	console.log(color_of_partner);
+  //   	console.log(class_color_menu);
+
         fetch("{{ url('/') }}/api/change_color_menu/"+ color + "/" + color_of_partner + "/" + class_color_menu);
     }
 	</script>
