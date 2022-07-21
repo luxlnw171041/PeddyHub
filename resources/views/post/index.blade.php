@@ -40,8 +40,7 @@
         bottom:0;
         z-index:999999;
     }
-
-    แล้วตรงlogin likeอะ ในclass hide ลองใส่ visibility: hidden;  opacity 1s; transition: visibility 1s, opacity 1s ; มันจะใช้ได้ปะ
+    
 /* .likebtn:active {
   background-color: #3e8e41 !important;;
   box-shadow: 0 5px #666 !important;;
