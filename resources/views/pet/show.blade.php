@@ -303,16 +303,20 @@
 </div>
 <br><br>
 <center>
-<button onclick="swipside()" class="text-center btn btn-success d-block d-md-none">แนวนอน</button>
+    <div class="row">
+        <div class="col">
+            <button id="btn_swip" onclick="swipside();namebtn();" class="text-center btn btn-success d-block d-md-none">แนวตั้ง</button>
+        </div>
+        <div class="col">
+            <button id="btn_download" onclick="downloadimage()" class="btn btn-success">Download</button>
+        </div>
+    </div>
 </center>
-
 
 @if(Auth::user())
 <input class="form-control d-none" name="language" type="text" id="language" value="{{Auth::user()->profile->language}}">
 @endif
-<div class="container d-flex justify-content-center">
-    <button onclick="downloadimage()" class="btn btn-success d-none d-lg-block">Download</button>
-</div>
+
 <div id="fb-root"></div>
 <script>
     function swipside() {
@@ -372,6 +376,19 @@
             link.target = '_blank';
             link.click();
         });
+    }
+</script>
+<script>
+    function namebtn() {
+        var x = document.getElementById("btn_swip");
+        if (x.innerHTML === "แนวตั้ง") {
+            x.innerHTML = "แนวนอน";
+            document.getElementById("btn_download").classList.add('d-none');
+            
+        } else {
+            x.innerHTML = "แนวตั้ง";
+            document.getElementById("btn_download").classList.remove('d-none');
+        }
     }
 </script>
 @endsection
