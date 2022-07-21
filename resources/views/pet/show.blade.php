@@ -305,10 +305,10 @@
 <center>
     <div class="row">
         <div class="col">
-            <button id="btn_swip" onclick="swipside();namebtn();" class="text-center btn btn-success d-block d-md-none">แนวตั้ง</button>
+            <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;"class="text-center btn btn-success d-block d-md-none">แนวตั้ง</button>
         </div>
         <div class="col">
-            <button id="btn_download" onclick="downloadimage()" class="btn btn-success">Download</button>
+            <button id="btn_download" onclick="downloadimage()" style="border-radius: 25px;"class="btn btn-success">Download</button>
         </div>
     </div>
 </center>
