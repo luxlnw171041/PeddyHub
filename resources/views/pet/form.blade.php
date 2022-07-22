@@ -1191,7 +1191,7 @@
     function checkCookie() {
         let accept = getCookie("ยินยอมใช้ระบบหาคู่สัตว์เลี้ยง");
         if (accept != "ยินยอม") {
-            document.querySelector('#btn-submit').click();
+            // document.querySelector('#btn-submit').click();
         }
     }
 
