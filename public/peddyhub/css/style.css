@@ -82,43 +82,7 @@ font-family: 'Kaushan Script', sans-serif;*/
     height: 100%;
 }
 
-.parent {
-    position: relative;
-    /* define context for absolutly positioned children */
-    /* size set by image in this case */
-    background-image: url('https://placehold.it/400');
-    background-size: cover;
-    background-position: center center;
-}
 
-.parent img {
-    display: block;
-}
-
-.parent:after {
-    content: '';
-    /* :after has to have a content... but you don't want one */
-
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0, 0, 0, 0);
-
-    transition: 1s;
-}
-
-.parent:hover:after {
-    background: rgba(0, 0, 0, .5);
-}
-
-.parent:hover .child {
-    opacity: 1;
-}
 
 .child {
     position: absolute;

@@ -12,7 +12,6 @@
         grid-column-gap: 0px;
         grid-row-gap: 0px;
     }
-
     .div1 {
         grid-area: 1 / 1 / 2 / 2;
     }
@@ -131,7 +130,6 @@
                         <div class="div1 text-center">
                             <a href="{{ url('/user_pet/' . $pet->id) }}">
                                 <img style="position:relative ;" width="80px" src="{{ url('storage/'.$pet->qr_code )}}" alt="">
-                                <img style="position:absolute ;margin-left:-52px;margin-top:28px;" width="25px" src="{{ url('/peddyhub/images/logo/logo-5.png') }}" alt="">
                             </a>
                         </div>
                         <div class="div2">
@@ -305,16 +303,20 @@
 </div>
 <br><br>
 <center>
-<button onclick="swipside()" class="text-center btn btn-success d-block d-md-none">แนวนอน</button>
+    <div class="row">
+        <div class="col">
+            <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;"class="text-center btn btn-success d-block d-md-none">แนวตั้ง</button>
+        </div>
+        <div class="col">
+            <button id="btn_download" onclick="downloadimage()" style="border-radius: 25px;"class="btn btn-success">Download</button>
+        </div>
+    </div>
 </center>
-
 
 @if(Auth::user())
 <input class="form-control d-none" name="language" type="text" id="language" value="{{Auth::user()->profile->language}}">
 @endif
-<div class="container d-flex justify-content-center">
-    <button onclick="downloadimage()" class="btn btn-success d-none d-lg-block">Download</button>
-</div>
+
 <div id="fb-root"></div>
 <script>
     function swipside() {
@@ -374,6 +376,19 @@
             link.target = '_blank';
             link.click();
         });
+    }
+</script>
+<script>
+    function namebtn() {
+        var x = document.getElementById("btn_swip");
+        if (x.innerHTML === "แนวตั้ง") {
+            x.innerHTML = "แนวนอน";
+            document.getElementById("btn_download").classList.add('d-none');
+            
+        } else {
+            x.innerHTML = "แนวตั้ง";
+            document.getElementById("btn_download").classList.remove('d-none');
+        }
     }
 </script>
 @endsection
