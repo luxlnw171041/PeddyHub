@@ -5,9 +5,13 @@
         <div class="row">
             <div class="col-3">
                 @if(!empty($user->profile->photo))
-                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $user->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                    <a href="{{ url('/my_post_peddyshare') }}">
+                        <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $user->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
+                    </a>
                 @else
-                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
+                    <a href="{{ url('/my_post_peddyshare') }}">
+                        <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
+                    </a>
                 @endif
             </div>
             <div class="col-9">

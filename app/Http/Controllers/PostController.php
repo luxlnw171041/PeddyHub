@@ -48,6 +48,33 @@ class PostController extends Controller
         return view('post.index', compact('post' ,'id' ,'comment' ,'user','select_category'));
     }
 
+    public function my_post_index(Request $request)
+    {
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        $id = Auth::id();
+        $user = Auth::user();
+
+        $category  = $request->get('pet_category_id');
+        $comment = Comment::all(['id', 'post_id' ,'user_id' ,'content' ,'created_at']);
+        
+        $needFilter =  !empty($category);
+
+        if (!empty($needFilter)) {
+            $post = Post::where('pet_category_id',    'LIKE', '%' .$category.'%')
+                ->where('user_id',$id)
+                ->latest()
+                ->paginate($perPage);
+        } else {
+            $post = Post::where('user_id',$id)->latest()->paginate($perPage);
+        }
+
+        $select_category = Pet_Category::groupBy('name')->get();
+
+        return view('post.index_my_post', compact('post' ,'id' ,'comment' ,'user','select_category'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

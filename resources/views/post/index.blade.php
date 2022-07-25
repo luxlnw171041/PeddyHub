@@ -83,6 +83,12 @@
                 <div class="col-12 col-md-9  ">
                     @include ('menubar.menu_btn')
                 </div>
+                <div class="col-12">
+                    <br>
+                    <a href="{{ url('/my_post_peddyshare') }}" class="btn btn-sm btn-info main-shadow main-radius" style="border-radius:15px;width: 50%; float: right;"> 
+                        <b>My post</b> 
+                    </a>
+                </div>
             </div>
             <br>
             <!-- modal post -->

@@ -83,6 +83,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/my_post', 'Lost_PetController@mypost');
     Route::resource('order-product', 'OrderProductController');
     Route::resource('order', 'OrderController');
+    Route::get('/my_post_peddyshare', 'PostController@my_post_index');
+
 });
 
 Route::get('/pet/{id}', 'PetController@show');
@@ -91,11 +93,6 @@ Route::get('hospital_near', 'Hospital_nearController@index');
 
 Route::get('/post', 'PostController@index');
 Route::get('login_line/post', 'PostController@login_line_post');
-
-// TEST SHOW POST
-Route::get('/test_show_post', function () {
-    return view('post/test_show_post');
-});
 
 // Route::resource('comment', 'CommentController');
 // Route::get('comment/{id}', 'CommentController@test');
