@@ -13,12 +13,12 @@
             <div class="slider">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-7 col-md-12 col-sm-12">
+                        <div class="col-lg-7 col-md-12 col-sm-12 col-12">
                             <div class="text">
                                 <div class="heading">
-                                    <h1>
+                                    <h1 style="font-family: 'Kanit', sans-serif;">
                                         ยินดีต้อนรับสู่
-                                        <span class="wow pulse" data-wow-delay="1s">
+                                        <span class="wow pulse" data-wow-delay="1s" style="font-family: 'Laila', sans-serif !important;">
                                             PeddyHub</span>
                                     </h1>
                                 </div>
@@ -65,10 +65,115 @@
                         <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
                                 class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
                                     class="fas fa-paw"></i> </span></p>
-                        <h2 class="wow fadeInDown">ประเภทอาหารสุนัขใดเหมาะสมที่สุดกับ<span class="wow pulse" data-wow-delay="1s">
-                                สุนัขของคุณ</span></h2>
+                        <h4 class="wow fadeInDown" style="font-family: 'Kanit', sans-serif;">เพ็ดดี้ฮับ ร่วมมือกับ นกแอร์ พาเจ้าตัวแสบขึ้นเครื่องได้รวดเร็วกว่าเดิมเพียงลงทะเบียนสัตว์เลี้ยงและเพิ่มเอกสารที่จำเป็น <span class="wow pulse" data-wow-delay="1s" style="color: #b8205b;">ลงทะเบียนเลย!!</span></h4>
                     </div>
-                    <div class="row">
+                    <div class="col-12 owl-carousel-3 align-self-center" style="padding:0px;">
+                        <div class="owl-carousel"> 
+
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-2 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/9.png') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/9.png') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="{{ url('/peddyhub/images/pet_on_board/1.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                <div class="item " style="padding:5px;z-index:-1;">
+                                    <div class="gallery-item-1 col-12">
+                                        <div class="inner-box">
+                                            <figure class="image-box">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/1.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-2 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/2.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/2.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-3 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/3.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/3.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-4 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/4.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/4.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-5 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/5.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/5.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-6 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/6.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/6.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-7 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/7.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/7.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item" style="padding:5px;z-index:-1;">
+                                <div class="gallery-item-8 col-12">
+                                    <div class="inner-box">
+                                        <figure class="image-box">
+                                            <a href="{{ url('/peddyhub/images/pet_on_board/8.jpg') }}" data-fancybox="images" data-caption="" class="link">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/8.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                            </a>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="content">
                                 <div class="image text-center wow fadeInLeft">
@@ -116,7 +221,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 

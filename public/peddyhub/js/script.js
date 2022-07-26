@@ -638,6 +638,7 @@ $(document).ready(function () {
         }
       }
     });
+    
     var owl = $('.owl-carousel-lostpet .owl-carousel');
     owl.owlCarousel({
         center: false,
@@ -671,6 +672,42 @@ $(document).ready(function () {
         }
       }
     });
+
+    var owl = $('.owl-carousel-3 .owl-carousel');
+    owl.owlCarousel({
+        center: false,
+      items: 1,
+      loop: true,
+      stagePadding: 0,
+      margin: 20,
+      smartSpeed: 1000,
+      autoplay: true,
+      nav: false,
+      dots: false,
+      pauseOnHover: false,
+      responsive: {
+        0: {
+          margin: 20,
+          items: 1
+        },
+        700: {
+          margin: 20,
+          stagePadding: 0,
+          items: 1
+        },
+        600: {
+          margin: 20,
+          items: 3
+        },
+        1000: {
+          margin: 0,
+          stagePadding: 0,
+          items: 3
+        }
+      }
+    });
+
+
     var owl = $('.owl-carousel');
     owl.owlCarousel({
         items: 1,

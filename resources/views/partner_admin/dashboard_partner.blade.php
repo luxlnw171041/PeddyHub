@@ -63,7 +63,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <p class="mb-0">revenue 28 วัน</p>
+                                <p class="mb-0">รายได้ 28 วัน</p>
                                 <h4 class="font-weight-bold">{{ number_format($revenue_28) }}</h4>
                                 @if(!empty($revenue))
                                     <p class="text-secondary mb-0 font-13"><span class="text-success">{{ number_format(($revenue_28/$revenue)*100,1) }}%</span> จากทั้งหมด {{ number_format($revenue)}}</p>
