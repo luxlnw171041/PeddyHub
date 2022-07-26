@@ -67,9 +67,9 @@
                                     class="fas fa-paw"></i> </span></p>
                         <h4 class="wow fadeInDown" style="font-family: 'Kanit', sans-serif;">เพ็ดดี้ฮับ ร่วมมือกับ นกแอร์ พาเจ้าตัวแสบขึ้นเครื่องได้รวดเร็วกว่าเดิมเพียงลงทะเบียนสัตว์เลี้ยงและเพิ่มเอกสารที่จำเป็น <span class="wow pulse" data-wow-delay="1s" style="color: #b8205b;">ลงทะเบียนเลย!!</span></h4>
                     </div>
+                    <br>
                     <div class="col-12 owl-carousel-3 align-self-center" style="padding:0px;">
                         <div class="owl-carousel"> 
-
                             <div class="item" style="padding:5px;z-index:-1;">
                                 <div class="gallery-item-2 col-12">
                                     <div class="inner-box">
@@ -81,7 +81,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <a href="{{ url('/peddyhub/images/pet_on_board/1.jpg') }}" data-fancybox="images" data-caption="" class="link">
                                 <div class="item " style="padding:5px;z-index:-1;">
                                     <div class="gallery-item-1 col-12">
