@@ -10227,7 +10227,7 @@ ul, p {
 
 .pet .descript .context {
     position: relative;
-    z-index: 9999;
+    z-index: 9;
 }
 
 .pet .descript h2 {

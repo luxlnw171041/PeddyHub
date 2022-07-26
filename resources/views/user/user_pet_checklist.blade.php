@@ -282,7 +282,6 @@
         margin: 10px 0px 10px 35px;
     }
 </style>
-
 <div class="container">
     <div class="shadow chechlist col-12 col-lg-4">
         @foreach($user as $key)
@@ -521,9 +520,15 @@
         @endif
     </div>
 </div>
-
+<!--------------------------- Scroll Down --------------------------->
 @if(!empty($item->certificate))
-<div class="content-checklist">
+    <a href="#certificate_section">
+        <div class="scroll-down"></div>
+    </a>
+@endif
+<!--------------------------- Scroll Down --------------------------->
+@if(!empty($item->certificate))
+<div id="certificate_section" class="content-checklist">
     <i class="icon-checklist fa-light fa-file-certificate bg-secondary" style="padding:10px 11px 10px 11px;"></i>
     <span class="text-checklist">เอกสารอื่นๆ</span>
 </div>

@@ -44,6 +44,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kanit&family=Laila:wght@700&family=Mitr&display=swap" rel="stylesheet">
+
   <!-- เลื่อนๆ -->
   <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
   <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
@@ -102,7 +104,7 @@
           <div class="container">
             <a href="{{ url('/') }}" class="navbar-brand">
 
-              <img src="{{ url('/peddyhub/images/logo/logo-4.png') }}" width="" alt="image of logo" title="logo" class="img-fluid d-inline-block align-middle mr-2">
+              <img src="{{ url('/peddyhub/images/logo/logo-6.png') }}" width="50%" alt="image of logo" title="logo" class="img-fluid d-inline-block align-middle mr-2">
               <span class="text-uppercase font-weight-bold"></span>
             </a>
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" class="navbar-toggler notranslate"><span class="navbar-toggler-icon fa">&#xf0c9;</span>
@@ -159,7 +161,7 @@
             <div class="auto-container clearfix">
               <!--Logo-->
               <div class="logo pull-left">
-                <a href="{{ url('/') }}" class="img-responsive"><img src="{{ url('/peddyhub/images/home_5/logo.png') }}" alt="" width="15%" style="margin-bottom:-30px;" title=""></a>
+                <a href="{{ url('/') }}" class="img-responsive"><img src="{{ url('/peddyhub/images/logo/logo-6.png') }}" alt="" width="15%" style="margin-bottom:-30px;" title=""></a>
               </div>
               <!--Right Col-->
               <div class="right-col pull-right">
