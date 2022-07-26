@@ -170,13 +170,14 @@
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
 <div class="main-wrapper pet check">
     <div class="pet service">
         <section class="contact">
             <div class="container">
                 <!-- ข้อมูล USER -->
                 @if(empty(Auth::user()->profile->tambon_th)
-                or empty(Auth::user()->profile->phone))
+                or empty(Auth::user()->profile->phone) )
                 <div id="data_user" class="faq wow fadeInRight">
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="heading">
@@ -773,7 +774,13 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-6">
                             <div class="d-flex justify-content-end">
-                                <button id="btn-modal" type="button" class="btn btn-11" data-toggle="modal" data-target="#modal_loadning" onclick="submitform()" disabled>Update</button>
+                                <button id="btn-modal" type="button" class="btn btn-11" data-toggle="modal" data-target="#modal_loadning" onclick="submitform()" disabled>
+                                    Update
+                                </button>
+
+                                <button id="btn-modal_emptyalert_lost_pet" type="button" class="btn btn-11" onclick="document.querySelector('#btn_modal_alert_lost_pet').click();" disabled>
+                                    Update
+                                </button>
 
                                 <button id="btn-submit-form" type="submit" class="btn btn-11 form-control d-none" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งข้อมูล' }}">Update</button>
                             </div>
@@ -785,6 +792,74 @@
     </div>
 </div>
 
+<!-- Button modal_alert_lost_pet -->
+<button type="button" class="btn btn-primary d-none" id="btn_modal_alert_lost_pet" data-toggle="modal" data-target="#modal_alert_lost_pet">
+</button>
+
+<input class="form-control d-none" type="text" name="input_alert_lost_pet" id="input_alert_lost_pet" value="{{ Auth::user()->profile->alert_lost_pet }}">
+
+<!-- Modal -->
+<div class="modal fade" id="modal_alert_lost_pet" tabindex="-1" role="dialog" aria-labelledby="examplemodal_alert_lost_pet" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" alt="" width="50%">
+                    <br><br>
+                    <h5 style="font-family: 'Sarabun', sans-serif;"> <b>ยินยอมให้ส่งข้อความตามหาสัตว์เลี้ยง</b> </h5>
+                    <br>
+                    <p style="font-family: 'Sarabun', sans-serif;">
+                        ท่านมีความยินยอมที่จะให้เว็บไซต์ PEDDyHUB ส่งข้อความประกาศตามหาสัตว์เลี้ยงประเภทใดบ้าง
+                        <br>
+                        <span class="text-danger">* เลือกได้มากกว่า 1 ข้อ</span>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div style="padding: 7px;float: right;">
+                            <input checked type="checkbox" name="check_all_alert" id="check_all_alert" onclick="click_check_all_alert();">&nbsp;&nbsp;ทั้งหมด
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-6">
+                        <div style="padding: 7px;">
+                            <input checked type="checkbox" name="check_categories_1" id="check_categories_1" onclick="click_check();">
+                            &nbsp;&nbsp;<i class="fas fa-dog"  style="font-size:20px;color:#F7B000;"></i>&nbsp;&nbsp;สุนัข
+                        </div>
+                        <div style="padding: 7px;">
+                            <input checked type="checkbox" name="check_categories_2" id="check_categories_2" onclick="click_check();">
+                            &nbsp;&nbsp;<i class="fas fa-cat " style="font-size:20px;color:#02DBFF;"></i>&nbsp;&nbsp;แมว
+                        </div>
+                        <div style="padding: 7px;">
+                            <input checked type="checkbox" name="check_categories_3" id="check_categories_3" onclick="click_check();">
+                            &nbsp;&nbsp;<i class="fas fa-dove" style="font-size:20px;color:#49AED9;"></i>&nbsp;&nbsp;นก
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="padding: 7px;">
+                            <input checked type="checkbox" name="check_categories_4" id="check_categories_4" onclick="click_check();">
+                            &nbsp;&nbsp;<i class="fas fa-fish" style="font-size:20px;color:#63AB86;"></i>&nbsp;&nbsp;ปลา
+                        </div>
+                        <div style="padding: 7px;">
+                            <input checked type="checkbox" name="check_categories_5" id="check_categories_5" onclick="click_check();">
+                            &nbsp;&nbsp;<i class="fas fa-rabbit" style="font-size:20px;color:#DB4C75;"></i>&nbsp;&nbsp;สัตว์เล็ก
+                        </div>
+                        <div style="padding: 7px;">
+                            <input checked type="checkbox" name="check_categories_6" id="check_categories_6" onclick="click_check();">
+                            &nbsp;&nbsp;<i class="fas fa-spider" style="font-size:20px;color:black;"></i>&nbsp;&nbsp;Exotic
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-peddyhub" data-dismiss="modal" onclick="submitform()">ยืนยัน</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary d-none" id="btn-submit" data-toggle="modal" data-target="#exampleModalCenter">
@@ -876,6 +951,17 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
+
+        let input_alert_lost_pet = document.querySelector('#input_alert_lost_pet').value;
+
+        if (input_alert_lost_pet) {
+            document.querySelector('#btn-modal_emptyalert_lost_pet').classList.add('d-none');
+            document.querySelector('#btn-modal').classList.remove('d-none');
+        }else{
+            document.querySelector('#btn-modal_emptyalert_lost_pet').classList.remove('d-none');
+            document.querySelector('#btn-modal').classList.add('d-none');
+        }
+
         let certificate_1 = document.querySelector('#input_certificate');
         let certificate_2 = document.querySelector('#input_certificate_2');
         let certificate_3 = document.querySelector('#input_certificate_3');
@@ -917,7 +1003,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
 
-        console.log("START");
+        // console.log("START");
         let check_changwat_th = document.querySelector('#check_changwat_th');
         select_category();
 
@@ -1263,7 +1349,7 @@
 </script>
 <script>
     function check() {
-        console.log("aa");
+        // console.log("aa");
         let name = document.querySelector('#name');
         let photo = document.querySelector('#photo');
         let gender = document.querySelector('#gender');
@@ -1272,6 +1358,7 @@
         if (name.value !== "" && gender.value !== "" && birth.value !== "" && birth.value !== "" && select_category.value !== "") {
             if ("{{$photo}}" !== '0' || photo.value) {
                 document.getElementById("btn-modal").disabled = false;
+                document.getElementById("btn-modal_emptyalert_lost_pet").disabled = false;
             }
         }
 
@@ -1283,4 +1370,33 @@
     function updateChange(event) {
     const value = event.target.value;
     spanElement.innerText = value;}
+</script>
+<script>
+    function click_check_all_alert(){
+        let check_all_alert = document.querySelector('#check_all_alert');
+        // console.log(check_all_alert.checked);
+        if (check_all_alert.checked) {
+            document.querySelector('#check_categories_1').checked = true ;
+            document.querySelector('#check_categories_2').checked = true ;
+            document.querySelector('#check_categories_3').checked = true ;
+            document.querySelector('#check_categories_4').checked = true ;
+            document.querySelector('#check_categories_5').checked = true ;
+            document.querySelector('#check_categories_6').checked = true ;
+        }else{
+            document.querySelector('#check_categories_1').checked = false ;
+            document.querySelector('#check_categories_2').checked = false ;
+            document.querySelector('#check_categories_3').checked = false ;
+            document.querySelector('#check_categories_4').checked = false ;
+            document.querySelector('#check_categories_5').checked = false ;
+            document.querySelector('#check_categories_6').checked = false ;
+        }
+    }
+
+    function click_check(){
+        if ( document.querySelector('#check_categories_1').checked && document.querySelector('#check_categories_2').checked && document.querySelector('#check_categories_3').checked && document.querySelector('#check_categories_4').checked && document.querySelector('#check_categories_5').checked && document.querySelector('#check_categories_6').checked ) {
+            document.querySelector('#check_all_alert').checked = true ;
+        }else{
+            document.querySelector('#check_all_alert').checked = false ;
+        }
+    }
 </script>

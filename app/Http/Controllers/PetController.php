@@ -68,7 +68,6 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        
         $requestData = $request->all();
 
         if ($request->hasFile('photo')) {
@@ -138,7 +137,38 @@ class PetController extends Controller
                     'photo_passport' => $requestData['photo_passport'] = $request->file('photo_passport')->store('uploads', 'public')
                 ]);
         } 
-        
+
+        $alert_arr = array();
+        if ( empty($requestData['input_alert_lost_pet']) ) {
+            if (!empty($requestData['check_all_alert'])) {
+                $alert_arr = array('1','2','3','4','5','6') ;
+            }else{
+                if (!empty($requestData['check_categories_1'])) {
+                    array_push($alert_arr , '1') ;
+                }
+                if (!empty($requestData['check_categories_2'])) {
+                    array_push($alert_arr , '2') ;
+                }
+                if (!empty($requestData['check_categories_3'])) {
+                    array_push($alert_arr , '3') ;
+                }
+                if (!empty($requestData['check_categories_4'])) {
+                    array_push($alert_arr , '4') ;
+                }
+                if (!empty($requestData['check_categories_5'])) {
+                    array_push($alert_arr , '5') ;
+                }
+                if (!empty($requestData['check_categories_6'])) {
+                    array_push($alert_arr , '6') ;
+                }
+            }
+            
+            DB::table('profiles')
+                ->where('user_id', $requestData['user_id'])
+                ->update([
+                    'alert_lost_pet' => $alert_arr,
+            ]);
+        }
         
         Pet::create($requestData);
 
