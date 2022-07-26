@@ -104,7 +104,7 @@
           <div class="container">
             <a href="{{ url('/') }}" class="navbar-brand">
 
-              <img src="{{ url('/peddyhub/images/logo/logo-6.png') }}" width="50%" alt="image of logo" title="logo" class="img-fluid d-inline-block align-middle mr-2">
+            <img src="{{ url('/peddyhub/images/logo/logo-6.png') }}" width="200px" alt="image of logo" title="logo" class="img-fluid d-inline-block align-middle mr-2">
               <span class="text-uppercase font-weight-bold"></span>
             </a>
             <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" class="navbar-toggler notranslate"><span class="navbar-toggler-icon fa">&#xf0c9;</span>
