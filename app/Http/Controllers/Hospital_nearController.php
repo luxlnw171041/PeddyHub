@@ -24,7 +24,7 @@ class Hospital_nearController extends Controller
         $perPage = 3;
         $hospital_near = "";
 
-        $hospital_recommend = Hospital_near::where('recommend', "Yes")->inRandomOrder()->limit(3)->get();
+        $hospital_recommend = Hospital_near::where('recommend', "Yes")->inRandomOrder()->limit(5)->get();
 
         return view('hospital_near.index', compact('hospital_near','hospital_recommend'));
     }
