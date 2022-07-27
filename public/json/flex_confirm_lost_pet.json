@@ -1,0 +1,53 @@
+{
+    "type": "flex",
+    "altText": "ยืนยันการค้นหา",
+    "contents": {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "ยืนยันการค้นหา",
+        "weight": "bold",
+        "size": "xl"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "เจอแล้ว",
+          "uri": "https://www.peddyhub.com/api/check_line_lost_pet/PET_ID/found"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "ส่งข้อความอีกครั้ง",
+          "uri": "https://www.peddyhub.com/api/check_line_lost_pet/PET_ID/sendline"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
+}

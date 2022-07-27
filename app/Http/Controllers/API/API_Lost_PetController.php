@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Lost_Pet;
 use App\Models\Pet;
+use App\Models\LineMessagingAPI;
 use Illuminate\Support\Facades\Auth;
 
 class API_Lost_PetController extends Controller
@@ -24,6 +25,27 @@ class API_Lost_PetController extends Controller
         $data_lost_pet = Lost_Pet::where('pet_id' , $pet_id)->where('status' , 'searching')->get();
 
         return $data_lost_pet ;
+    }
+
+    public function check_line_lost_pet($pet_id , $answer)
+    {
+        $data = Lost_Pet::findOrFail($pet_id);
+       
+        if ($answer == 'found') {
+            $requestData['status'] =  'found' ;
+            $data->update($requestData);
+        }else{
+            $num_round = $data->send_round ;
+
+            $sum_round = (int)$num_round + 1;
+           
+            $requestData['send_round'] =  $sum_round ;
+            $data->update($requestData);
+
+            $line = new LineMessagingAPI();
+            $line->send_lost_pet_again($data);
+        }
+
     }
 
 }
