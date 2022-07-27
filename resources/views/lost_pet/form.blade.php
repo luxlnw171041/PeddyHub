@@ -347,21 +347,37 @@
         let pet_id = document.querySelector('#pet_id');
         pet_id.value = select_pet.value;
 
-        fetch("{{ url('/') }}/api/select_img_pet/" + pet_id.value)
+        // ตรวจสอบมีการประกาศอยู่หรือไม่
+        fetch("{{ url('/') }}/api/check_lost_pet/" + pet_id.value)
             .then(response => response.json())
             .then(result => {
                 // console.log(result);
-                let photo = document.querySelector('#photo');
-                photo.value = result[0]['photo'];
 
-                let img_pet = document.querySelector('#img_pet');
-                img_pet.src = "{{ url('storage')}}" + "/" + result[0]['photo'];
+                if (result.length != 0) {
+                    console.log(result);
+                    console.log("มี");
+                }else{
+                    console.log(result);
+                    console.log("ไม่มี");
+                    
+                    fetch("{{ url('/') }}/api/select_img_pet/" + pet_id.value)
+                        .then(response => response.json())
+                        .then(result => {
+                            // console.log(result);
+                            let photo = document.querySelector('#photo');
+                            photo.value = result[0]['photo'];
 
-                let pet_category_id = document.querySelector('#pet_category_id');
-                pet_category_id.value = result[0]['pet_category_id'];
+                            let img_pet = document.querySelector('#img_pet');
+                            img_pet.src = "{{ url('storage')}}" + "/" + result[0]['photo'];
 
-                document.querySelector('#modal_submit').classList.remove('d-none');
-            });
+                            let pet_category_id = document.querySelector('#pet_category_id');
+                            pet_category_id.value = result[0]['pet_category_id'];
+
+                            document.querySelector('#modal_submit').classList.remove('d-none');
+                    });
+                }
+        });
+
     }
 
     function select_province() {

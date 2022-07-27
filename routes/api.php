@@ -26,6 +26,8 @@ Route::get('/user_language/{language}/{user_id}','API\API_language@change_langua
 
 // หารูปภาพสัตว์เลี้ยง
 Route::get('/select_img_pet/{pet_id}','API\API_Lost_PetController@select_img_pet');
+// ตรวจสอบมีการประกาศอยู่หรือไม่
+Route::get('/check_lost_pet/{pet_id}','API\API_Lost_PetController@check_lost_pet');
 
 // หาจังหวัด
 Route::get('/select_province/','API\LocationController@show_location_P');

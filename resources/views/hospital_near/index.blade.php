@@ -1174,8 +1174,8 @@ aside {
             document.querySelector('#map_my_location').classList.add('d-none');
             document.querySelector('#map').classList.remove('d-none');
             
-            lat = parseFloat(text_lat) ;
-            lng = parseFloat(text_lng) ;
+            let lat = parseFloat(text_lat) ;
+            let lng = parseFloat(text_lng) ;
 
             map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 16,
