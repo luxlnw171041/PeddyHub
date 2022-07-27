@@ -141,7 +141,7 @@
                                                 
                                                 <!-- icon_categorie -->
                                                 @include ('menubar.icon_categorie') 
-                                                <span style="font-size: 17px;">{{$item->pet->name}}</span>
+                                                <span class="notranslate" style="font-size: 17px;">{{$item->pet->name}}</span>
                                                 @switch( $item->pet->gender )
                                                     @case ('ชาย')
                                                         <i class="fa-solid fa-mars text-info" style="font-size:20px;"></i> &nbsp;&nbsp;&nbsp;

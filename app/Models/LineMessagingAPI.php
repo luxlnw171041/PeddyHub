@@ -786,6 +786,10 @@ class LineMessagingAPI extends Model
             $string_json = str_replace("แปลภาษา",$data_topic[5],$string_json);
 
             $string_json = str_replace("pet_cat",$data_topic[6],$string_json);
+            
+            foreach ($data_users as $data_user) {
+                $string_json = str_replace("lucky",$data_user->profile->name,$string_json);   
+            }
 
             $string_json = str_replace("IMGPET",$photo,$string_json);
             $string_json = str_replace("4544.png",$img_icon,$string_json);

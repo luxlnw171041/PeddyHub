@@ -208,7 +208,7 @@
                                 <p style="margin-top:-10px!important;" class="text-date">อัพเดทล่าสุด : {{ $item->updated_at->format('d/m/Y') }} </p>
                             </div>
                             <div class="col-12">
-                                <h5 class="card-title">{{$item->pet->name}}</h5>
+                                <h5 class="card-title notranslate">{{$item->pet->name}}</h5>
                                 <div class="text-center">
                                     <img class="main-shadow main-radius" src="{{ url('storage/'.$item->pet->photo )}}" height="200px" height="300px" title="Pet"alt="Image of Pet">
                                 </div>
