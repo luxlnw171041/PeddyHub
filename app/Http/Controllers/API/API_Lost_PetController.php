@@ -21,7 +21,7 @@ class API_Lost_PetController extends Controller
 
     public function check_lost_pet($pet_id)
     {
-        $data_lost_pet = Lost_Pet::where('pet_id' , $pet_id)->where('status' , 'show')->get();
+        $data_lost_pet = Lost_Pet::where('pet_id' , $pet_id)->where('status' , 'searching')->get();
 
         return $data_lost_pet ;
     }

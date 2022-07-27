@@ -45,20 +45,22 @@ class Check_day_lost_pet extends Command
      */
     public function handle()
     {
-        // 15 วัน ลบข้อมูล ค้นหาสัตว์
+        // 7 วัน ถามข้อมูล ค้นหาสัตว์
         $date_now = date("Y-m-d");
-        $date_delete_15 = strtotime("-15 days");
-        $date_15 = date("Y-m-d" , $date_delete_15);
+        $date_delete_7 = strtotime("-7 days");
+        $date_7 = date("Y-m-d" , $date_delete_7);
 
-        $check_15days = Lost_Pet::where('updated_at' , "<=" , $date_15)->get();
+        // ส่งไลน์ถามเจ้าของ เจอยัง ? 
 
-        foreach ($check_15days as $item) {
-            DB::table('lost__pets')
-                ->where([ 
-                        ['id', $item->id],
-                    ])
-                ->update(['status' => "expire"]);
-        }
+        // $check_7days = Lost_Pet::where('updated_at' , "<=" , $date_7)->get();
+
+        // foreach ($check_7days as $item) {
+        //     DB::table('lost__pets')
+        //         ->where([ 
+        //                 ['id', $item->id],
+        //             ])
+        //         ->update(['status' => "expire"]);
+        // }
         
     }
 

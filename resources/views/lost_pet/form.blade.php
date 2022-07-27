@@ -266,7 +266,7 @@
                             <br><br>
                             <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
                             <p>
-                                ในการลงประกาศตามหาเจ้าตัวแสบระบบจะขึ้นประกาศบนหน้าฟีดไว้เป็นเวลา <span class="text-danger"><b>15 วัน</b></span> หลังจากนั้นคุณสามารถรีโพสใหม่ได้ที่หน้า <a href="{{ url('/my_post') }}"><u>โพสของฉัน</u></a>
+                                ในการลงประกาศตามหาเจ้าตัวแสบ กรณีที่คุณยังค้นหาไม่พบคุณสามารถเข้ามาส่งข้อความอีกครั้งหลัง <span class="text-danger"><b>7 วัน</b></span> โดยไม่ต้องประกาศใหม่รวมไปถึงอัพเดทสถานะการค้นหาได้ที่หน้า <a href="{{ url('/my_post') }}"><u>โพสของฉัน</u></a>
                             </p>
                         </div>
                         <div class="modal-body text-center">
@@ -277,6 +277,38 @@
                     </div>
                 </div>
             </div>
+
+            <!-- คุณมีประกาศของสัตว์เลี้ยงนี้อยู่ -->
+            <button id="btn_lost_pet_You_have" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#lost_pet_You_have">
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="lost_pet_You_have" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
+                            <a style="float:right;" class="btn" href="{{ url('/my_post') }}">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/09.png') }}">
+                            <br><br>
+                            <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
+                            <p style="font-size:20px;" class="text-danger">
+                                <u><b>คุณมีประกาศของสัตว์เลี้ยงนี้อยู่</b></u>
+                            </p>
+                        </div>
+                        <div class="modal-body text-center">
+                            <b>สนับสนุนโดย</b>
+                            @include ('layouts.partner_2_row')
+                            <button type="button" class="btn btn-primary d-none">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </div>
 </div>
@@ -354,11 +386,9 @@
                 // console.log(result);
 
                 if (result.length != 0) {
-                    console.log(result);
-                    console.log("มี");
+                    // คุณมีประกาศของสัตว์เลี้ยงนี้อยู่
+                    document.querySelector('#btn_lost_pet_You_have').click();
                 }else{
-                    console.log(result);
-                    console.log("ไม่มี");
                     
                     fetch("{{ url('/') }}/api/select_img_pet/" + pet_id.value)
                         .then(response => response.json())

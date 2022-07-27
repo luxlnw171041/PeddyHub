@@ -120,8 +120,16 @@
                                                 @endif
                                             </div>
                                             <div class="col-9" style="padding:0px">
+                                                @if($item->status == "found")
+                                                    <span class="text-success" style="float: right;"><b>เจอแล้ว</b></span>
+                                                @else
+                                                    <span class="text-warning" style="float: right;"><b>กำลังค้นหา</b></span>
+                                                @endif
+
                                                 @if(!empty($item->profile->name))
-                                                    <p class="notranslate" style="padding:0px;margin:0px;"> <b>{{ $item->profile->name }}</b>  </p>
+                                                    <p class="notranslate" style="padding:0px;margin:0px;"> 
+                                                        <b>{{ $item->profile->name }}</b>
+                                                    </p>
                                                 @endif
                                                 <span style="font-size:20px"> <b></b> </span>
                                                 <p style="font-size:12px;margin-top:-8px;"> {{ $item->created_at->diffForHumans() }} </p>

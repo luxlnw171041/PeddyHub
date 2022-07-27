@@ -33,10 +33,9 @@ class Lost_PetController extends Controller
         
         if (!empty($keyword)) {
             $lost_pet = Lost_Pet::where('pet_category_id',    'LIKE', '%' .$category.'%')
-                ->where('status','show')
                 ->latest()->paginate($perPage);
         } else {
-            $lost_pet = Lost_Pet::where('status','show')->latest()->paginate($perPage);
+            $lost_pet = Lost_Pet::latest()->paginate($perPage);
         }
 
         return view('lost_pet.index', compact('lost_pet' ));
@@ -73,7 +72,7 @@ class Lost_PetController extends Controller
         $requestData['tambon_th'] = $requestData['select_tambon']; 
         $requestData['amphoe_th'] = $requestData['select_amphoe']; 
         $requestData['changwat_th'] = $requestData['select_province']; 
-        $requestData['status'] = 'show'; 
+        $requestData['status'] = 'searching'; 
 
         if (!empty($requestData['input_province'])) {
             $requestData['tambon_th'] = $requestData['input_tambon']; 
@@ -164,7 +163,7 @@ class Lost_PetController extends Controller
     {
         Lost_Pet::destroy($id);
 
-        return redirect('lost_pet')->with('flash_message', 'Lost_Pet deleted!');
+        return redirect('my_post')->with('flash_message', 'Lost_Pet deleted!');
     }
 
     public function lost_pet_line()
@@ -182,31 +181,39 @@ class Lost_PetController extends Controller
         $my_post = Lost_Pet::where('user_id', $id)->get();
 
         $date_now = date("Y-m-d");
-        $date_delete_15 = strtotime("-14 days");
-        $date_15 = date("Y-m-d" , $date_delete_15);
+        $date_delete_7 = strtotime("-6 days");
+        $date_7 = date("Y-m-d" , $date_delete_7);
             
-        return view('lost_pet.my_post', compact('my_post' , 'date_15'));
+        return view('lost_pet.my_post', compact('my_post' , 'date_7'));
 
-    }
-
-    public function update_lost_pet_nosend($id)
-    {
-        $lost_pet = Lost_Pet::findOrFail($id);
-
-        $requestData['status'] = "show" ;
-        $lost_pet->update($requestData);
     }
 
     public function update_lost_pet_send_line($id)
     {
         $data = Lost_Pet::findOrFail($id);
 
-        $requestData['status'] = "show" ;
+        $num_round = $data->send_round ;
+
+        $sum_round = (int)$num_round + 1;
+       
+        $requestData['send_round'] =  $sum_round ;
         $data->update($requestData);
 
         $line = new LineMessagingAPI();
         $line->send_lost_pet_again($data);
 
+        // return $sum_round ;
+
+    }
+
+    public function found_pet($id)
+    {
+        $data = Lost_Pet::findOrFail($id);
+       
+        $requestData['status'] =  'found' ;
+        $data->update($requestData);
+
+        return "ok" ;
     }
 
 }

@@ -20,8 +20,8 @@
     -moz-box-shadow: 10px 10px 12px -8px rgba(72,188,166,0.34) inset;
             }     
     .button-expire {
-        background-color: #FFEDED;
-        color: #d9534f;
+        background-color: #feffed;
+        color: #d9d94f;
         padding: 5px 28px;
         text-align: center;
         text-decoration: none;
@@ -29,7 +29,7 @@
         font-size: 16px;
         margin: 4px 2px;
         cursor: default;
-        border: 2px solid #F7DDDD;
+        border: 2px solid #f7f7dd;
         border-radius: 25px;
         font-family: 'Sarabun', sans-serif;
     }
@@ -63,7 +63,7 @@
     }
     .text-date{
         font-family: 'Sarabun', sans-serif;
-        margin:0px;
+        margin:8px;
     }
     .btn-post-one {
     position: relative;
@@ -175,74 +175,77 @@
     </div>
     <div class="row">
         @foreach($my_post as $item)
-            @if($item->status == "show" or $item->status == "expire")
-                <div class="col-sm-12 col-md-4 " >
-                    <div class="card shadow-card" >
-                        <div class="card-body ">
-                            @switch($item->status)
-                                @case('show')
-                                    <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>กำลังโพสอยู่</b> </button>
-                                @break
-                                <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
-                                <!-- เอาอันนี้แหละ -->
-                                @case('expire')
-                                    <button type="button" class="button-expire btn-lg shadow-btn"> <b>หมดอายุ</b> </button>
-                                    <button type="button" class="button-post-again btn-lg" onclick="modal_check_send_line('{{ $item->id }}');">
-                                        <b>โพสอีกครั้ง</b> 
-                                    </button>
-                                @break
-                            @endswitch
-                            <p class="text-date">โพสวันที่ {{ $item->updated_at->format('d/m/Y') }} </p>
-                            @switch($item->status)
-                                @case('show')
-                                <p class="text-date">โพสหมดอายุในอีก <b class="text-danger">{{ number_format((strtotime($item->updated_at) - strtotime($date_15)) /  ( 60 * 60 * 24 )) }}</b> วัน</p>
-                                @break
-                                <!-- ไม่รู้ว่าตั้งว่าอะไรนะเคสหมดอายุอะอย่าลืมเปลี่ยนนะ -->
-                                <!-- เอาอันนี้แหละ -->
-                                @case('expire')
-                                    <p class="text-date">โพสหมดอายุแล้วกรุณาโพสใหม่อีกครั้ง</p>
-                                @break
-                            @endswitch
-                            <h5 class="card-title">{{$item->pet->name}}</h5>
-                            <div class="text-center">
-                                <img src="{{ url('storage/'.$item->pet->photo )}}" height="200px" height="300px" title="Pet"alt="Image of Pet">
+            <div class="col-sm-12 col-md-4 " >
+                <div class="card shadow-card" >
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-6">
+                                @if($item->status == "found")
+                                    <button type="button" class="button-posted btn-lg shadow-btn-posted"> <b>เจอแล้ว</b> </button>
+                                @else
+                                    <button type="button" class="button-expire btn-lg shadow-btn"> <b>กำลังค้นหา</b> </button>
+                                @endif
+                            </div>
+                            <div class="col-6">
+                                 @php
+                                    $text_num = number_format((strtotime($item->updated_at) - strtotime($date_7)) /  ( 60 * 60 * 24 ))  ;
+                                @endphp
+
+                                @if($item->status != "found")
+                                    @if($text_num < "0" )
+                                        <button style="float: right;margin-top: 10px;" type="button" class="button-post-again btn-lg" onclick="send_line('{{ $item->id }}');">
+                                            <b>ส่งข้อความอีกครั้ง</b> 
+                                        </button>
+                                    @else
+                                        <button class="button-post-again btn-lg"  style="float: right;margin-top: -2px;">
+                                            <b>ส่งข้อความอีกครั้งใน {{ $text_num }} วัน</b>
+                                        </button>
+                                    @endif
+                                @endif
+                            </div>
+                            <div class="col-12">
+                                <p class="text-date">โพสวันที่ : {{ $item->created_at->format('d/m/Y') }} </p>
+                                <p style="margin-top:-10px!important;" class="text-date">อัพเดทล่าสุด : {{ $item->updated_at->format('d/m/Y') }} </p>
+                            </div>
+                            <div class="col-12">
+                                <h5 class="card-title">{{$item->pet->name}}</h5>
+                                <div class="text-center">
+                                    <img class="main-shadow main-radius" src="{{ url('storage/'.$item->pet->photo )}}" height="200px" height="300px" title="Pet"alt="Image of Pet">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <br>
+                                <i style="float:right;margin-top: -15px;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="fas fa-sort-down text-secondary"></i>
+
+                                <div class="collapse" id="collapseExample">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            @if($item->status != "found")
+                                            <button style="width:100%;" class="btn btn-sm btn-success main-shadow main-radius" onclick="found_pet('{{ $item->id }}');">
+                                                เจอแล้ว
+                                            </button>
+                                            @endif
+                                        </div>
+                                        <div class="col-4">
+                                            <form method="POST" action="{{ url('/lost_pet' . '/' . $item->id) }}" accept-charset="UTF-8">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button  style="width:100%;" type="submit" class="btn btn-sm btn-danger main-shadow main-radius"onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                                    ลบ
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endif
+            </div>
         @endforeach
     </div>
 </div>
-
-<!-- modal wait user -->
-<button id="btn_check_send_line" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#check_send_line">
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="check_send_line" tabindex="-1" data-backdrop="static" data-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <button type="button" class="close" data-dismiss="modal" >
-                    <span id="btn_close_wait_user">&times;</span>
-                </button>
-                <center>
-                    <br><br>
-                    <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/09.png') }}">
-                    <br><br>
-                    <p style="font-size:20px;">
-                        <b>คุณต้องการที่จะส่งไลน์ให้ผู้ที่อยู่ใกล้เคียงด้วยหรือไม่</b>
-                    </p>
-                </center>
-            </div>
-            <div class="modal-footer">
-                <button id="btn_no_send_line_near" type="button" class="btn btn-secondary">ไม่ต้องส่อง</button>
-                <button id="btn_send_line_near" type="button" class="btn btn-success">ส่งไลน์</button>
-            </div>
-        </div>
-    </div>
-</div>
+<br>
 
 <!-- modal user CF -->
     <button id="btn_data_success" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#data_success">
@@ -258,7 +261,7 @@
                             <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
                             <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                         </svg>
-                        <h4 style="color: #7ac142;">บันทึกข้อมูลเรียบร้อยแล้ว</h4>
+                        <h4 style="color: #7ac142;">ส่งข้อความเรียบร้อยแล้ว</h4>
                     </div>
                 </div>
             </div>
@@ -283,36 +286,6 @@
         document.querySelector('#btn_a_lost_pc').classList.remove('btn-outline-ten');
     }
 
-    function modal_check_send_line(id)
-    {
-        let btn_no_send_line_near = document.querySelector('#btn_no_send_line_near');
-            let onclick_nosend = document.createAttribute("onclick");
-                onclick_nosend.value = "no_send('" + id + "');";
-                btn_no_send_line_near.setAttributeNode(onclick_nosend);
-
-            let btn_send_line_near = document.querySelector('#btn_send_line_near');
-            let onclick_send_line = document.createAttribute("onclick");
-                onclick_send_line.value = "send_line('" + id + "');";
-                btn_send_line_near.setAttributeNode(onclick_send_line);
-
-        document.querySelector('#btn_check_send_line').click();
-    }
-
-    function no_send(id)
-    {
-        fetch("{{ url('/') }}/api/update_lost_pet/nosend/" + id )
-            .then(response => response.json())
-            .then(result => {
-                // console.log(result);
-        });
-
-        document.querySelector('#btn_data_success').click();
-        let delayInMilliseconds = 2500; 
-        setTimeout(function() {
-            document.querySelector('#link_my_post').click();
-        }, delayInMilliseconds);
-    }
-
     function send_line(id)
     {
         fetch("{{ url('/') }}/api/update_lost_pet/send_line/" + id )
@@ -327,4 +300,19 @@
             document.querySelector('#link_my_post').click();
         }, delayInMilliseconds);
     }
+
+    function found_pet(id)
+    {
+        fetch("{{ url('/') }}/api/update_lost_pet/found_pet/" + id )
+            .then(response => response.text())
+            .then(result => {
+                // console.log(result);
+        });
+
+        let delayInMilliseconds = 1000; 
+        setTimeout(function() {
+            document.querySelector('#link_my_post').click();
+        }, delayInMilliseconds);
+    }
+
 </script>
