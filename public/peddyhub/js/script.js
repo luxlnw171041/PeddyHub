@@ -702,7 +702,7 @@ $(document).ready(function () {
         1000: {
           margin: 0,
           stagePadding: 0,
-          items: 3
+          items: 4
         }
       }
     });

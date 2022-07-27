@@ -75,7 +75,7 @@
                                     <div class="inner-box">
                                         <figure class="image-box">
                                             <a href="{{ url('/peddyhub/images/pet_on_board/9.png') }}" data-fancybox="images" data-caption="" class="link">
-                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/9.png') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/9.png') }}" style="object-fit: contain;" alt="image of pet"  class="img-fluid customer">
                                             </a>
                                         </figure>
                                     </div>
@@ -108,7 +108,7 @@
                                     <div class="inner-box">
                                         <figure class="image-box">
                                             <a href="{{ url('/peddyhub/images/pet_on_board/3.jpg') }}" data-fancybox="images" data-caption="" class="link">
-                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/3.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/3.jpg') }}" style="object-fit: contain;" alt="image of pet"  class="img-fluid customer">
                                             </a>
                                         </figure>
                                     </div>
@@ -119,7 +119,7 @@
                                     <div class="inner-box">
                                         <figure class="image-box">
                                             <a href="{{ url('/peddyhub/images/pet_on_board/4.jpg') }}" data-fancybox="images" data-caption="" class="link">
-                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/4.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/4.jpg') }}" style="object-fit: contain;" alt="image of pet"  class="img-fluid customer">
                                             </a>
                                         </figure>
                                     </div>
@@ -130,7 +130,7 @@
                                     <div class="inner-box">
                                         <figure class="image-box">
                                             <a href="{{ url('/peddyhub/images/pet_on_board/5.jpg') }}" data-fancybox="images" data-caption="" class="link">
-                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/5.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/5.jpg') }}" style="object-fit: contain;" alt="image of pet"  class="img-fluid customer">
                                             </a>
                                         </figure>
                                     </div>
@@ -141,7 +141,7 @@
                                     <div class="inner-box">
                                         <figure class="image-box">
                                             <a href="{{ url('/peddyhub/images/pet_on_board/6.jpg') }}" data-fancybox="images" data-caption="" class="link">
-                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/6.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/6.jpg') }}" style="object-fit: contain;" alt="image of pet"  class="img-fluid customer">
                                             </a>
                                         </figure>
                                     </div>
@@ -152,7 +152,7 @@
                                     <div class="inner-box">
                                         <figure class="image-box">
                                             <a href="{{ url('/peddyhub/images/pet_on_board/7.jpg') }}" data-fancybox="images" data-caption="" class="link">
-                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/7.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/7.jpg') }}" style="object-fit: contain;" alt="image of pet"  class="img-fluid customer">
                                             </a>
                                         </figure>
                                     </div>
@@ -163,7 +163,7 @@
                                     <div class="inner-box">
                                         <figure class="image-box">
                                             <a href="{{ url('/peddyhub/images/pet_on_board/8.jpg') }}" data-fancybox="images" data-caption="" class="link">
-                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/8.jpg') }}" style="object-fit: cover;" alt="image of pet"  class="img-fluid customer">
+                                                <img class="imgf" src="{{ url('/peddyhub/images/pet_on_board/8.jpg') }}" style="object-fit: contain;" alt="image of pet"  class="img-fluid customer">
                                             </a>
                                         </figure>
                                     </div>
