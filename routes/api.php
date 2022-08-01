@@ -53,7 +53,7 @@ Route::get('/cf_blood_user/{blood_id}/{cf_or_nocf}', 'Blood_bankController@cf_bl
 Route::get('/check_cf_blood_foruser/{blood_id}', 'Blood_bankController@check_cf_blood_foruser');
 
 
-Route::get('/check_line_lost_pet/{id}/{answer}', 'API\Lost_PetController@check_line_lost_pet');
+Route::get('/check_line_lost_pet/{id}/{answer}', 'API\API_Lost_PetController@check_line_lost_pet');
 
 Route::get('/update_lost_pet/send_line/{id}', 'Lost_PetController@update_lost_pet_send_line');
 Route::get('/update_lost_pet/found_pet/{id}', 'Lost_PetController@found_pet');
