@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
+use App\Models\LineMessagingAPI;
 
 use App\Models\Adoptpet;
 use App\Models\Pet_Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Lost_Pet;
+use App\Models\Pet;
 
 class test_for_devController extends Controller
 {
