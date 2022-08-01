@@ -155,3 +155,7 @@ Route::get('/view_qr_code_checklist/{id}', 'UserController@view_qr_code_checklis
 Route::get('set_new_richMenu', 'API\LineApiController@set_new_richMenu');
 
 Route::resource('disease', 'DiseaseController');
+
+
+// test_for_dev
+Route::get('test_for_dev/send_line_lost_pet', 'test_for_devController@send_line_lost_pet');
