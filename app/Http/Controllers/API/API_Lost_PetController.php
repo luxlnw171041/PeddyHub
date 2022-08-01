@@ -34,6 +34,7 @@ class API_Lost_PetController extends Controller
         if ($answer == 'found') {
             $requestData['status'] =  'found' ;
             $data->update($requestData);
+
         }else{
             $num_round = $data->send_round ;
 
