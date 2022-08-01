@@ -48,6 +48,8 @@ class API_Lost_PetController extends Controller
             $line->send_lost_pet_again($data);
         }
 
+         return view('return_line');
+
     }
 
 }
