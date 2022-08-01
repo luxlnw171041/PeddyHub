@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 use App\Models\LineMessagingAPI;
+use App\Models\Mylog;
 
 use App\Models\Adoptpet;
 use App\Models\Pet_Category;

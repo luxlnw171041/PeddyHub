@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Lost_Pet;
 use App\Models\Pet_Category;
 use App\Models\Pet;
+use App\Models\Mylog;
 
 class Check_day_lost_pet extends Command
 {
