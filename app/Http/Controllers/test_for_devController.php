@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Profile;
 
 use App\Models\LineMessagingAPI;
 use App\Models\Mylog;
@@ -19,6 +20,36 @@ use App\Models\Pet;
 
 class test_for_devController extends Controller
 {
+    public function test_for_dev()
+    {
+        $changwat_th = "จ.พระนครศรีอยุธยา" ;
+        $amphoe_th = "อ.บางปะอิน" ;
+        $tambon_th = "ต.บ้านกรด" ;
+        
+        $requestData['pet_category_id'] = "3" ;
+
+        $send_to_users = Profile::where('id', '!=' , null)
+            ->where('changwat_th' ,$changwat_th)
+            ->where('amphoe_th' ,$amphoe_th)
+            ->where('tambon_th' ,$tambon_th)
+            ->where('type' ,'line')
+            ->get();
+
+        foreach ($send_to_users as $item) {
+            $alert_arr = json_decode($item->alert_lost_pet) ;
+
+            if (in_array($requestData['pet_category_id'] , $alert_arr)){
+                
+                // ส่งข้อความ
+            }
+        }
+
+        // echo "<pre>" ;
+        // print_r($send_to_users);
+        // echo "<pre>" ;
+        exit();
+    }
+
     public function send_line_lost_pet(Request $request)
     {
         // 7 วัน ถามข้อมูล ค้นหาสัตว์
