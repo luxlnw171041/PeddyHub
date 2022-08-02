@@ -60,9 +60,29 @@ class Check_day_lost_pet extends Command
             $data_users = User::where('id', $item->user_id)->first();
             $data_pets = Pet::where('id', $item->pet_id)->first();
 
+            $data_Text_topic = [
+                "ประกาศหาน้องเป็นอย่างไรบ้าง",
+                "วันที่หาย",
+                "เจอแล้ว",
+                "ส่งขอความอีกครั้ง",
+                "ยืนยันการค้นหา",
+            ];
+
+            $data_topic = $this->language_for_user($data_Text_topic, $data_users->provider_id);
+
             $template_path = storage_path('../public/json/flex_confirm_lost_pet.json');   
             $string_json = file_get_contents($template_path);
 
+            $string_json = str_replace("ประกาศหาน้องเป็นอย่างไรบ้าง",$data_topic[0],$string_json); 
+            $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json); 
+            $string_json = str_replace("เจอแล้ว",$data_topic[2],$string_json); 
+            $string_json = str_replace("ส่งขอความอีกครั้ง",$data_topic[3],$string_json); 
+            $string_json = str_replace("ยืนยันการค้นหา",$data_topic[4],$string_json); 
+
+            $string_json = str_replace("IMGPET",$item->photo,$string_json); 
+            $string_json = str_replace("pet_name",$data_pets->name,$string_json); 
+            $string_json = str_replace("22/2/2022",$item->created_at,$string_json); 
+            
             $string_json = str_replace("PET_ID",$item->pet_id,$string_json); 
 
             $messages = [ json_decode($string_json, true) ]; 
@@ -95,6 +115,42 @@ class Check_day_lost_pet extends Command
 
         }
         
+    }
+
+    // แปลภาษา
+    public function language_for_user($data_topic, $to_user)
+    {
+        $data_users = User::where('provider_id', $to_user)->get();
+
+        foreach ($data_users as $data_user) {
+            if (!empty($data_user->profile->language)) {
+                    $user_language = $data_user->profile->language ;
+                    if ($user_language == "zh-TW") {
+                        $user_language = "zh_TW";
+                    }
+                    if ($user_language == "zh-CN") {
+                        $user_language = "zh_CN";
+                    }
+                }else{
+                    $user_language = 'en' ;
+                }
+        }
+
+        for ($i=0; $i < count($data_topic); $i++) { 
+
+            $text_topic = DB::table('text_topics')
+                    ->select($user_language)
+                    ->where('th', $data_topic[$i])
+                    ->where('en', "!=", null)
+                    ->get();
+
+            foreach ($text_topic as $item_of_text_topic) {
+                $data_topic[$i] = $item_of_text_topic->$user_language ;
+            }
+        }
+
+        return $data_topic ;
+
     }
 
 }

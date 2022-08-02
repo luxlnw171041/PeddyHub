@@ -11,6 +11,8 @@ use App\Models\Mylog;
 use App\Models\LineMessagingAPI;
 use Illuminate\Support\Facades\DB;
 
+use App\Http\Controllers\API\API_Lost_PetController;
+
 class LineApiController extends Controller
 {
     public function store(Request $request)
@@ -62,6 +64,7 @@ class LineApiController extends Controller
     public function postbackHandler($event)
     {
         $line = new LineMessagingAPI();
+        $Lost_Pet = new API_Lost_PetController();
 
         $data_postback_explode = explode("/",$event["postback"]["data"]);
         $data_postback = $data_postback_explode[0] ;
@@ -69,6 +72,14 @@ class LineApiController extends Controller
         switch($data_postback){
             case "Chinese" : 
                 $line->replyToUser(null, $event, "Chinese");
+                break;
+            case "check_line_lost_pet" : 
+                $data_answer = $data_postback_explode[1] ;
+                $answer_explode = explode("..",$data_answer);
+                $pet_id = $answer_explode[0];
+                $answer = $answer_explode[1];
+                
+                $Lost_Pet->check_line_lost_pet($pet_id , $answer);
                 break;
         }   
 

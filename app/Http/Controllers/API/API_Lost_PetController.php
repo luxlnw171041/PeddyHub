@@ -29,7 +29,6 @@ class API_Lost_PetController extends Controller
 
     public function check_line_lost_pet($pet_id , $answer)
     {
-        // $data = Lost_Pet::findOrFail($pet_id);
         $data = Lost_Pet::where('pet_id' , $pet_id)->first();
        
         if ($answer == 'found') {

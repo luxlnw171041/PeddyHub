@@ -129,7 +129,7 @@
                 "action": {
                   "type": "postback",
                   "label": "เจอแล้ว",
-                  "data": "check_line_lost_pet/found",
+                  "data": "check_line_lost_pet/PET_ID..found",
                   "displayText": "เจอแล้ว"
                 },
                 "height": "sm",
@@ -154,7 +154,7 @@
                 "action": {
                   "type": "postback",
                   "label": "ส่งขอความอีกครั้ง",
-                  "data": "check_line_lost_pet/sendline",
+                  "data": "check_line_lost_pet/PET_ID..sendline",
                   "displayText": "ส่งขอความอีกครั้ง"
                 },
                 "height": "sm",

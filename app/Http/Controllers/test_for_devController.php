@@ -88,6 +88,8 @@ class test_for_devController extends Controller
             $string_json = str_replace("IMGPET",$item->photo,$string_json); 
             $string_json = str_replace("pet_name",$data_pets->name,$string_json); 
             $string_json = str_replace("22/2/2022",$item->created_at,$string_json); 
+            
+            $string_json = str_replace("PET_ID",$item->pet_id,$string_json); 
 
             $messages = [ json_decode($string_json, true) ]; 
 
