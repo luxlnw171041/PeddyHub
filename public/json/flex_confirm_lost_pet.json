@@ -8,46 +8,173 @@
     "layout": "vertical",
     "contents": [
       {
-        "type": "text",
-        "text": "ยืนยันการค้นหา",
-        "weight": "bold",
-        "size": "xl"
-      }
-    ]
-  },
-  "footer": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "sm",
-    "contents": [
-      {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "เจอแล้ว",
-          "uri": "https://www.peddyhub.com/api/check_line_lost_pet/PET_ID/found"
-        }
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://www.peddyhub.com/peddyhub/images/logo/logo-2.png",
+            "size": "4xl",
+            "aspectRatio": "16:9",
+            "aspectMode": "fit"
+          }
+        ],
+        "paddingAll": "0px"
       },
       {
-        "type": "button",
-        "style": "link",
-        "height": "sm",
-        "action": {
-          "type": "uri",
-          "label": "ส่งข้อความอีกครั้ง",
-          "uri": "https://www.peddyhub.com/api/check_line_lost_pet/PET_ID/sendline"
-        }
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ประกาศหาน้องเป็นอย่างไรบ้าง",
+            "align": "center",
+            "size": "lg",
+            "weight": "bold",
+            "wrap": true
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "url": "https://www.peddyhub.com/storage/IMGPET",
+            "size": "full",
+            "aspectRatio": "1:1",
+            "aspectMode": "fit"
+          }
+        ],
+        "offsetTop": "md"
       },
       {
         "type": "box",
         "layout": "vertical",
-        "contents": [],
-        "margin": "sm"
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "pet_name",
+                "size": "xl",
+                "weight": "bold",
+                "offsetStart": "20px",
+                "margin": "sm",
+                "flex": 0
+              },
+              {
+                "type": "icon",
+                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/4544.png",
+                "position": "relative"
+              },
+              {
+                "type": "icon",
+                "url": "https://www.peddyhub.com/peddyhub/images/img-icon/pet_img_gender.png",
+                "position": "relative",
+                "offsetEnd": "xxl"
+              }
+            ],
+            "spacing": "25px"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "วันที่หาย :",
+                    "flex": 0,
+                    "margin": "sm",
+                    "weight": "bold"
+                  },
+                  {
+                    "type": "text",
+                    "text": "22/2/2022",
+                    "flex": 0,
+                    "margin": "sm",
+                    "weight": "bold"
+                  }
+                ]
+              }
+            ],
+            "paddingStart": "20px"
+          }
+        ],
+        "spacing": "md",
+        "margin": "xl",
+        "offsetTop": "10px"
+      },
+      {
+        "type": "separator",
+        "margin": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "เจอแล้ว",
+                  "data": "check_line_lost_pet/found",
+                  "displayText": "เจอแล้ว"
+                },
+                "height": "sm",
+                "style": "primary",
+                "color": "#00CC33"
+              }
+            ],
+            "borderWidth": "bold",
+            "cornerRadius": "lg",
+            "borderColor": "#00CC33"
+          },
+          {
+            "type": "separator",
+            "margin": "md"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "button",
+                "action": {
+                  "type": "postback",
+                  "label": "ส่งขอความอีกครั้ง",
+                  "data": "check_line_lost_pet/sendline",
+                  "displayText": "ส่งขอความอีกครั้ง"
+                },
+                "height": "sm",
+                "style": "secondary",
+                "color": "#ffffff"
+              }
+            ],
+            "borderWidth": "bold",
+            "borderColor": "#FF9966",
+            "cornerRadius": "lg"
+          }
+        ],
+        "paddingAll": "10px",
+        "borderColor": "#B8205B"
       }
     ],
-    "flex": 0
+    "paddingAll": "0px",
+    "borderWidth": "bold",
+    "borderColor": "#B8205B",
+    "cornerRadius": "xl"
   }
 }
 }
