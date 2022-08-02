@@ -71,6 +71,7 @@ class test_for_devController extends Controller
                 "วันที่หาย",
                 "เจอแล้ว",
                 "ส่งขอความอีกครั้ง",
+                "ยืนยันการค้นหา",
             ];
 
             $data_topic = $this->language_for_user($data_Text_topic, $data_users->provider_id);
@@ -82,6 +83,7 @@ class test_for_devController extends Controller
             $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json); 
             $string_json = str_replace("เจอแล้ว",$data_topic[2],$string_json); 
             $string_json = str_replace("ส่งขอความอีกครั้ง",$data_topic[3],$string_json); 
+            $string_json = str_replace("ยืนยันการค้นหา",$data_topic[4],$string_json); 
 
             $string_json = str_replace("IMGPET",$item->photo,$string_json); 
             $string_json = str_replace("pet_name",$data_pets->name,$string_json); 
