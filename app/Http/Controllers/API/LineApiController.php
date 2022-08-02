@@ -78,8 +78,8 @@ class LineApiController extends Controller
                 $answer_explode = explode("..",$data_answer);
                 $pet_id = $answer_explode[0];
                 $answer = $answer_explode[1];
-                
-                $Lost_Pet->check_line_lost_pet($pet_id , $answer);
+
+                $Lost_Pet->check_line_lost_pet($pet_id , $answer , $event);
                 break;
         }   
 

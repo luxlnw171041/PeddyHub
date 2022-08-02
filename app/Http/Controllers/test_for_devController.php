@@ -22,31 +22,23 @@ class test_for_devController extends Controller
 {
     public function test_for_dev()
     {
-        $changwat_th = "จ.พระนครศรีอยุธยา" ;
-        $amphoe_th = "อ.บางปะอิน" ;
-        $tambon_th = "ต.บ้านกรด" ;
-        
-        $requestData['pet_category_id'] = "3" ;
+        $pet_id = "1";
+        // 7 วัน ถามข้อมูล ค้นหาสัตว์
+        $date_now = date("Y-m-d");
+        $date_delete_7 = strtotime("-7 days");
+        $date_7 = date("Y-m-d" , $date_delete_7);
 
-        $send_to_users = Profile::where('id', '!=' , null)
-            ->where('changwat_th' ,$changwat_th)
-            ->where('amphoe_th' ,$amphoe_th)
-            ->where('tambon_th' ,$tambon_th)
-            ->where('type' ,'line')
-            ->get();
+        $data = Lost_Pet::where('pet_id' , $pet_id)->where('updated_at' , "<=" , $date_7)->first();
 
-        foreach ($send_to_users as $item) {
-            $alert_arr = json_decode($item->alert_lost_pet) ;
-
-            if (in_array($requestData['pet_category_id'] , $alert_arr)){
-                
-                // ส่งข้อความ
-            }
+        if (!empty($data)) {
+            echo $data->id;
+        }else{
+            echo "ไม่มี";
         }
 
-        // echo "<pre>" ;
-        // print_r($send_to_users);
-        // echo "<pre>" ;
+        echo "<pre>" ;
+        print_r($data);
+        echo "<pre>" ;
         exit();
     }
 
