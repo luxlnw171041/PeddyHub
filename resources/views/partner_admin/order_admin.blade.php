@@ -34,7 +34,6 @@
 				{{$partner_id}}
 					@foreach($order_admin as $item)
 					
-					@if( $item->product->partner_id == $partner_id)
 						<tr>
 							<td>
 								<div class="product-img bg-transparent border">
@@ -68,7 +67,6 @@
 
 							</td>
 						</tr>
-					@endif
 
 					<div class="modal fade" id="order{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog" role="document">
