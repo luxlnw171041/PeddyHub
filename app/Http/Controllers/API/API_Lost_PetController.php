@@ -41,38 +41,50 @@ class API_Lost_PetController extends Controller
         $data_pet_id = Lost_Pet::where('pet_id' , $pet_id)->first();
         $data = Lost_Pet::where('pet_id' , $pet_id)->where('updated_at' , "<=" , $date_7)->first();
 
+
         if (!empty($data)) {
-            if ($answer == 'found') {
-                $requestData['status'] =  'found' ;
-                $data->update($requestData);
 
-                $this->send_finished('found' , 'successfully', $event);
+            if ($data->status == "searching") {
+                if ($answer == 'found') {
+                    $requestData['status'] =  'found' ;
+                    $data->update($requestData);
 
+                    $this->send_finished('found' , 'successfully', $event);
+
+                }else{
+                    $num_round = $data->send_round ;
+
+                    $sum_round = (int)$num_round + 1;
+                   
+                    $requestData['send_round'] =  $sum_round ;
+                    $data->update($requestData);
+
+                    $line = new LineMessagingAPI();
+                    $line->send_lost_pet_again($data);
+
+                    $this->send_finished('send_line' , 'successfully', $event);
+
+                }
             }else{
-                $num_round = $data->send_round ;
-
-                $sum_round = (int)$num_round + 1;
-               
-                $requestData['send_round'] =  $sum_round ;
-                $data->update($requestData);
-
-                $line = new LineMessagingAPI();
-                $line->send_lost_pet_again($data);
-
-                $this->send_finished('send_line' , 'successfully', $event);
-
+                $this->send_finished('found' , 'not_successfully', $event);
             }
+
         }else{
-            //  ส่งข้อความตอบ คุณดำเนินการนี้แล้ว
-            if ($answer == 'found') {
-                
-                $requestData['status'] =  'found' ;
-                $data_pet_id->update($requestData);
+            if ($data_pet_id->status == "searching") {
+                //  ส่งข้อความตอบ คุณดำเนินการนี้แล้ว
+                if ($answer == 'found') {
 
-                $this->send_finished('found' , 'successfully', $event);
+                    $requestData['status'] =  'found' ;
+                    $data_pet_id->update($requestData);
+
+                    $this->send_finished('found' , 'successfully', $event);
+                }else{
+                    $this->send_finished('send_line' , 'not_successfully', $event);
+                }
             }else{
-                $this->send_finished('send_line' , 'not_successfully', $event);
+                $this->send_finished('found' , 'not_successfully', $event);
             }
+            
         }
 
         return view('return_line');
