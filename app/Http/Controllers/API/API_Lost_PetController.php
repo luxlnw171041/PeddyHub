@@ -55,10 +55,10 @@ class API_Lost_PetController extends Controller
                 $requestData['send_round'] =  $sum_round ;
                 $data->update($requestData);
 
+                $this->send_finished('send_line' , 'successfully', $event);
+
                 $line = new LineMessagingAPI();
                 $line->send_lost_pet_again($data);
-
-                $this->send_finished('send_line' , 'successfully', $event);
 
             }
         }else{
