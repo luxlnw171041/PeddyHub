@@ -90,23 +90,23 @@ class API_Lost_PetController extends Controller
         $template_path = storage_path('../public/json/send_finished.json');   
         $string_json = file_get_contents($template_path);
 
-        if ($type_send == "successfully") {  
-            if ($answer == "found") {
-                // กดหาน้องเจอครั้งแรก
-                $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[0],$string_json);
-            }else{
-                // กดส่งข้อความอีกครั้งครั้งแรก
-                $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[1],$string_json);
-            }
-        }else{
-            if ($answer == "found") {
-                // กดหาน้องเจอครั้งต่อๆไป
-                $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[3],$string_json);
-            }else{
-                // กดส่งข้อความอีกครั้งครั้งต่อๆไป
-                $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[2],$string_json);
-            }
-        }
+        // if ($type_send == "successfully") {  
+        //     if ($answer == "found") {
+        //         // กดหาน้องเจอครั้งแรก
+        //         $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[0],$string_json);
+        //     }else{
+        //         // กดส่งข้อความอีกครั้งครั้งแรก
+        //         $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[1],$string_json);
+        //     }
+        // }else{
+        //     if ($answer == "found") {
+        //         // กดหาน้องเจอครั้งต่อๆไป
+        //         $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[3],$string_json);
+        //     }else{
+        //         // กดส่งข้อความอีกครั้งครั้งต่อๆไป
+        //         $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$data_topic[2],$string_json);
+        //     }
+        // }
 
         $messages = [ json_decode($string_json, true) ]; 
 
@@ -136,7 +136,9 @@ class API_Lost_PetController extends Controller
             "content" => $data_users->username ,
         ];
 
-        MyLog::create($data_save_log);
+        Mylog::create($data_save_log);
+
+        return "ok" ;
     }
 
     // แปลภาษา
