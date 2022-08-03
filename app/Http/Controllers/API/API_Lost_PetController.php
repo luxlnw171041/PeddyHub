@@ -70,7 +70,8 @@ class API_Lost_PetController extends Controller
             }
 
         }else{
-            if ($data_pet_id->status == "searching") {
+
+            if ($data_pet_id->status != "found") {
                 //  ส่งข้อความตอบ คุณดำเนินการนี้แล้ว
                 if ($answer == 'found') {
 
@@ -81,6 +82,7 @@ class API_Lost_PetController extends Controller
                 }else{
                     $this->send_finished('send_line' , 'not_successfully', $event);
                 }
+
             }else{
                 $this->send_finished('found' , 'not_successfully', $event);
             }
