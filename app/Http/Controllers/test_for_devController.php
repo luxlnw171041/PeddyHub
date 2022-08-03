@@ -42,6 +42,37 @@ class test_for_devController extends Controller
         exit();
     }
 
+    public function test_send_png(Request $request)
+    {
+
+        $data_users = User::where('id', "1")->first();
+
+        $template_path = storage_path('../public/json/logo_ph.json');   
+        $string_json = file_get_contents($template_path);
+
+        $messages = [ json_decode($string_json, true) ]; 
+
+        $body = [
+            "to" => $data_users->provider_id,
+            "messages" => $messages,
+        ];
+
+        $opts = [
+            'http' =>[
+                'method'  => 'POST',
+                'header'  => "Content-Type: application/json \r\n".
+                            'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+            ]
+        ];
+                            
+        $context  = stream_context_create($opts);
+        $url = "https://api.line.me/v2/bot/message/push";
+        $result = file_get_contents($url, false, $context);
+
+        return "ok" ;
+    }
+
     public function send_line_lost_pet(Request $request)
     {
         // 7 วัน ถามข้อมูล ค้นหาสัตว์
@@ -151,5 +182,7 @@ class test_for_devController extends Controller
         return $data_topic ;
 
     }
+
+
 
 }

@@ -1199,6 +1199,7 @@
                     document.querySelector('#select_size').classList.add('d-none');
                 }
             });
+            change_language_user();
     }
 
     function species_select() {
