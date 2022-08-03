@@ -714,7 +714,7 @@
                                     <div class="form-group">
                                         <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat(); species_select(); check();" required>
                                             @if(!empty($pet->pet_category_id))
-                                            <option class="notranslate" value="{{ $pet->pet_category_id }}" selected>{{$pet->pet_category->name}}</option>
+                                            <option class="translate" value="{{ $pet->pet_category_id }}" selected>{{$pet->pet_category->name}}</option>
                                             @else
                                             <option class="translate" value="" selected> - โปรดเลือก - </option>
                                             @endif
@@ -722,16 +722,16 @@
 
                                         <select style="margin:10px 0px 0px 0px;" id="select_sub_category" name="sub_category" class="form-control d-none">
                                             @if(!empty($pet->size))
-                                            <option class="notranslate" value="{{ $pet->size }}" selected>{{$pet->size}}</option>
+                                            <option class="translate" value="{{ $pet->size }}" selected>{{$pet->size}}</option>
                                             @elseif(!empty($pet->sub_category))
-                                            <option class="notranslate" value="{{ $pet->sub_category }}" selected>{{$pet->sub_category}}</option>
+                                            <option class="translate" value="{{ $pet->sub_category }}" selected>{{$pet->sub_category}}</option>
                                             @else
                                             <option class="translate" value="" selected> - โปรดเลือก - </option>
                                             @endif
                                         </select>
                                         <select style="margin:10px 0px 0px 0px;" id="select_species" name="species" class="form-control d-none" onchange="sub_size();">
                                             @if(!empty($pet->species))
-                                            <option class="notranslate" value="{{ $pet->species }}" selected>{{$pet->species}}</option>
+                                            <option class="translate" value="{{ $pet->species }}" selected>{{$pet->species}}</option>
                                             @else
                                             <option class="translate" value="" selected> - โปรดเลือก - </option>
                                             @endif
