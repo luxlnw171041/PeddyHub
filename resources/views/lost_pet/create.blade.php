@@ -1,7 +1,7 @@
 @extends('layouts.peddyhub')
 
 @section('content')
-    <div class="container">
+    <div class="container translate">
         <div class="row">
             <div class="col-md-12">
                     <div class="faq wow fadeInRight">
