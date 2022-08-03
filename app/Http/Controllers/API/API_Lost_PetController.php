@@ -38,9 +38,8 @@ class API_Lost_PetController extends Controller
         $date_delete_7 = strtotime("-7 days");
         $date_7 = date("Y-m-d" , $date_delete_7);
 
-        $data_pet_id = Lost_Pet::where('pet_id' , $pet_id)->first();
-        $data = Lost_Pet::where('pet_id' , $pet_id)->where('updated_at' , "<=" , $date_7)->first();
-
+        $data_pet_id = Lost_Pet::where('pet_id' , $pet_id)->latest()->first();
+        $data = Lost_Pet::where('pet_id' , $pet_id)->where('updated_at' , "<=" , $date_7)->latest()->first();
 
         if (!empty($data)) {
 
@@ -71,7 +70,7 @@ class API_Lost_PetController extends Controller
 
         }else{
 
-            if ($data_pet_id->status != "found") {
+            if ($data_pet_id->status == "searching") {
                 //  ส่งข้อความตอบ คุณดำเนินการนี้แล้ว
                 if ($answer == 'found') {
 
