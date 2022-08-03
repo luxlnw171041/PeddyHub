@@ -31,7 +31,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				@if(!empty($order_admin))
+				@if(!empty($partner_id))
 					@foreach($order_admin as $item)
 						@if( $item->product->partner_id == $partner_id)
 							<tr>
