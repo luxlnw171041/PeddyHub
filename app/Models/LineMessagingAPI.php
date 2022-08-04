@@ -617,7 +617,8 @@ class LineMessagingAPI extends Model
         	->where('changwat_th' ,$changwat_th)
         	->where('amphoe_th' ,$amphoe_th)
         	->where('tambon_th' ,$tambon_th)
-        	->where('type' ,'line')
+            ->where('type' ,'line')
+        	->where('provider_id' , "!=" , null)
         	->get();
 
         foreach ($send_to_users as $item) {
