@@ -32,41 +32,41 @@
 				</thead>
 				<tbody>
 					@foreach($order_admin as $item)
+					
 					@if( $item->product->partner_id == $partner_id)
-					<tr>
-						<td>
-							<div class="product-img bg-transparent border">
-								<img src="{{ url('storage/'.$item->product->photo )}}" class="p-1" alt="">
-							</div>
-						</td>
-						<td>{{$item->product->title}}</td>
-						@if(!empty($item->profile->real_name))
-						<td>{{$item->profile->real_name}}</td>
-						@else
-						<td>{{$item->profile->name}}</td>
-						@endif
-						<td>{{$item->profile->address}} {{$item->profile->tambon_th}}  {{$item->profile->amphoe_th}}  {{$item->profile->changwat_th}} {{$item->profile->zip_code}}</td>
-						<td>{{$item->quantity}} ชิ้น</td>
-						<td>฿ {{ number_format($item->total) }}</td>
+						<tr>
+							<td>
+								<div class="product-img bg-transparent border">
+									<img src="{{ url('storage/'.$item->product->photo )}}" class="p-1" alt="">
+								</div>
+							</td>
+							<td>{{$item->product->title}}</td>
+							@if(!empty($item->profile->real_name))
+							<td>{{$item->profile->real_name}}</td>
+							@else
+							<td>{{$item->profile->name}}</td>
+							@endif
+							<td>{{$item->profile->address}} {{$item->profile->tambon_th}}  {{$item->profile->amphoe_th}}  {{$item->profile->changwat_th}} {{$item->profile->zip_code}}</td>
+							<td>{{$item->quantity}} ชิ้น</td>
+							<td>฿ {{ number_format($item->total) }}</td>
 
-						<td>
-							@switch($item->status)
-							@case('created')
-							<a href="javaScript:;" class="btn btn-sm btn-warning radius-30">รอจัดส่ง</a>
-							<a href="" data-toggle="modal" data-target="#order{{$item->id}}">จัดส่งสินค้า</a>
+							<td>
+								@switch($item->status)
+								@case('created')
+								<a href="javaScript:;" class="btn btn-sm btn-warning radius-30">รอจัดส่ง</a>
+								<a href="" data-toggle="modal" data-target="#order{{$item->id}}">จัดส่งสินค้า</a>
 
-							@break
-							@case('completed')
-							<a href="javaScript:;" class="btn btn-sm btn-success radius-30">ส่งแล้ว</a>
-							@break
-							@case('cancelled')
-							<a href="javaScript:;" class="btn btn-sm btn-danger radius-30">ยกเลิก</a>
-							@break
-							@endswitch
+								@break
+								@case('completed')
+								<a href="javaScript:;" class="btn btn-sm btn-success radius-30">ส่งแล้ว</a>
+								@break
+								@case('cancelled')
+								<a href="javaScript:;" class="btn btn-sm btn-danger radius-30">ยกเลิก</a>
+								@break
+								@endswitch
 
-						</td>
-					</tr>
-
+							</td>
+						</tr>
 					@endif
 
 					<div class="modal fade" id="order{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
