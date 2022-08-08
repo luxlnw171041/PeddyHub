@@ -91,16 +91,16 @@
                     @endswitch
                 </div>
                 <div class="col-7" style="padding-left: 2px;">
-                    <p style="font-size: 21px;margin:0px;">
+                    <p style="font-size: 21px;margin:0px;font-family: 'Kanit', sans-serif;">
                         บัตรประจำตัว {{ $pet->pet_category->name}}
                     </p>
 
                     <div class="row" style="margin-left:2px;">
-                        <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
+                        <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;font-family: 'Kanit', sans-serif;">
                             <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
                             <span style="color:#B8205B"> <b> indentification </b></span>
                         </div>
-                        <div class="col-6" style="padding: 0px;margin-top:-7px;">
+                        <div class="col-6" style="padding: 0px;margin-top:-7px;font-family: 'Kanit', sans-serif;">
                             <span style="font-size: 11px;" id="text_numberswip{{$pet->id}}"> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                     <img style="float: right;" src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" width="80%" alt="">
                 </div>
                 <div class="col-12">
-                    <div style="font-size: 12px;">
+                    <div style="font-size: 12px;font-family: 'Kanit', sans-serif;">
                         <span> <b> ชื่อตัวและชื่อสกุล</b></span>
                         <span style="font-size:20px;">
                             <b>
@@ -133,7 +133,7 @@
                                 <img style="position:relative ;" width="80px" src="{{ url('storage/'.$pet->qr_code )}}" alt="">
                             </a>
                         </div>
-                        <div class="div2">
+                        <div class="div2" style="font-family: 'Kanit', sans-serif;">
                             <span style="font-size: 13px;"> <b> เกิดวันที่ </b></span> <span style="font-size:14px"> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
                             <span style="font-size: 13px;color:#B8205B"> <b> Birth </b></span> <span style="color:#B8205B; font-size:14px"> <b>{{ date("j M Y" , strtotime($pet->birth)) }}</b></span><br>
                             <span style="font-size: 13px;"> <b> เบอร์ </b></span> <span style="font-size:14px"> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span>
@@ -145,29 +145,29 @@
                         <div class="div3 d-flex align-items-end">
                             <img src="{{ url('storage/'.$pet->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px;" width="100%" alt="image of pet" title="pet" class="fluid customer">
                         </div>
-                        <div class="div4" style="margin-bottom:15px;">
+                        <div class="div4" style="margin-bottom:15px;font-family: 'Kanit', sans-serif;">
                             <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                         </div>
                         <div class="div5">
-                            <p id="text_btswip{{$pet->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($pet->created_at)) }}</b></p>
-                            <p id="text_vswip{{$pet->id}}" style="font-size: 11px;margin:0px;"> <b>วันออกบัตร</b></p>
-                            <p id="text_beswip{{$pet->id}}" class="notranslate" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->created_at)) }}</b></p>
-                            <p id="text_doiswip{{$pet->id}}" class="notranslate" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
+                            <p id="text_btswip{{$pet->id}}" style="font-family: 'Kanit', sans-serif;font-size: 11px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($pet->created_at)) }}</b></p>
+                            <p id="text_vswip{{$pet->id}}" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;"> <b>วันออกบัตร</b></p>
+                            <p id="text_beswip{{$pet->id}}" class="notranslate" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->created_at)) }}</b></p>
+                            <p id="text_doiswip{{$pet->id}}" class="notranslate" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Issue</b></p>
                         </div>
                         <div class="div6 text-center ">
                             <br>
                             @if(!empty($pet->profile->real_name))
-                            <p style="font-size: 11px; line-height: 0.5;margin:0px;" class="notranslate"> <b>({{ $pet->profile->real_name }})</b></p>
+                            <p style="font-size: 11px; line-height: 0.5;margin:0px;font-family: 'Kanit', sans-serif;" class="notranslate"> <b>({{ $pet->profile->real_name }})</b></p>
                             @else
-                            <p style="font-size: 11px; line-height: 0.5;margin:0px;" class="notranslate"> <b>({{ $pet->profile->name }})</b></p>
+                            <p style="font-size: 11px; line-height: 0.5;margin:0px;font-family: 'Kanit', sans-serif;" class="notranslate"> <b>({{ $pet->profile->name }})</b></p>
                             @endif
-                            <p id="text_jswip{{$pet->id}}" style="font-size: 11px;margin:0px;color:#B8205B"> <b>เจ้าของ</b></p>
+                            <p id="text_jswip{{$pet->id}}" style="font-size: 11px;margin:0px;color:#B8205Bfont-family: 'Kanit', sans-serif;"> <b>เจ้าของ</b></p>
                         </div>
                         <div class="div7 text-center text-card">
-                            <p id="text_tswip{{$pet->id}}" style="font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
-                            <p id="text_wswip{{$pet->id}}" style="font-size: 10px;margin:0px;"> <b>วันหมดอายุ</b></p>
-                            <p id="text_lswip{{$pet->id}}" class="notranslate" style="font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Life Time</b></p>
-                            <p id="text_dswip{{$pet->id}}" class="notranslate" style="font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
+                            <p id="text_tswip{{$pet->id}}" style="font-family: 'Kanit', sans-serif;font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
+                            <p id="text_wswip{{$pet->id}}" style="font-family: 'Kanit', sans-serif;font-size: 10px;margin:0px;"> <b>วันหมดอายุ</b></p>
+                            <p id="text_lswip{{$pet->id}}" class="notranslate" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Life Time</b></p>
+                            <p id="text_dswip{{$pet->id}}" class="notranslate" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
                         </div>
                     </div>
                 </div>
@@ -409,17 +409,17 @@
     <div class="d-block d-md-none">
         <div class="row ">
             <div class="col ">
-                <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;" class="text-center btn btn-success ">แนวตั้ง</button>
+                <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;font-family: 'Kanit', sans-serif;" class="text-center btn btn-success ">แนวตั้ง</button>
             </div>
             <div class="col" id="btn_download">
-                <button  onclick="downloadimage_mobile()" style="border-radius: 25px;" class="btn btn-success">Download</button>
+                <button  onclick="downloadimage_mobile()" style="border-radius: 25px;font-family: 'Kanit', sans-serif;" class="btn btn-success">Download</button>
             </div>
         </div>
     </div>
     
     <div class="row d-none d-lg-block">
         <div class="col ">
-            <button  onclick="downloadimage()" style="border-radius: 25px;" class="btn btn-success">Download</button>
+            <button  onclick="downloadimage()" style="border-radius: 25px;font-family: 'Kanit', sans-serif;" class="btn btn-success">Download</button>
         </div>
     </div>
 </center>
