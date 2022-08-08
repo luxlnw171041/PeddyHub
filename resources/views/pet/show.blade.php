@@ -48,7 +48,7 @@
     }
 
     .card-pet {
-        margin-left: -50px;
+        margin-left: -60px;
         margin-top: 50px;
         margin-bottom: 50px;
     }
