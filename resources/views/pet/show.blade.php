@@ -172,7 +172,7 @@
                     </div>
                 </div>
                 <div class="col-12 text-center owl-carousel-two" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
-                    ใน mb
+                powered by
                     <div class="owl-carousel">
                         @php
                         $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
@@ -317,8 +317,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-center owl-carousel-two" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
-                    ใน pc
+                <div class="col-12 text-center owl-carousel-two d-none d-lg-block" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                    powered by
                     <div class="owl-carousel">
                         @php
                         $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
@@ -335,10 +335,30 @@
                         @endforeach
                     </div>
                 </div>
+                <div class="col-12 text-center owl-carousel-two d-block d-md-none" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                    powered by
+                    <div class="owl-carousel">
+                        @php
+                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
+                        @endphp
+                        @foreach($partner as $item)
+                        <div class="item" style="padding:0px;">
+                            <div class="testimon">
+                                <a href="{{$item->link}}" target="bank">
+                                    <img class="p-md-3 p-lg-3" style="width: 60%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                </a>
+                            </div>
+                        </div>
+
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <div class="container owl-carousel-two d-none d-lg-block" width="50px" style="width:480px;">
     <div class="d-none card col-lg-12 col-12 " style="padding:10px;border: 2px solid #B8205B;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <span style="font-family: 'Kanit', sans-serif;">
