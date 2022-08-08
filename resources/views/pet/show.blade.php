@@ -12,6 +12,7 @@
         grid-column-gap: 0px;
         grid-row-gap: 0px;
     }
+
     .div1 {
         grid-area: 1 / 1 / 2 / 2;
     }
@@ -60,9 +61,9 @@
         margin: 21px 0px 0px 0px !important;
     }
 </style>
-<div id="card_petswip{{$pet->id}}" class="container d-block d-md-none" width="500px" style="padding:5px;margin-top:100px">
-    <div id="aa" class="card col-lg-12 col-12 "  style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
-        <div class="card-body" style="padding:5px;" >
+<div id="card_petswip{{$pet->id}}" class="container d-block d-md-none" width="500px" style="padding:5px;margin-top:100px;">
+    <div id="aa" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+        <div class="card-body" style="padding:5px;">
             <div class="row">
                 <div class="col-2 text-center d-flex align-items-center" style="padding-right:0px;">
                     @php
@@ -170,10 +171,29 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 text-center owl-carousel-two" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                    ใน mb
+                    <div class="owl-carousel">
+                        @php
+                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
+                        @endphp
+                        @foreach($partner as $item)
+                        <div class="item" style="padding:0px;">
+                            <div class="testimon">
+                                <a href="{{$item->link}}" target="bank">
+                                    <img class="p-md-3 p-lg-3" style="width: 60%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                </a>
+                            </div>
+                        </div>
+
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 <div id="card_pet" class="container rotatea card-pet d-flex justify-content-center">
     <div id="htmltoimage" class="d-none d-lg-block card col-lg-5 col-12 " style="border: 2px solid #B8205B;padding:10px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:0px;">
@@ -214,16 +234,16 @@
                     @endswitch
                 </div>
                 <div class="col-7" style="padding-left: 2px;">
-                    <p style="font-size: 21px;margin:0px;">
+                    <p style="font-size: 21px;margin:0px;font-family: 'Kanit', sans-serif;">
                         บัตรประจำตัว {{ $pet->pet_category->name}}
                     </p>
 
                     <div class="row" style="margin-left:2px;">
-                        <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;">
+                        <div class="col-6" style="font-size: 12px;padding: 0px;margin-top:-10px;font-family: 'Kanit', sans-serif;">
                             <span> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span><br>
                             <span style="color:#B8205B" class="notranslate"> <b> indentification Number</b></span>
                         </div>
-                        <div class="col-6" style="padding: 0px;margin-top:-7px;">
+                        <div class="col-6" style="padding: 0px;margin-top:-7px;font-family: 'Kanit', sans-serif;">
                             <span> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
                         </div>
                     </div>
@@ -232,7 +252,7 @@
                     <img style="float: right;" src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" width="80%" alt="">
                 </div>
                 <div class="col-12">
-                    <div style="font-size: 12px;">
+                    <div style="font-size: 12px;font-family: 'Kanit', sans-serif;">
                         <span> <b> ชื่อตัวและชื่อสกุล</b></span>
                         <span style="font-size:20px;">
                             <b>
@@ -260,59 +280,122 @@
                         </div>
                         <div class="div2">
                             <div id="birth_th">
-                                <span style="font-size: 12px;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
+                                <span style="font-size: 12px;font-family: 'Kanit', sans-serif;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
                             </div>
-                            <span style="font-size: 12px;color:#B8205B" class="notranslate"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->birth)) }}</b></span><br>
-                            <p><span style="font-size: 12px;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span></p>
+                            <span style="font-size: 12px;color:#B8205B;font-family: 'Kanit', sans-serif;" class="notranslate"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->birth)) }}</b></span><br>
+                            <p><span style="font-size: 12px;font-family: 'Kanit', sans-serif;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span></p>
                         </div>
                         <div class="div3 d-flex align-items-end">
                             <img src="{{ url('storage/'.$pet->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px; margin-bottom:10px" width="100%" alt="image of pet" title="pet" class="fluid customer">
                         </div>
-                        <div class="div4" style="margin-bottom:15px;">
-                            <span style="font-size: 14px;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
+                        <div class="div4" style="margin-bottom:15px;font-family: 'Kanit', sans-serif;">
+                            <span style="font-size: 14px;font-family: 'Kanit', sans-serif;"> <b> ที่อยู่</b></span> <span style="font-size: 14px;"> <b>{{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span><br>
                         </div>
-                        <div class="div5">
+                        <div class="div5" style="font-family: 'Kanit', sans-serif;">
                             <div id="create_th">
-                                <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>{{ thaidate("j M Y" , strtotime($pet->created_at)) }}</b></p>
-                                <p style="font-size: 13px;margin:0px;"> <b>วันออกบัตร</b></p>
+                                <p style="font-size: 13px; line-height: 0.5;margin:0px;font-family: 'Kanit', sans-serif;"> <b>{{ thaidate("j M Y" , strtotime($pet->created_at)) }}</b></p>
+                                <p style="font-size: 13px;margin:0px;font-family: 'Kanit', sans-serif;"> <b>วันออกบัตร</b></p>
                             </div>
                             <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B" class="notranslate"> <b>{{ date("j M Y" , strtotime($pet->created_at)) }}</b></p>
                             <p style="font-size: 13px;margin:0px;color:#B8205B" class="notranslate"> <b>Date of Issue</b></p>
                         </div>
                         <div class="div6 text-center ">
                             @if(!empty($pet->profile->real_name))
-                            <p id="real_name" style="font-size: 13px; margin:0px " class="notranslate margin-name"> <b>({{ $pet->profile->real_name }})</b></p>
+                            <p id="real_name" style="font-size: 13px; margin:0px ;font-family: 'Kanit', sans-serif;" class="notranslate margin-name"> <b>({{ $pet->profile->real_name }})</b></p>
                             @else
-                            <p id="name" style="font-size: 13px;margin:0px" class="notranslate  margin-name"> <b>({{ $pet->profile->name }})</b></p>
+                            <p id="name" style="font-size: 13px;margin:0px;font-family: 'Kanit', sans-serif;" class="notranslate  margin-name"> <b>({{ $pet->profile->name }})</b></p>
                             @endif
-                            <p style="font-size: 13px;line-height: 0.5;margin:0px;color:#B8205B"> <b id="owner_th">เจ้าของ /</b> <b class="notranslate"> owner</b></p>
+                            <p style="font-size: 13px;line-height: 0.5;margin:0px;color:#B8205B;font-family: 'Kanit', sans-serif;"> <b id="owner_th">เจ้าของ /</b> <b class="notranslate"> owner</b></p>
                         </div>
                         <div class="div7 text-center">
                             <div id="expiry-th">
-                                <p style="font-size: 13px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
-                                <p style="font-size: 13px;margin:0px;"> <b>วันบัตรหมดอายุ</b></p>
+                                <p style="font-size: 13px; line-height: 0.5;margin:0px;font-family: 'Kanit', sans-serif;"> <b>ตลอดชีพ</b></p>
+                                <p style="font-size: 13px;margin:0px;font-family: 'Kanit', sans-serif;"> <b>วันบัตรหมดอายุ</b></p>
                             </div>
                             <p style="font-size: 13px;margin:0px;line-height: 0.5;color:#B8205B"> <b class="notranslate">Life Time</b></p>
-                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b class="notranslate">Date of Expiry</b></p>
+                            <p style="font-size: 13px;margin:0px;color:#B8205B"> <b class="notranslate">EXP</b></p>
                         </div>
+                    </div>
+                </div>
+                <div class="col-12 text-center owl-carousel-two" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                    ใน pc
+                    <div class="owl-carousel">
+                        @php
+                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
+                        @endphp
+                        @foreach($partner as $item)
+                        <div class="item" style="padding:0px;">
+                            <div class="testimon">
+                                <a href="{{$item->link}}" target="bank">
+                                    <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                </a>
+                            </div>
+                        </div>
+
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<br><br>
+<div class="container owl-carousel-two d-none d-lg-block" width="50px" style="width:480px;">
+    <div class="d-none card col-lg-12 col-12 " style="padding:10px;border: 2px solid #B8205B;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+        <span style="font-family: 'Kanit', sans-serif;">
+            นอก pc
+        </span>
+        
+        <div class="owl-carousel">
+            @php
+            $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
+            @endphp
+            @foreach($partner as $item)
+            <div class="item" style="padding:0px;">
+                <div class="testimon">
+                    <a href="{{$item->link}}" target="bank">
+                        <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+<div class="col-12 owl-carousel-two d-block d-md-none" style="padding: 3px 3px 3px 3px; top:-50px">
+    <div class="d-none card col-lg-12 col-12 " style="padding:10px;border: 2px solid #B8205B;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+        <span style="font-family: 'Kanit', sans-serif;">
+            นอก mb
+        </span>
+        
+        <div class="owl-carousel">
+            @php
+            $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
+            @endphp
+            @foreach($partner as $item)
+            <div class="item" style="padding:0px;">
+                <div class="testimon">
+                    <a href="{{$item->link}}" target="bank">
+                        <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+<br>
 <center>
     <div class="row">
-        <div class="col">
-            <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;"class="text-center btn btn-success d-block d-md-none">แนวตั้ง</button>
+        <div class="col d-block d-md-none">
+            <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;" class="text-center btn btn-success ">แนวตั้ง</button>
         </div>
-        <div class="col">
-            <button id="btn_download" onclick="downloadimage()" style="border-radius: 25px;"class="btn btn-success">Download</button>
+        <div class="col" id="btn_download">
+            <button  onclick="downloadimage()" style="border-radius: 25px;" class="btn btn-success">Download</button>
         </div>
     </div>
 </center>
-
+<br>
 @if(Auth::user())
 <input class="form-control d-none" name="language" type="text" id="language" value="{{Auth::user()->profile->language}}">
 @endif
@@ -384,7 +467,7 @@
         if (x.innerHTML === "แนวตั้ง") {
             x.innerHTML = "แนวนอน";
             document.getElementById("btn_download").classList.add('d-none');
-            
+
         } else {
             x.innerHTML = "แนวตั้ง";
             document.getElementById("btn_download").classList.remove('d-none');

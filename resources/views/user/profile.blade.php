@@ -448,7 +448,7 @@
                                             <i id="arrow{{$item->id}}" class="fa-solid fa-angle-up arrow"></i>
                                         </button>
                                         <div class="dropdown-menu menu">
-                                            <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id . '/edit') }}" style="font-family: 'Kanit', sans-serif;" data-toggle="modal" data-target="#exampleModalCenter{{$item->id}}">บัตรประจำตัวสัตว์เลี้ยง</a>
+                                            <a class="dropdown-item item-dd" href="{{ url('/pet/' . $item->id) }}" style="font-family: 'Kanit', sans-serif;">บัตรประจำตัวสัตว์เลี้ยง</a>
                                             <a class="dropdown-item item-dd" href="{{ url('/user_pet_checklist/' . $item->id) }}" style="font-family: 'Kanit', sans-serif;">เอกสารเดินทาง</a>
                                         </div>
                                     </div>
@@ -509,7 +509,7 @@
                                                 </div>
                                                 <div class="col-7" style="padding-left: 2px;">
                                                     <p style="font-size: 21px;margin:0px;">
-                                                        บัตรประจำตัว {{ $pet->pet_category->name}}
+                                                        บัตรประจำตัว {{ $pet->pet_category->name}} {{ $pet->pet_category->id}} 
                                                     </p>
 
                                                     <div class="row" style="margin-left:2px;">
