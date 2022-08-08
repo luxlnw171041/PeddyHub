@@ -62,7 +62,7 @@
     }
 </style>
 <div id="card_petswip{{$pet->id}}" class="container d-block d-md-none" width="500px" style="padding:5px;margin-top:100px;">
-    <div id="aa" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
+    <div id="htmltoimage_mobile" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;">
             <div class="row">
                 <div class="col-2 text-center d-flex align-items-center" style="padding-right:0px;">
@@ -406,11 +406,19 @@
 </div>
 <br>
 <center>
-    <div class="row">
-        <div class="col d-block d-md-none">
-            <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;" class="text-center btn btn-success ">แนวตั้ง</button>
+    <div class="d-block d-md-none">
+        <div class="row ">
+            <div class="col ">
+                <button id="btn_swip" onclick="swipside();namebtn();" style="border-radius: 25px;" class="text-center btn btn-success ">แนวตั้ง</button>
+            </div>
+            <div class="col" id="btn_download">
+                <button  onclick="downloadimage_mobile()" style="border-radius: 25px;" class="btn btn-success">Download</button>
+            </div>
         </div>
-        <div class="col" id="btn_download">
+    </div>
+    
+    <div class="row d-none d-lg-block">
+        <div class="col ">
             <button  onclick="downloadimage()" style="border-radius: 25px;" class="btn btn-success">Download</button>
         </div>
     </div>
@@ -424,7 +432,7 @@
 <script>
     function swipside() {
         document.getElementById("htmltoimage").classList.toggle('d-none');
-        document.getElementById("aa").classList.toggle('d-none');
+        document.getElementById("htmltoimage_mobile").classList.toggle('d-none');
     }
 </script>
 <script>
@@ -467,7 +475,24 @@
 <script type="text/javascript">
     function downloadimage() {
         //var container = document.getElementById("image-wrap"); //specific element on page
-        var container = document.getElementById("htmltoimage");; // full page 
+        var container = document.getElementById("htmltoimage"); // full page 
+        html2canvas(container, {
+            allowTaint: true
+        }).then(function(canvas) {
+
+            var link = document.createElement("a");
+            document.body.appendChild(link);
+            link.download = "บัตรประจำตัว{{$pet->name}}.png";
+            link.href = canvas.toDataURL();
+            link.target = '_blank';
+            link.click();
+        });
+    }
+</script>
+<script type="text/javascript">
+    function downloadimage_mobile() {
+        //var container = document.getElementById("image-wrap"); //specific element on page
+        var container = document.getElementById("htmltoimage_mobile"); // full page 
         html2canvas(container, {
             allowTaint: true
         }).then(function(canvas) {
