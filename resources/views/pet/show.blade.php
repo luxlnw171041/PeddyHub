@@ -161,7 +161,7 @@
                             @else
                             <p style="font-size: 11px; line-height: 0.5;margin:0px;font-family: 'Kanit', sans-serif;" class="notranslate"> <b>({{ $pet->profile->name }})</b></p>
                             @endif
-                            <p id="text_jswip{{$pet->id}}" style="font-size: 11px;margin:0px;color:#B8205Bfont-family: 'Kanit', sans-serif;"> <b>เจ้าของ</b></p>
+                            <p id="text_jswip{{$pet->id}}" style="font-size: 11px;margin:0px;color:#B8205B;font-family: 'Kanit', sans-serif;"> <b>เจ้าของ</b></p>
                         </div>
                         <div class="div7 text-center text-card">
                             <p id="text_tswip{{$pet->id}}" style="font-family: 'Kanit', sans-serif;font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
@@ -283,7 +283,7 @@
                                 <span style="font-size: 12px;font-family: 'Kanit', sans-serif;"> <b> เกิดวันที่ </b></span> <span> <b>{{ thaidate("j M Y" , strtotime($pet->birth)) }}</b></span><br>
                             </div>
                             <span style="font-size: 12px;color:#B8205B;font-family: 'Kanit', sans-serif;" class="notranslate"> <b> Date Of Birth </b></span> <span style="color:#B8205B"> <b>{{ date("j M Y" , strtotime($pet->birth)) }}</b></span><br>
-                            <p><span style="font-size: 12px;font-family: 'Kanit', sans-serif;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span></p>
+                            <p style="margin: 0;"><span style="font-size: 12px;font-family: 'Kanit', sans-serif;"> <b> เบอร์ </b></span> <span> <b> {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }} </b></span></p>
                         </div>
                         <div class="div3 d-flex align-items-end">
                             <img src="{{ url('storage/'.$pet->photo )}}" style="border: 2px solid #B8205B;border-radius: 7px; margin-bottom:10px" width="100%" alt="image of pet" title="pet" class="fluid customer">
