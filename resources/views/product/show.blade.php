@@ -288,7 +288,7 @@ input[type=number]::-webkit-outer-spin-button {
             <section class="steps">
                 <div class="container">
                     <p>
-                        <span style="font-size:25px;"> สินค้าอื่นๆ </span>
+                        <span style="font-size:25px;" class="translate text-capitalize"> สินค้าอื่นๆ </span>
                     </p>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">

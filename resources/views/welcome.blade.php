@@ -22,17 +22,17 @@
                                             PeddyHub</span>
                                     </h1>
                                 </div>
-                                <p class="wow fadeInDown">
+                                <p class="wow fadeInDown" style="font-family: 'Kanit', sans-serif;">
                                 PeddyHub 
                                 ศูนย์รวมบริการ ข้อมูล และ community สำหรับคนรักสัตว์ 
                                 peddy hub ครบจบในที่เดียว !!!</p>
-                                <div class="button wow fadeInUp">
+                                <div class="button wow fadeInUp" >
                                     @if(Auth::check())
-                                        <a href="{{ url('/pet/create') }}" class="btn main" title="contact">
+                                        <a style="font-family: 'Kanit', sans-serif;" href="{{ url('/pet/create') }}" class="btn main" title="contact">
                                             Register <i class="fas fa-paw"></i>
                                         </a>
                                     @else
-                                        <a href="{{'login'}}?redirectTo={{ url('/') }}/pet/create" class="btn main" title="contact">
+                                        <a style="font-family: 'Kanit', sans-serif;" href="{{'login'}}?redirectTo={{ url('/') }}/pet/create" class="btn main" title="contact">
                                             Register <i class="fas fa-paw"></i>
                                         </a>
                                     @endif
@@ -58,7 +58,7 @@
         </section>
 
 
-        <section id="descript" class="descript">
+        <section id="descript" class="descript" >
             <div class="context">
                 <div class="container">
                     <div class="heading text-center">
@@ -308,7 +308,7 @@
                 </div>
             </div>
         </section> -->
-        <section class="method">
+        <section class="method" >
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6 col-md-12 col-sm-12">
@@ -320,19 +320,19 @@
                                                 <img  class="icon" width="80px;" src="peddyhub/images/home_5/svg/home.svg"  alt="Kiwi standing on oval">
 
                                             <div class="num">
-                                                <span class="counting-value" style="font-size: 35px;">{{ 100 + ($count_pet * 3) }}</span>
-                                                <span style="font-size: 35px;">+</span>
+                                                <span class="font-family: 'Kanit', sans-serif;counting-value" style="font-size: 35px;">{{ 100 + ($count_pet * 3) }}</span>
+                                                <span style="font-family: 'Kanit', sans-serif;font-size: 35px;">+</span>
                                             </div>
-                                            <div class="description" style="font-size: 15px;margin-top:5px;">สัตว์เลี้ยงลงทะเบียน</div>
+                                            <div class="description" style="font-family: 'Kanit', sans-serif;font-size: 15px;margin-top:5px;">สัตว์เลี้ยงลงทะเบียน</div>
                                         </div>
                                         <div class="box happy">
                                                 <img class="svg-white icon" width="80px;" src="peddyhub/images/home_5/svg/cat-dog.svg"  alt="Kiwi standing on oval">
                                                 
                                             <div class="num">
-                                                <span class="counting-value" style="font-size: 35px;">24</span>
-                                                <span style="font-size: 35px;" style="font-size: 35px;">ชม.</span>
+                                                <span class="counting-value" style="font-family: 'Kanit', sans-serif;font-size: 35px;">24</span>
+                                                <span style="font-family: 'Kanit', sans-serif;font-size: 35px;">ชม.</span>
                                             </div>
-                                            <div class="description" style="font-size: 15px;margin-top:5px;">ให้การช่วยเหลือ</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;font-family: 'Kanit', sans-serif;">ให้การช่วยเหลือ</div>
                                         </div>
                                     </div>
 
@@ -340,19 +340,19 @@
                                         <div class="box user">
                                                 <img class="icon" width="80px;" src="peddyhub/images/home_5/svg/user.svg"  alt="Kiwi standing on oval">
                                             <div class="num">
-                                                <span class="counting-value" style="font-size: 35px;">{{ $count_user + 300 }}</span>
+                                                <span class="counting-value" style="font-size: 35px;font-family: 'Kanit', sans-serif;">{{ $count_user + 300 }}</span>
                                                 <span style="font-size: 35px;">+</span>
                                             </div>
-                                            <div class="description" style="font-size: 15px;margin-top:5px;">ผู้ใช้</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;font-family: 'Kanit', sans-serif;">ผู้ใช้</div>
                                         </div>
                                         <div class="box thai text-center">
                                             <img  class="icon" width="80px;" src="peddyhub/images/home_5/svg/thai.svg"  alt="Kiwi standing on oval">
 
                                             <div class="num" >
-                                                <span class="counting-value" style="font-size: 35px;">77</span>
-                                                <span style="font-size: 35px;">+</span>
+                                                <span class="counting-value" style="font-size: 35px;font-family: 'Kanit', sans-serif;">77</span>
+                                                <span style="font-size: 35px;font-family: 'Kanit', sans-serif;">+</span>
                                             </div>
-                                            <div class="description" style="font-size: 15px;margin-top:5px;">จังหวัดที่คลอบคลุม</div>
+                                            <div class="description" style="font-size: 15px;margin-top:5px;font-family: 'Kanit', sans-serif;">จังหวัดที่คลอบคลุม</div>
                                         </div>
                                     </div>
                                 </div>
@@ -398,7 +398,7 @@
                     <div class="title-icon">
                         <img src="peddyhub/images/icons/title-icon.png" alt="" />
                 </div>
-                        <h3 style="color:white;">แสดงเจ้าตัวแสบของคุณให้ทุกคนได้เห็น</h3>
+                        <h3 style="color:white;font-family: 'Kanit', sans-serif;">แสดงเจ้าตัวแสบของคุณให้ทุกคนได้เห็น</h3>
                         <!-- <div class="text">For professional dog and cat grooming needs</div> -->
                     </div>
                     <div class="row clearfix">
@@ -421,16 +421,16 @@
                                                         </div>
                                                         <div class="col-9" style="padding:0px 10px">
                                                             @if(!empty($item->profile->name))
-                                                                <p class="notranslate d-flex justify-content-start" style="padding:0px;margin:0px;"> <b>{{ $item->profile->name }}</b>  </p>
+                                                                <p class="notranslate d-flex justify-content-start" style="padding:0px;margin:0px;font-family: 'Kanit', sans-serif;"> <b>{{ $item->profile->name }}</b>  </p>
                                                             @else
-                                                                <p class="notranslate d-flex justify-content-start" style="padding:0px;margin:0px;"> <b>Guest</b>  </p>
+                                                                <p class="notranslate d-flex justify-content-start" style="padding:0px;margin:0px;font-family: 'Kanit', sans-serif;"> <b>Guest</b>  </p>
                                                             @endif
-                                                            <p class="d-flex justify-content-start" style="font-size:12px;margin-top:-8px;"> {{ $item->created_at->diffForHumans() }} </p>
+                                                            <p class="d-flex justify-content-start" style="font-size:12px;margin-top:-8px;font-family: 'Kanit', sans-serif;"> {{ $item->created_at->diffForHumans() }} </p>
                                                         </div>
                                                         <div class="col-12" style="padding:0px 0px 0px 20px">
                                                             <a href="{{ url('/post/' . $item->id) }}" title="">
                                                             
-                                                                <p class="head mt-1 mb-0">{{ $item->detail }} </p>
+                                                                <p class="head mt-1 mb-0 notranslate" style="font-family: 'Kanit', sans-serif;">{{ $item->detail }} </p>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -530,7 +530,7 @@
                 </div> -->
             </div>
         </section>
-
+<br>
         <div class="about pet">
             <section class="service">
                 <div class="container">
@@ -538,7 +538,7 @@
                         <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
                                 class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
                                     class="fas fa-paw"></i> </span></p>
-                        <h2 class="wow fadeInDown">บริการ <span class="wow pulse" data-wow-delay="1s">
+                        <h2 class="wow fadeInDown" >บริการ <span class="wow pulse" data-wow-delay="1s" >
                                 ของพวกเรา</span></h2>
                     </div>
                     <div class="cards">
@@ -551,10 +551,10 @@
                                         </div>
                                     </div>
                                     <div class="context">
-                                        <h5 class="purple">
+                                        <h5 class="purple" style="font-family: 'Kanit', sans-serif;">
                                             ตามหาเจ้าตัวแสบ
                                         </h5>
-                                        <p>
+                                        <p style="font-family: 'Kanit', sans-serif;">
                                         เมื่อเจ้าตัวแสบเดินเล่น สำรวจสิ่งต่าง ๆ รอบตัว อย่างเพลิดเพลิน จนบางครั้งอาจเกิดการพลัดหลง เพียงท่านลงทะเบียนสัตว์เลี้ยงกับ  ระบบของเรา จากนั้นระบบก็จะช่วยส่งข้อมูลให้ชุมชนคนรักสัตว์ ในบริเวณใกล้เคียงได้รับทราบและช่วยกันตามหาเจ้าตัวแสบของท่านในทันที
                                         </p>
                                     </div>
@@ -568,10 +568,10 @@
                                         </div>
                                     </div>
                                     <div class="context">
-                                        <h5 class="orange">
+                                        <h5 class="orange" style="font-family: 'Kanit', sans-serif;">
                                             ตัดขนเสริมสวยแต่งหล่อ
                                         </h5>
-                                        <p>
+                                        <p style="font-family: 'Kanit', sans-serif;">
                                             หากเราอยากหล่ออยากสวยเรื่องเสริมความสวยความงามก็เป็นเรื่องที่เข้าใจได้ การจัดแต่งทรงให้สวยหล่อนั้นสำหรับสัตว์เลี้ยงของเราก็เหมือนกัน เพราะไม่ว่าจะเป็นแมวสุนัขหรือน้องสัตว์ทั้งหลายที่มีขนสั้นบ้างยาวบ้าง ก็เป็นหน้าที่ของเจ้าของที่จะต้องดูแลเพื่อความสวยงามและสุขอนามัย
                                         </p>
                                     </div>
@@ -585,10 +585,10 @@
                                         </div>
                                     </div>
                                     <div class="context">
-                                        <h5 class="orange">
+                                        <h5 class="orange" style="font-family: 'Kanit', sans-serif;">
                                             อาหารเจ้าซุกซน 
                                         </h5>
-                                        <p>
+                                        <p style="font-family: 'Kanit', sans-serif;">
                                         อาหารที่มีคุณภาพและได้มาตรฐานจะช่วยให้ลูกๆของคุณร่างกายแข็งแรงและมีสุขภาพที่ดียิ่งขึ้น เราจึงสรรหาและมอบสิ่งดีๆเพื่อเจ้าแสนซน เราบริการส่งแบบรวดเร็วภายใน 24 ชม. และโปรโมชั่นลดราคาสุดพิเศษเตรียมไว้เพื่อคุณแล้ว
                                         </p>
                                     </div>
@@ -602,10 +602,10 @@
                                         </div>
                                     </div>
                                     <div class="context">
-                                        <h5 class="orange">
+                                        <h5 class="orange" style="font-family: 'Kanit', sans-serif;">
                                             โรงพยาบาลสัตว์
                                         </h5>
-                                        <p>
+                                        <p style="font-family: 'Kanit', sans-serif;">
                                             เวลาที่เพื่อนคู่ชีวิตป่วยท่านคงจะอยากได้โรงพยาบาลสัตว์ที่ดี อยู่ใกล้และค่ารักษาไม่แพงจนเกินไป เพื่อทำการตรวจรักษา ซึ่งเรามีโรงพยาบาลที่มีมาตรฐานที่พร้อมสัตวแพทย์ที่มีความเชี่ยวชาญให้บริการครอบคลุมในทุกพื้นเลยค่ะ
                                         </p>
                                     </div>
@@ -619,10 +619,10 @@
                                         </div>
                                     </div>
                                     <div class="context">
-                                        <h5 class="purple">
+                                        <h5 class="purple" style="font-family: 'Kanit', sans-serif;">
                                             อุปการะน้องๆ
                                         </h5>
-                                        <p>
+                                        <p style="font-family: 'Kanit', sans-serif;">
                                         ถ้าหากต้องการหาบ้านพักพิงหลังใหม่ให้น้องๆ เราก็มีบริการรองรับเพียงแค่เข้าไปประกาศในคอมมูนิตี้ของเรา หรือถ้าหากท่านต้องการหาเพื่อนคู่ชีวิต ก็สามารถเข้าไปค้นหาในคอมมูนิตี้ของเราได้เลยจ้า
                                         </p>
                                     </div>
@@ -637,10 +637,10 @@
                                         </div>
                                     </div>
                                     <div class="context">
-                                        <h5 class="purple">
+                                        <h5 class="purple" style="font-family: 'Kanit', sans-serif;">
                                             โรงแรมสัตว์เลี้ยง
                                         </h5>
-                                        <p>
+                                        <p style="font-family: 'Kanit', sans-serif;">
                                         เมื่อทาสชอบเที่ยว แต่ทาสก็ไม่สามารถที่จะพาเจ้าตัวแสบไปได้ทุกที่ จึงจำเป็นอย่างยิ่งที่ต้องหาสถานที่รับฝากน้องๆ สำหรับโรงแรมสัตว์เลี้ยงที่มีมาตรฐานสามารถค้นหาได้ที่นี่เลยจ้า
                                         </p>
                                     </div>
@@ -654,7 +654,7 @@
             <br><br>
             <section class="services-section-four"  style="background-color: #ffefef;padding-top:20px;padding-bottom:20px;border-top: 2px solid red;border-bottom: 2px solid red;;">
             <div class="auto-container">
-                <h4 class="text-center">บริการดีๆจาก <br class="d-block d-md-none"> ViiCHECK</h4>
+                <h4 class="text-center" style="font-family: 'Kanit', sans-serif;">บริการดีๆจาก <br class="d-block d-md-none"> ViiCHECK</h4>
                 <br>
                 <div class="row clearfix">
                     <!--Services Block-->
@@ -668,8 +668,8 @@
                                     <div class="icon-box d-flex justify-content-center d-block d-md-none">
                                         <img  width="50%" src="{{ asset('/peddyhub/images/sticker_vc/2.png') }}" class="img-fluid text-center " alt="">
                                     </div>
-                                    <h3 style="margin-left:15px;">ติดต่อเจ้าของรถ</h3>
-                                    <div style="margin-left:15px;" class="text">ติดต่อเจ้าของรถได้ง่ายๆ โดยผ่าน Line Official: @Viicheck เพียงแค่สแกน QR-CODE บนสติ๊กเกอร์</div>
+                                    <h3 style="margin-left:15px;font-family: 'Kanit', sans-serif;">ติดต่อเจ้าของรถ</h3>
+                                    <div style="margin-left:15px;font-family: 'Kanit', sans-serif;" class="text">ติดต่อเจ้าของรถได้ง่ายๆ โดยผ่าน Line Official: @Viicheck เพียงแค่สแกน QR-CODE บนสติ๊กเกอร์</div>
                                 </div>
                             </div>
                         </a>
@@ -685,8 +685,8 @@
                                     <div class="icon-box d-flex justify-content-center d-block d-md-none">
                                         <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/1.png') }}" class="img-fluid" alt="">
                                     </div>
-                                    <h3 style="margin-left:15px;">ติดต่อแจ้งเหตุฉุกเฉิน</h3>
-                                    <div style="margin-left:15px;" class="text">ติดต่อแจ้งเหตุฉุกเฉิน 24 ชั่วโมงเพียงแค่กดปุ่มก็จะมีเบอร์ที่จำเป็นแสดงขึ้นมา</div>
+                                    <h3 style="margin-left:15px;font-family: 'Kanit', sans-serif;">ติดต่อแจ้งเหตุฉุกเฉิน</h3>
+                                    <div style="margin-left:15px;font-family: 'Kanit', sans-serif;" class="text">ติดต่อแจ้งเหตุฉุกเฉิน 24 ชั่วโมงเพียงแค่กดปุ่มก็จะมีเบอร์ที่จำเป็นแสดงขึ้นมา</div>
                                 </div>
                             </a>
                         </div>
@@ -702,8 +702,8 @@
                                     <div class="icon-box d-flex justify-content-center d-block d-md-none">
                                         <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/4.png') }}" class="img-fluid" alt="">
                                     </div>
-                                    <h3 style="margin-left:15px;">แจ้งเตือน พรบ./ประกัน</h3>
-                                    <div style="margin-left:15px;" class="text">หายห่วงเรื่องลืมต่ออายุ พรบ./ประกันระบบจะแจ้งเตือนเมื่อใกล้วันครบกำหนด</div>
+                                    <h3 style="margin-left:15px;font-family: 'Kanit', sans-serif;">แจ้งเตือน พรบ./ประกัน</h3>
+                                    <div style="margin-left:15px;font-family: 'Kanit', sans-serif;" class="text">หายห่วงเรื่องลืมต่ออายุ พรบ./ประกันระบบจะแจ้งเตือนเมื่อใกล้วันครบกำหนด</div>
                                 </div>
                             </div>
                         </a>
@@ -719,8 +719,8 @@
                                     <div class="icon-box d-flex justify-content-center d-block d-md-none">
                                         <img width="50%" src="{{ asset('/peddyhub/images/sticker_vc/6.png') }}" class="img-fluid" alt="">   
                                     </div>
-                                    <h3 style="margin-left:15px;">โปรโมชั่นเกี่ยวกับยานพาหนะ</h3>
-                                    <div style="margin-left:15px;" class="text">โปรโมชั่นของยานพาหนะมากมายที่รอเสนอให้คุณใช้บริการรีบเลยก่อนหมดเวลา !</div>
+                                    <h3 style="margin-left:15px;font-family: 'Kanit', sans-serif;">โปรโมชั่นเกี่ยวกับยานพาหนะ</h3>
+                                    <div style="margin-left:15px;font-family: 'Kanit', sans-serif;" class="text">โปรโมชั่นของยานพาหนะมากมายที่รอเสนอให้คุณใช้บริการรีบเลยก่อนหมดเวลา !</div>
                                 </div>
                             </div>
                         </a>

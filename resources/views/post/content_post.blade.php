@@ -132,7 +132,7 @@
                     @endif
                 </div>
                 <div class="col-6 d-grid ">
-                    <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}" onclick="document.querySelector('#btn_to_top').classList.add('d-none'),show_all_comment('{{ $item->id }}');">
+                    <button type="button" class="btn likebtn btn-lg" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}" onclick="document.querySelector('#btn_to_top').classList.add('d-none'),document.querySelector('#sticky-header').classList.add('d-none'),show_all_comment('{{ $item->id }}') ;">
                         <b>
                             <i class="fas fa-comment-dots"></i>
                             <br>
@@ -154,12 +154,12 @@
     </div>    
 
     <!-- Modal Comment -->
-    <div class="modal fade" id="exampleModalScrollable{{ $item->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal fade " id="exampleModalScrollable{{ $item->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalScrollableTitle">ความคิดเห็น</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.querySelector('#btn_to_top').classList.remove('d-none');">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="document.querySelector('#btn_to_top').classList.remove('d-none'),document.querySelector('#sticky-header').classList.remove('d-none');;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -223,7 +223,7 @@
 
                                 </div>
                                 <div class="col-2">
-                                    <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 5px;background-color: #B8205B;" disabled onclick="submit_input_content_comment('{{ $item->id }}');">
+                                    <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 1px;background-color: #B8205B;width:40px;height:40px;" disabled onclick="submit_input_content_comment('{{ $item->id }}');">
                                         <i class="fas fa-arrow-right text-white"></i>
                                     </button>
                                 </div>
@@ -1170,4 +1170,13 @@
         return fuzzy ;
     }
 
+</script>
+<script>
+    if($('#exampleModalScrollable{{ $item->id }}').data('bs.modal').isShown == true){
+console.log("Modal is open");
+}
+    else{
+console.log("Modal is not open");
+
+    }
 </script>

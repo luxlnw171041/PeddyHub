@@ -157,7 +157,7 @@
           </div>
         </nav>
         <div class="main-header">
-          <div class="sticky-header">
+          <div class="sticky-header" id="sticky-header">
             <div class="auto-container clearfix">
               <!--Logo-->
               <div class="logo pull-left">

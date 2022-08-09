@@ -254,7 +254,7 @@
                                 <span class="orange"><i class="fas fa-paw"></i> </span>
                                 <span class="purple"><i class="fas fa-paw"></i> </span>
                             </p>
-                            <h3>
+                            <h3 class="text-capitalize">
                                 เอกสารเดินทาง
                                 <span class="wow pulse" data-wow-delay="1s"></span>
                             </h3>
@@ -306,11 +306,11 @@
                     <div class="heading">
                         <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
                             </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
-                        <h3>ข้อมูลสัตว์เลี้ยง <span class="wow pulse" data-wow-delay="1s"></span></h3>
+                        <h3 class="text-capitalize">ข้อมูลสัตว์เลี้ยง <span class="wow pulse" data-wow-delay="1s"></span></h3>
                         @if( request()->get('edit') != 'airplane')
                         <div class="faq wow fadeInRight">
                             <div class="d-flex justify-content-end">
-                                <button type="button" class="btn btn-11" onclick="location.href='?edit=airplane'">เพิ่มเอกสารเดินทาง</button>
+                                <button type="button" class="btn btn-11 text-capitalize" onclick="location.href='?edit=airplane'">เพิ่มเอกสารเดินทาง</button>
                             </div>
                         </div>
                         @endif
@@ -816,35 +816,35 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div style="padding: 7px;float: right;">
+                        <div style="padding: 7px;float: right;font-family: 'Sarabun', sans-serif;">
                             <input checked type="checkbox" name="check_all_alert" id="check_all_alert" onclick="click_check_all_alert();">&nbsp;&nbsp;ทั้งหมด
                         </div>
                     </div>
                     <br>
                     <div class="col-6">
-                        <div style="padding: 7px;">
+                        <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
                             <input checked type="checkbox" name="check_categories_1" id="check_categories_1" onclick="click_check();">
                             &nbsp;&nbsp;<i class="fas fa-dog"  style="font-size:20px;color:#F7B000;"></i>&nbsp;&nbsp;สุนัข
                         </div>
-                        <div style="padding: 7px;">
+                        <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
                             <input checked type="checkbox" name="check_categories_2" id="check_categories_2" onclick="click_check();">
                             &nbsp;&nbsp;<i class="fas fa-cat " style="font-size:20px;color:#02DBFF;"></i>&nbsp;&nbsp;แมว
                         </div>
-                        <div style="padding: 7px;">
+                        <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
                             <input checked type="checkbox" name="check_categories_3" id="check_categories_3" onclick="click_check();">
                             &nbsp;&nbsp;<i class="fas fa-dove" style="font-size:20px;color:#49AED9;"></i>&nbsp;&nbsp;นก
                         </div>
                     </div>
                     <div class="col-6">
-                        <div style="padding: 7px;">
+                        <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
                             <input checked type="checkbox" name="check_categories_4" id="check_categories_4" onclick="click_check();">
                             &nbsp;&nbsp;<i class="fas fa-fish" style="font-size:20px;color:#63AB86;"></i>&nbsp;&nbsp;ปลา
                         </div>
-                        <div style="padding: 7px;">
+                        <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
                             <input checked type="checkbox" name="check_categories_5" id="check_categories_5" onclick="click_check();">
                             &nbsp;&nbsp;<i class="fas fa-rabbit" style="font-size:20px;color:#DB4C75;"></i>&nbsp;&nbsp;สัตว์เล็ก
                         </div>
-                        <div style="padding: 7px;">
+                        <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
                             <input checked type="checkbox" name="check_categories_6" id="check_categories_6" onclick="click_check();">
                             &nbsp;&nbsp;<i class="fas fa-spider" style="font-size:20px;color:black;"></i>&nbsp;&nbsp;Exotic
                         </div>

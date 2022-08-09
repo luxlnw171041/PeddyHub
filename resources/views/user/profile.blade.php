@@ -204,7 +204,7 @@
                                     <div class="spec card">
                                         <ul>
                                             <li>
-                                                <h5 style="font-family: 'Kanit', sans-serif;">ข้อมูลส่วนตัว &nbsp;
+                                                <h5 class="text-capitalize" style="font-family: 'Kanit', sans-serif;">ข้อมูลส่วนตัว &nbsp;
                                                     @switch($data->profile->language)
                                                     @case('en')
                                                     <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
@@ -303,7 +303,7 @@
                                     <div class="spec card">
                                         <ul>
                                             <li>
-                                                <h5 style="font-family: 'Kanit', sans-serif;">พาสปอร์ต
+                                                <h5 class="text-capitalize" style="font-family: 'Kanit', sans-serif;">พาสปอร์ต
                                                 </h5>
                                             </li>
                                             <li>

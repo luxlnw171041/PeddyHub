@@ -28,7 +28,7 @@
             {{ csrf_field() }}
 
             <!-- Modal -->
-            <div class="modal fade" id="modal_pot" tabindex="-1" role="dialog" aria-labelledby="Title_new_post" aria-hidden="true">
+            <div  class="modal fade" id="modal_pot" tabindex="-1" role="dialog" aria-labelledby="Title_new_post" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -114,4 +114,14 @@
         document.querySelector('#photo').value = null ;
         document.querySelector('#i_xmark').classList.add('d-none');
     }
+</script>
+<script>
+    $('#modal_pot').on('shown.bs.modal', function (e) {
+        document.querySelector('#btn_to_top').classList.add('d-none');
+        document.querySelector('#sticky-header').classList.add('d-none');
+    })
+    $('#modal_pot').on('hide.bs.modal', function (e) {
+        document.querySelector('#btn_to_top').classList.remove('d-none');
+        document.querySelector('#sticky-header').classList.remove('d-none');
+    })
 </script>

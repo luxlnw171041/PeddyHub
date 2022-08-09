@@ -33,6 +33,11 @@
                     "label": "pet_name_1",
                     "data": "hello"
                   }
+                },
+                {
+                  "type": "image",
+                  "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male.png",
+                  "size": "20px"
                 }
               ],
               "position": "absolute",
@@ -41,26 +46,8 @@
               "backgroundColor": "#708090cc",
               "justifyContent": "center",
               "alignItems": "center",
-              "offsetStart": "70px"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male.png",
-                  "size": "27px"
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "50px",
-              "offsetTop": "10px",
               "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "10px"
+              "paddingEnd": "10px"
             },
             {
               "type": "box",
@@ -189,6 +176,11 @@
                     "label": "pet_name_2",
                     "data": "hello"
                   }
+                },
+                {
+                  "type": "image",
+                  "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",
+                  "size": "20px"
                 }
               ],
               "position": "absolute",
@@ -197,26 +189,8 @@
               "backgroundColor": "#708090cc",
               "justifyContent": "center",
               "alignItems": "center",
-              "offsetStart": "70px"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male2.png",
-                  "size": "27px"
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "50px",
-              "offsetTop": "10px",
               "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "10px"
+              "paddingEnd": "10px"
             },
             {
               "type": "box",
@@ -345,6 +319,11 @@
                     "label": "pet_name_3",
                     "data": "hello"
                   }
+                },
+                {
+                  "type": "image",
+                  "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male3.png",
+                  "size": "20px"
                 }
               ],
               "position": "absolute",
@@ -353,26 +332,8 @@
               "backgroundColor": "#708090cc",
               "justifyContent": "center",
               "alignItems": "center",
-              "offsetStart": "70px"
-            },
-            {
-              "type": "box",
-              "layout": "horizontal",
-              "contents": [
-                {
-                  "type": "image",
-                  "url": "https://www.peddyhub.com/peddyhub/images/img-icon/male3.png",
-                  "size": "27px"
-                }
-              ],
-              "position": "absolute",
-              "cornerRadius": "50px",
-              "offsetTop": "10px",
               "offsetStart": "10px",
-              "backgroundColor": "#708090cc",
-              "justifyContent": "center",
-              "alignItems": "center",
-              "paddingAll": "10px"
+              "paddingEnd": "10px"
             },
             {
               "type": "box",
