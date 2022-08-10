@@ -638,6 +638,40 @@ $(document).ready(function () {
         }
       }
     });
+
+    var owl = $('.owl-carousel-pet-card .owl-carousel');
+    owl.owlCarousel({
+        center: false,
+      items: 1,
+      loop: true,
+      stagePadding: 0,
+      margin: 20,
+      smartSpeed: 1000,
+      autoplay: true,
+      nav: false,
+      dots: false,
+      pauseOnHover: false,
+      responsive: {
+        0: {
+          margin: 20,
+          items: 7
+        },
+        700: {
+          margin: 20,
+          stagePadding: 0,
+          items: 7
+        },
+        600: {
+          margin: 20,
+          items: 7
+        },
+        1000: {
+          margin: 0,
+          stagePadding: 0,
+          items: 7
+        }
+      }
+    });
     
     var owl = $('.owl-carousel-lostpet .owl-carousel');
     owl.owlCarousel({

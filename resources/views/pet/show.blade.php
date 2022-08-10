@@ -167,25 +167,24 @@
                             <p id="text_tswip{{$pet->id}}" style="font-family: 'Kanit', sans-serif;font-size: 11px; line-height: 0.5;margin:0px;"> <b>ตลอดชีพ</b></p>
                             <p id="text_wswip{{$pet->id}}" style="font-family: 'Kanit', sans-serif;font-size: 10px;margin:0px;"> <b>วันหมดอายุ</b></p>
                             <p id="text_lswip{{$pet->id}}" class="notranslate" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;line-height: 0.5;color:#B8205B"> <b>Life Time</b></p>
-                            <p id="text_dswip{{$pet->id}}" class="notranslate" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;color:#B8205B"> <b>Date of Expiry</b></p>
+                            <p id="text_dswip{{$pet->id}}" class="notranslate" style="font-family: 'Kanit', sans-serif;font-size: 11px;margin:0px;color:#B8205B"> <b>EXP</b></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-center owl-carousel-two" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                <div class="col-12 text-center owl-carousel-pet-card" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
                 powered by
                     <div class="owl-carousel">
                         @php
                         $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
                         @endphp
                         @foreach($partner as $item)
-                        <div class="item" style="padding:0px;">
-                            <div class="testimon">
-                                <a href="{{$item->link}}" target="bank">
-                                    <img class="p-md-3 p-lg-3" style="width: 60%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
-                                </a>
+                            <div class="item" style="padding-top:5px;">
+                                <div class="testimon">
+                                    <a href="{{$item->link}}" target="bank">
+                                        <img class="p-md-3 p-lg-3" style="width: 80%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-
                         @endforeach
                     </div>
                 </div>
@@ -317,39 +316,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-center owl-carousel-two d-none d-lg-block" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                <div class="col-12 text-center owl-carousel-pet-card d-none d-lg-block" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
                     powered by
-                    <div class="owl-carousel">
-                        @php
-                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
-                        @endphp
+                    <div class="owl-carousel ">
                         @foreach($partner as $item)
-                        <div class="item" style="padding:0px;">
-                            <div class="testimon">
-                                <a href="{{$item->link}}" target="bank">
-                                    <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
-                                </a>
+                            <div class="item" style="padding-top:5px;">
+                                <div class="testimon">
+                                    <a class="d-flex justify-content-center" href="{{$item->link}}" target="bank">
+                                        <img class="" style="width: 50%;object-fit: contain;max-height: 112px;"width="50%" src="{{ url('storage/'.$item->logo )}}">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-12 text-center owl-carousel-two d-block d-md-none" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
-                    powered by
-                    <div class="owl-carousel">
-                        @php
-                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
-                        @endphp
-                        @foreach($partner as $item)
-                        <div class="item" style="padding:0px;">
-                            <div class="testimon">
-                                <a href="{{$item->link}}" target="bank">
-                                    <img class="p-md-3 p-lg-3" style="width: 60%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
-                                </a>
-                            </div>
-                        </div>
-
                         @endforeach
                     </div>
                 </div>
@@ -358,52 +335,6 @@
     </div>
 </div>
 
-
-<div class="container owl-carousel-two d-none d-lg-block" width="50px" style="width:480px;">
-    <div class="d-none card col-lg-12 col-12 " style="padding:10px;border: 2px solid #B8205B;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
-        <span style="font-family: 'Kanit', sans-serif;">
-            นอก pc
-        </span>
-        
-        <div class="owl-carousel">
-            @php
-            $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
-            @endphp
-            @foreach($partner as $item)
-            <div class="item" style="padding:0px;">
-                <div class="testimon">
-                    <a href="{{$item->link}}" target="bank">
-                        <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-<div class="col-12 owl-carousel-two d-block d-md-none" style="padding: 3px 3px 3px 3px; top:-50px">
-    <div class="d-none card col-lg-12 col-12 " style="padding:10px;border: 2px solid #B8205B;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
-        <span style="font-family: 'Kanit', sans-serif;">
-            นอก mb
-        </span>
-        
-        <div class="owl-carousel">
-            @php
-            $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
-            @endphp
-            @foreach($partner as $item)
-            <div class="item" style="padding:0px;">
-                <div class="testimon">
-                    <a href="{{$item->link}}" target="bank">
-                        <img class="p-md-3 p-lg-3" style="width: 100%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
-                    </a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</div>
 <br>
 <center>
     <div class="d-block d-md-none">
