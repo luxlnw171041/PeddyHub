@@ -194,7 +194,12 @@ aside {
             // console.log("START");
             // getLocation();
             initMap();
-            select_province();
+
+            var delayInMilliseconds = 1000; //1.5 second
+            setTimeout(function() {
+                select_province();
+            }, delayInMilliseconds);
+            
         });
 
         function getLocation() {

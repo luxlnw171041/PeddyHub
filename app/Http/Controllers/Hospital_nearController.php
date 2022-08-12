@@ -24,7 +24,12 @@ class Hospital_nearController extends Controller
         $perPage = 3;
         $hospital_near = "";
 
-        $hospital_recommend = Hospital_near::where('recommend', "Yes")->inRandomOrder()->limit(5)->get();
+        $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','hospital')->inRandomOrder()->limit(5)->get();
+
+        DB::table('hospital_nears')
+            ->update([
+                'type' => 'hospital',
+        ]);
 
         return view('hospital_near.index', compact('hospital_near','hospital_recommend'));
     }
@@ -131,7 +136,7 @@ class Hospital_nearController extends Controller
         $lat = $lat_lung_sp[0];
         $lng = $lat_lung_sp[1];
 
-        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL HAVING distance < $text_distance ORDER BY distance ", []);
+        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL AND type LIKE 'hospital' HAVING distance < $text_distance ORDER BY distance ", []);
 
         return $hos_near;
     }
@@ -142,17 +147,25 @@ class Hospital_nearController extends Controller
         $lat = $lat_lung_sp[0];
         $lng = $lat_lung_sp[1];
 
-        $hos_near_recommend = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend LIKE 'Yes' HAVING distance < 20 ORDER BY distance LIMIT 0 ,2", []);
+        $hos_near_recommend = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend LIKE 'Yes' AND type LIKE 'hospital' HAVING distance < 20 ORDER BY distance LIMIT 0 ,2", []);
 
         return $hos_near_recommend;
     }
 
     public function search_location_by_T_recommend($input_province , $input_amphoe , $input_tambon)
     {
+        $input_province = str_replace('จ.' , '' , $input_province);
+        $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+        $input_tambon = str_replace('ต.' , '' , $input_tambon);
+
+        $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+        $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+
         $hos_near = Hospital_near::where('recommend', "Yes")
-            ->where('tambon_th' , $input_tambon)
-            ->where('amphoe_th' , $input_amphoe)
-            ->where('changwat_th' , $input_province)
+            ->where('type' , 'hospital')
+            ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
+            ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+            ->where('changwat_th' , 'LIKE', "%$input_province%" )
             ->get();
 
         return $hos_near;
@@ -160,10 +173,18 @@ class Hospital_nearController extends Controller
 
     public function search_location_by_T($input_province , $input_amphoe , $input_tambon)
     {
+        $input_province = str_replace('จ.' , '' , $input_province);
+        $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+        $input_tambon = str_replace('ต.' , '' , $input_tambon);
+
+        $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+        $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+
         $hos_near = Hospital_near::where('recommend' , null)
-            ->where('tambon_th' , $input_tambon)
-            ->where('amphoe_th' , $input_amphoe)
-            ->where('changwat_th' , $input_province)
+            ->where('type' , 'hospital')
+            ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
+            ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+            ->where('changwat_th' , 'LIKE', "%$input_province%" )
             ->get();
 
         return $hos_near;
