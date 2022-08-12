@@ -26,10 +26,10 @@ class Hospital_nearController extends Controller
 
         $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','hospital')->inRandomOrder()->limit(5)->get();
 
-        DB::table('hospital_nears')
-            ->update([
-                'type' => 'hospital',
-        ]);
+        // DB::table('hospital_nears')
+        //     ->update([
+        //         'type' => 'hospital',
+        // ]);
 
         return view('hospital_near.index', compact('hospital_near','hospital_recommend'));
     }
