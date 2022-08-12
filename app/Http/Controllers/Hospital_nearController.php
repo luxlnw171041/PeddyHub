@@ -34,6 +34,24 @@ class Hospital_nearController extends Controller
         return view('hospital_near.index', compact('hospital_near','hospital_recommend'));
     }
 
+    public function pet_land_index(Request $request)
+    {
+        $latlng = $request->get('latlng');
+
+        echo $latlng ;
+        $perPage = 3;
+        $hospital_near = "";
+
+        $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','petland')->inRandomOrder()->limit(5)->get();
+
+        // DB::table('hospital_nears')
+        //     ->update([
+        //         'type' => 'hospital',
+        // ]);
+
+        return view('hospital_near.pet_land_index', compact('hospital_near','hospital_recommend'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -130,6 +148,8 @@ class Hospital_nearController extends Controller
         return redirect('hospital_near')->with('flash_message', 'Hospital_near deleted!');
     }
 
+
+    // hospital
     public function search_my_location($latlng , $text_distance)
     {
         $lat_lung_sp = explode(",",$latlng);
@@ -182,6 +202,67 @@ class Hospital_nearController extends Controller
 
         $hos_near = Hospital_near::where('recommend' , null)
             ->where('type' , 'hospital')
+            ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
+            ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+            ->where('changwat_th' , 'LIKE', "%$input_province%" )
+            ->get();
+
+        return $hos_near;
+    }
+
+    // PET LAND
+    public function search_my_location_petland($latlng , $text_distance)
+    {
+        $lat_lung_sp = explode(",",$latlng);
+        $lat = $lat_lung_sp[0];
+        $lng = $lat_lung_sp[1];
+
+        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL AND type LIKE 'petland' HAVING distance < $text_distance ORDER BY distance ", []);
+
+        return $hos_near;
+    }
+
+    public function search_my_location_recommend_petland($latlng , $text_distance)
+    {
+        $lat_lung_sp = explode(",",$latlng);
+        $lat = $lat_lung_sp[0];
+        $lng = $lat_lung_sp[1];
+
+        $hos_near_recommend = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend LIKE 'Yes' AND type LIKE 'petland' HAVING distance < 20 ORDER BY distance LIMIT 0 ,2", []);
+
+        return $hos_near_recommend;
+    }
+
+    public function search_location_by_T_recommend_petland($input_province , $input_amphoe , $input_tambon)
+    {
+        $input_province = str_replace('จ.' , '' , $input_province);
+        $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+        $input_tambon = str_replace('ต.' , '' , $input_tambon);
+
+        $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+        $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+
+        $hos_near = Hospital_near::where('recommend', "Yes")
+            ->where('type' , 'petland')
+            ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
+            ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+            ->where('changwat_th' , 'LIKE', "%$input_province%" )
+            ->get();
+
+        return $hos_near;
+    }
+
+    public function search_location_by_T_petland($input_province , $input_amphoe , $input_tambon)
+    {
+        $input_province = str_replace('จ.' , '' , $input_province);
+        $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+        $input_tambon = str_replace('ต.' , '' , $input_tambon);
+
+        $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+        $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+
+        $hos_near = Hospital_near::where('recommend' , null)
+            ->where('type' , 'petland')
             ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
             ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
             ->where('changwat_th' , 'LIKE', "%$input_province%" )

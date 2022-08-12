@@ -37,12 +37,21 @@ Route::get('/select_lat_lng/{province}/{amphoe}/{tambon}','API\LocationControlle
 
 Route::get('/change_language_fromline/{language}/{user_id}', 'API\API_language@change_language_fromline');
 
+// hospital_near 
 Route::get('search_my_location/{latlng}/{distance}', 'Hospital_nearController@search_my_location');
 Route::get('search_my_location_recommend/{latlng}/{distance}', 'Hospital_nearController@search_my_location_recommend');
 
 Route::get('search_location_by_T_recommend/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T_recommend');
-
 Route::get('search_location_by_T/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T');
+
+// petland_near
+Route::get('search_my_location_petland/{latlng}/{distance}', 'Hospital_nearController@search_my_location_petland');
+Route::get('search_my_location_recommend_petland/{latlng}/{distance}', 'Hospital_nearController@search_my_location_recommend_petland');
+
+Route::get('search_location_by_T_recommend_petland/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T_recommend_petland');
+Route::get('search_location_by_T_petland/{input_province}/{input_amphoe}/{input_tambon}', 'Hospital_nearController@search_location_by_T_petland');
+
+// ------------------
 
 Route::get('/search_data_user/{user_id}', 'Blood_bankController@search_data_user');
 Route::get('/search_data_pet_of_user/{user_id}', 'Blood_bankController@search_data_pet_of_user');

@@ -89,6 +89,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/pet/{id}', 'PetController@show');
 Route::get('hospital_near', 'Hospital_nearController@index');
+Route::get('petland_near', 'Hospital_nearController@pet_land_index');
 
 
 Route::get('/post', 'PostController@index');
@@ -107,6 +108,7 @@ Route::resource('pet_category', 'Pet_CategoryController');
 //RICH MENU LINE
 Route::get('/login_line_reg_pet', 'PetController@welcome_line'); // ลงทะเบียนสัตว์
 Route::get('/login_line_near_hospital', 'PetController@welcome_line_Hospital_near'); // รพ.ใกล้ฉัน
+Route::get('/login_line_near_petland', 'PetController@welcome_line_petland_near'); // รพ.ใกล้ฉัน
 Route::get('/login_line_lost_pet', 'Lost_PetController@lost_pet_line'); // ตามหาเจ้าตัวแสบ
 Route::get('/login_line_blood_bank', 'Blood_bankController@blood_bank_line');// หน้าindex ธนาคารเลือด
 Route::get('/login_line_profile', 'ProfileController@profile_edit_line');// แก้ไขโปรไฟล์
