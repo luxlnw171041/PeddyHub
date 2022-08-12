@@ -119,9 +119,9 @@ Route::get('/login_line_petdating', function () {
     return view('soon');
 });
 
-Route::get('/login_line_near_petland', function () {
-    return view('soon2');
-});
+// Route::get('/login_line_near_petland', function () {
+//     return view('soon2');
+// });
 
 Route::middleware(['auth', 'role:admin-partner,partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
