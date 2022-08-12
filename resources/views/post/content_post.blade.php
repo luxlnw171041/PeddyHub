@@ -77,6 +77,7 @@
                             $count_all_comment = "ความคิดเห็น " . count($all_comment);
                         }
                     @endphp
+
                     <span style="float:right;" class="comment" data-toggle="modal" data-target="#exampleModalScrollable{{ $item->id }}" onclick="document.querySelector('#btn_to_top').classList.add('d-none'),show_all_comment('{{ $item->id }}');">
                         {{ $count_all_comment }}&nbsp;
                     </span>
@@ -254,6 +255,17 @@
       </div>
     </div>
     <!-- END Modal delete comment-->
+
+    <script>
+        if($('#exampleModalScrollable{{ $item->id }}').data('bs.modal').isShown == true){
+    console.log("Modal is open");
+    }
+        else{
+    console.log("Modal is not open");
+
+        }
+    </script>
+
 @endforeach
 
 @if(Auth::check())
@@ -1170,13 +1182,4 @@
         return fuzzy ;
     }
 
-</script>
-<script>
-    if($('#exampleModalScrollable{{ $item->id }}').data('bs.modal').isShown == true){
-console.log("Modal is open");
-}
-    else{
-console.log("Modal is not open");
-
-    }
 </script>
