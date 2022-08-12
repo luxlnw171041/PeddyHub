@@ -47,7 +47,7 @@
 
         <section class="coming">
             <div class="container">
-                <ul data-countdown="2022/09/20 8:00:00" class="timer text-center">
+                <ul data-countdown="2022/08/14 12:00:00" class="timer text-center">
                     <li>
                         <h2 class="days">264</h2>
                         <h4>Days</h4>
