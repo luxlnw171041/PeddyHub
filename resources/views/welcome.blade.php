@@ -29,11 +29,11 @@
                                 <div class="button wow fadeInUp" >
                                     @if(Auth::check())
                                         <a style="font-family: 'Kanit', sans-serif;" href="{{ url('/pet/create') }}" class="btn main" title="contact">
-                                            Register <i class="fas fa-paw"></i>
+                                            Register pet <i class="fas fa-paw"></i>
                                         </a>
                                     @else
                                         <a style="font-family: 'Kanit', sans-serif;" href="{{'login'}}?redirectTo={{ url('/') }}/pet/create" class="btn main" title="contact">
-                                            Register <i class="fas fa-paw"></i>
+                                            Register pet <i class="fas fa-paw"></i>
                                         </a>
                                     @endif
                                 </div>

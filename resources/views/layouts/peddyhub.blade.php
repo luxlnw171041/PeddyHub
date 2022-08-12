@@ -111,18 +111,53 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto">
+                <!-- <li class="nav-item dropdown">
+                  <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle";>
+                    Home page
+                  </a>
+                </li> -->
                 <li class="nav-item dropdown">
-                  <a href="{{ url('/') }}" class="hvr-overline-from-center nav-link dropdown-toggle">Home page</a>
+                  <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                  Community</a>
+                  <ul class="dropdown-menu notranslate">
+                    <li>
+                      <a href="{{ url('/post') }}">
+                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/14.png') }}" style="width: 30px;">
+                          &nbsp;&nbsp;&nbsp;PEDDyShare
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url('/lost_pet') }}">
+                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" style="width: 30px;">
+                          &nbsp;&nbsp;&nbsp;ตามหาสัตว์เลี้ยง
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item dropdown">
-                  <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle">Community</a>
+                  <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle" data-bs-toggle="dropdown">Near Me</a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="{{ url('/hospital_near') }}">
+                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/18.png') }}" style="width: 30px;">
+                          &nbsp;&nbsp;&nbsp;Hospital Near Me
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ url('/petland_near') }}">
+                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/location.png') }}" style="width: 30px;">
+                          &nbsp;&nbsp;&nbsp;pet friendly
+                      </a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="nav-item dropdown">
                   <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle">Adoption</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a href="{{ url('/hospital_near') }}" class="hvr-overline-from-center nav-link dropdown-toggle">Hospital Near Me</a>
+                  <a href="{{ url('/product') }}" class="hvr-overline-from-center nav-link dropdown-toggle notranslate">PET SHOP</a>
                 </li>
+
                 @guest
                 <li class="nav-item dropdown">
                   <a href="{{ route('login') }}?redirectTo={{ url()->full() }}" class="hvr-overline-from-center nav-link dropdown-toggle">เข้าสู่ระบบ</a>
@@ -130,20 +165,46 @@
                 @else
                 <li class="nav-item dropdown">
                   <a href="#" style="font-size: 20px; color:#B8205B;" class="hvr-overline-from-center nav-link dropdown-toggle notranslate" data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
-                  <ul class="dropdown-menu">
-                    <li><a href="{{ url('/user') }}">Profile</a></li>
-                    <li><a href="{{ url('/user#pets') }}">Pet</a></li>
+                  <ul class="dropdown-menu notranslate">
+                    <li>
+                        <a href="{{ url('/user') }}">
+                          <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/11.png') }}" style="width: 30px;">
+                          &nbsp;&nbsp;&nbsp;Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('/user#pets') }}">
+                        <img src="{{ url('/peddyhub/images/sticker/catanddog.png') }}" style="width: 35px;">
+                          &nbsp;&nbsp;&nbsp;My pet
+                        </a>
+                    </li>
                     @if(Auth::user()->role == "admin" )
-                    <li><a href="{{ url('/text_topic') }}">admin</a></li>
+                    <li>
+                        <a href="{{ url('/text_topic') }}">
+                          <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/21.1.png') }}" style="width: 35px;">
+                          &nbsp;&nbsp;&nbsp;admin
+                        </a>
+                    </li>
                     @elseif(Auth::user()->role == "admin-partner" )
-                    <li><a href="{{ url('/partner_index') }}">admin-partner</a></li>
+                    <li>
+                        <a href="{{ url('/partner_index') }}">
+                          <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/21.1.png') }}" style="width: 35px;">
+                          &nbsp;&nbsp;&nbsp;admin-partner
+                        </a>
+                    </li>
                     @elseif(Auth::user()->role == "partner" )
-                    <li><a href="{{ url('/partner_index') }}">admin-partner</a></li>
+                    <li>
+                      <a href="{{ url('/partner_index') }}">
+                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/21.1.png') }}" style="width: 35px;">
+                          &nbsp;&nbsp;&nbsp;partner
+                      </a>
+                    </li>
                     @endif
                     <li>
                       <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/12.png') }}" style="width: 30px;">
+                          &nbsp;&nbsp;&nbsp;{{ __('Logout') }}
                       </a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -180,16 +241,49 @@
                       <li class="d-none">
                         <div id="google_translate_element" onchange="check_language();"></div>
                       </li>
-                      <li><a href="{{ url('/') }}">Home page</a></li>
-                      <li>
-                        <a href="{{ url('/post') }}" class="hvr-overline-from-center nav-link dropdown-toggle">Community</a>
+                      <!-- <li><a href="{{ url('/') }}">Home page</a></li> -->
+                      <li class="nav-item dropdown">
+                        <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        Community</a>
+                        <ul class="dropdown-menu notranslate">
+                          <li>
+                            <a href="{{ url('/post') }}">
+                              <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/14.png') }}" style="width: 30px;">
+                                &nbsp;&nbsp;&nbsp;PEDDyShare
+                            </a>
+                          </li>
+                          <li>
+                            <a href="{{ url('/lost_pet') }}">
+                              <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" style="width: 30px;">
+                                &nbsp;&nbsp;&nbsp;ตามหาสัตว์เลี้ยง
+                            </a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle" data-bs-toggle="dropdown">Near Me</a>
+                        <ul class="dropdown-menu">
+                          <li>
+                            <a href="{{ url('/hospital_near') }}">
+                              <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/18.png') }}" style="width: 30px;">
+                                &nbsp;&nbsp;&nbsp;Hospital Near Me
+                            </a>
+                          </li>
+                          <li>
+                            <a href="{{ url('/petland_near') }}">
+                              <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/location.png') }}" style="width: 30px;">
+                                &nbsp;&nbsp;&nbsp;pet friendly
+                            </a>
+                          </li>
+                        </ul>
                       </li>
                       <li class="nav-item dropdown">
                         <a href="{{ url('/adoptpet') }}" class="hvr-overline-from-center nav-link dropdown-toggle">Adoption</a>
                       </li>
                       <li class="nav-item dropdown">
-                        <a href="{{ url('/hospital_near') }}" class="hvr-overline-from-center nav-link dropdown-toggle">Hospital Near Me</a>
+                        <a href="{{ url('/product') }}" class="hvr-overline-from-center nav-link dropdown-toggle notranslate">PET SHOP</a>
                       </li>
+                      
                       @guest
                       <li class="nav-item dropdown">
                         <a href="{{'login'}}" class="hvr-overline-from-center nav-link dropdown-toggle">LOGIN</a>
@@ -198,18 +292,46 @@
                       <li class="nav-item dropdown">
                         <a href="#" style="color:#B8205B;" class="notranslate hvr-overline-from-center nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ Auth::user()->profile->name }}</a>
                         <ul class="dropdown-menu">
-                          <li><a href="{{ url('/user') }}">Profile</a></li>
-                          <li><a href="{{ url('/user#pets') }}">Pet</a></li>
+                          <li>
+                              <a href="{{ url('/user') }}">
+                                <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/11.png') }}" style="width: 30px;">
+                                &nbsp;&nbsp;&nbsp;Profile
+                              </a>
+                          </li>
+                          <li>
+                              <a href="{{ url('/user#pets') }}">
+                              <img src="{{ url('/peddyhub/images/sticker/catanddog.png') }}" style="width: 35px;">
+                                &nbsp;&nbsp;&nbsp;My pet
+                              </a>
+                          </li>
                           @if(Auth::user()->role == "admin" )
-                          <li><a href="{{ url('/text_topic') }}">admin</a></li>
+                          <li>
+                              <a href="{{ url('/text_topic') }}">
+                                <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/21.1.png') }}" style="width: 35px;">
+                                &nbsp;&nbsp;&nbsp;admin
+                              </a>
+                          </li>
                           @elseif(Auth::user()->role == "admin-partner" )
-                          <li><a href="{{ url('/check_in_admin') }}">admin-partner</a></li>
+                          <li>
+                              <a href="{{ url('/partner_index') }}">
+                                <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/21.1.png') }}" style="width: 35px;">
+                                &nbsp;&nbsp;&nbsp;admin-partner
+                              </a>
+                          </li>
+                          @elseif(Auth::user()->role == "partner" )
+                          <li>
+                            <a href="{{ url('/partner_index') }}">
+                              <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/21.1.png') }}" style="width: 35px;">
+                                &nbsp;&nbsp;&nbsp;partner
+                            </a>
+                          </li>
                           @endif
 
                           <li>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                             document.getElementById('logout-form').submit();">
-                              {{ __('Logout') }}
+                              <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/12.png') }}" style="width: 30px;">
+                          &nbsp;&nbsp;&nbsp;{{ __('Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                               @csrf
