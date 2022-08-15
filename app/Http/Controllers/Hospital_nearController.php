@@ -219,7 +219,7 @@ class Hospital_nearController extends Controller
         $lat = $lat_lung_sp[0];
         $lng = $lat_lung_sp[1];
 
-        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL AND type LIKE 'petland' HAVING distance < $text_distance ORDER BY distance ", []);
+        $hos_near = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend IS NULL AND type LIKE '%petland%' HAVING distance < $text_distance ORDER BY distance ", []);
 
         return $hos_near;
     }
@@ -230,7 +230,7 @@ class Hospital_nearController extends Controller
         $lat = $lat_lung_sp[0];
         $lng = $lat_lung_sp[1];
 
-        $hos_near_recommend = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend LIKE 'Yes' AND type LIKE 'petland' HAVING distance < 20 ORDER BY distance LIMIT 0 ,2", []);
+        $hos_near_recommend = DB::select("SELECT *,( 3959 * acos( cos( radians($lat) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians($lng) ) + sin( radians($lat) ) * sin( radians( lat ) ) ) ) AS distance FROM hospital_nears WHERE recommend LIKE 'Yes' AND type LIKE '%petland%' HAVING distance < 20 ORDER BY distance LIMIT 0 ,2", []);
 
         return $hos_near_recommend;
     }
@@ -245,7 +245,7 @@ class Hospital_nearController extends Controller
         $input_tambon = str_replace('แขวง' , '' , $input_tambon);
 
         $hos_near = Hospital_near::where('recommend', "Yes")
-            ->where('type' , 'petland')
+            ->where('type' , 'LIKE', '%petland%')
             ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
             ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
             ->where('changwat_th' , 'LIKE', "%$input_province%" )
@@ -264,7 +264,7 @@ class Hospital_nearController extends Controller
         $input_tambon = str_replace('แขวง' , '' , $input_tambon);
 
         $hos_near = Hospital_near::where('recommend' , null)
-            ->where('type' , 'petland')
+            ->where('type' ,'LIKE', '%petland%')
             ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
             ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
             ->where('changwat_th' , 'LIKE', "%$input_province%" )
