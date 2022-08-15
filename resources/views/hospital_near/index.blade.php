@@ -84,6 +84,40 @@ aside {
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 wow fadeInLeft main-content order-md-1 order-2">
                         <div id="div_recommend" class="">
+                            @foreach($hospital_recommend_no1 as $item_no1)
+                                <div class="card main-shadow main-radius" onclick="view_markar('{{ $item_no1->lat }}' , '{{ $item_no1->lng }}','{{ $item_no1->name }}');">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <h6>{{ $item_no1->name }}</h6>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="btn btn-sm btn-success float-right" style="margin-top: -10px;">
+                                                แนะนำ <i class="fa-solid fa-badge-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">                                         
+                                            <p style="margin-bottom:0px;">
+                                                <i style="color:#b81f5b;padding-right:10px;" class="fa-solid fa-location-crosshairs" ></i>
+                                                {{ $item_no1->address }}
+                                            </p>
+                                            <p style="margin-bottom:0px;">
+                                                <i style="color:green;padding-right:10px;" class="fa-solid fa-timer" ></i>
+                                                {{ $item_no1->business_hours }}
+                                            </p>
+                                            <p style="margin-bottom:0px;">
+                                                <a href="tel:{{ $item_no1->phone }}">
+                                                    <i style="color:blue;padding-right:10px;" class="fa-solid fa-phone-volume" ></i>
+                                                    {{ $item_no1->phone }}
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div class="col-12 col-md-5">
+                                            <img src="{{ $item_no1->photo }}" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            
                             @foreach($hospital_recommend as $item)
                                 <div class="card main-shadow main-radius" onclick="view_markar('{{ $item->lat }}' , '{{ $item->lng }}','{{ $item->name }}');">
                                     <div class="row">

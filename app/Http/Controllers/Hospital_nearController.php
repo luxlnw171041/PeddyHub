@@ -26,12 +26,14 @@ class Hospital_nearController extends Controller
 
         $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','hospital')->inRandomOrder()->limit(5)->get();
 
+        $hospital_recommend_no1 = Hospital_near::where('recommend', "Yes_01")->where('type','hospital')->inRandomOrder()->limit(1)->get();
+       
         // DB::table('hospital_nears')
         //     ->update([
         //         'type' => 'hospital',
         // ]);
 
-        return view('hospital_near.index', compact('hospital_near','hospital_recommend'));
+        return view('hospital_near.index', compact('hospital_near','hospital_recommend','hospital_recommend_no1'));
     }
 
     public function pet_land_index(Request $request)
