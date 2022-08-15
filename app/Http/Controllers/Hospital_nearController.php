@@ -24,9 +24,9 @@ class Hospital_nearController extends Controller
         $perPage = 3;
         $hospital_near = "";
 
-        $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','hospital')->inRandomOrder()->limit(5)->get();
+        $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','LIKE','%hospital%')->inRandomOrder()->limit(5)->get();
 
-        $hospital_recommend_no1 = Hospital_near::where('recommend', "Yes_01")->where('type','hospital')->inRandomOrder()->limit(1)->get();
+        $hospital_recommend_no1 = Hospital_near::where('recommend', "Yes_01")->where('type','LIKE','%hospital%')->inRandomOrder()->limit(1)->get();
        
         // DB::table('hospital_nears')
         //     ->update([
@@ -44,7 +44,7 @@ class Hospital_nearController extends Controller
         $perPage = 3;
         $hospital_near = "";
 
-        $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','petland')->inRandomOrder()->limit(5)->get();
+        $hospital_recommend = Hospital_near::where('recommend', "Yes")->where('type','LIKE' , '%petland%')->inRandomOrder()->limit(5)->get();
 
         // DB::table('hospital_nears')
         //     ->update([
