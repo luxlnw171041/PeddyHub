@@ -165,6 +165,7 @@ aside {
         <input type="text" class="d-none" name="language_user" id="language_user" value="th">
     @endif
     <a id="btn_change_language" class="d-none" href=""></a>
+    <a href="#map" id="tag_a_to_map" class="d-none"></a>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgrxXDgk1tgXngalZF3eWtcTWI-LPdeus&language=th" ></script>
     <style type="text/css">
@@ -1214,6 +1215,7 @@ aside {
             });
 
             infoWindow.open(map);
+            document.querySelector('#tag_a_to_map').click();
 
         }
 
