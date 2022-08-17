@@ -159,7 +159,7 @@ aside {
         </section>
     </div>
     <br>
-    @if(Auth::ssss())
+    @if(Auth::check())
         <input type="text" class="d-none" name="language_user" id="language_user" value="{{ Auth::user()->profile->language }}">
     @else
         <input type="text" class="d-none" name="language_user" id="language_user" value="th">
