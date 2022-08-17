@@ -15,7 +15,7 @@
                         <form method="POST" action="{{ url('/pet') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
-                            @include ('pet.form', ['formMode' => 'create'])
+                            @include ('pet.form_create', ['formMode' => 'create'])
 
                         </form>
             </div>
