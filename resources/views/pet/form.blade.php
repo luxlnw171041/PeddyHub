@@ -1103,9 +1103,9 @@
         fetch("{{ url('/') }}/api/select_category/")
             .then(response => response.json())
             .then(result => {
-                if (!{{$pet_category_id}}) {
-                    select_category.innerHTML = "";
-                }
+                // if (!{{$pet_category_id}}) {
+                //     select_category.innerHTML = "";
+                // }
                 let option_select = document.createElement("option");
                 option_select.text = "- เลือกประเภท -";
                 option_select.value = "";
