@@ -65,7 +65,7 @@
                         <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i> </span><span
                                 class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i
                                     class="fas fa-paw"></i> </span></p>
-                        <h4 class="wow fadeInDown" style="font-family: 'Kanit', sans-serif;">เพ็ดดี้ฮับ ร่วมมือกับ นกแอร์ พาเจ้าตัวแสบขึ้นเครื่องได้รวดเร็วกว่าเดิมเพียงลงทะเบียนสัตว์เลี้ยงและเพิ่มเอกสารที่จำเป็น <span class="wow pulse" data-wow-delay="1s" style="color: #b8205b;">ลงทะเบียนเลย!!</span></h4>
+                        <h4 class="wow fadeInDown" style="font-family: 'Kanit', sans-serif;">เพ็ทดี้ฮับ ร่วมมือกับ นกแอร์ พาเจ้าตัวแสบขึ้นเครื่องได้รวดเร็วกว่าเดิมเพียงลงทะเบียนสัตว์เลี้ยงและเพิ่มเอกสารที่จำเป็น <span class="wow pulse" data-wow-delay="1s" style="color: #b8205b;">ลงทะเบียนเลย!!</span></h4>
                     </div>
                     <br>
                     <div class="col-12 owl-carousel-3 align-self-center" style="padding:0px;">
