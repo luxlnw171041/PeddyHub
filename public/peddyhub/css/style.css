@@ -33,7 +33,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i|Merriweather:300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Kaushan+Script:300,300i,400,400i,600,600i,700,700i,800,800i|Sansita+Swashed:400,400i|Oxygen:400,400i|Nunito:400,400i|Nunito+Sans:400,400i|Source+Sans+Pro:400,400i|Paprika:400,400i|Cabin:400,400i|Montserrat:400,400i|Quicksand:400,400i|Covered+By+Your+Grace:400|Expletus+Sans:400, 400i|Lora:400, 400i|Amita:400, 400i|Merinda:400, 400i|Merinda+One:400, 400i');
 /* @import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap'); */
 
-/*font-family: 'Open Sans', sans-serif;
+/*font-family: 'Kanit', sans-serif;
 font-family: 'Merriweather', serif;
 font-family: 'Lato', sans-serif;
 font-family: 'Kaushan Script', sans-serif;*/
@@ -82,7 +82,43 @@ font-family: 'Kaushan Script', sans-serif;*/
     height: 100%;
 }
 
+.parent {
+    position: relative;
+    /* define context for absolutly positioned children */
+    /* size set by image in this case */
+    background-image: url('https://placehold.it/400');
+    background-size: cover;
+    background-position: center center;
+}
 
+.parent img {
+    display: block;
+}
+
+.parent:after {
+    content: '';
+    /* :after has to have a content... but you don't want one */
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0);
+
+    transition: 1s;
+}
+
+.parent:hover:after {
+    background: rgba(0, 0, 0, .5);
+}
+
+.parent:hover .child {
+    opacity: 1;
+}
 
 .child {
     position: absolute;
@@ -132,7 +168,9 @@ font-family: 'Kaushan Script', sans-serif;*/
   }
   
  /* end spin animation */
-
+.font-kanit{
+    font-family: 'Kanit', sans-serif;
+}
  .modal-backdrop {
     display: none;
   }
@@ -161,7 +199,7 @@ body {
     background-repeat: no-repeat;
     background-position: center top;
     -webkit-font-smoothing: antialiased;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
     top:0px !important;; 
 }
 
@@ -169,6 +207,7 @@ a {
     text-decoration: none;
     cursor: pointer;
     color: #B81F5B;
+    font-family: 'Kanit', sans-serif;
 }
 
 .no-padding {
@@ -187,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0px;
     background: none;
     line-height: 1.6em;
-    font-family: 'Merriweather', serif;
+    font-family: 'Kanit', sans-serif;
 }
 
 button:focus {
@@ -204,7 +243,7 @@ textarea {
 p, .text {
     position: relative;
     line-height: 1.8em;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
 }
 
 .strike-through {
@@ -2460,7 +2499,7 @@ img {
     color: #333333;
     font-size: 30px;
     margin-left: 8px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
 }
 
 .fact-counter .count-outer .count-text {
@@ -3312,7 +3351,7 @@ img {
     font-weight: 700;
     margin-top: 8px;
     text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
 }
 
 /*** 
@@ -3873,7 +3912,7 @@ img {
 
 .widget-post .text a {
     color: #444444;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
     transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;

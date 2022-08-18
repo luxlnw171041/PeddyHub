@@ -705,6 +705,7 @@
                 </a>
               </div>
             </div>
+            <div class="d-block d-md-none" style="margin-top: 15px;"></div>
             <div class="col-2 align-self-center" style="padding:0px;">
               <div class="image">
                 <a href="https://www.trustmarkthai.com/callbackData/popup.php?data=e344-28-5-49449596d2ceb578b715eeb176566617f8eaa34dd" target="bank">
@@ -793,6 +794,7 @@
                 </div> -->
               </div>
             </div>
+            <div class="d-block d-md-none" style="margin-top: 15px;"></div>
 
             <!-- <div class="col-12  d-flex justify-content-start" style="padding-bottom:10px;">
                 <div class="copyright text-left" style="margin-top:-15px;">

@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <p class="mt-1 mb-0">{{ $post->detail }} </p>
+                                <p class="mt-1 mb-0 notranslate">{{ $post->detail }} </p>
                                 <br>
                             </div>
                             <div class="elements">
@@ -661,10 +661,15 @@
                     btn_for_like.setAttributeNode(onclick_btn);
                 }else{
                     var please_login = document.getElementById("please_login");
+                        please_login.style.zIndex = "9999999";
                         please_login.className = "show";
                     setTimeout(function () {
                         please_login.className = 'hide';
                     }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
+                    }, 3000);
                 }
 
         });
@@ -703,10 +708,15 @@
                     btn_for_like.setAttributeNode(onclick_btn);
                 }else{
                     var please_login = document.getElementById("please_login");
+                        please_login.style.zIndex = "9999999";
                         please_login.className = "show";
                     setTimeout(function () {
                         please_login.className = 'hide';
                     }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
+                    }, 3000);
                 }
 
         });
@@ -756,10 +766,15 @@
                     btn_like_comment.setAttributeNode(onclick_btn);
                 }else{
                     var please_login = document.getElementById("please_login");
+                        please_login.style.zIndex = "9999999";
                         please_login.className = "show";
                     setTimeout(function () {
                         please_login.className = 'hide';
                     }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
+                    }, 3000);
                 }
 
         });
@@ -802,10 +817,15 @@
                     btn_like_comment.setAttributeNode(onclick_btn);
                 }else{
                     var please_login = document.getElementById("please_login");
+                        please_login.style.zIndex = "9999999";
                         please_login.className = "show";
                     setTimeout(function () {
                         please_login.className = 'hide';
                     }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
+                    }, 3000);
                 }
 
         });

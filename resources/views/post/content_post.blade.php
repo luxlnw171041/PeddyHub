@@ -155,7 +155,7 @@
     </div>    
 
     <!-- Modal Comment -->
-    <div class="modal fade " id="exampleModalScrollable{{ $item->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" >
+    <div class="modal fade p-0" id="exampleModalScrollable{{ $item->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -673,9 +673,15 @@
                 }else{
                     var please_login = document.getElementById("please_login");
                         please_login.className = "show";
+                        please_login.style.zIndex = "9999999";
+
                     setTimeout(function () {
                         please_login.className = 'hide';
                     }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
+                    }, 3000);
                 }
 
         });
@@ -715,9 +721,15 @@
                 }else{
                     var please_login = document.getElementById("please_login");
                         please_login.className = "show";
+                        please_login.style.zIndex = "-9999999";
+
                     setTimeout(function () {
                         please_login.className = 'hide';
                     }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
+                    }, 3000);
                 }
 
         });
@@ -768,8 +780,13 @@
                 }else{
                     var please_login = document.getElementById("please_login");
                         please_login.className = "show";
+                        please_login.style.zIndex = "9999999";
                     setTimeout(function () {
                         please_login.className = 'hide';
+                    }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
                     }, 2000);
                 }
 
@@ -813,10 +830,15 @@
                     btn_like_comment.setAttributeNode(onclick_btn);
                 }else{
                     var please_login = document.getElementById("please_login");
+                        please_login.style.zIndex = "9999999";
                         please_login.className = "show";
                     setTimeout(function () {
                         please_login.className = 'hide';
                     }, 2000);
+
+                    setTimeout(function () {
+                        please_login.style.zIndex = "-9999999";
+                    }, 3000);
                 }
 
         });
@@ -830,10 +852,16 @@
         navigator.clipboard.writeText(copyText);
 
         var copy_sucess = document.getElementById("copy_sucess");
+        copy_sucess.style.zIndex = "9999999";
         copy_sucess.className = "show";
+
         setTimeout(function () {
             copy_sucess.className = 'hide';
         }, 2000);
+
+        setTimeout(function () {
+            copy_sucess.style.zIndex = "-9999999";
+        }, 3000);
     }
 
 

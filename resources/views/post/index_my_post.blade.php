@@ -52,7 +52,6 @@
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999; 
   background-color: #242424;padding:15px; 
   border-radius:10px;color:white;
   font-family: 'Kanit', sans-serif;" 
@@ -64,7 +63,6 @@
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999; 
   background-color: #242424;padding:15px; 
   border-radius:10px;color:white;
   font-family: 'Kanit', sans-serif;" 

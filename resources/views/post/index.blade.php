@@ -49,10 +49,9 @@
 </style>
 
 <div id="copy_sucess" style="position: fixed;
-  top: 80%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999; 
   background-color: #242424;padding:15px; 
   border-radius:10px;color:white;
   font-family: 'Kanit', sans-serif;" 
@@ -61,10 +60,9 @@
     <center>คัดลอกลิงก์แล้ว</center>
 </div>
 <div id="please_login" style="position: fixed;
-  top: 80%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999; 
   background-color: #242424;padding:15px; 
   border-radius:10px;color:white;
   font-family: 'Kanit', sans-serif;" 
