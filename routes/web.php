@@ -167,3 +167,4 @@ Route::resource('disease', 'DiseaseController');
 Route::get('test_for_dev/send_line_lost_pet', 'test_for_devController@send_line_lost_pet');
 Route::get('test_for_dev', 'test_for_devController@test_for_dev');
 Route::get('test_for_dev/test_send_png', 'test_for_devController@test_send_png');
+Route::get('test_for_dev/lat_lng_pro', 'test_for_devController@lat_lng_pro');

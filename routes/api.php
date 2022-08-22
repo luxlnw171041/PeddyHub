@@ -34,6 +34,8 @@ Route::get('/select_province/','API\LocationController@show_location_P');
 Route::get('/select_amphoe/{province}','API\LocationController@show_location_A');
 Route::get('/select_tambon/{province}/{amphoe}','API\LocationController@show_location_T');
 Route::get('/select_lat_lng/{province}/{amphoe}/{tambon}','API\LocationController@show_location_latlng');
+Route::get('/select_lat_lng_province/{province}','API\LocationController@show_location_latlng_province');
+Route::get('/select_lat_lng_amphoe/{province}/{amphoe}','API\LocationController@show_location_latlng_amphoe');
 
 Route::get('/change_language_fromline/{language}/{user_id}', 'API\API_language@change_language_fromline');
 

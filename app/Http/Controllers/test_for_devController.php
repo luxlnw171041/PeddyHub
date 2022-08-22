@@ -183,6 +183,43 @@ class test_for_devController extends Controller
 
     }
 
+    function lat_lng_pro()
+    {
+        $province = "จ.ชัยภูมิ" ;
+
+        $latlng = DB::table('lat_longs')
+            ->where('changwat_th', $province)
+            ->get();
+
+        $i = 1 ;
+        $lat = 0 ;
+        $lng = 0 ;
+
+        foreach ($latlng as $item) {
+            
+            $lat  = number_format($item->lat + $lat , 4, '.', '') ;
+            $lng  = number_format($item->lng + $lng , 4, '.', '') ;
+
+            $x_lat = number_format($lat / $i , 4, '.', '') ;
+            $x_lng = number_format($lng / $i , 4, '.', '') ;
+
+
+            $i = $i + 1 ;
+        }
+
+
+        $lat_lng_arr = array();
+
+        $lat_lng_arr['lat'] = $x_lat ;
+        $lat_lng_arr['lng'] = $x_lng ;
+
+        echo "<pre>";
+        print_r($lat_lng_arr);
+        echo "<pre>";
+
+        exit();
+    }
+
 
 
 }

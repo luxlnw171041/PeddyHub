@@ -63,13 +63,13 @@ aside {
                                 <input type="text" name="input_province" id="input_province" class="form-control d-none" readonly>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="check_change_amphoe();" required>
                                     <option value="" selected>- เลือกอำเภอ -</option>
                                 </select>
                                 <input type="text" name="input_amphoe" id="input_amphoe" class="form-control d-none" readonly>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
+                                <select name="select_tambon" id="select_tambon" class="form-control" onchange="check_change_district();" required>
                                     <option value="" selected>- เลือกตำบล -</option>
                                 </select>
                                 <input type="text" name="input_tambon" id="input_tambon" class="form-control d-none" readonly>
@@ -293,6 +293,18 @@ aside {
 
             document.querySelector('#map_my_location').classList.add('d-none');
             document.querySelector('#map').classList.remove('d-none');
+
+            if (!input_province) {
+                input_province = "null" ;
+            }
+
+            if (!input_amphoe) {
+                input_amphoe = "null" ;
+            }
+
+            if (!input_tambon) {
+                input_tambon = "null" ;
+            }
 
             let lat_text = document.querySelector("#lat");
             let lng_text = document.querySelector("#lng");
@@ -665,7 +677,29 @@ aside {
         function select_A(){
             let select_province = document.querySelector('#select_province');
             let select_amphoe = document.querySelector('#select_amphoe');
+            let select_tambon = document.querySelector('#select_tambon');
 
+            select_amphoe.value = "";
+            select_tambon.value = "";
+
+            fetch("{{ url('/') }}/api/select_lat_lng_province" + "/" + select_province.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+                // console.log(result['lat']);
+                // console.log(result['lng']);
+
+                let lat = document.querySelector('#lat');
+                    lat.value = result['lat'];
+
+                let lng = document.querySelector('#lng');
+                    lng.value = result['lng'];
+
+                select_location_by_T();
+                initMap_location_by_T(select_province.value , select_amphoe.value , select_tambon.value);
+                   
+            });
+                  
             fetch("{{ url('/') }}/api/select_amphoe" + "/" + select_province.value)
                 .then(response => response.json())
                 .then(result => {
@@ -689,10 +723,40 @@ aside {
                 change_language_user();
         }
 
+        function check_change_amphoe()
+        {
+            let select_amphoe = document.querySelector('#select_amphoe');
+            // console.log(select_tambon.value);
+
+            if (select_amphoe.value) {
+                select_T();
+            }else{
+                select_A();
+            }
+        }
+
         function select_T(){
             let select_province = document.querySelector('#select_province');
             let select_amphoe = document.querySelector('#select_amphoe');
             let select_tambon = document.querySelector('#select_tambon');
+
+            fetch("{{ url('/') }}/api/select_lat_lng_amphoe" + "/" + select_province.value + "/" + select_amphoe.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+                // console.log(result['lat']);
+                // console.log(result['lng']);
+
+                let lat = document.querySelector('#lat');
+                    lat.value = result['lat'];
+
+                let lng = document.querySelector('#lng');
+                    lng.value = result['lng'];
+
+                select_location_by_T();
+                initMap_location_by_T(select_province.value , select_amphoe.value , select_tambon.value);
+                   
+            });
 
             fetch("{{ url('/') }}/api/select_tambon" + "/" + select_province.value + "/" + select_amphoe.value)
                 .then(response => response.json())
@@ -728,6 +792,18 @@ aside {
             setTimeout(function() {
                 document.querySelector('#btn_change_language').click();
             }, delayInMilliseconds);
+        }
+
+        function check_change_district()
+        {
+            let select_tambon = document.querySelector('#select_tambon');
+            // console.log(select_tambon.value);
+
+            if (select_tambon.value) {
+                select_lat_lng();
+            }else{
+                select_T();
+            }
         }
 
         function select_lat_lng(){

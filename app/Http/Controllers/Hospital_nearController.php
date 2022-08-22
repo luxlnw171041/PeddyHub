@@ -237,38 +237,111 @@ class Hospital_nearController extends Controller
 
     public function search_location_by_T_recommend_petland($input_province , $input_amphoe , $input_tambon)
     {
-        $input_province = str_replace('จ.' , '' , $input_province);
-        $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
-        $input_tambon = str_replace('ต.' , '' , $input_tambon);
+        if ($input_province == "null") {
+            $input_province = null ;
+        }
+        
+        if ($input_amphoe == "null") {
+            $input_amphoe = null ;
+        }
 
-        $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
-        $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+        if ($input_tambon == "null") {
+            $input_tambon = null ;
+        }
 
-        $hos_near = Hospital_near::where('recommend', "Yes")
-            ->where('type' , 'LIKE', '%petland%')
-            ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
-            ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
-            ->where('changwat_th' , 'LIKE', "%$input_province%" )
-            ->get();
+        if ( !empty($input_province) && empty($input_amphoe) && empty($input_tambon) ) {
+
+            $input_province = str_replace('จ.' , '' , $input_province);
+
+            $hos_near = Hospital_near::where('recommend', "Yes")
+                ->where('type' , 'LIKE', '%petland%')
+                ->where('changwat_th' , 'LIKE', "%$input_province%" )
+                ->get();
+
+        }elseif( !empty($input_province) && !empty($input_amphoe) && empty($input_tambon) ){
+
+            $input_province = str_replace('จ.' , '' , $input_province);
+            $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+
+            $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+
+            $hos_near = Hospital_near::where('recommend', "Yes")
+                ->where('type' , 'LIKE', '%petland%')
+                ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+                ->where('changwat_th' , 'LIKE', "%$input_province%" )
+                ->get();
+
+        }elseif ( !empty($input_province) && !empty($input_amphoe) && !empty($input_tambon) ) {
+            $input_province = str_replace('จ.' , '' , $input_province);
+            $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+            $input_tambon = str_replace('ต.' , '' , $input_tambon);
+
+            $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+            $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+
+            $hos_near = Hospital_near::where('recommend', "Yes")
+                ->where('type' , 'LIKE', '%petland%')
+                ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
+                ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+                ->where('changwat_th' , 'LIKE', "%$input_province%" )
+                ->get();
+        }
 
         return $hos_near;
     }
 
     public function search_location_by_T_petland($input_province , $input_amphoe , $input_tambon)
     {
-        $input_province = str_replace('จ.' , '' , $input_province);
-        $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
-        $input_tambon = str_replace('ต.' , '' , $input_tambon);
+        if ($input_province == "null") {
+            $input_province = null ;
+        }
 
-        $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
-        $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+        if ($input_amphoe == "null") {
+            $input_amphoe = null ;
+        }
 
-        $hos_near = Hospital_near::where('recommend' , null)
-            ->where('type' ,'LIKE', '%petland%')
-            ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
-            ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
-            ->where('changwat_th' , 'LIKE', "%$input_province%" )
-            ->get();
+        if ($input_tambon == "null") {
+            $input_tambon = null ;
+        }
+
+
+        if ( !empty($input_province) && empty($input_amphoe) && empty($input_tambon) ) {
+
+            $input_province = str_replace('จ.' , '' , $input_province);
+
+            $hos_near = Hospital_near::where('recommend' , null)
+                ->where('type' ,'LIKE', '%petland%')
+                ->where('changwat_th' , 'LIKE', "%$input_province%" )
+                ->get();
+
+        }elseif( !empty($input_province) && !empty($input_amphoe) && empty($input_tambon) ){
+
+            $input_province = str_replace('จ.' , '' , $input_province);
+            $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+
+            $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+
+            $hos_near = Hospital_near::where('recommend' , null)
+                ->where('type' ,'LIKE', '%petland%')
+                ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+                ->where('changwat_th' , 'LIKE', "%$input_province%" )
+                ->get();
+
+        }elseif ( !empty($input_province) && !empty($input_amphoe) && !empty($input_tambon) ) {
+            $input_province = str_replace('จ.' , '' , $input_province);
+            $input_amphoe = str_replace('อ.' , '' , $input_amphoe);
+            $input_tambon = str_replace('ต.' , '' , $input_tambon);
+
+            $input_amphoe = str_replace('เขต' , '' , $input_amphoe);
+            $input_tambon = str_replace('แขวง' , '' , $input_tambon);
+
+            $hos_near = Hospital_near::where('recommend' , null)
+                ->where('type' ,'LIKE', '%petland%')
+                ->where('tambon_th' , 'LIKE', "%$input_tambon%" )
+                ->where('amphoe_th' , 'LIKE', "%$input_amphoe%" )
+                ->where('changwat_th' , 'LIKE', "%$input_province%" )
+                ->get();
+        }
 
         return $hos_near;
     }

@@ -107,11 +107,76 @@ class LocationController extends Controller
     public function show_location_latlng($province , $amphoe , $tambon)
     {
         $latlng = DB::table('lat_longs')
-                        ->where('changwat_th', $province)
-                        ->where('amphoe_th', $amphoe)
-                        ->where('tambon_th', $tambon)
-                        ->get();
+                    ->where('changwat_th', $province)
+                    ->where('amphoe_th', $amphoe)
+                    ->where('tambon_th', $tambon)
+                    ->get();
+
         return $latlng;
+
+    }
+
+    function show_location_latlng_province($province)
+    {
+        $latlng = DB::table('lat_longs')
+            ->where('changwat_th', $province)
+            ->get();
+
+        $i = 1 ;
+        $lat = 0 ;
+        $lng = 0 ;
+
+        foreach ($latlng as $item) {
+            
+            $lat  = number_format($item->lat + $lat , 4, '.', '') ;
+            $lng  = number_format($item->lng + $lng , 4, '.', '') ;
+
+            $x_lat = number_format($lat / $i , 4, '.', '') ;
+            $x_lng = number_format($lng / $i , 4, '.', '') ;
+
+
+            $i = $i + 1 ;
+        }
+
+
+        $lat_lng_arr = array();
+
+        $lat_lng_arr['lat'] = $x_lat ;
+        $lat_lng_arr['lng'] = $x_lng ;
+
+        return $lat_lng_arr;
+    }
+
+    function show_location_latlng_amphoe($province , $amphoe)
+    {
+        $latlng = DB::table('lat_longs')
+            ->where('changwat_th', $province)
+            ->where('amphoe_th', $amphoe)
+            ->get();
+
+        $i = 1 ;
+        $lat = 0 ;
+        $lng = 0 ;
+
+        foreach ($latlng as $item) {
+            
+            $lat  = number_format($item->lat + $lat , 4, '.', '') ;
+            $lng  = number_format($item->lng + $lng , 4, '.', '') ;
+
+            $x_lat = number_format($lat / $i , 4, '.', '') ;
+            $x_lng = number_format($lng / $i , 4, '.', '') ;
+
+
+            $i = $i + 1 ;
+        }
+
+
+        $lat_lng_arr = array();
+
+        $lat_lng_arr['lat'] = $x_lat ;
+        $lat_lng_arr['lng'] = $x_lng ;
+        
+        return $lat_lng_arr;
     }
 
 }
