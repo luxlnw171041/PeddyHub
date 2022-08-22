@@ -5,7 +5,7 @@
 <meta property="og:description" content="YOUR DESCRIPTION HERE" />
 <meta property="og:image" content="{{ url('storage/'.$pet->photo )}}" />
 <style>
-    .parent {
+    .parent-card {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, 0.5fr);
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="parent">
+                    <div class="parent-card">
                         <div class="div1 text-center">
                             <a href="{{ url('/user_pet/' . $pet->id) }}">
                                 <img style="position:relative ;" width="80px" src="{{ url('storage/'.$pet->qr_code )}}" alt="">
@@ -269,11 +269,11 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div class="parent" id="parent">
+                    <div class="parent-card" id="parent">
                         <div class="div1 text-center">
                             <a href="{{ url('/user_pet/' . $pet->id) }}">
                                 <img style="position:relative ;" width="80px" src="{{ url('storage/'.$pet->qr_code )}}" alt="">
-                                <img style="position:absolute ;margin-left:-52px;margin-top:28px;" width="25px" src="{{ url('/peddyhub/images/logo/logo-5.png') }}" alt="">
+                                
                             </a>
                             <!-- <img height="80px" src="{{ asset('/peddyhub/images/check_in/catsanova/qr_code_check_in_catsanova.png') }}" alt=""> -->
                         </div>
