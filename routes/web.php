@@ -35,6 +35,9 @@ Route::get('/terms_of_service', function () {
 Route::get('/pet_insurance', function () {
     return view('pet_insurance');
 });
+Route::get('/how_to_use', function () {
+    return view('how_to_use');
+});
 // ADMIN
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
