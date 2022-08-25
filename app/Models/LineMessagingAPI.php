@@ -55,8 +55,11 @@ class LineMessagingAPI extends Model
                     $user_id = $user->id ;
                 }
                 
-                //จำนวนสัตว์ทั้งหมด
                 $user_text_topic = Profile::where('user_id', $user_id)->get('language');
+                foreach ($user_text_topic as $item) {
+                    $user_language = $item->language;
+        
+                }
 
                 $data_Text_topic = [
                     "ข้อมูลของคุณ",
@@ -71,7 +74,7 @@ class LineMessagingAPI extends Model
                 
                 $data_topic = $this->language_for_user($data_Text_topic, $event["source"]['userId']);
 
-                switch ($user_text_topic) {
+                switch ($user_language) {
                     case "th": 
                         $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-th.json');  
                     break;
