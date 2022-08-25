@@ -1,0 +1,156 @@
+{
+    "type": "flex",
+    "altText": "flex_other_ar",
+    "contents":{
+        "type": "bubble",
+        "size": "giga",
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "image",
+              "url": "https://www.peddyhub.com/peddyhub/images/flex-line/other/flex-other-ar.png",
+              "size": "full",
+              "aspectMode": "fit",
+              "aspectRatio": "1:1",
+              "gravity": "center"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [],
+              "position": "absolute",
+              "width": "30%",
+              "height": "27%",
+              "offsetBottom": "0px",
+              "offsetStart": "3%",
+              "offsetEnd": "0px",
+              "offsetTop": "3%",
+              "action": {
+                "type": "uri",
+                "label": "action",
+                "uri": "https://www.peddyhub.com/login_line/post?openExternalBrowser=1"
+              },
+              "alignItems": "center",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [],
+              "position": "absolute",
+              "width": "30%",
+              "height": "27%",
+              "offsetBottom": "0px",
+              "offsetStart": "35%",
+              "offsetEnd": "0px",
+              "offsetTop": "3%",
+              "action": {
+                "type": "uri",
+                "label": "action",
+                "uri": "https://www.peddyhub.com/adoptpet?openExternalBrowser=1"
+              },
+              "alignItems": "center",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [],
+              "position": "absolute",
+              "width": "30%",
+              "height": "27%",
+              "offsetBottom": "0px",
+              "offsetStart": "67%",
+              "offsetEnd": "0px",
+              "offsetTop": "3%",
+              "action": {
+                "type": "message",
+                "label": "action",
+                "text": "معلوماتك"
+              },
+              "alignItems": "center",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [],
+              "position": "absolute",
+              "width": "30%",
+              "height": "27%",
+              "offsetBottom": "0px",
+              "offsetStart": "3%",
+              "offsetEnd": "0px",
+              "offsetTop": "33%",
+              "action": {
+                "type": "uri",
+                "label": "action",
+                "uri": "https://www.peddyhub.com/faq"
+              },
+              "alignItems": "center",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [],
+              "position": "absolute",
+              "width": "30%",
+              "height": "27%",
+              "offsetBottom": "0px",
+              "offsetStart": "35%",
+              "offsetEnd": "0px",
+              "offsetTop": "33%",
+              "action": {
+                "type": "message",
+                "label": "action",
+                "text": "اتصل"
+              },
+              "alignItems": "center",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "baseline",
+              "contents": [],
+              "position": "absolute",
+              "width": "30%",
+              "height": "27%",
+              "offsetBottom": "0px",
+              "offsetStart": "67%",
+              "offsetEnd": "0px",
+              "offsetTop": "33%",
+              "action": {
+                "type": "message",
+                "label": "action",
+                "text": "language"
+              },
+              "alignItems": "center",
+              "justifyContent": "center"
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [],
+              "position": "absolute",
+              "width": "100%",
+              "height": "37%",
+              "offsetBottom": "0px",
+              "offsetEnd": "0px",
+              "offsetTop": "63%",
+              "action": {
+                "type": "uri",
+                "label": "action",
+                "uri": "http://www.viicheck.com/welcome_line?openExternalBrowser=1"
+              },
+              "alignItems": "center",
+              "justifyContent": "center"
+            }
+          ],
+          "paddingAll": "0px"
+        }
+      }
+
+}

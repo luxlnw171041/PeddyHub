@@ -1,6 +1,6 @@
 {
     "type": "flex",
-    "altText": "flex_other_th",
+    "altText": "flex_other_hi",
     "contents": {
         "type": "bubble",
         "size": "giga",
@@ -10,7 +10,7 @@
             "contents": [
                 {
                     "type": "image",
-                    "url": "https://www.peddyhub.com/peddyhub/images/flex-line/other/flex-other-th.png",
+                    "url": "https://www.peddyhub.com/peddyhub/images/flex-line/other/flex-other-hi.png",
                     "size": "full",
                     "aspectMode": "fit",
                     "aspectRatio": "1:1",
@@ -68,7 +68,7 @@
                     "action": {
                         "type": "message",
                         "label": "action",
-                        "text": "ข้อมูลของคุณ"
+                        "text": "आपकी जानकारी"
                     },
                     "alignItems": "center",
                     "justifyContent": "center"
@@ -106,7 +106,7 @@
                     "action": {
                         "type": "message",
                         "label": "action",
-                        "text": "ติดต่อ"
+                        "text": "संपर्क"
                     },
                     "alignItems": "center",
                     "justifyContent": "center"
