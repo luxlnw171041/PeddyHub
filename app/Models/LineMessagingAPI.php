@@ -71,8 +71,6 @@ class LineMessagingAPI extends Model
                     "ลงทะเบียนรถ",
                     "ชุมชน"
                 ];
-                
-                $data_topic = $this->language_for_user($data_Text_topic, $event["source"]['userId']);
 
                 switch ($user_language) {
                     case "th": 
@@ -117,15 +115,6 @@ class LineMessagingAPI extends Model
 
                 }
                 $string_json = file_get_contents($template_path);
-                $string_json = str_replace("ข้อมูลของคุณ",$data_topic[0],$string_json);
-                $string_json = str_replace("ถามตอบ",$data_topic[1],$string_json);
-                $string_json = str_replace("ติดต่อ",$data_topic[2],$string_json);
-                $string_json = str_replace("ยินดีให้บริการค่ะ",$data_topic[3],$string_json);
-                $string_json = str_replace("เจ้าตัวแสบ",$data_topic[4],$string_json);
-                $string_json = str_replace("ธนาคารเลือด",$data_topic[5],$string_json);
-                $string_json = str_replace("ลงทะเบียนรถ",$data_topic[6],$string_json);
-                $string_json = str_replace("ชุมชน",$data_topic[7],$string_json);
-
                 $messages = [ json_decode($string_json, true) ]; 
     			break;
 
