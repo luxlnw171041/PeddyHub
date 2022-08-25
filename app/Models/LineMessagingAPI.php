@@ -106,10 +106,10 @@ class LineMessagingAPI extends Model
                     case "ru": 
                         $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ru.json');  
                     break;
-                    case "zh_CN": 
+                    case "zh-CN": 
                         $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-zh_CN.json');  
                     break;
-                    case "zh_TW": 
+                    case "zh-TW": 
                         $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-zh_TW.json');  
                     break;
 
