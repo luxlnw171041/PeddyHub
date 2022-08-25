@@ -61,59 +61,8 @@ class LineMessagingAPI extends Model
         
                 }
 
-                $data_Text_topic = [
-                    "ข้อมูลของคุณ",
-                    "ถามตอบ",
-                    "ติดต่อ",
-                    "ยินดีให้บริการค่ะ",
-                    "เจ้าตัวแสบ",
-                    "ธนาคารเลือด",
-                    "ลงทะเบียนรถ",
-                    "ชุมชน"
-                ];
-
-                switch ($user_language) {
-                    case "th": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-th.json');  
-                    break;
-                    case "en": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-en.json');  
-                    break;
-                    case "ar": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ar.json');  
-                    break;
-                    case "de": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-de.json');  
-                    break;
-                    case "es": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-es.json');  
-                    break;
-                    case "hi": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-hi.json');  
-                    break;
-                    case "ja": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ja.json');  
-                    break;
-                    case "ko": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ko.json');  
-                    break;
-                    case "lo": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-lo.json');  
-                    break;
-                    case "my": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-my.json');  
-                    break;
-                    case "ru": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ru.json');  
-                    break;
-                    case "zh-CN": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-zh_CN.json');  
-                    break;
-                    case "zh-TW": 
-                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-zh_TW.json');  
-                    break;
-
-                }
+                $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-' . $user_language . '.json');  
+                
                 $string_json = file_get_contents($template_path);
                 $messages = [ json_decode($string_json, true) ]; 
     			break;
