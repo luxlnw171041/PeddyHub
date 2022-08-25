@@ -49,6 +49,14 @@ class LineMessagingAPI extends Model
                 break;
 
     		case 'other':
+                $provider_id = $event["source"]['userId'];
+                $users = User::where('provider_id' , $provider_id)->get();
+                foreach ($users as $user) {
+                    $user_id = $user->id ;
+                }
+                
+                //จำนวนสัตว์ทั้งหมด
+                $user_text_topic = Profile::where('user_id', $user_id)->get('language');
 
                 $data_Text_topic = [
                     "ข้อมูลของคุณ",
@@ -60,10 +68,51 @@ class LineMessagingAPI extends Model
                     "ลงทะเบียนรถ",
                     "ชุมชน"
                 ];
-
+                
                 $data_topic = $this->language_for_user($data_Text_topic, $event["source"]['userId']);
 
-    			$template_path = storage_path('../public/json/flex-other.json');   
+                switch ($user_text_topic) {
+                    case "th": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-th.json');  
+                    break;
+                    case "en": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-en.json');  
+                    break;
+                    case "ar": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ar.json');  
+                    break;
+                    case "de": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-de.json');  
+                    break;
+                    case "es": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-es.json');  
+                    break;
+                    case "hi": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-hi.json');  
+                    break;
+                    case "ja": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ja.json');  
+                    break;
+                    case "ko": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ko.json');  
+                    break;
+                    case "lo": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-lo.json');  
+                    break;
+                    case "my": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-my.json');  
+                    break;
+                    case "ru": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-ru.json');  
+                    break;
+                    case "zh_CN": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-zh_CN.json');  
+                    break;
+                    case "zh_TW": 
+                        $template_path = storage_path('../public/json/flex-line-other-language/flex-line-other-zh_TW.json');  
+                    break;
+
+                }
                 $string_json = file_get_contents($template_path);
                 $string_json = str_replace("ข้อมูลของคุณ",$data_topic[0],$string_json);
                 $string_json = str_replace("ถามตอบ",$data_topic[1],$string_json);
