@@ -16,6 +16,8 @@
                 <button style="width: 100%;margin-left:10px;border-radius:10px;font-weight: bold;font-family: 'Kanit', sans-serif;" class="btn btn-outline-secondary" onclick="document.querySelector('#btn_modal_pot').click();" >
                     แชร์ความน่ารักเจ้าตัวแสบ
                 </button>
+                &nbsp;&nbsp;&nbsp;
+                <a href="{{ url('/my_post_peddyshare') }}" class="btn btn-outline-info d-flex align-items-center" style="border-radius:10px;font-weight: bold;font-family: 'Kanit', sans-serif;">MyPost</a>
             </div>
         </div>
         <br>

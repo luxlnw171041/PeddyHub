@@ -217,13 +217,13 @@
                     <div class="col-12">
                         <div class="row">
                             @if(Auth::check())
-                                <div class="col-10" style="padding:0px;">
+                                <div class="col-11" style="padding:0px;">
                                     {{ csrf_field() }}
                                     <input class="d-none" name="user_id_{{ $item->id }}" type="number" id="user_id_{{ $item->id }}" value="{{$id}}" >                                 
-                                    <input class="form-control" name="content_{{ $item->id }}" type="text" id="content_{{ $item->id }}" value="" oninput="check_input_content_comment('{{ $item->id }}');">
+                                    <input class="form-control" style="border-radius: 50px;" name="content_{{ $item->id }}" type="text" id="content_{{ $item->id }}" value="" oninput="check_input_content_comment('{{ $item->id }}');">
 
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <button id="btn_submit_content_{{ $item->id }}" type="submit" class="btn" style="border-radius: 50%;margin-top: 1px;background-color: #B8205B;width:40px;height:40px;" disabled onclick="submit_input_content_comment('{{ $item->id }}');">
                                         <i class="fas fa-arrow-right text-white"></i>
                                     </button>
