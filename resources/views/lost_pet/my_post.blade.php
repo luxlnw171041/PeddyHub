@@ -215,9 +215,9 @@
                             </div>
                             <div class="col-12">
                                 <br>
-                                <i style="float:right;margin-top: -15px;" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="fas fa-sort-down text-secondary"></i>
+                                <i style="float:right;margin-top: -15px;" data-toggle="collapse" data-target="#collapseExample_{{ $item->id }}" aria-expanded="false" aria-controls="collapseExample_{{ $item->id }}" class="fas fa-sort-down text-secondary"></i>
 
-                                <div class="collapse" id="collapseExample">
+                                <div class="collapse" id="collapseExample_{{ $item->id }}">
                                     <div class="row">
                                         <div class="col-8">
                                             @if($item->status != "found")
