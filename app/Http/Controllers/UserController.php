@@ -22,7 +22,7 @@ class UserController extends Controller
         $id = Auth::id();
         $data = User::findOrFail($id);
         $petuser = Pet::where('user_id', $id)->get();
-        
+
         return view('user/profile',compact('data' ,'petuser') );
     }
 
@@ -118,8 +118,6 @@ class UserController extends Controller
                 ->store('uploads', 'public'); 
         }
         
-        
-
         $data = User::findOrFail($id);
         $data->update($requestData);
         

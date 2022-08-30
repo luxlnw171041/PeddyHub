@@ -298,6 +298,7 @@
                                                         $data_alert_lost_pet = json_decode($alert_lost_pet, true);
                                                     @endphp
 
+                                                    @if(!empty($data_alert_lost_pet))
                                                     @for ($i=0; $i < count($data_alert_lost_pet); $i++)
                                                         @switch ($data_alert_lost_pet[$i]) 
                                                             @case ('1')
@@ -346,6 +347,7 @@
                                                             <i class="{{ $tag_i_img }}"  style="font-size:20px;color:{{ $type_color  }};"></i>&nbsp;&nbsp;{{ $type_alert_lost_pet }}
                                                         </div>
                                                     @endfor
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

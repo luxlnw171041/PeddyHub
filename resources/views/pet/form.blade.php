@@ -1395,11 +1395,11 @@
         }
     }
 
-    function click_check(){
-        if ( document.querySelector('#check_categories_1').checked && document.querySelector('#check_categories_2').checked && document.querySelector('#check_categories_3').checked && document.querySelector('#check_categories_4').checked && document.querySelector('#check_categories_5').checked && document.querySelector('#check_categories_6').checked ) {
-            document.querySelector('#check_all_alert').checked = true ;
-        }else{
-            document.querySelector('#check_all_alert').checked = false ;
-        }
+function click_check(){
+    if ( document.querySelector('#check_categories_1').checked && document.querySelector('#check_categories_2').checked && document.querySelector('#check_categories_3').checked && document.querySelector('#check_categories_4').checked && document.querySelector('#check_categories_5').checked && document.querySelector('#check_categories_6').checked ) {
+        document.querySelector('#check_all_alert').checked = true ;
+    }else{
+        document.querySelector('#check_all_alert').checked = false ;
     }
+}
 </script>

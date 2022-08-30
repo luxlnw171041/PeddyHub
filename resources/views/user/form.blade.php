@@ -296,6 +296,66 @@
                                 <input class="form-control" name="language" type="hidden" id="language" value="{{ isset($data->profile->language) ? $data->profile->language : ''}}">
                                 {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
                             </div>
+                            <br>
+                            <br>
+                            <div class="text-center">
+                                <p style="font-family: 'Sarabun', sans-serif;">
+                                    ยินยอมให้เว็บไซต์ PEDDyHUB ส่งข้อความประกาศตามหาสัตว์เลี้ยงประเภทใดบ้าง
+                                    <br>
+                                    <span class="text-danger">* เลือกได้มากกว่า 1 ข้อ</span>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div style="padding: 7px;float: right;font-family: 'Sarabun', sans-serif;">
+                                        <input type="checkbox" name="check_all_alert" id="check_all_alert" onclick="click_check_all_alert();">&nbsp;&nbsp;ทั้งหมด
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
+                                        <input  type="checkbox" name="check_categories_1" id="check_categories_1" onclick="click_check();">
+                                        &nbsp;&nbsp;<i class="fas fa-dog"  style="font-size:20px;color:#F7B000;"></i>&nbsp;&nbsp;สุนัข
+                                    </div>
+                                    <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
+                                        <input  type="checkbox" name="check_categories_2" id="check_categories_2" onclick="click_check();">
+                                        &nbsp;&nbsp;<i class="fas fa-cat " style="font-size:20px;color:#02DBFF;"></i>&nbsp;&nbsp;แมว
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
+                                        <input  type="checkbox" name="check_categories_3" id="check_categories_3" onclick="click_check();">
+                                        &nbsp;&nbsp;<i class="fas fa-dove" style="font-size:20px;color:#49AED9;"></i>&nbsp;&nbsp;นก
+                                    </div>
+                                    <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
+                                        <input  type="checkbox" name="check_categories_4" id="check_categories_4" onclick="click_check();">
+                                        &nbsp;&nbsp;<i class="fas fa-fish" style="font-size:20px;color:#63AB86;"></i>&nbsp;&nbsp;ปลา
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
+                                        <input  type="checkbox" name="check_categories_5" id="check_categories_5" onclick="click_check();">
+                                        &nbsp;&nbsp;<i class="fas fa-rabbit" style="font-size:20px;color:#DB4C75;"></i>&nbsp;&nbsp;สัตว์เล็ก
+                                    </div>
+                                    <div style="padding: 7px;font-family: 'Sarabun', sans-serif;">
+                                        <input  type="checkbox" name="check_categories_6" id="check_categories_6" onclick="click_check();">
+                                        &nbsp;&nbsp;<i class="fas fa-spider" style="font-size:20px;color:black;"></i>&nbsp;&nbsp;Exotic
+                                    </div>
+                                </div>
+                            </div>
+                            @php
+                                $alert_lost_pet = $data->profile->alert_lost_pet ;
+                                $data_alert_lost_pet = json_decode($alert_lost_pet, true);
+                            @endphp
+                            @if(!empty($data_alert_lost_pet))
+                                @for ($i=0; $i < count($data_alert_lost_pet); $i++)
+                                    <script>
+                                        let check_categories{{ $data_alert_lost_pet[$i] }} = document.querySelector('#check_categories_' + {{ $data_alert_lost_pet[$i] }}) ;
+
+                                        check_categories{{ $data_alert_lost_pet[$i] }}.setAttribute("checked", "checked");
+                                    </script>
+                                @endfor
+                            @endif
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -321,14 +381,13 @@
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        console.log("START");
+        // console.log("START");
+        click_check();
         let check_changwat_th = document.querySelector('#check_changwat_th');
         select_province();
         let input_language = document.querySelector('#language');
         change_color_img(input_language.value);
         add_color();
-
-
 
 
     });
@@ -778,5 +837,33 @@ function edit_amphoe() {
 function edit_tambon() {
     document.querySelector('#select_tambon').classList.remove('d-none');
     document.querySelector('#input_tambon').classList.add('d-none');
+}
+
+function click_check_all_alert(){
+    let check_all_alert = document.querySelector('#check_all_alert');
+    // console.log(check_all_alert.checked);
+    if (check_all_alert.checked) {
+        document.querySelector('#check_categories_1').checked = true ;
+        document.querySelector('#check_categories_2').checked = true ;
+        document.querySelector('#check_categories_3').checked = true ;
+        document.querySelector('#check_categories_4').checked = true ;
+        document.querySelector('#check_categories_5').checked = true ;
+        document.querySelector('#check_categories_6').checked = true ;
+    }else{
+        document.querySelector('#check_categories_1').checked = false ;
+        document.querySelector('#check_categories_2').checked = false ;
+        document.querySelector('#check_categories_3').checked = false ;
+        document.querySelector('#check_categories_4').checked = false ;
+        document.querySelector('#check_categories_5').checked = false ;
+        document.querySelector('#check_categories_6').checked = false ;
+    }
+}
+
+function click_check(){
+    if ( document.querySelector('#check_categories_1').checked && document.querySelector('#check_categories_2').checked && document.querySelector('#check_categories_3').checked && document.querySelector('#check_categories_4').checked && document.querySelector('#check_categories_5').checked && document.querySelector('#check_categories_6').checked ) {
+        document.querySelector('#check_all_alert').checked = true ;
+    }else{
+        document.querySelector('#check_all_alert').checked = false ;
+    }
 }
 </script>

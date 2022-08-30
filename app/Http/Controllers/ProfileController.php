@@ -137,6 +137,33 @@ class ProfileController extends Controller
                     'email' => $requestData['email'],
                 ]);
         }  
+
+        $alert_arr = array();
+
+        if (!empty($requestData['check_all_alert'])) {
+            $alert_arr = array('1','2','3','4','5','6') ;
+        }else{
+            if (!empty($requestData['check_categories_1'])) {
+                array_push($alert_arr , '1') ;
+            }
+            if (!empty($requestData['check_categories_2'])) {
+                array_push($alert_arr , '2') ;
+            }
+            if (!empty($requestData['check_categories_3'])) {
+                array_push($alert_arr , '3') ;
+            }
+            if (!empty($requestData['check_categories_4'])) {
+                array_push($alert_arr , '4') ;
+            }
+            if (!empty($requestData['check_categories_5'])) {
+                array_push($alert_arr , '5') ;
+            }
+            if (!empty($requestData['check_categories_6'])) {
+                array_push($alert_arr , '6') ;
+            }
+        }
+        
+        $requestData['alert_lost_pet'] = $alert_arr ;
          
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
