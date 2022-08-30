@@ -202,85 +202,153 @@
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="spec card">
-                                        <ul>
-                                            <li>
-                                                <h5 class="text-capitalize" style="font-family: 'Kanit', sans-serif;">ข้อมูลส่วนตัว &nbsp;
-                                                    @switch($data->profile->language)
-                                                    @case('en')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" height="26px" src="{{ asset('/peddyhub/images/national-flag/en.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('zh-TW')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/cn.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('hi')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/in.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('ar')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ar.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('ru')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ru.png') }}" style="border-radius: 5px;border: 1px solid; color:#8C8C8C;">
-                                                    </a>
-                                                    @break
-                                                    @case('es')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/es.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('de')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" height="26px" src="{{ asset('/peddyhub/images/national-flag/de.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('ja')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/jp.png') }}" style="border-radius: 5px;border: 1px solid; color:#8C8C8C;">
-                                                    </a>
-                                                    @break
-                                                    @case('ko')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ko.png') }}" style="border-radius: 5px;border: 1px solid; color:#8C8C8C;">
-                                                    </a>
-                                                    @break
-                                                    @case('th')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/th.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('lo')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/la.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @case('mr')
-                                                    <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
-                                                        <img width="40px" src="{{ asset('/peddyhub/images/national-flag/my.png') }}" style="border-radius: 5px;">
-                                                    </a>
-                                                    @break
-                                                    @endswitch
-
-
-
-                                                    <a href="{{ url('/user/' . $data->id . '/edit') }}" class="text-white float-right btn btn-warning ">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
+                                        <div class="row">
+                                            <div class="col-12 col-md-12">
+                                                <ul>
+                                                    <li>
+                                                        <h5 class="text-capitalize" style="font-family: 'Kanit', sans-serif;">
+                                                            ข้อมูลส่วนตัว
+                                                            <a href="{{ url('/user/' . $data->id . '/edit') }}" class="text-white float-right btn btn-warning ">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            @switch($data->profile->language)
+                                                            @case('en')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" height="26px" src="{{ asset('/peddyhub/images/national-flag/en.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('zh-TW')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/cn.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('hi')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/in.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('ar')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ar.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('ru')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ru.png') }}" style="border-radius: 5px;border: 1px solid; color:#8C8C8C;">
+                                                            </a>
+                                                            @break
+                                                            @case('es')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/es.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('de')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" height="26px" src="{{ asset('/peddyhub/images/national-flag/de.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('ja')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/jp.png') }}" style="border-radius: 5px;border: 1px solid; color:#8C8C8C;">
+                                                            </a>
+                                                            @break
+                                                            @case('ko')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/ko.png') }}" style="border-radius: 5px;border: 1px solid; color:#8C8C8C;">
+                                                            </a>
+                                                            @break
+                                                            @case('th')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/th.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('lo')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/la.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @case('mr')
+                                                            <a class="btn" href="#" data-toggle="modal" data-target="#exampleModal" style="padding:0px">
+                                                                <img width="40px" src="{{ asset('/peddyhub/images/national-flag/my.png') }}" style="border-radius: 5px;">
+                                                            </a>
+                                                            @break
+                                                            @endswitch
+                                                        </h5>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <ul>
+                                                    <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> username: </span> {{ $data->username }}</li>
+                                                    <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> วันเกิด: </span>{{ thaidate("j F Y" , strtotime($data->profile->birth)) }}</li>
+                                                    <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> อีเมล: </span> {{ $data->email }}</li>
+                                                    <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> เบอร์: </span>{{ $data->profile->phone }}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <center>
+                                                    <hr class="d-block d-md-none" style="width: 65%;">
+                                                </center>
+                                                <h5 class="text-capitalize" style="font-family: 'Kanit', sans-serif;">
+                                                    สัตว์เลี้ยงที่ยินยอมให้ส่งข้อความ
                                                 </h5>
-                                            </li>
-                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> username: </span> {{ $data->username }}</li>
-                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> วันเกิด: </span>{{ thaidate("j F Y" , strtotime($data->profile->birth)) }}</li>
-                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> อีเมล: </span> {{ $data->email }}</li>
-                                            <li style="font-size:22px;font-family: 'Kanit', sans-serif;"><i class="fas fa-paw yellow me-2"></i> <span> เบอร์: </span>{{ $data->profile->phone }}</li>
-                                        </ul>
+                                                <div class="row">
+                                                    @php
+                                                        $alert_lost_pet = $data->profile->alert_lost_pet ;
+                                                        $data_alert_lost_pet = json_decode($alert_lost_pet, true);
+                                                    @endphp
 
+                                                    @for ($i=0; $i < count($data_alert_lost_pet); $i++)
+                                                        @switch ($data_alert_lost_pet[$i]) 
+                                                            @case ('1')
+                                                                @php
+                                                                    $type_alert_lost_pet = "สุนัข" ;
+                                                                    $tag_i_img = "fas fa-dog" ;
+                                                                    $type_color = "#F7B000" ;
+                                                                @endphp
+                                                                @break;
+                                                            @case ('2')
+                                                                @php
+                                                                    $type_alert_lost_pet = "แมว" ;
+                                                                    $tag_i_img = "fas fa-cat" ;
+                                                                    $type_color = "#02DBFF" ;
+                                                                @endphp
+                                                                @break;
+                                                            @case ('3')
+                                                                @php
+                                                                    $type_alert_lost_pet = "นก" ;
+                                                                    $tag_i_img = "fas fa-dove" ;
+                                                                    $type_color = "#49AED9" ;
+                                                                @endphp
+                                                                @break;
+                                                            @case ('4')
+                                                                @php
+                                                                    $type_alert_lost_pet = "ปลา" ;
+                                                                    $tag_i_img = "fas fa-fish" ;
+                                                                    $type_color = "#63AB86" ;
+                                                                @endphp
+                                                                @break;
+                                                            @case ('5')
+                                                                @php
+                                                                    $type_alert_lost_pet = "สัตว์เล็ก" ;
+                                                                    $tag_i_img = "fas fa-rabbit" ;
+                                                                    $type_color = "#DB4C75" ;
+                                                                @endphp
+                                                                @break;
+                                                            @case ('6')
+                                                                @php
+                                                                    $type_alert_lost_pet = "Exotic" ;
+                                                                    $tag_i_img = "fas fa-spider" ;
+                                                                    $type_color = "#black" ;
+                                                                @endphp
+                                                            @endswitch
+                                                        <div class="col-4" style="padding: 15px;font-family: 'Sarabun', sans-serif;">
+                                                            <i class="{{ $tag_i_img }}"  style="font-size:20px;color:{{ $type_color  }};"></i>&nbsp;&nbsp;{{ $type_alert_lost_pet }}
+                                                        </div>
+                                                    @endfor
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 @if(!empty($data->profile->photo_id_card))
