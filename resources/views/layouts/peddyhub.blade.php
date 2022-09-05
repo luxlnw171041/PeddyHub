@@ -117,7 +117,7 @@
                   </a>
                 </li> -->
                 <li class="nav-item dropdown">
-                  <a href="{{ url('/how_to_use') }}" class="hvr-overline-from-center nav-link dropdown-toggle">User Manual</a>
+                  <a href="{{ url('/how_to_use') }}" class="hvr-overline-from-center nav-link dropdown-toggle">How to use</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a href="#" class="hvr-overline-from-center nav-link dropdown-toggle" data-bs-toggle="dropdown">
