@@ -171,7 +171,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-center owl-carousel-pet-card" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                <div class="col-12 text-center owl-carousel-pet-card notranslate" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
                 powered by
                     <div class="owl-carousel">
                         @php
@@ -316,7 +316,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 text-center owl-carousel-pet-card d-none d-lg-block" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
+                <div class="col-12 text-center owl-carousel-pet-card d-none d-lg-block notranslate" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
                     powered by
                     <div class="owl-carousel ">
                         @foreach($partner as $item)
