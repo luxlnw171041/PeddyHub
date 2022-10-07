@@ -228,7 +228,7 @@ class test_for_devController extends Controller
             ->orWhere('id' , 1)
             ->get();
 
-        $iii = 0 ;
+        $iii = 1 ;
 
         foreach ($data_users_line as $item) {
 
