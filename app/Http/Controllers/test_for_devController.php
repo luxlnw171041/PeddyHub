@@ -227,8 +227,6 @@ class test_for_devController extends Controller
             ->where('id' , '1')
             ->get();
 
-        $iii = 0 ;
-
         foreach ($data_users_line as $item) {
 
             $topic = "ชวนเที่ยวงาน PET VARIETY.." ;
@@ -241,8 +239,8 @@ class test_for_devController extends Controller
 
             $string_json = str_replace("ตัวอย่าง",$topic,$string_json);
             $string_json = str_replace("TEXT_PHOTO",$photo,$string_json); 
+            $string_json = str_replace("TEXT_SIZE",$size,$string_json); 
             $string_json = str_replace("TEXT_LINK",$link,$string_json); 
-            $string_json = str_replace("1:1",$size,$string_json); 
 
             $messages = [ json_decode($string_json, true) ]; 
 
@@ -267,12 +265,11 @@ class test_for_devController extends Controller
             //SAVE LOG
             $data_save_log = [
                 "title" => "BC_to_user_line : id = " . $item->id,
-                "content" => $topic . " / ครั้งที่ : " . $iii,
+                "content" => $topic,
             ];
 
             MyLog::create($data_save_log);
 
-            $iii = $iii + 1 ;
         }
 
         return "ok" ;

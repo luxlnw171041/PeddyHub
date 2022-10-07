@@ -13,7 +13,7 @@
           "url": "https://www.peddyhub.com/peddyhub/images/broadcast/TEXT_PHOTO",
           "size": "full",
           "aspectMode": "cover",
-          "aspectRatio": "1:1",
+          "aspectRatio": "TEXT_SIZE",
           "gravity": "center"
         }
       ],
