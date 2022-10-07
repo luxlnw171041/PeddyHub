@@ -224,7 +224,7 @@ class test_for_devController extends Controller
 
         // $data_users_line = Profile::where('type' , 'line')->get();
         $data_users_line = Profile::where('type' , 'line')
-            ->where('id' , 1)
+            ->where('id' , 9)
             ->get();
 
         foreach ($data_users_line as $item) {
