@@ -1,0 +1,29 @@
+{
+  "type": "flex",
+  "altText": "ตัวอย่าง",
+  "contents": {
+    "type": "bubble",
+    "size": "giga",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "image",
+          "url": "https://www.peddyhub.com/peddyhub/images/TEXT_PHOTO",
+          "size": "full",
+          "aspectMode": "cover",
+          "aspectRatio": "1:1",
+          "gravity": "center"
+        }
+      ],
+      "paddingAll": "0px",
+      "action": {
+        "type": "uri",
+        "label": "action",
+        "uri": "TEXT_LINK"
+      }
+    }
+  }
+
+}
