@@ -222,59 +222,60 @@ class test_for_devController extends Controller
 
     function BC_to_user_line(){
 
-        // $data_users_line = Profile::where('type' , 'line')->get();
-        $data_users_line = Profile::where('type' , 'line')
-            ->where('id' , 9)
-            ->orWhere('id' , 1)
-            ->get();
+        $data_users_line = Profile::where('type' , 'line')->get();
+        // $data_users_line = Profile::where('type' , 'line')
+        //     ->where('id' , 9)
+        //     ->orWhere('id' , 1)
+        //     ->get();
 
         $iii = 1 ;
 
         foreach ($data_users_line as $item) {
 
-            $topic = "ชวนเที่ยวงาน PET VARIETY.." ;
-            $photo = "PET%20VARIETY.png" ;
-            $size = "793:650" ;
-            $link = "https://pet-variety.com/?gclid=Cj0KCQjw-fmZBhDtARIsAH6H8qhGuuUM4mV9KrI_cdL5itQAuwqRhV9HueYhQOtmTuLXqLXzYlBrRgAaAtr_EALw_wcB";
-            
-            $template_path = storage_path('../public/json/broadcast/bc_to_user_line.json');   
-            $string_json = file_get_contents($template_path);
+            if ( !empty($item->user->provider_id) ) {
+                $topic = "ชวนเที่ยวงาน PET VARIETY.." ;
+                $photo = "PET%20VARIETY.png" ;
+                $size = "793:650" ;
+                $link = "https://pet-variety.com/?gclid=Cj0KCQjw-fmZBhDtARIsAH6H8qhGuuUM4mV9KrI_cdL5itQAuwqRhV9HueYhQOtmTuLXqLXzYlBrRgAaAtr_EALw_wcB";
+                
+                $template_path = storage_path('../public/json/broadcast/bc_to_user_line.json');   
+                $string_json = file_get_contents($template_path);
 
-            $string_json = str_replace("ตัวอย่าง",$topic,$string_json);
-            $string_json = str_replace("TEXT_PHOTO",$photo,$string_json); 
-            $string_json = str_replace("TEXT_SIZE",$size,$string_json); 
-            $string_json = str_replace("TEXT_LINK",$link,$string_json); 
+                $string_json = str_replace("ตัวอย่าง",$topic,$string_json);
+                $string_json = str_replace("TEXT_PHOTO",$photo,$string_json); 
+                $string_json = str_replace("TEXT_SIZE",$size,$string_json); 
+                $string_json = str_replace("TEXT_LINK",$link,$string_json); 
 
-            $messages = [ json_decode($string_json, true) ]; 
+                $messages = [ json_decode($string_json, true) ]; 
 
-            $body = [
-                "to" => $item->user->provider_id,
-                "messages" => $messages,
-            ];
+                $body = [
+                    "to" => $item->user->provider_id,
+                    "messages" => $messages,
+                ];
 
-            $opts = [
-                'http' =>[
-                    'method'  => 'POST',
-                    'header'  => "Content-Type: application/json \r\n".
-                                'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
-                    'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
-                ]
-            ];
-                                
-            $context  = stream_context_create($opts);
-            $url = "https://api.line.me/v2/bot/message/push";
-            $result = file_get_contents($url, false, $context);
+                $opts = [
+                    'http' =>[
+                        'method'  => 'POST',
+                        'header'  => "Content-Type: application/json \r\n".
+                                    'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                        'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                    ]
+                ];
+                                    
+                $context  = stream_context_create($opts);
+                $url = "https://api.line.me/v2/bot/message/push";
+                $result = file_get_contents($url, false, $context);
 
-            //SAVE LOG
-            $data_save_log = [
-                "title" => "BC_to_user_line : id = " . $item->id,
-                "content" => $topic . " / ครั้งที่ : " . $iii,
-            ];
+                //SAVE LOG
+                $data_save_log = [
+                    "title" => "BC_to_user_line : id = " . $item->id,
+                    "content" => $topic . " / ครั้งที่ : " . $iii,
+                ];
 
-            MyLog::create($data_save_log);
+                MyLog::create($data_save_log);
 
-            $iii = $iii + 1 ;
-
+                $iii = $iii + 1 ;
+            }
         }
 
         return "ok" ;
