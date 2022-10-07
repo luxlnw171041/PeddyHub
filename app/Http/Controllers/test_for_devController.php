@@ -225,6 +225,7 @@ class test_for_devController extends Controller
         // $data_users_line = Profile::where('type' , 'line')->get();
         $data_users_line = Profile::where('type' , 'line')
             ->where('id' , 9)
+            ->orWhere('id' , 1)
             ->get();
 
         $iii = 0 ;
