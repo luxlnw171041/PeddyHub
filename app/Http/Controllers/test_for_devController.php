@@ -236,7 +236,7 @@ class test_for_devController extends Controller
             $size = "793:650" ;
             $link = "https://pet-variety.com/?gclid=Cj0KCQjw-fmZBhDtARIsAH6H8qhGuuUM4mV9KrI_cdL5itQAuwqRhV9HueYhQOtmTuLXqLXzYlBrRgAaAtr_EALw_wcB";
             
-            $template_path = storage_path('../public/json/broadcast/BC_to_user_line.json');   
+            $template_path = storage_path('../public/json/broadcast/bc_to_user_line.json');   
             $string_json = file_get_contents($template_path);
 
             $string_json = str_replace("ตัวอย่าง",$topic,$string_json);
