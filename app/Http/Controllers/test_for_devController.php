@@ -230,7 +230,7 @@ class test_for_devController extends Controller
         foreach ($data_users_line as $item) {
 
             $topic = "ชวนเที่ยวงาน PET VARIETY.." ;
-            $photo = "PET VARIETY.png" ;
+            $photo = "PET%20VARIETY.png" ;
             $size = "793:650" ;
             $link = "https://pet-variety.com/?gclid=Cj0KCQjw-fmZBhDtARIsAH6H8qhGuuUM4mV9KrI_cdL5itQAuwqRhV9HueYhQOtmTuLXqLXzYlBrRgAaAtr_EALw_wcB";
             
