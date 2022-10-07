@@ -227,6 +227,8 @@ class test_for_devController extends Controller
             ->where('id' , 9)
             ->get();
 
+        $iii = 0 ;
+
         foreach ($data_users_line as $item) {
 
             $topic = "ชวนเที่ยวงาน PET VARIETY.." ;
@@ -265,10 +267,12 @@ class test_for_devController extends Controller
             //SAVE LOG
             $data_save_log = [
                 "title" => "BC_to_user_line : id = " . $item->id,
-                "content" => $topic,
+                "content" => $topic . " / ครั้งที่ : " . $iii,
             ];
 
             MyLog::create($data_save_log);
+
+            $iii = $iii + 1 ;
 
         }
 
