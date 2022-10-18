@@ -1,115 +1,401 @@
 @extends('layouts.peddyhub')
 
 @section('content')
-    <div class="page-wrapper">
-        <!--Pets Container-->
-        <section class="pets-container">
-            <div class="auto-container">
-                <!-- <h2>We ‘ve These Great Pets for You, Ready to Adopt ...</h2> -->
-                <div class="row clearfix">
-                    <!--Sidebar Page Container-->
-                    <!--Content Side / Blog Single-->
-                    <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                        <!-- Place somewhere in the <body> of your page -->
-                        <div class="card main-shadow main-radius">
-                                <div class="card-body">
-                                    <h4>รูปภาพ</h4>
-                                    <div class="d-flex justify-content-center">
-                                        <img src="{{ url('storage')}}/{{ $lost_pet->pet->photo }}" style="border-radius: 25px;" draggable="false">
-                                    </div>
-                                </div>
-                            </div>
-                        
+<style>
+    .img-pet img{
+        object-fit: cover;
+        height: 300px;
+        width: 100%;
+    }
+    .img-pet-pc img{
+        object-fit: contain;
+        height: 300px;
+        width: 100%;
+        padding: 20px;
+    }
+    .card-lost-pet{
+            border-radius: 20px;
+            background-color: #F8F9FE;
+            padding: 10px;
+        }
+        .about-lost-pet{
+        border-radius: 10px;
+        background-color: #fff;
+        align-items: center;
+        flex-direction:  column;
+        margin-top: -23%;
+        z-index: 99;
+        position: relative;
+
+        }
+        .about-lost-pet-pc{
+        border-radius: 10px;
+        background-color: #fff;
+        align-items: start;
+        flex-direction:  column;
+        z-index: 99;
+        position: relative;
+
+        }
+        .about-lost-pet .name{
+            font-size: 17px;
+            font-family: 'Mitr', sans-serif;
+            font-weight: bold;
+
+        }
+        .about-lost-pet-pc .name{
+            font-size: 17px;
+            font-family: 'Mitr', sans-serif;
+            font-weight: bold;
+
+        }
+        .about-lost-pet .location{
+            font-size: 15px;
+            font-family: 'Mitr', sans-serif;
+        }
+        .about-lost-pet-pc .location{
+            font-size: 15px;
+            font-family: 'Mitr', sans-serif;
+        }
+        .detail-lost-pet {
+            flex-direction:  column;
+            white-space: nowrap; 
+            width: 100%; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+            display: flex;
+            padding: 10px;
+        }
+        .detail-lost-pet span{
+            font-family: 'Mitr', sans-serif;
+            
+        }
+        .container-lost-pet{
+            padding: 15px;
+            background-color: #fff;
+
+        }
+        .container-lost-pet-pc{
+            padding: 50px;
+            background-color: #fff;
+        }
+        .about-lost-pet .icon-gender{
+            position: absolute;
+            margin-left:40%;
+            margin-top:-6%;
+
+        }
+        .tag-found{
+            background-color: #25548F;
+            padding: 5px;
+            border-radius: 10px;
+            color: white;
+            font-family: 'Mitr', sans-serif;
+            font-size: 12px;
+            
+        }
+        .tag-lost{
+            background-color: #b8205b;
+            padding: 5px;
+            border-radius: 10px;
+            color: white;
+            font-family: 'Mitr', sans-serif;
+            font-size: 12px;
+            
+        }
+        .tag-js100{
+            background-color: #0A4424;
+            padding: 5px;
+            border-radius: 10px;
+            color: white;
+            font-family: 'Mitr', sans-serif;
+            font-size: 12px;
+            
+        }
+        .div-tag{
+            padding: 10px;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-direction:  row;
+            display: flex;
+        }
+        .btn-lost-pet{
+            background-color: #fff;
+            color: #828081;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 12px;
+        }
+        .btn-lost-pet:hover{
+            background-color: #b8205b;
+            color: #fff;
+            font-size: 12px;
+        }
+        .lost-pet-detail{
+            background-color: #fff;
+        }.map{
+            padding: 10px;
+        }
+        .map span{
+            font-family: 'Mitr', sans-serif;
+
+        }
+        .user{
+            white-space: nowrap; 
+            width: 100%; 
+            overflow: hidden;
+            text-overflow: ellipsis; 
+            display: flex;
+            padding: 10px;
+            justify-content: space-between;
+
+        }
+        .img-user{
+            font-family: 'Mitr', sans-serif;
+            font-weight: bold;
+        }
+        .img-user img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+        .contacts{
+            align-self: center;
+        }
+        
+</style>
+    <div class="page-wrapper lost-pet-detail">
+        <div class="d-block d-md-none">
+            <div class="img-pet">
+                <a href="#photo-pet-mobile">
+                    <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
+                </a>
+                <a href="#img-photo-pet" class="lightbox" id="photo-pet-mobile">
+                    <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
+                </a>
+            </div>
+            <div class="container-lost-pet">
+                <div class="about-lost-pet ">
+                    <div class="column pt-1 pb-1 text-center">
+                        <div >
+                            <span class="name">
+                                {{$lost_pet->pet->name}}
+                            </span>
+                            
+                        </div>
+                        <div>
+                            @switch( $lost_pet->pet->gender )
+                                @case ('ชาย')
+                                    <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                @break
+                                @case ('หญิง')
+                                    <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                @break
+                                @case ('ไม่ระบุ')
+                                    <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                @break
+                            @endswitch
+                        </div>
+                        <div>
+                            <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
+                        </div>
                     </div>
-                    <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                        <div class="name">
-                            <div class="card main-shadow main-radius">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-2 text-center"style="padding:0px;">
-                                            @if(!empty($lost_pet->profile->photo))
-                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $lost_pet->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
-                                            @else
-                                                <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
-                                            @endif
-                                        </div>
-                                        <div class="col-7" style="padding:0px;">
-                                            @if(!empty($lost_pet->profile->name))
-                                                <p class="notranslate" style="padding:0px;margin:0px;"> <b>{{ $lost_pet->profile->name }}</b>  </p>
-                                            @endif
-                                            <span style="font-size:20px"> <b></b> </span>
-                                            <p style="font-size:12px;margin-top:-8px;"> {{ $lost_pet->created_at->diffForHumans() }} </p>
-                                        </div>
-                                        <div class="col-3">
-                                            <a href="tel:{{ $lost_pet->profile->phone }}" class="btn btn-outline-primary" >
-                                                <i class="fa-solid fa-phone"></i>  ติดต่อ
-                                            </a>
-                                        </div>
-                                    </div>
+                    <hr class="p-0 m-0">
+                    <div class="div-tag">
+                        <div>
+                            @if($lost_pet->status == "found")
+                                <span class="tag-found">เจอแล้ว</span>
+                            @else
+                                <span class="tag-lost">กำลังค้นหา</span>
+                            @endif
+                            &nbsp;
+                            <span class="tag-js100">จส.100</span>
+                        </div>
+                        <div class="contacts">
+                            @if(!empty( $lost_pet->user->email ))
+                            <a href="mailto:{{$lost_pet->user->email}}" class="btn-lost-pet "><i class="fa-solid fa-envelope"></i></a>
+                            @endif
+                            @if(!empty( $lost_pet->profile->phone ))
+                            <a href="tel:{{$lost_pet->profile->phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
+                            @endif
+                        </div>
+                    </div>
+                    <hr class="p-0 m-0">
+                    <div class="detail-lost-pet">
+                        <div>
+                            <span>ประเภท : </span>
+                            <span>{{$lost_pet->pet_category->name}}</span>
+                        </div>
+                        @if(!empty($lost_pet->pet->species))
+                            <div>
+                                <span>สายพันธุ์ :</span>
+                                <span>{{$lost_pet->pet->species}}</span>
+                            </div>
+                        @endif
+                        <div>
+                            <span>อายุ :</span>
+                            <span>
+                                @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
+                                    {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
+                                @endif
+                                @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
+                                    {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                @endif
+                                @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d') != 0 )
+                                    {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} วัน
+                                @endif
+                            </span>
+                        </div>
+                        <div>
+                            <span>เพศ :</span>
+                            <span>{{$lost_pet->pet->gender}}</span>
+                        </div>
+                    </div>
+                    <hr class="p-0 m-0">
+                    <div class="map">
+                        <span><i class="fa-solid fa-location-dot"></i> <b>{{$lost_pet->pet->name}}</b> หายที่ {{ $lost_pet->changwat_th }} {{ $lost_pet->amphoe_th }} {{ $lost_pet->tambon_th }} </span>
+                
+                    </div>
+                    <div id="map_show" class="map_show" style="border-radius: 0px 0px 10px 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-none d-lg-block ">
+            <div class="row container-lost-pet-pc">
+                <div class="col-8 p-3">
+                    <div class="card-lost-pet">
+                        <div class="img-pet-pc">
+                            <a href="#photo-pet">
+                                <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
+                            </a>
+                            <a href="#img-photo-pet" class="lightbox" id="photo-pet">
+                                <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
+                            </a>
+                           
+                        </div>
+                        <div class="about-lost-pet-pc ">
+                            <div class="row  p-3">
+                                <div >
+                                    <span class="name">
+                                        {{$lost_pet->pet->name}}
+                                    </span>
+                                    @switch( $lost_pet->pet->gender )
+                                        @case ('ชาย')
+                                            <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                        @break
+                                        @case ('หญิง')
+                                            <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                        @break
+                                        @case ('ไม่ระบุ')
+                                            <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                        @break
+                                    @endswitch
+                                </div>
+                                
+                                <div>
+                                    <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
                                 </div>
                             </div>
-                            <br>
-                            <div class="card main-shadow main-radius">
-                                <div class="card-body">
-                                    <h4>ชื่อ: <strong>{{ $lost_pet->pet->name }}</strong></h4>
-                                    <ul class="petdetails" >
-                                        <li style="font-size:15px;">ประเภท: <strong>{{ $lost_pet->pet_category->name }}</strong></li>
-                                        @if($lost_pet->pet_category->name == "สุนัข" or $lost_pet->pet_category->name == "แมว")
-                                        <li>พันธุ์ : <strong>{{$lost_pet->pet->species}} </strong></li>
-                                        @endif
-                                        @if(!empty($lost_pet->pet->size))
-                                        <li style="font-size:15px;">ขนาด: <strong>{{ $lost_pet->pet->size }}</strong></li>
-                                        @endif
-                                        <li style="font-size:15px;">อายุ: <strong>
+                            <hr class="p-0 m-0">
+                            <div class="div-tag">
+                                <div>
+                                    @if($lost_pet->status == "found")
+                                        <span class="tag-found">เจอแล้ว</span>
+                                    @else
+                                        <span class="tag-lost">กำลังค้นหา</span>
+                                    @endif
+                                    &nbsp;
+                                    <span class="tag-js100">จส.100</span>
+                                </div>
+                            </div>
+                            <hr class="p-0 m-0">
+                            <div class="detail-lost-pet">
+                                <div>
+                                    <span>ประเภท : </span>
+                                    <span>{{$lost_pet->pet_category->name}}</span>
+                                </div>
+                                @if(!empty($lost_pet->pet->species))
+                                    <div>
+                                        <span>สายพันธุ์ :</span>
+                                        <span>{{$lost_pet->pet->species}}</span>
+                                    </div>
+                                @endif
+                                <div>
+                                    <span>อายุ :</span>
+                                    <span>
                                         @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
-                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ
+                                            {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
                                         @endif
                                         @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
-                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                            {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
                                         @endif
-                                        @if( \Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0)
-                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d')}} วัน
+                                        @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d') != 0 )
+                                            {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} วัน
                                         @endif
-                                        </strong></li>
-                                        <li style="font-size:15px;">เพศ: <strong>{{ $lost_pet->pet->gender }}</strong></li>
-                                        
-                                        @if(!empty($lost_pet->detail))
-                                        <li style="font-size:15px;">คำอธิบาย <br>
-                                            <strong>{{ $lost_pet->detail }}</strong>
-                                        </li>
-                                        @endif
-                                    </ul>
+                                    </span>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="card main-shadow main-radius">
-                                <div class="card-body">
-                                    <h4>ตำแหน่ง</h4>
-                                    <div id="map_show" class="main-shadow main-radius">
-                                    </div>
+                                <div>
+                                    <span>เพศ :</span>
+                                    <span>{{$lost_pet->pet->gender}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-4 p-3">
+                    <div class="card-lost-pet">
+                        <div class="user column">
+                            <div class="img-user">
+                                @if(!empty($lost_pet->profile->photo))
+                                    <img  src="{{ url('storage')}}/{{ $lost_pet->profile->photo }}" alt="">
+                                @else
+                                    <img  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="">
+                                @endif
+                                {{ $lost_pet->profile->name }}
+                            </div>
+                            <div class="contacts">
+                                @if(!empty( $lost_pet->user->email ))
+                                <a href="mailto:{{$lost_pet->user->email}}" class="btn-lost-pet "><i class="fa-solid fa-envelope"></i></a>
+                                @endif
+                                @if(!empty( $lost_pet->profile->phone ))
+                                <a href="tel:{{$lost_pet->profile->phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
+                                @endif
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card-lost-pet">
+                        <div class="map">
+                            <span><i class="fa-solid fa-location-dot"></i> <b>{{$lost_pet->pet->name}}</b> หายที่ {{ $lost_pet->changwat_th }} {{ $lost_pet->amphoe_th }} {{ $lost_pet->tambon_th }} </span>
+                    
+                        </div>
+                        <div id="map_show_pc" class="map_show_pc" style="border-radius: 0px 0px 10px 10px;">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-        <!--End Pets Container-->
+        </div>
     </div>
     
     <br><br>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgrxXDgk1tgXngalZF3eWtcTWI-LPdeus&language=th" ></script>
 <style type="text/css">
-    #map_show {
+    .map_show {
       height: calc(40vh);
     }
-    
+    .map_show_pc {
+      height: calc(40vh);
+    }
 </style>
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
         initMap();
+        initMappc();
+
     });
     
     function initMap() { 
@@ -117,17 +403,65 @@
         let lat = {{ $lost_pet->lat }} ;
         let lng = {{ $lost_pet->lng }} ;
 
-        const map = new google.maps.Map(document.querySelector('#map_show'), {
-            zoom: 17,
+        const map = new google.maps.Map(document.querySelector('.map_show'), {
+            zoom: 10,
+            center: { lat: lat, lng: lng },
+            mapTypeId: "terrain",
+        });
+
+        var image = {
+            url: "https://i.ibb.co/fF6bXGG/loaction.png",
+            scaledSize: new google.maps.Size(25, 33)
+        };
+
+        // ตำแหน่ง USER
+        const user = { lat: lat, lng: lng };
+        const marker_user = new google.maps.Marker({ map, position: user , icon: image});
+
+        const circle = new google.maps.Circle( {
+        map           : map,
+        center        : new google.maps.LatLng( lat, lng ),
+        radius        : 15000,
+        strokeColor   : '#B8205B',
+        strokeOpacity : 1,
+        strokeWeight  : 2,
+        fillColor     : '#B8205B',
+        fillOpacity   : 0.2
+        } );
+    }
+
+    function initMappc() { 
+        
+        let lat = {{ $lost_pet->lat }} ;
+        let lng = {{ $lost_pet->lng }} ;
+
+        const map = new google.maps.Map(document.querySelector('.map_show_pc'), {
+            zoom: 10,
             center: { lat: lat, lng: lng },
             mapTypeId: "terrain",
         });
 
         // ตำแหน่ง USER
         const user = { lat: lat, lng: lng };
-        const marker_user = new google.maps.Marker({ map, position: user });
+ 
+        var image = {
+            url: "https://i.ibb.co/fF6bXGG/loaction.png",
+            scaledSize: new google.maps.Size(25, 33)
+        };
+
+        const marker_user = new google.maps.Marker({ map, position: user, icon: image});
+
+        const circle = new google.maps.Circle( {
+        map           : map,
+        center        : new google.maps.LatLng( lat, lng ),
+        radius        : 15000,
+        strokeColor   : '#B8205B',
+        strokeOpacity : 1,
+        strokeWeight  : 2,
+        fillColor     : '#B8205B',
+        fillOpacity   : 0.2
+    } );
 
     }
-
 </script>
 @endsection

@@ -67,6 +67,10 @@ class User extends Authenticatable
     public function partner(){
         return $this->hasOne('App\Models\Partner', 'id' , 'partner'); 
     } 
+
+    public function lost_pets(){
+        return $this->hasMany('App\Models\Lost_Pet', 'user_id' , 'user_id'); 
+    } 
     // public function partner(){
     //     return $this->hasOne('App\Models\Partner', 'id' , 'partner'); 
     // } 
