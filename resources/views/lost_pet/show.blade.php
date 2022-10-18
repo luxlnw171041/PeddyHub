@@ -410,7 +410,7 @@
         });
 
         var image = {
-            url: "https://i.ibb.co/fF6bXGG/loaction.png",
+            url: "https://www.peddyhub.com/peddyhub/images/icons/location.png",
             scaledSize: new google.maps.Size(25, 33)
         };
 
@@ -445,7 +445,7 @@
         const user = { lat: lat, lng: lng };
  
         var image = {
-            url: "https://i.ibb.co/fF6bXGG/loaction.png",
+            url: "https://www.peddyhub.com/peddyhub/images/icons/location.png",
             scaledSize: new google.maps.Size(25, 33)
         };
 
