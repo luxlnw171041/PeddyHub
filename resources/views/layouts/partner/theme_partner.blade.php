@@ -51,6 +51,14 @@
           100%  {color: yellow;}
 
         }
+
+        .main-shadow {
+		   	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+		}
+
+		 .main-radius {
+		    border-radius: 5px;
+		}
 	</style>
 </head>
 
@@ -101,6 +109,16 @@
 						<div class="menu-title" style="font-size:18px;">จัดการผู้ใช้</div>
 					</a>
 				</li>
+					@if(Auth::user()->partner == '1')
+						<li>
+							<a href="{{ url('/lost_pet_by_js100') }}">
+								<div class="parent-icon">
+									<i class="fa-regular fa-magnifying-glass-location"></i>
+								</div>
+								<div class="menu-title" style="font-size:18px;">ตามหาสัตว์หาย</div>
+							</a>
+						</li>
+					@endif
 				@endif
 				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Check In/Out 

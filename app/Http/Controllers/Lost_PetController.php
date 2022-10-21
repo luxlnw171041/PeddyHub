@@ -57,6 +57,17 @@ class Lost_PetController extends Controller
         return view('lost_pet.create', compact('select_pet','partner'));
     }
 
+    function lost_pet_by_js100()
+    {
+        $user_id = Auth::id();
+
+        $select_pet = Pet::where('user_id' , $user_id)->get();
+        $partner = Partner::where('show_homepage' , "show")->get();
+
+
+        return view('lost_pet.lost_pet_by_js100', compact('select_pet','partner'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -99,6 +110,40 @@ class Lost_PetController extends Controller
         $line->send_lost_pet($requestData);
 
         return redirect('lost_pet')->with('flash_message', 'Lost_Pet added!');
+    }
+
+    public function store_js100(Request $request)
+    {
+        
+        $requestData = $request->all();
+
+        // echo "<pre>" ;
+        // print_r($requestData) ;
+        // echo "<pre>" ;
+        // exit();
+        
+        $requestData['tambon_th'] = $requestData['select_tambon']; 
+        $requestData['amphoe_th'] = $requestData['select_amphoe']; 
+        $requestData['changwat_th'] = $requestData['select_province']; 
+        $requestData['status'] = 'searching'; 
+
+        if (!empty($requestData['input_province'])) {
+            $requestData['tambon_th'] = $requestData['input_tambon']; 
+            $requestData['amphoe_th'] = $requestData['input_amphoe']; 
+            $requestData['changwat_th'] = $requestData['input_province'];
+        }
+
+        if ($request->hasFile('photo')) {
+            $requestData['photo'] = $request->file('photo')
+            ->store('uploads', 'public');
+        }
+
+        Lost_Pet::create($requestData);
+
+        // $line = new LineMessagingAPI();
+        // $line->send_lost_pet($requestData);
+
+        return redirect('lost_pet/create')->with('flash_message', 'Lost_Pet added!');
     }
 
     /**

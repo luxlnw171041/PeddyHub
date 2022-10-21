@@ -128,6 +128,7 @@ Route::get('/login_line_petdating', function () {
 
 Route::middleware(['auth', 'role:admin-partner,partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
+    Route::get('lost_pet_by_js100', 'Lost_PetController@lost_pet_by_js100');
     Route::get('check_in_admin', 'Check_inController@index');
     Route::get('/check_in/gallery', 'Check_inController@gallery');
     Route::get('/check_in/add_new_check_in', 'Check_inController@add_new_check_in');

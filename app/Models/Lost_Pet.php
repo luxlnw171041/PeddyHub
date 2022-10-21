@@ -25,7 +25,7 @@ class Lost_Pet extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'pet_id', 'photo', 'lat', 'lng' , 'pet_category_id','detail','tambon_th','amphoe_th' ,'changwat_th','status','send_round'];
+    protected $fillable = ['user_id', 'pet_id', 'photo', 'lat', 'lng' , 'pet_category_id','detail','tambon_th','amphoe_th' ,'changwat_th','status','send_round','photo_link' , 'pet_name' , 'pet_age' ,'pet_gender' ,'sub_category' ,'owner_name','owner_phone'];
 
     public function profile(){
         return $this->belongsTo('App\Models\Profile', 'user_id'); 
