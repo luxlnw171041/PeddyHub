@@ -160,7 +160,7 @@
                                     <!-- ปุ่มส่งข้อมูล -->
                                     <div class="col-12 col-md-12 form-group">
                                         <br>
-                                        <button style="float:right;margin-right: 20px;margin-top: 20px;width: 30%;" id="modal_submit" type="button" class="btn btn-primary button-three" data-toggle="modal" data-target="#exampleModalLabel" > <!-- onclick="submit_form_lost_pet();" -->
+                                        <button style="float:right;margin-right: 20px;margin-top: 20px;width: 30%;" id="modal_submit" type="button" class="btn btn-primary button-three" data-toggle="modal" data-target="#exampleModalLabel" onclick="submit_form_lost_pet();">
                                             แจ้งน้องหาย
                                         </button>
                                         <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">

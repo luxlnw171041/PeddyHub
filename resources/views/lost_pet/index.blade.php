@@ -223,157 +223,86 @@
 
 
                         @foreach($lost_pet as $item)
-                        <div class="col-lg-3 col-md-6 col-sm-12 m-0 p-2">
-                            <a href="{{ url('/lost_pet/' . $item->id) }}" class="unset-hover">
-                                <div class="card-lost-pet">
-                                    <img  class="img-lost-pet"src="{{ url('storage/'.$item->photo )}}" alt="" >
-                                    <div class="container-lost-pet">
-                                        <div class="about-lost-pet ">
-                                            <div class="column pt-1 pb-1 text-center">
-                                                <div >
-                                                    <span class="name">
-                                                        {{$item->pet->name}}
-                                                    </span>
-                                                    
-                                                </div>
-                                                <div>
-                                                    @switch( $item->pet->gender )
-                                                        @case ('ชาย')
-                                                            <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
-                                                        @break
-                                                        @case ('หญิง')
-                                                            <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
-                                                        @break
-                                                        @case ('ไม่ระบุ')
-                                                            <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
-                                                        @break
-                                                    @endswitch
-                                                </div>
-                                                <div>
-                                                    <span class="location">{{ $item->changwat_th }} {{ $item->tambon_th }}</span>
-                                                </div>
-                                            </div>
-                                            <hr class="p-0 m-0">
-                                            <div class="detail-lost-pet">
-                                                <span class="text"> 
-                                                    @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
-                                                        {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
-                                                    @endif
-                                                    @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
-                                                        {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
-                                                    @endif
+                            <!-- ตามหาทั่วไป -->
+                            @if(!empty($item->user_id))
+                                <div class="col-lg-3 col-md-6 col-sm-12 m-0 p-2">
+                                    <a href="{{ url('/lost_pet/' . $item->id) }}" class="unset-hover">
+                                        <div class="card-lost-pet">
+                                            @if(!empty($item->photo_link))
+                                                <img  class="img-lost-pet"src="{{ url('storage/'.$item->photo_link )}}" alt="" >
+                                            @else
+                                                <img  class="img-lost-pet"src="{{ url('storage/'.$item->photo )}}" alt="" >
+                                            @endif
+                                            <div class="container-lost-pet">
+                                                <div class="about-lost-pet ">
+                                                    <div class="column pt-1 pb-1 text-center">
+                                                        <div >
+                                                            <span class="name">
+                                                                {{$item->pet->name}}
+                                                            </span>
+                                                            
+                                                        </div>
+                                                        <div>
+                                                            @switch( $item->pet->gender )
+                                                                @case ('ชาย')
+                                                                    <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                                                @break
+                                                                @case ('หญิง')
+                                                                    <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                                                @break
+                                                                @case ('ไม่ระบุ')
+                                                                    <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                                                @break
+                                                            @endswitch
+                                                        </div>
+                                                        <div>
+                                                            <span class="location">{{ $item->changwat_th }} {{ $item->tambon_th }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="p-0 m-0">
+                                                    <div class="detail-lost-pet">
+                                                        <span class="text"> 
+                                                            @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
+                                                                {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
+                                                            @endif
+                                                            @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
+                                                                {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                                            @endif
 
-                                                    @if(!empty($item->pet->species))
-                                                        • {{$item->pet->species}}
-                                                    @endif
-                                                </span>
-                                            </div>
-                                            <hr class="p-0 m-0">
-                                            <div class="div-tag">
-                                                <div>
-                                                    @if($item->status == "found")
-                                                        <span class="tag-found">เจอแล้ว</span>
-                                                    @else
-                                                        <span class="tag-lost">กำลังค้นหา</span>
-                                                    @endif
-                                                    &nbsp;
-                                                    <span class="tag-js100">จส.100</span>
+                                                            @if(!empty($item->pet->species))
+                                                                • {{$item->pet->species}}
+                                                            @endif
+                                                        </span>
+                                                    </div>
+                                                    <hr class="p-0 m-0">
+                                                    <div class="div-tag">
+                                                        <div>
+                                                            @if($item->status == "found")
+                                                                <span class="tag-found">เจอแล้ว</span>
+                                                            @else
+                                                                <span class="tag-lost">กำลังค้นหา</span>
+                                                            @endif
+                                                            &nbsp;
+                                                            <span class="tag-js100">จส.100</span>
+                                                        </div>
+                                                        <div class="contacts">
+                                                            @if(!empty( $item->user->email ))
+                                                           <a href="mailto:{{$item->user->email}}" class="btn-lost-pet "><i class="fa-solid fa-envelope"></i></a>
+                                                           @endif
+                                                           @if(!empty( $item->profile->phone ))
+                                                            <a href="tel:{{$item->profile->phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
+                                                           @endif
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="contacts">
-                                                    @if(!empty( $item->user->email ))
-                                                   <a href="mailto:{{$item->user->email}}" class="btn-lost-pet "><i class="fa-solid fa-envelope"></i></a>
-                                                   @endif
-                                                   @if(!empty( $item->profile->phone ))
-                                                    <a href="tel:{{$item->profile->phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
-                                                   @endif
-                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>    
                                 </div>
-                            </a>    
-                        </div>
-                            <!-- <div class="col-lg-4 col-md-6 col-sm-12">
-                                <div class="card">
-                                    <div style="padding-top:10px;padding-left:20px;">
-                                        <div class="row">
-                                            <div class="col-2" style="padding:0px;">
-                                                @if(!empty($item->profile->photo))
-                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('storage')}}/{{ $item->profile->photo }}" alt="image of client" title="client" class="img-fluid customer">
-                                                @else
-                                                    <img style="border-radius: 50%;object-fit:cover; width:50px;height:50px;"  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="image of client" title="client" class="img-fluid customer">
-                                                @endif
-                                            </div>
-                                            <div class="col-9" style="padding:0px">
-                                                @if($item->status == "found")
-                                                    <span class="text-success" style="float: right;"><b>เจอแล้ว</b></span>
-                                                @else
-                                                    <span class="text-warning" style="float: right;"><b>กำลังค้นหา</b></span>
-                                                @endif
-
-                                                @if(!empty($item->profile->name))
-                                                    <p class="notranslate" style="padding:0px;margin:0px;"> 
-                                                        <b>{{ $item->profile->name }}</b>
-                                                    </p>
-                                                @endif
-                                                <span style="font-size:20px"> <b></b> </span>
-                                                <p style="font-size:12px;margin-top:-8px;"> {{ $item->created_at->diffForHumans() }} </p>
-                                            </div>
-                                            <div class="col-12" style="padding:8px;">
-                                                @php
-                                                    $pet_category = $item->pet_category_id ;
-                                                @endphp
-                                                
-                                                @include ('menubar.icon_categorie') 
-                                                <span class="notranslate" style="font-size: 17px;">{{$item->pet->name}}</span>
-                                                @switch( $item->pet->gender )
-                                                    @case ('ชาย')
-                                                        <i class="fa-solid fa-mars text-info" style="font-size:20px;"></i> &nbsp;&nbsp;&nbsp;
-                                                    @break
-                                                    @case ('หญิง')
-                                                        <i class="fa-solid fa-venus" style="font-size:20px;color: pink;"></i> &nbsp;&nbsp;&nbsp;
-                                                    @break
-                                                    @case ('ไม่ระบุ')
-                                                        <i class="fa-solid fa-genderless text-secondary" style="font-size:20px;"></i> &nbsp;&nbsp;&nbsp;
-                                                    @break
-                                                @endswitch
-                                                <b class="text-secondary">อายุ : 
-                                                @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
-                                                    {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
-                                                @endif
-                                                @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
-                                                    {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
-                                                @endif
-                                                @if( \Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($item->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0)
-                                                    {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%d')}} วัน
-                                                @endif
-                                                </b>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="image" style="margin-top:8px;">
-                                        <img class="imgf" src="{{ url('storage/'.$item->photo )}}" style="object-fit: scale-down;" width="400px" height="300px" class="img-fluid customer">
-                                    </div>
-                                    <div style="padding-top:10px;padding-left:20px;">
-                                        <div class="row col-12">
-                                            <div class="card-body d-flex justify-content-between"style="padding:10px;">
-                                                <a href="{{ url('/lost_pet/' . $item->id) }}" class="btn btn-outline-peddyhub">
-                                                    <b class="text-b-lost_pet"><i class="fa-solid fa-file-lines icon-menu-lost_pet"></i>  <br>
-                                                        รายละเอียด
-                                                    </b>
-                                                </a>
-                                                @if(!empty( $item->profile->phone ))
-                                                <a href="tel:{{ $item->profile->phone }}" class="btn btn-outline-peddyhub-call">
-                                                    <b class="text-b-lost_pet"> <i class="fa-solid fa-phone icon-menu-lost_pet"></i> <br> 
-                                                        ติดต่อ
-                                                    </b>
-                                                </a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                            @else
+                                <!-- ตามหาของ JS100 -->
+                                {{ $item->pet_name }}
+                            @endif
                         @endforeach
                     </div>
                 </div>
