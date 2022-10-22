@@ -64,7 +64,7 @@ class Check_day_lost_pet extends Command
                 "ประกาศหาน้องเป็นอย่างไรบ้าง",
                 "วันที่หาย",
                 "เจอแล้ว",
-                "ส่งขอความอีกครั้ง",
+                "ส่งข้อความอีกครั้ง",
                 "ยืนยันการค้นหา",
             ];
 
@@ -76,7 +76,7 @@ class Check_day_lost_pet extends Command
             $string_json = str_replace("ประกาศหาน้องเป็นอย่างไรบ้าง",$data_topic[0],$string_json); 
             $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json); 
             $string_json = str_replace("เจอแล้ว",$data_topic[2],$string_json); 
-            $string_json = str_replace("ส่งขอความอีกครั้ง",$data_topic[3],$string_json); 
+            $string_json = str_replace("ส่งข้อความอีกครั้ง",$data_topic[3],$string_json); 
             $string_json = str_replace("ยืนยันการค้นหา",$data_topic[4],$string_json); 
 
             $string_json = str_replace("IMGPET",$item->photo,$string_json); 

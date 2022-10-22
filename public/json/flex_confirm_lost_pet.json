@@ -155,7 +155,7 @@
                   "type": "postback",
                   "label": "ส่งขอความอีกครั้ง",
                   "data": "check_line_lost_pet/PET_ID..sendline",
-                  "displayText": "ส่งขอความอีกครั้ง"
+                  "displayText": "ส่งข้อความอีกครั้ง"
                 },
                 "height": "sm",
                 "style": "secondary",
