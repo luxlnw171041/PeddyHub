@@ -269,7 +269,7 @@
                                                             @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
                                                                 {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
                                                             @endif
-
+                                                            <br>
                                                             @if(!empty($item->pet->species))
                                                                 • {{$item->pet->species}}
                                                             @endif
@@ -340,6 +340,7 @@
                                                     <div class="detail-lost-pet">
                                                         <span class="text"> 
                                                             อายุ : 
+                                                            <br>
                                                             @if(!empty($item->pet->species))
                                                                 • {{ $item->sub_category }}
                                                             @endif
