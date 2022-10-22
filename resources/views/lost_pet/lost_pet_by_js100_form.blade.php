@@ -97,7 +97,15 @@
                                             <div class="col-12 col-md-6 form-group">
                                                 <div class="d- form-group {{ $errors->has('pet_age') ? 'has-error' : ''}}">
                                                     <label for="pet_age" class="control-label">{{ 'อายุสัตว์เลี้ยง' }}</label>
-                                                    <input class="form-control" name="pet_age" type="text" id="pet_age" value="{{ isset($lost_pet->pet_age) ? $lost_pet->pet_age : ''}}">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <input class="form-control" name="pet_age_Y" type="number" id="pet_age_Y" value="" placeholder="ปี" onchange="input_pet_age();">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <input class="form-control" name="pet_age_M" type="number" id="pet_age_M" value="" placeholder="เดือน" onchange="input_pet_age();">
+                                                        </div>
+                                                    </div>
+                                                    <input class="form-control d-none" name="pet_age" type="text" id="pet_age" value="" readonly>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
@@ -105,7 +113,9 @@
                                                 <br>
                                                 <div class="d- form-group {{ $errors->has('pet_category_id') ? 'has-error' : ''}}">
                                                     <label for="pet_category_id" class="control-label">{{ 'ประเภทสัตว์เลี่ยง' }}</label>
-                                                    <input class="form-control" name="pet_category_id" type="text" id="pet_category_id" value="{{ isset($lost_pet->pet_category_id) ? $lost_pet->pet_category_id : ''}}">
+                                                    <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="species_select();" required>
+                                                        <option class="translate" value="" selected> - โปรดเลือก - </option>
+                                                    </select>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
@@ -113,8 +123,9 @@
                                                 <br>
                                                 <div class="d- form-group {{ $errors->has('sub_category') ? 'has-error' : ''}}">
                                                     <label for="sub_category" class="control-label">{{ 'สายพันธุ์' }}</label>
-                                                    <input class="form-control" name="sub_category" type="text" id="sub_category" value="{{ isset($lost_pet->sub_category) ? $lost_pet->sub_category : ''}}">
-                                                    {!! $errors->first('sub_category', '<p class="help-block">:message</p>') !!}
+                                                    <select  id="select_species" name="sub_category" class="form-control">
+                                                        <option class="translate" value="" selected> - โปรดเลือก - </option>
+                                                    </select>                                                    {!! $errors->first('sub_category', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 form-group">
@@ -234,6 +245,7 @@
         // console.log("START");
         getLocation();
         select_province();
+        select_category();
         document.querySelector('#btn_lost_pet_15day').click();
     });
 
@@ -408,9 +420,71 @@
 
                 });
         }
-
-
     }
+
+    function select_category() {
+        let select_category = document.querySelector('#select_category');
+
+        fetch("{{ url('/') }}/api/select_category/")
+            .then(response => response.json())
+            .then(result => {
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.name;
+                    option.value = item.id;
+                    select_category.add(option);
+                }
+
+            });
+            
+        sub_cat();
+    }
+
+    function sub_cat() {
+        let select_category = document.querySelector('#select_category');
+        let select_sub_category = document.querySelector('#select_sub_category');
+
+        let counter = 0;
+        fetch("{{ url('/') }}/api/select_sub_category" + "/" + select_category.value)
+            .then(response => response.json())
+            .then(result => {
+
+                select_sub_category.innerHTML = "";
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.sub_category;
+                    option.value = item.sub_category;
+                    select_sub_category.add(option);
+                    counter++;
+                }
+                if (counter >= 1) {
+                    document.querySelector('#select_sub_category').classList.remove('d-none');
+                } else {
+                    document.querySelector('#select_sub_category').classList.add('d-none');
+                }
+            });
+    }
+
+    function input_pet_age(){
+        let pet_age_Y = document.querySelector('#pet_age_Y').value ;
+        let pet_age_M = document.querySelector('#pet_age_M').value ;
+
+        if (pet_age_Y && pet_age_M) {
+            document.querySelector('#pet_age').value = pet_age_Y + " ปี " + pet_age_M + " เดือน" ;
+        }else if(pet_age_Y && !pet_age_M){
+            document.querySelector('#pet_age').value = pet_age_Y + " ปี " ;
+        }else{
+            document.querySelector('#pet_age').value = pet_age_M + " เดือน" ;
+        }
+
+        if (pet_age_Y == "0" && pet_age_M) {
+            document.querySelector('#pet_age').value = pet_age_M + " เดือน" ;
+        }
+    }
+
+
 </script>
 <script>
     function submit_form_lost_pet() {
