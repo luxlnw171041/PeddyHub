@@ -174,3 +174,5 @@ Route::get('test_for_dev/test_send_png', 'test_for_devController@test_send_png')
 Route::get('test_for_dev/lat_lng_pro', 'test_for_devController@lat_lng_pro');
 
 Route::get('BC_to_user_line', 'test_for_devController@BC_to_user_line');
+
+Route::resource('partner_token', 'Partner_tokenController');
