@@ -181,7 +181,7 @@
                                         <button style="float:right;margin-right: 20px;margin-top: 20px;width: 30%;" id="modal_submit" type="button" class="btn btn-primary button-three" data-toggle="modal" data-target="#exampleModalLabel" onclick="submit_form_lost_pet();">
                                             แจ้งน้องหาย
                                         </button>
-                                        <input class="col-10 btn btn-primary d-" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
+                                        <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
                                         <div class="col-1"></div>
                                     </div>
                                     <!-- ------------------------------------ -->
