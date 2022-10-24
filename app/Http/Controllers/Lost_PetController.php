@@ -11,6 +11,7 @@ use App\Models\Lost_Pet;
 use App\Models\Pet_Category;
 use App\Models\Pet;
 use App\Models\Partner;
+use App\Models\Partner_token;
 use App\Models\Mylog;
 
 use Illuminate\Support\Facades\Auth;
@@ -61,12 +62,20 @@ class Lost_PetController extends Controller
     function lost_pet_by_partner()
     {
         $user_id = Auth::id();
+        $partner_id = Auth::user()->partner ;
 
         $select_pet = Pet::where('user_id' , $user_id)->get();
         $partner = Partner::where('show_homepage' , "show")->get();
 
+        $data_partner_tokens = Partner_token::where('partner_id' , $partner_id)->first();
 
-        return view('lost_pet.lost_pet_by_partner', compact('select_pet','partner'));
+        if (!empty($data_partner_tokens)) {
+            $token = $data_partner_tokens->token ;
+        }else{
+            $token = "" ;
+        }
+
+        return view('lost_pet.lost_pet_by_partner', compact('select_pet','partner' ,'token'));
     }
 
     /**
@@ -117,10 +126,16 @@ class Lost_PetController extends Controller
     {
         $requestData = $request->all();
 
-        echo "<pre>" ;
-        print_r($requestData) ;
-        echo "<pre>" ;
-        exit();
+        $data_partner_tokens = Partner_token::where('token' , $requestData['Token'])->first();
+
+        if (!empty($data_partner_tokens)) {
+            $requestData['by_api'] = "Yes" ;
+            $requestData['by_partner'] = $data_partner_tokens->partner_id ;
+            store_partner($requestData);
+        }else{
+            return "ไม่สามารถดำเนินการได้ กรุณาติดต่อ PEDDyHUB" ;
+        }
+
     }
 
     public function store_partner(Request $request)
@@ -166,7 +181,12 @@ class Lost_PetController extends Controller
 
         $this->send_lost_pet_by_js100($requestData, $lost_pet_id);
 
-        return redirect('lost_pet_by_partner')->with('flash_message', 'Lost_Pet added!');
+        if ($requestData['by_api'] == "NO") {
+            return redirect('lost_pet_by_partner')->with('flash_message', 'Lost_Pet added!');
+        }else{
+            return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
+        }
+
     }
 
     /**

@@ -13,6 +13,7 @@ use App\Models\Disease;
 
 use App\Models\Check_in;
 use App\Models\Partner;
+use App\Models\Partner_token;
 
 class PartnersController extends Controller
 {
@@ -412,5 +413,37 @@ class PartnersController extends Controller
         ]);
 
         return $color_navbar ;
+    }
+
+    public function Create_Token($id_partner)
+    {
+        $data_partner = Partner::where('id' , $id_partner)->first();
+        $data_partner_tokens = Partner_token::where('partner_id' , $id_partner)->first();
+
+        $ex_1 = uniqid($id_partner . '-');
+        $ex_2 = uniqid();
+        $token = $ex_1 . $ex_2 ;
+
+        if (!empty($data_partner_tokens)) {
+
+            DB::table('partner_tokens')
+                ->where("partner_id", $id_partner)
+                ->update([
+                    'token' => $token,
+            ]);
+
+        }else{
+            $data = array();
+            
+
+            $data['name_partner'] = $data_partner->name ;
+            $data['partner_id'] = $id_partner ;
+            $data['token'] = $token ;
+
+            Partner_token::create($data);
+
+        }
+
+        return $token ;
     }
 }
