@@ -181,7 +181,7 @@ class Lost_PetController extends Controller
 
         $this->send_lost_pet_by_js100($requestData, $lost_pet_id);
 
-        if ($requestData['by_api'] == "NO") {
+        if ($requestData['by_api'] == "No") {
             return redirect('lost_pet_by_partner')->with('flash_message', 'Lost_Pet added!');
         }else{
             return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
