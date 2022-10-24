@@ -113,7 +113,7 @@
                                                 <br>
                                                 <div class="d- form-group {{ $errors->has('pet_category_id') ? 'has-error' : ''}}">
                                                     <label for="pet_category_id" class="control-label">{{ 'ประเภทสัตว์เลี่ยง' }}</label>
-                                                    <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="species_select();" required>
+                                                    <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat();" required>
                                                         <option class="translate" value="" selected> - โปรดเลือก - </option>
                                                     </select>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
@@ -437,8 +437,6 @@
                 }
 
             });
-            
-        sub_cat();
     }
 
     function sub_cat() {
