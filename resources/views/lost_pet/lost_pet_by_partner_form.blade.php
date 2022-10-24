@@ -1,7 +1,26 @@
 <div class="card radius-10" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
     <div class="card-header border-bottom-0 bg-transparent" style="padding-right:0px;">
-        <div class="row col-12">
-            <h2 style="margin-top: 10px;">แจ้งน้องหาย</h2>
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <h2 style="margin-top: 10px;">แจ้งน้องหาย</h2>
+            </div>
+            <div class="col-12 col-md-9">
+                <div style="margin-top: 10px;" class="row">
+                    <div class="col-12 col-md-9">
+                        <input type="text" class="form-control" name="ger_token" id="ger_token" value="" readonly>
+                    </div>
+                    <div class="col-12 col-md-1">
+                        <span class="btn btn-secondary text-white main-shadow main-radius d-">
+                            Copy
+                        </span>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <span class="btn btn-warning text-white main-shadow main-radius">
+                            Create Token
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="main-wrapper pet check">
             <div class="pet service">
