@@ -259,9 +259,9 @@
         "width": "90%",
         "offsetTop": "70%",
         "action": {
-          "type": "message",
-          "label": "action",
-          "text": "MORE_DETAIL"
+          "type": "postback",
+          "data": "view_more/LOST_PET_ID",
+          "displayText": "ดูเพิ่มเติม"
         },
         "alignItems": "flex-start",
         "height": "6.8%",
@@ -320,7 +320,7 @@
         "action": {
           "type": "uri",
           "label": "action",
-          "uri": "https://www.peddyhub.com/login_line/post?openExternalBrowser=1"
+          "uri": "tel:PHONE_USER"
         },
         "height": "8%",
         "offsetStart": "6%",
@@ -338,12 +338,7 @@
             "weight": "bold",
             "color": "#0A4424",
             "align": "start",
-            "size": "20px",
-            "action": {
-              "type": "uri",
-              "label": "tel 1137",
-              "uri": "tel:1137"
-            }
+            "size": "20px"
           }
         ],
         "position": "absolute",
@@ -358,18 +353,16 @@
         "layout": "vertical",
         "contents": [],
         "position": "absolute",
-        "width": "45.5%",
+        "width": "47%",
         "offsetTop": "89%",
         "action": {
           "type": "uri",
           "label": "action",
-          "uri": "https://www.peddyhub.com/login_line/post?openExternalBrowser=1"
+          "uri": "tel:1137"
         },
-        "alignItems": "flex-start",
-        "height": "6.8%",
-        "offsetStart": "6.9%",
-        "paddingTop": "3%",
-        "paddingStart": "14.5%"
+        "height": "6.5%",
+        "offsetStart": "6%",
+        "paddingStart": "15%"
       }
     ],
     "paddingAll": "0px"
