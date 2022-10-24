@@ -109,7 +109,7 @@
 						<div class="menu-title" style="font-size:18px;">จัดการผู้ใช้</div>
 					</a>
 				</li>
-					@if(Auth::user()->partner == '1' or Auth::user()->partner == '17')
+					@if(Auth::user()->partner == '32' or Auth::user()->provider_id == 'U912994894c449f2237f73f18b5703e89')
 						<li>
 							<a href="{{ url('/lost_pet_by_js100') }}">
 								<div class="parent-icon">

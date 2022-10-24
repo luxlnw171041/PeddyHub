@@ -200,7 +200,7 @@
                                 </div>
                                 <input class="d-none" type="text" id="latlng" name="latlng" readonly>
                                 <input class="d-none" type="text" id="num_zoom" name="num_zoom" value="6" readonly>
-                                <input class="d-none" type="text" id="token_api" name="token_api" value="peddyhub" >
+                                <input class="d-none" type="text" id="by_partner" name="by_partner" value="{{ Auth::user()->partner }}" >
 
                                 <br>
 
