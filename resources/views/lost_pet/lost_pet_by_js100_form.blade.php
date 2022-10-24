@@ -63,14 +63,14 @@
                                             <div class="col-12 col-md-4 form-group">
                                                 <div class="faq form-group {{ $errors->has('owner_name') ? 'has-error' : ''}}">
                                                     <label for="owner_name" class="control-label">{{ 'ชื่อ' }}</label>
-                                                    <input class="form-control" name="owner_name" type="text" id="owner_name" value="" required>
+                                                    <input class="form-control" name="owner_name" type="text" id="owner_name" value="">
                                                     {!! $errors->first('owner_name', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-4 form-group">
                                                 <div class="faq form-group {{ $errors->has('owner_phone') ? 'has-error' : ''}}">
                                                     <label for="owner_phone" class="control-label">{{ 'เบอร์ติดต่อ' }}</label>
-                                                    <input class="form-control" name="owner_phone" type="text" id="owner_phone" value="" required>
+                                                    <input class="form-control" name="owner_phone" type="text" id="owner_phone" value="">
                                                     {!! $errors->first('owner_phone', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
@@ -90,7 +90,7 @@
                                             <div class="col-12 col-md-6 form-group">
                                                 <div class="d- form-group {{ $errors->has('pet_name') ? 'has-error' : ''}}">
                                                     <label for="pet_name" class="control-label">{{ 'ชื่อสัตว์เลี้ยง' }}</label>
-                                                    <input class="form-control" name="pet_name" type="text" id="pet_name" value="{{ isset($lost_pet->pet_name) ? $lost_pet->pet_name : ''}}">
+                                                    <input class="form-control" name="pet_name" type="text" id="pet_name" value="{{ isset($lost_pet->pet_name) ? $lost_pet->pet_name : ''}}" required>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
@@ -99,10 +99,10 @@
                                                     <label for="pet_age" class="control-label">{{ 'อายุสัตว์เลี้ยง' }}</label>
                                                     <div class="row">
                                                         <div class="col-6">
-                                                            <input class="form-control" name="pet_age_Y" type="number" id="pet_age_Y" value="" placeholder="ปี" onchange="input_pet_age();">
+                                                            <input class="form-control" name="pet_age_Y" type="number" id="pet_age_Y" value="" placeholder="ปี" onchange="input_pet_age();" min="0">
                                                         </div>
                                                         <div class="col-6">
-                                                            <input class="form-control" name="pet_age_M" type="number" id="pet_age_M" value="" placeholder="เดือน" onchange="input_pet_age();">
+                                                            <input class="form-control" name="pet_age_M" type="number" id="pet_age_M" value="" placeholder="เดือน" onchange="input_pet_age();" required min="0">
                                                         </div>
                                                     </div>
                                                     <input class="form-control d-none" name="pet_age" type="text" id="pet_age" value="" readonly>
@@ -113,7 +113,7 @@
                                                 <br>
                                                 <div class="d- form-group {{ $errors->has('pet_category_id') ? 'has-error' : ''}}">
                                                     <label for="pet_category_id" class="control-label">{{ 'ประเภทสัตว์เลี่ยง' }}</label>
-                                                    <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="sub_cat();" required>
+                                                    <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="species_select();" required>
                                                         <option class="translate" value="" selected> - โปรดเลือก - </option>
                                                     </select>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
@@ -123,9 +123,8 @@
                                                 <br>
                                                 <div class="d- form-group {{ $errors->has('sub_category') ? 'has-error' : ''}}">
                                                     <label for="sub_category" class="control-label">{{ 'สายพันธุ์' }}</label>
-                                                    <select  id="select_species" name="sub_category" class="form-control">
-                                                        <option class="translate" value="" selected> - โปรดเลือก - </option>
-                                                    </select>                                                    {!! $errors->first('sub_category', '<p class="help-block">:message</p>') !!}
+                                                    <input class="form-control" name="sub_category" type="text" id="sub_category" value="" placeholder="ระบุสายพันธุ์">
+                                                    {!! $errors->first('sub_category', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 form-group">
@@ -133,7 +132,7 @@
                                                 <div class="d- form-group {{ $errors->has('pet_gender') ? 'has-error' : ''}}">
                                                     <label for="pet_gender" class="control-label">{{ 'เพศ' }}</label>
                                                     <div class="form-group">
-                                                        <input type="radio" name="pet_gender" id="pet_gender_M" value="ชาย"> ชาย &nbsp;&nbsp;
+                                                        <input type="radio" name="pet_gender" id="pet_gender_M" value="ชาย" required> ชาย &nbsp;&nbsp;
                                                         <input type="radio" name="pet_gender" id="pet_gender_W" value="หญิง"> หญิง &nbsp;&nbsp;
                                                         <input type="radio" name="pet_gender" id="pet_gender_O" value=""> ไม่ระบุ &nbsp;&nbsp;
                                                     </div>
@@ -153,16 +152,24 @@
                                         <div class="row">
                                             <h4><br></h4>
                                             <div class="col-12 col-md-12 form-group">
-                                                <div class="d- form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
+                                                <div class="d-none form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
                                                     <label for="photo" class="control-label">{{ 'รูปภาพ' }}</label>
-                                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}">
+                                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" required accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo();" >
                                                     {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 form-group">
                                                 <center>
                                                     <br>
-                                                    <img id="img_pet" class="main-shadow main-radius" width="50%" src="https://www.peddyhub.com/storage/uploads/nkRauC1MfHHxpaU3OQ6IsC8GCfasu9cxBTOhF4Cr.jpg">
+                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;height: 340px;">
+                                                        <br>
+                                                        <div id="btn_add_photo" class="">
+                                                            <i style="font-size:100px;margin-top: 85px;color: #B8205B;" class="fas fa-images btn" onclick="document.querySelector('#photo').click();"></i>
+                                                            <br>
+                                                            <span style="color:#B8205B;" class="btn" onclick="document.querySelector('#photo').click();">เพิ่มรูปภาพสัตว์เลี้ยง</span>
+                                                        </div>
+                                                        <img class="d- full_img main-shadow main-radius" style="padding:0px ;" width="50%" id="show_photo" onclick="document.querySelector('#photo').click();" />
+                                                    </div>
                                                 </center>
                                             </div>
                                         </div>
@@ -193,6 +200,7 @@
                                 </div>
                                 <input class="d-none" type="text" id="latlng" name="latlng" readonly>
                                 <input class="d-none" type="text" id="num_zoom" name="num_zoom" value="6" readonly>
+                                <input class="d-none" type="text" id="token_api" name="token_api" value="peddyhub" >
 
                                 <br>
 
@@ -439,32 +447,6 @@
             });
     }
 
-    function sub_cat() {
-        let select_category = document.querySelector('#select_category');
-        let select_sub_category = document.querySelector('#select_sub_category');
-
-        let counter = 0;
-        fetch("{{ url('/') }}/api/select_sub_category" + "/" + select_category.value)
-            .then(response => response.json())
-            .then(result => {
-
-                select_sub_category.innerHTML = "";
-
-                for (let item of result) {
-                    let option = document.createElement("option");
-                    option.text = item.sub_category;
-                    option.value = item.sub_category;
-                    select_sub_category.add(option);
-                    counter++;
-                }
-                if (counter >= 1) {
-                    document.querySelector('#select_sub_category').classList.remove('d-none');
-                } else {
-                    document.querySelector('#select_sub_category').classList.add('d-none');
-                }
-            });
-    }
-
     function input_pet_age(){
         let pet_age_Y = document.querySelector('#pet_age_Y').value ;
         let pet_age_M = document.querySelector('#pet_age_M').value ;
@@ -480,6 +462,11 @@
         if (pet_age_Y == "0" && pet_age_M) {
             document.querySelector('#pet_age').value = pet_age_M + " เดือน" ;
         }
+    }
+
+    function add_photo(){
+        document.querySelector('#btn_add_photo').classList.add('d-none');
+        document.querySelector('#show_photo').classList.remove('d-none');
     }
 
 

@@ -73,6 +73,10 @@ class LineApiController extends Controller
             case "Chinese" : 
                 $line->replyToUser(null, $event, "Chinese");
                 break;
+            case "view_more" : 
+                $lost_pet_id = $data_postback_explode[1];
+                $line->replyToUser($lost_pet_id, $event, "view_more");
+                break;
             case "check_line_lost_pet" : 
                 $data_answer = $data_postback_explode[1] ;
                 $answer_explode = explode("..",$data_answer);

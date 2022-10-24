@@ -165,194 +165,52 @@
         
 </style>
     <div class="page-wrapper lost-pet-detail">
-        <div class="d-block d-md-none">
-            <div class="img-pet">
-                <a href="#photo-pet-mobile">
-                    <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
-                </a>
-                <a href="#img-photo-pet" class="lightbox" id="photo-pet-mobile">
-                    <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
-                </a>
-            </div>
-            <div class="container-lost-pet">
-                <div class="about-lost-pet ">
-                    <div class="column pt-1 pb-1 text-center">
-                        <div >
-                            <span class="name">
-                                {{$lost_pet->pet->name}}
-                            </span>
-                            
-                        </div>
-                        <div>
-                            @switch( $lost_pet->pet->gender )
-                                @case ('ชาย')
-                                    <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
-                                @break
-                                @case ('หญิง')
-                                    <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
-                                @break
-                                @case ('ไม่ระบุ')
-                                    <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
-                                @break
-                            @endswitch
-                        </div>
-                        <div>
-                            <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
-                        </div>
-                    </div>
-                    <hr class="p-0 m-0">
-                    <div class="div-tag">
-                        <div>
-                            @if($lost_pet->status == "found")
-                                <span class="tag-found">เจอแล้ว</span>
-                            @else
-                                <span class="tag-lost">กำลังค้นหา</span>
-                            @endif
-                            &nbsp;
-                            <span class="tag-js100">จส.100</span>
-                        </div>
-                        <div class="contacts">
-                            @if(!empty( $lost_pet->user->email ))
-                            <a href="mailto:{{$lost_pet->user->email}}" class="btn-lost-pet "><i class="fa-solid fa-envelope"></i></a>
-                            @endif
-                            @if(!empty( $lost_pet->profile->phone ))
-                            <a href="tel:{{$lost_pet->profile->phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
-                            @endif
-                        </div>
-                    </div>
-                    <hr class="p-0 m-0">
-                    <div class="detail-lost-pet">
-                        <div>
-                            <span>ประเภท : </span>
-                            <span>{{$lost_pet->pet_category->name}}</span>
-                        </div>
-                        @if(!empty($lost_pet->pet->species))
-                            <div>
-                                <span>สายพันธุ์ :</span>
-                                <span>{{$lost_pet->pet->species}}</span>
-                            </div>
-                        @endif
-                        <div>
-                            <span>อายุ :</span>
-                            <span>
-                                @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
-                                    {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
-                                @endif
-                                @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
-                                    {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
-                                @endif
-                                @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d') != 0 )
-                                    {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} วัน
-                                @endif
-                            </span>
-                        </div>
-                        <div>
-                            <span>เพศ :</span>
-                            <span>{{$lost_pet->pet->gender}}</span>
-                        </div>
-                    </div>
-                    <hr class="p-0 m-0">
-                    <div class="map">
-                        <span><i class="fa-solid fa-location-dot"></i> <b>{{$lost_pet->pet->name}}</b> หายที่ {{ $lost_pet->changwat_th }} {{ $lost_pet->amphoe_th }} {{ $lost_pet->tambon_th }} </span>
-                
-                    </div>
-                    <div id="map_show" class="map_show" style="border-radius: 0px 0px 10px 10px;">
-                    </div>
+        @if(!empty($lost_pet->user_id))
+            <!-- ทั่วไป -->
+            <!-- มือถือ -->
+            <div class="d-block d-md-none">
+                <div class="img-pet">
+                    <a href="#photo-pet-mobile">
+                        <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
+                    </a>
+                    <a href="#img-photo-pet" class="lightbox" id="photo-pet-mobile">
+                        <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
+                    </a>
                 </div>
-            </div>
-        </div>
-        <div class="d-none d-lg-block ">
-            <div class="row container-lost-pet-pc">
-                <div class="col-8 p-3">
-                    <div class="card-lost-pet">
-                        <div class="img-pet-pc">
-                            <a href="#photo-pet">
-                                <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
-                            </a>
-                            <a href="#img-photo-pet" class="lightbox" id="photo-pet">
-                                <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
-                            </a>
-                           
-                        </div>
-                        <div class="about-lost-pet-pc ">
-                            <div class="row  p-3">
-                                <div >
-                                    <span class="name">
-                                        {{$lost_pet->pet->name}}
-                                    </span>
-                                    @switch( $lost_pet->pet->gender )
-                                        @case ('ชาย')
-                                            <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
-                                        @break
-                                        @case ('หญิง')
-                                            <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
-                                        @break
-                                        @case ('ไม่ระบุ')
-                                            <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
-                                        @break
-                                    @endswitch
-                                </div>
+                <div class="container-lost-pet">
+                    <div class="about-lost-pet ">
+                        <div class="column pt-1 pb-1 text-center">
+                            <div >
+                                <span class="name">
+                                    {{$lost_pet->pet->name}}
+                                </span>
                                 
-                                <div>
-                                    <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
-                                </div>
                             </div>
-                            <hr class="p-0 m-0">
-                            <div class="div-tag">
-                                <div>
-                                    @if($lost_pet->status == "found")
-                                        <span class="tag-found">เจอแล้ว</span>
-                                    @else
-                                        <span class="tag-lost">กำลังค้นหา</span>
-                                    @endif
-                                    &nbsp;
-                                    <span class="tag-js100">จส.100</span>
-                                </div>
+                            <div>
+                                @switch( $lost_pet->pet->gender )
+                                    @case ('ชาย')
+                                        <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                    @break
+                                    @case ('หญิง')
+                                        <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                    @break
+                                    @case ('ไม่ระบุ')
+                                        <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                    @break
+                                @endswitch
                             </div>
-                            <hr class="p-0 m-0">
-                            <div class="detail-lost-pet">
-                                <div>
-                                    <span>ประเภท : </span>
-                                    <span>{{$lost_pet->pet_category->name}}</span>
-                                </div>
-                                @if(!empty($lost_pet->pet->species))
-                                    <div>
-                                        <span>สายพันธุ์ :</span>
-                                        <span>{{$lost_pet->pet->species}}</span>
-                                    </div>
-                                @endif
-                                <div>
-                                    <span>อายุ :</span>
-                                    <span>
-                                        @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
-                                            {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
-                                        @endif
-                                        @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
-                                            {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
-                                        @endif
-                                        @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d') != 0 )
-                                            {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} วัน
-                                        @endif
-                                    </span>
-                                </div>
-                                <div>
-                                    <span>เพศ :</span>
-                                    <span>{{$lost_pet->pet->gender}}</span>
-                                </div>
+                            <div>
+                                <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-4 p-3">
-                    <div class="card-lost-pet">
-                        <div class="user column">
-                            <div class="img-user">
-                                @if(!empty($lost_pet->profile->photo))
-                                    <img  src="{{ url('storage')}}/{{ $lost_pet->profile->photo }}" alt="">
+                        <hr class="p-0 m-0">
+                        <div class="div-tag">
+                            <div>
+                                @if($lost_pet->status == "found")
+                                    <span class="tag-found">เจอแล้ว</span>
                                 @else
-                                    <img  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="">
+                                    <span class="tag-lost">กำลังค้นหา</span>
                                 @endif
-                                {{ $lost_pet->profile->name }}
                             </div>
                             <div class="contacts">
                                 @if(!empty( $lost_pet->user->email ))
@@ -362,21 +220,381 @@
                                 <a href="tel:{{$lost_pet->profile->phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
                                 @endif
                             </div>
-
                         </div>
-                    </div>
-                    <br>
-                    <div class="card-lost-pet">
+                        <hr class="p-0 m-0">
+                        <div class="detail-lost-pet">
+                            <div>
+                                <span>ประเภท : </span>
+                                <span>{{$lost_pet->pet_category->name}}</span>
+                            </div>
+                            @if(!empty($lost_pet->pet->species))
+                                <div>
+                                    <span>สายพันธุ์ :</span>
+                                    <span>{{$lost_pet->pet->species}}</span>
+                                </div>
+                            @endif
+                            <div>
+                                <span>อายุ :</span>
+                                <span>
+                                    @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
+                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
+                                    @endif
+                                    @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
+                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                    @endif
+                                    @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d') != 0 )
+                                        {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} วัน
+                                    @endif
+                                </span>
+                            </div>
+                            <div>
+                                <span>เพศ :</span>
+                                <span>{{$lost_pet->pet->gender}}</span>
+                            </div>
+                        </div>
+                        <hr class="p-0 m-0">
                         <div class="map">
                             <span><i class="fa-solid fa-location-dot"></i> <b>{{$lost_pet->pet->name}}</b> หายที่ {{ $lost_pet->changwat_th }} {{ $lost_pet->amphoe_th }} {{ $lost_pet->tambon_th }} </span>
                     
                         </div>
-                        <div id="map_show_pc" class="map_show_pc" style="border-radius: 0px 0px 10px 10px;">
+                        <div id="map_show" class="map_show" style="border-radius: 0px 0px 10px 10px;">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- คอม -->
+            <div class="d-none d-lg-block ">
+                <div class="row container-lost-pet-pc">
+                    <div class="col-8 p-3">
+                        <div class="card-lost-pet">
+                            <div class="img-pet-pc">
+                                <a href="#photo-pet">
+                                    <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
+                                </a>
+                                <a href="#img-photo-pet" class="lightbox" id="photo-pet">
+                                    <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
+                                </a>
+                               
+                            </div>
+                            <div class="about-lost-pet-pc ">
+                                <div class="row  p-3">
+                                    <div >
+                                        <span class="name">
+                                            {{$lost_pet->pet->name}}
+                                        </span>
+                                        @switch( $lost_pet->pet->gender )
+                                            @case ('ชาย')
+                                                <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                            @break
+                                            @case ('หญิง')
+                                                <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                            @break
+                                            @case ('ไม่ระบุ')
+                                                <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                            @break
+                                        @endswitch
+                                    </div>
+                                    
+                                    <div>
+                                        <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
+                                    </div>
+                                </div>
+                                <hr class="p-0 m-0">
+                                <div class="div-tag">
+                                    <div>
+                                        @if($lost_pet->status == "found")
+                                            <span class="tag-found">เจอแล้ว</span>
+                                        @else
+                                            <span class="tag-lost">กำลังค้นหา</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <hr class="p-0 m-0">
+                                <div class="detail-lost-pet">
+                                    <div>
+                                        <span>ประเภท : </span>
+                                        <span>{{$lost_pet->pet_category->name}}</span>
+                                    </div>
+                                    @if(!empty($lost_pet->pet->species))
+                                        <div>
+                                            <span>สายพันธุ์ :</span>
+                                            <span>{{$lost_pet->pet->species}}</span>
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <span>อายุ :</span>
+                                        <span>
+                                            @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
+                                                {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
+                                            @endif
+                                            @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
+                                                {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
+                                            @endif
+                                            @if(\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%d') != 0 )
+                                                {{\Carbon\Carbon::parse($lost_pet->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} วัน
+                                            @endif
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>เพศ :</span>
+                                        <span>{{$lost_pet->pet->gender}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 p-3">
+                        <div class="card-lost-pet">
+                            <div class="user column">
+                                <div class="img-user notranslate">
+                                    @if(!empty($lost_pet->profile->photo))
+                                        <img  src="{{ url('storage')}}/{{ $lost_pet->profile->photo }}" alt="">
+                                    @else
+                                        <img  src="{{ url('peddyhub/images/home_5/icon1.png')}}" alt="">
+                                    @endif
+                                    {{ $lost_pet->profile->name }}
+                                </div>
+                                <div class="contacts notranslate">
+                                    @if(!empty( $lost_pet->user->email ))
+                                    <a href="mailto:{{$lost_pet->user->email}}" class="btn-lost-pet "><i class="fa-solid fa-envelope"></i></a>
+                                    @endif
+                                    @if(!empty( $lost_pet->profile->phone ))
+                                    <a href="tel:{{$lost_pet->profile->phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
+                                    @endif
+                                </div>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card-lost-pet">
+                            <div class="map">
+                                <span><i class="fa-solid fa-location-dot"></i> <b>{{$lost_pet->pet->name}}</b> หายที่ {{ $lost_pet->changwat_th }} {{ $lost_pet->amphoe_th }} {{ $lost_pet->tambon_th }} </span>
+                        
+                            </div>
+                            <div id="map_show_pc" class="map_show_pc" style="border-radius: 0px 0px 10px 10px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            <!-- JS100 -->
+            <!-- มือถือ -->
+            <div class="d-block d-md-none">
+                <div class="img-pet">
+                    <a href="#photo-pet-mobile">
+                        @if(!empty($lost_pet->photo_link))
+                            <img  src="{{ url('storage')}}/{{ $lost_pet->photo_link }}" alt="">
+                        @else
+                            <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
+                        @endif
+                    </a>
+                    <a href="#img-photo-pet" class="lightbox" id="photo-pet-mobile">
+
+                        @if(!empty($lost_pet->photo_link))
+                            <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo_link }}')"></span>
+                        @else
+                            <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
+                        @endif
+                    </a>
+                </div>
+                <div class="container-lost-pet">
+                    <div class="about-lost-pet ">
+                        <div class="column pt-1 pb-1 text-center">
+                            <div >
+                                <span class="name">
+                                    {{$lost_pet->pet_name}}
+                                </span>
+                                
+                            </div>
+                            <div>
+                                @switch( $lost_pet->pet_gender )
+                                    @case ('ชาย')
+                                        <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                    @break
+                                    @case ('หญิง')
+                                        <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                    @break
+                                    @case ('ไม่ระบุ')
+                                        <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                    @break
+                                @endswitch
+                            </div>
+                            <div>
+                                <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
+                            </div>
+                        </div>
+                        <hr class="p-0 m-0">
+                        <div class="div-tag">
+                            <div>
+                                @if($lost_pet->status == "found")
+                                    <span class="tag-found">เจอแล้ว</span>
+                                @else
+                                    <span class="tag-lost">กำลังค้นหา</span>
+                                @endif
+                                &nbsp;
+                                <span class="tag-js100">จส.100</span>
+                            </div>
+                            <div class="contacts">
+                                @if(!empty( $lost_pet->owner_phone ))
+                                <a href="tel:{{$lost_pet->owner_phone}}" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
+                                @endif
+                            </div>
+                        </div>
+                        <hr class="p-0 m-0">
+                        <div class="detail-lost-pet">
+                            <div>
+                                <span>ประเภท : </span>
+                                <span>{{ $lost_pet->pet_category->name }}</span>
+                            </div>
+                            @if(!empty($lost_pet->sub_category))
+                                <div>
+                                    <span>สายพันธุ์ :</span>
+                                    <span>{{ $lost_pet->sub_category }}</span>
+                                </div>
+                            @endif
+                            <div>
+                                <span>อายุ :</span>
+                                <span>
+                                    {{ $lost_pet->pet_age }}
+                                </span>
+                            </div>
+                            <div>
+                                <span>เพศ :</span>
+                                <span>{{$lost_pet->pet_gender}}</span>
+                            </div>
+                        </div>
+                        <hr class="p-0 m-0">
+                        <div class="map">
+                            <span>
+                                <i class="fa-solid fa-location-dot"></i> 
+                                <b>{{$lost_pet->pet_name}}</b> 
+                                หายที่ {{ $lost_pet->changwat_th }} {{ $lost_pet->amphoe_th }} {{ $lost_pet->tambon_th }} 
+                            </span>
+                            <br>
+                            <span><b>รายละเอียด : </b></span>
+                            <span>{{ $lost_pet->detail }}</span>
+                    
+                        </div>
+                        <div id="map_show" class="map_show" style="border-radius: 0px 0px 10px 10px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- คอม -->
+            <div class="d-none d-lg-block ">
+                <div class="row container-lost-pet-pc">
+                    <div class="col-8 p-3">
+                        <div class="card-lost-pet">
+                            <div class="img-pet-pc">
+                                <a href="#photo-pet">
+                                    @if(!empty($lost_pet->photo_link))
+                                        <img  src="{{ url('storage')}}/{{ $lost_pet->photo_link }}" alt="">
+                                    @else
+                                        <img  src="{{ url('storage')}}/{{ $lost_pet->photo }}" alt="">
+                                    @endif
+                                </a>
+                                <a href="#img-photo-pet" class="lightbox" id="photo-pet">
+                                    @if(!empty($lost_pet->photo_link))
+                                        <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo_link }}')"></span>
+                                    @else
+                                        <span style="background-image: url('{{ url('storage')}}/{{ $lost_pet->photo }}')"></span>
+                                    @endif
+                                </a>
+                               
+                            </div>
+                            <div class="about-lost-pet-pc ">
+                                <div class="row  p-3">
+                                    <div >
+                                        <span class="name">
+                                            {{$lost_pet->pet_name}}
+                                        </span>
+                                        @switch( $lost_pet->pet_gender )
+                                            @case ('ชาย')
+                                                <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                            @break
+                                            @case ('หญิง')
+                                                <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                            @break
+                                            @case ('ไม่ระบุ')
+                                                <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                            @break
+                                        @endswitch
+                                    </div>
+                                    
+                                    <div>
+                                        <span class="location">{{ $lost_pet->changwat_th }} {{ $lost_pet->tambon_th }}</span>
+                                    </div>
+                                </div>
+                                <hr class="p-0 m-0">
+                                <div class="div-tag">
+                                    <div>
+                                        @if($lost_pet->status == "found")
+                                            <span class="tag-found">เจอแล้ว</span>
+                                        @else
+                                            <span class="tag-lost">กำลังค้นหา</span>
+                                        @endif
+                                        &nbsp;
+                                        <span class="tag-js100">จส.100</span>
+                                    </div>
+                                </div>
+                                <hr class="p-0 m-0">
+                                <div class="detail-lost-pet">
+                                    <div>
+                                        <span>ประเภท : </span>
+                                        <span>{{ $lost_pet->pet_category->name }}</span>
+                                    </div>
+                                    @if(!empty($lost_pet->sub_category))
+                                        <div>
+                                            <span>สายพันธุ์ :</span>
+                                            <span>{{ $lost_pet->sub_category }}</span>
+                                        </div>
+                                    @endif
+                                    <div>
+                                        <span>อายุ :</span>
+                                        <span>
+                                            {{ $lost_pet->pet_age }}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>เพศ :</span>
+                                        <span>{{$lost_pet->pet_gender}}</span>
+                                    </div>
+                                </div>
+                                <div style="margin-left:10px;">
+                                    <span><b>รายละเอียด : </b></span>
+                                    <span>{{ $lost_pet->detail }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 p-3">
+                        <div class="card-lost-pet">
+                            <div class="user column">
+                                <div class="img-user notranslate">
+                                    <img  src="{{ url('peddyhub/images/logo-partner/250x250/js100.png')}}" alt="">
+                                    JS100 - จส.100
+                                </div>
+                                <div class="contacts">
+                                    <a href="tel:1137" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card-lost-pet">
+                            <div class="map">
+                                <span><i class="fa-solid fa-location-dot"></i> <b>{{$lost_pet->pet_name}}</b> หายที่ {{ $lost_pet->changwat_th }} {{ $lost_pet->amphoe_th }} {{ $lost_pet->tambon_th }} </span>
+                        
+                            </div>
+                            <div id="map_show_pc" class="map_show_pc" style="border-radius: 0px 0px 10px 10px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     </div>
     
     <br><br>

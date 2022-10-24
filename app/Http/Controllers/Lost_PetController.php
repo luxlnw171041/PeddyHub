@@ -114,14 +114,28 @@ class Lost_PetController extends Controller
 
     public function store_js100(Request $request)
     {
-        
         $requestData = $request->all();
 
-        // echo "<pre>" ;
-        // print_r($requestData) ;
-        // echo "<pre>" ;
-        // exit();
-        
+        // if (!empty($requestData['token_api'])) {
+        //     // code...
+        // }
+
+        if (empty($requestData['owner_name'])) {
+            $requestData['owner_name'] = "ไม่ได้ระบุ" ;
+        }
+
+        if (empty($requestData['owner_phone'])) {
+            $requestData['owner_phone'] = "ไม่ได้ระบุ" ;
+        }
+
+        if (empty($requestData['sub_category'])) {
+            $requestData['sub_category'] = "ไม่ได้ระบุ" ;
+        }
+
+        if (empty($requestData['detail'])) {
+            $requestData['detail'] = "ไม่ได้ระบุ" ;
+        }
+
         $requestData['tambon_th'] = $requestData['select_tambon']; 
         $requestData['amphoe_th'] = $requestData['select_amphoe']; 
         $requestData['changwat_th'] = $requestData['select_province']; 
@@ -140,8 +154,16 @@ class Lost_PetController extends Controller
 
         Lost_Pet::create($requestData);
 
-        // $line = new LineMessagingAPI();
-        // $line->send_lost_pet($requestData);
+        $data_lost_pet = Lost_Pet::latest()->first();
+
+        echo $data_lost_pet->id ;
+        echo "<br>" ;
+        echo "<pre>" ;
+        print_r($requestData) ;
+        echo "<pre>" ;
+        exit();
+
+        $this->send_lost_pet_by_js100($requestData);
 
         return redirect('lost_pet/create')->with('flash_message', 'Lost_Pet added!');
     }
@@ -259,6 +281,162 @@ class Lost_PetController extends Controller
         $data->update($requestData);
 
         return "ok" ;
+    }
+
+    public function send_lost_pet_by_js100($data)
+    {
+        $date_now = date("d/m/Y");
+
+        if (!empty($data['select_province'])) {
+            $changwat_th = $data['select_province'];
+            $amphoe_th = $data['select_amphoe'];
+            $tambon_th = $data['select_tambon'];
+        }else{
+            $changwat_th = $data['input_province'];
+            $amphoe_th = $data['input_amphoe'];
+            $tambon_th = $data['input_tambon'];
+        }
+
+        if (!empty($data['photo_link'])) {
+            $photo = $data['photo_link'];
+        }else{
+            $photo = "https://www.peddyhub.com/storage/" . $data['photo'];
+        }
+
+        if (!empty($data['detail'])) {
+            $detail = $data['detail'];
+        }else{
+            $detail = "-";
+        }
+        
+        switch ($data['pet_category_id']) {
+            case '1':
+                $pet_category_id = 'สุนัข';
+                $img_icon = 'shiba.png';
+                break;
+            case '2':
+                $pet_category_id = 'แมว';
+                $img_icon = 'cat.png';
+                break;
+            case '3':
+                $pet_category_id = 'นก';
+                $img_icon = 'bird.png';
+                break;
+            case '4':
+                $pet_category_id = 'ปลา';
+                $img_icon = 'fish.png';
+                break;
+            case '5':
+                $pet_category_id = 'สัตว์เล็ก';
+                $img_icon = 'otter.png';
+                break;
+            case '6':
+                $pet_category_id = 'Exotic';
+                $img_icon = 'spider.png';
+                break;
+        }
+
+        $send_to_users = Profile::where('type' ,'line')
+            ->where('changwat_th' ,$changwat_th)
+            ->where('amphoe_th' ,$amphoe_th)
+            ->where('tambon_th' ,$tambon_th)
+            ->get();
+
+        foreach ($send_to_users as $item) {
+            if (!empty($item->user->provider_id)) {
+                $alert_arr = json_decode($item->alert_lost_pet) ;
+
+                if (in_array($data['pet_category_id'] , $alert_arr)){
+                    
+                    // ส่งข้อความ
+                    $data_Text_topic = [
+                        "ตามหา",
+                        "หาย",
+                        "วันที่หาย",
+                        "ประเภท",
+                        "เพศ",
+                        "สายพันธุ์",
+                        "รายละเอียด",
+                        "ดูเพิ่มเติม",
+                        "โทร",
+                        "เจ้าของ",
+                        $pet_category_id,
+                    ];
+
+                    $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
+
+                    $template_path = storage_path('../public/json/flex_lost_pet_by_js100.json');   
+                    $string_json = file_get_contents($template_path);
+
+                    // แปลภาษาหัวข้อ
+                    $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
+                    $string_json = str_replace("หาย",$data_topic[1],$string_json);
+                    $string_json = str_replace("วันที่หาย",$data_topic[2],$string_json);
+                    $string_json = str_replace("ประเภท",$data_topic[3],$string_json);
+                    $string_json = str_replace("เพศ",$data_topic[4],$string_json);
+                    $string_json = str_replace("สายพันธุ์",$data_topic[5],$string_json);
+                    $string_json = str_replace("รายละเอียด",$data_topic[6],$string_json);
+                    $string_json = str_replace("ดูเพิ่มเติม",$data_topic[7],$string_json);
+                    $string_json = str_replace("โทร",$data_topic[8],$string_json);
+                    $string_json = str_replace("เจ้าของ",$data_topic[9],$string_json);
+
+                    $string_json = str_replace("PET_TYPE",$data_topic[10],$string_json);
+                    $string_json = str_replace("DATE_LOST",$date_now,$string_json);
+
+                    // data pet 
+                    $string_json = str_replace("https:IMGPET",$photo,$string_json);
+                    $string_json = str_replace("PET_NAME",$data['pet_name'],$string_json);
+                    $string_json = str_replace("PET_AGE",$data['pet_age'],$string_json);
+                    $string_json = str_replace("PET_GENDER",$data['pet_gender'],$string_json);
+                    if (!empty($data['sub_category'])) {
+                        $string_json = str_replace("PET_SPECIES",$data['sub_category'],$string_json);
+                    }else{
+                        $string_json = str_replace("PET_SPECIES","-",$string_json);
+                    }
+
+                    // data user lost pet
+                    if (!empty($data['owner_name'])) {
+                        $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
+                        $string_json = str_replace("NAME_USER",$data['owner_name'],$string_json);
+                    }else{
+                        $string_json = str_replace("PHONE_USER","-",$string_json);
+                        $string_json = str_replace("NAME_USER","-",$string_json);
+                    }
+
+                    $string_json = str_replace("LOST_PET_ID","",$string_json);
+
+                    $messages = [ json_decode($string_json, true) ];
+
+
+                    $body = [
+                        "to" => $item->user->provider_id,
+                        "messages" => $messages,
+                    ];
+
+                    $opts = [
+                        'http' =>[
+                            'method'  => 'POST',
+                            'header'  => "Content-Type: application/json \r\n".
+                                        'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                            'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                            //'timeout' => 60
+                        ]
+                    ];
+                                        
+                    $context  = stream_context_create($opts);
+                    $url = "https://api.line.me/v2/bot/message/push";
+                    $result = file_get_contents($url, false, $context);
+
+                    //SAVE LOG
+                    $data_save_log = [
+                        "title" => "ส่งข้อความแจ้งสัตว์เลี้ยงหาย โดย Partner",
+                        "content" => $item->user->username . " - " . $item->user->provider_id,
+                    ];
+                    MyLog::create($data_save_log);
+                }
+            }
+            
+        }
     }
 
 }

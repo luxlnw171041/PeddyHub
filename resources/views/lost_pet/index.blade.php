@@ -339,7 +339,7 @@
                                                     <hr class="p-0 m-0">
                                                     <div class="detail-lost-pet">
                                                         <span class="text"> 
-                                                            อายุ : 
+                                                            อายุ : {{ $item->pet_age }}
                                                             <br>
                                                             @if(!empty($item->pet->species))
                                                                 • {{ $item->sub_category }}

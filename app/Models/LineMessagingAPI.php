@@ -196,6 +196,9 @@ class LineMessagingAPI extends Model
 
                 $messages = [ json_decode($string_json, true) ]; 
             break;
+            case 'view_more':
+                // 
+            break;
             case 'Chinese':
                 $provider_id = $event["source"]['userId'];
                 $user = User::where('provider_id', $provider_id)->get();

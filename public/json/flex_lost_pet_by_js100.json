@@ -1,0 +1,378 @@
+{
+    "type": "flex",
+    "altText": "ตามหาPET_TYPEหาย",
+    "contents": {
+  "type": "bubble",
+  "size": "giga",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "image",
+        "size": "full",
+        "aspectMode": "fit",
+        "aspectRatio": "1104:2010",
+        "gravity": "center",
+        "url": "https://www.peddyhub.com/peddyhub/images/flex-line/lost_pet/flex-lost-pet.png"
+      },
+      {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "aspectMode": "cover",
+                "size": "full",
+                "aspectRatio": "1:1",
+                "url": "https:IMGPET",
+                "backgroundColor": "#FFFFFF"
+              }
+            ],
+            "borderColor": "#FFFFFF",
+            "borderWidth": "5px",
+            "backgroundColor": "#B8205B",
+            "justifyContent": "center",
+            "cornerRadius": "200px"
+          }
+        ],
+        "alignItems": "center",
+        "justifyContent": "center",
+        "position": "absolute",
+        "offsetTop": "1%",
+        "width": "59%",
+        "height": "50%",
+        "offsetStart": "20.5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ตามหาPET_TYPEหาย",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "bold",
+            "offsetTop": "10px",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "28px"
+          }
+        ],
+        "position": "absolute",
+        "width": "70%",
+        "offsetBottom": "0px",
+        "offsetStart": "5.5%",
+        "offsetEnd": "0px",
+        "offsetTop": "1.5%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "height": "10%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "PET_NAME",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "bold",
+            "offsetTop": "10px",
+            "color": "#ffffff",
+            "align": "center",
+            "size": "28px",
+            "decoration": "underline"
+          }
+        ],
+        "position": "absolute",
+        "width": "90%",
+        "offsetBottom": "0px",
+        "offsetEnd": "0px",
+        "offsetTop": "41.1%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "height": "7%",
+        "offsetStart": "5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "PET_AGE",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "regular",
+            "color": "#ffffff",
+            "align": "center",
+            "size": "20px"
+          }
+        ],
+        "position": "absolute",
+        "width": "90%",
+        "offsetTop": "49%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "offsetStart": "5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "ประเภท : PET_TYPE",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "regular",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "20px"
+          }
+        ],
+        "position": "absolute",
+        "width": "47%",
+        "offsetTop": "60.5%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "offsetStart": "5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "วันที่หาย : DATE_LOST",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "regular",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "20px"
+          }
+        ],
+        "position": "absolute",
+        "width": "92%",
+        "offsetTop": "55%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "offsetStart": "5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "เพศ : PET_GENDER",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "regular",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "20px"
+          }
+        ],
+        "position": "absolute",
+        "width": "45%",
+        "offsetTop": "60.5%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "offsetStart": "53.5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "สายพันธุ์ : PET_SPECIES",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "regular",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "20px"
+          }
+        ],
+        "position": "absolute",
+        "width": "92%",
+        "offsetTop": "65.5%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "offsetStart": "5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "รายละเอียด :",
+            "wrap": true,
+            "weight": "regular",
+            "color": "#ffffff",
+            "align": "start",
+            "size": "20px",
+            "contents": [
+              {
+                "type": "span",
+                "text": "รายละเอียด : "
+              },
+              {
+                "type": "span",
+                "text": "ดูเพิ่มเติม",
+                "size": "20px",
+                "color": "#38B6FF",
+                "style": "normal",
+                "weight": "bold",
+                "decoration": "underline"
+              },
+              {
+                "type": "span",
+                "text": " ↗️"
+              }
+            ]
+          }
+        ],
+        "position": "absolute",
+        "width": "92%",
+        "offsetTop": "71.5%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "offsetStart": "5%"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "position": "absolute",
+        "width": "90%",
+        "offsetTop": "70%",
+        "action": {
+          "type": "message",
+          "label": "action",
+          "text": "MORE_DETAIL"
+        },
+        "alignItems": "flex-start",
+        "height": "6.8%",
+        "offsetStart": "05%",
+        "paddingTop": "3%",
+        "paddingStart": "14.5%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "โทร : PHONE_USER",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "bold",
+            "color": "#0A4424",
+            "align": "start",
+            "size": "20px"
+          }
+        ],
+        "position": "absolute",
+        "width": "60%",
+        "alignItems": "center",
+        "justifyContent": "center",
+        "offsetTop": "78%",
+        "offsetStart": "21%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "เจ้าของ : NAME_USER",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "bold",
+            "color": "#0A4424",
+            "align": "start",
+            "size": "20px"
+          }
+        ],
+        "offsetTop": "82%",
+        "position": "absolute",
+        "offsetStart": "21%"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "position": "absolute",
+        "width": "88%",
+        "offsetTop": "78%",
+        "action": {
+          "type": "uri",
+          "label": "action",
+          "uri": "https://www.peddyhub.com/login_line/post?openExternalBrowser=1"
+        },
+        "height": "8%",
+        "offsetStart": "6%",
+        "paddingStart": "15%"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "contents": [
+          {
+            "type": "text",
+            "text": "โทร : 1137",
+            "wrap": false,
+            "maxLines": 1,
+            "weight": "bold",
+            "color": "#0A4424",
+            "align": "start",
+            "size": "20px",
+            "action": {
+              "type": "uri",
+              "label": "tel 1137",
+              "uri": "tel:1137"
+            }
+          }
+        ],
+        "position": "absolute",
+        "width": "30%",
+        "justifyContent": "center",
+        "alignItems": "center",
+        "offsetTop": "90.2%",
+        "offsetStart": "21%"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "position": "absolute",
+        "width": "45.5%",
+        "offsetTop": "89%",
+        "action": {
+          "type": "uri",
+          "label": "action",
+          "uri": "https://www.peddyhub.com/login_line/post?openExternalBrowser=1"
+        },
+        "alignItems": "flex-start",
+        "height": "6.8%",
+        "offsetStart": "6.9%",
+        "paddingTop": "3%",
+        "paddingStart": "14.5%"
+      }
+    ],
+    "paddingAll": "0px"
+  }
+}
+}

@@ -18,6 +18,7 @@ class CategoryController extends Controller
 
         return $pet_cat;
     }
+    
     public function sub_category($category)
     {
         $pets = Pet_Category::where('id' , $category)->get();
