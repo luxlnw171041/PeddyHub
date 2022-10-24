@@ -157,11 +157,11 @@ class Lost_PetController extends Controller
         $data_lost_pet = Lost_Pet::latest()->first();
         $lost_pet_id = $data_lost_pet->id ;
 
-        echo "<br>" ;
-        echo "<pre>" ;
-        print_r($requestData) ;
-        echo "<pre>" ;
-        exit();
+        // echo "<br>" ;
+        // echo "<pre>" ;
+        // print_r($requestData) ;
+        // echo "<pre>" ;
+        // exit();
 
         $this->send_lost_pet_by_js100($requestData, $lost_pet_id);
 
