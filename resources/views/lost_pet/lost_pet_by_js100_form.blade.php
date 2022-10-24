@@ -152,16 +152,16 @@
                                         <div class="row">
                                             <h4><br></h4>
                                             <div class="col-12 col-md-12 form-group">
-                                                <div class="d-none form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
+                                                <div class="d- form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
                                                     <label for="photo" class="control-label">{{ 'รูปภาพ' }}</label>
-                                                    <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" required accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo();" >
+                                                    <input style="position:absolute;top:65%;right: 10%; width: 10%;z-index: -9;" class="form-control" name="photo" type="file" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" required accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo();" >
                                                     {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-12 form-group">
                                                 <center>
                                                     <br>
-                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;height: 340px;">
+                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;height: 340px;z-index: 99;background-color: white;">
                                                         <br>
                                                         <div id="btn_add_photo" class="">
                                                             <i style="font-size:100px;margin-top: 85px;color: #B8205B;" class="fas fa-images btn" onclick="document.querySelector('#photo').click();"></i>
@@ -181,7 +181,7 @@
                                         <button style="float:right;margin-right: 20px;margin-top: 20px;width: 30%;" id="modal_submit" type="button" class="btn btn-primary button-three" data-toggle="modal" data-target="#exampleModalLabel" onclick="submit_form_lost_pet();">
                                             แจ้งน้องหาย
                                         </button>
-                                        <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
+                                        <input class="col-10 btn btn-primary d-" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
                                         <div class="col-1"></div>
                                     </div>
                                     <!-- ------------------------------------ -->
