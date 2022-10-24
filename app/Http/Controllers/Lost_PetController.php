@@ -155,15 +155,15 @@ class Lost_PetController extends Controller
         Lost_Pet::create($requestData);
 
         $data_lost_pet = Lost_Pet::latest()->first();
+        $lost_pet_id = $data_lost_pet->id ;
 
-        echo $data_lost_pet->id ;
         echo "<br>" ;
         echo "<pre>" ;
         print_r($requestData) ;
         echo "<pre>" ;
         exit();
 
-        $this->send_lost_pet_by_js100($requestData);
+        $this->send_lost_pet_by_js100($requestData, $lost_pet_id);
 
         return redirect('lost_pet/create')->with('flash_message', 'Lost_Pet added!');
     }
@@ -283,7 +283,7 @@ class Lost_PetController extends Controller
         return "ok" ;
     }
 
-    public function send_lost_pet_by_js100($data)
+    public function send_lost_pet_by_js100($data, $lost_pet_id)
     {
         $date_now = date("d/m/Y");
 
@@ -301,12 +301,6 @@ class Lost_PetController extends Controller
             $photo = $data['photo_link'];
         }else{
             $photo = "https://www.peddyhub.com/storage/" . $data['photo'];
-        }
-
-        if (!empty($data['detail'])) {
-            $detail = $data['detail'];
-        }else{
-            $detail = "-";
         }
         
         switch ($data['pet_category_id']) {
@@ -361,9 +355,11 @@ class Lost_PetController extends Controller
                         "โทร",
                         "เจ้าของ",
                         $pet_category_id,
+                        "ไม่ได้ระบุ",
                     ];
-
-                    $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
+                    
+                    $line = new LineMessagingAPI();
+                    $data_topic = $line->language_for_user($data_Text_topic, $item->user->provider_id);
 
                     $template_path = storage_path('../public/json/flex_lost_pet_by_js100.json');   
                     $string_json = file_get_contents($template_path);
@@ -388,25 +384,14 @@ class Lost_PetController extends Controller
                     $string_json = str_replace("PET_NAME",$data['pet_name'],$string_json);
                     $string_json = str_replace("PET_AGE",$data['pet_age'],$string_json);
                     $string_json = str_replace("PET_GENDER",$data['pet_gender'],$string_json);
-                    if (!empty($data['sub_category'])) {
-                        $string_json = str_replace("PET_SPECIES",$data['sub_category'],$string_json);
-                    }else{
-                        $string_json = str_replace("PET_SPECIES","-",$string_json);
-                    }
 
-                    // data user lost pet
-                    if (!empty($data['owner_name'])) {
-                        $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
-                        $string_json = str_replace("NAME_USER",$data['owner_name'],$string_json);
-                    }else{
-                        $string_json = str_replace("PHONE_USER","-",$string_json);
-                        $string_json = str_replace("NAME_USER","-",$string_json);
-                    }
-
-                    $string_json = str_replace("LOST_PET_ID","",$string_json);
+                    $string_json = str_replace("PET_SPECIES",$data['sub_category'],$string_json);
+                    $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
+                    $string_json = str_replace("NAME_USER",$data['owner_name'],$string_json);
+                    $string_json = str_replace("LOST_PET_ID",$lost_pet_id,$string_json);
+                    $string_json = str_replace("ไม่ได้ระบุ",$data_topic[11],$string_json);
 
                     $messages = [ json_decode($string_json, true) ];
-
 
                     $body = [
                         "to" => $item->user->provider_id,
