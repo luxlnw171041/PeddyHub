@@ -11,6 +11,7 @@ use App\Models\Pet;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Mylog;
+use App\Models\Lost_Pet;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Blood_bank;
 
@@ -197,7 +198,15 @@ class LineMessagingAPI extends Model
                 $messages = [ json_decode($string_json, true) ]; 
             break;
             case 'view_more':
-                // 
+                $id_lost_pet = $data ;
+                $data_lost_pet = Lost_Pet::where('id' , $id_lost_pet)->first();
+                $text_detail = $data_lost_pet->detail ;
+
+                $template_path = storage_path('../public/json/send_finished.json');   
+                $string_json = file_get_contents($template_path);
+                $string_json = str_replace("เปลี่ยนข้อความตรงนี้",$text_detail,$string_json);
+
+                $messages = [ json_decode($string_json, true) ]; 
             break;
             case 'Chinese':
                 $provider_id = $event["source"]['userId'];
