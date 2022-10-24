@@ -11,6 +11,7 @@ use App\Models\Lost_Pet;
 use App\Models\Pet_Category;
 use App\Models\Pet;
 use App\Models\Partner;
+use App\Models\Mylog;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
