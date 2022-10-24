@@ -1,0 +1,16 @@
+{
+    "fields": [
+        {
+            "name": "name_partner",
+            "type": "string"
+        },
+        {
+            "name": "partner_id",
+            "type": "integer"
+        },
+        {
+            "name": "token",
+            "type": "string"
+        }
+    ]
+}

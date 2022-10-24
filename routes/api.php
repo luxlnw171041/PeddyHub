@@ -105,8 +105,9 @@ Route::get('/change_color_navbar/{color_navbar}/{name_partner}', 'API\PartnersCo
 Route::get('/change_color_menu/{color_navbar}/{name_partner}/{class_color_menu}', 'API\PartnersController@change_color_menu');
 
 
-// lost pet js100
-Route::post('lost_pet_by_js100', 'Lost_PetController@store_js100');
+// lost pet by_partner
+Route::post('lost_pet_by_partner', 'Lost_PetController@store_partner');
+Route::post('partner_lost_pet', 'Lost_PetController@check_token_partner');
 
 
 

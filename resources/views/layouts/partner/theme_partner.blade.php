@@ -99,26 +99,24 @@
 					</a>
 				</li>
 				@if (Auth::user()->role == 'admin-partner')
-				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
-                    Admin
-                </li>
-                <li>
-					<a href="{{ url('/manage_user_partner') }}">
-						<div class="parent-icon"><i class="fa-solid fa-users-gear"></i>
-						</div>
-						<div class="menu-title" style="font-size:18px;">จัดการผู้ใช้</div>
-					</a>
-				</li>
-					@if(Auth::user()->partner == '32' or Auth::user()->provider_id == 'U912994894c449f2237f73f18b5703e89')
-						<li>
-							<a href="{{ url('/lost_pet_by_js100') }}">
-								<div class="parent-icon">
-									<i class="fa-regular fa-magnifying-glass-location"></i>
-								</div>
-								<div class="menu-title" style="font-size:18px;">ตามหาสัตว์หาย</div>
-							</a>
-						</li>
-					@endif
+					<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+	                    Admin
+	                </li>
+	                <li>
+						<a href="{{ url('/manage_user_partner') }}">
+							<div class="parent-icon"><i class="fa-solid fa-users-gear"></i>
+							</div>
+							<div class="menu-title" style="font-size:18px;">จัดการผู้ใช้</div>
+						</a>
+					</li>
+					<li>
+						<a href="{{ url('/lost_pet_by_partner') }}">
+							<div class="parent-icon">
+								<i class="fa-regular fa-magnifying-glass-location"></i>
+							</div>
+							<div class="menu-title" style="font-size:18px;">ตามหาสัตว์หาย</div>
+						</a>
+					</li>
 				@endif
 				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Check In/Out 

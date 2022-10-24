@@ -58,7 +58,7 @@ class Lost_PetController extends Controller
         return view('lost_pet.create', compact('select_pet','partner'));
     }
 
-    function lost_pet_by_js100()
+    function lost_pet_by_partner()
     {
         $user_id = Auth::id();
 
@@ -66,7 +66,7 @@ class Lost_PetController extends Controller
         $partner = Partner::where('show_homepage' , "show")->get();
 
 
-        return view('lost_pet.lost_pet_by_js100', compact('select_pet','partner'));
+        return view('lost_pet.lost_pet_by_partner', compact('select_pet','partner'));
     }
 
     /**
@@ -113,15 +113,19 @@ class Lost_PetController extends Controller
         return redirect('lost_pet')->with('flash_message', 'Lost_Pet added!');
     }
 
-    public function store_js100(Request $request)
+    public function check_token_partner(Request $request)
     {
         $requestData = $request->all();
 
-        // if (!empty($requestData['by_partner'])) {
-        //     $requestData['by_partner'] = $requestData['by_partner'] ;
-        // }else{
+        echo "<pre>" ;
+        print_r($requestData) ;
+        echo "<pre>" ;
+        exit();
+    }
 
-        // }
+    public function store_partner(Request $request)
+    {
+        $requestData = $request->all();
 
         if (empty($requestData['owner_name'])) {
             $requestData['owner_name'] = "ไม่ได้ระบุ" ;
@@ -162,7 +166,7 @@ class Lost_PetController extends Controller
 
         $this->send_lost_pet_by_js100($requestData, $lost_pet_id);
 
-        return redirect('lost_pet/create')->with('flash_message', 'Lost_Pet added!');
+        return redirect('lost_pet_by_partner')->with('flash_message', 'Lost_Pet added!');
     }
 
     /**
