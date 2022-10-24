@@ -1,6 +1,6 @@
 {
     "type": "flex",
-    "altText": "ตามหาPET_TYPEหาย",
+    "altText": "ตามหา PET_TYPE หาย",
     "contents": {
   "type": "bubble",
   "size": "giga",
@@ -54,7 +54,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "ตามหาPET_TYPEหาย",
+            "text": "ตามหา PET_TYPE หาย",
             "wrap": false,
             "maxLines": 1,
             "weight": "bold",
@@ -332,7 +332,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "โทร : 1137",
+            "text": "Tel: 1137",
             "wrap": false,
             "maxLines": 1,
             "weight": "bold",

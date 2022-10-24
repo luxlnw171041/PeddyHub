@@ -346,8 +346,8 @@ class Lost_PetController extends Controller
                     // ส่งข้อความ
                     $data_Text_topic = [
                         "ตามหา",
-                        "หาย",
                         "วันที่หาย",
+                        "หาย",
                         "ประเภท",
                         "เพศ",
                         "สายพันธุ์",
@@ -357,6 +357,9 @@ class Lost_PetController extends Controller
                         "เจ้าของ",
                         $pet_category_id,
                         "ไม่ได้ระบุ",
+                        $data['pet_gender'],
+                        "ปี",
+                        "เดือน",
                     ];
                     
                     $line = new LineMessagingAPI();
@@ -367,8 +370,8 @@ class Lost_PetController extends Controller
 
                     // แปลภาษาหัวข้อ
                     $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
-                    $string_json = str_replace("หาย",$data_topic[1],$string_json);
-                    $string_json = str_replace("วันที่หาย",$data_topic[2],$string_json);
+                    $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
+                    $string_json = str_replace("หาย",$data_topic[2],$string_json);
                     $string_json = str_replace("ประเภท",$data_topic[3],$string_json);
                     $string_json = str_replace("เพศ",$data_topic[4],$string_json);
                     $string_json = str_replace("สายพันธุ์",$data_topic[5],$string_json);
@@ -384,13 +387,16 @@ class Lost_PetController extends Controller
                     $string_json = str_replace("https:IMGPET",$photo,$string_json);
                     $string_json = str_replace("PET_NAME",$data['pet_name'],$string_json);
                     $string_json = str_replace("PET_AGE",$data['pet_age'],$string_json);
-                    $string_json = str_replace("PET_GENDER",$data['pet_gender'],$string_json);
+                    $string_json = str_replace("PET_GENDER",$data_topic[12],$string_json);
 
                     $string_json = str_replace("PET_SPECIES",$data['sub_category'],$string_json);
                     $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
                     $string_json = str_replace("NAME_USER",$data['owner_name'],$string_json);
                     $string_json = str_replace("LOST_PET_ID",$lost_pet_id,$string_json);
                     $string_json = str_replace("ไม่ได้ระบุ",$data_topic[11],$string_json);
+
+                    $string_json = str_replace("ปี",$data_topic[13],$string_json);
+                    $string_json = str_replace("เดือน",$data_topic[14],$string_json);
 
                     $messages = [ json_decode($string_json, true) ];
 
