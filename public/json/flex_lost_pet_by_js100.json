@@ -261,7 +261,7 @@
         "action": {
           "type": "postback",
           "data": "view_more/LOST_PET_ID",
-          "displayText": "ดูเพิ่มเติม"
+          "displayText": "รายละเอียด"
         },
         "alignItems": "flex-start",
         "height": "6.8%",
