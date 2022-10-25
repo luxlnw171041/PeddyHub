@@ -148,6 +148,11 @@ class Lost_PetController extends Controller
     public function check_token_partner(Request $request)
     {
         $requestData = $request->all();
+        
+        if ($request->hasFile('photo')) {
+            $requestData['photo'] = $request->file('photo')
+            ->store('uploads', 'public');
+        }
 
         $data_partner_tokens = Partner_token::where('token' , $requestData['Token'])->first();
 
@@ -165,16 +170,17 @@ class Lost_PetController extends Controller
     public function store_partner(Request $request)
     {
         $requestData = $request->all();
+
+        if ($request->hasFile('photo')) {
+            $requestData['photo'] = $request->file('photo')
+            ->store('uploads', 'public');
+        }
+
         $this->lost_pet_partner($requestData);
     }
 
     public function lost_pet_partner($requestData)
     {
-        // echo "<pre>";
-        // print_r($requestData);
-        // echo "<pre>";
-        // exit();
-
         if (empty($requestData['owner_name'])) {
             $requestData['owner_name'] = "ไม่ได้ระบุ" ;
         }
@@ -202,12 +208,12 @@ class Lost_PetController extends Controller
             $requestData['changwat_th'] = $requestData['input_province'];
         }
 
-        if ($request->hasFile('photo')) {
-            $requestData['photo'] = $request->file('photo')
-            ->store('uploads', 'public');
-        }
-
         Lost_Pet::create($requestData);
+
+        // echo "<pre>";
+        // print_r($requestData);
+        // echo "<pre>";
+        // exit();
 
         $data_lost_pet = Lost_Pet::latest()->first();
         $lost_pet_id = $data_lost_pet->id ;
