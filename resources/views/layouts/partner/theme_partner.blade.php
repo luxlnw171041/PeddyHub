@@ -110,7 +110,8 @@
 						</a>
 					</li>
 					<li>
-						<a href="{{ url('/lost_pet_by_partner') }}">
+						<!-- <a href="{{ url('/lost_pet_by_partner') }}"> -->
+						<a href="{{ url('/lost_pet_partner/index_partner') }}">
 							<div class="parent-icon">
 								<i class="fa-regular fa-magnifying-glass-location"></i>
 							</div>

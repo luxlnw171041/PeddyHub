@@ -129,6 +129,7 @@ Route::get('/login_line_petdating', function () {
 Route::middleware(['auth', 'role:admin-partner,partner'])->group(function () {
     Route::resource('blood_bank', 'Blood_bankController')->except(['index','blood_bank_line']);
     Route::get('lost_pet_by_partner', 'Lost_PetController@lost_pet_by_partner');
+    Route::get('/lost_pet_partner/index_partner', 'Lost_PetController@index_partner');
     Route::get('check_in_admin', 'Check_inController@index');
     Route::get('/check_in/gallery', 'Check_inController@gallery');
     Route::get('/check_in/add_new_check_in', 'Check_inController@add_new_check_in');
@@ -168,6 +169,7 @@ Route::resource('disease', 'DiseaseController');
 
 
 // test_for_dev
+Route::get('test_api_lostpet', 'test_for_devController@test_api_lostpet');
 Route::get('test_for_dev/send_line_lost_pet', 'test_for_devController@send_line_lost_pet');
 Route::get('test_for_dev', 'test_for_devController@test_for_dev');
 Route::get('test_for_dev/test_send_png', 'test_for_devController@test_send_png');

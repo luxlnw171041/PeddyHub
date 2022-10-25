@@ -53,68 +53,71 @@ class Check_day_lost_pet extends Command
 
         // ส่งไลน์ถามเจ้าของ เจอยัง ? 
 
-        $check_7days = Lost_Pet::where('updated_at' , "<=" , $date_7)->get();
+        $check_7days = Lost_Pet::where('updated_at' , "<=" , $date_7)->where('status' , 'searching')->get();
 
         foreach ($check_7days as $item) {
             
             $data_users = User::where('id', $item->user_id)->first();
-            $data_pets = Pet::where('id', $item->pet_id)->first();
 
-            $data_Text_topic = [
-                "ประกาศหาน้องเป็นอย่างไรบ้าง",
-                "วันที่หาย",
-                "เจอแล้ว",
-                "ส่งข้อความอีกครั้ง",
-                "ยืนยันการค้นหา",
-            ];
+            if ($data_users->profile->type == 'line') {
 
-            $data_topic = $this->language_for_user($data_Text_topic, $data_users->provider_id);
+                $data_pets = Pet::where('id', $item->pet_id)->first();
 
-            $template_path = storage_path('../public/json/flex_confirm_lost_pet.json');   
-            $string_json = file_get_contents($template_path);
+                $data_Text_topic = [
+                    "ประกาศหาน้องเป็นอย่างไรบ้าง",
+                    "วันที่หาย",
+                    "เจอแล้ว",
+                    "ส่งข้อความอีกครั้ง",
+                    "ยืนยันการค้นหา",
+                ];
 
-            $string_json = str_replace("ประกาศหาน้องเป็นอย่างไรบ้าง",$data_topic[0],$string_json); 
-            $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json); 
-            $string_json = str_replace("เจอแล้ว",$data_topic[2],$string_json); 
-            $string_json = str_replace("ส่งข้อความอีกครั้ง",$data_topic[3],$string_json); 
-            $string_json = str_replace("ยืนยันการค้นหา",$data_topic[4],$string_json); 
+                $data_topic = $this->language_for_user($data_Text_topic, $data_users->provider_id);
 
-            $string_json = str_replace("IMGPET",$item->photo,$string_json); 
-            $string_json = str_replace("pet_name",$data_pets->name,$string_json); 
-            $string_json = str_replace("22/2/2022",$item->created_at,$string_json); 
-            
-            $string_json = str_replace("PET_ID",$item->pet_id,$string_json); 
+                $template_path = storage_path('../public/json/flex_confirm_lost_pet.json');   
+                $string_json = file_get_contents($template_path);
 
-            $messages = [ json_decode($string_json, true) ]; 
+                $string_json = str_replace("ประกาศหาน้องเป็นอย่างไรบ้าง",$data_topic[0],$string_json); 
+                $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json); 
+                $string_json = str_replace("เจอแล้ว",$data_topic[2],$string_json); 
+                $string_json = str_replace("ส่งข้อความอีกครั้ง",$data_topic[3],$string_json); 
+                $string_json = str_replace("ยืนยันการค้นหา",$data_topic[4],$string_json); 
 
-            $body = [
-                "to" => $data_users->provider_id,
-                "messages" => $messages,
-            ];
+                $string_json = str_replace("IMGPET",$item->photo,$string_json); 
+                $string_json = str_replace("pet_name",$data_pets->name,$string_json); 
+                $string_json = str_replace("22/2/2022",$item->created_at,$string_json); 
+                
+                $string_json = str_replace("PET_ID",$item->pet_id,$string_json); 
 
-            $opts = [
-                'http' =>[
-                    'method'  => 'POST',
-                    'header'  => "Content-Type: application/json \r\n".
-                                'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
-                    'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
-                ]
-            ];
-                                
-            $context  = stream_context_create($opts);
-            $url = "https://api.line.me/v2/bot/message/push";
-            $result = file_get_contents($url, false, $context);
+                $messages = [ json_decode($string_json, true) ]; 
 
-            //SAVE LOG
-            $data_save_log = [
-                "title" => "ส่งข้อความยืนยันการค้นหาสัตว์เลี้ยง",
-                "content" => $data_users->username . " - " . $data_users->provider_id,
-            ];
+                $body = [
+                    "to" => $data_users->provider_id,
+                    "messages" => $messages,
+                ];
 
-            MyLog::create($data_save_log);
+                $opts = [
+                    'http' =>[
+                        'method'  => 'POST',
+                        'header'  => "Content-Type: application/json \r\n".
+                                    'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                        'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                    ]
+                ];
+                                    
+                $context  = stream_context_create($opts);
+                $url = "https://api.line.me/v2/bot/message/push";
+                $result = file_get_contents($url, false, $context);
 
+                //SAVE LOG
+                $data_save_log = [
+                    "title" => "ส่งข้อความยืนยันการค้นหาสัตว์เลี้ยง",
+                    "content" => $data_users->username . " - " . $data_users->provider_id,
+                ];
+
+                MyLog::create($data_save_log);
+
+            }
         }
-        
     }
 
     // แปลภาษา

@@ -20,6 +20,12 @@ use App\Models\Pet;
 
 class test_for_devController extends Controller
 {
+    public function test_api_lostpet()
+    {
+
+        echo "hello" ;
+        exit();
+    }
     public function test_for_dev()
     {
         $pet_id = "1";

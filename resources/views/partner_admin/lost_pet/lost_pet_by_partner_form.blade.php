@@ -1,25 +1,8 @@
 <div class="card radius-10" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
     <div class="card-header border-bottom-0 bg-transparent" style="padding-right:0px;">
         <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-12">
                 <h2 style="margin-top: 10px;">แจ้งน้องหาย</h2>
-            </div>
-            <div class="col-12 col-md-9">
-                <div style="margin-top: 10px;" class="row">
-                    <div class="col-12 col-md-9">
-                        <input type="text" class="form-control" name="gen_token" id="gen_token" value="{{ $token }}" readonly>
-                    </div>
-                    <div class="col-12 col-md-1">
-                        <span class="btn btn-secondary text-white main-shadow main-radius" onclick="CopyToClipboard('gen_token')">
-                            Copy
-                        </span>
-                    </div>
-                    <div class="col-12 col-md-2">
-                        <span class="btn btn-warning text-white main-shadow main-radius" onclick="Create_Token();">
-                            Create Token
-                        </span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="main-wrapper pet check">
@@ -496,25 +479,5 @@
         setTimeout(function() {
             document.getElementById("lost_pet_submit").click();
         }, 3000);
-    }
-
-    function Create_Token(){
-        let id_partner = document.querySelector('#by_partner').value ;
-        let gen_token = document.querySelector('#gen_token') ;
-
-        fetch("{{ url('/') }}/api/Create_Token/" + id_partner)
-            .then(response => response.text())
-            .then(result => {
-
-                // console.log(result);
-                gen_token.value = result ;
-            });
-    }
-
-    function CopyToClipboard(containerid) {
-        var range = document.createRange();
-            range.selectNode(document.getElementById(containerid));
-            window.getSelection().addRange(range);
-            document.execCommand("copy");
     }
 </script>

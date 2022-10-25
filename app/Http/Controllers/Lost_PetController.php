@@ -43,6 +43,37 @@ class Lost_PetController extends Controller
         return view('lost_pet.index', compact('lost_pet' ));
     }
 
+    public function index_partner(Request $request)
+    {
+        $perPage = 25;
+        $category  = $request->get('pet_category_id');
+
+        $keyword =  !empty($category);
+        
+        if (!empty($keyword)) {
+            $lost_pet = Lost_Pet::where('pet_category_id',    'LIKE', '%' .$category.'%')
+                ->latest()->paginate($perPage);
+        } else {
+            $lost_pet = Lost_Pet::latest()->paginate($perPage);
+        }
+
+        $user_id = Auth::id();
+        $partner_id = Auth::user()->partner ;
+
+        $select_pet = Pet::where('user_id' , $user_id)->get();
+        $partner = Partner::where('show_homepage' , "show")->get();
+
+        $data_partner_tokens = Partner_token::where('partner_id' , $partner_id)->first();
+
+        if (!empty($data_partner_tokens)) {
+            $token = $data_partner_tokens->token ;
+        }else{
+            $token = "" ;
+        }
+
+        return view('partner_admin.lost_pet.lost_pet_index_partner', compact('lost_pet','select_pet','partner' ,'token' ));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -75,7 +106,7 @@ class Lost_PetController extends Controller
             $token = "" ;
         }
 
-        return view('lost_pet.lost_pet_by_partner', compact('select_pet','partner' ,'token'));
+        return view('partner_admin.lost_pet.lost_pet_by_partner', compact('select_pet','partner' ,'token'));
     }
 
     /**
