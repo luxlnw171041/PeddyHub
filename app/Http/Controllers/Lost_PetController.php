@@ -46,19 +46,11 @@ class Lost_PetController extends Controller
     public function index_partner(Request $request)
     {
         $perPage = 25;
-        $category  = $request->get('pet_category_id');
-
-        $keyword =  !empty($category);
-        
-        if (!empty($keyword)) {
-            $lost_pet = Lost_Pet::where('pet_category_id',    'LIKE', '%' .$category.'%')
-                ->latest()->paginate($perPage);
-        } else {
-            $lost_pet = Lost_Pet::latest()->paginate($perPage);
-        }
 
         $user_id = Auth::id();
         $partner_id = Auth::user()->partner ;
+        
+        $lost_pet = Lost_Pet::where('by_partner' , $partner_id)->paginate($perPage);
 
         $select_pet = Pet::where('user_id' , $user_id)->get();
         $partner = Partner::where('show_homepage' , "show")->get();

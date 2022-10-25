@@ -48,6 +48,98 @@
                             </section>
                         </div>
                     </div>
+
+                    <div class="main-wrapper pet check" style="padding: 10px;">
+                        <div class="pet service">
+                            <section class="contact" style="margin-top:10px;">
+                                <div class="row">
+                                    <hr>
+                                    <div class="col-12 col-md-12">
+                                        <div class="row">
+                                            @foreach($lost_pet as $item)
+                                                <div class="col-lg-3 col-md-6 col-sm-12 m-0 p-2">
+                                                    <a href="{{ url('/lost_pet/' . $item->id) }}" class="unset-hover">
+                                                        <div class="card-lost-pet">
+                                                            @if(!empty($item->photo_link))
+                                                                <img width="100%" class="img-lost-pet"src="{{ url('storage/'.$item->photo_link )}}" alt="" >
+                                                            @else
+                                                                <img width="100%" class="img-lost-pet"src="{{ url('storage/'.$item->photo )}}" alt="" >
+                                                            @endif
+                                                            <div class="container-lost-pet">
+                                                                <div class="about-lost-pet ">
+                                                                    <div class="column pt-1 pb-1 text-center">
+                                                                        <div >
+                                                                            <span class="name">
+                                                                                {{ $item->pet_name }}
+                                                                            </span>
+                                                                            
+                                                                        </div>
+                                                                        <div>
+                                                                            @switch( $item->pet_gender )
+                                                                                @case ('ชาย')
+                                                                                    <i class="fa-solid fa-mars text-info icon-gender" style="font-size:20px;"></i> 
+                                                                                @break
+                                                                                @case ('หญิง')
+                                                                                    <i class="fa-solid fa-venus icon-gender" style="font-size:20px;color: pink;"></i> 
+                                                                                @break
+                                                                                @case ('ไม่ระบุ')
+                                                                                    <i class="fa-solid fa-genderless text-secondary icon-gender" style="font-size:20px;"></i> 
+                                                                                @break
+                                                                            @endswitch
+                                                                        </div>
+                                                                        <div>
+                                                                            <span class="location">
+                                                                                {{ $item->changwat_th }} {{ $item->amphoe_th }} {{ $item->tambon_th }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr class="p-0 m-0">
+                                                                    <div class="detail-lost-pet">
+                                                                        <span class="text"> 
+                                                                            • {{ $item->pet_category->name }}
+                                                                            @if(!empty($item->sub_category))
+                                                                                • {{ $item->sub_category }}
+                                                                            @endif
+                                                                            <br>
+                                                                            <b>อายุ : </b>{{ $item->pet_age }}
+                                                                        </span>
+                                                                    </div>
+                                                                    <hr class="p-0 m-0">
+                                                                    <div class="div-tag">
+                                                                        <div>
+                                                                            <b>สถานะ : </b>
+                                                                            @if($item->status == "found")
+                                                                                <span class="tag-found">เจอแล้ว</span>
+                                                                            @else
+                                                                                <span class="tag-lost">กำลังค้นหา</span>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="contacts">
+                                                                            @if(!empty( $item->owner_name ))
+                                                                                <span>
+                                                                                    <b>เจ้าของ : </b>{{ $item->owner_name }}
+                                                                                </span> 
+                                                                            @endif
+                                                                            <br>
+                                                                            @if(!empty( $item->owner_phone ))
+                                                                                <a href="tel:{{ $item->owner_phone }}" class="btn-lost-pet ml-2">
+                                                                                    <i class="fa-solid fa-phone"></i> {{ $item->owner_phone }}
+                                                                                </a>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>    
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

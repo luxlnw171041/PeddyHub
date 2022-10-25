@@ -262,16 +262,17 @@
                                                     <hr class="p-0 m-0">
                                                     <div class="detail-lost-pet">
                                                         <span class="text"> 
+                                                            • {{ $item->pet_category->name }}
+                                                            @if(!empty($item->pet->species))
+                                                                • {{$item->pet->species}}
+                                                            @endif
+                                                            <br>
                                                             อายุ : 
                                                             @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 )
                                                                 {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%y')}} ขวบ 
                                                             @endif
                                                             @if(\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 )
                                                                 {{\Carbon\Carbon::parse($item->pet->birth)->diff(\Carbon\Carbon::now())->format('%m')}} เดือน
-                                                            @endif
-                                                            <br>
-                                                            @if(!empty($item->pet->species))
-                                                                • {{$item->pet->species}}
                                                             @endif
                                                         </span>
                                                     </div>
@@ -339,11 +340,12 @@
                                                     <hr class="p-0 m-0">
                                                     <div class="detail-lost-pet">
                                                         <span class="text"> 
-                                                            อายุ : {{ $item->pet_age }}
-                                                            <br>
-                                                            @if(!empty($item->pet->species))
+                                                            • {{ $item->pet_category->name }}
+                                                            @if(!empty($item->sub_category))
                                                                 • {{ $item->sub_category }}
                                                             @endif
+                                                            <br>
+                                                            อายุ : {{ $item->pet_age }}
                                                         </span>
                                                     </div>
                                                     <hr class="p-0 m-0">
