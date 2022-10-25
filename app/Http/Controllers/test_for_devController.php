@@ -22,8 +22,24 @@ class test_for_devController extends Controller
 {
     public function test_api_lostpet()
     {
+        $body = [
+            "test" => "hello",
+            "messages" => "messages",
+        ];
 
-        echo "hello" ;
+        $opts = [
+            'http' =>[
+                'method'  => 'POST',
+                'header'  => "Content-Type: application/json \r\n",
+                'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+            ]
+        ];
+                            
+        $context  = stream_context_create($opts);
+        $url = "https://www.peddyhub.com/api/partner_lost_pet";
+        $result = file_get_contents($url, false, $context);
+
+        // echo "hello" ;
         exit();
     }
     public function test_for_dev()
