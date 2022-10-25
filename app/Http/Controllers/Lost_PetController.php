@@ -170,10 +170,10 @@ class Lost_PetController extends Controller
 
     public function lost_pet_partner($requestData)
     {
-        echo "<pre>";
-        print_r($requestData);
-        echo "<pre>";
-        exit();
+        // echo "<pre>";
+        // print_r($requestData);
+        // echo "<pre>";
+        // exit();
 
         if (empty($requestData['owner_name'])) {
             $requestData['owner_name'] = "ไม่ได้ระบุ" ;
