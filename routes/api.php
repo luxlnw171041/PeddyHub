@@ -107,7 +107,7 @@ Route::get('/change_color_menu/{color_navbar}/{name_partner}/{class_color_menu}'
 
 // lost pet by_partner
 Route::post('lost_pet_by_partner', 'Lost_PetController@store_partner');
-Route::post('partner_lost_pet', 'Lost_PetController@check_token_partner');
+Route::get('partner_lost_pet', 'Lost_PetController@check_token_partner');
 
 // create TOKEN
 Route::get('Create_Token/{id_partner}', 'API\PartnersController@Create_Token');

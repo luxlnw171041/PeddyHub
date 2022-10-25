@@ -152,10 +152,10 @@ class Lost_PetController extends Controller
         $data_partner_tokens = Partner_token::where('token' , $requestData['Token'])->first();
 
         if (!empty($data_partner_tokens)) {
-            return "OK" ;
-            // $requestData['by_api'] = "Yes" ;
-            // $requestData['by_partner'] = $data_partner_tokens->partner_id ;
-            // store_partner($requestData);
+            // return "OK" ;
+            $requestData['by_api'] = "Yes" ;
+            $requestData['by_partner'] = $data_partner_tokens->partner_id ;
+            $this->lost_pet_partner($requestData);
         }else{
             return "ไม่สามารถดำเนินการได้ กรุณาติดต่อ PEDDyHUB" ;
         }
@@ -165,6 +165,15 @@ class Lost_PetController extends Controller
     public function store_partner(Request $request)
     {
         $requestData = $request->all();
+        $this->lost_pet_partner($requestData);
+    }
+
+    public function lost_pet_partner($requestData)
+    {
+        echo "<pre>";
+        print_r($requestData);
+        echo "<pre>";
+        exit();
 
         if (empty($requestData['owner_name'])) {
             $requestData['owner_name'] = "ไม่ได้ระบุ" ;
@@ -206,7 +215,7 @@ class Lost_PetController extends Controller
         $this->send_lost_pet_by_js100($requestData, $lost_pet_id);
 
         if ($requestData['by_api'] == "No") {
-            return redirect('lost_pet_by_partner')->with('flash_message', 'Lost_Pet added!');
+            return redirect('/lost_pet_partner/index_partner')->with('flash_message', 'Lost_Pet added!');
         }else{
             return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
         }
