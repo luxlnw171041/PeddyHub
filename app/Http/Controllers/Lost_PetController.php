@@ -148,7 +148,7 @@ class Lost_PetController extends Controller
     public function check_token_partner(Request $request)
     {
         $requestData = $request->all();
-        
+
         if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
             ->store('uploads', 'public');
@@ -177,6 +177,12 @@ class Lost_PetController extends Controller
         }
 
         $this->lost_pet_partner($requestData);
+
+        if ($requestData['by_api'] == "No") {
+            return redirect('lost_pet_partner/index_partner')->with('flash_message', 'Lost_Pet added!');
+        }else{
+            return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
+        }
     }
 
     public function lost_pet_partner($requestData)
@@ -218,13 +224,7 @@ class Lost_PetController extends Controller
         $data_lost_pet = Lost_Pet::latest()->first();
         $lost_pet_id = $data_lost_pet->id ;
 
-        $this->send_lost_pet_by_js100($requestData, $lost_pet_id);
-
-        if ($requestData['by_api'] == "No") {
-            return redirect('/lost_pet_partner/index_partner')->with('flash_message', 'Lost_Pet added!');
-        }else{
-            return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
-        }
+        $this->send_lost_pet_by_partner($requestData, $lost_pet_id);
 
     }
 
@@ -343,7 +343,7 @@ class Lost_PetController extends Controller
         return "ok" ;
     }
 
-    public function send_lost_pet_by_js100($data, $lost_pet_id)
+    public function send_lost_pet_by_partner($data, $lost_pet_id)
     {
         $date_now = date("d/m/Y");
 
