@@ -96,6 +96,7 @@
                                                                     @foreach($category as $item)
                                                                     <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
                                                                     @endforeach
+                                                                    <option value="Other">อื่นๆ</option>
                                                                 </select>
                                                             </div>
                                                             <div class="col-12">
@@ -107,6 +108,7 @@
                                                                     <option value="Health Food">Health Food</option>
                                                                     <option value="Snack">Snack</option>
                                                                     <option value="Pill">Pill</option>
+                                                                    <option value="Other">Other</option>
                                                                 </select>
                                                                 {!! $errors->first('type', '<p class="help-block">:message</p>') !!}
                                                             </div>
