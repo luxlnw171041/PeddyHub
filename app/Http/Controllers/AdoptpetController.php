@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Adoptpet;
+use App\Models\Partner;
 use App\Models\Pet_Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,10 +41,19 @@ class AdoptpetController extends Controller
      * @return \Illuminate\View\View
      */
     public function create()
-    {
+    {   
+        if (!empty(Auth::User()->partner)) {
+            $partner_id = Auth::User()->partner;
+            $data_partners = Partner::where('id' , $partner_id)->first();
+
+            $link_line = $data_partners->link_line;
+        }else{
+            $link_line = "" ;
+        }
+
         $category = Pet_Category::groupBy('name')->get();
 
-        return view('adoptpet.create' , compact('category'));
+        return view('adoptpet.create' , compact('category','link_line'));
     }
 
     /**
@@ -55,18 +65,16 @@ class AdoptpetController extends Controller
      */
     public function store(Request $request)
     {
-        $requestData['user_id'] = Auth::id();   
+        $requestData['user_id'] = Auth::id();  
+        $partner_id = Auth::User()->partner; 
  
-        $requestData = $request->all();       
-        // echo "<pre>";
-        // print_r($requestData);
-        // echo "<pre>";
-        // exit;
-                if ($request->hasFile('photo')) {
+        $requestData = $request->all();      
+
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
-            if ($request->hasFile('photo2')) {
+        if ($request->hasFile('photo2')) {
             $requestData['photo2'] = $request->file('photo2')
                 ->store('uploads', 'public');
         }
@@ -82,6 +90,7 @@ class AdoptpetController extends Controller
             $requestData['photo4'] = $request->file('photo4')
                 ->store('uploads', 'public');
         }
+
         if (!empty($requestData['phone_user'])) {
             DB::table('profiles')
                 ->where([ 
@@ -91,6 +100,17 @@ class AdoptpetController extends Controller
                     'phone' => $requestData['phone_user'],
                 ]);
         }  
+
+        if (!empty($requestData['link_line'])) {
+            DB::table('partners')
+                ->where([ 
+                        ['id', $partner_id],
+                    ])
+                ->update([
+                    'link_line' => $requestData['link_line'],
+                ]);
+        }  
+
         Adoptpet::create($requestData);
 
         return redirect('adoptpet')->with('flash_message', 'Adoptpet added!');
@@ -106,8 +126,9 @@ class AdoptpetController extends Controller
     public function show($id)
     {
         $adoptpet = Adoptpet::findOrFail($id);
+        $user_id = Auth::id();
 
-        return view('adoptpet.show', compact('adoptpet'));
+        return view('adoptpet.show', compact('adoptpet','user_id'));
     }
 
     /**
@@ -118,10 +139,27 @@ class AdoptpetController extends Controller
      * @return \Illuminate\View\View
      */
     public function edit($id)
-    {
+    {   
         $adoptpet = Adoptpet::findOrFail($id);
 
-        return view('adoptpet.edit', compact('adoptpet'));
+        if ( $adoptpet->user_id != Auth::id() ) {
+            return redirect('/404');
+        }else{
+
+            if (!empty(Auth::User()->partner)) {
+                $partner_id = Auth::User()->partner;
+                $data_partners = Partner::where('id' , $partner_id)->first();
+
+                $link_line = $data_partners->link_line;
+            }else{
+                $link_line = "" ;
+            }
+
+            $category = Pet_Category::groupBy('name')->get();
+
+            return view('adoptpet.edit', compact('adoptpet','category','link_line'));
+
+        }
     }
 
     /**
@@ -134,13 +172,33 @@ class AdoptpetController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $requestData['user_id'] = Auth::id();  
+        $partner_id = Auth::User()->partner; 
+
+        $requestData = $request->all();      
         
-        $requestData = $request->all();
-                if ($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
         }
-        if (!empty($requestData['phone'])) {
+        if ($request->hasFile('photo2')) {
+            $requestData['photo2'] = $request->file('photo2')
+                ->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo3')) {
+            $requestData['photo3'] = $request->file('photo3')
+                ->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo4')) {
+            $requestData['photo4'] = $request->file('photo4')
+                ->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo4')) {
+            $requestData['photo4'] = $request->file('photo4')
+                ->store('uploads', 'public');
+        }
+
+        if (!empty($requestData['phone_user'])) {
             DB::table('profiles')
                 ->where([ 
                         ['user_id', $requestData['user_id']],
@@ -148,7 +206,18 @@ class AdoptpetController extends Controller
                 ->update([
                     'phone' => $requestData['phone_user'],
                 ]);
-        } 
+        }  
+
+        if (!empty($requestData['link_line'])) {
+            DB::table('partners')
+                ->where([ 
+                        ['id', $partner_id],
+                    ])
+                ->update([
+                    'link_line' => $requestData['link_line'],
+                ]);
+        }  
+
         $adoptpet = Adoptpet::findOrFail($id);
         $adoptpet->update($requestData);
 

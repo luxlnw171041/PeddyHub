@@ -118,6 +118,14 @@
 							<div class="menu-title" style="font-size:18px;">ตามหาสัตว์หาย</div>
 						</a>
 					</li>
+					<li>
+						<a href="{{ url('adoptpet/create') }}" target="bank">
+							<div class="parent-icon">
+								<i class="fa-solid fa-dog-leashed"></i>
+							</div>
+							<div class="menu-title" style="font-size:18px;">Adoption</div>
+						</a>
+					</li>
 				@endif
 				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Check In/Out 

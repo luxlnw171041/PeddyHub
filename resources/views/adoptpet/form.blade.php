@@ -4,6 +4,34 @@
             <div class="container">
                 <div class="faq wow fadeInRight">
                     <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h3>ข้อมูลติดต่อ</h3>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <label  class="control-label"><b>{{ 'เบอร์ติดต่อ' }}</b></label>
+                                <div class="form-group">
+                                    <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}" onchange="check();">
+                                </div>
+                            </div>
+                            @if( !empty(Auth::User()->partner) )
+                                <div class="col-12 col-md-6">
+                                    <label  class="control-label"><b>{{ 'LINK LINE' }}</b><span style="color: #B8205B;">*</span></label>
+                                    <div class="form-group">
+                                        <input class="form-control" name="link_line" type="text" id="link_line" value="{{ $link_line }}" onchange="check();">
+                                    </div>
+                                </div>
+                            @else
+                                <div class="col-12 col-md-6">
+                                    <!--  -->
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="faq wow fadeInRight">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="heading">
                             <p class="wow fadeInUp"><span class="purple"><i class="fas fa-paw"></i>
                                 </span><span class="orange"><i class="fas fa-paw"></i> </span><span
@@ -190,27 +218,6 @@
                             </div>
                         </div>
                     </div>
-                    @if(empty(Auth::user()->profile->phone))
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div class="faq wow fadeInRight">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="col-12 col-md-12">
-                                        <label  class="control-label"><b>{{ 'เบอร์ติดต่อ' }}</b></label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                    <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}" onchange="check();">
-                                        {!! $errors->first('detail', '<p class="help-block">:message</p>') !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @else
-                    <input type="text" name="phone_user" id="phone_user" class="d-none form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}" onchange="check();">
-                    @endif
                     <div class="col-lg-6 col-md-12 col-sm-12"></div>
                 </div>
                 </div>

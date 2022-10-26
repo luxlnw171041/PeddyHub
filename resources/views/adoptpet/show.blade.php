@@ -74,13 +74,16 @@
                                     @php
                                         $profile = $adoptpet->user;
                                     @endphp
-                                    <div class="col-5">
+                                    <div class="col-8">
                                         <h6 class="notranslate">{{$profile->profile->name}}</h6>
                                         <p style="margin:0px;">{{ $adoptpet->created_at->diffForHumans() }}</p>
                                     </div>
-                                    <div class="col-5">
-                                    
-                                    <a href="tel: {{$profile->profile->phone}}"  type="button" class="btn btn-outline-primary">ติดต่อ</a>
+                                    <div class="col-2">
+                                        @if($user_id == $adoptpet->user_id)
+                                        <a href="{{ url('/adoptpet/' . $adoptpet->id . '/edit') }}"  type="button" class="btn btn-sm btn-outline-warning">
+                                            แก้ไข
+                                        </a>
+                                        @endif
                                     </div>
                                 </div>
                                 
