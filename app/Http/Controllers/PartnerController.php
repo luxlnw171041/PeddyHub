@@ -68,10 +68,15 @@ class PartnerController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('logo')) {
-            $requestData['logo'] = $request->file('logo')
-                ->store('uploads', 'public');
+
+        if ($request->hasFile('logo')) {
+            $requestData['logo'] = $request->file('logo')->store('uploads', 'public');
         }
+
+        if ($request->hasFile('link_line')) {
+            $requestData['link_line'] = $request->file('link_line')->store('uploads', 'public');
+        }
+
         $requestData['class_color_menu'] = "other";
         Partner::create($requestData);
 

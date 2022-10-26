@@ -48,6 +48,16 @@
     <input class="form-control" name="sub_district" type="text" id="sub_district" value="{{ isset($partner->sub_district) ? $partner->sub_district : ''}}" >
     {!! $errors->first('sub_district', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group {{ $errors->has('link_line') ? 'has-error' : ''}}" style="margin-top:10px">
+    <label for="link_line" class="control-label">{{ 'Link Line' }}</label>
+    <input class="form-control" name="link_line" type="text" id="link_line" value="{{ isset($partner->link_line) ? $partner->link_line : ''}}" >
+    {!! $errors->first('link_line', '<p class="help-block">:message</p>') !!}
+</div>
+<div class="form-group {{ $errors->has('qr_cond_line') ? 'has-error' : ''}}" style="margin-top:10px">
+    <label for="qr_cond_line" class="control-label">{{ 'QR-Code Line' }}</label>
+    <input class="form-control" name="qr_cond_line" type="file" id="qr_cond_line" value="{{ isset($partner->qr_cond_line) ? $partner->qr_cond_line : ''}}" >
+    {!! $errors->first('qr_cond_line', '<p class="help-block">:message</p>') !!}
+</div>
 <br>
 
 <div class="form-group">
