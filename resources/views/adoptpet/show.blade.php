@@ -76,7 +76,7 @@
                                     @endphp
                                     <div class="col-5">
                                         <h6 class="notranslate">{{$profile->profile->name}}</h6>
-                                        <p style="margin:0px;">{{ $adoptpet->user->created_at->diffForHumans() }}</p>
+                                        <p style="margin:0px;">{{ $adoptpet->created_at->diffForHumans() }}</p>
                                     </div>
                                     <div class="col-5">
                                     
