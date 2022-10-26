@@ -1,6 +1,18 @@
 @extends('layouts.partner.theme_partner')
 
 @section('content')
+<style>
+.adopt-pet-img{
+    border:#B8205B 2px solid;
+    border-radius: 20px;
+    height: 120px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.adopt-pet-img:hover{
+    color: #B8205B;
+}
+</style>
 <div class="form-body mt-4">
     <form method="POST" action="{{ url('/product/' . $product->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
         {{ method_field('PATCH') }}
@@ -22,8 +34,19 @@
                     </div>
                     <div class="mb-3">
                         <label for="inputProductDescription" class="form-label">Product Images</label>
+                        @if(!empty($product->photo))
+                            <div class="col-3">
+                                <label  class="control-label" for="photo" on>
+                                <img class="adopt-pet-img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_1" src="{{ url('storage')}}/{{ $product->photo }}" />
+                                    <input class="form-control d-none" name="photo" type="file" id="photo" value="{{ isset($product->photo) ? $product->photo : ''}}" onchange="document.getElementById('show_photo_1').src = window.URL.createObjectURL(this.files[0])">
+                                    
+                                </label>
+                            </div>
+                        @endif
+                        @if(empty($product->photo))
                         <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($product->photo) ? $product->photo : ''}}" accept="image/*">
                         {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
+                        @endif
                     </div>
                 </div>
             </div>
