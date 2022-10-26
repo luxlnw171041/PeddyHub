@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Adoptpet;
 use App\Models\Partner;
 use App\Models\Pet_Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -128,12 +129,17 @@ class AdoptpetController extends Controller
      */
     public function show($id)
     {
-        $adoptpet = Adoptpet::findOrFail($id);
         $user_id = Auth::id();
+        $adoptpet = Adoptpet::findOrFail($id);
+        // id คนลง
+        $adoptpet_user_id = $adoptpet->user_id ;
+        $data_adoptpet_user = User::where('id' , $adoptpet_user_id)->first();
 
-        if (!empty(Auth::User()->partner)) {
-            $partner_id = Auth::User()->partner;
+        if (!empty($data_adoptpet_user->partner)) {
+
+            $partner_id = $data_adoptpet_user->partner ;
             $data_partners = Partner::where('id' , $partner_id)->first();
+
         }else{
             $partner_id = "";
             $data_partners = "";
