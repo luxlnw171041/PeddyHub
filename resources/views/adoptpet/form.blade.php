@@ -1,3 +1,14 @@
+<style>
+.adopt-pet-img{
+    border:#B8205B 2px solid;
+    border-radius: 20px;
+    height: 120px;
+    object-fit: cover;
+}
+.adopt-pet-img:hover{
+    color: #B8205B;
+}
+</style>
 <div class="main-wrapper pet check">
     <div class="pet service">
         <section class="contact">
@@ -7,7 +18,7 @@
                         <h3>ข้อมูลติดต่อ</h3>
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <label  class="control-label"><b>{{ 'เบอร์ติดต่อ' }}</b></label>
+                                <label  class="control-label"><b>{{ 'เบอร์ติดต่อ' }}</b><span style="color: #B8205B;">*</span></label>
                                 <div class="form-group">
                                     <input type="text" name="phone_user" id="phone_user" class="form-control" placeholder="เบอร์ติดต่อ" required value="{{ Auth::user()->profile->phone }}" onchange="check();">
                                 </div>
@@ -65,17 +76,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <style>
-                                    .adopt-pet-img{
-                                        border:#B8205B 2px solid;
-                                        border-radius: 20px;
-                                        height: 120px;
-                                        object-fit: cover;
-                                    }
-                                    .adopt-pet-img:hover{
-                                        color: #B8205B;
-                                    }
-                                </style>
+                               
                                 <div class="col-12">
                                     <div class="row">
                                         @if(!empty($adoptpet->photo))
@@ -83,7 +84,7 @@
                                                 <label  class="control-label" for="photo" on>
                                                     <img src="{{ url('storage/'.$adoptpet->photo )}}" class=" adopt-pet-img card-img-top" alt="...">
                                                     <input class="form-control d-none" name="photo" type="file" id="photo" value="{{ isset($adoptpet->photo) ? $adoptpet->photo : ''}}" >
-                                                
+                                                    
                                                 </label>
                                             </div>
                                         @endif
