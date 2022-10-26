@@ -158,6 +158,12 @@
                         <p class="mb-0 float-end fw-bold"><span> {{$item->price}}</span></p>
                         @endif
                     </div>
+                    <hr>
+                    <div class="clearfix">
+                        <a href="{{ url('/product/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning mb-3 mb-lg-0 text-white" style="float:right;">
+                            <i class="fa-solid fa-pen-to-square"></i> แก้ไข
+                        </a>
+                    </div>
                     <!-- <div class="d-flex align-items-center mt-3 fs-6">
                         <div class="cursor-pointer">
                             <i class="bx bxs-star text-warning"></i>
