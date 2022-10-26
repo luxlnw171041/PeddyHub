@@ -37,4 +37,8 @@ class Pet_Category extends Model
     public function adoptpet(){
         return $this->hasMany('App\Models\Adoptpet', 'pet_category_id'); 
     }
+
+    public function product(){
+        return $this->hasMany('App\Models\Product', 'pet_category_id'); 
+    }
 }

@@ -36,4 +36,7 @@ class Product extends Model
     public function partner(){
         return $this->belongsTo('App\Models\Partner', 'partner_id'); 
     }
+    public function pet_category(){
+        return $this->hasOne('App\Models\Pet_Category', 'id' , 'pet_category_id'); 
+    } 
 }
