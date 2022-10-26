@@ -160,10 +160,10 @@
                     </div>
                     <hr>
                     <div class="clearfix">
-                        <form method="POST" action="{{ url('/product' . '/' . $item->id) }}" accept-charset="UTF-8" style="float:right;padding: 5px;">
+                        <form method="POST" action="{{ url('/product' . '/' . $item->id) }}" accept-charset="UTF-8" style="float:right;padding: 0px 5px;">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)">
+                            <button type="submit" class="btn btn-danger btn-sm " title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)">
                                 <i class="fa-sharp fa-solid fa-delete-left"></i> ลบ
                             </button>
                         </form>                        

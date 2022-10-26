@@ -153,7 +153,7 @@ class ProductController extends Controller
     {
         Product::destroy($id);
 
-        return redirect('product')->with('flash_message', 'Product deleted!');
+        return redirect('product_admin')->with('flash_message', 'Product deleted!');
     }
 
     public function product_category(Request $request)
