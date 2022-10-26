@@ -65,41 +65,116 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-lg-11 col-md-11 col-sm-11">
+                                <style>
+                                    .adopt-pet-img{
+                                        border:#B8205B 2px solid;
+                                        border-radius: 20px;
+                                        height: 120px;
+                                        object-fit: cover;
+                                    }
+                                    .adopt-pet-img:hover{
+                                        color: #B8205B;
+                                    }
+                                </style>
+                                <div class="col-12">
+                                    <div class="row">
+                                        @if(!empty($adoptpet->photo))
+                                            <div class="col-3">
+                                                <label  class="control-label" for="photo" on>
+                                                    <img src="{{ url('storage/'.$adoptpet->photo )}}" class=" adopt-pet-img card-img-top" alt="...">
+                                                    <input class="form-control d-none" name="photo" type="file" id="photo" value="{{ isset($adoptpet->photo) ? $adoptpet->photo : ''}}" >
+                                                
+                                                </label>
+                                            </div>
+                                        @endif
+                                        @if(!empty($adoptpet->photo2))
+                                            <div class="col-3">
+                                                <label  class="control-label" for="photo2">
+                                                    <img src="{{ url('storage/'.$adoptpet->photo2 )}}" class="adopt-pet-img card-img-top" alt="...">
+                                                    <input class="form-control d-none" name="photo2" type="file" id="photo2" value="{{ isset($adoptpet->photo2) ? $adoptpet->photo2 : ''}}" >
+
+                                                </label>
+                                            </div>
+                                        @endif
+                                        @if(!empty($adoptpet->photo3))
+                                            <div class="col-3">
+                                                <label  class="control-label" for="photo3">
+                                                    <img src="{{ url('storage/'.$adoptpet->photo3 )}}" class="adopt-pet-img card-img-top" alt="...">
+                                                    <input class="form-control d-none" name="photo3" type="file" id="photo3" value="{{ isset($adoptpet->photo3) ? $adoptpet->photo3 : ''}}" >
+
+                                                </label>
+                                            </div>
+                                        @endif
+                                        @if(!empty($adoptpet->photo4))
+                                            <div class="col-3">
+                                                <label  class="control-label" for="photo4">
+                                                    <img src="{{ url('storage/'.$adoptpet->photo4 )}}" class="adopt-pet-img card-img-top" alt="...">
+                                                    <input class="form-control d-none" name="photo4" type="file" id="photo4" value="{{ isset($adoptpet->photo4) ? $adoptpet->photo4 : ''}}" >
+
+                                                </label>
+                                            </div>
+                                        @endif
+                                        @if(!empty($adoptpet->photo5))
+                                            <div class="col-3">
+                                                <label  class="control-label" for="photo5">
+                                                    <img src="{{ url('storage/'.$adoptpet->photo5 )}}" class="adopt-pet-img card-img-top" alt="...">
+                                                    <input class="form-control d-none" name="photo5" type="file" id="photo5" value="{{ isset($adoptpet->photo5) ? $adoptpet->photo5 : ''}}" >
+
+                                                </label>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                                @if(empty($adoptpet->photo))
+                                <div class="col-lg-12 col-md-12 col-sm-2">
+                                        <div class="col-12 col-md-12">
+                                            <label  class="control-label"><b>{{ 'รูปภาพ 1' }}</b>
+                                            
+                                            </label>
+                                        </div>
+                                    </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8">
                                     <div class="form-group">
                                         <input class="form-control" name="photo" type="file" id="photo" value="{{ isset($adoptpet->photo) ? $adoptpet->photo : ''}}" required onchange="check();" >
                                     </div>
                                 </div>
-                                <div class="col-lg-1 col-md-1 col-sm-1">
-                                    <a style="float:right;margin-right: 10px;margin-bottom: 10px;" data-toggle="collapse" data-target="#photomore" aria-expanded="false" aria-controls="photomore">
-                                        <i class="fas fa-sort-down"></i>
+                                @endif
+                                
+                                <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                                    <a style="margin-right: 10px;margin-bottom: 10px;" data-toggle="collapse" data-target="#photomore" aria-expanded="false" aria-controls="photomore">
+                                        เพิ่มรูปภาพ <i class="fas fa-sort-down"></i>
                                     </a>
                                 </div>
                                 <div  class="collapse col-12" id="photomore" style="padding:0px">
-                                    <div class="col-lg-12 col-md-12 col-sm-2">
-                                        <div class="col-12 col-md-12">
-                                            <label  class="control-label"><b>{{ 'รูปภาพ 2' }}</b>
-                                            
-                                            </label>
+                                     @if(empty($adoptpet->photo2))
+                                        <div class="col-lg-12 col-md-12 col-sm-2">
+                                            <div class="col-12 col-md-12">
+                                                <label  class="control-label"><b>{{ 'รูปภาพ 2' }}</b>
+                                                
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-11 col-md-11 col-sm-11">
-                                        <div class="form-group">
-                                            <input class="form-control" name="photo2" type="file" id="photo2" value="{{ isset($adoptpet->photo2) ? $adoptpet->photo2 : ''}}" >
+                                        <div class="col-lg-11 col-md-11 col-sm-11">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo2" type="file" id="photo2" value="{{ isset($adoptpet->photo2) ? $adoptpet->photo2 : ''}}" >
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-2">
-                                        <div class="col-12 col-md-12">
-                                            <label  class="control-label"><b>{{ 'รูปภาพ 3' }}</b>
-                                            
-                                            </label>
+                                    @endif
+                                    @if(empty($adoptpet->photo3))
+                                        <div class="col-lg-12 col-md-12 col-sm-2">
+                                            <div class="col-12 col-md-12">
+                                                <label  class="control-label"><b>{{ 'รูปภาพ 3' }}</b>
+                                                
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-11 col-md-11 col-sm-11">
-                                        <div class="form-group">
-                                            <input class="form-control" name="photo3" type="file" id="3" value="{{ isset($adoptpet->photo3) ? $adoptpet->photo3 : ''}}" >
+                                        <div class="col-lg-11 col-md-11 col-sm-11">
+                                            <div class="form-group">
+                                                <input class="form-control" name="photo3" type="file" id="3" value="{{ isset($adoptpet->photo3) ? $adoptpet->photo3 : ''}}" >
+                                            </div>
                                         </div>
-                                    </div>
+                                        @endif
+                                    @if(empty($adoptpet->photo4))
                                     <div class="col-lg-12 col-md-12 col-sm-2">
                                         <div class="col-12 col-md-12">
                                             <label  class="control-label"><b>{{ 'รูปภาพ 4' }}</b>
@@ -112,6 +187,8 @@
                                             <input class="form-control" name="photo4" type="file" id="photo4" value="{{ isset($adoptpet->photo4) ? $adoptpet->photo4 : ''}}" >
                                         </div>
                                     </div>
+                                    @endif
+                                    @if(empty($adoptpet->photo5))
                                     <div class="col-lg-12 col-md-12 col-sm-2">
                                         <div class="col-12 col-md-12">
                                             <label  class="control-label"><b>{{ 'รูปภาพ 5' }}</b>
@@ -124,6 +201,7 @@
                                             <input class="form-control" name="photo5" type="file" id="photo5" value="{{ isset($adoptpet->photo5) ? $adoptpet->photo5 : ''}}" >
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -139,7 +217,14 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <select name="pet_category_id" id="pet_category_id" class="form-control" required onchange="check();">
-                                        <option value='' selected="selected">โปรดเลือก</option>
+                                        @if(!empty($adoptpet->pet_category_id))
+                                            <option value='{{ $adoptpet->pet_category_id }}' selected="selected">
+                                                {{ $adoptpet->pet_category->name }}
+                                            </option>
+                                        @else
+                                            <option value='' selected="selected">โปรดเลือก</option>
+                                        @endif
+                                        
                                         @foreach($category as $item)
                                             <option value="{{ isset($item->id) ? $item->id : ''}}">{{ $item->name }}</option>
                                         @endforeach
@@ -356,7 +441,6 @@
 <script>
       function check() {
         let titel = document.querySelector('#titel');
-        let photo = document.querySelector('#photo');
         let gender = document.querySelector('#gender');
         let age = document.querySelector('#age');
         let size = document.querySelector('#size');
@@ -364,7 +448,7 @@
 
         let pet_category_id = document.querySelector('#pet_category_id');
 
-        if (phone.value !== "" && titel.value !== "" && photo.value !== "" && gender.value !== "" && age.value !== ""  && size.value !== "" && pet_category_id.value !== "") {
+        if (phone.value !== "" && titel.value !== ""  && gender.value !== "" && age.value !== ""  && size.value !== "" && pet_category_id.value !== "") {
         
                 document.getElementById("modal_submit").disabled = false;
         }

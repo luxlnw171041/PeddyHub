@@ -89,6 +89,9 @@ class AdoptpetController extends Controller
         if ($request->hasFile('photo4')) {
             $requestData['photo4'] = $request->file('photo4')
                 ->store('uploads', 'public');
+        } if ($request->hasFile('photo5')) {
+            $requestData['photo5'] = $request->file('photo5')
+                ->store('uploads', 'public');
         }
 
         if (!empty($requestData['phone_user'])) {
@@ -203,6 +206,10 @@ class AdoptpetController extends Controller
         }
         if ($request->hasFile('photo4')) {
             $requestData['photo4'] = $request->file('photo4')
+                ->store('uploads', 'public');
+        }
+        if ($request->hasFile('photo5')) {
+            $requestData['photo5'] = $request->file('photo5')
                 ->store('uploads', 'public');
         }
 
