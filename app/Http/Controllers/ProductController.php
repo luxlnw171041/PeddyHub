@@ -139,7 +139,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->update($requestData);
 
-        return redirect('product')->with('flash_message', 'Product updated!');
+        return redirect('product_admin')->with('flash_message', 'Product updated!');
     }
 
     /**
