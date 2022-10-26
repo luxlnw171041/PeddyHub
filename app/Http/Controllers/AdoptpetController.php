@@ -128,7 +128,15 @@ class AdoptpetController extends Controller
         $adoptpet = Adoptpet::findOrFail($id);
         $user_id = Auth::id();
 
-        return view('adoptpet.show', compact('adoptpet','user_id'));
+        if (!empty(Auth::User()->partner)) {
+            $partner_id = Auth::User()->partner;
+            $data_partners = Partner::where('id' , $partner_id)->first();
+        }else{
+            $partner_id = "";
+            $data_partners = "";
+        }
+
+        return view('adoptpet.show', compact('adoptpet','user_id','partner_id','data_partners'));
     }
 
     /**
@@ -221,7 +229,7 @@ class AdoptpetController extends Controller
         $adoptpet = Adoptpet::findOrFail($id);
         $adoptpet->update($requestData);
 
-        return redirect('adoptpet')->with('flash_message', 'Adoptpet updated!');
+        return redirect('adoptpet/' . $id)->with('flash_message', 'Adoptpet updated!');
     }
 
     /**

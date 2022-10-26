@@ -122,11 +122,29 @@
                                     {{$adoptpet->detail}}
                                     </p>
                                 @endif
-                                <div class="button">
-                                    <a href="tel: {{$profile->profile->phone}}" class="btn main" >
-                                        ติดต่อสอบถาม <i class="fas fa-paw"></i>
-                                    </a>
-                                </div>
+
+                                @if(!empty($data_partners->qr_cond_line))
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <a href="tel: {{$profile->profile->phone}}" class="btn btn-sm main" style="margin-top:15px;">
+                                                ติดต่อสอบถาม <i class="fas fa-paw"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a href="{{ $data_partners->link_line }}">
+                                                <img src="{{ url('storage')}}/{{ $data_partners->qr_cond_line }}" width="100" height="100" class="main-shadow main-radius">
+                                                <br>
+                                                <span style="margin-left:20px;" class="text-center text-dark">Add friend</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="button">
+                                        <a href="tel: {{$profile->profile->phone}}" class="btn main" >
+                                            ติดต่อสอบถาม <i class="fas fa-paw"></i>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
