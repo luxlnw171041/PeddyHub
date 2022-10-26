@@ -31,7 +31,8 @@ class PartnerController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $partner = Partner::where('name', 'LIKE', "%$keyword%")
+            $partner = Partner::where('name_area', null)
+                ->where('name', 'LIKE', "%$keyword%")
                 ->orWhere('phone', 'LIKE', "%$keyword%")
                 ->orWhere('lat', 'LIKE', "%$keyword%")
                 ->orWhere('lng', 'LIKE', "%$keyword%")
@@ -41,7 +42,7 @@ class PartnerController extends Controller
                 ->orWhere('sub_district', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $partner = Partner::latest()->paginate($perPage);
+            $partner = Partner::where('name_area', null)->latest()->paginate($perPage);
         }
 
         return view('partner.index', compact('partner'));
