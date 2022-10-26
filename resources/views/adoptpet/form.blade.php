@@ -432,6 +432,11 @@
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div> -->
 <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        check();
+    });
+</script>
+<script>
     function submit_form_lost_pet(){
     setTimeout(function(){ 
           document.getElementById("lost_pet_submit").click(); 
