@@ -107,11 +107,16 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $category = Pet_Category::groupBy('name')->get();
-
         $product = Product::findOrFail($id);
 
-        return view('product.edit', compact('product','category'));
+        if ( $product->partner_id != Auth::User()->partner ) {
+            return redirect('/404');
+        }else{
+
+            $category = Pet_Category::groupBy('name')->get();
+            return view('partner_admin.edit_product_admin', compact('product','category'));
+        }
+
     }
 
     /**
