@@ -22,8 +22,33 @@ class test_for_devController extends Controller
 {
     public function test_api_lostpet()
     {
-        // echo "hello" ;
-        exit();
+        $requestArr = [
+            'Token' => "1-63578660acb9763578660acb99",
+            'province' => "จ.พระนครศรีอยุธยา",
+            'amphoe' => "อ.บางปะอิน",
+            'tambon' => "ต.บ้านกรด",
+            'owner_name' => "ลัค",
+            'owner_phone' => "",
+            'pet_name' => "โกโก้",
+            'pet_age' => "10 เดือน 10 วัน",
+            'pet_category' => "สุนัข",
+            'sub_category' => "ร็อตไวเลอร์",
+            'pet_gender' => "ชาย",
+            'detail' => "",
+            'photo_link' => "https://www.peddyhub.com/storage/uploads/nkRauC1MfHHxpaU3OQ6IsC8GCfasu9cxBTOhF4Cr.jpg",
+        ];
+        
+        $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $requestArr);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+        echo $response;
+
     }
     public function test_for_dev()
     {

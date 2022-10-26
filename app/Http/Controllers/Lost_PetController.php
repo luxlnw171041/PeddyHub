@@ -145,7 +145,7 @@ class Lost_PetController extends Controller
         return redirect('lost_pet')->with('flash_message', 'Lost_Pet added!');
     }
 
-    public function check_token_partner(Request $request)
+    public function partner_lost_pet(Request $request)
     {
         $requestData = $request->all();
 
@@ -157,10 +157,12 @@ class Lost_PetController extends Controller
         $data_partner_tokens = Partner_token::where('token' , $requestData['Token'])->first();
 
         if (!empty($data_partner_tokens)) {
-            // return "OK" ;
             $requestData['by_api'] = "Yes" ;
             $requestData['by_partner'] = $data_partner_tokens->partner_id ;
+            $requestData = $this->check_empty_data($requestData);
             $this->lost_pet_partner($requestData);
+
+            return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
         }else{
             return "ไม่สามารถดำเนินการได้ กรุณาติดต่อ PEDDyHUB" ;
         }
@@ -187,6 +189,8 @@ class Lost_PetController extends Controller
 
     public function lost_pet_partner($requestData)
     {
+        $requestData['status'] = 'searching'; 
+
         if (empty($requestData['owner_name'])) {
             $requestData['owner_name'] = "ไม่ได้ระบุ" ;
         }
@@ -203,10 +207,11 @@ class Lost_PetController extends Controller
             $requestData['detail'] = "ไม่ได้ระบุ" ;
         }
 
-        $requestData['tambon_th'] = $requestData['select_tambon']; 
-        $requestData['amphoe_th'] = $requestData['select_amphoe']; 
-        $requestData['changwat_th'] = $requestData['select_province']; 
-        $requestData['status'] = 'searching'; 
+        if (!empty($requestData['select_province'])) {
+            $requestData['tambon_th'] = $requestData['select_tambon']; 
+            $requestData['amphoe_th'] = $requestData['select_amphoe']; 
+            $requestData['changwat_th'] = $requestData['select_province']; 
+        }
 
         if (!empty($requestData['input_province'])) {
             $requestData['tambon_th'] = $requestData['input_tambon']; 
@@ -214,15 +219,22 @@ class Lost_PetController extends Controller
             $requestData['changwat_th'] = $requestData['input_province'];
         }
 
+        if (!empty($requestData['province'])) {
+            $requestData['tambon_th'] = $requestData['tambon']; 
+            $requestData['amphoe_th'] = $requestData['amphoe']; 
+            $requestData['changwat_th'] = $requestData['province'];
+        }
+
         Lost_Pet::create($requestData);
+
+        $data_lost_pet = Lost_Pet::latest()->first();
+        $lost_pet_id = $data_lost_pet->id ;
+
 
         // echo "<pre>";
         // print_r($requestData);
         // echo "<pre>";
         // exit();
-
-        $data_lost_pet = Lost_Pet::latest()->first();
-        $lost_pet_id = $data_lost_pet->id ;
 
         $this->send_lost_pet_by_partner($requestData, $lost_pet_id);
 
@@ -488,6 +500,66 @@ class Lost_PetController extends Controller
             }
             
         }
+    }
+
+    public function check_empty_data($requestData)
+    {
+        if (empty($requestData['province'])) {
+            $requestData['province'] = "" ;
+        }
+
+        if (empty($requestData['amphoe'])) {
+            $requestData['amphoe'] = "" ;
+        }
+
+        if (empty($requestData['tambon'])) {
+            $requestData['tambon'] = "" ;
+        }
+
+        if (empty($requestData['pet_name'])) {
+            $requestData['pet_name'] = "ไม่ได้ระบุ" ;
+        }
+
+        if (empty($requestData['pet_age'])) {
+            $requestData['pet_age'] = "ไม่ได้ระบุ" ;
+        }
+
+        if (empty($requestData['pet_category'])) {
+            $requestData['pet_category'] = "ไม่ได้ระบุ" ;
+        }
+
+        if (!empty($requestData['pet_category'])) {
+            switch ($requestData['pet_category']) {
+                case 'สุนัข' or 'หมา':
+                    $pet_category_id = '1';
+                    break;
+                case 'แมว':
+                    $pet_category_id = '2';
+                    break;
+                case 'นก':
+                    $pet_category_id = '3';
+                    break;
+                case 'ปลา':
+                    $pet_category_id = '4';
+                    break;
+                case 'สัตว์เล็ก':
+                    $pet_category_id = '5';
+                    break;
+                case 'Exotic':
+                    $pet_category_id = '6';
+                    break;
+            }
+        }
+
+        if (empty($requestData['pet_gender'])) {
+            $requestData['pet_gender'] = "ไม่ได้ระบุ" ;
+        }
+
+        if (empty($requestData['photo_link'])) {
+            $requestData['photo_link'] = "" ;
+        }
+
+        return $requestData ;
     }
 
 }
