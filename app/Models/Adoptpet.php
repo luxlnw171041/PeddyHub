@@ -31,4 +31,8 @@ class Adoptpet extends Model
         return $this->belongsTo('App\Models\User', 'user_id'); 
     }
 
+    public function pet_category(){
+        return $this->hasOne('App\Models\Pet_Category', 'id' , 'pet_category_id'); 
+    } 
+
 }
