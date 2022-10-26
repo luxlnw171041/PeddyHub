@@ -4,6 +4,7 @@
     border-radius: 20px;
     height: 120px;
     object-fit: cover;
+    cursor: pointer;
 }
 .adopt-pet-img:hover{
     color: #B8205B;
@@ -82,8 +83,8 @@
                                         @if(!empty($adoptpet->photo))
                                             <div class="col-3">
                                                 <label  class="control-label" for="photo" on>
-                                                    <img src="{{ url('storage/'.$adoptpet->photo )}}" class=" adopt-pet-img card-img-top" alt="...">
-                                                    <input class="form-control d-none" name="photo" type="file" id="photo" value="{{ isset($adoptpet->photo) ? $adoptpet->photo : ''}}" >
+                                                <img class="adopt-pet-img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_1" src="{{ url('storage')}}/{{ $adoptpet->photo }}" />
+                                                    <input class="form-control d-none" name="photo" type="file" id="photo" value="{{ isset($adoptpet->photo) ? $adoptpet->photo : ''}}" onchange="document.getElementById('show_photo_1').src = window.URL.createObjectURL(this.files[0])">
                                                     
                                                 </label>
                                             </div>
@@ -91,17 +92,16 @@
                                         @if(!empty($adoptpet->photo2))
                                             <div class="col-3">
                                                 <label  class="control-label" for="photo2">
-                                                    <img src="{{ url('storage/'.$adoptpet->photo2 )}}" class="adopt-pet-img card-img-top" alt="...">
-                                                    <input class="form-control d-none" name="photo2" type="file" id="photo2" value="{{ isset($adoptpet->photo2) ? $adoptpet->photo2 : ''}}" >
-
+                                                    <img class="adopt-pet-img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_2" src="{{ url('storage')}}/{{ $adoptpet->photo2 }}" />
+                                                    <input class="form-control d-none" name="photo2" type="file" id="photo2" value="{{ isset($adoptpet->photo2) ? $adoptpet->photo2 : ''}}" onchange="document.getElementById('show_photo_2').src = window.URL.createObjectURL(this.files[0])">
                                                 </label>
                                             </div>
                                         @endif
                                         @if(!empty($adoptpet->photo3))
                                             <div class="col-3">
                                                 <label  class="control-label" for="photo3">
-                                                    <img src="{{ url('storage/'.$adoptpet->photo3 )}}" class="adopt-pet-img card-img-top" alt="...">
-                                                    <input class="form-control d-none" name="photo3" type="file" id="photo3" value="{{ isset($adoptpet->photo3) ? $adoptpet->photo3 : ''}}" >
+                                                    <img class="adopt-pet-img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_3" src="{{ url('storage')}}/{{ $adoptpet->photo3 }}" />
+                                                    <input class="form-control d-none" name="photo3" type="file" id="photo3" value="{{ isset($adoptpet->photo3) ? $adoptpet->photo3 : ''}}" onchange="document.getElementById('show_photo_3').src = window.URL.createObjectURL(this.files[0])">
 
                                                 </label>
                                             </div>
@@ -109,8 +109,8 @@
                                         @if(!empty($adoptpet->photo4))
                                             <div class="col-3">
                                                 <label  class="control-label" for="photo4">
-                                                    <img src="{{ url('storage/'.$adoptpet->photo4 )}}" class="adopt-pet-img card-img-top" alt="...">
-                                                    <input class="form-control d-none" name="photo4" type="file" id="photo4" value="{{ isset($adoptpet->photo4) ? $adoptpet->photo4 : ''}}" >
+                                                    <img class="adopt-pet-img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_4" src="{{ url('storage')}}/{{ $adoptpet->photo4 }}" />
+                                                    <input class="form-control d-none" name="photo4" type="file" id="photo4" value="{{ isset($adoptpet->photo4) ? $adoptpet->photo4 : ''}}" onchange="document.getElementById('show_photo_4').src = window.URL.createObjectURL(this.files[0])">
 
                                                 </label>
                                             </div>
@@ -118,8 +118,8 @@
                                         @if(!empty($adoptpet->photo5))
                                             <div class="col-3">
                                                 <label  class="control-label" for="photo5">
-                                                    <img src="{{ url('storage/'.$adoptpet->photo5 )}}" class="adopt-pet-img card-img-top" alt="...">
-                                                    <input class="form-control d-none" name="photo5" type="file" id="photo5" value="{{ isset($adoptpet->photo5) ? $adoptpet->photo5 : ''}}" >
+                                                    <img class="adopt-pet-img" style="padding:0px ;" width="100%" alt="your image" id="show_photo_5" src="{{ url('storage')}}/{{ $adoptpet->photo5 }}" />
+                                                    <input class="form-control d-none" name="photo5" type="file" id="photo5" value="{{ isset($adoptpet->photo5) ? $adoptpet->photo5 : ''}}" onchange="document.getElementById('show_photo_5').src = window.URL.createObjectURL(this.files[0])">
 
                                                 </label>
                                             </div>
