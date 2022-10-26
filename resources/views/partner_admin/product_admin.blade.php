@@ -160,7 +160,14 @@
                     </div>
                     <hr>
                     <div class="clearfix">
-                        <a href="{{ url('/product/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning mb-3 mb-lg-0 text-white" style="float:right;">
+                        <form method="POST" action="{{ url('/product' . '/' . $item->id) }}" accept-charset="UTF-8" style="float:right;padding: 5px;">
+                            {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Product" onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                <i class="fa-sharp fa-solid fa-delete-left"></i> ลบ
+                            </button>
+                        </form>                        
+                        <a href="{{ url('/product/' . $item->id . '/edit') }}" class="btn btn-sm btn-warning mb-3 mb-lg-0 text-white" style="float:right;padding: 5px;">
                             <i class="fa-solid fa-pen-to-square"></i> แก้ไข
                         </a>
                     </div>
