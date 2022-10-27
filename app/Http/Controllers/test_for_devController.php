@@ -23,10 +23,7 @@ class test_for_devController extends Controller
     public function input_api_json(Request $request)
     {
         $requestData = $request->all();
-
-        echo $requestData['authorization'];
-        echo "<br>";
-
+        
         echo "<pre>";
         print_r($requestData);
         echo "<pre>";
