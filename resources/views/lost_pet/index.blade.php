@@ -176,14 +176,12 @@
                                 font-size: 12px;
                                 
                             }
-                            .tag-js100{
-                                background-color: #0A4424;
+                            .tag-partner{
                                 padding: 5px;
                                 border-radius: 10px;
                                 color: white;
                                 font-family: 'Mitr', sans-serif;
                                 font-size: 12px;
-                                
                             }
                             .div-tag{
                                 padding: 10px;
@@ -302,7 +300,7 @@
                                     </a>    
                                 </div>
                             @else
-                                <!-- ตามหาของ JS100 -->
+                                <!-- ตามหาของ PARTNER -->
                                 <div class="col-lg-3 col-md-6 col-sm-12 m-0 p-2">
                                     <a href="{{ url('/lost_pet/' . $item->id) }}" class="unset-hover">
                                         <div class="card-lost-pet">
@@ -356,8 +354,27 @@
                                                             @else
                                                                 <span class="tag-lost">กำลังค้นหา</span>
                                                             @endif
-                                                            &nbsp;
-                                                            <span class="tag-js100">จส.100</span>
+                                                            <!-- partner -->
+                                                            @if($item->partner->name == "JS100")
+                                                                &nbsp;
+                                                                <span class="tag-partner" style="background-color: #0A4424;">
+                                                                    จส.100
+                                                                </span>
+                                                            @else
+                                                                @php
+                                                                    if(!empty($item->partner->color_navbar)){
+                                                                        $color_tag = $item->partner->color_navbar ;
+                                                                    }else{
+                                                                        // อยากได้สีอะไรใส่ตรงนี้เลยครับ👇👇
+                                                                        $color_tag = "#66CCFF";
+                                                                    }
+                                                                @endphp
+                                                                &nbsp;
+                                                                <span class="tag-partner" style="background-color: {{ $color_tag }};">
+                                                                    {{ $item->partner->name }}
+                                                                </span>
+                                                            @endif
+                                                            
                                                         </div>
                                                         <div class="contacts">
                                                             @if(!empty( $item->owner_phone ))

@@ -103,8 +103,7 @@
             font-size: 12px;
             
         }
-        .tag-js100{
-            background-color: #0A4424;
+        .tag-partner{
             padding: 5px;
             border-radius: 10px;
             color: white;
@@ -378,7 +377,7 @@
                 </div>
             </div>
         @else
-            <!-- JS100 -->
+            <!-- PARTNER -->
             <!-- มือถือ -->
             <div class="d-block d-md-none">
                 <div class="img-pet">
@@ -432,8 +431,26 @@
                                 @else
                                     <span class="tag-lost">กำลังค้นหา</span>
                                 @endif
-                                &nbsp;
-                                <span class="tag-js100">จส.100</span>
+                                <!-- partner -->
+                                @if($lost_pet->partner->name == "JS100")
+                                    &nbsp;
+                                    <span class="tag-partner" style="background-color: #0A4424;">
+                                        จส.100
+                                    </span>
+                                @else
+                                    @php
+                                        if(!empty($lost_pet->partner->color_navbar)){
+                                            $color_tag = $lost_pet->partner->color_navbar ;
+                                        }else{
+                                            // อยากได้สีอะไรใส่ตรงนี้เลยครับ👇👇
+                                            $color_tag = "#66CCFF";
+                                        }
+                                    @endphp
+                                    &nbsp;
+                                    <span class="tag-partner" style="background-color: {{ $color_tag }};">
+                                        {{ $lost_pet->partner->name }}
+                                    </span>
+                                @endif
                             </div>
                             <div class="contacts">
                                 @if(!empty( $lost_pet->owner_phone ))
@@ -534,8 +551,26 @@
                                         @else
                                             <span class="tag-lost">กำลังค้นหา</span>
                                         @endif
-                                        &nbsp;
-                                        <span class="tag-js100">จส.100</span>
+                                        <!-- partner -->
+                                        @if($lost_pet->partner->name == "JS100")
+                                            &nbsp;
+                                            <span class="tag-partner" style="background-color: #0A4424;">
+                                                จส.100
+                                            </span>
+                                        @else
+                                            @php
+                                                if(!empty($lost_pet->partner->color_navbar)){
+                                                    $color_tag = $lost_pet->partner->color_navbar ;
+                                                }else{
+                                                    // อยากได้สีอะไรใส่ตรงนี้เลยครับ👇👇
+                                                    $color_tag = "#66CCFF";
+                                                }
+                                            @endphp
+                                            &nbsp;
+                                            <span class="tag-partner" style="background-color: {{ $color_tag }};">
+                                                {{ $lost_pet->partner->name }}
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <hr class="p-0 m-0">
@@ -571,10 +606,18 @@
                     <div class="col-4 p-3">
                         <div class="card-lost-pet">
                             <div class="user column">
-                                <div class="img-user notranslate">
-                                    <img  src="{{ url('peddyhub/images/logo-partner/250x250/js100.png')}}" alt="">
-                                    JS100 - จส.100
-                                </div>
+                                <!-- partner -->
+                                @if($lost_pet->partner->name == "JS100")
+                                    <div class="img-user notranslate">
+                                        <img  src="{{ url('peddyhub/images/logo-partner/250x250/js100.png')}}" alt="">
+                                        JS100 - จส.100
+                                    </div>
+                                @else
+                                    <div class="img-user notranslate">
+                                        <img  src="{{ url('storage')}}/{{ $lost_pet->partner->logo }}" alt="">
+                                        {{ $lost_pet->partner->name }}
+                                    </div>
+                                @endif
                                 <div class="contacts">
                                     <a href="tel:1137" class="btn-lost-pet ml-2"><i class="fa-solid fa-phone"></i></a>
                                 </div>

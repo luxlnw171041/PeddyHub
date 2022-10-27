@@ -43,4 +43,8 @@ class Lost_Pet extends Model
         return $this->hasOne('App\Models\Pet', 'id' , 'pet_id'); 
     } 
 
+     public function partner(){
+        return $this->belongsTo('App\Models\Partner' , 'by_partner'); 
+    }
+
 }

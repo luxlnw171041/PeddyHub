@@ -37,4 +37,8 @@ class Partner extends Model
     //     return $this->belongsTo('App\Models\User', 'partner'); 
     // }
 
+    public function lost_pet(){
+        return $this->hasMany('App\Models\Lost_Pet', 'by_partner'); 
+    }
+
 }
