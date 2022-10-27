@@ -396,9 +396,9 @@ class Lost_PetController extends Controller
         }
 
         $send_to_users = Profile::where('type' ,'line')
-            ->where('tambon_th', 'LIKE'  , "%$tambon_th%")
-            ->where('amphoe_th',  'LIKE' , "%$amphoe_th%")
-            ->where('changwat_th', 'LIKE'  , "%$changwat_th%")
+            ->where('changwat_th' ,$changwat_th)
+            ->where('amphoe_th' ,$amphoe_th)
+            ->where('tambon_th' ,$tambon_th)
             ->get();
 
         foreach ($send_to_users as $item) {
