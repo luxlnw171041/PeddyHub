@@ -154,15 +154,21 @@ class Lost_PetController extends Controller
             ->store('uploads', 'public');
         }
 
-        $data_partner_tokens = Partner_token::where('token' , $requestData['Token'])->first();
+        if (!empty($requestData['Token'])) {
+            
+            $data_partner_tokens = Partner_token::where('token' , $requestData['Token'])->first();
 
-        if (!empty($data_partner_tokens)) {
-            $requestData['by_api'] = "Yes" ;
-            $requestData['by_partner'] = $data_partner_tokens->partner_id ;
-            $requestData = $this->check_empty_data($requestData);
-            $this->lost_pet_partner($requestData);
+            if (!empty($data_partner_tokens)) {
+                $requestData['by_api'] = "Yes" ;
+                $requestData['by_partner'] = $data_partner_tokens->partner_id ;
+                $requestData = $this->check_empty_data($requestData);
+                $this->lost_pet_partner($requestData);
 
-            return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
+                return "ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ" ;
+            }else{
+                return "ไม่สามารถดำเนินการได้ กรุณาติดต่อ PEDDyHUB" ;
+            }
+            
         }else{
             return "ไม่สามารถดำเนินการได้ กรุณาติดต่อ PEDDyHUB" ;
         }
@@ -229,7 +235,7 @@ class Lost_PetController extends Controller
 
         $data_lost_pet = Lost_Pet::latest()->first();
         $lost_pet_id = $data_lost_pet->id ;
-        
+
         $this->send_lost_pet_by_partner($requestData, $lost_pet_id);
 
     }
