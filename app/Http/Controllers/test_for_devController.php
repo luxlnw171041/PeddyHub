@@ -38,12 +38,14 @@ class test_for_devController extends Controller
             'photo_link' => "https://www.peddyhub.com/storage/uploads/nkRauC1MfHHxpaU3OQ6IsC8GCfasu9cxBTOhF4Cr.jpg",
         ];
 
+        $js_data = json_encode($requestArr, true);
+
         // $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
         $url = 'https://www.peddyhub.com/api/partner_lost_pet';
         $ch = curl_init($url);
 
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $requestArr);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $js_data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
