@@ -20,6 +20,16 @@ use App\Models\Pet;
 
 class test_for_devController extends Controller
 {
+    public function input_api_json(Request $request)
+    {
+        $requestData = $request->all();
+        
+        echo "<pre>";
+        print_r($requestData);
+        echo "<pre>";
+        exit();
+    }
+
     public function test_api_lostpet()
     {
         $requestArr = [
@@ -37,6 +47,27 @@ class test_for_devController extends Controller
             'detail' => "ทดสอบตามหาสุนัขหาย",
             'photo_link' => "https://www.peddyhub.com/storage/uploads/nkRauC1MfHHxpaU3OQ6IsC8GCfasu9cxBTOhF4Cr.jpg",
         ];
+
+        $js_data = json_encode($requestArr, true);
+
+        $opts = [
+            'http' =>[
+                'method'  => 'GET',
+                'header'  => 'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                //'timeout' => 60
+            ]
+        ];
+                            
+        $context  = stream_context_create($opts);
+
+        echo $context;
+        echo "<br>";
+
+
+        echo "<pre>";
+        print_r($js_data);
+        echo "<pre>";
+        exit();
 
         // $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
         $url = 'https://www.peddyhub.com/api/partner_lost_pet';
