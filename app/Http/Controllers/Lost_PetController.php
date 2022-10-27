@@ -230,7 +230,6 @@ class Lost_PetController extends Controller
         $data_lost_pet = Lost_Pet::latest()->first();
         $lost_pet_id = $data_lost_pet->id ;
 
-
         // echo "<pre>";
         // print_r($requestData);
         // echo "<pre>";
@@ -506,14 +505,33 @@ class Lost_PetController extends Controller
     {
         if (empty($requestData['province'])) {
             $requestData['province'] = "" ;
+            $province = "";
+        }else{
+            if ($requestData['province'] == "กทม." or $requestData['province'] == "กทม") {
+                $requestData['province'] = "กรุงเทพมหานคร" ;
+            }
+
+            $province = $requestData['province'] ;
+            $province = str_replace(" " , "" , $province );
+            $province = str_replace("จังหวัด" , "" , $province );
         }
 
         if (empty($requestData['amphoe'])) {
             $requestData['amphoe'] = "" ;
+            $amphoe = "";
+        }else{
+            $amphoe = $requestData['amphoe'] ;
+            $amphoe = str_replace(" " , "" , $amphoe );
+            $amphoe = str_replace("อำเภอ" , "" , $amphoe );
         }
 
         if (empty($requestData['tambon'])) {
             $requestData['tambon'] = "" ;
+            $tambon = "";
+        }else{
+            $tambon = $requestData['tambon'] ;
+            $tambon = str_replace(" " , "" , $tambon );
+            $tambon = str_replace("ตำบล" , "" , $tambon );
         }
 
         if (empty($requestData['pet_name'])) {
@@ -530,23 +548,32 @@ class Lost_PetController extends Controller
 
         if (!empty($requestData['pet_category'])) {
             switch ($requestData['pet_category']) {
-                case 'สุนัข' or 'หมา':
-                    $pet_category_id = '1';
+                case 'สุนัข' :
+                    $requestData['pet_category_id'] = '1';
+                    break;
+                case 'หมา':
+                    $requestData['pet_category_id'] = '1';
                     break;
                 case 'แมว':
-                    $pet_category_id = '2';
+                    $requestData['pet_category_id'] = '2';
                     break;
                 case 'นก':
-                    $pet_category_id = '3';
+                    $requestData['pet_category_id'] = '3';
                     break;
                 case 'ปลา':
-                    $pet_category_id = '4';
+                    $requestData['pet_category_id'] = '4';
                     break;
                 case 'สัตว์เล็ก':
-                    $pet_category_id = '5';
+                    $requestData['pet_category_id'] = '5';
                     break;
                 case 'Exotic':
-                    $pet_category_id = '6';
+                    $requestData['pet_category_id'] = '6';
+                    break;
+                case 'exotic':
+                    $requestData['pet_category_id'] = '6';
+                    break;
+                default:
+                    $requestData['pet_category_id'] = '11';
                     break;
             }
         }
@@ -557,6 +584,17 @@ class Lost_PetController extends Controller
 
         if (empty($requestData['photo_link'])) {
             $requestData['photo_link'] = "" ;
+        }
+
+        $data_latlng = DB::table('lat_longs')
+            ->where('tambon_th', 'LIKE'  , "%$tambon%")
+            ->where('amphoe_th',  'LIKE' , "%$amphoe%")
+            ->where('changwat_th', 'LIKE'  , "%$province%")
+            ->first();
+
+        if (!empty($data_latlng)) {
+            $requestData['lat'] = $data_latlng->lat ;
+            $requestData['lng'] = $data_latlng->lng ;
         }
 
         return $requestData ;

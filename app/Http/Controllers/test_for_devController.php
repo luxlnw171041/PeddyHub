@@ -26,18 +26,18 @@ class test_for_devController extends Controller
             'Token' => "1-63578660acb9763578660acb99",
             'province' => "จ.พระนครศรีอยุธยา",
             'amphoe' => "อ.บางปะอิน",
-            'tambon' => "ต.บ้านกรด",
-            'owner_name' => "ลัค",
+            'tambon' => "",
+            'owner_name' => "ผมเบนซ์ครับ",
             'owner_phone' => "",
             'pet_name' => "โกโก้",
-            'pet_age' => "10 เดือน 10 วัน",
+            'pet_age' => "2 ปี 10 เดือน",
             'pet_category' => "สุนัข",
             'sub_category' => "ร็อตไวเลอร์",
             'pet_gender' => "ชาย",
             'detail' => "",
             'photo_link' => "https://www.peddyhub.com/storage/uploads/nkRauC1MfHHxpaU3OQ6IsC8GCfasu9cxBTOhF4Cr.jpg",
         ];
-        
+
         $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
         $ch = curl_init($url);
 
