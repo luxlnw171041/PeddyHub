@@ -459,7 +459,7 @@ class Lost_PetController extends Controller
                     $string_json = str_replace("PET_GENDER",$data_topic[12],$string_json);
 
                     $string_json = str_replace("PET_SPECIES",$data['sub_category'],$string_json);
-                    // $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
+                    $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
                     $string_json = str_replace("NAME_USER",$data['owner_name'],$string_json);
                     $string_json = str_replace("LOST_PET_ID",$lost_pet_id,$string_json);
                     $string_json = str_replace("ไม่ได้ระบุ",$data_topic[11],$string_json);
