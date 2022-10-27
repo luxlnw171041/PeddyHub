@@ -396,9 +396,9 @@ class Lost_PetController extends Controller
         }
 
         $send_to_users = Profile::where('type' ,'line')
-            ->where('changwat_th' ,$changwat_th)
-            ->where('amphoe_th' ,$amphoe_th)
-            ->where('tambon_th' ,$tambon_th)
+            ->where('tambon_th', 'LIKE'  , "%$tambon_th%")
+            ->where('amphoe_th',  'LIKE' , "%$amphoe_th%")
+            ->where('changwat_th', 'LIKE'  , "%$changwat_th%")
             ->get();
 
         foreach ($send_to_users as $item) {
@@ -432,6 +432,11 @@ class Lost_PetController extends Controller
                     $template_path = storage_path('../public/json/flex_lost_pet_by_js100.json');   
                     $string_json = file_get_contents($template_path);
 
+                    // echo "<pre>";
+                    // print_r($data);
+                    // echo "<pre>";
+                    // exit();
+
                     // แปลภาษาหัวข้อ
                     $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
                     $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
@@ -454,8 +459,8 @@ class Lost_PetController extends Controller
                     $string_json = str_replace("PET_GENDER",$data_topic[12],$string_json);
 
                     $string_json = str_replace("PET_SPECIES",$data['sub_category'],$string_json);
-                    $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
-                    $string_json = str_replace("NAME_USER",$data['owner_name'],$string_json);
+                    // $string_json = str_replace("PHONE_USER",$data['owner_phone'],$string_json);
+                    // $string_json = str_replace("NAME_USER",$data['owner_name'],$string_json);
                     $string_json = str_replace("LOST_PET_ID",$lost_pet_id,$string_json);
                     $string_json = str_replace("ไม่ได้ระบุ",$data_topic[11],$string_json);
 
@@ -463,6 +468,10 @@ class Lost_PetController extends Controller
                     $string_json = str_replace("เดือน",$data_topic[14],$string_json);
 
                     $messages = [ json_decode($string_json, true) ];
+                    // echo "<pre>";
+                    // print_r($messages);
+                    // echo "<pre>";
+                    // exit();
 
                     $body = [
                         "to" => $item->user->provider_id,
