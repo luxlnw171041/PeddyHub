@@ -26,7 +26,7 @@ class test_for_devController extends Controller
             'Token' => "1-63578660acb9763578660acb99",
             'province' => "จ.พระนครศรีอยุธยา",
             'amphoe' => "อ.บางปะอิน",
-            'tambon' => "",
+            'tambon' => "ต.บ้านกรด",
             'owner_name' => "ผมเบนซ์ครับ",
             'owner_phone' => "",
             'pet_name' => "โกโก้",

@@ -358,15 +358,9 @@ class Lost_PetController extends Controller
     {
         $date_now = date("d/m/Y");
 
-        if (!empty($data['select_province'])) {
-            $changwat_th = $data['select_province'];
-            $amphoe_th = $data['select_amphoe'];
-            $tambon_th = $data['select_tambon'];
-        }else{
-            $changwat_th = $data['input_province'];
-            $amphoe_th = $data['input_amphoe'];
-            $tambon_th = $data['input_tambon'];
-        }
+        $changwat_th = $data['changwat_th'];
+        $amphoe_th = $data['amphoe_th'];
+        $tambon_th = $data['tambon_th'];
 
         if (!empty($data['photo_link'])) {
             $photo = $data['photo_link'];
