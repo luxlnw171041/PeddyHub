@@ -229,12 +229,7 @@ class Lost_PetController extends Controller
 
         $data_lost_pet = Lost_Pet::latest()->first();
         $lost_pet_id = $data_lost_pet->id ;
-
-        // echo "<pre>";
-        // print_r($requestData);
-        // echo "<pre>";
-        // exit();
-
+        
         $this->send_lost_pet_by_partner($requestData, $lost_pet_id);
 
     }
@@ -432,11 +427,6 @@ class Lost_PetController extends Controller
                     $template_path = storage_path('../public/json/flex_lost_pet_by_js100.json');   
                     $string_json = file_get_contents($template_path);
 
-                    // echo "<pre>";
-                    // print_r($data);
-                    // echo "<pre>";
-                    // exit();
-
                     // แปลภาษาหัวข้อ
                     $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
                     $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
@@ -473,10 +463,6 @@ class Lost_PetController extends Controller
                     $string_json = str_replace("เดือน",$data_topic[14],$string_json);
 
                     $messages = [ json_decode($string_json, true) ];
-                    // echo "<pre>";
-                    // print_r($messages);
-                    // echo "<pre>";
-                    // exit();
 
                     $body = [
                         "to" => $item->user->provider_id,
