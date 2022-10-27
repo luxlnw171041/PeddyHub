@@ -23,8 +23,7 @@ class test_for_devController extends Controller
     public function test_api_lostpet()
     {
         $requestArr = [
-            // 'Token' => "17-63566b72456ac63566b72456ae",
-            'Token' => "1-63578660acb9763578660acb99",
+            'Token' => "17-63566b72456ac63566b72456ae",
             'province' => "จ.พระนครศรีอยุธยา",
             'amphoe' => "อ.บางปะอิน",
             'tambon' => "ต.บ้านกรด",
