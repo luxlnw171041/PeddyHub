@@ -275,7 +275,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "โทร : PHONE_USER",
+            "text": "โทร : PHONE_USER_TEXT",
             "wrap": false,
             "maxLines": 1,
             "weight": "bold",
@@ -320,7 +320,7 @@
         "action": {
           "type": "uri",
           "label": "action",
-          "uri": "tel:PHONE_USER"
+          "uri": "tel:PHONE_USER_TEL"
         },
         "height": "8%",
         "offsetStart": "6%",
