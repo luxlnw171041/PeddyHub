@@ -80,8 +80,6 @@
         padding: 0.5em 0em 0.5em 0em;
     }.phone{
 	font-family: 'Kanit', sans-serif;
-}.font-kanit{
-    font-family: 'Kanit', sans-serif;
 }
 </style>
 <div id="alert_copy" class="div_alert" role="alert">
@@ -90,7 +88,7 @@
     </span>
 </div>
 
-<div class="page-content font-kanit">
+<div class="page-content " style="font-family: 'Kanit', sans-serif;">
     <div class="row">
         <div class="col-12">
             <div class="card lost-pet-header">
