@@ -16,11 +16,11 @@
                     </ul>
                 @endif
 
-                <form method="POST" action="{{ url('api/lost_pet_by_partner') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                <form id="lostpet_by_partner" method="POST" action="{{ url('api/lost_pet_by_partner') }}" accept-charset="UTF-8" class="form-horizontal needs-validation" novalidate="" enctype="multipart/form-data">
+              
                     {{ csrf_field() }}
 
                     @include ('partner_admin.lost_pet.lost_pet_by_partner_form', ['formMode' => 'create'])
-
                 </form>
             </div>
         </div>

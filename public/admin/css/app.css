@@ -787,7 +787,7 @@ a {
 	.chat-toggle-btn {
 
 
-		display: none !important;
+		display: none 
 
 
 	}
@@ -813,7 +813,22 @@ a {
     justify-content: center;
     border-radius: 50%;
 }
-
+.pet-search{
+	padding: 8px;
+    font-size: 12px;
+    background-color: #B8205B !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+	color: #fff;
+}
+.lost-pet-location{
+	width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow:hidden;
+}
 .color-indigator-item{
 	width: 1.2rem;
     height: 1.2rem;
@@ -821,7 +836,12 @@ a {
 	border-radius: 50%;
 	cursor: pointer;
 }
-
+.noHover .img-pet{
+	border-radius: 20px;
+	width: 100%;
+}.phone{
+	font-family: 'Kanit', sans-serif;
+}
 .product-grid .card {
 
 

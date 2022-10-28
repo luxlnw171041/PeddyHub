@@ -1,4 +1,65 @@
-<div class="card radius-10" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+<style>
+    .page-content{
+        padding: 5px;
+    }
+     .box {
+    width: 100%;
+    height: 100%;
+    }
+    .box input[type="file"] {
+    opacity: 0;
+    z-index: 100;
+    }
+    .box label,input[type="file"] {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border-radius:20px;
+    border:3px #b8205b dashed ;
+    background: white;
+    text-align: center;
+    }
+    label {
+    position: relative;
+    }
+
+    .lbl {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 99;
+    }
+    .lbl img{
+        display: block;
+        justify-items: center;
+    }
+    .show-img{
+      
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        z-index: 99;
+        
+    }
+    .show-img img{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+    }
+    
+    .input-photo{
+        position: relative;
+        z-index: 999;
+    }.owl-nav {
+        display: none;
+    }.owl-dots{
+        display: none;
+    }
+</style>
+<div class="card radius-10" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;padding-right:15px;">
     <div class="card-header border-bottom-0 bg-transparent" style="padding-right:0px;">
         <div class="row">
             <div class="col-12 col-md-12">
@@ -12,182 +73,180 @@
                         <hr>
                         <!-- MAP -->
                         <div class="col-12 col-md-3">
-                            <div class="main-shadow main-radius" id="map">
+                            <div class="main-shadow main-radius" style="border-radius: 20px;" id="map">
                                 <img style=" object-fit: contain; " width="280 px" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" class="card-img-top center" style="padding: 10px;">
                                 <div style="position: relative; z-index: 5">
-                                    <div style="padding-top: 8px;" class="translate">
-                                        <h4 style="font-family: 'Sarabun', sans-serif;">ขออภัยครับ</h4>
-                                        <h6 style="font-family: 'Sarabun', sans-serif;">ดำเนินการไม่สำเร็จ กรุณาเปิดตำแหน่งที่ตั้ง และลองใหม่อีกครั้งครับ</h6>
+                                    <div class="translate p-3 text-center">
+                                        <h4 style="font-family: 'Kanit', sans-serif;"> <b>ขออภัยครับ</b> </h4>
+                                        <h6 style="font-family: 'Kanit', sans-serif;">ดำเนินการไม่สำเร็จ กรุณาเปิดตำแหน่งที่ตั้ง และลองใหม่อีกครั้งครับ</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- DATA -->
-                        <div class="col-12 col-md-9" style="padding-right:20px;padding-left: 20px;">
-
-                            <div class="col-12 col-md-12 form-group">
-                                <div class="row">
-                                    <h4>สถานที่</h4>
-                                    <div class="col-12 col-md-3 form-group">
-                                        <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
-                                            <option value="" selected>- เลือกจังหวัด -</option>
-                                        </select>
-                                        <input type="text" name="input_province" id="input_province" class="form-control d-none" readonly>
+                        <div class="card-body p-2 col-12 col-md-9">
+                            <div class="card-title d-flex align-items-center">
+                                <div><i class="fa-solid fa-location-dot me-1 font-22 text-danger"></i>
+                                </div>
+                                <h5 class="mb-0 text-danger">สถานที่</h5>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="select_province" class="form-label">จังหวัด<span class="text-danger">*</span></label>
+                                    <select name="select_province" id="select_province" class="form-control" onchange="select_A(); check();" required>
+                                        <option value="">- เลือกจังหวัด -</option>
+                                    </select>
+                                    <div id="select_provinceFeedback" class="invalid-feedback">โปรดระบุจังหวัดที่ถูกต้อง.</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="select_amphoe" class="form-label">อำเภอ<span class="text-danger">*</span></label>
+                                    <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T(); check();" required>
+                                        <option value="">- เลือกอำเภอ -</option>
+                                    </select>
+                                    <div id="select_amphoeFeedback" class="invalid-feedback">โปรดระบุอำเภอที่ถูกต้อง.</div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="select_tambon" class="form-label">ตำบล<span class="text-danger">*</span></label>
+                                    <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng(); check();" required>
+                                        <option value="">- เลือกตำบล -</option>
+                                    </select>
+                                    <div id="select_tambonFeedback" class="invalid-feedback">โปรดระบุตำบลที่ถูกต้อง.</div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="card-title d-flex align-items-center mt-4">
+                                <div><i class="fa-solid fa-memo-circle-info me-1 font-22 text-info"></i>
+                                </div>
+                                <h5 class="mb-0 text-info">ข้อมูลเจ้าของ</h5>
+                            </div>      
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="inputLastName2" class="form-label">ชื่อ</label>
+                                    <div class="input-group"> <span class="input-group-text bg-transparent"><i class="bx bxs-user"></i></span>
+                                        <input class="form-control" name="owner_name" type="text" id="owner_name" value="" placeholder="ชื่อเจ้าของ" onchange="check();">
                                     </div>
-                                    <div class="col-12 col-md-3 form-group">
-                                        <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
-                                            <option value="" selected>- เลือกอำเภอ -</option>
-                                        </select>
-                                        <input type="text" name="input_amphoe" id="input_amphoe" class="form-control d-none" readonly>
-                                    </div>
-                                    <div class="col-12 col-md-3 form-group">
-                                        <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
-                                            <option value="" selected>- เลือกตำบล -</option>
-                                        </select>
-                                        <input type="text" name="input_tambon" id="input_tambon" class="form-control d-none" readonly>
-                                    </div>
-                                    <div class="col-12 col-md-3 form-group">
-                                        <!-- ว่าง -->
+                                </div>
+                                <div class="col-6">
+                                    <label for="inputPhoneNo" class="form-label">เบอร์ติดต่อ</label>
+                                    <div class="input-group"> <span class="input-group-text bg-transparent"><i class="fa-solid fa-phone"></i></span>
+                                        <input class="form-control" name="owner_phone" type="text" id="owner_phone" value="" placeholder="หมายเลขโทรศัพท์" onchange="check();">
                                     </div>
                                 </div>
                             </div>
-
-                            <br>
                             <hr>
-
-                            <div id="div_form" class="d-">
+                            <div class="card-title d-flex align-items-center mt-4">
+                                <div><i class="fa-solid fa-paw me-1 font-22 text-primary"></i>
+                                </div>
+                                    <h5 class="mb-0 text-primary">ข้อมูลรายละเอียดสัตว์เลี้ยง</h5>
+                                </div>
                                 <div class="row">
-                                    <!-- -------------------------------------- -->
-                                    <!-- -ข้อมูลเจ้าของ -->
-                                    <div class="col-12 col-md-12 form-group">
+                                    <div class="col-12 col-md-7 col-lg-7 ">
                                         <div class="row">
-                                            <h4>ข้อมูลเจ้าของ</h4>
-                                            <div class="col-12 col-md-4 form-group">
-                                                <div class="faq form-group {{ $errors->has('owner_name') ? 'has-error' : ''}}">
-                                                    <label for="owner_name" class="control-label">{{ 'ชื่อ' }}</label>
-                                                    <input class="form-control" name="owner_name" type="text" id="owner_name" value="">
-                                                    {!! $errors->first('owner_name', '<p class="help-block">:message</p>') !!}
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4 form-group">
-                                                <div class="faq form-group {{ $errors->has('owner_phone') ? 'has-error' : ''}}">
-                                                    <label for="owner_phone" class="control-label">{{ 'เบอร์ติดต่อ' }}</label>
-                                                    <input class="form-control" name="owner_phone" type="text" id="owner_phone" value="">
-                                                    {!! $errors->first('owner_phone', '<p class="help-block">:message</p>') !!}
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-8 form-group">
-                                                <!-- ว่าง -->
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <hr>
-                                        <br>
-                                    </div>
-
-                                    <!-- ข้อมูลรายละเอียดสัตว์เลี้ยง -->
-                                    <div class="col-12 col-md-6 form-group">
-                                        <div class="row">
-                                            <h4>ข้อมูลรายละเอียดสัตว์เลี้ยง</h4>
                                             <div class="col-12 col-md-6 form-group">
-                                                <div class="d- form-group {{ $errors->has('pet_name') ? 'has-error' : ''}}">
-                                                    <label for="pet_name" class="control-label">{{ 'ชื่อสัตว์เลี้ยง' }}</label>
-                                                    <input class="form-control" name="pet_name" type="text" id="pet_name" value="{{ isset($lost_pet->pet_name) ? $lost_pet->pet_name : ''}}" required>
-                                                    {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
+                                                <div class=" form-group {{ $errors->has('pet_name') ? 'has-error' : ''}}">
+                                                    <label for="pet_name" class="control-label">{{ 'ชื่อสัตว์เลี้ยง' }}<span class="text-danger">*</span></label>
+                                                    <input class="form-control" name="pet_name" type="text" id="pet_name" value="{{ isset($lost_pet->pet_name) ? $lost_pet->pet_name : ''}}" required onchange="check();">
+                                                    <div id="validationServer03Feedback" class="invalid-feedback">โปรดระบุชื่อสัตว์เลี้ยง.</div>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6 form-group">
-                                                <div class="d- form-group {{ $errors->has('pet_age') ? 'has-error' : ''}}">
-                                                    <label for="pet_age" class="control-label">{{ 'อายุสัตว์เลี้ยง' }}</label>
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <input class="form-control" name="pet_age_Y" type="number" id="pet_age_Y" value="" placeholder="ปี" onchange="input_pet_age();" min="0">
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <input class="form-control" name="pet_age_M" type="number" id="pet_age_M" value="" placeholder="เดือน" onchange="input_pet_age();" required min="0">
-                                                        </div>
+                                                <div class="form-group {{ $errors->has('pet_age') ? 'has-error' : ''}}">
+                                                    <label for="pet_age" class="control-label">{{ 'อายุสัตว์เลี้ยง' }}<span class="text-danger">*</span></label>
+                                                    <div class="input-group mb-3">
+                                                        <input class="form-control" name="pet_age" type="number" id="pet_age_Y" value="" placeholder="ปี" onchange="input_pet_age();" min="0" required>
+                                                        <input class="form-control" name="pet_age" type="number" id="pet_age_M" value="" style="border-radius: 0px 5px 5px 0px;" placeholder="เดือน" onchange="input_pet_age(); check();" min="0">
+                                                        <div id="validationServer03Feedback" class="invalid-feedback">โปรดระบุอายุสัตว์เลี้ยงอย่างน้อย 1 เดือน </div>
                                                     </div>
                                                     <input class="form-control d-none" name="pet_age" type="text" id="pet_age" value="" readonly>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6 form-group">
-                                                <br>
-                                                <div class="d- form-group {{ $errors->has('pet_category_id') ? 'has-error' : ''}}">
-                                                    <label for="pet_category_id" class="control-label">{{ 'ประเภทสัตว์เลี่ยง' }}</label>
-                                                    <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="species_select();" required>
+                                                <div class="form-group {{ $errors->has('pet_category_id') ? 'has-error' : ''}}">
+                                                    <label for="pet_category_id" class="control-label">{{ 'ประเภทสัตว์เลี้ยง' }}<span class="text-danger">*</span></label>
+                                                    <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="species_select(); check();" required>
                                                         <option class="translate" value="" selected> - โปรดเลือก - </option>
                                                     </select>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6 form-group">
-                                                <br>
-                                                <div class="d- form-group {{ $errors->has('sub_category') ? 'has-error' : ''}}">
+                                                <div class="form-group {{ $errors->has('sub_category') ? 'has-error' : ''}}">
                                                     <label for="sub_category" class="control-label">{{ 'สายพันธุ์' }}</label>
-                                                    <input class="form-control" name="sub_category" type="text" id="sub_category" value="" placeholder="ระบุสายพันธุ์">
+                                                    <input class="form-control" name="sub_category" type="text" id="sub_category" value="" placeholder="ระบุสายพันธุ์" onchange="check();" onchange="check();">
                                                     {!! $errors->first('sub_category', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-12 form-group">
-                                                <br>
-                                                <div class="d- form-group {{ $errors->has('pet_gender') ? 'has-error' : ''}}">
-                                                    <label for="pet_gender" class="control-label">{{ 'เพศ' }}</label>
+
+                                            <div class="col-12 col-md-12 form-group mt-3">
+                                                <div class="form-group {{ $errors->has('pet_gender') ? 'has-error' : ''}}">
+                                                    <label for="pet_gender" class="control-label">{{ 'เพศ' }}<span class="text-danger">*</span></label>
                                                     <div class="form-group">
-                                                        <input type="radio" name="pet_gender" id="pet_gender_M" value="ชาย" required> ชาย &nbsp;&nbsp;
-                                                        <input type="radio" name="pet_gender" id="pet_gender_W" value="หญิง"> หญิง &nbsp;&nbsp;
-                                                        <input type="radio" name="pet_gender" id="pet_gender_O" value=""> ไม่ระบุ &nbsp;&nbsp;
+                                                        <input type="radio" class="form-check-input" id="pet_gender_M" name="pet_gender" value="ชาย" required="" onchange="check();">
+                                                        <label class="form-check-label" for="pet_gender_M">ชาย</label>
+                                                         &nbsp;&nbsp;
+
+                                                        <input type="radio" class="form-check-input" id="pet_gender_w" name="pet_gender" value="หญิง" required="" onchange="check();">
+                                                        <label class="form-check-label" for="pet_gender_w">หญิง</label>&nbsp;&nbsp;
+
+
+                                                        <input type="radio" class="form-check-input" id="pet_gender_O" name="pet_gender" value="" required="" onchange="check();">
+                                                        <label class="form-check-label" for="pet_gender_O">ไม่ระบุ</label> &nbsp;&nbsp;
+                                                        <div class="invalid-feedback">โปรดระบุเพศสัตว์เลี้ยง.</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-12 form-group">
-                                                <br>
+                                            <div class="col-12 col-md-12 form-group mt-3">
                                                 <div class=" form-group {{ $errors->has('detail') ? 'has-error' : ''}}">
                                                     <label for="detail" class="control-label">{{ 'รายละเอียด' }}</label>
-                                                    <textarea class="form-control" name="detail" type="textarea" rows="4" id="detail" value=""></textarea>
+                                                    <textarea class="form-control" name="detail" type="textarea" rows="4" id="detail" value="" onchange="check();"></textarea>
                                                     {!! $errors->first('detail', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6 form-group">
-                                        <div class="row">
-                                            <h4><br></h4>
-                                            <div class="col-12 col-md-12 form-group">
-                                                <div class="d- form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
-                                                    <label for="photo" class="control-label">{{ 'รูปภาพ' }}</label>
-                                                    <input style="position:absolute;top:65%;right: 10%; width: 10%;z-index: -9;" class="form-control" name="photo" type="file" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" required accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo();" >
-                                                    {!! $errors->first('photo', '<p class="help-block">:message</p>') !!}
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-12 form-group">
-                                                <center>
-                                                    <br>
-                                                    <div class="fill parent" style="border:dotted #B8205B;border-radius:25px;padding:0px;object-fit: cover;height: 340px;z-index: 99;background-color: white;">
-                                                        <br>
-                                                        <div id="btn_add_photo" class="">
-                                                            <i style="font-size:100px;margin-top: 85px;color: #B8205B;" class="fas fa-images btn" onclick="document.querySelector('#photo').click();"></i>
-                                                            <br>
-                                                            <span style="color:#B8205B;" class="btn" onclick="document.querySelector('#photo').click();">เพิ่มรูปภาพสัตว์เลี้ยง</span>
-                                                        </div>
-                                                        <img class="d- full_img main-shadow main-radius" style="padding:0px ;" width="50%" id="show_photo" onclick="document.querySelector('#photo').click();" />
-                                                    </div>
-                                                </center>
+                                    <div class="col-12 col-md-5 col-lg-5 ">
+                                        <div class="col-12 col-md-12 form-group ">
+                                        <label for="photo" class="control-label">{{ 'รูปภาพ' }} <span class="text-danger">*เพียง 1 รูปเท่านั้น</span></label>
+                                            <div class="box col-12">
+                                                <label class="lableimg text-center" for="photo">
+                                                    <!-- <input id="uploadBtn" type="file" required /> -->  
+                                                    <input type="file" name="photo" id="photo" class="form-control input-photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" accept="image/*" required onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo(); check();">
+                                                    <!-- <input  class="form-control input-photo" name="photo" type="file" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" required accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo(); check();" >                                    -->
+                                                   
+                                                    <span class="show-img d-none"style="object-fit: cover;">
+                                                        <img src="" id="show_photo"  width="100%" height="100%"  alt="">
+                                                    </span>
+
+                                                    <span class="lbl ">
+                                                        <center>
+                                                            <img src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/23.png') }}"  width="50%" alt="">
+                                                            <span class="mt-5" style="margin-top: 50px;font-size:25px">ลากและวางไฟล์ลงที่นี่</span>
+                                                            <a href="#" class="btn btn-md btn-outline-primary mt-2 w-100" style="position: relative; z-index: 9999;" style="border-radius: 50px;"role="button" aria-pressed="true" onclick="document.getElementById('photo').click();">เลือกไฟล์</a>
+                                                        </center>
+                                                    </span>
+                                                    <div class="invalid-feedback">โปรดเพิ่มรูปภาพสัตว์เลี้ยง.</div>
+                                                </label>
+                                                
                                             </div>
                                         </div>
                                     </div>
-
                                     <!-- ปุ่มส่งข้อมูล -->
-                                    <div class="col-12 col-md-12 form-group">
-                                        <br>
-                                        <button style="float:right;margin-right: 20px;margin-top: 20px;width: 30%;" id="modal_submit" type="button" class="btn btn-primary button-three" data-toggle="modal" data-target="#exampleModalLabel" onclick="submit_form_lost_pet();">
+                                    <div class="col-12 form-group mt-2 d-flex justify-content-end">
+                                        <button style="margin-right: 20px;margin-top: 20px;" id="btn-check" type="submit" class="btn btn-primary button-three btn-md">
                                             แจ้งน้องหาย
                                         </button>
-                                        <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
-                                        <div class="col-1"></div>
+
+                                        
+                                        <button  style="margin-right: 20px;margin-top: 20px;" id="modal_submit" type="button" class="btn btn-primary button-three btn-md d-none" data-toggle="modal" data-target="#modal_thx" onclick="submit_form_lost_pet();">
+                                            แจ้งน้องหาย
+                                        </button>
+                                        <input class="btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
                                     </div>
                                     <!-- ------------------------------------ -->
-                                </div>
+                                </div>  
+                        </div>
+                        <div class="col-12 col-md-9 " style="padding-right:20px;padding-left: 20px;">
 
                                 <!-- ข้อมูล lat , lng -->
                                 <div class="d-none form-group {{ $errors->has('lat') ? 'has-error' : ''}}">
@@ -209,8 +268,8 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade " data-keyboard="false" data-backdrop="static" id="modal_thx" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
+                                    <div class="modal-dialog modal-dialog-centered"  role="document">
+                                        <div class="modal-content"style="border-radius:20px ;">
                                             <div class="modal-body text-center">
                                                 <h3>ได้รับข้อมูลเรียบร้อยแล้ว</h3>
                                                 <img width="60%" src="{{ asset('peddyhub/images/PEDDyHUB sticker line/03.png') }}">
@@ -226,7 +285,6 @@
                                                                 </a>
                                                             </div>
                                                         </div>
-
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -249,6 +307,12 @@
     #map {
         height: calc(65vh);
     }
+    .gm-style-cc{
+        display: none;
+    }
+    .gm-bundled-control-on-bottom{
+        display: none;
+    }
 </style>
 
 <script>
@@ -270,40 +334,65 @@
 
     function initMap() {
 
-        let lat_text = document.querySelector("#lat");
-        let lng_text = document.querySelector("#lng");
-        let latlng = document.querySelector("#latlng");
-        let zoom = document.querySelector("#num_zoom").value;
+let lat_text = document.querySelector("#lat");
+let lng_text = document.querySelector("#lng");
+let latlng = document.querySelector("#latlng");
+let zoom = document.querySelector("#num_zoom").value;
 
-        // lat_text.value = position.coords.latitude ;
-        // lng_text.value = position.coords.longitude ;
-        // latlng.value = position.coords.latitude+","+position.coords.longitude ;
+// lat_text.value = position.coords.latitude ;
+// lng_text.value = position.coords.longitude ;
+// latlng.value = position.coords.latitude+","+position.coords.longitude ;
 
-        let lat = parseFloat(lat_text.value);
-        let lng = parseFloat(lng_text.value);
+let lat = parseFloat(lat_text.value);
+let lng = parseFloat(lng_text.value);
 
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: parseInt(zoom),
-            center: {
-                lat: lat,
-                lng: lng
-            },
-            mapTypeId: "terrain",
-        });
+var image = {
+    url: "https://www.peddyhub.com/peddyhub/images/icons/location.png",
+    scaledSize: new google.maps.Size(25, 33)
+};
 
-        // ตำแหน่ง USER
-        const user = {
-            lat: lat,
-            lng: lng
-        };
-        const marker_user = new google.maps.Marker({
-            map,
-            position: user
-        });
 
-        // document.querySelector('#div_form').classList.remove('d-none');
+const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 10,
+    center: {
+        lat: lat,
+        lng: lng
+    },
+    mapTypeId: "terrain",
+    mapTypeControl: true,
+    fullscreenControl: true,
+    scaleControl: false,
+    streetViewControl: false,
+    
+});
 
-    }
+// ตำแหน่ง USER
+const user = {
+    lat: lat,
+    lng: lng
+};
+
+
+const marker_user = new google.maps.Marker({
+    map,
+    position: user,
+    icon: image
+});
+
+const circle = new google.maps.Circle( {
+map           : map,
+center        : new google.maps.LatLng( lat, lng ),
+radius        : 15000,
+strokeColor   : '#B8205B',
+strokeOpacity : 1,
+strokeWeight  : 2,
+fillColor     : '#B8205B',
+fillOpacity   : 0.2
+} );
+
+// document.querySelector('#div_form').classList.remove('d-none');
+
+}
 
     function select_province() {
         let select_province = document.querySelector('#select_province');
@@ -453,23 +542,65 @@
     function input_pet_age(){
         let pet_age_Y = document.querySelector('#pet_age_Y').value ;
         let pet_age_M = document.querySelector('#pet_age_M').value ;
+        let pet_age = document.querySelector('#pet_age') ;
 
+        // -------- เอา required ออก ----------
         if (pet_age_Y && pet_age_M) {
-            document.querySelector('#pet_age').value = pet_age_Y + " ปี " + pet_age_M + " เดือน" ;
-        }else if(pet_age_Y && !pet_age_M){
-            document.querySelector('#pet_age').value = pet_age_Y + " ปี " ;
-        }else{
-            document.querySelector('#pet_age').value = pet_age_M + " เดือน" ;
+            pet_age.value = pet_age_Y + " ปี " + pet_age_M + " เดือน" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+        else if(pet_age_Y && !pet_age_M){
+            pet_age.value = pet_age_Y + " ปี " ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+        else if(!pet_age_Y && pet_age_M){
+            pet_age.value = pet_age_M + " เดือน" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+        if (pet_age_Y == "0" && pet_age_M) {
+            pet_age.value = pet_age_M + " เดือน" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
         }
 
-        if (pet_age_Y == "0" && pet_age_M) {
-            document.querySelector('#pet_age').value = pet_age_M + " เดือน" ;
+        if (pet_age_Y && pet_age_M == "0") {
+            pet_age.value = pet_age_Y + " ปี" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+
+        // -------- ใส่ required  ----------
+        if (pet_age_M == "0" && pet_age_Y == "0") {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
+        }
+
+        if (!pet_age_Y && !pet_age_M) {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
+        }
+
+        if (!pet_age_Y && pet_age_M == "0") {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
+        }
+
+        if (pet_age_Y == "0" && !pet_age_M) {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
         }
     }
 
     function add_photo(){
-        document.querySelector('#btn_add_photo').classList.add('d-none');
-        document.querySelector('#show_photo').classList.remove('d-none');
+        document.querySelector('.lbl').classList.add('d-none');
+        document.querySelector('.show-img').classList.remove('d-none');
     }
 
 
@@ -480,4 +611,78 @@
             document.getElementById("lost_pet_submit").click();
         }, 3000);
     }
+</script>
+<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+			(function () {
+			  'use strict'
+	
+			  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+			  var forms = document.querySelectorAll('.needs-validation')
+	
+			  // Loop over them and prevent submission
+			  Array.prototype.slice.call(forms)
+				.forEach(function (form) {
+				  form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+					  event.preventDefault()
+					  event.stopPropagation()
+					}
+	
+					form.classList.add('was-validated')
+				  }, false)
+				})
+			})()
+	</script>
+    <script>
+      function check() {
+        let allAreFilled = true;
+        document.getElementById("lostpet_by_partner").querySelectorAll("[required]").forEach(function(i) {
+            if(!allAreFilled) return;
+            if(!i.value) allAreFilled = false;
+            if(i.type === "radio") {
+                let radioValueCheck = false;				          
+                document.getElementById("lostpet_by_partner").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
+                    if(r.checked) radioValueCheck = true;
+                })
+                    allAreFilled = radioValueCheck;
+            }
+        })
+        if(!allAreFilled) {
+            console.log("adas");
+        }else{
+            var btn_check = document.getElementById("btn-check");
+            btn_check.classList.add("d-none");
+
+            document.querySelector('#modal_submit').classList.remove('d-none');
+        }
+    };
+    </script>
+    
+<script>
+var owl = $('.owl-carousel');
+owl.owlCarousel({
+smartSpeed:250,
+autoplay:true,
+dots:false,
+loop:true,
+nav:false,
+autoplay:true,
+autoplayTimeout:1000,
+margin:10,
+responsive:{
+    0:{
+        items:1
+    },
+    600:{
+        items:3
+    },            
+    960:{
+        items:5
+    },
+    1200:{
+        items:5
+    }
+}
+});
 </script>
