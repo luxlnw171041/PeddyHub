@@ -94,8 +94,8 @@
             <div class="card lost-pet-header">
                 <div class="card-body ">
                     <div class="row align-items-center">
-                        <div class="col-6">
-                            <h4>ประกาศตามหาสัตว์เลี้ยงหาย</h4>
+                        <div class="col-6" >
+                            <h4 style="font-family: 'Kanit', sans-serif;">ประกาศตามหาสัตว์เลี้ยงหาย</h4>
                         </div>
                         <div class=" col-6 ">
                             <a href="#collapseExample" role="button" aria-expanded="false " data-toggle="collapse" aria-controls="collapseExample" style="margin-left: 10px;" class="float-end btn btn-primary text-white main-shadow main-radius">
