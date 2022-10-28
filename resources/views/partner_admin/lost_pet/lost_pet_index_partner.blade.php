@@ -26,7 +26,7 @@
     }
 
     .up_down {
-        animation: up-down 1s cubic-bezier(0.87, 0, 0.13, 1) 0s 2 alternate-reverse both;
+        animation: up-down 2s cubic-bezier(0.87, 0, 0.13, 1) 0s 2 alternate-reverse both;
     }
 
     @keyframes up-down {
