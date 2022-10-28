@@ -78,7 +78,11 @@
     h4 {
         font-family: 'Kanit', sans-serif;
         padding: 0.5em 0em 0.5em 0em;
-    }
+    }.phone{
+	font-family: 'Kanit', sans-serif;
+}.font-kanit{
+    font-family: 'Kanit', sans-serif;
+}
 </style>
 <div id="alert_copy" class="div_alert" role="alert">
     <span id="alert_text">
@@ -86,7 +90,7 @@
     </span>
 </div>
 
-<div class="page-content">
+<div class="page-content font-kanit">
     <div class="row">
         <div class="col-12">
             <div class="card lost-pet-header">
