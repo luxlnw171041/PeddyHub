@@ -443,7 +443,7 @@
                                             $color_tag = $lost_pet->partner->color_navbar ;
                                         }else{
                                             // อยากได้สีอะไรใส่ตรงนี้เลยครับ👇👇
-                                            $color_tag = "#66CCFF";
+                                            $color_tag = "#808587";
                                         }
                                     @endphp
                                     &nbsp;
