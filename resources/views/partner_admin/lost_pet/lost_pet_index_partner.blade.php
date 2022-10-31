@@ -267,7 +267,7 @@
                                 </h5>
                             </div>
 
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4">
@@ -463,9 +463,182 @@
                                     ตัวอย่างการใช้งาน (Usage) <i class="fa-solid fa-caret-down"></i>
                                 </h5>
                             </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <!-- DATA -->
+                                            <div class="row">
+                                                <div class="col-9 col-md-9">
+                                                    <label for="Token" class="form-label">Token</label>
+                                                    <input class="form-control" type="text" name="Token" id="Token" value="{{ $token }}" readonly>
+                                                </div>
+                                                <div class="col-3 col-md-3">
+                                                    <label class="form-label"><br></label>
+                                                    <button id="send_API_Lost_pet" class="btn btn-info text-white main-shadow main-radius" style="width:100%;" onclick="API_Lost_pet();" > <!-- disabled -->
+                                                        ส่งข้อมูล
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-12 col-md-4">
+                                                    <label for="select_province" class="form-label">จังหวัด</label>
+                                                    <select name="select_province" id="select_province" class="form-control" onchange="select_A();">
+                                                        <option value="">- เลือกจังหวัด -</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label for="select_amphoe" class="form-label">อำเภอ</label>
+                                                    <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();">
+                                                        <option value="">- เลือกอำเภอ -</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 col-md-4">
+                                                    <label for="select_tambon" class="form-label">ตำบล</label>
+                                                    <select name="select_tambon" id="select_tambon" class="form-control" >
+                                                        <option value="">- เลือกตำบล -</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <label for="inputLastName2" class="form-label">ชื่อ</label>
+                                                    <div class="input-group"> 
+                                                        <span class="input-group-text bg-transparent">
+                                                            <i class="bx bxs-user"></i>
+                                                        </span>
+                                                        <input class="form-control" name="owner_name" type="text" id="owner_name" value="" placeholder="ชื่อเจ้าของ" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <label for="inputPhoneNo" class="form-label">เบอร์ติดต่อ</label>
+                                                    <div class="input-group"> 
+                                                        <span class="input-group-text bg-transparent">
+                                                            <i class="fa-solid fa-phone"></i></span>
+                                                        <input class="form-control" name="owner_phone" type="text" id="owner_phone" value="" placeholder="หมายเลขโทรศัพท์">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-12 col-md-4 form-group">
+                                                    <div class=" form-group {{ $errors->has('pet_name') ? 'has-error' : ''}}">
+                                                        <label for="pet_name" class="control-label">{{ 'ชื่อสัตว์เลี้ยง' }}</label>
+                                                        <input class="form-control" name="pet_name" type="text" id="pet_name" value="{{ isset($lost_pet->pet_name) ? $lost_pet->pet_name : ''}}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4 form-group">
+                                                    <div class="form-group {{ $errors->has('pet_age') ? 'has-error' : ''}}">
+                                                        <label for="pet_age" class="control-label">{{ 'อายุสัตว์เลี้ยง' }}</label>
+                                                        <div class="input-group mb-3">
+                                                            <input class="form-control" name="pet_age" type="number" id="pet_age_Y" value="" placeholder="ปี" onchange="input_pet_age();" min="0" >
+                                                            <input class="form-control" name="pet_age" type="number" id="pet_age_M" value="" style="border-radius: 0px 5px 5px 0px;" placeholder="เดือน" onchange="input_pet_age();" min="0">
+                                                        </div>
+                                                        <input class="form-control d-none" name="pet_age" type="text" id="pet_age" value="" readonly>
+                                                        {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4 form-group">
+                                                    <div class="form-group {{ $errors->has('pet_gender') ? 'has-error' : ''}}">
+                                                        <label for="pet_gender" class="control-label">{{ 'เพศ' }}</label>
+                                                        <div style="margin-top:8px;" class="form-group">
+                                                            <input type="radio" class="form-check-input" id="pet_gender_M" name="pet_gender" value="ชาย">
+                                                            <label class="form-check-label" for="pet_gender_M">ชาย</label>
+                                                             &nbsp;&nbsp;
+
+                                                            <input type="radio" class="form-check-input" id="pet_gender_w" name="pet_gender" value="หญิง">
+                                                            <label class="form-check-label" for="pet_gender_w">หญิง</label>&nbsp;&nbsp;
+
+
+                                                            <input checked type="radio" class="form-check-input" id="pet_gender_O" name="pet_gender" value="ไม่ระบุ">
+                                                            <label class="form-check-label" for="pet_gender_O">ไม่ระบุ</label> &nbsp;&nbsp;
+                                                            <div class="invalid-feedback">โปรดระบุเพศสัตว์เลี้ยง.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4 form-group">
+                                                    <div class="form-group {{ $errors->has('pet_category_id') ? 'has-error' : ''}}">
+                                                        <label for="pet_category_id" class="control-label">{{ 'ประเภทสัตว์เลี้ยง' }}</label>
+                                                        <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control">
+                                                            <option class="translate" value="" selected> - โปรดเลือก - </option>
+                                                        </select>
+                                                        {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4 form-group">
+                                                    <div class="form-group {{ $errors->has('sub_category') ? 'has-error' : ''}}">
+                                                        <label for="sub_category" class="control-label">{{ 'สายพันธุ์' }}</label>
+                                                        <input class="form-control" name="sub_category" type="text" id="sub_category" value="" placeholder="ระบุสายพันธุ์">
+                                                        {!! $errors->first('sub_category', '<p class="help-block">:message</p>') !!}
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-4 form-group">
+                                                    <div class="form-group {{ $errors->has('photo_link') ? 'has-error' : ''}}">
+                                                        <label for="photo_link" class="control-label">{{ 'รูปภาพ (ลิงก์)' }}</label>
+                                                        <input class="form-control" name="photo_link" type="text" id="photo_link" value="" placeholder="กรอกลิงก์รูปภาพ">
+                                                        {!! $errors->first('photo_link', '<p class="help-block">:message</p>') !!}
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-12 form-group">
+                                                    <div class=" form-group {{ $errors->has('detail') ? 'has-error' : ''}}">
+                                                        <br>
+                                                        <label for="detail" class="control-label">{{ 'รายละเอียด' }}</label>
+                                                        <textarea class="form-control" name="detail" type="textarea" rows="4" id="detail" value=""></textarea>
+                                                        {!! $errors->first('detail', '<p class="help-block">:message</p>') !!}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <!-- มือถือ -->
+
+                                            <!-- FLEX LINE -->
+                                            <div id="flex_line" class="d-none">
+                                                <center>
+                                                    <img style="margin-top: 15px;margin-bottom: 15px; width: 90%;background-color: #CCFFFF;" src="{{ url('/peddyhub/images/more/sos js100 (368 × 650px) (4).png') }}">
+                                                </center>
+                                                <div style="position: absolute;top: 19%;" class="d-">
+                                                    <b>ตามหา <span id="line_pet_category_id"></span> หาย</b>
+                                                    <center>
+                                                        <img id="img_lot_pet" style="width: 55%;border-radius: 50%;border-color: white;" class="" src="{{ url('/peddyhub/images/PEDDyHUB sticker line/35.png')}}" alt="">
+                                                        <br>
+                                                        <h4><u><span id="line_pet_name"></span></u></h4>
+                                                        <span id="line_pet_age"></span>
+                                                    </center>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <b>วันที่หาย : </b><span id="line_date_now"></span>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <b>ประเภท : </b><span id="line_pet_category_id_2"></span>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <b>เพศ : </b><span id="line_pet_gender"></span>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b>สายพันธุ์ : </b><span id="line_sub_category"></span>
+                                                        </div>
+                                                        <div class="col-12" >
+                                                            <b>รายละเอียด : </b><span class="btn" onclick="document.querySelector('#div_line_detail').classList.remove('d-none');"><u>ดูเพิ่มเติม</u>  ↗️</span>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b>โทร : </b><span id="line_owner_phone"></span>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <b>เจ้าของ : </b><span id="line_owner_name"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div id="div_line_detail" class="row d-none">
+                                                        <div class="col-12">
+                                                            <b>รายละเอียด : </b><span id="line_detail"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -524,6 +697,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
+        select_province();
+        select_category();
         document.querySelector('#btn_how_to_use_api').click();
     });
 
@@ -572,6 +747,194 @@
         animated.onanimationend = () => {
             document.querySelector('#alert_copy').classList.remove('up_down');
         };
+    }
+</script>
+    
+<!-- ตัวอย่างการใช้งาน API LOST PET -->
+<script>
+    function API_Lost_pet(){
+        const date_now = new Date();
+        // let select_province = document.querySelector('#select_province').value;
+        // let select_amphoe = document.querySelector('#select_amphoe').value;
+        // let select_tambon = document.querySelector('#select_tambon').value;
+        let owner_name = document.querySelector('#owner_name').value;
+        let owner_phone = document.querySelector('#owner_phone').value;
+        let pet_name = document.querySelector('#pet_name').value;
+        let pet_age = document.querySelector('#pet_age').value;
+        let pet_gender = document.getElementsByName("pet_gender");
+        let select_category = document.querySelector('#select_category').value;
+        let sub_category = document.querySelector('#sub_category').value;
+        let photo_link = document.querySelector('#photo_link').value;
+        let detail = document.querySelector('#detail').value;
+
+        document.querySelector('#line_date_now').innerHTML = date_now;
+        document.querySelector('#line_owner_name').innerHTML = owner_name;
+        document.querySelector('#line_owner_phone').innerHTML = owner_phone;
+        document.querySelector('#line_pet_name').innerHTML = pet_name;
+        document.querySelector('#line_pet_age').innerHTML = pet_age;
+        for (let f of pet_gender) {
+            if (f.checked) {
+                document.querySelector('#line_pet_gender').innerHTML = f.value;
+            }
+        }
+        document.querySelector('#line_pet_category_id').innerHTML = select_category;
+        document.querySelector('#line_pet_category_id_2').innerHTML = select_category;
+        document.querySelector('#line_sub_category').innerHTML = sub_category;
+        document.querySelector('#line_detail').innerHTML = detail;
+        document.querySelector('#img_lot_pet').src = photo_link ;
+
+        document.querySelector('#flex_line').classList.remove('d-none');
+    }
+
+    function select_province() {
+        let select_province = document.querySelector('#select_province');
+
+        fetch("{{ url('/') }}/api/select_province/")
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_province.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                option_select.text = "- เลือกจังหวัด -";
+                option_select.value = "";
+                select_province.add(option_select);
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.changwat_th;
+                    option.value = item.changwat_th;
+                    select_province.add(option);
+                }
+            });
+    }
+
+    function select_category() {
+        let select_category = document.querySelector('#select_category');
+
+        fetch("{{ url('/') }}/api/select_category/")
+            .then(response => response.json())
+            .then(result => {
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.name;
+                    option.value = item.name;
+                    select_category.add(option);
+                }
+
+            });
+    }
+
+    function select_A() {
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+
+        fetch("{{ url('/') }}/api/select_amphoe" + "/" + select_province.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_amphoe.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                option_select.text = "- เลือกอำเภอ -";
+                option_select.value = "";
+                select_amphoe.add(option_select);
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.amphoe_th;
+                    option.value = item.amphoe_th;
+                    select_amphoe.add(option);
+                }
+            });
+    }
+
+    function select_T() {
+        let select_province = document.querySelector('#select_province');
+        let select_amphoe = document.querySelector('#select_amphoe');
+        let select_tambon = document.querySelector('#select_tambon');
+
+        fetch("{{ url('/') }}/api/select_tambon" + "/" + select_province.value + "/" + select_amphoe.value)
+            .then(response => response.json())
+            .then(result => {
+                // console.log(result);
+
+                select_tambon.innerHTML = "";
+
+                let option_select = document.createElement("option");
+                option_select.text = "- เลือกตำบล -";
+                option_select.value = "";
+                select_tambon.add(option_select);
+
+                for (let item of result) {
+                    let option = document.createElement("option");
+                    option.text = item.tambon_th;
+                    option.value = item.tambon_th;
+                    select_tambon.add(option);
+                }
+            });
+    }
+
+    function input_pet_age(){
+        let pet_age_Y = document.querySelector('#pet_age_Y').value ;
+        let pet_age_M = document.querySelector('#pet_age_M').value ;
+        let pet_age = document.querySelector('#pet_age') ;
+
+        // -------- เอา required ออก ----------
+        if (pet_age_Y && pet_age_M) {
+            pet_age.value = pet_age_Y + " ปี " + pet_age_M + " เดือน" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+        else if(pet_age_Y && !pet_age_M){
+            pet_age.value = pet_age_Y + " ปี " ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+        else if(!pet_age_Y && pet_age_M){
+            pet_age.value = pet_age_M + " เดือน" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+        if (pet_age_Y == "0" && pet_age_M) {
+            pet_age.value = pet_age_M + " เดือน" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+
+        if (pet_age_Y && pet_age_M == "0") {
+            pet_age.value = pet_age_Y + " ปี" ;
+            document.querySelector('#pet_age_M').required = false ;
+            document.querySelector('#pet_age_Y').required = false ;
+        }
+
+        // -------- ใส่ required  ----------
+        if (pet_age_M == "0" && pet_age_Y == "0") {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
+        }
+
+        if (!pet_age_Y && !pet_age_M) {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
+        }
+
+        if (!pet_age_Y && pet_age_M == "0") {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
+        }
+
+        if (pet_age_Y == "0" && !pet_age_M) {
+            pet_age.value = null ;
+            document.querySelector('#pet_age_M').required = true ;
+            document.querySelector('#pet_age_Y').required = true ;
+        }
     }
 </script>
 
