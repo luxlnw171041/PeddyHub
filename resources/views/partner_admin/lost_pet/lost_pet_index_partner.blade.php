@@ -126,7 +126,7 @@
                                     <div class="btn-group" role="group">
                                         
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-info text-white main-shadow main-radius" data-toggle="modal" data-target="#how_to_use_api">
+                                        <button id="btn_how_to_use_api" type="button" class="btn btn-info text-white main-shadow main-radius" data-toggle="modal" data-target="#how_to_use_api">
                                             วิธีใช้งาน API
                                         </button>
                                     </div>
@@ -248,19 +248,233 @@
   <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="how_to_use_apiLabel">วิธีใช้งาน API</h5>
+            <h4 class="modal-title" id="how_to_use_apiLabel">
+                วิธีการใช้งาน API Lost Pet
+            </h4>
             <button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
+            <br>
             <div class="row">
                 <div class="col-12">
-                    <br><br><br><br><br>
+                    <div class="accordion main-radius main-shadow" id="accordionExample" style="padding: 10px;">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="margin-top:5px;">
+                                        ข้อมูลรับเข้า (Input) <i class="fa-solid fa-caret-down"></i>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            ชื่อ
+                                        </div>
+                                        <div class="col-4">
+                                            ประเภทข้อมูล
+                                        </div>
+                                        <div class="col-4">
+                                            คำอธิบาย
+                                        </div>
+                                        <hr>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            Token
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            โทเค็นสำหรับตรวจสอบ
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            province
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            จังหวัด
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            amphoe
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            อำเภอ
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            tambon
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            ตำบล
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            owner_name
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            ชื่อเจ้าของสัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            owner_phone
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            เบอร์ติดต่อเจ้าของสัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            pet_name
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            ชื่อสัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            pet_age
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            อายุสัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            pet_category
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            ประเภทสัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            sub_category
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            สายพันธุ์สัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            pet_gender
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            เพศสัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            detail
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            รายละเอียด / ลักษณะของสัตว์เลี้ยง
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            photo_link
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            รูปภาพ (ลิงก์)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    ข้อมูลส่งกลับ (Output) <i class="fa-solid fa-caret-down"></i>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            ข้อมูล
+                                        </div>
+                                        <div class="col-4">
+                                            ประเภทข้อมูล
+                                        </div>
+                                        <div class="col-4">
+                                            หมายเหตุ
+                                        </div>
+                                        <hr>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            ส่งข้อมูลเรียบร้อยแล้ว ขอบคุณค่ะ
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            ดำเนินการเรียบร้อย
+                                        </div>
+                                        <!-- ------------------------------ -->
+                                        <div class="col-4">
+                                            ไม่สามารถดำเนินการได้ กรุณาติดต่อ PEDDyHUB
+                                        </div>
+                                        <div class="col-4">
+                                            "String"
+                                        </div>
+                                        <div class="col-4">
+                                            พบข้อผิดพลาด
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    ตัวอย่างการใช้งาน (Usage) <i class="fa-solid fa-caret-down"></i>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <br>
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer d-none">
             <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
         </div>
@@ -308,6 +522,11 @@
 <input class="d-none" type="text" id="by_partner" name="by_partner" value="{{ Auth::user()->partner }}">
 
 <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // console.log("START");
+        document.querySelector('#btn_how_to_use_api').click();
+    });
+
     function Create_Token() {
         let id_partner = document.querySelector('#by_partner').value;
         let gen_token = document.querySelector('#gen_token');
