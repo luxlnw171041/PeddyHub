@@ -109,21 +109,16 @@
                         <div class="col-12 mt-2 collapse" id="collapseExample">
                             <div class="row row-cols-lg-auto g-2 float-end">
                                 <div class="col-12">
-                                    <div class="position-relative">
-                                        <input type="text" class="form-control token" name="gen_token" id="gen_token" value="{{ $token }}" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-12">
                                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                                         <span style="width:100%;" class="btn btn-secondary text-white main-shadow main-radius" onclick="CopyToClipboard('gen_token')">
-                                            Copy
+                                            คัดลอก
                                         </span>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                        <span style="width:100%;" class="btn btn-warning text-white main-shadow main-radius" onclick="Create_Token();">
-                                            Create Token
+                                        <span style="width:100%;" class="btn btn-warning text-white main-shadow main-radius" data-toggle="modal" data-target="#new_token">
+                                            สร้างโทเค็น
                                         </span>
                                     </div>
                                 </div>
@@ -131,9 +126,17 @@
                                     <div class="btn-group" role="group">
                                         
                                         <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-info text-white main-shadow main-radius" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" class="btn btn-info text-white main-shadow main-radius" data-toggle="modal" data-target="#how_to_use_api">
                                             วิธีใช้งาน API
                                         </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-7"></div>
+                                <div class="col-5">
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control token" name="gen_token" id="gen_token" value="{{ $token }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -160,9 +163,9 @@
                         <div class="position-absolute top-0 end-0 m-3 pet-search">
                             <span class="">
                                 @if($item->status == "found")
-                                เจอแล้ว
+                                    เจอแล้ว
                                 @else
-                                กำลังค้นหา
+                                    กำลังค้นหา
                                 @endif
                             </span>
                         </div>
@@ -215,7 +218,7 @@
                     </a>
                     <div class="text-center">
                         <a data-toggle="collapse" href="#collapseExample{{$item->id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                           ดูเพิ่มเติม ▼
+                           รายละเอียด ▼
                         </a>
                     </div>
                     <div class="collapse" id="collapseExample{{$item->id}}">
@@ -240,23 +243,63 @@
 
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal how_to_use_api -->
+<div class="modal fade" id="how_to_use_api" tabindex="-1" role="dialog" aria-labelledby="how_to_use_apiLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="how_to_use_apiLabel">วิธีใช้งาน API</h5>
+            <button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                    <br><br><br><br><br>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal new token -->
+<div class="modal fade" id="new_token" tabindex="-1" role="dialog" aria-labelledby="new_tokenLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered " role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">วิธีใช้งาน API</h5>
-        <button type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <div class="modal-header">
+            <h5 class="modal-title" id="new_tokenLabel">ยืนยันการสร้างโทเค็น</h5>
+            <button id="closs_new_token" type="button" class="close btn btn-lg" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                    <center>
+                        <img width="50%" class="" src="{{ url('/peddyhub/images/PEDDyHUB sticker line/09.png')}}" alt="">
+                        <br><br>
+                        <h6 class="text-dark">
+                            การสร้างโทเค็นใหม่ส่งผลให้โทเค็นก่อนหน้าไม่สามารถใช้งานได้
+                        </h6>
+                        <h5 class="text-danger">
+                            ยืนยันการสร้างใหม่หรือไม่ ?
+                        </h5>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!-- <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button> -->
+            <button style="width:100%;" class="btn btn-info text-white main-shadow main-radius" onclick="Create_Token();">
+                สร้างโทเค็นใหม่
+            </button>
+        </div>
     </div>
   </div>
 </div>
@@ -281,16 +324,27 @@
         document.querySelector('#alert_copy').classList.add('up_down');
 
         const animated = document.querySelector('.up_down');
+
+        document.querySelector('#closs_new_token').click();
+
         animated.onanimationend = () => {
             document.querySelector('#alert_copy').classList.remove('up_down');
         };
+
     }
 
     function CopyToClipboard(containerid) {
-        var range = document.createRange();
-        range.selectNode(document.getElementById(containerid));
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
+        if (document.selection) {
+            var range = document.body.createTextRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+        } else if (window.getSelection) {
+            var range = document.createRange();
+            range.selectNode(document.getElementById(containerid));
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+        }
 
         document.querySelector('#alert_text').innerHTML = "คัดลอกเรียบร้อย";
         document.querySelector('#alert_copy').classList.add('up_down');
