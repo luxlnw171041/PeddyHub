@@ -1,54 +1,125 @@
-<div class="main-wrapper pet check">
-    <div class="pet service">
-        <section class="contact" style="margin-top:10px;">
-            <div class="row d-flex justify-content-end">
-                <div class="col-12" style="margin-bottom:12px;">
-                    <a class="btn btn-sm btn-success text-white float-right button-three" onclick="locations_myhome();">
-                        <i class="fa-solid fa-house-user"></i> บ้านของฉัน
-                    </a>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12">
-                    <div class="faq wow fadeInRight">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <select name="select_province" id="select_province" class="form-control" onchange="select_A();" required>
+
+<style>
+    .input-provice{
+        border-radius: 20px 0px 20px 20px ;
+    }
+</style>
+<section class="contact">
+    <div class="container">
+        <div class="row">
+            <!--  -->
+            <div class="col-lg-5 col-md-12 col-sm-12"> 
+                <div class="form wow fadeInLeft" style=" animation-name: fadeInLeft;">
+                    <div class="range_slider">
+                        <div class="context">
+                            <div class="row">
+                                <div class="col-8"> 
+                                    <div class="heading">
+                                        <p class="wow fadeInUp" style=" animation-name: fadeInUp;"><span class="purple"><i class="fas fa-paw"></i>
+                                            </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
+                                        <h3 class="kanit">พื้นที่</h3>
+                                    </div>
+                                </div>
+                                <div class="col-4 p-1 m-0">                 
+                                    <a href="#heading" class="btn btn-success btn-md float-end kanit btn-block text-white" width="100%" style="width:100%;border-radius: 20px;position: absolute;bottom: 8px;right: 16px;" onclick="locations_myhome();">
+                                        <i class="fa-solid fa-house-user"></i> บ้านของฉัน
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row col-12 m-0 p-0">
+                               
+                                <!--  -->
+                                  <div class="form-group col-lg-4 col-12 p-1 m-0">
+                                    <select name="select_province" id="select_province" class="input-provice form-control kanit" onchange="select_A();" required>
                                         <option value="" selected>- เลือกจังหวัด -</option>
                                     </select>
-                                    <input type="text" name="input_province" id="input_province" class="form-control d-none" readonly>
+                                    <input type="text" name="input_province" id="input_province" class=" input-provice form-control d-none" readonly>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12">
-                    <div class="faq wow fadeInRight">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <select name="select_amphoe" id="select_amphoe" class="form-control" onchange="select_T();" required>
+                                <!--  -->
+                                <div class="form-group col-lg-4 col-12 p-1 m-0">
+                                    <select name="select_amphoe" id="select_amphoe" class="form-control kanit input-provice " onchange="select_T();" required>
                                         <option value="" selected>- เลือกอำเภอ -</option>
                                     </select>
-                                    <input type="text" name="input_amphoe" id="input_amphoe" class="form-control d-none" readonly>
+                                    <input type="text" name="input_amphoe" id="input_amphoe" class="input-provice form-control d-none" readonly>
+                                </div>
+                                <!--  -->
+                                <div class="form-group col-lg-4 col-12 p-1 m-0">
+                                    <select name="select_tambon" id="select_tambon" class="form-control kanit input-provice " onchange="select_lat_lng();" required>
+                                        <option value="" selected>- เลือกตำบล -</option>
+                                    </select>
+                                    <input type="text" name="input_tambon" id="input_tambon" class="input-provice form-control d-none" readonly>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12">
-                    <div class="faq wow fadeInRight">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <select name="select_tambon" id="select_tambon" class="form-control" onchange="select_lat_lng();" required>
-                                    <option value="" selected>- เลือกตำบล -</option>
-                                </select>
-                                <input type="text" name="input_tambon" id="input_tambon" class="form-control d-none" readonly>
+                            <div class="col-12 main-shadow main-radius d-none text-center" style="margin-top:15px; margin-bottom:10px;" id="map">
+                                <div class="main-center">
+                                    <img style=" object-fit: contain; width:50%;height:50%;" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/15.png') }}" class="card-img-top center">
+                                    <div style=" z-index: 5" >
+                                        <div style="padding-top: 8px;" class="translate">
+                                            <h4 style="font-family: 'Sarabun', sans-serif;">ขออภัยครับ</h4>
+                                            <h6 style="font-family: 'Sarabun', sans-serif;">ดำเนินการไม่สำเร็จ กรุณาเปิดตำแหน่งที่ตั้ง และลองใหม่อีกครั้งครับ</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-1 col-md-0 col-sm-0"></div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="faq wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
 
+                    <div class="heading" id="heading">
+                        <p class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"><span class="purple"><i class="fas fa-paw"></i> </span><span class="orange"><i class="fas fa-paw"></i> </span><span class="purple"><i class="fas fa-paw"></i> </span></p>
+                        <h3 class="kanit">ตามหาเจ้าตัวแสบ</h3>
+                    </div>
+                    <div class="col-12 p-3 text-center" id="select-area" style="border: dotted #b8205b 3px;border-radius:20px">
+                        <img style=" object-fit: contain; width:50%;height:50%;" src="{{ asset('/peddyhub/images/PEDDyHUB sticker line/31.png') }}" class="card-img-top center">
+                        <h4 class="kanit mt-1">กรุณาเลือกพื้นที่ก่อน</h4>
+                    </div>
+                    <div class="row d-none" id="div_form">
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <input class="form-control input-provice " name="phone" type="tel" id="phone" value="{{ Auth::user()->profile->phone }}" required onchange="check();">
+                                {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
+                                <div id="validationServer03Feedback" class="invalid-feedback">โปรดระบุเบอร์สำหรับการติดต่อกลับ.</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <select name="select_pet" id="select_pet" class=" input-provice form-control" onchange="select_pet_id();" required>
+                                    <option value="" selected>- เลือกเจ้าตัวแสบ -</option>
+                                    @foreach($select_pet as $item)
+                                    <option value="{{ $item->id }}" {{ request('name') == $item->name ? 'selected' : ''   }}>
+                                        {{ $item->name }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 d-none" id="modal_submit">
+                            <img id="img_pet" class="main-shadow main-radius" width="100%" style="max-height: 350px;object-fit:cover; border-radius: 20px 20px 0 0; " src="">
+                                <button type="submit" id="btn_check_phone" class="mt-0 btn btn-block hvr-rectangle-in btn-primary kanit d-none" style="border-radius: 0 0 20px 20px;">
+                                    แจ้งน้องหาย
+                                </button>
+                                <button type="submit" id="btn_modal_submit" class="mt-0 btn btn-block hvr-rectangle-in btn-primary kanit d-none" style="border-radius: 0 0 20px 20px;" data-toggle="modal" data-target="#modal_get_information" onclick="submit_form_lost_pet();">
+                                    แจ้งน้องหาย
+                                </button>
+                            <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="main-wrapper pet check">
+    <div class="pet service">
+        <section class="contact" style="margin-top:10px;">
             <!-- <div class="row">
     <div class="col-12">
         <div class="row">
@@ -99,30 +170,12 @@
             </div>
             <br>
 
-            <div id="div_form" class="d-none">
+            <div class="d-none">
 
                 <div class="d-none form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
                     <label for="user_id" class="control-label">{{ 'User Id' }}</label>
                     <input class="form-control" name="user_id" type="number" id="user_id" value="{{ isset($lost_pet->user_id) ? $lost_pet->user_id : Auth::user()->id }}">
                     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
-                </div>
-
-                <div class="faq form-group {{ $errors->has('phone') ? 'has-error' : ''}}">
-                    <label for="phone" class="control-label">{{ 'เบอร์ติดต่อ' }}</label>
-                    <input class="form-control" name="phone" type="text" id="phone" value="{{ Auth::user()->profile->phone }}" required>
-                    {!! $errors->first('phone', '<p class="help-block">:message</p>') !!}
-                </div>
-
-                <div class="faq form-group {{ $errors->has('select_pet') ? 'has-error' : ''}}">
-                    <label for="select_pet" class="control-label">{{ 'เลือกเจ้าตัวแสบ' }}</label>
-                    <select name="select_pet" id="select_pet" class="form-control" onchange="select_pet_id();" required>
-                        <option value="" selected>- เลือกเจ้าตัวแสบ -</option>
-                        @foreach($select_pet as $item)
-                        <option value="{{ $item->id }}" {{ request('name') == $item->name ? 'selected' : ''   }}>
-                            {{ $item->name }}
-                        </option>
-                        @endforeach
-                    </select>
                 </div>
 
                 <div class="d-none form-group {{ $errors->has('detail') ? 'has-error' : ''}}">
@@ -131,7 +184,6 @@
                     {!! $errors->first('detail', '<p class="help-block">:message</p>') !!}
                 </div>
 
-                <img id="img_pet" class="main-shadow main-radius" width="100%" src="">
                 <br>
 
                 <div class="d-none form-group {{ $errors->has('pet_id') ? 'has-error' : ''}}">
@@ -235,15 +287,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row ">
-                    <div class="col-1"></div>
-                    <!-- Button trigger modal -->
-                    <button id="modal_submit" type="button" class="d-none btn btn-primary button-three" data-toggle="modal" data-target="#modal_get_information" onclick="submit_form_lost_pet();">
-                        แจ้งน้องหาย
-                    </button>
-                    <input class="col-10 btn btn-primary d-none" id="lost_pet_submit" type="submit" value="{{ $formMode === 'edit' ? 'แจ้งน้องหาย' : 'แจ้งน้องหาย' }}">
-                    <div class="col-1"></div>
-                </div>
 
             </div>
 
@@ -325,6 +368,7 @@
         // console.log("START");
         // getLocation();
         select_province();
+        check();
         document.querySelector('#btn_lost_pet_15day').click();
     });
 
@@ -351,8 +395,13 @@
         let lat = parseFloat(lat_text.value);
         let lng = parseFloat(lng_text.value);
 
+        var image = {
+            url: "https://www.peddyhub.com/peddyhub/images/icons/location.png",
+            scaledSize: new google.maps.Size(25, 33)
+        };
+
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 15,
+            zoom: 10,
             center: {
                 lat: lat,
                 lng: lng
@@ -367,8 +416,22 @@
         };
         const marker_user = new google.maps.Marker({
             map,
-            position: user
+            position: user,
+            icon: image
         });
+
+        
+
+        const circle = new google.maps.Circle( {
+        map           : map,
+        center        : new google.maps.LatLng( lat, lng ),
+        radius        : 15000,
+        strokeColor   : '#B8205B',
+        strokeOpacity : 1,
+        strokeWeight  : 2,
+        fillColor     : '#B8205B',
+        fillOpacity   : 0.2
+        } );
 
         // document.querySelector('#div_form').classList.remove('d-none');
 
@@ -403,6 +466,9 @@
                             let pet_category_id = document.querySelector('#pet_category_id');
                             pet_category_id.value = result[0]['pet_category_id'];
 
+                            document.querySelector('#modal_submit').classList.add('wow');
+                            document.querySelector('#modal_submit').classList.add('fadeInDown');
+                            
                             document.querySelector('#modal_submit').classList.remove('d-none');
                     });
                 }
@@ -487,8 +553,15 @@
     }
 
     function select_lat_lng() {
+        document.querySelector('#select-area').classList.add('d-none');
+        document.querySelector('#div_form').classList.add('wow');
+        document.querySelector('#div_form').classList.add('fadeInDown');
 
-        document.querySelector('#div_form').classList.remove('d-none');
+        setTimeout(function() {
+            document.querySelector('#div_form').classList.remove('d-none');
+        }, 1000);
+       
+       
 
         let select_province = document.querySelector('#select_province');
 
@@ -574,5 +647,38 @@
         setTimeout(function() {
             document.getElementById("lost_pet_submit").click();
         }, 3000);
+    }
+</script>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+<script>
+    function check() {
+        let phone = document.querySelector('#phone');
+
+        if (phone.value !== "") {
+            document.getElementById('btn_check_phone').classList.add('d-none');
+            document.getElementById('btn_modal_submit').classList.remove('d-none');
+        }else{
+            document.getElementById('btn_check_phone').classList.remove('d-none');
+            document.getElementById('btn_modal_submit').classList.add('d-none');
+        }
     }
 </script>

@@ -45,7 +45,7 @@
         
     }
     .show-img img{
-        object-fit: cover;  
+        object-fit: contain;  
         width: 100%;
         height: 100%;
     }
@@ -214,8 +214,8 @@
                                                     <input type="file" name="photo" id="photo" class="form-control input-photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" accept="image/*" required onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo(); check();">
                                                     <!-- <input  class="form-control input-photo" name="photo" type="file" id="photo" value="{{ isset($lost_pet->photo) ? $lost_pet->photo : ''}}" required accept="image/*" onchange="document.getElementById('show_photo').src = window.URL.createObjectURL(this.files[0]),add_photo(); check();" >                                    -->
                                                    
-                                                    <span class="show-img d-none"style="object-fit: cover;">
-                                                        <img src="" id="show_photo"  width="100%" height="100%"  alt="">
+                                                    <span id="show-img" class="d-none"style="object-fit: cover;">
+                                                        <img src="" id="show_photo" class="show-img" style="max-width: 100%; max-height:100%"  alt="">
                                                     </span>
 
                                                     <span class="lbl ">
@@ -600,7 +600,7 @@ fillOpacity   : 0.2
 
     function add_photo(){
         document.querySelector('.lbl').classList.add('d-none');
-        document.querySelector('.show-img').classList.remove('d-none');
+        document.querySelector('#show-img').classList.remove('d-none');
     }
 
 
