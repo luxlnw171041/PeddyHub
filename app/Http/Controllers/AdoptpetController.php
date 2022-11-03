@@ -189,11 +189,13 @@ class AdoptpetController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $requestData['user_id'] = Auth::id();  
         $partner_id = Auth::User()->partner; 
 
         $requestData = $request->all();      
         
+       
         if ($request->hasFile('photo')) {
             $requestData['photo'] = $request->file('photo')
                 ->store('uploads', 'public');
@@ -239,6 +241,16 @@ class AdoptpetController extends Controller
                 ]);
         }  
 
+        if (!empty($requestData['status'])) {
+            DB::table('adoptpets')
+            ->where([ 
+                    ['id', $id],
+                ])
+            ->update([
+                'status' => $requestData['status'],
+            ]);
+        }  
+
         $adoptpet = Adoptpet::findOrFail($id);
         $adoptpet->update($requestData);
 
@@ -254,8 +266,17 @@ class AdoptpetController extends Controller
      */
     public function destroy($id)
     {
-        Adoptpet::destroy($id);
+        DB::table('adoptpets')
+                ->where([ 
+                        ['id', $id],
+                    ])
+                ->update([
+                    'status' => "delete",
+                ]);
+        
 
         return redirect('adoptpet')->with('flash_message', 'Adoptpet deleted!');
     }
+
+  
 }

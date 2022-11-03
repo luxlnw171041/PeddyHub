@@ -74,17 +74,64 @@
                                     @php
                                         $profile = $adoptpet->user;
                                     @endphp
-                                    <div class="col-8">
+                                    <div class="col-6 p-0">
                                         <h6 class="notranslate">{{$profile->profile->name}}</h6>
                                         <p style="margin:0px;">{{ $adoptpet->created_at->diffForHumans() }}</p>
                                     </div>
-                                    <div class="col-2">
-                                        @if($user_id == $adoptpet->user_id)
-                                        <a href="{{ url('/adoptpet/' . $adoptpet->id . '/edit') }}"  type="button" class="btn btn-sm btn-outline-warning">
-                                            แก้ไข
-                                        </a>
-                                        @endif
+                                    @if($adoptpet->status == "get_home")
+                                    <div class="col-4 p-0 text-center">
+                                        <span class="float-end mr-2" style="color:#fff;border-radius: 10px;background-color:#88C550;padding:10px;">
+                                            ได้บ้านแล้ว
+                                        </span>
                                     </div>
+                                    @endif
+                                    @if($user_id == $adoptpet->user_id)
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-12">
+                                            
+                                            <div class="row">
+                                                @if($adoptpet->status != "get_home")
+                                                <div class="col-4">
+                                                    <form method="POST" action="{{ url('/adoptpet' . '/' . $adoptpet->id) }}" accept-charset="UTF-8">
+                                                    {{ method_field('PATCH') }}
+                                                    {{ csrf_field() }}
+                                                    <input name="status" type="hidden" id="status" value="get_home" >
+                                                        <button  style="width:100%;" type="submit" class="main-shadow main-radius btn btn-block btn-sm btn-outline-success">
+                                                            ได้บ้านแล้ว
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <div class="col-4">
+                                                    <a href="{{ url('/adoptpet/' . $adoptpet->id . '/edit') }}"  type="button" class="main-shadow main-radius btn btn-block btn-sm btn-outline-warning">
+                                                        แก้ไข
+                                                    </a>
+                                                </div>
+                                                @else
+                                                <div class="col-4">
+                                                    <button disabled  style="width:100%;" type="submit" class="main-shadow main-radius btn btn-block btn-sm btn-outline-success">
+                                                        ได้บ้านแล้ว
+                                                    </button>
+                                                </div>
+                                                <div class="col-4">
+                                                    <a href="{{ url('/adoptpet/' . $adoptpet->id . '/edit') }}"  type="button" class="disabled main-shadow main-radius btn btn-block btn-sm btn-outline-warning">
+                                                        แก้ไข
+                                                    </a>
+                                                </div>
+                                                @endif
+                                                <div class="col-4">
+                                                    <form method="POST" action="{{ url('/adoptpet' . '/' . $adoptpet->id) }}" accept-charset="UTF-8">
+                                                        {{ method_field('DELETE') }}
+                                                        {{ csrf_field() }}
+                                                        <button  style="width:100%;" type="submit" class="btn btn-sm btn-outline-danger main-shadow main-radius"onclick="return confirm(&quot;Confirm delete?&quot;)">
+                                                            ลบ
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    @endif
                                 </div>
                                 
                             </div>

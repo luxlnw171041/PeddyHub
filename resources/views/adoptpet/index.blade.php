@@ -31,50 +31,58 @@
             </div>
             <div class="row">
                 @foreach($adoptpet as $item)
-                    <div class="col-lg-3 col-md-6 col-sm-12">
-                        <div class="member">
-                            <div class="image">
-                                <img src="{{ url('storage/'.$item->photo )}}" style="width: 350px; height:292px;object-fit: cover;"  alt="image of pet" title="pet"
-                                    class="img-fluid customer">
-                            </div>
-                            <div class="content">
-                                <a href="{{ url('/adoptpet/' . $item->id) }}">
-                                    @php
-                                        $pet_category = $item->pet_category_id ;
-                                    @endphp
-                                    <!-- icon_categorie -->
-                                   
+                    @if($item->status != "delete")
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="member">
+                                <div class="image">
+                                    <img src="{{ url('storage/'.$item->photo )}}" style="width: 350px; height:292px;object-fit: cover;"  alt="image of pet" title="pet"
+                                        class="img-fluid customer">
+                                </div>
+                                <div class="content">
+                                    <a href="{{ url('/adoptpet/' . $item->id) }}">
+                                        @php
+                                            $pet_category = $item->pet_category_id ;
+                                        @endphp
+                                        <!-- icon_categorie -->
+                                    
 
-                                    <h4 class="wow fadeInDown notranslate">
-                                        @include ('menubar.icon_categorie')
-                                        {{ $item->titel }}
-                                        @switch($item->gender)
-                                            @case('หญิง')
-                                            <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
-                                            @break
-                                            @case('ชาย')
-                                                <i style="font-size:28px;color:#00ADEF;margin-left:10px" class="fas fa-mars"></i>
-                                            @break
-                                            @case('ไม่ระบุ')
-                                                <i style="font-size:28px;color:#88C550;margin-left:10px" class="fas fa-venus-mars"></i>
-                                            @break
-                                        @endswitch
-                                    </h4>
-                                </a>
-                                <ul style="font-size:22px;">
-                                    <li><i class="fas fa-paw"></i> ขนาด{{ $item->size }}</li>
-                                    <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
-                                </ul>
-
-                                <div class="button wow fadeInUp">
-                                    <a href="{{ url('/adoptpet/' . $item->id) }}" class="btn main" title="contact">
-                                        Adopt me <i class="fas fa-paw"></i>
+                                        <h4 class="wow fadeInDown notranslate">
+                                            @include ('menubar.icon_categorie')
+                                            {{ $item->titel }}
+                                            @switch($item->gender)
+                                                @case('หญิง')
+                                                <i style="font-size:28px;color:#F06491;margin-left:10px" class="fas fa-venus"></i>
+                                                @break
+                                                @case('ชาย')
+                                                    <i style="font-size:28px;color:#00ADEF;margin-left:10px" class="fas fa-mars"></i>
+                                                @break
+                                                @case('ไม่ระบุ')
+                                                    <i style="font-size:28px;color:#88C550;margin-left:10px" class="fas fa-venus-mars"></i>
+                                                @break
+                                            @endswitch
+                                        </h4>
                                     </a>
+                                    <ul style="font-size:22px;">
+                                        <li><i class="fas fa-paw"></i> ขนาด{{ $item->size }}</li>
+                                        <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
+                                    </ul>
+
+                                    <div class="button wow fadeInUp">
+                                        @if($item->status != "get_home")
+                                            <a href="{{ url('/adoptpet/' . $item->id) }}" class="btn main" title="contact">
+                                                Adopt me <i class="fas fa-paw"></i>
+                                            </a>
+                                        @else
+                                            <a  class="btn main disabled" title="contact">
+                                               ได้บ้านแล้ว<i class="fas fa-paw"></i>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endif
+                @endforeach 
                 <!-- <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="member">
                         <div class="image">

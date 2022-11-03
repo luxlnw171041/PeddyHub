@@ -285,10 +285,19 @@ class Lost_PetController extends Controller
                 ->store('uploads', 'public');
         }
 
+        if (!empty($requestData['status'])) {
+            DB::table('lost__pets')
+            ->where([ 
+                    ['id', $id],
+                ])
+            ->update([
+                'status' => $requestData['status'],
+            ]);
+        }  
         $lost_pet = Lost_Pet::findOrFail($id);
         $lost_pet->update($requestData);
 
-        return redirect('lost_pet')->with('flash_message', 'Lost_Pet updated!');
+        return back()->withInput();
     }
 
     /**
@@ -301,8 +310,7 @@ class Lost_PetController extends Controller
     public function destroy($id)
     {
         Lost_Pet::destroy($id);
-
-        return redirect('my_post')->with('flash_message', 'Lost_Pet deleted!');
+        return back()->withInput();
     }
 
     public function lost_pet_line()
