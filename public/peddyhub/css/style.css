@@ -69,6 +69,29 @@ font-family: 'Kaushan Script', sans-serif;*/
 ====================================================================
 
  ***/
+ a.disabled {
+    pointer-events: none;
+    cursor: default;
+    }
+    .btn-found{
+
+        background-color: #009C44!important;
+        font-size: 1.5em;
+        color: #FFFFFF!important;
+        padding: 15px;
+        display: block;
+        border-radius: 30px 0 30px 30px;
+        margin: 10px;
+    }
+ .main-center{
+    position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%) 
+}.kanit{
+    font-family: 'Kanit', sans-serif!important;
+}
  .fill {
     display: flex;
     justify-content: center;
@@ -9653,6 +9676,8 @@ ul, p {
     color: var(--pt_black);
 }
 
+
+
 .pet a.btn.main {
     font-size: 20px;
     padding: 15px 50px;
@@ -10879,13 +10904,14 @@ ul, p {
     background: var(--pt_purple);
 }
 
+
 /* Contact Section */
 
 .pet .contact {
     position: relative;
     padding: 0px 0px 75px;
-    margin: 75px 0px 0px;
     color: var(--pt_black);
+    z-index: 1!important;
 }
 
 .pet .contact::before {
@@ -10980,7 +11006,7 @@ ul, p {
 .pet .contact .form {
     position: relative;
     background: var(--pt_yellow);
-    padding: 50px;
+    padding: 20px;
     border-radius: 15px;
     opacity: 0.9;
     margin-bottom: 20px;
