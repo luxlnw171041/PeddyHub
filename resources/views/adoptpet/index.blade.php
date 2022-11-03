@@ -66,15 +66,14 @@
                                         <li><i class="fas fa-paw"></i> ขนาด{{ $item->size }}</li>
                                         <li><i class="fas fa-paw"></i> {{ $item->age }}</li>
                                     </ul>
-
                                     <div class="button wow fadeInUp">
                                         @if($item->status != "get_home")
                                             <a href="{{ url('/adoptpet/' . $item->id) }}" class="btn main" title="contact">
                                                 Adopt me <i class="fas fa-paw"></i>
                                             </a>
                                         @else
-                                            <a  class="btn main disabled" title="contact">
-                                               ได้บ้านแล้ว<i class="fas fa-paw"></i>
+                                            <a disabled class=" disabled btn-found" title="contact">
+                                               ได้บ้านแล้ว <i class="fas fa-paw"></i>
                                             </a>
                                         @endif
                                     </div>

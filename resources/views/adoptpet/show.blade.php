@@ -93,7 +93,7 @@
                                             
                                             <div class="row">
                                                 @if($adoptpet->status != "get_home")
-                                                <div class="col-4">
+                                                <div class="col-lg-4 col-12">
                                                     <form method="POST" action="{{ url('/adoptpet' . '/' . $adoptpet->id) }}" accept-charset="UTF-8">
                                                     {{ method_field('PATCH') }}
                                                     {{ csrf_field() }}
@@ -103,24 +103,26 @@
                                                         </button>
                                                     </form>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-12 d-block d-md-none"><br></div>
+                                                <div class="col-lg-4 col-6">
                                                     <a href="{{ url('/adoptpet/' . $adoptpet->id . '/edit') }}"  type="button" class="main-shadow main-radius btn btn-block btn-sm btn-outline-warning">
                                                         แก้ไข
                                                     </a>
                                                 </div>
                                                 @else
-                                                <div class="col-4">
+                                                <div class="col-lg-4 col-12">
                                                     <button disabled  style="width:100%;" type="submit" class="main-shadow main-radius btn btn-block btn-sm btn-outline-success">
                                                         ได้บ้านแล้ว
                                                     </button>
                                                 </div>
-                                                <div class="col-4">
+                                                <div class="col-12 d-block d-md-none"><br></div>
+                                                <div class="col-lg-4 col-6">
                                                     <a href="{{ url('/adoptpet/' . $adoptpet->id . '/edit') }}"  type="button" class="disabled main-shadow main-radius btn btn-block btn-sm btn-outline-warning">
                                                         แก้ไข
                                                     </a>
                                                 </div>
                                                 @endif
-                                                <div class="col-4">
+                                                <div class="col-lg-4 col-6">
                                                     <form method="POST" action="{{ url('/adoptpet' . '/' . $adoptpet->id) }}" accept-charset="UTF-8">
                                                         {{ method_field('DELETE') }}
                                                         {{ csrf_field() }}
