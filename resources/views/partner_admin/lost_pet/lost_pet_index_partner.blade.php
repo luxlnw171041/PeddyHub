@@ -937,169 +937,167 @@
                                                 </form>
                                         </div>
                                         <div class="col-lg-4 col-12 p-0 m-0 mt-2">
-                                            <center>
-                                                    <!-- มือถือ -->
-                                                <div class="col-12 col-md-12 col-lg-12">
-                                                    <br class="mt-5 d-block d-md-none">
-                                                    <div class="phone-frame ml-5 modal-content" style="padding-top: 0px;">
-                                                        <div class="row">
-                                                            <div class="col-12 " style="background-color: #FFFFFF;  border-radius:50px 50px 0px 0px;margin-top:-0.5%">
-                                                                <div class="row">
-                                                                <div class="col-3 text-center">{{ date('H:i') }}</div>
-                                                                <div class="col-6 phone-camera"></div>
-                                                                <div class="col-3 d-flex align-items-center">
-                                                                    <div class="col-12 p-0">
-                                                                        <div class="row ">
-                                                                            <div class="col p-0 phone-icon"><i class="fa-sharp fa-solid fa-signal-bars"></i></div>
-                                                                            <div class="col p-0 phone-icon"><i class="fa-solid fa-wifi"></i></div>
-                                                                            <div class="col p-0 phone-icon"><i class="fa-solid fa-battery-full"></i></div></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>  
-                                                            </div>
-                                                            <div class="phone-header">
-                                                                <div class="row">
-                                                                    <div class="col-7 phone-name ">
-                                                                        <div class="row">
-                                                                            <div class="col-2 text-center"><i class="fa-solid fa-chevron-left"></i></div>
-                                                                            <div class="col-10 text-start p-0"> <img src="{{ asset('/peddyhub/images/icons/โล่.png') }}" alt="" width="8%"> PEDDyHUB</div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-5 phone-icon-header">
-                                                                        <div class="row ">
-                                                                            <div class="col"><img src="{{ asset('/peddyhub/images/icons/search.png') }}" alt="" width="100%"></i></div>
-                                                                            <div class="col"><img src="{{ asset('/peddyhub/images/icons/document.png') }}" alt="" width="100%"></div>
-                                                                            <div class="col"><img src="{{ asset('/peddyhub/images/icons/more.png') }}" alt="" width="100%"></i></div>
-                                                                            
-
-
-                                                                        </div>
+                                                <!-- มือถือ -->
+                                            <div class="col-12 col-md-12 col-lg-12">
+                                                <br class="mt-5 d-block d-md-none">
+                                                <div class="phone-frame ml-5 modal-content" style="padding-top: 0px;">
+                                                    <div class="row">
+                                                        <div class="col-12 " style="background-color: #FFFFFF;  border-radius:50px 50px 0px 0px;margin-top:-0.5%">
+                                                            <div class="row">
+                                                            <div class="col-3 text-center">{{ date('H:i') }}</div>
+                                                            <div class="col-6 phone-camera"></div>
+                                                            <div class="col-3 d-flex align-items-center">
+                                                                <div class="col-12 p-0">
+                                                                    <div class="row ">
+                                                                        <div class="col p-0 phone-icon"><i class="fa-sharp fa-solid fa-signal-bars"></i></div>
+                                                                        <div class="col p-0 phone-icon"><i class="fa-solid fa-wifi"></i></div>
+                                                                        <div class="col p-0 phone-icon"><i class="fa-solid fa-battery-full"></i></div></div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div  class="phone-content" >
-                                                                <div id="div_flex" class="col-12 remove-scrollbar div_img d-none" style="min-width: 100%;max-height: 100%;overflow:auto;cursor: grab;">
-                                                                    <div class="col-12" >
-                                                                        <div id="send-img">
-                                                                            <img src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#b8205b 1px solid ; background-color:white;margin:5px;width:30px;height:30px;object-fit: contain;" alt="" >
-
-                                                                            <div class="photo_flex_line">
-                                                                                <img width="100%" style="border-radius:50px;background-color: #b8205b;" id="img_flex" src="{{ url('/peddyhub/images/more/flex_lost_pet.png') }}">
-                                                                                <!-- img logo partner -->
-                                                                                @php
-                                                                                $user = \Illuminate\Support\Facades\Auth::user();
-                                                                                $partner_logo = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
-                                                                                @endphp
-                                                                                @foreach($partner_logo as $item)
-                                                                                    @if(empty($item->logo))
-                                                                                    
-                                                                                    <img id="" class="logo-partner position" src="{{ asset('/peddyhub/images/logo/logo-here.png') }}" alt="">
-                                                                                    <div  class="test position p-0 m-0">
-                                                                                        <span class="tooltip">หากท่านมีโลโก้ โปรดแจ้งผู้ดูแลระบบเราจะแสดงโลโกของท่านไว้ในตำแหน่งนี้</span> 
-                                                                                    </div>
-                                                                                    @else
-                                                                                        <img id="" class="position logo-partner" src="{{ url('storage')}}/{{ $item->logo }}" alt="">
-                                                                                    @endif
-                                                                                @endforeach
-                                                                                <!-- ตามหา pet -->
-                                                                                <p class="find-pet position text-center">
-                                                                                    <b>
-                                                                                        ตามหา <span id="line_pet_category_id"></span> หาย
-                                                                                    </b>
-                                                                                </p>
-                                                                                <!-- date lost -->
-                                                                                <p class="date-lost position" id="line_date_now">
-                                                                                </p>
-                                                                                <!-- img pet -->
-                                                                                <img id="img_lot_pet" class="position img-pet" src="{{ url('/peddyhub/images/PEDDyHUB sticker line/35.png')}}" alt="">
-                                                                                <!-- pet name -->
-                                                                                <p class="pet-name position text-center" id="line_pet_name">
-                                                                                </p>
-                                                                                <!-- pet age -->
-                                                                                <p class="pet-age position text-center" id="line_pet_age">
-                                                                                </p>
-                                                                                <!-- pet category -->
-                                                                                <p class="pet-category position" id="line_pet_category_id_2">
-                                                                                    ไม่ระบุ
-                                                                                </p>
-                                                                                <!-- pet gender -->
-                                                                                <p class="pet-gender position" id="line_pet_gender">
-                                                                                </p>
-                                                                                <!-- pet sub category -->
-                                                                                <p class="pet-sub-category position" id="line_sub_category">
-                                                                                </p>
-                                                                                <!-- see more -->
-                                                                                <a class="see-more position" onclick="see_more();"></a>
-                                                                                <!-- phone -->
-                                                                                <p class="phone position" id="line_owner_phone">
-                                                                                    ไม่ระบุ
-                                                                                </p>
-                                                                                <!-- tel -->
-                                                                                <a class="tel position add-phone" href="#" id="tel" >
-                                                                                    <span class="tooltip">หากเพิ่มเบอร์เจ้าของจะสามารถกดที่ปุ่มเพื่อติดต่อไปยังเจ้าของได้ทันที</span>
-                                                                                </a>
-                                                                                <!-- owner name -->
-                                                                                <p class="owner-name position" id="line_owner_name">
-                                                                                    ไม่ระบุ
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
+                                                            </div>  
+                                                        </div>
+                                                        <div class="phone-header">
+                                                            <div class="row">
+                                                                <div class="col-7 phone-name ">
+                                                                    <div class="row">
+                                                                        <div class="col-2 text-center"><i class="fa-solid fa-chevron-left"></i></div>
+                                                                        <div class="col-10 text-start p-0"> <img src="{{ asset('/peddyhub/images/icons/โล่.png') }}" alt="" width="8%"> PEDDyHUB</div>
                                                                     </div>
-                                                                    
-                                                                    <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
-                                                                    
-                                                                    <div id="div_line_detail" class="row d-none">
-                                                                        <div class="d-flex justify-content-end">
-                                                                            <div class="d-flex align-items-center">
-                                                                                <p class="m-0 p-0 text-right"style="padding-right:10px;font-size:10px;line-height: 13px;margin-top:50px;">อ่านแล้ว <br>{{ date('H:i') }} น.</p>
-                                                                            </div>
-                                                                            <p class="p-2 m-2 " style="border-radius: 20px;background-color: #2DD284;padding-right:10px;font-size:13px">รายละเอียด</p>
-                                                                        </div>
+                                                                </div>
+                                                                <div class="col-5 phone-icon-header">
+                                                                    <div class="row ">
+                                                                        <div class="col"><img src="{{ asset('/peddyhub/images/icons/search.png') }}" alt="" width="100%"></i></div>
+                                                                        <div class="col"><img src="{{ asset('/peddyhub/images/icons/document.png') }}" alt="" width="100%"></div>
+                                                                        <div class="col"><img src="{{ asset('/peddyhub/images/icons/more.png') }}" alt="" width="100%"></i></div>
                                                                         
-                                                                        <div class="d-flex justify-content-start">
-                                                                            <div style="border-radius: 20px;font-size:13px;max-width:50%;">
-                                                                            <img src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#b8205b 1px solid ; background-color:white;margin:5px;width:30px;height:30px;object-fit: contain;" alt="" >
-                                                                            </div>
 
-                                                                            <p class="p-2 m-2 " style="border-radius: 15px;background-color: #ffffff;padding-right:10px;font-size:13px;max-width:60%;"><span id="line_detail"></span></p>
 
-                                                                            <div class="d-flex align-items-end" style="padding: 8px  8px  8px 0;">
-                                                                                <p class="m-0 p-0 text-right mt-2"style="padding-right:10px;font-size:10px;line-height: 13px;">{{ date('H:i') }} น.</p>
-                                                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div  class="phone-content" >
+                                                            <div id="div_flex" class="col-12 remove-scrollbar div_img d-none" style="min-width: 100%;max-height: 100%;overflow:auto;cursor: grab;">
+                                                                <div class="col-12" >
+                                                                    <div id="send-img">
+                                                                        <img src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#b8205b 1px solid ; background-color:white;margin:5px;width:30px;height:30px;object-fit: contain;" alt="" >
+
+                                                                        <div class="photo_flex_line">
+                                                                            <img width="100%" style="border-radius:50px;background-color: #b8205b;" id="img_flex" src="{{ url('/peddyhub/images/more/flex_lost_pet.png') }}">
+                                                                            <!-- img logo partner -->
+                                                                            @php
+                                                                            $user = \Illuminate\Support\Facades\Auth::user();
+                                                                            $partner_logo = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
+                                                                            @endphp
+                                                                            @foreach($partner_logo as $item)
+                                                                                @if(empty($item->logo))
+                                                                                
+                                                                                <img id="" class="logo-partner position" src="{{ asset('/peddyhub/images/logo/logo-here.png') }}" alt="">
+                                                                                <div  class="test position p-0 m-0">
+                                                                                    <span class="tooltip">หากท่านมีโลโก้ โปรดแจ้งผู้ดูแลระบบเราจะแสดงโลโกของท่านไว้ในตำแหน่งนี้</span> 
+                                                                                </div>
+                                                                                @else
+                                                                                    <img id="" class="position logo-partner" src="{{ url('storage')}}/{{ $item->logo }}" alt="">
+                                                                                @endif
+                                                                            @endforeach
+                                                                            <!-- ตามหา pet -->
+                                                                            <p class="find-pet position text-center">
+                                                                                <b>
+                                                                                    ตามหา <span id="line_pet_category_id"></span> หาย
+                                                                                </b>
+                                                                            </p>
+                                                                            <!-- date lost -->
+                                                                            <p class="date-lost position" id="line_date_now">
+                                                                            </p>
+                                                                            <!-- img pet -->
+                                                                            <img id="img_lot_pet" class="position img-pet" src="{{ url('/peddyhub/images/PEDDyHUB sticker line/35.png')}}" alt="">
+                                                                            <!-- pet name -->
+                                                                            <p class="pet-name position text-center" id="line_pet_name">
+                                                                            </p>
+                                                                            <!-- pet age -->
+                                                                            <p class="pet-age position text-center" id="line_pet_age">
+                                                                            </p>
+                                                                            <!-- pet category -->
+                                                                            <p class="pet-category position" id="line_pet_category_id_2">
+                                                                                ไม่ระบุ
+                                                                            </p>
+                                                                            <!-- pet gender -->
+                                                                            <p class="pet-gender position" id="line_pet_gender">
+                                                                            </p>
+                                                                            <!-- pet sub category -->
+                                                                            <p class="pet-sub-category position" id="line_sub_category">
+                                                                            </p>
+                                                                            <!-- see more -->
+                                                                            <a class="see-more position" onclick="see_more();"></a>
+                                                                            <!-- phone -->
+                                                                            <p class="phone position" id="line_owner_phone">
+                                                                                ไม่ระบุ
+                                                                            </p>
+                                                                            <!-- tel -->
+                                                                            <a class="tel position add-phone" href="#" id="tel" >
+                                                                                <span class="tooltip">หากเพิ่มเบอร์เจ้าของจะสามารถกดที่ปุ่มเพื่อติดต่อไปยังเจ้าของได้ทันที</span>
+                                                                            </a>
+                                                                            <!-- owner name -->
+                                                                            <p class="owner-name position" id="line_owner_name">
+                                                                                ไม่ระบุ
+                                                                            </p>
                                                                         </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
+                                                                
+                                                                <div id="div_line_detail" class="row d-none">
+                                                                    <div class="d-flex justify-content-end">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <p class="m-0 p-0 text-right"style="padding-right:10px;font-size:10px;line-height: 13px;margin-top:50px;">อ่านแล้ว <br>{{ date('H:i') }} น.</p>
+                                                                        </div>
+                                                                        <p class="p-2 m-2 " style="border-radius: 20px;background-color: #2DD284;padding-right:10px;font-size:13px">รายละเอียด</p>
                                                                     </div>
                                                                     
+                                                                    <div class="d-flex justify-content-start">
+                                                                        <div style="border-radius: 20px;font-size:13px;max-width:50%;">
+                                                                        <img src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#b8205b 1px solid ; background-color:white;margin:5px;width:30px;height:30px;object-fit: contain;" alt="" >
+                                                                        </div>
 
-                                                                </div>
-                                                                <div id="div_add_img" class="col-12 remove-scrollbar d-none" style="min-width: 100%;max-height: 250px;overflow:auto;cursor: grab;" onclick="document.querySelector('#photo').click();">
-                                                                    <div class="col-12" >
-                                                                        <div id="send-img">
-                                                                            <img src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#b8205b 1px solid ; background-color:white;margin:5px;width:30px;height:30px;object-fit: contain;" alt="" >
+                                                                        <p class="p-2 m-2 " style="border-radius: 15px;background-color: #ffffff;padding-right:10px;font-size:13px;max-width:60%;"><span id="line_detail"></span></p>
 
-                                                                            <div style="padding: 5px;">
-                                                                                <img width="100%" style="border-radius:10px;background-color: #b8205b;" id="img_add_img" src="{{ url('/peddyhub/images/more/sos js100.png') }}">
-                                                                            </div>
-                                                                            <!-- <img src="{{ asset('/img/more/add_img_2.png') }}" alt="" width="100%" style="padding: 0px 5px;border-radius:10px" id="img_add_img"  > -->
+                                                                        <div class="d-flex align-items-end" style="padding: 8px  8px  8px 0;">
+                                                                            <p class="m-0 p-0 text-right mt-2"style="padding-right:10px;font-size:10px;line-height: 13px;">{{ date('H:i') }} น.</p>
                                                                         </div>
                                                                     </div>
-                                                                    <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
                                                                 </div>
+                                                                
+
                                                             </div>
-                                                            <div class="richmenu text-center" >
-                                                                <img src="{{ asset('/peddyhub/images/richmenu/main-richmenu_new/ph_richmenu_th.png') }}" alt="" width="100%">
-                                                            </div>
-                                                            <div class="row phone-footer d-flex justify-content-start">
-                                                                <div class="col d-flex justify-content-start" style="float: left;"><img src="{{ asset('/peddyhub/images/icons/keyboard.png') }}" alt="" width="20%"></div>
-                                                                <div class="col d-flex justify-content-start" style="cursor: pointer;float: left;">
-                                                                    <span onclick="document.querySelector('.richmenu').classList.toggle('d-none');
-                                                                    document.querySelector('.phone-content').classList.toggle('no-richmenu');
-                                                                    document.querySelector('#div_add_img').classList.toggle('no-richmenu');">เมนู▾</span>
+                                                            <div id="div_add_img" class="col-12 remove-scrollbar d-none" style="min-width: 100%;max-height: 250px;overflow:auto;cursor: grab;" onclick="document.querySelector('#photo').click();">
+                                                                <div class="col-12" >
+                                                                    <div id="send-img">
+                                                                        <img src="{{ asset('/peddyhub/images/logo/logo-2.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#b8205b 1px solid ; background-color:white;margin:5px;width:30px;height:30px;object-fit: contain;" alt="" >
+
+                                                                        <div style="padding: 5px;">
+                                                                            <img width="100%" style="border-radius:10px;background-color: #b8205b;" id="img_add_img" src="{{ url('/peddyhub/images/more/sos js100.png') }}">
+                                                                        </div>
+                                                                        <!-- <img src="{{ asset('/img/more/add_img_2.png') }}" alt="" width="100%" style="padding: 0px 5px;border-radius:10px" id="img_add_img"  > -->
+                                                                    </div>
                                                                 </div>
+                                                                <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
                                                             </div>
-                                                        </div> 
-                                                    </div>
+                                                        </div>
+                                                        <div class="richmenu text-center" >
+                                                            <img src="{{ asset('/peddyhub/images/richmenu/main-richmenu_new/ph_richmenu_th.png') }}" alt="" width="100%">
+                                                        </div>
+                                                        <div class="row phone-footer d-flex justify-content-start">
+                                                            <div class="col d-flex justify-content-start" style="float: left;"><img src="{{ asset('/peddyhub/images/icons/keyboard.png') }}" alt="" width="20%"></div>
+                                                            <div class="col d-flex justify-content-start" style="cursor: pointer;float: left;">
+                                                                <span onclick="document.querySelector('.richmenu').classList.toggle('d-none');
+                                                                document.querySelector('.phone-content').classList.toggle('no-richmenu');
+                                                                document.querySelector('#div_add_img').classList.toggle('no-richmenu');">เมนู▾</span>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
                                                 </div>
-                                            </center>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
