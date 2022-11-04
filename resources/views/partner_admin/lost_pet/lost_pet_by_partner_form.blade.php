@@ -167,6 +167,7 @@
                                                     <select style="margin:0px;" id="select_category" name="pet_category_id" class="form-control" onchange="species_select(); check();" required>
                                                         <option class="translate" value="" selected> - โปรดเลือก - </option>
                                                     </select>
+                                                    <div id="validationServer03Feedback" class="invalid-feedback">โปรดระบุประเภทสัตว์เลี้ยง </div>
                                                     {!! $errors->first('pet_category_id', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>

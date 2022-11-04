@@ -31,7 +31,13 @@ File: app.css
 
 
 /* General */
-
+.main-center{
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
 
 body {
 
@@ -794,8 +800,25 @@ a {
 
 
 }
+/* lostpet index start */
+.data-api{
+	padding: 15px;
+	border-radius: 20px;
+	font-family: 'Kanit', sans-serif;
+}
 
-
+.icon-api{
+	position: absolute;
+	z-index: 1;
+	top: 3em;
+	right: 5%;
+	transform: translate(-50%, -50%);
+}
+.collapse{
+	position: relative;
+	z-index: 9999999;
+}
+/* lostpet index end */
 /* Ecommerce Product */
 
 .product-show{
