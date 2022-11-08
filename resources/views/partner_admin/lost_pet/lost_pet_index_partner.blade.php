@@ -1157,8 +1157,6 @@
         select_province();
         select_category();
         check();
-        
-        document.querySelector('#btn_how_to_use_api').click();
     });
 
     function Create_Token() {
