@@ -20,6 +20,68 @@ use App\Models\Pet;
 
 class test_for_devController extends Controller
 {
+    public function main_test()
+    {
+        $data = array( 
+                            "user_id" => "1",
+                            "type_check" => "check_in",
+                            "date_time" => "16.30"
+                    );
+
+
+        // echo "<pre>";
+        // print_r( $data );
+        // echo "<pre>";
+        // exit();
+
+        $data_for_add = array( 
+                            "user_id" => "2",
+                            "type_check" => "check_out",
+                            "date_time" => "17.30"
+                    );
+
+        $user_check_in = null ;
+        // $user_check_in = '["{\"user_id\":\"1\",\"type_check\":\"check_in\",\"date_time\":\"16.30\"}","{\"user_id\":\"2\",\"type_check\":\"check_out\",\"date_time\":\"17.30\"}"]' ;
+
+
+        if (empty($user_check_in)) {
+            $arr_user_check_in = array( json_encode($data) );
+
+            echo "OK 1";
+            echo "<br>";
+
+            echo "<pre>";
+            print_r($arr_user_check_in);
+            echo "<pre>";
+        }else{
+            $arr_user_check_in = json_decode($user_check_in) ;
+            $data_for_add = json_encode($data_for_add);
+
+            array_push($arr_user_check_in , $data_for_add) ;
+
+            echo "<br>";
+            echo "<pre>";
+            print_r($arr_user_check_in);
+            echo "<pre>";
+
+            // exit();
+
+        }
+
+        DB::table('partners')
+            ->where('id', "1")
+            ->update([
+                'user_check_in' => $arr_user_check_in,
+        ]);
+
+        // echo "<pre>";
+        // print_r($data_json);
+        // echo "<pre>";
+        
+
+        exit();
+    }
+
     public function test_api_lostpet()
     {
         $requestArr = [
