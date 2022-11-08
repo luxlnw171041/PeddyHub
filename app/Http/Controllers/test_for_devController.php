@@ -17,69 +17,83 @@ use App\Models\Pet_Category;
 use Illuminate\Http\Request;
 use App\Models\Lost_Pet;
 use App\Models\Pet;
+use App\Models\Partner;
 
 class test_for_devController extends Controller
 {
-    public function main_test()
+    public function user_check_in()
     {
-        $data = array( 
-                            "user_id" => "1",
-                            "type_check" => "check_in",
-                            "date_time" => "16.30"
-                    );
+        $data_partner = Partner::where('id' , '1')->first();
 
+        $user_check_in = $data_partner->user_check_in ;
 
+        $user_check_in = json_decode($user_check_in);
+            
         // echo "<pre>";
-        // print_r( $data );
+        // print_r( $user_check_in );
         // echo "<pre>";
-        // exit();
 
-        $data_for_add = array( 
-                            "user_id" => "2",
-                            "type_check" => "check_out",
-                            "date_time" => "17.30"
-                    );
+        echo "Check in/out ทั้งหมด : " . count($user_check_in) . " ครั้ง" ;
+        echo "<br>" ;
+        echo "<br>" ;
 
-        $user_check_in = null ;
-        // $user_check_in = '["{\"user_id\":\"1\",\"type_check\":\"check_in\",\"date_time\":\"16.30\"}","{\"user_id\":\"2\",\"type_check\":\"check_out\",\"date_time\":\"17.30\"}"]' ;
+        for ($i=0; $i < count($user_check_in); $i++) { 
+            // print_r( $user_check_in[$i] ) ;
+            // echo "<br>" ;
 
-
-        if (empty($user_check_in)) {
-            $arr_user_check_in = array( json_encode($data) );
-
-            echo "OK 1";
-            echo "<br>";
-
-            echo "<pre>";
-            print_r($arr_user_check_in);
-            echo "<pre>";
-        }else{
-            $arr_user_check_in = json_decode($user_check_in) ;
-            $data_for_add = json_encode($data_for_add);
-
-            array_push($arr_user_check_in , $data_for_add) ;
-
-            echo "<br>";
-            echo "<pre>";
-            print_r($arr_user_check_in);
-            echo "<pre>";
-
-            // exit();
-
+            echo "user_id >> " . $user_check_in[$i]->user_id  ;
+            echo "<br>" ;
+            echo "type_check >> " . $user_check_in[$i]->type_check  ;
+            echo "<br>" ;
+            echo "date_time >> " . $user_check_in[$i]->date_time  ;
+            echo "<br>" ;
+            
+            echo "<---------------------------------------------->";
+            echo "<br>" ;
         }
 
-        DB::table('partners')
-            ->where('id', "1")
-            ->update([
-                'user_check_in' => $arr_user_check_in,
-        ]);
-
-        // echo "<pre>";
-        // print_r($data_json);
-        // echo "<pre>";
-        
-
         exit();
+
+        // $data = array();
+        // $data['user_id'] = '1';
+        // $data['type_check'] = 'check_in';
+        // $data['date_time'] = date("d/m/Y h:i:sa") ;
+
+        // // echo "<pre>";
+        // // print_r( $arr_user_check_in );
+        // // echo "<pre>";
+
+        // $add_data = array();
+        // $add_data['user_id'] = '2';
+        // $add_data['type_check'] = 'check_out';
+        // $add_data['date_time'] = date("d/m/Y h:i:sa") ;
+
+        // // echo "<pre>";
+        // // print_r( $add_data );
+        // // echo "<pre>";
+
+        // echo "<---------------------------------------------->";
+        // echo "<br>" ;
+
+        // $user_check_in = '[{"user_id":"1","type_check":"check_in","date_time":"08\/11\/2022 05:53:59pm"},{"user_id":"2","type_check":"check_out","date_time":"08\/11\/2022 05:59:10pm"}]' ;
+
+        // if (empty($user_check_in)) {
+        //     $arr_user_check_in[] = $data; 
+        // }else{
+        //     $arr_user_check_in = json_decode($user_check_in) ;
+        //     array_push($arr_user_check_in , $add_data) ;
+
+        // }
+
+        // DB::table('partners')
+        //     ->where('id', "1")
+        //     ->update([
+        //         'user_check_in' => $arr_user_check_in,
+        // ]);
+
+        // exit();
+
+        
     }
 
     public function test_api_lostpet()

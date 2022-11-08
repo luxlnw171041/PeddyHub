@@ -170,6 +170,36 @@ class Check_inController extends Controller
         
         Check_in::create($requestData);
 
+        // update check_in id user to partner
+        if (!empty($requestData['time_in'])) {
+            $data_date_time = $requestData['time_in'] ;
+        }else{
+            $data_date_time = $requestData['time_out'] ;
+        }
+
+        $arr_data_user_check_in = array();
+        $arr_data_user_check_in['user_id'] = $requestData['user_id'];
+        $arr_data_user_check_in['type_check'] = $requestData['check_in_out'];
+        $arr_data_user_check_in['date_time'] = $data_date_time ;
+
+        $user_check_in = $data_partner->user_check_in ;
+
+        if (empty($user_check_in)) {
+            $arr_user_check_in[] = $arr_data_user_check_in; 
+        }else{
+            $arr_user_check_in = json_decode($user_check_in) ;
+            array_push($arr_user_check_in , $arr_data_user_check_in) ;
+
+        }
+
+        DB::table('partners')
+            ->where('id', $requestData['partner_id'])
+            ->update([
+                'user_check_in' => $arr_user_check_in,
+        ]);
+        // end update check_in id user to partner
+
+
         $data_user = Profile::where('id' , $requestData['user_id'])->get();
         $check_in_at_re = explode("(",$requestData['check_in_at']) ;
         $id_check_in_at = $check_in_at_re[0];

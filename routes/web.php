@@ -169,7 +169,7 @@ Route::resource('disease', 'DiseaseController');
 
 
 // test_for_dev
-Route::get('main_test', 'test_for_devController@main_test');
+Route::get('user_check_in', 'test_for_devController@user_check_in');
 Route::get('test_api_lostpet', 'test_for_devController@test_api_lostpet');
 Route::get('test_for_dev/send_line_lost_pet', 'test_for_devController@send_line_lost_pet');
 Route::get('test_for_dev', 'test_for_devController@test_for_dev');
