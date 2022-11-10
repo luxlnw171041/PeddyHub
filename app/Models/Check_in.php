@@ -25,7 +25,7 @@ class Check_in extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'time_in', 'time_out', 'check_in_at','partner_id'];
+    protected $fillable = ['user_id', 'time_in', 'time_out', 'check_in_at','partner_id','status'];
 
     
     public function profile(){

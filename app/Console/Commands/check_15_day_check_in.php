@@ -46,10 +46,11 @@ class Check_15_day_delete extends Command
     public function handle()
     {
         $date_now = date("Y-m-d");
+
+        // 15 วัน send covid = null
         $date_15_delete = strtotime("-15 days");
         $date_15 = date("Y-m-d" , $date_15_delete);
 
-        // 15 วัน send covid = null
         $check_15days_null = Profile::where('send_covid' , "<=" , $date_15)->get();
 
         foreach ($check_15days_null as $item) {
@@ -58,11 +59,21 @@ class Check_15_day_delete extends Command
                 ->update(['send_covid' => null,]);
         }
 
-        // 15 วัน delete check in
-        $check_in_15_delete = Check_in::where('created_at' , "<=" , $date_15)->get();
+        // -----------------------------------------------------
 
-        foreach ($check_in_15_delete as $item) {
-            Check_in::where('id' , $item->id)->delete();
+        // 60 days update status check in
+        $date_2_month_delete = strtotime("-2 month");
+        $date_use = date("Y-m-d" , $date_2_month_delete);
+
+        $check_in_60_update = Check_in::where('created_at' , "<=" , $date_use)
+        ->where('status' , 'show')
+        ->get();
+
+        foreach ($check_in_60_update as $item) {
+            // Check_in::where('id' , $item->id)->delete();
+            DB::table('check_ins')
+                ->where('id', $item->id)
+                ->update(['status' => 'No',]);
         }
     }
 

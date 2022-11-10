@@ -68,6 +68,7 @@ class Check_inController extends Controller
         // ชื่อ อย่างเดียว
         if ( !empty($select_name) and empty($select_time_1) and empty($select_date) ) {
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
+            ->where('status', 'show')
             ->where('user_id', $id_user_check_in)
             ->latest()->paginate($perPage);
                 
@@ -75,12 +76,14 @@ class Check_inController extends Controller
         // วันที่ อย่างเดียว
         else if ( !empty($select_date) and empty($select_time_1) and empty($select_name) ) {
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
+                ->where('status', 'show')
                 ->whereDate('created_at', $select_date)
                 ->latest()->paginate($perPage);
         }
         // วันที่ และ ชื่อ.
         else if ( !empty($select_date) and !empty($select_name) and empty($select_time_1) ) {
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
+                ->where('status', 'show')
                 ->where('user_id',$id_user_check_in)
                 ->whereDate('created_at', $select_date)
                 ->latest()->paginate($perPage);
@@ -94,6 +97,7 @@ class Check_inController extends Controller
             $date_and_time_2 = date("Y/m/d H:i" , strtotime($date_and_time_2));
 
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
+                ->where('status', 'show')
                 ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
                 ->latest()->paginate($perPage);
         }
@@ -106,13 +110,16 @@ class Check_inController extends Controller
             $date_and_time_2 = date("Y/m/d H:i" , strtotime($date_and_time_2));
 
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
+                ->where('status', 'show')
                 ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
                 ->where('user_id', $id_user_check_in)
                 ->latest()->paginate($perPage);
         }
         // ว่าง
         else {
-            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")->latest()->paginate($perPage);
+            $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
+            ->where('status', 'show')
+            ->latest()->paginate($perPage);
         }
 
         // ส่งค่าไปใช้งานฝนหน้า blade
@@ -156,6 +163,7 @@ class Check_inController extends Controller
     {
         
         $requestData = $request->all();
+        $requestData['status'] = 'show' ;
 
         if ($requestData['check_in_out'] == "check_in") {
             $requestData['time_out'] = null ;

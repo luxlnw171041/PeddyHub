@@ -18,9 +18,32 @@ use Illuminate\Http\Request;
 use App\Models\Lost_Pet;
 use App\Models\Pet;
 use App\Models\Partner;
+use App\Models\Check_in;
 
 class test_for_devController extends Controller
 {
+    public function main_test(){
+
+        $date_2_month_delete = strtotime("-2 month");
+        $date_use = date("Y-m-d" , $date_2_month_delete);
+
+        // 60 days update status check in
+        $check_in_60_update = Check_in::where('created_at' , "<=" , $date_use)
+        ->where('status' , 'show')
+        ->get();
+
+        foreach ($check_in_60_update as $item) {
+            // Check_in::where('id' , $item->id)->delete();
+            DB::table('check_ins')
+                ->where('id', $item->id)
+                ->update(['status' => 'No',]);
+        }
+
+        echo "OK" ;
+
+        exit();
+    }
+
     public function user_check_in()
     {
         $data_partner = Partner::where('id' , '1')->first();

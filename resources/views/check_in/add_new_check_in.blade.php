@@ -28,17 +28,24 @@
                             <h4>เลือกรูปแบบที่ต้องการ</h4>
                             <br>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-6 text-center" style="padding-right:0px"> 
+                        <div class="col-12 col-md-4 col-lg-4 text-center" style="padding-right:0px"> 
                             <img class="main-shadow main-radius" src="{{ url('peddyhub/images/check_in/theme/artwork_1-0.png') }}" width="80%">
                             <br><br>
                             <p style="width:30%;background-color: #B8205B;" class="btn text-white main-shadow main-radius" onclick="select_theme_qr('1')">
                                 เลือก
                             </p>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-6 text-center" style="padding-right:0px" >
+                        <div class="col-12 col-md-4 col-lg-4 text-center" style="padding-right:0px" >
                             <img class="main-shadow main-radius" src="{{ url('peddyhub/images/check_in/theme/artwork_2-0.png') }}" width="80%">
                             <br><br>
                             <p style="width:30%;background-color: #B8205B;" class="btn text-white main-shadow main-radius" onclick="select_theme_qr('2')">
+                                เลือก
+                            </p>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-4 text-center" style="padding-right:0px" >
+                            <img class="main-shadow main-radius" src="{{ url('peddyhub/images/check_in/theme/promotion/22.png') }}" width="80%">
+                            <br><br>
+                            <p style="width:30%;background-color: #B8205B;" class="btn text-white main-shadow main-radius" onclick="select_theme_qr('3')">
                                 เลือก
                             </p>
                         </div>
@@ -216,6 +223,9 @@
             }
             if (num_of_theme === '2'){
                 img_theme_old.src = "{{ url('peddyhub/images/check_in/theme/artwork_2-0.png') }}" ;
+            }
+            if (num_of_theme === '3'){
+                img_theme_old.src = "{{ url('peddyhub/images/check_in/theme/promotion/22.png') }}" ;
             }
 
         document.querySelector('#div_select_theme_qr').classList.add('d-none');

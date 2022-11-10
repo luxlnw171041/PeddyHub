@@ -203,6 +203,117 @@ $id_partner_name_area = 'all' ;
         </div>
     </div>
 </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="covid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">ค้นหาผู้ติดเชื้อ</h5>
+                <span id="btn_show_name" class="d-none" data-toggle="collapse" href="#modal_detail_covid" role="button" aria-expanded="false" aria-controls="modal_detail_covid">
+                    แสดงรายชื่อ
+                </span>
+            </div>
+            <div class="modal-body" id="select_disease">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-3">
+                            <p style="width:100%;" class="btn btn-danger text-white main-shadow main-radius" onclick="report_disease('covid');">
+                                พบเชื้อโควิด ! <i class="fas fa-virus"></i>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p style="width:100%;" class="btn btn-outline-danger main-shadow main-radius" onclick="report_disease('ฝีดาษลิง');">
+                                พบเชื้อฝีดาษลิง ! <i class="fas fa-virus"></i>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <p style="width:100%;" class="btn btn-warning text-white main-shadow main-radius" data-toggle="collapse" href="#disease_all" role="button" aria-expanded="false" aria-controls="disease_all">
+                                พบเชื้ออื่นๆ <i class="fas fa-bacterium"></i>
+                            </p>
+                        </div>
+                        <div class="col-3">
+                            <!-- ว่าง -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body collapse" id="disease_all">
+                <div class="col-12">
+                    <div class="row">
+                        @php
+                        $ix = 1 ;
+                        @endphp
+                        @foreach($diseases as $disease)
+                        <div class="col-3">
+                            <p style="width:100%;" class="btn_dis btn main-shadow main-radius" onclick="report_disease('{{ $disease->name }}');">
+                                {{ $disease->name }}
+                            </p>
+                        </div>
+                        @endforeach
+                        <div class="col-3">
+                            <p style="width:100%;" class="btn_dis btn main-shadow main-radius" onclick="document.querySelector('#div_diseaes_other').classList.remove('d-none');">
+                                อื่นๆ
+                            </p>
+                        </div>
+                        <div class="col-3"></div>
+                        <!-- โรคอื่นๆ -->
+                        <div id="div_diseaes_other" class="col-12 d-none">
+                            <div class="row">
+                                <div class="col-6">
+                                    <br>
+                                    <label>กรุณาระบุชื่อโรค</label>
+                                    <br><br>
+                                    <input class="form-control" type="text" name="input_diseaes_other" id="input_diseaes_other" value="" placeholder="กรุณาระบุชื่อโรค">
+                                </div>
+                                <div class="col-6">
+                                    <br>
+                                    <label class="d-none">ว่าง</label>
+                                    <br><br>
+                                    <p style="width:50%;" class="btn btn-primary text-white main-shadow main-radius" onclick="report_disease_input()">
+                                        ยืนยัน
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ชื่อโรค -->
+            <input class="form-control d-none" type="text" name="name_disease" id="name_disease" value="">
+
+            <div class="modal-body collapse" id="modal_detail_covid">
+                <div class=" radius-10 d-none d-lg-block" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
+                    <div class="d-flex align-items-center">
+                        <div class="row col-12" style="background:none;">
+                            <input type="text" name="text_array" id="text_array" class="form-control d-none">
+                            <div class="col-9">
+                                <h5>ค้นหาชื่อ</h5>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="ค้นหาจากชื่อ..." oninput="search_name('{{ $id_partner_name_area }}','{{ $text_name_area }}');">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row col-12">
+                    <div id="div_content_search_name">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="close_madal_main" type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+                <!-- <button type="button" class="btn btn-primary">ยืนยัน</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--------------------------- end modal how to use covid --------------------------->
 <form style="float: left;" method="GET" action="{{ url('/check_in_admin') }}" accept-charset="UTF-8" class="col-12 form-inline float-right" role="search">
 
@@ -215,10 +326,9 @@ $id_partner_name_area = 'all' ;
                             <h3 style="margin-top: 10px;">กรุณาเลือกพื้นที่</h3>
                         </div>
                         <div class="col-3" style="padding:0px;">
-                            <a style="float: right;" type="button" data-toggle="modal" data-target="#how_to_use_covid">
-                                <button class="btn btn-primary btn-sm">
-                                    <i class="fas fa-info-circle"></i>วิธีใช้
-                                </button>
+                            <!-- ปุ่มวิธีใช้ -->
+                            <a class="btn btn-primary btn-sm" style="float: right;" type="button" data-toggle="modal" data-target="#how_to_use_covid">
+                                <i class="fas fa-info-circle"></i>วิธีใช้
                             </a>
                         </div>
                         <div class="col-6">
@@ -235,10 +345,9 @@ $id_partner_name_area = 'all' ;
                             </select>
                         </div>
                         <div class="col-6">
-                            <a style="float: right;margin-top: 15px;" type="button" data-toggle="modal" data-target="#covid">
-                                <button class="btn btn-warning btn-sm">
-                                    <i class="fas fa-head-side-virus"></i> ค้นหาผู้ติดเชื้อ !
-                                </button>
+                            <!-- ปุ่มค้นหาผู้ติดเชื้อ -->
+                            <a class="btn btn-warning btn-sm" style="float: right;margin-top: 15px;" type="button" data-toggle="modal" data-target="#covid">
+                                <i class="fas fa-head-side-virus"></i> ค้นหาผู้ติดเชื้อ !
                             </a>
                         </div>
                     </div>
@@ -298,6 +407,9 @@ $id_partner_name_area = 'all' ;
                     <div class="col-9">
                         <h3 style="margin-top: 8px;" class="font-weight-bold mb-0">
                             รายชื่อ Check in / out
+                            <span class="text-secondary" style="font-size:15px;">
+                                (แสดงผลย้อนหลัง 60 วัน)
+                            </span>
                         </h3>
                     </div>
 
@@ -352,115 +464,6 @@ $id_partner_name_area = 'all' ;
                 <div class="pagination round-pagination " style="margin-top:10px;"> {!! $check_in->appends(['search' => Request::get('search')])->render() !!} </div>
             </div>
         </div>
-
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="covid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ค้นหาผู้ติดเชื้อ</h5>
-                        <span id="btn_show_name" class="d-none" data-toggle="collapse" href="#modal_detail_covid" role="button" aria-expanded="false" aria-controls="modal_detail_covid">
-                            แสดงรายชื่อ
-                        </span>
-                    </div>
-                    <div class="modal-body" id="select_disease">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-3">
-                                    <p style="width:100%;" class="btn btn-danger text-white main-shadow main-radius" onclick="report_disease('covid');">
-                                        พบเชื้อโควิด ! <i class="fas fa-virus"></i>
-                                    </p>
-                                </div>
-                                <div class="col-3">
-                                    <p style="width:100%;" class="btn btn-outline-danger main-shadow main-radius" onclick="report_disease('ฝีดาษลิง');">
-                                        พบเชื้อฝีดาษลิง ! <i class="fas fa-virus"></i>
-                                    </p>
-                                </div>
-                                <div class="col-3">
-                                    <p style="width:100%;" class="btn btn-warning text-white main-shadow main-radius" data-toggle="collapse" href="#disease_all" role="button" aria-expanded="false" aria-controls="disease_all">
-                                        พบเชื้ออื่นๆ <i class="fas fa-bacterium"></i>
-                                    </p>
-                                </div>
-                                <div class="col-3">
-                                    <!-- ว่าง -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-body collapse" id="disease_all">
-                        <div class="col-12">
-                            <div class="row">
-                                @php
-                                $ix = 1 ;
-                                @endphp
-                                @foreach($diseases as $disease)
-                                <div class="col-3">
-                                    <p style="width:100%;" class="btn_dis btn main-shadow main-radius" onclick="report_disease('{{ $disease->name }}');">
-                                        {{ $disease->name }}
-                                    </p>
-                                </div>
-                                @endforeach
-                                <div class="col-3">
-                                    <p style="width:100%;" class="btn_dis btn main-shadow main-radius" onclick="document.querySelector('#div_diseaes_other').classList.remove('d-none');">
-                                        อื่นๆ
-                                    </p>
-                                </div>
-                                <div class="col-3"></div>
-                                <!-- โรคอื่นๆ -->
-                                <div id="div_diseaes_other" class="col-12 d-none">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <br>
-                                            <label>กรุณาระบุชื่อโรค</label>
-                                            <br><br>
-                                            <input class="form-control" type="text" name="input_diseaes_other" id="input_diseaes_other" value="" placeholder="กรุณาระบุชื่อโรค">
-                                        </div>
-                                        <div class="col-6">
-                                            <br>
-                                            <label class="d-none">ว่าง</label>
-                                            <br><br>
-                                            <p style="width:50%;" class="btn btn-primary text-white main-shadow main-radius" onclick="report_disease_input()">
-                                                ยืนยัน
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ชื่อโรค -->
-                    <input class="form-control d-none" type="text" name="name_disease" id="name_disease" value="">
-
-                    <div class="modal-body collapse" id="modal_detail_covid">
-                        <div class=" radius-10 d-none d-lg-block" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
-                            <div class="d-flex align-items-center">
-                                <div class="row col-12" style="background:none;">
-                                    <input type="text" name="text_array" id="text_array" class="form-control d-none">
-                                    <div class="col-9">
-                                        <h5>ค้นหาชื่อ</h5>
-                                    </div>
-                                    <div class="col-3">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="ค้นหาจากชื่อ..." oninput="search_name('{{ $id_partner_name_area }}','{{ $text_name_area }}');">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row col-12">
-                            <div id="div_content_search_name">
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="close_madal_main" type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-                        <!-- <button type="button" class="btn btn-primary">ยืนยัน</button> -->
-                    </div>
-                </div>
-            </div>
-        </div>
 </form>
 
 <!-- Modal send_finish -->
@@ -483,64 +486,9 @@ $id_partner_name_area = 'all' ;
             <div class="modal-footer d-none">
                 <button id="close_madal_send_finish" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
-            <!-- <div class="container">
-            <div class="row">
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">Check_in</div>
-                        <div class="card-body">
-                            <a href="{{ url('/check_in/create') }}" class="btn btn-success btn-sm" title="Add New Check_in">
-                                <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                            </a>
-
-                            <form method="GET" action="{{ url('/check_in') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
-                                    <span class="input-group-append">
-                                        <button class="btn btn-secondary" type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                </div>
-                            </form>
-
-                            <br/>
-                            <br/>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th><th>User Id</th><th>Time In</th><th>Time Out</th><th>Check In At</th><th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($check_in as $item)
-                                        <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->user_id }}</td><td>{{ $item->time_in }}</td><td>{{ $item->time_out }}</td><td>{{ $item->check_in_at }}</td>
-                                            <td>
-                                                <a href="{{ url('/check_in/' . $item->id) }}" title="View Check_in"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                                <a href="{{ url('/check_in/' . $item->id . '/edit') }}" title="Edit Check_in"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                                                <form method="POST" action="{{ url('/check_in' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                    {{ method_field('DELETE') }}
-                                                    {{ csrf_field() }}
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Check_in" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                                <div class="pagination-wrapper"> {!! $check_in->appends(['search' => Request::get('search')])->render() !!} </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        </div>
+    </div>
+</div>
 
             <script>
                 document.addEventListener('DOMContentLoaded', (event) => {
@@ -585,7 +533,7 @@ $id_partner_name_area = 'all' ;
                     fetch("{{ url('/') }}/api/search_name/" + id_partner_name_area + "/" + text_name_area + "/" + name.value)
                         .then(response => response.json())
                         .then(result => {
-                            // console.log(result);
+                            console.log(result);
 
                             let div_content_search_name = document.querySelector('#div_content_search_name');
                             div_content_search_name.textContent = "";
@@ -598,7 +546,7 @@ $id_partner_name_area = 'all' ;
                             // titel name
                             let div_header_name = document.createElement("div");
                             let class_div_header_name = document.createAttribute("class");
-                            class_div_header_name.value = "col-4 text-center";
+                            class_div_header_name.value = "col-3 text-center";
                             div_header_name.setAttributeNode(class_div_header_name);
                             let para_name = document.createElement("P");
                             para_name.innerHTML = "ชื่อ";
@@ -608,17 +556,27 @@ $id_partner_name_area = 'all' ;
                             // titel phone
                             let div_header_phone = document.createElement("div");
                             let class_div_header_phone = document.createAttribute("class");
-                            class_div_header_phone.value = "col-4 text-center";
+                            class_div_header_phone.value = "col-3 text-center";
                             div_header_phone.setAttributeNode(class_div_header_phone);
                             let para_phone = document.createElement("P");
                             para_phone.innerHTML = "เบอร์โทร";
                             div_header_phone.appendChild(para_phone);
                             div_header.appendChild(div_header_phone);
 
+                            // created_check_in
+                            let div_header_created_check_in = document.createElement("div");
+                            let class_div_header_created_check_in = document.createAttribute("class");
+                            class_div_header_created_check_in.value = "col-3 text-center";
+                            div_header_created_check_in.setAttributeNode(class_div_header_created_check_in);
+                            let para_created_check_in = document.createElement("P");
+                            para_created_check_in.innerHTML = "วันที่ : เวลา";
+                            div_header_created_check_in.appendChild(para_created_check_in);
+                            div_header.appendChild(div_header_created_check_in);
+
                             // titel btn
                             let div_header_btn = document.createElement("div");
                             let class_div_header_btn = document.createAttribute("class");
-                            class_div_header_btn.value = "col-4 text-center";
+                            class_div_header_btn.value = "col-3 text-center";
                             div_header_btn.setAttributeNode(class_div_header_btn);
                             div_header.appendChild(div_header_btn);
 
@@ -638,7 +596,7 @@ $id_partner_name_area = 'all' ;
                                 // data name
                                 let div_data_name = document.createElement("div");
                                 let class_div_data_name = document.createAttribute("class");
-                                class_div_data_name.value = "col-4";
+                                class_div_data_name.value = "col-3";
                                 div_data_name.setAttributeNode(class_div_data_name);
                                 let para_data_name = document.createElement("P");
                                 let style_para_name = document.createAttribute("style");
@@ -657,7 +615,7 @@ $id_partner_name_area = 'all' ;
                                 // data phone
                                 let div_data_phone = document.createElement("div");
                                 let class_div_data_phone = document.createAttribute("class");
-                                class_div_data_phone.value = "col-4 text-center";
+                                class_div_data_phone.value = "col-3 text-center";
                                 div_data_phone.setAttributeNode(class_div_data_phone);
                                 let para_data_phone = document.createElement("P");
                                 let style_para_phone = document.createAttribute("style");
@@ -668,10 +626,24 @@ $id_partner_name_area = 'all' ;
                                 div_data_phone.appendChild(para_data_phone);
                                 div_data.appendChild(div_data_phone);
 
+                                // data created_check_in
+                                let div_data_created_check_in = document.createElement("div");
+                                let class_div_data_created_check_in = document.createAttribute("class");
+                                class_div_data_created_check_in.value = "col-3 text-center";
+                                div_data_created_check_in.setAttributeNode(class_div_data_created_check_in);
+                                let para_data_created_check_in = document.createElement("P");
+                                let style_para_created_check_in = document.createAttribute("style");
+                                style_para_created_check_in.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;";
+                                para_data_created_check_in.setAttributeNode(style_para_created_check_in);
+                                para_data_created_check_in.innerHTML = item.created_check_in
+
+                                div_data_created_check_in.appendChild(para_data_created_check_in);
+                                div_data.appendChild(div_data_created_check_in);
+
                                 // data btn
                                 let div_data_btn = document.createElement("div");
                                 let class_div_data_btn = document.createAttribute("class");
-                                class_div_data_btn.value = "col-4 text-center";
+                                class_div_data_btn.value = "col-3 text-center";
                                 div_data_btn.setAttributeNode(class_div_data_btn);
 
                                 let btn_data = document.createElement("button");

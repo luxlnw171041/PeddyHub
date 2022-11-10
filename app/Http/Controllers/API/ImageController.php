@@ -397,6 +397,96 @@ class ImageController extends Controller
 
         }
 
+        // Theme 3
+        if ($num_theme_qr == '3') {
+            // เรียกรูปภาพใส่ $image // logo viicheck && sticker
+            $image = Image::make(public_path('peddyhub/images/check_in/theme/promotion/26.png'));
+            $image->orientate();
+
+            // หัวภาพ
+            $hade_img = Image::make(public_path('peddyhub/images/check_in/theme/promotion/27.png'));
+            // ระบายสี
+            $hade_img->colorize( $color_1 , $color_2 , $color_3 );
+            // $hade_img->colorize( 50, 0, 0 );
+
+            // QR-code
+            $qr_code = Image::make( storage_path("app/public") . "/" .  $url_img );
+            $qr_code->resize(590, 590);
+            $hade_img->insert($qr_code ,'bottom-left', 165, 240);
+
+            // แทรกหัวภาพ
+            $image->insert($hade_img);
+
+            // สติกเกอร์
+            $stk_img = Image::make(public_path('peddyhub/images/check_in/theme/promotion/28.png'));
+            // แทรกสติกเกอร์
+            $image->insert($stk_img);
+
+            // logo partner
+            $logo_partner = Image::make( storage_path("app/public") . "/" .  $img_logo_partner );
+            $logo_partner->resize(420,420);
+            $image->insert($logo_partner,'top-right', 55, 30);
+
+            if($cuont_name_partner >= 37){
+                $image->text($name_partner, 825, 320, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(65);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }elseif($cuont_name_partner >= 30 && $cuont_name_partner < 37){
+                $image->text($name_partner, 825, 320, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(75);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }elseif($cuont_name_partner < 30) {
+                $image->text($name_partner, 825, 320, function($font) {
+                    $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                    $font->size(85);
+                    $font->color('#ffffff');
+                    $font->align('center');
+                    $font->valign('top');
+                });
+            }
+
+            if ($name_new_check_in != 'รวม') {
+
+                if($cuont_name_new_check_in >= 30){
+                    $image->text($name_new_check_in, 1140, 653, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(35);
+                        $font->color('#000000');
+                        $font->align('left');
+                        $font->valign('top');
+                    });
+                }elseif($cuont_name_new_check_in >= 20 && $cuont_name_new_check_in < 30){
+                    $image->text($name_new_check_in, 1150, 645, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(50);
+                        $font->color('#ffffff');
+                        $font->align('left');
+                        $font->valign('top');
+                    });
+                }elseif($cuont_name_new_check_in < 20) {
+                    $image->text($name_new_check_in, 1200, 640, function($font) {
+                        $font->file(public_path('fonts/Prompt/Prompt-Black.ttf'));
+                        $font->size(75);
+                        $font->color('#ffffff');
+                        $font->align('left');
+                        $font->valign('top');
+                    });
+                }
+
+            }
+
+            $image->save( storage_path("app/public")."/check_in". "/" . 'artwork_' . $name_partner . '_' . $name_new_check_in . '.png' );
+
+        }
+
         return "OK";
     
         

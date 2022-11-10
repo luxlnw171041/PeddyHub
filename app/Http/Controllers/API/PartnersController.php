@@ -23,10 +23,11 @@ class PartnersController extends Controller
 
             $data = DB::table('profiles')
                 ->join('check_ins', 'profiles.id', '=', 'check_ins.user_id')
-                ->select('profiles.*')
+                ->select('profiles.*' , 'check_ins.created_at as created_check_in')
                 ->where("check_ins.check_in_at", 'LIKE', "%$id_partner_name_area%")
                 ->where("profiles.real_name" , 'LIKE', "%$name%")
-                ->groupBy('profiles.id')
+                // ->groupBy('profiles.id')
+                ->groupBy('check_ins.created_at')
                 ->get();
 
         }else{
@@ -35,7 +36,8 @@ class PartnersController extends Controller
                 ->select('profiles.*')
                 ->where("check_ins.partner_id", $id_partner_name_area)
                 ->where("profiles.real_name" , 'LIKE', "%$name%")
-                ->groupBy('profiles.id')
+                // ->groupBy('profiles.id')
+                ->groupBy('check_ins.created_at')
                 ->get();
         }
 

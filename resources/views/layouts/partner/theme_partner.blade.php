@@ -517,7 +517,7 @@
             .then(response => response.json())
             .then(result => {
                 // console.log(result);
-                console.log(result[0]['class_color_menu']);
+                // console.log(result[0]['class_color_menu']);
                 let delayInMilliseconds = 200; 
 
 		        setTimeout(function() {
