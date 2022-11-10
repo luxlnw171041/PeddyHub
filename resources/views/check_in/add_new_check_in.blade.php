@@ -246,12 +246,12 @@
         fetch("{{ url('/') }}/api/create_new_area_check_in/"+name_partner_re+"/"+name_new_check_in )
             .then(response => response.text())
             .then(id_latest => {
-                console.log(id_latest);
+                // console.log(id_latest);
 
                 let url = "" ;
                 url = "https://chart.googleapis.com/chart?cht=qr&chl=https://www.peddyhub.com/welcome_check_in_line?location=" + id_latest + "&chs=500x500&choe=UTF-8" ;
 
-                console.log(url);
+                // console.log(url);
 
                 let data = {
                     'url' : url,
