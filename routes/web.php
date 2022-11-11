@@ -45,6 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('hospital_near', 'Hospital_nearController');
     Route::resource('partner', 'PartnerController'); 
     Route::resource('time_zone', 'Time_zoneController');
+    Route::get('/check_in/admin_gallery', 'Check_inController@admin_gallery');
 });
 // END ADMIN
 

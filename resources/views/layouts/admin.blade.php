@@ -96,6 +96,17 @@
 						<div class="menu-title">Partner</div>
 					</a>
 				</li>
+				<li class="menu-label" style="font-size:15px;">
+                    อื่นๆ
+                </li>
+                <li>
+					<a href="{{ url('/check_in/admin_gallery') }}">
+						<div class="parent-icon">
+							<i class="fa-solid fa-qrcode"></i>
+						</div>
+						<div class="menu-title">QR-Code เช็คอิน</div>
+					</a>
+				</li>
                 <li class="menu-label" style="font-size:15px;">
                     การใช้งาน
                 </li>
