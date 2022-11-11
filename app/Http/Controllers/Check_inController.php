@@ -36,8 +36,10 @@ class Check_inController extends Controller
         $select_time_2 = $request->get('select_time_2');
         $select_name = $request->get('select_name');
 
-        $data_user_check_in = profile::where('real_name', $select_name)->get();
+        $data_user_check_in = Profile::where("real_name", "LIKE", "%$select_name%")->get();
         
+        $id_user_check_in = "" ;
+
         foreach($data_user_check_in as $item){
             $id_user_check_in = $item->user_id ;
         }
@@ -56,20 +58,13 @@ class Check_inController extends Controller
                 $id_partner_name_area = $data_name_area->id ;
             }
         }
-
-        // echo "request >> " . $request_name_area;
-        // echo "<br>";
-        // echo "text_name_area >> " . $text_name_area;
-        // echo "<br>";
-        // echo "id_partner_name_area >> " . $id_partner_name_area;
-        // echo "<br>";
-        // exit();
         
         // ชื่อ อย่างเดียว
         if ( !empty($select_name) and empty($select_time_1) and empty($select_date) ) {
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
             ->where('status', 'show')
             ->where('user_id', $id_user_check_in)
+            ->orderBy('created_at' , 'DESC')
             ->latest()->paginate($perPage);
                 
         }
@@ -78,6 +73,7 @@ class Check_inController extends Controller
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
                 ->where('status', 'show')
                 ->whereDate('created_at', $select_date)
+                ->orderBy('created_at' , 'DESC')
                 ->latest()->paginate($perPage);
         }
         // วันที่ และ ชื่อ.
@@ -86,6 +82,7 @@ class Check_inController extends Controller
                 ->where('status', 'show')
                 ->where('user_id',$id_user_check_in)
                 ->whereDate('created_at', $select_date)
+                ->orderBy('created_at' , 'DESC')
                 ->latest()->paginate($perPage);
         }
         // วันที่ และ เวลา
@@ -99,6 +96,7 @@ class Check_inController extends Controller
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
                 ->where('status', 'show')
                 ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
+                ->orderBy('created_at' , 'DESC')
                 ->latest()->paginate($perPage);
         }
         // วันที่ และ เวลา และ ชื่อ
@@ -113,12 +111,14 @@ class Check_inController extends Controller
                 ->where('status', 'show')
                 ->whereBetween('created_at', [$date_and_time_1, $date_and_time_2])
                 ->where('user_id', $id_user_check_in)
+                ->orderBy('created_at' , 'DESC')
                 ->latest()->paginate($perPage);
         }
         // ว่าง
         else {
             $check_in = Check_in::where('check_in_at', 'LIKE', "%$id_partner_name_area%")
             ->where('status', 'show')
+            ->orderBy('created_at' , 'DESC')
             ->latest()->paginate($perPage);
         }
 

@@ -25,9 +25,11 @@ class PartnersController extends Controller
                 ->join('check_ins', 'profiles.id', '=', 'check_ins.user_id')
                 ->select('profiles.*' , 'check_ins.created_at as created_check_in')
                 ->where("check_ins.check_in_at", 'LIKE', "%$id_partner_name_area%")
+                ->where('check_ins.status' , 'show')
                 ->where("profiles.real_name" , 'LIKE', "%$name%")
-                // ->groupBy('profiles.id')
-                ->groupBy('check_ins.created_at')
+                ->groupBy('profiles.id')
+                ->orderBy('created_at' , 'ASC')
+                // ->groupBy('check_ins.created_at')
                 ->get();
 
         }else{
@@ -35,9 +37,11 @@ class PartnersController extends Controller
                 ->join('check_ins', 'profiles.id', '=', 'check_ins.user_id')
                 ->select('profiles.*')
                 ->where("check_ins.partner_id", $id_partner_name_area)
+                ->where('check_ins.status' , 'show')
                 ->where("profiles.real_name" , 'LIKE', "%$name%")
-                // ->groupBy('profiles.id')
-                ->groupBy('check_ins.created_at')
+                ->groupBy('profiles.id')
+                ->orderBy('created_at' , 'ASC')
+                // ->groupBy('check_ins.created_at')
                 ->get();
         }
 
@@ -136,6 +140,8 @@ class PartnersController extends Controller
             $risk_groups = Check_in::where("user_id" ,"!=" , $user_id)
                 ->where("check_in_at", 'LIKE', "%$id_partner_name_area%")
                 ->whereBetween('created_at', [$date_time_in, $date_time_out])
+                ->where('status' , 'show')
+                ->orderBy('created_at' , 'DESC')
                 ->groupBy('user_id')
                 ->get();
 

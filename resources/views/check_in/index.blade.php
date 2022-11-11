@@ -211,7 +211,9 @@ $id_partner_name_area = 'all' ;
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">ค้นหาผู้ติดเชื้อ</h5>
+                <h5 class="modal-title" id="exampleModalLabel">
+                    ค้นหาผู้ติดเชื้อ ในพื้นที่ : <b><span id="span_h5_name_disease" class="text-info"></span></b>
+                </h5>
                 <span id="btn_show_name" class="d-none" data-toggle="collapse" href="#modal_detail_covid" role="button" aria-expanded="false" aria-controls="modal_detail_covid">
                     แสดงรายชื่อ
                 </span>
@@ -346,7 +348,7 @@ $id_partner_name_area = 'all' ;
                         </div>
                         <div class="col-6">
                             <!-- ปุ่มค้นหาผู้ติดเชื้อ -->
-                            <a class="btn btn-warning btn-sm" style="float: right;margin-top: 15px;" type="button" data-toggle="modal" data-target="#covid">
+                            <a id="btn_modal_covid" class="btn btn-warning btn-sm d-none" style="float: right;margin-top: 15px;" type="button" data-toggle="modal" data-target="#covid">
                                 <i class="fas fa-head-side-virus"></i> ค้นหาผู้ติดเชื้อ !
                             </a>
                         </div>
@@ -355,7 +357,7 @@ $id_partner_name_area = 'all' ;
                     <div class="row col-12" id="filter_data">
                         <center>
                             <div class="row col-12">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <label class="control-label">{{ 'วันที่' }}</label>
                                     <input class="form-control" type="date" name="select_date" id="select_date" value="{{ request('select_date') }}">
                                 </div>
@@ -373,20 +375,37 @@ $id_partner_name_area = 'all' ;
                                     <label class="control-label">{{ 'เวลา' }}</label>
                                     <input class="form-control" type="time" name="select_time_2" id="select_time_2" value="{{ request('select_time_2') }}">
                                 </div>
-                                <div class="col-md-2">
-                                    <label class="control-label">{{ 'ชื่อ' }}</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="select_name" id="select_name" placeholder="ค้นหาชื่อ..." value="{{ request('select_name') }}">
+                                <!-- <div class="col-md-2">
+                                    <div class="d-none">
+                                        <label class="control-label">{{ 'ชื่อ' }}</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="select_name" id="select_name" placeholder="ค้นหาชื่อ..." value="{{ request('select_name') }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 col-lg-3 col-12">
+                                </div> -->
+                                <div class="col-md-4 col-lg-4 col-12">
                                     <br>
                                     <span class="input-group-append">
                                         <button id="btn_submit_search" class="btn btn-info text-white" type="submit">
                                             <i class="fa fa-search"></i>ค้นหา
                                         </button>
                                     </span>
-                                    <a class="btn btn-danger " href="{{ url('/check_in_admin') }}">
+
+                                    @php
+                                        $url = url()->full();
+                                        $url_sp = explode('?' , $url);
+
+                                        if( count($url_sp) > 1 ){
+                                            $url_sp_2 = explode('name_area=' , $url_sp[1]);
+                                            $url_sp_3 = explode('&' , $url_sp_2[1]);
+                                            $url_name_area = $url_sp_3[0] ;
+                                        }else{
+                                            $url_name_area = 'all' ;
+                                        }
+                                        
+                                    @endphp
+
+                                    <a class="btn btn-danger " href="{{ url('/check_in_admin?name_area=') . $url_name_area }}">
                                         ล้างการค้นหา
                                     </a>
                                 </div>
@@ -494,11 +513,13 @@ $id_partner_name_area = 'all' ;
                 document.addEventListener('DOMContentLoaded', (event) => {
                     // console.log("START");
                     @if(!empty($text_name_area))
-                    document.querySelector('#data_check_in').classList.remove('d-none');
-                    document.querySelector('#filter_data').classList.remove('collapse');
+                        document.querySelector('#data_check_in').classList.remove('d-none');
+                        document.querySelector('#filter_data').classList.remove('collapse');
+                        document.querySelector('#btn_modal_covid').classList.remove('d-none');
+                        document.querySelector('#span_h5_name_disease').innerHTML = '{{ $text_name_area }}';
                     @else
-                    document.querySelector('#data_check_in').classList.add('d-none');
-                    document.querySelector('#filter_data').classList.add('collapse');
+                        document.querySelector('#data_check_in').classList.add('d-none');
+                        document.querySelector('#filter_data').classList.add('collapse');
                     @endif
                 });
 
@@ -506,7 +527,7 @@ $id_partner_name_area = 'all' ;
                     // console.log(name_disease);
                     document.querySelector('#name_disease').value = name_disease;
 
-                    document.querySelector('#exampleModalLabel').innerHTML = 'ค้นหาผู้ติดเชื้อ : ' + '<b class="text-danger">' + name_disease + '</b>';
+                    document.querySelector('#exampleModalLabel').innerHTML = 'ค้นหาผู้ติดเชื้อ : ' + '<b class="text-danger">' + name_disease + '</b>' + ' ในพื้นที่ : <b><span class="text-info">' + '{{ $text_name_area }}'  + '</span></b>';
                     document.querySelector('#select_disease').classList.add('d-none');
                     document.querySelector('#disease_all').classList.add('d-none');
 
@@ -533,7 +554,7 @@ $id_partner_name_area = 'all' ;
                     fetch("{{ url('/') }}/api/search_name/" + id_partner_name_area + "/" + text_name_area + "/" + name.value)
                         .then(response => response.json())
                         .then(result => {
-                            console.log(result);
+                            // console.log(result);
 
                             let div_content_search_name = document.querySelector('#div_content_search_name');
                             div_content_search_name.textContent = "";
@@ -546,7 +567,7 @@ $id_partner_name_area = 'all' ;
                             // titel name
                             let div_header_name = document.createElement("div");
                             let class_div_header_name = document.createAttribute("class");
-                            class_div_header_name.value = "col-3 text-center";
+                            class_div_header_name.value = "col-4 text-center";
                             div_header_name.setAttributeNode(class_div_header_name);
                             let para_name = document.createElement("P");
                             para_name.innerHTML = "ชื่อ";
@@ -556,7 +577,7 @@ $id_partner_name_area = 'all' ;
                             // titel phone
                             let div_header_phone = document.createElement("div");
                             let class_div_header_phone = document.createAttribute("class");
-                            class_div_header_phone.value = "col-3 text-center";
+                            class_div_header_phone.value = "col-4 text-center";
                             div_header_phone.setAttributeNode(class_div_header_phone);
                             let para_phone = document.createElement("P");
                             para_phone.innerHTML = "เบอร์โทร";
@@ -564,19 +585,19 @@ $id_partner_name_area = 'all' ;
                             div_header.appendChild(div_header_phone);
 
                             // created_check_in
-                            let div_header_created_check_in = document.createElement("div");
-                            let class_div_header_created_check_in = document.createAttribute("class");
-                            class_div_header_created_check_in.value = "col-3 text-center";
-                            div_header_created_check_in.setAttributeNode(class_div_header_created_check_in);
-                            let para_created_check_in = document.createElement("P");
-                            para_created_check_in.innerHTML = "วันที่ : เวลา";
-                            div_header_created_check_in.appendChild(para_created_check_in);
-                            div_header.appendChild(div_header_created_check_in);
+                            // let div_header_created_check_in = document.createElement("div");
+                            // let class_div_header_created_check_in = document.createAttribute("class");
+                            // class_div_header_created_check_in.value = "col-3 text-center";
+                            // div_header_created_check_in.setAttributeNode(class_div_header_created_check_in);
+                            // let para_created_check_in = document.createElement("P");
+                            // para_created_check_in.innerHTML = "วันที่ : เวลา";
+                            // div_header_created_check_in.appendChild(para_created_check_in);
+                            // div_header.appendChild(div_header_created_check_in);
 
                             // titel btn
                             let div_header_btn = document.createElement("div");
                             let class_div_header_btn = document.createAttribute("class");
-                            class_div_header_btn.value = "col-3 text-center";
+                            class_div_header_btn.value = "col-4 text-center";
                             div_header_btn.setAttributeNode(class_div_header_btn);
                             div_header.appendChild(div_header_btn);
 
@@ -596,7 +617,7 @@ $id_partner_name_area = 'all' ;
                                 // data name
                                 let div_data_name = document.createElement("div");
                                 let class_div_data_name = document.createAttribute("class");
-                                class_div_data_name.value = "col-3";
+                                class_div_data_name.value = "col-4";
                                 div_data_name.setAttributeNode(class_div_data_name);
                                 let para_data_name = document.createElement("P");
                                 let style_para_name = document.createAttribute("style");
@@ -615,7 +636,7 @@ $id_partner_name_area = 'all' ;
                                 // data phone
                                 let div_data_phone = document.createElement("div");
                                 let class_div_data_phone = document.createAttribute("class");
-                                class_div_data_phone.value = "col-3 text-center";
+                                class_div_data_phone.value = "col-4 text-center";
                                 div_data_phone.setAttributeNode(class_div_data_phone);
                                 let para_data_phone = document.createElement("P");
                                 let style_para_phone = document.createAttribute("style");
@@ -627,23 +648,23 @@ $id_partner_name_area = 'all' ;
                                 div_data.appendChild(div_data_phone);
 
                                 // data created_check_in
-                                let div_data_created_check_in = document.createElement("div");
-                                let class_div_data_created_check_in = document.createAttribute("class");
-                                class_div_data_created_check_in.value = "col-3 text-center";
-                                div_data_created_check_in.setAttributeNode(class_div_data_created_check_in);
-                                let para_data_created_check_in = document.createElement("P");
-                                let style_para_created_check_in = document.createAttribute("style");
-                                style_para_created_check_in.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;";
-                                para_data_created_check_in.setAttributeNode(style_para_created_check_in);
-                                para_data_created_check_in.innerHTML = item.created_check_in
+                                // let div_data_created_check_in = document.createElement("div");
+                                // let class_div_data_created_check_in = document.createAttribute("class");
+                                // class_div_data_created_check_in.value = "col-3 text-center";
+                                // div_data_created_check_in.setAttributeNode(class_div_data_created_check_in);
+                                // let para_data_created_check_in = document.createElement("P");
+                                // let style_para_created_check_in = document.createAttribute("style");
+                                // style_para_created_check_in.value = "position: relative;margin-top: 20px; z-index: 5; font-size:18px;";
+                                // para_data_created_check_in.setAttributeNode(style_para_created_check_in);
+                                // para_data_created_check_in.innerHTML = item.created_check_in
 
-                                div_data_created_check_in.appendChild(para_data_created_check_in);
-                                div_data.appendChild(div_data_created_check_in);
+                                // div_data_created_check_in.appendChild(para_data_created_check_in);
+                                // div_data.appendChild(div_data_created_check_in);
 
                                 // data btn
                                 let div_data_btn = document.createElement("div");
                                 let class_div_data_btn = document.createAttribute("class");
-                                class_div_data_btn.value = "col-3 text-center";
+                                class_div_data_btn.value = "col-4 text-center";
                                 div_data_btn.setAttributeNode(class_div_data_btn);
 
                                 let btn_data = document.createElement("button");
