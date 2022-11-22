@@ -1,6 +1,35 @@
 @extends('layouts.peddyhub')
 
 @section('content')
+
+@if(Auth::user()->role == "admin")
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <a href="#" class="btn btn-block btn-primary mb-3" id="btnDownload">Download</a>
+    <script>
+    function download(url){
+    var a = $("<a style='display:none' id='js-downloder'>")
+    .attr("href", url)
+    .attr("download", "test.png")
+    .appendTo("body");
+
+    a[0].click();
+
+    a.remove();
+    }
+
+    function saveCapture(element) {
+    html2canvas(element).then(function(canvas) {
+        download(canvas.toDataURL("image/png"));
+    })
+    }
+
+    $('#btnDownload').click(function(){
+    var element = document.querySelector("#div-pet-card");
+    saveCapture(element)
+    })
+    </script>
+@endif
+
 <meta property="og:title" content="{{$pet->name}}" />
 <meta property="og:description" content="YOUR DESCRIPTION HERE" />
 <meta property="og:image" content="{{ url('storage/'.$pet->photo )}}" />
@@ -60,15 +89,345 @@
     .margin-name {
         margin: 21px 0px 0px 0px !important;
     }
+
+  .pet-card{
+        position: relative;
+        padding: auto;
+        width: min(100% - 2rem , 500px);
+    }
+    .pet-card .on-img{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-weight: bold;
+    font-family: 'Kanit', sans-serif;
+    /* border: #B8205B 1px solid; */
+    
+    white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;    
+    }
+    .pet-card .icon-pet{
+        width: 13%;
+        border: black solid 1px;
+        border-radius: 50%;
+        padding: 2%;
+        top:14%;
+        left: 11%;
+    }
+    .pet-card .card-category{
+        
+        top:10%;
+        left: 48%;
+        width: 55%;
+        text-align-last: left;
+        font-size: 1.5vw;
+    }.th-number-category{
+        top:15%;
+        left: 35.5%;
+        width: 30%;
+        text-align-last: left;
+        font-size:0.85vw;
+    }
+    .en-number-category{
+        top:20%;
+        left: 35.5%;
+        width: 30%;
+        text-align-last: left;
+        font-size:0.85vw;
+    }
+    .id-pet{
+        top:17.5%;
+        left: 71%;
+        width: 40%;
+        text-align-last: left;
+        font-size:1.2vw;
+    }
+    .name-pet{
+        top:30%;
+        left: 50%;
+        width: 90%;
+        text-align-last: left;
+        font-size:0.9vw;
+    }
+    .pet-name{
+        font-size:1.5vw;
+    }
+    .pet-qr{
+        top:45%;
+        left: 17%;
+        width: 17%;
+    }
+    
+    .owl-nav{
+        display: none;
+    }
+    .partner{
+        bottom: -6%;
+        left:50%;
+        width:90%;
+        
+    }
+
+    @media only screen and (min-width: 0px) and (max-width: 435px) {
+        .pet-card .card-category{
+            font-size:5vw;
+        }
+        .id-pet ,.pet-name{
+            font-size:4vw;
+        }
+    }   
+    @media only screen and (min-width: 436px) and (max-width: 991px) {
+        .pet-card .card-category{
+            font-size:2.5vw!important;
+
+        }
+        .th-number-category ,.en-number-category ,.pet-card .address ,.name-pet,.pet-card .phone,.pet-card .eng-birth,.pet-card .birth-pet ,.pet-card .eng-birth span,.pet-card .birth-pet span ,.pet-card .phone span{
+            font-size:2vw;
+
+        } 
+        .id-pet ,.pet-name{
+            font-size:3vw;
+        }
+    }
+    .birth-pet{
+        top:38%;
+        left: 50%;
+        width: 45%;
+        text-align-last: left;
+        font-size:0.9vw;
+    }
+    .birth-pet span{
+        font-size:1.2vw;
+    }.eng-birth{
+        top:45%;
+        left: 50%;
+        width: 45%;
+        text-align-last: left;
+        font-size:0.9vw;
+        color:#B8205B!important;
+
+    }.eng-birth span{
+        font-size:1.2vw;
+        color:#B8205B!important;
+
+    }.phone{
+        top:52%;
+        left: 50%;
+        width: 45%;
+        text-align-last: left;
+        font-size:0.9vw;
+    }.phone span{
+        font-size:1.2vw;
+
+    }.address{
+        top:60%;
+        left: 38.7%;
+        width: 68%;
+        text-align-last: left;
+        font-size:0.9vw;
+    }.date-card{
+        flex-direction: column;
+        top:72%;
+        left: 14%;
+        width: 18%;
+        text-align-last: left;line-height: 110%;
+    }
+    .date-card .data-date{
+        font-size:0.9vw;line-height: 1;
+        font-family: 'Kanit', sans-serif;
+
+    }
+    .date-card span{
+        color: #B8205B;
+        font-family: 'Kanit', sans-serif;
+
+    } .pet-card .owner-name{
+        flex-direction: column;
+        top:75%;
+        left: 38.2%;
+        width: 30%;
+        text-align-last: center;
+        line-height: 110%;
+    }
+    .owner-name .data-date{
+        font-size:0.9vw;line-height: 1;
+        font-family: 'Kanit', sans-serif;
+
+    }
+    .owner-name span{
+        color: #B8205B;
+        font-family: 'Kanit', sans-serif;
+
+    }
+    .pet-card .exp{
+        flex-direction: column;
+        top:72%;
+        left: 63%;
+        width: 19%;
+        text-align-last: right;
+        line-height: 110%;
+    }
+    .exp .data-date{
+        font-size:0.9vw;
+        line-height: 110%;
+        font-family: 'Kanit', sans-serif;
+
+    }
+    .exp span{
+        color: #B8205B;
+        font-family: 'Kanit', sans-serif;
+
+    }.img-pet{
+        width: 22%;
+        top: 60%;
+        border-radius: 1vw;
+        left: 85%;
+        border: #B8205B 2px solid;
+        object-fit: cover;
+    }.power{
+        font-size:0.9vw;
+    }
+    .logo-card-pet{
+        width: 20%;
+        top: 5%;
+        right: -5%;
+    }
 </style>
+ @php
+    $pet_category = $pet->pet_category_id ;
+    $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
+
+@endphp
+@if(Auth::user()->role == "admin")
+    <center>
+        <div class="pet-card " id="div-pet-card">
+            <img src="{{ asset('/peddyhub/images/home_5/pet_id_card.png') }}" class="bg-card" alt="">
+            <img class="logo-card-pet on-img"  src="{{ asset('/peddyhub/images/logo/logo-2.png') }}"  alt="">
+
+            @switch( $pet_category )
+                @case (1)
+                    <img class="on-img icon-pet" src="{{ asset('/peddyhub/images/img-icon/dog-1.png') }}" alt="">  
+                @break
+                @case (2)
+                    <img class="on-img icon-pet" src="{{ asset('/peddyhub/images/img-icon/cat-1.png') }}" alt="">  
+                @break
+                @case (3)
+                    <img class="on-img icon-pet" src="{{ asset('/peddyhub/images/img-icon/bird-1.png') }}" alt="">  
+                @break
+                @case (4)
+                    <img class="on-img icon-pet" src="{{ asset('/peddyhub/images/img-icon/fish-1.png') }}" alt="">  
+                @break
+                @case (5)
+                    <img class="on-img icon-pet" src="{{ asset('/peddyhub/images/img-icon/rabbit-1.png') }}" alt="">  
+                @break
+                @case (6)
+                    <img class="on-img icon-pet" src="{{ asset('/peddyhub/images/img-icon/spider-1.png') }}" alt="">  
+                @break
+            @endswitch
+            <span class="on-img card-category">บัตรประจำตัว {{ $pet->pet_category->name}}</span>
+            <span class="on-img th-number-category"> <b> เลขประจำตัว{{ $pet->pet_category->name}}</b></span>
+            <span class="on-img en-number-category" style="color:#B8205B"> <b> indentification Number</b></span>
+            <span class="on-img id-pet"> <b> {{ $pet->pet_category_id}} {{ date_format($pet->created_at,"Y") }} {{ str_pad($pet->id, 5, '0', STR_PAD_LEFT) }} 52 1</b></span>
+            <span class="on-img name-pet">
+                ชื่อตัวและชื่อสกุล 
+                <span class="pet-name">
+                    @switch( $pet->gender )
+                        @case ("ชาย")
+                            สุดหล่อ
+                        @break
+                        @case ("หญิง")
+                            สุดสวย
+                        @break
+                    @endswitch
+                    {{$pet->name}}
+                </span>
+            </span>
+            <a href="{{ url('/user_pet/' . $pet->id) }}">
+                <img class="pet-qr on-img" src="{{ url('storage/'.$pet->qr_code )}}" alt="">
+            </a>
+            <span class="on-img birth-pet"> เกิดวันที่ 
+                <span>
+                    {{ thaidate("j M Y" , strtotime($pet->birth)) }}
+                </span>
+            </span>
+
+            <span class="on-img eng-birth"> Date Of Birth 
+                <span>
+                    {{ date("j M Y" , strtotime($pet->birth)) }}
+                </span>
+            </span>
+            <span class="on-img phone"> เบอร์
+                <span>
+                    {{ preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '$1-$2-$3', $pet->profile->phone)  }}
+                </span>
+            </span>
+            <span class="on-img address"> <b> ที่อยู่ {{ $pet->profile->tambon_th }} {{ $pet->profile->amphoe_th }} {{ $pet->profile->changwat_th }}</b></span>
+
+            <span class="date-card on-img ">
+                <div class="data-date">
+                    {{ thaidate("j M Y" , strtotime($pet->created_at)) }} <br>
+                    วันออกบัตร <br>
+                    <span>
+                        {{ date("j M Y" , strtotime($pet->created_at)) }} <br>
+                        Date of Issue 
+                    </span>
+                </div>
+            </span>
+            <span class="owner-name on-img ">
+                <div class="data-date">
+                        @if(!empty($pet->profile->real_name))
+                            ({{ $pet->profile->real_name }})
+                        @else
+                           ({{ $pet->profile->name }})
+                        @endif 
+                        <br>
+                    <span>
+                     เจ้าของ
+                    </span>
+                </div>
+            </span>
+            <span class="exp on-img ">
+                <div class="data-date">
+                ตลอดชีพ <br>
+                บัตรหมดอายุ <br>
+                    <span>
+                    Life Time <br>
+                    EXP
+                    </span>
+                </div>
+            </span>
+
+            <img class="img-pet on-img" src="{{ url('storage/'.$pet->photo )}}" alt="image of pet" title="pet" class="fluid customer">
+
+            <div class="col-12 on-img partner text-center owl-carousel-pet-card notranslate" >
+                <span class="power">powered by</span>
+                    <div class="owl-carousel">
+                        @foreach($partner as $item)
+                            <div class="item" >
+                                <div class="testimon">
+                                    <a href="{{$item->link}}" target="bank">
+                                        <img class="p-0 p-md-1 p-lg-2" style="width: 80%;object-fit: contain;max-height: 112px;" src="{{ url('storage/'.$item->logo )}}">
+                                    </a>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+        </div>
+        <div class="col ">
+            <button id="btn_swip" onclick="swipsidecard(); namebtnn();" style="margin-top:5%;border-radius: 25px;font-family: 'Kanit', sans-serif;" class="text-center btn btn-success ">แนวตั้ง</button>
+        </div>
+    </center>
+@endif
 <div id="card_petswip{{$pet->id}}" class="container d-block d-md-none" width="500px" style="padding:5px;margin-top:100px;">
     <div id="htmltoimage_mobile" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;">
             <div class="row">
                 <div class="col-2 text-center d-flex align-items-center" style="padding-right:0px;">
-                    @php
-                    $pet_category = $pet->pet_category_id ;
-                    @endphp
+                   
                     @switch( $pet_category )
                     @case (1)
                     <img id="icon_pet" style="font-size:25px;background-color: white;  border-radius: 25px;border: 1px solid black;padding:10px;" src="{{ asset('/peddyhub/images/img-icon/dog-1.png') }}" alt="">
@@ -115,10 +474,10 @@
                             <b>
                                 @switch( $pet->gender )
                                 @case ("ชาย")
-                                เด็กชาย
+                                    สุดหล่อ
                                 @break
                                 @case ("หญิง")
-                                เด็กหญิง
+                                    สุดสวย
                                 @break
                                 @endswitch
                                 {{$pet->name}}
@@ -172,11 +531,8 @@
                     </div>
                 </div>
                 <div class="col-12 text-center owl-carousel-pet-card notranslate" style="margin-top:-10px;font-family: 'Kanit', sans-serif;padding-top: 20px;">
-                powered by
+                    powered by
                     <div class="owl-carousel">
-                        @php
-                        $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
-                        @endphp
                         @foreach($partner as $item)
                             <div class="item" style="padding-top:5px;">
                                 <div class="testimon">
@@ -439,6 +795,22 @@
 </script>
 <script>
     function namebtn() {
+        var x = document.getElementById("btn_swip");
+        if (x.innerHTML === "แนวตั้ง") {
+            x.innerHTML = "แนวนอน";
+            document.getElementById("btn_download").classList.add('d-none');
+
+        } else {
+            x.innerHTML = "แนวตั้ง";
+            document.getElementById("btn_download").classList.remove('d-none');
+        }
+    }
+</script>
+<script>
+    function swipsidecard() {
+        document.getElementById("div-pet-card").classList.toggle('rotatea');
+    }
+    function namebtnn() {
         var x = document.getElementById("btn_swip");
         if (x.innerHTML === "แนวตั้ง") {
             x.innerHTML = "แนวนอน";

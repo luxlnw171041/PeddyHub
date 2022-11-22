@@ -654,7 +654,7 @@ $(document).ready(function () {
       responsive: {
         0: {
           margin: 20,
-          items: 7
+          items: 6
         },
         700: {
           margin: 20,
