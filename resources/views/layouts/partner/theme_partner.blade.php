@@ -128,6 +128,20 @@
 						</a>
 					</li>
 				@endif
+
+				@if (Auth::user()->id == 1)
+					<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+	                    Broadcast
+	                </li>
+	                <li>
+						<a href="{{ url('/broadcast/broadcast_by_check_in') }}">
+							<div class="parent-icon">
+								<i class="fa-solid fa-location-check"></i>
+							</div>
+							<div class="menu-title" style="font-size:18px;">By Check in</div>
+						</a>
+					</li>
+				@endif
 				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Check In/Out 
                 </li>
