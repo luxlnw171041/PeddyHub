@@ -19,29 +19,434 @@ use App\Models\Lost_Pet;
 use App\Models\Pet;
 use App\Models\Partner;
 use App\Models\Check_in;
+use \Carbon\Carbon;
 
 class test_for_devController extends Controller
 {
     public function main_test(){
 
-        $date_2_month_delete = strtotime("-2 month");
-        $date_use = date("Y-m-d" , $date_2_month_delete);
+        $date_now = date('Y-m-d');
 
-        // 60 days update status check in
-        $check_in_60_update = Check_in::where('created_at' , "<=" , $date_use)
-        ->where('status' , 'show')
-        ->get();
+        $test = Check_in::get();
 
-        foreach ($check_in_60_update as $item) {
-            // Check_in::where('id' , $item->id)->delete();
-            DB::table('check_ins')
-                ->where('id', $item->id)
-                ->update(['status' => 'No',]);
+        $test_2 = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                ->selectRaw('profiles.birth , profiles.sex , profiles.changwat_th , check_ins.user_id , check_ins.created_at , count(check_ins.user_id) as count' )
+                ->where('check_ins.time_in' , '!=' , null)
+                ->groupBy('check_ins.user_id')
+                ->get();
+
+        foreach ($test_2 as $kkk) {
+            if (!empty($kkk->birth)) {
+                $day_age = ((strtotime($date_now) - strtotime($kkk->birth))/  ( 60 * 60 * 24 )) + 1 ;
+                $age = number_format( $day_age / 365 );
+            }else{
+                $age = "" ;
+            }
+
+            if (!empty($kkk->sex)) {
+                $sex = $kkk->sex ;
+            }else{
+                $sex = "" ;
+            }
+            
+            if (!empty($kkk->changwat_th)) {
+                $changwat_th = $kkk->changwat_th ;
+            }else{
+                $changwat_th = "" ;
+            }
+
+            // echo "<br>";
+            echo "<b>User ID</b> : " . $kkk->user_id . " ::: <b>เข้า-ออก</b> = " . $kkk->count . " ครั้ง " . " :: <b>อายุ</b> = " . $age . "( " .$kkk->birth." )" . " :: <b>เพศ</b> = " . $sex . " :: <b>ที่อยู่</b> = " . $changwat_th  ;
+            echo "<br>";
+            echo "------------------------------------------------------------------------------------------------------------------";
+            echo "<br>";
+
         }
 
-        echo "OK" ;
+        echo "****************************************************************************************";
+        echo "<br>";
 
+        // เวลาเข้าออก
+        foreach ($test as $key) {
+            $date = Carbon::parse( $key->created_at , 'UTC+7');
+            $name_day = $date->isoFormat('dddd');
+            $intTotalDay = ((strtotime($date_now) - strtotime($key->created_at))/  ( 60 * 60 * 24 )) + 1 ;
+            $day_ago = number_format($intTotalDay) ;
+
+            if (!empty($key->time_in)) {
+                echo  "พื้นที่ย่อย : " . $key->partner_id . " == " . "User ID : " . $key->user_id . 
+                " == ". " <span style='color: green;'>เวลาเข้า </span>: "  . $key->created_at . " >> " . $name_day . " >>>> ผ่านมาแล้ว...  <b>" . $day_ago . "</b> ...วัน";
+                echo "<br>";
+            }else{
+                echo  "พื้นที่ย่อย : " . $key->partner_id . " == " . "User ID : " . $key->user_id . 
+                " == ". " <span style='color: red;'>เวลาออก </span>: "  . $key->created_at . " >> " . $name_day . " >>>> ผ่านมาแล้ว...  <b>" . $day_ago . "</b> ...วัน";
+                echo "<br>";
+            }
+
+        }
+        echo "-------------------------------------------------";
+
+        // --------------------------------------------------------
+        $arr_select_user = [] ;
+
+        $partner_id = '1';
+
+        $data_partners = Partner::where('id' , $partner_id)->first();
+        $name_partner = $data_partners->name ;
+
+        $id_name_area = '40';
+
+        $time_1 = '15:30' ; // เช็คข้อมูลจากช่องนี้
+        $time_2 = '15:59' ;
+        if ( !empty($time_1) && empty($time_2) ) {
+            $time_2 = '23:59' ;
+        }else{
+            $time_2 = $time_2 ;
+        }
+
+        $select_day = '' ; // เช็คข้อมูลจากช่องนี้
+        $amount_in_out = '' ; // เช็คข้อมูลจากช่องนี้
+        $amount_last_entry = '' ; // เช็คข้อมูลจากช่องนี้
+
+        // data user
+        $this_month = false ; // เช็คข้อมูลจากช่องนี้
+        $check_click_user = false ; // เช็คข้อมูลจากช่องนี้
+        $select_user_sex = '' ;
+        $select_user_age = '' ;
+        $select_user_location = 'จ.พระนครศรีอยุธยา' ;
+
+        $Filter_data = "" ;
+
+
+        // พื้นที่ทั้งหมด
+        if (empty($id_name_area)) {
+            $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                    ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                    ->groupBy('check_ins.user_id')
+                    ->select('profiles.*')
+                    ->get();
+                
+        }
+        // พื้นที่เฉพาะพื้นที่ย่อย
+        else{
+
+            // ทุกอย่างว่างทั้งหมด
+            if ( empty($time_1) && empty($select_day) && empty($amount_in_out) && empty($amount_last_entry) && empty($this_month) && empty($check_click_user) ) {
+
+                $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                    ->where('check_ins.partner_id',  $id_name_area)
+                    ->groupBy('check_ins.user_id')
+                    ->select('profiles.*')
+                    ->get();
+
+                foreach ($data_all_check_partner as $data) {
+                    $arr_data = array();
+                    $arr_data['user_id'] = $data->user_id ;
+                    $arr_data['name'] = $data->name ;
+                    $arr_data['sex'] = $data->sex ;
+                    $arr_data['age'] = $data->birth ;
+
+                    if (in_array($arr_data, $arr_select_user)){
+                        // skip
+                    }else{
+                        array_push( $arr_select_user , $arr_data );
+                    }
+                }
+
+                $Filter_data = $Filter_data . "ไม่ได้กรองข้อมูล" ;
+            }
+
+            // ช่วงเวลา
+            if (!empty($time_1)) {
+                $data_all_check_partner = "" ;
+                $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                    ->where('check_ins.partner_id',  $id_name_area)
+                    ->whereTime('check_ins.created_at', '>=', $time_1)
+                    ->whereTime('check_ins.created_at', '<=', $time_2)
+                    ->groupBy('check_ins.user_id')
+                    ->select('profiles.*')
+                    ->get();
+
+                foreach ($data_all_check_partner as $data) {
+                    $arr_data = array();
+                    $arr_data['user_id'] = $data->user_id ;
+                    $arr_data['name'] = $data->name ;
+                    $arr_data['sex'] = $data->sex ;
+                    $arr_data['age'] = $data->birth ;
+
+                    if (in_array($arr_data, $arr_select_user)){
+                        // skip
+                    }else{
+                        array_push( $arr_select_user , $arr_data );
+                    }
+                }
+
+                $Filter_data = $Filter_data . " , ช่วงเวลา = " . $time_1 . " - " . $time_2 ;
+            }
+
+            // วัน (จันทร์ - อาทิตย์)
+            if (!empty($select_day)) {
+                $data_all_check_partner = "" ;
+                $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                    ->where('check_ins.partner_id',  $id_name_area)
+                    ->select('profiles.*' , 'check_ins.created_at as created_at')
+                    ->get();
+
+                foreach ($data_all_check_partner as $data) {
+                    $date = Carbon::parse( $data->created_at , 'UTC+7');
+                    $name_day = $date->isoFormat('dddd'); 
+
+                    if ($name_day == $select_day) {
+
+                        $arr_data = array();
+                        $arr_data['user_id'] = $data->user_id ;
+                        $arr_data['name'] = $data->name ;
+                        $arr_data['sex'] = $data->sex ;
+                        $arr_data['age'] = $data->birth ;
+
+                        if (in_array($arr_data, $arr_select_user)){
+                            // skip
+                        }else{
+                            array_push( $arr_select_user , $arr_data );
+                        }
+                    }
+                }
+
+                $Filter_data = $Filter_data . " , วัน = " . $select_day ;
+            }
+
+            // จำนวนการเข้าพื้นที่ มากกว่า .. ครั้ง
+            if (!empty($amount_in_out)) {
+                $data_all_check_partner = "" ;
+                $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                    ->selectRaw('profiles.* , count(check_ins.user_id) as count' )
+                    ->where('check_ins.partner_id',  $id_name_area)
+                    ->where('check_ins.time_in' , '!=' , null)
+                    ->groupBy('check_ins.user_id')
+                    ->get();
+
+                foreach ($data_all_check_partner as $data) {
+                    if ($data->count >= $amount_in_out) {
+                        $arr_data = array();
+                        $arr_data['user_id'] = $data->user_id ;
+                        $arr_data['name'] = $data->name ;
+                        $arr_data['sex'] = $data->sex ;
+                        $arr_data['age'] = $data->birth ;
+
+                        if (in_array($arr_data, $arr_select_user)){
+                            // skip
+                        }else{
+                            array_push( $arr_select_user , $arr_data );
+                        }
+                    }
+                }
+
+                $Filter_data = $Filter_data . " , จำนวนการเข้าพื้นที่ มากกว่า = " . $amount_in_out . " ครั้ง" ;
+
+            }
+
+            // เข้า-ออก ล่าสุด .. วัน
+            if (!empty($amount_last_entry)) {
+                $data_all_check_partner = "" ;
+                $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                    ->where('check_ins.partner_id',  $id_name_area)
+                    ->select('profiles.*' , 'check_ins.created_at as created_at')
+                    ->get();
+
+                foreach ($data_all_check_partner as $data) {
+                    $intTotalDay = ((strtotime($date_now) - strtotime($data->created_at))/  ( 60 * 60 * 24 )) + 1 ;
+                    $day_ago = number_format($intTotalDay) ;;
+
+                    if ((int)$amount_last_entry >= (int)$day_ago) {
+                        $arr_data = array();
+                        $arr_data['user_id'] = $data->user_id ;
+                        $arr_data['name'] = $data->name ;
+                        $arr_data['sex'] = $data->sex ;
+                        $arr_data['age'] = $data->birth ;
+
+                        if (in_array($arr_data, $arr_select_user)){
+                            // skip
+                        }else{
+                            array_push( $arr_select_user , $arr_data );
+                        }
+                    }
+                }
+
+                $Filter_data = $Filter_data . " , เข้า-ออก ล่าสุด = " . $amount_last_entry . " วัน" ;
+
+            }
+
+            // ผู้ใช้ที่เกิดเดือนนี้
+            if ($this_month) {
+                $data_all_check_partner = "" ;
+                $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                    ->where('check_ins.partner_id',  $id_name_area)
+                    ->whereMonth('profiles.birth' , date('m'))
+                    ->select('profiles.*')
+                    ->get();
+
+                foreach ($data_all_check_partner as $data) {
+
+                    $arr_data = array();
+                    $arr_data['user_id'] = $data->user_id ;
+                    $arr_data['name'] = $data->name ;
+                    $arr_data['sex'] = $data->sex ;
+                    $arr_data['age'] = $data->birth ;
+
+                    if (in_array($arr_data, $arr_select_user)){
+                        // skip
+                    }else{
+                        array_push( $arr_select_user , $arr_data );
+                    }
+                }
+
+                $Filter_data = $Filter_data . " , ผู้ใช้ที่เกิดเดือน = " . date('m') ;
+
+            }
+
+            // ข้อมูลผู้ใช้
+            if ($check_click_user) {
+                $data_all_check_partner = "" ;
+
+                switch ($select_user_age) {
+                    case '<20':
+                        $range_1 = "0" ;
+                        $range_2 = "20" ;
+                        break;
+                    case '21-29':
+                        $range_1 = "21" ;
+                        $range_2 = "29" ;
+                        break;
+                    case '30-45':
+                        $range_1 = "30" ;
+                        $range_2 = "45" ;
+                        break;
+                    case '46-59':
+                        $range_1 = "46" ;
+                        $range_2 = "59" ;
+                        break;
+                    case '46-59':
+                        $range_1 = "46" ;
+                        $range_2 = "59" ;
+                        break;
+                    case '60+':
+                        $range_1 = "60" ;
+                        $range_2 = "100" ;
+                        break;
+                    
+                    default:
+                        $range_1 = "" ;
+                        $range_2 = "" ;
+                        break;
+                }
+
+                $age_range_1 = date("Y" , strtotime("-$range_1 Year") );
+                $age_range_2 = date("Y" , strtotime("-$range_2 Year") );
+
+                echo "<br>" ;
+                echo "กรองผู้ใช้ :::: " . "sex : " . $select_user_sex  . " >> " . "age : " . $select_user_age . " >> " . "location : " . $select_user_location;
+                echo "<br>" ;
+
+                // ว่างหมด
+                if ( empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ) {
+                    $data_all_check_partner = [] ;
+                }
+                // กรอง 1
+                else if( !empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ){
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.sex' , $select_user_sex)
+                        ->select('profiles.*')
+                        ->get();
+                }else if( empty($select_user_sex) && !empty($select_user_age) && empty($select_user_location) ){
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->whereYear('profiles.birth' , "<=" , $age_range_1)
+                        ->whereYear('profiles.birth' , ">=" , $age_range_2)
+                        ->select('profiles.*')
+                        ->get();
+                }else if( empty($select_user_sex) && empty($select_user_age) && !empty($select_user_location) ){
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.changwat_th' , $select_user_location)
+                        ->select('profiles.*')
+                        ->get();
+                }
+                // กรอง 2 
+                else if( !empty($select_user_sex) && !empty($select_user_age) && empty($select_user_location) ){
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.sex' , $select_user_sex)
+                        ->whereYear('profiles.birth' , "<=" , $age_range_1)
+                        ->whereYear('profiles.birth' , ">=" , $age_range_2)
+                        ->select('profiles.*')
+                        ->get();
+                }else if( !empty($select_user_sex) && empty($select_user_age) && !empty($select_user_location) ){
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.sex' , $select_user_sex)
+                        ->where('profiles.changwat_th' , $select_user_location)
+                        ->select('profiles.*')
+                        ->get();
+                }else if( empty($select_user_sex) && !empty($select_user_age) && !empty($select_user_location) ){
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->whereYear('profiles.birth' , "<=" , $age_range_1)
+                        ->whereYear('profiles.birth' , ">=" , $age_range_2)
+                        ->where('profiles.changwat_th' , $select_user_location)
+                        ->select('profiles.*')
+                        ->get();
+                }
+                // กรอง 3
+                else if( !empty($select_user_sex) && !empty($select_user_age) && !empty($select_user_location) ){
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.sex' , $select_user_sex)
+                        ->whereYear('profiles.birth' , "<=" , $age_range_1)
+                        ->whereYear('profiles.birth' , ">=" , $age_range_2)
+                        ->where('profiles.changwat_th' , $select_user_location)
+                        ->select('profiles.*')
+                        ->get();
+                }
+                
+
+                foreach ($data_all_check_partner as $data) {
+
+                    $arr_data = array();
+                    $arr_data['user_id'] = $data->user_id ;
+                    $arr_data['name'] = $data->name ;
+                    $arr_data['sex'] = $data->sex ;
+                    $arr_data['age'] = $data->birth ;
+
+                    if (in_array($arr_data, $arr_select_user)){
+                        // skip
+                    }else{
+                        array_push( $arr_select_user , $arr_data );
+                    }
+                }
+
+                $Filter_data = $Filter_data . " , ข้อมูลผู้ใช้ = " . "เพศ : " . $select_user_sex . " / " . "อายุ : " . $select_user_age . " / " . "สถานที่ : " . $select_user_location ;
+
+            }
+
+        }
+
+
+
+        echo "<br>";
+        echo "กรองข้อมูล ::: " . $Filter_data ;
+        echo "<br>";
+
+        echo "<br>";
+        echo "<br>";
+        echo "<pre>";
+        print_r($arr_select_user);
+        echo "<pre>";
         exit();
+
+
+        // -------------------------------------------------------------
+
     }
 
     public function user_check_in()

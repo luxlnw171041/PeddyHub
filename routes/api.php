@@ -84,6 +84,7 @@ Route::post('/save_img_url', 'API\ImageController@save_img_url');
 Route::post('/admin_create_img_check_in', 'API\ImageController@admin_create_img_check_in');
 Route::post('/create_img_check_in', 'API\ImageController@create_img_check_in');
 Route::get('/create_new_area_check_in/{name_partner}/{name_new_check_in}', 'Check_inController@create_new_area_check_in');
+Route::post('/search_data_broadcast_by_check_in', 'Check_inController@search_data_broadcast_by_check_in');
 
 // edit_post
 Route::get('/edit_post/{post_id}', 'PostController@edit_post');

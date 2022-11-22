@@ -135,7 +135,8 @@ Route::middleware(['auth', 'role:admin-partner,partner'])->group(function () {
     Route::get('/check_in/gallery', 'Check_inController@gallery');
     Route::get('/check_in/add_new_check_in', 'Check_inController@add_new_check_in');
     Route::get('/manage_user_partner', 'PartnerController@manage_user');
-	Route::get('/create_user_partner', 'PartnerController@create_user_partner');
+    Route::get('/create_user_partner', 'PartnerController@create_user_partner');
+	Route::get('/broadcast/broadcast_by_check_in', 'PartnerController@broadcast_by_check_in');
     Route::get('/partner_index', function () {
         return view('partner_admin/partner_index');
     });

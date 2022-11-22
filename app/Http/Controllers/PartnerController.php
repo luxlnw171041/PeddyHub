@@ -17,6 +17,7 @@ use App\Models\Product;
 
 use Illuminate\Http\Request;
 use App\Models\Time_zone;
+use Illuminate\Support\Facades\DB;
 
 class PartnerController extends Controller
 {
@@ -229,6 +230,36 @@ class PartnerController extends Controller
         $data_time_zone = Time_zone::groupBy('TimeZone')->orderBy('CountryCode' , 'ASC')->get();
 
         return view('partner_admin.user.create_user_partner', compact('data_partners' , 'partners' , 'username' , 'password','data_time_zone'));
+    }
+
+    function broadcast_by_check_in(Request $request){
+        
+        $data_user = Auth::user();
+        $partner_id = $data_user->partner ;
+
+        $data_partners = Partner::where("id", $partner_id)
+            ->where("name_area", null)
+            ->first();
+
+        $name_partner = $data_partners->name ;
+
+        $all_area_partners = Partner::where("name", $data_partners->name)
+            ->where("name_area", "!=", "")
+            ->get();
+
+        // location
+         $location_user = DB::table('lat_longs')
+                        ->select('changwat_th')
+                        ->groupBy('changwat_th')
+                        ->orderBy('changwat_th', 'asc')
+                        ->get();
+
+        $check_in = Check_in::where('check_in_at', 'LIKE', "%$name_partner%")
+            ->groupBy('user_id')
+            ->get();
+
+        return view('partner_admin.broadcast.broadcast_by_check_in', compact('partner_id' , 'data_partners','all_area_partners','location_user', 'check_in'));
+
     }
 
     public function dashboard_partner(Request $request)
