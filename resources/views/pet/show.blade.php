@@ -2,33 +2,33 @@
 
 @section('content')
 
-@if(Auth::user()->role == "admin")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <a href="#" class="btn btn-block btn-primary mb-3" id="btnDownload">Download</a>
-    <script>
-    function download(url){
-    var a = $("<a style='display:none' id='js-downloder'>")
-    .attr("href", url)
-    .attr("download", "test.png")
-    .appendTo("body");
 
-    a[0].click();
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<a href="#" class="btn btn-block btn-primary mb-3" id="btnDownload">Download</a>
+<script>
+  function download(url){
+  var a = $("<a style='display:none' id='js-downloder'>")
+  .attr("href", url)
+  .attr("download", "test.png")
+  .appendTo("body");
 
-    a.remove();
-    }
+  a[0].click();
 
-    function saveCapture(element) {
-    html2canvas(element).then(function(canvas) {
-        download(canvas.toDataURL("image/png"));
-    })
-    }
+  a.remove();
+}
 
-    $('#btnDownload').click(function(){
-    var element = document.querySelector("#div-pet-card");
-    saveCapture(element)
-    })
-    </script>
-@endif
+function saveCapture(element) {
+  html2canvas(element).then(function(canvas) {
+    download(canvas.toDataURL("image/png"));
+  })
+}
+
+$('#btnDownload').click(function(){
+  var element = document.querySelector("#div-pet-card");
+  saveCapture(element)
+})
+</script>
+
 
 <meta property="og:title" content="{{$pet->name}}" />
 <meta property="og:description" content="YOUR DESCRIPTION HERE" />
@@ -178,6 +178,10 @@
         .id-pet ,.pet-name{
             font-size:4vw;
         }
+        .th-number-category ,.en-number-category ,.pet-card .address ,.name-pet,.pet-card .phone,.pet-card .eng-birth,.pet-card .birth-pet ,.pet-card .eng-birth span,.pet-card .birth-pet span ,.pet-card .phone span{
+            font-size:2vw;
+
+        } 
     }   
     @media only screen and (min-width: 436px) and (max-width: 991px) {
         .pet-card .card-category{
@@ -301,7 +305,6 @@
     $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get()
 
 @endphp
-@if(Auth::user()->role == "admin")
     <center>
         <div class="pet-card " id="div-pet-card">
             <img src="{{ asset('/peddyhub/images/home_5/pet_id_card.png') }}" class="bg-card" alt="">
@@ -421,7 +424,7 @@
             <button id="btn_swip" onclick="swipsidecard(); namebtnn();" style="margin-top:5%;border-radius: 25px;font-family: 'Kanit', sans-serif;" class="text-center btn btn-success ">แนวตั้ง</button>
         </div>
     </center>
-@endif
+
 <div id="card_petswip{{$pet->id}}" class="container d-block d-md-none" width="500px" style="padding:5px;margin-top:100px;">
     <div id="htmltoimage_mobile" class="card col-lg-12 col-12 " style="border: 2px solid #B8205B;padding:2px;background-image: url('{{ asset('/peddyhub/images/background/pattern-4.png') }}');background-repeat: no-repeat;background-attachment: fixed; background-size: cover;">
         <div class="card-body" style="padding:5px;">
