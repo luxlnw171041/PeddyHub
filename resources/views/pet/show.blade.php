@@ -117,7 +117,11 @@
         }
         .id-pet ,.pet-name{
             font-size:4vw;
-        }
+        }.power , .pet-card .card-section-1 , .pet-card .card-section-2,.pet-card .card-section-3,.pet-card .card-section-4 ,
+         .th-number-category ,.en-number-category ,.pet-card .address ,.name-pet,.pet-card .phone,.pet-card .eng-birth,.pet-card .birth-pet ,.pet-card .eng-birth span,.pet-card .birth-pet span ,.pet-card .phone span{
+            font-size:2vw;
+
+        } 
     }   
     @media only screen and (min-width: 436px) and (max-width: 991px) {
         .pet-card .card-category{
