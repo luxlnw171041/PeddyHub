@@ -69,7 +69,7 @@
               "paddingAll": "7px",
               "action": {
                 "type": "uri",
-                "uri": "https://www.peddyhub.com/pet/pet_1"
+                "uri": "https://www.peddyhub.com/pet/pet_1?openExternalBrowser=1"
               }
             },
             {

@@ -68,7 +68,7 @@
               "alignItems": "center",
               "action": {
                 "type": "uri",
-                "uri": "https://www.peddyhub.com/pet/pet_1"
+                "uri": "https://www.peddyhub.com/pet/pet_1?openExternalBrowser=1"
               },
               "paddingAll": "7px"
             },
@@ -211,7 +211,7 @@
               "alignItems": "center",
               "action": {
                 "type": "uri",
-                "uri": "https://www.peddyhub.com/pet/pet_2"
+                "uri": "https://www.peddyhub.com/pet/pet_2?openExternalBrowser=1"
               },
               "paddingAll": "7px"
             },
