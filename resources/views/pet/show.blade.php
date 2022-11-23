@@ -113,13 +113,13 @@
 
     @media only screen and (min-width: 0px) and (max-width: 435px) {
         .pet-card .card-category{
-            font-size:5vw;
+            font-size:5vw!important;
         }
         .id-pet ,.pet-name{
-            font-size:4vw;
+            font-size:4vw!important;
         }.power , .pet-card .card-section-1 , .pet-card .card-section-2,.pet-card .card-section-3,.pet-card .card-section-4 ,
          .th-number-category ,.en-number-category ,.pet-card .address ,.name-pet,.pet-card .phone,.pet-card .eng-birth,.pet-card .birth-pet ,.pet-card .eng-birth span,.pet-card .birth-pet span ,.pet-card .phone span{
-            font-size:2vw;
+            font-size:2vw!important;
 
         } 
     }   
@@ -127,12 +127,12 @@
         .pet-card .card-category{
             font-size:2.5vw!important;
 
-        }.owner,.th-number-category ,.en-number-category ,.pet-card .address ,.name-pet,.pet-card .phone,.pet-card .eng-birth,.pet-card .birth-pet ,.pet-card .eng-birth span,.pet-card .birth-pet span ,.pet-card .phone span{
-            font-size:2vw;
+        }.pet-card .owner,.th-number-category ,.en-number-category ,.pet-card .address ,.name-pet,.pet-card .phone,.pet-card .eng-birth,.pet-card .birth-pet ,.pet-card .eng-birth span,.pet-card .birth-pet span ,.pet-card .phone span{
+            font-size:2vw!important;
 
         } 
         .id-pet ,.pet-name{
-            font-size:3vw;
+            font-size:3vw!important;
         }
     }
     .birth-pet{
