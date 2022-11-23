@@ -117,7 +117,7 @@
         }
         .id-pet ,.pet-name{
             font-size:4vw;
-        }.power , .date-card .data-date ,.exp .data-date,.owner-name .data-date,
+        }.power , .card-section-1 , .card-section-2,.card-section-3,.card-section-4 ,
         .th-number-category ,.en-number-category ,.pet-card .address ,.name-pet,.pet-card .phone,.pet-card .eng-birth,.pet-card .birth-pet ,.pet-card .eng-birth span,.pet-card .birth-pet span ,.pet-card .phone span{
             font-size:2vw;
 
