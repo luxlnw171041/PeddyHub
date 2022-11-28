@@ -48,13 +48,14 @@ $(function () {
 	});
 	// === sidebar menu activation js
 	$(function () {
-		for (var i = window.location, o = $(".metismenu li a").filter(function () {
+		for (var i = window.location.href.split('?')[0], o = $(".metismenu li a").filter(function () {
 			return this.href == i;
 		}).addClass("").parent().addClass("mm-active");;) {
 			if (!o.is("li")) break;
 			o = o.parent("").addClass("mm-show").parent("").addClass("mm-active");
 		}
 	});
+	
 	// metismenu
 	$(function () {
 		$('#menu').metisMenu();

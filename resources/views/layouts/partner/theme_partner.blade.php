@@ -92,6 +92,7 @@
 	
 			<!--navigation-->
 			<ul class="metismenu" id="menu" style="font-family: 'Baloo Bhaijaan 2', cursive;font-family: 'Prompt', sans-serif;">
+				
 				<li>
 					<a href="{{ url('/dashboard_partner') }}">
 						<div class="parent-icon"><i class="fa-regular fa-house"></i>
@@ -100,7 +101,32 @@
 					</a>
 				</li>
 				@if (Auth::user()->role == 'admin-partner')
-					<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+					<li class="main-submenu">
+						<a href="#" class="has-arrow">
+							<div class="parent-icon"><i class="fas fa-user-shield"></i>
+							</div>
+							<div class="menu-title">Admin</div>
+						</a>
+						<ul>
+							<li> 
+								<a href="{{ url('/manage_user_partner') }}">
+									<i class="fa-solid fa-users-gear"></i> จัดการผู้ใช้
+								</a>
+							</li>
+							<li> 
+								<a href="{{ url('/lost_pet_partner/index_partner') }}" data-submenu="{{ url('/lost_pet_by_partner') }}" class="sub-menu">
+									<i class="fa-regular fa-magnifying-glass-location"></i> ตามหาสัตว์หาย
+								</a>
+							</li>
+							<li> 
+								<a href="{{ url('adoptpet/create') }}">
+								<i class="fa-solid fa-dog-leashed"></i> Adoption
+								</a>
+							</li>
+						</ul>
+					</li>
+
+					<!-- <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
 	                    Admin
 	                </li>
 	                <li>
@@ -111,7 +137,7 @@
 						</a>
 					</li>
 					<li>
-						<!-- <a href="{{ url('/lost_pet_by_partner') }}"> -->
+						<a href="{{ url('/lost_pet_by_partner') }}">
 						<a href="{{ url('/lost_pet_partner/index_partner') }}">
 							<div class="parent-icon">
 								<i class="fa-regular fa-magnifying-glass-location"></i>
@@ -126,11 +152,137 @@
 							</div>
 							<div class="menu-title" style="font-size:18px;">Adoption</div>
 						</a>
-					</li>
+					</li> -->
 				@endif
 
 				@if (Auth::user()->id == 1)
-					<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+					<!-- Broadcast -->
+					<li id="div_menu_Broadcast" class="">
+						<a class="has-arrow" href="javascript:;" >
+							<div class="parent-icon"><i class="fas fa-bullhorn"></i>
+							</div>
+							<div class="menu-title">Broadcast (LINE)</div>
+						</a>
+						<ul class="mm-collapse " style="">
+
+							<li> 
+								<a id="li_menu_Dashboard" href="{{ url('/broadcast/dashboard') }}">
+									<i class='fas fa-users-cog'></i> Dashboard
+								</a>
+							</li>
+							
+							<!--check in  -->
+							<li class=""> 
+								<a class="has-arrow" href="javascript:;">
+									<i class="bx bx-right-arrow-alt"></i>by Checkin
+								</a>
+								<ul class="mm-collapse " style="">
+									<li > 
+										<li class="div-tooltip"> 
+											<a href="#" class="disabled">
+												<i class='fas fa-users-cog'></i> Dashboard Checkin
+											</a>
+											<span id="tip_car" class="tooltip" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> ฟีเจอร์ยังไม่พร้อมใช้งานขณะนี้</center>
+											</span>
+										</li>
+										<li class="div-tooltip"> 
+											<a id="li_menu_Check_in" href="{{ url('/broadcast/broadcast_by_check_in') }}">
+											<i class="fas fa-map-marker-check"></i> Boardcast Checkin
+											</a>
+											<span id="tip_check_in" class="tooltip d-none" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> อัพเกรดเพื่อใช้ฟีเจอร์นี้</center>
+													โปรดติดต่อ <a href="tel:020277856" class="p-0" style="display: inline;background-color: transparent;text-decoration: underline;color:red">02-027-7856</a> หรือ 
+													<a href="mailto:contact.viicheck@gmail.com" class="p-0" style="display: inline;background-color: transparent;text-decoration: underline;color:red">contact.viicheck@gmail.com</a>  
+											</span>
+										</li>
+									</li>
+								</ul>
+							</li>
+							<!-- check in -->
+
+							<!-- Pet -->
+							<li class=""> <a class="has-arrow" href="javascript:;" ><i class="bx bx-right-arrow-alt"></i>by Pet</a>
+								<ul class="mm-collapse " style="">
+									<li class=""> 
+										<li class="div-tooltip">  
+											<a href="#"class="disabled">
+												<i class='fas fa-users-cog'></i> Dashboard Pet
+
+											</a>
+											<span id="tip_car" class="tooltip" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> ฟีเจอร์ยังไม่พร้อมใช้งานขณะนี้</center>
+											</span>
+										</li>
+										<li class="div-tooltip"> 
+											<a id="li_menu_Pet" class="disabled" href="#">
+												<i class='fas fa-users-cog'></i> Boardcast Pet
+											</a>
+											<span id="tip_check_in" class="tooltip" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> ฟีเจอร์ยังไม่พร้อมใช้งานขณะนี้</center>
+											</span>
+										</li>
+									</li>
+								</ul>
+							</li>
+							<!-- Pet -->
+
+							<!-- User -->
+							<li class=""> <a class="has-arrow" href="javascript:;" ><i class="bx bx-right-arrow-alt"></i>by User</a>
+								<ul class="mm-collapse " style="">
+									<li class=""> 
+										<li class="div-tooltip"> 
+											<a  href="#" class="disabled">
+												<i class='fas fa-users-cog'></i> Dashboard User
+											</a>
+											<span id="tip_car" class="tooltip" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> ฟีเจอร์ยังไม่พร้อมใช้งานขณะนี้</center>
+											</span>
+										</li>
+										<li class="div-tooltip"> 
+											<a id="li_menu_User" href="{{ url('/broadcast/broadcast_by_user') }}">
+												<i class='fas fa-users-cog'></i> Boardcast User
+											</a>
+											<span id="tip_check_in" class="tooltip d-none" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> อัพเกรดเพื่อใช้ฟีเจอร์นี้</center>
+													โปรดติดต่อ <a href="tel:020277856" class="p-0" style="display: inline;background-color: transparent;text-decoration: underline;color:red">02-027-7856</a> หรือ 
+													<a href="mailto:contact.viicheck@gmail.com" class="p-0" style="display: inline;background-color: transparent;text-decoration: underline;color:red">contact.viicheck@gmail.com</a>  
+											</span>
+										</li>
+									</li>
+								</ul>
+							</li>
+							<!-- User -->
+
+							<!-- Cars -->
+							<li class=""> <a class="has-arrow" href="javascript:;" ><i class="bx bx-right-arrow-alt"></i>by Shop</a>
+								<ul class="mm-collapse " style="">
+									<li class=""> 
+										<li class="div-tooltip">  
+											<a href="#"class="disabled">
+												<i class='fas fa-users-cog'></i> Dashboard Shop
+
+											</a>
+											<span id="tip_car" class="tooltip" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> ฟีเจอร์ยังไม่พร้อมใช้งานขณะนี้</center>
+											</span>
+										</li>
+										<li class="div-tooltip"> 
+											<a id="li_menu_Shop" class="disabled" href="{{ url('/broadcast/broadcast_by_car') }}">
+												<i class='fas fa-users-cog'></i> Boardcast Shop
+											</a>
+											<span id="tip_check_in" class="tooltip" style="font-size: 0.95em;">
+												<center><i class="fa-regular fa-triangle-exclamation"></i> ฟีเจอร์ยังไม่พร้อมใช้งานขณะนี้</center>
+											</span>
+										</li>
+									</li>
+								</ul>
+							</li>
+							<!-- Cars -->
+						</ul>
+					</li>
+
+					<!-- <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
 	                    Broadcast
 	                </li>
 	                <li>
@@ -141,8 +293,33 @@
 							<div class="menu-title" style="font-size:18px;">By Check in</div>
 						</a>
 					</li>
-				@endif
-				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+					 -->
+				@endif	
+				<!-- broad cast -->
+
+				<!-- peddycare -->
+				<li>
+					<a href="#" class="has-arrow">
+						<div class="parent-icon"><i class="fa-solid fa-location-check"></i>
+						</div>
+						<div class="menu-title">Check In/Out </div>
+					</a>
+					<ul>
+						<li> 
+							<a href="{{ url('/check_in/add_new_check_in') }}">
+								<i class="fas fa-qrcode"></i> เพิ่มจุด Check in
+							</a>
+						</li>
+						<li> 
+							<a href="{{ url('/check_in/gallery') }}">
+								<i class="far fa-images"></i> คลังภาพ Check in
+							</a>
+						</li>
+					</ul>
+				</li>
+
+
+				<!-- <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Check In/Out 
                 </li>
                 <li>
@@ -165,7 +342,30 @@
 						</div>
 						<div class="menu-title">คลังภาพ Check in</div>
 					</a>
+				</li> -->
+				<!-- peddycare -->
+
+				<!-- shop -->
+				<li>
+					<a href="#" class="has-arrow">
+						<div class="parent-icon"><i class="fas fa-user-shield"></i>
+						</div>
+						<div class="menu-title">Shop</div>
+					</a>
+					<ul>
+						<li> 
+							<a href="{{ url('/product_admin') }}">
+								<i class="fa-solid fa-hand-holding-box"></i>Product
+							</a>
+						</li>
+						<li> 
+							<a href="{{ url('/order_admin') }}">
+								<i class="fa-solid fa-cart-shopping"></i>Order
+							</a>
+						</li>
+					</ul>
 				</li>
+<!-- 				
 				<li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     Shop 
                 </li>
@@ -182,8 +382,31 @@
 						</div>
 						<div class="menu-title" style="font-size:18px;">Order</div>
 					</a>
+				</li> -->
+				<!-- shop -->
+
+				<!-- other -->
+				<li>
+					<a href="#" class="has-arrow">
+						<div class="parent-icon"><i class="fas fa-user-shield"></i>
+						</div>
+						<div class="menu-title">การใช้งาน</div>
+					</a>
+					<ul>
+						<li> 
+							<a href="{{ url('/media') }}">
+							<i class="fa-regular fa-photo-film"></i>สื่อประชาสัมพันธ์
+							</a>
+						</li>
+						<li> 
+							<a href="{{ url('/how_to_use_partner') }}">
+							<i class="fa-regular fa-book"></i>วิธีใช้งาน
+							</a>
+						</li>
+					</ul>
 				</li>
-                <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
+
+                <!-- <li class="menu-label" style="font-size:18px;color:#B8205B;padding-top:12px;text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;">
                     การใช้งาน
                 </li>
                 <li>
@@ -199,7 +422,8 @@
 						</div>
 						<div class="menu-title" style="font-size:18px;">วิธีใช้งาน</div>
 					</a>
-				</li>
+				</li> -->
+				<!-- other -->
 			</ul>
 			<!--end navigation-->
 		</div>
@@ -491,7 +715,7 @@
 	<script src="{{ asset('admin/plugins/highcharts/js/export-data.js') }}"></script>
 	<script src="{{ asset('admin/plugins/highcharts/js/accessibility.js') }}"></script>
 	<script src="{{ asset('admin/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="{{ asset('admin/assets/js/index2.js') }}"></script>
@@ -510,6 +734,7 @@
 		document.addEventListener('DOMContentLoaded', (event) => {
 			// console.log("START");
 			check_data_partner();
+			check_submenu();
     	});
 
 		function change_color()
@@ -785,6 +1010,44 @@
 
         fetch("{{ url('/') }}/api/change_color_menu/"+ color + "/" + color_of_partner + "/" + class_color_menu);
     }
+	</script>
+	<script>
+		function check_submenu(){
+		let menu = $('.sub-menu');
+		var winlocation = window.location.href.split('?')[0]
+		whole_string = winlocation;
+		split_string = whole_string.split(/(\d+)/);
+		
+
+		for (i = 0; i < menu.length; i++) {
+			if(winlocation == menu[i].getAttribute("data-submenu")){
+				menu[i].closest(".main-submenu").classList.add("mm-active");
+				menu[i].closest("li").classList.add("mm-show");
+				menu[i].closest("li").classList.add("mm-active");
+
+			}if(winlocation == menu[i].getAttribute("data-submenu-2")){
+				menu[i].closest(".main-submenu").classList.add("mm-active");
+				menu[i].closest("li").classList.add("mm-show");
+				menu[i].closest("li").classList.add("mm-active");
+			}if(winlocation == menu[i].getAttribute("data-submenu-3")){
+				menu[i].closest(".main-submenu").classList.add("mm-active");
+				menu[i].closest("li").classList.add("mm-show");
+				menu[i].closest("li").classList.add("mm-active");
+			}if(winlocation == menu[i].getAttribute("data-submenu-4")){
+				menu[i].closest(".main-submenu").classList.add("mm-active");
+				menu[i].closest("li").classList.add("mm-show");
+				menu[i].closest("li").classList.add("mm-active");
+			}if(winlocation == menu[i].getAttribute("data-submenu-5")){
+				menu[i].closest(".main-submenu").classList.add("mm-active");
+				menu[i].closest("li").classList.add("mm-show");
+				menu[i].closest("li").classList.add("mm-active");
+			}if(split_string[0] == menu[i].getAttribute("data-submenu-have-id")){
+				menu[i].closest(".main-submenu").classList.add("mm-active");
+				menu[i].closest("li").classList.add("mm-show");
+				menu[i].closest("li").classList.add("mm-active");
+			}
+		}
+	}
 	</script>
 </body>
 
