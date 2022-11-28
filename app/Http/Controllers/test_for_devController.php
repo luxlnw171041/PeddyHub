@@ -349,7 +349,25 @@ class test_for_devController extends Controller
 
                 // ว่างหมด
                 if ( empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ) {
-                    $data_all_check_partner = [] ;
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->groupBy('check_ins.user_id')
+                        ->select('profiles.*')
+                        ->get();
+
+                    foreach ($data_all_check_partner as $data) {
+                        $arr_data = array();
+                        $arr_data['user_id'] = $data->user_id ;
+                        $arr_data['name'] = $data->name ;
+                        $arr_data['sex'] = $data->sex ;
+                        $arr_data['age'] = $data->birth ;
+
+                        if (in_array($arr_data, $arr_select_user)){
+                            // skip
+                        }else{
+                            array_push( $arr_select_user , $arr_data );
+                        }
+                    }
                 }
                 // กรอง 1
                 else if( !empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ){

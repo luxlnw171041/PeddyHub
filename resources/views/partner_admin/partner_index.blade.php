@@ -68,7 +68,7 @@
               </b>
             </h1>
             <h1 style="font-family: 'Prompt', sans-serif;text-shadow: 4px 4px 4px rgba(150, 150, 150, 1);margin-top:25px;"> <b>เข้าสู่</b> </h1>
-            <h1 style="font-family: 'Prompt', sans-serif;text-shadow: 4px 4px 4px rgba(150, 150, 150, 1);margin-top:25px;"> <b>PEDDyHUB PARTNER</b> </h1>
+            <h1 style="font-family: 'Prompt', sans-serif;text-shadow: 4px 4px 4px rgba(150, 150, 150, 1);margin-top:25px;"> <b>PEDDyHUB's PARTNERs</b> </h1>
           </div>
         </div>
       </div>

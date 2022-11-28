@@ -62,6 +62,12 @@
       }
 </style>
 
+<div id="check_in_max" class="div_alert d-none" role="alert">
+    <span id="text_check_in_max">
+        ขออภัย เกินจำนวนที่กำหนด
+    </span>
+</div>
+
 <div class="card radius-10">
 
     <div class="card-body" style="position: relative;padding:30px;">
@@ -70,13 +76,13 @@
             <!-- DIV เลือกจำนวน / กรองข้อมูล -->
             <div class="col-3">
                 <div class="row">
-                    <div class="card filter d-none"  style="padding:20px;">
+                    <div class="card filter"  style="padding:20px;">
                         <div class="col-12">
                             <div class="row form-select-car" >
                                 <div class="col-12 text-center text-selected">
                                     <h5>เลือกจำนวน</h5>
-                                    <span id="">
-                                        (ไม่เกิน <span id="">0</span>)
+                                    <span id="tell_BC_by_check_in_max">
+                                        (ไม่เกิน <span id="amount_remain">{{ $BC_by_check_in_max - $BC_by_check_in_sent }}</span>)
                                     </span>
                                     
                                 </div>
@@ -84,11 +90,11 @@
                                     <div class="row">
                                         <div class="col-7">
                                             <span id="" class=""></span>
-                                        <input min="1" max="500" style="width:100%;" placeholder="ไม่เกิน 0 คัน"  class="form-control" type="number" name="" id="" >
+                                            <input min="0" max="{{ $BC_by_check_in_max - $BC_by_check_in_sent }}" style="width:100%;" placeholder="ไม่เกิน {{ $BC_by_check_in_max - $BC_by_check_in_sent }} คน" class="form-control" type="number" name="select_amount" id="select_amount" oninput="document.querySelector('#span_select_from_amount').innerHTML = '(' + document.querySelector('#select_amount').value + ')',document.querySelector('#span_select_from_amount').classList.remove('d-none');">
                                     </div>
                                     <div class="col-5">
-                                        <button id="" style="width: 100%;" class="btn-select btn btn-primary btn-md">
-                                            เลือก<span id="" class="d-none"></span>
+                                        <button id="btn_select_from_amount" style="width: 100%;" class="btn-select btn btn-primary btn-md" onclick="select_from_amount();">
+                                            เลือก<span id="span_select_from_amount" class=""></span>
                                         </button>
                                     </div>
                                     </div>
@@ -96,14 +102,14 @@
                                 </div>
 
                                 <div class="col-12 mt-3">
-                                    <button id="" style="margin-top: 0px;width: 100%;" class="btn btn-md btn-info text-white btn-select">
-                                        เลือกทั้งหมด&nbsp;(<span id=""> 0 </span>)
+                                    <button id="btn_amount_remain_all" style="margin-top: 0px;width: 100%;" class="btn btn-md btn-info text-white btn-select" onclick="click_select_all();">
+                                        เลือกทั้งหมด&nbsp;(<span id="amount_remain_all">{{ $BC_by_check_in_max - $BC_by_check_in_sent }}</span>)
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12">
-                            <p id="" class="d-none text-danger mb-0" style="margin-top:15px;font-family: 'Kanit', sans-serif;">
+                            <p id="warn_BC_by_check_in_max" class="d-none text-danger mb-0" style="margin-top:15px;font-family: 'Kanit', sans-serif;">
                                 <!-- ข้อความแจ้งเตือน -->
                             </p>
                         </div>
@@ -111,11 +117,14 @@
                         <div class="col-12">
                             <div class="row ">
                                 <div class="col-12 text-selected">
-                                    <h5>เลือกแล้ว</h5> &nbsp;0&nbsp;/ 0 คน
+                                    <h5>
+                                        เลือกแล้ว
+                                        <span id="user_selected">0</span> / {{ $BC_by_check_in_max - $BC_by_check_in_sent }} คัน
+                                    </h5>
                                 </div>
                                 <div class="col-12">
                                     <center>
-                                        <button id="" type="button" class="btn-select btn btn-md btn-success main-shadow main-radius" style="width:70%;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
+                                        <button id="btn_next_selected_user" type="button" class="btn-select btn btn-md btn-success main-shadow main-radius" style="width:70%;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
                                             ต่อไป
                                         </button>
                                     </center>
@@ -445,6 +454,10 @@
                                     </span>
                                 </div>
                                 <div class="col-12">
+
+                                    <label for="arr_user_id_selected" class="control-label">{{ 'arr_user_id_selected' }}</label>
+                                    <input class="form-control d-" type="text" name="arr_user_id_selected" id="arr_user_id_selected" readonly>
+
                                     <!-- content_search_data -->
                                     <div class="row" id="content_search_data">
                                         
@@ -472,6 +485,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
     search_data();
     document.querySelector('#text_searching').innerHTML = "พื้นที่ = " + "ทั้งหมด";
 });
+
+// -------------------------------------------------------------------------------------------------------------
+
+var delayInMilliseconds = 1000; // Delay
+var count_arr_user_id = 0 ;
+var text_BC_remain = "";
+
+var arr_user_id = [] ; // array() user_id
+var arr_user_id_selected = document.querySelector('#arr_user_id_selected'); // input array user_id
+
+if (arr_user_id_selected.value) {
+    count_arr_user_id = JSON.parse(arr_user_id_selected.value).length ;
+}
+
+var remain = {{ $BC_by_check_in_max - $BC_by_check_in_sent }} - count_arr_user_id ; // จำนวนคงเหลือ
+
+var amount_remain = document.querySelector('#amount_remain') ;
+var amount_remain_all = document.querySelector('#amount_remain_all') ;
+
+// -------------------------------------------------------------------------------------------------------------
 
 function search_data(){
 
@@ -554,10 +587,19 @@ function search_data(){
                         age_user = year_now - user_birth_year ;
                     }
 
+                    // DIV COL-3
                     let div_data_name = document.createElement("div");
-                    let class_div_data_name = document.createAttribute("class");
-                        class_div_data_name.value = "col-12 col-md-3 col-lg-3 p-1";
-                        div_data_name.setAttributeNode(class_div_data_name);
+                        let class_div_data_name = document.createAttribute("class");
+                            class_div_data_name.value = "col-12 col-md-3 col-lg-3 p-1";
+                            div_data_name.setAttributeNode(class_div_data_name);
+                        let onclick_btn_select = document.createAttribute("onclick");
+                            onclick_btn_select.value = "click_select('" + result[i]['user_id'] + "')";
+                            div_data_name.setAttributeNode(onclick_btn_select);
+                        let id_div_result_content = document.createAttribute("id");
+                            id_div_result_content.value = "div_result_content_count_" + content_count ;
+                            div_data_name.setAttributeNode(id_div_result_content);
+
+                    // ------------------------------------------------------------
 
                     let btn_select = document.createElement("i");
                         let name_btn_select = document.createAttribute("name");
@@ -569,6 +611,21 @@ function search_data(){
                         let class_btn_select = document.createAttribute("class");
                             class_btn_select.value = "far fa-circle btn";
                             btn_select.setAttributeNode(class_btn_select);
+                        let id_btn_select = document.createAttribute("id");
+                            id_btn_select.value = "btn_select_user_id_" + result[i]['user_id'] ;
+                            btn_select.setAttributeNode(id_btn_select);
+
+                        let text_user_id = result[i]['user_id'].toString();
+
+                            if ( arr_user_id.includes(text_user_id) ) {
+                                // console.log("เลือกแล้ว");
+                                class_btn_select.value = "fas fa-check-circle btn text-success";
+                            }else{
+                                class_btn_select.value = "far fa-circle btn";
+                                // console.log("ยังไม่ได้เลือก");
+                            }
+
+                        btn_select.setAttributeNode(class_btn_select);
 
                         div_data_name.appendChild(btn_select);
 
@@ -632,10 +689,231 @@ function search_data(){
         new_text_searching = new_text_searching + ", สถานที่  = " + select_user_location;
     }
 
-
-
     text_searching.innerHTML = new_text_searching ;
 
+}
+
+// ตรวจสอบเกินจำนวนหรือไม่และเลือกหรือลบ
+function click_select(user_id){
+
+    // document.querySelector('#user_unique').checked = false ;
+    // document.querySelector('#arr_user_id_send_to_user').value = null ;
+    
+    let btn_select_user_id = document.querySelector('#btn_select_user_id_' + user_id);
+    let class_btn_select_user_id = btn_select_user_id.classList[0] ;
+
+    if (remain <= 0) { // ไม่มีโควต้า
+        if (class_btn_select_user_id == "fas") {
+            document.querySelector('#warn_BC_by_check_in_max').classList.add('d-none');
+            drop_user(user_id);
+        }else{
+            // เกินจำนวนที่กำหนด
+            // console.log(remain + " <= 0");
+            document.querySelector('#warn_BC_by_check_in_max').innerHTML = "ขออภัย เกินจำนวนที่กำหนด" ;
+            document.querySelector('#warn_BC_by_check_in_max').classList.remove('d-none');
+
+            document.querySelector('#text_check_in_max').innerHTML = "ขออภัย เกินจำนวนที่กำหนด" ;
+            document.querySelector('#check_in_max').classList.add('up_down');
+
+            const animated = document.querySelector('.up_down');
+            animated.onanimationend = () => {
+                document.querySelector('#check_in_max').classList.remove('up_down');
+            };
+        }
+    }else{ // มีโควต้า
+        if (class_btn_select_user_id == "far") {
+            document.querySelector('#warn_BC_by_check_in_max').classList.add('d-none');
+            select_user(user_id);
+        }else{
+            // เลือกแล้ว
+            drop_user(user_id);
+        }
+    }
+
+}
+
+// คลิกเลือก
+function select_user(user_id){
+    // console.log("select_user");
+
+    if (!arr_user_id_selected.value) {
+        arr_user_id = JSON.parse( '["'+user_id +'"]' );
+        arr_user_id_selected.value = JSON.stringify(arr_user_id) ;
+    }else{
+        arr_user_id = JSON.parse(arr_user_id_selected.value) ;
+
+        if ( arr_user_id.includes(user_id) ) {
+            // 
+        }else{
+            arr_user_id.push(user_id);
+            arr_user_id_selected.value = JSON.stringify(arr_user_id) ;
+        }
+    }
+
+    // ยังไม่ได้เลือก
+    let btn_select_user_id = document.querySelector('#btn_select_user_id_' + user_id);
+        btn_select_user_id.classList = "fas fa-check-circle btn text-success" ;
+
+    document.querySelector('#user_selected').innerHTML = JSON.parse(arr_user_id_selected.value).length ;
+
+    remain = remain - 1 ;
+    text_BC_remain = remain.toString();
+    amount_remain.innerHTML = text_BC_remain ;
+    amount_remain_all.innerHTML = text_BC_remain ;
+
+    remain_it_0(remain);
+
+    document.querySelector("#select_amount").placeholder = "ไม่เกิน " + remain + " คน" ;
+    document.querySelector("#select_amount").max = remain  ;
+    document.querySelector("#select_amount").value = ""  ;
+    document.querySelector("#span_select_from_amount").classList.add("d-none") ;
+    arr_user_id = arr_user_id_selected.value ; 
+}
+
+function drop_user(user_id){
+    // console.log("drop_user");
+
+    let btn_select_user_id = document.querySelector('#btn_select_user_id_' + user_id);
+
+    try{
+        btn_select_user_id.classList = "far fa-circle btn" ;
+    }
+    catch{
+        // 
+    }
+
+    let arr_select_user_id = JSON.parse(arr_user_id_selected.value) ;
+    // delete array by user_id
+    for( var ii = 0; ii < arr_select_user_id.length; ii++){ 
+        if ( arr_select_user_id[ii] === user_id) { 
+            arr_select_user_id.splice(ii, 1); 
+        }
+    }
+    arr_user_id_selected.value = JSON.stringify(arr_select_user_id) ;
+    document.querySelector('#user_selected').innerHTML = JSON.parse(arr_user_id_selected.value).length ;
+
+    remain = remain + 1 ;
+    text_BC_remain = remain.toString();
+    amount_remain.innerHTML = text_BC_remain ;
+    amount_remain_all.innerHTML = text_BC_remain ;
+
+    remain_it_0(remain);
+
+    document.querySelector("#select_amount").placeholder = "ไม่เกิน " + remain + " คน" ;
+    document.querySelector("#select_amount").max = remain  ;
+    document.querySelector("#select_amount").value = ""  ;
+    document.querySelector("#span_select_from_amount").classList.add("d-none") ;
+    arr_user_id = arr_user_id_selected.value ; 
+}
+
+// เลือกจากจำนวน
+function select_from_amount(){
+    // console.log("select_from_amount");
+
+    search_data();
+
+    // ส่งต่อฟังก์ชั่น
+    setTimeout(function() {
+        let select_amount = document.querySelector('#select_amount').value ;
+        select_content_from_amount(select_amount);
+    }, delayInMilliseconds);
+}
+
+// คลิกเลือกทั้งหมด
+function click_select_all(){
+    // console.log("click_select_all");
+
+    search_data();
+
+    // ส่งต่อฟังก์ชั่น
+    setTimeout(function() {
+        select_content_from_amount(remain);
+    }, delayInMilliseconds);
+}
+
+// คลิกเลือกตามจำนวนที่เลือก
+async function select_content_from_amount(amount){
+    // console.log("select_content_from_amount :: " + amount);
+    
+    // เช็ค จำนวนที่เลือกเกินกำหนดหรือไม่
+    if ( amount <= remain ) {
+        document.querySelector('#warn_BC_by_check_in_max').classList.add('d-none');
+        document.querySelector('#tell_BC_by_check_in_max').classList.remove('text-danger');
+
+        // คลิกเลือกตามจำนวน
+        for (var i = 1; i <= amount; i++) {
+
+            let i_btn_select = document.getElementsByName('i_btn_select_' + i);
+            let class_i_btn_select = i_btn_select[0].classList[0] ;
+
+            let uid_i_btn_select = i_btn_select[0].getAttribute('data') ;
+                // console.log(uid_i_btn_select);
+
+            if (!arr_user_id_selected.value) {
+                // arr_user_id ว่าง
+                if (class_i_btn_select == "far") {
+                    document.querySelector('#div_result_content_count_' + i).click();
+                }else{
+                    amount = parseInt(amount) + 1 ;
+                }
+            }else{
+                // arr_user_id ไม่ว่าง
+                arr_user_id = JSON.parse(arr_user_id_selected.value) ;
+
+                if ( arr_user_id.includes(uid_i_btn_select) ) {
+                    // มี user id ใน arr_user_id แล้ว
+                    amount = parseInt(amount) + 1 ; 
+
+                }else{
+                    // ยังไม่มี user id ใน arr_user_id แล้ว
+                    if (class_i_btn_select == "far") {
+                        document.querySelector('#div_result_content_count_' + i).click();
+                    }else{
+                        amount = parseInt(amount) + 1 ;
+                    }
+                }
+            }
+        }
+    }else{
+        document.querySelector('#warn_BC_by_check_in_max').innerHTML = "ขออภัย เกินจำนวนที่กำหนด" ;
+        document.querySelector('#warn_BC_by_check_in_max').classList.remove('d-none');
+        document.querySelector('#tell_BC_by_check_in_max').classList.add('text-danger');
+
+        document.querySelector('#text_check_in_max').innerHTML = "ขออภัย เกินจำนวนที่กำหนด" ;
+        document.querySelector('#check_in_max').classList.add('up_down');
+
+        const animated = document.querySelector('.up_down');
+        animated.onanimationend = () => {
+            document.querySelector('#check_in_max').classList.remove('up_down');
+        };
+    }
+
+}
+
+// เช็คจำนวน = 0
+function remain_it_0(remain){
+    if (remain <= 0) {
+        document.querySelector('#btn_amount_remain_all').disabled = true ;
+        document.querySelector('#btn_select_from_amount').disabled = true ;
+    }else{
+        document.querySelector('#btn_amount_remain_all').disabled = false ;
+        document.querySelector('#btn_select_from_amount').disabled = false ;
+    }
+
+    // เช็คเพื่อเปิด / ปิด ปุ่มต่อไป
+    let count_i = 0 ;
+    let arr_check_in_i = document.querySelector('#arr_user_id_selected'); // input array user_id
+    if (arr_check_in_i.value) {
+        count_i = JSON.parse(arr_check_in_i.value).length ;
+    }
+
+    if (count_i != 0) {
+        document.querySelector('#btn_next_selected_user').disabled = false ;
+        // document.querySelector('#amount').value = count_i.toString(); // MODAL
+        // document.querySelector('#span_amount_send').innerHTML = count_i.toString(); // MODAL
+    }else{
+        document.querySelector('#btn_next_selected_user').disabled = true ;
+    }
 }
 
 function check_click_checked($checked){

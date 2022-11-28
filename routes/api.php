@@ -113,5 +113,9 @@ Route::post('partner_lost_pet', 'Lost_PetController@partner_lost_pet');
 // create TOKEN
 Route::get('Create_Token/{id_partner}', 'API\PartnersController@Create_Token');
 
+// broadcast
+Route::post('/send_content_BC_by_check_in','API\BroadcastController@send_content_BC_by_check_in');
+
+
 
 

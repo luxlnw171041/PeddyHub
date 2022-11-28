@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Profile;
 use App\Models\Check_in;
+use App\Models\Partner_premium;
+use App\Models\Ads_content;
 
 use App\Models\OrderProduct;
 
@@ -258,7 +260,23 @@ class PartnerController extends Controller
             ->groupBy('user_id')
             ->get();
 
-        return view('partner_admin.broadcast.broadcast_by_check_in', compact('partner_id' , 'data_partners','all_area_partners','location_user', 'check_in'));
+        $partner_premium = Partner_premium::where("id_partner",$partner_id)->first();
+
+        if (!empty($partner_premium)) {
+            $BC_by_check_in_max = $partner_premium->BC_by_check_in_max ;
+
+            if ($partner_premium->BC_by_check_in_max == null) {
+                $BC_by_check_in_sent = 0 ;
+            }else{
+                $BC_by_check_in_sent = $partner_premium->BC_by_check_in_sent ;
+            }
+
+            $ads_contents = Ads_content::where('id_partner' , $partner_id)->where('type_content' , 'BC_by_check_in')->get();
+
+            return view('partner_admin.broadcast.broadcast_by_check_in', compact('partner_id' , 'data_partners','all_area_partners','location_user', 'check_in','BC_by_check_in_max','BC_by_check_in_sent','name_partner'));
+        }else{
+            return redirect('404');
+        }
 
     }
 

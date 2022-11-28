@@ -429,6 +429,8 @@ class Check_inController extends Controller
     function search_data_broadcast_by_check_in(Request $request){
 
         $requestData = $request->all();
+        
+        $date_now = date('Y-m-d');
 
         $arr_select_user = [] ;
 
@@ -466,6 +468,7 @@ class Check_inController extends Controller
 
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->groupBy('check_ins.user_id')
                     ->select('profiles.*')
                     ->get();
@@ -490,6 +493,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->whereTime('check_ins.created_at', '>=', $time_1)
                     ->whereTime('check_ins.created_at', '<=', $time_2)
                     ->groupBy('check_ins.user_id')
@@ -516,6 +520,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->select('profiles.*' , 'check_ins.created_at as created_at')
                     ->get();
 
@@ -546,6 +551,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->selectRaw('profiles.* , count(check_ins.user_id) as count' )
                     ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->where('check_ins.time_in' , '!=' , null)
                     ->groupBy('check_ins.user_id')
                     ->get();
@@ -572,6 +578,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->select('profiles.*' , 'check_ins.created_at as created_at')
                     ->get();
 
@@ -600,6 +607,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->whereMonth('profiles.birth' , date('m'))
                     ->select('profiles.*')
                     ->get();
@@ -661,18 +669,39 @@ class Check_inController extends Controller
 
                 // ว่างหมด
                 if ( empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ) {
-                    $data_all_check_partner = [] ;
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
+                        ->groupBy('check_ins.user_id')
+                        ->select('profiles.*')
+                        ->get();
+
+                    foreach ($data_all_check_partner as $data) {
+                        $arr_data = array();
+                        $arr_data['user_id'] = $data->user_id ;
+                        $arr_data['name'] = $data->name ;
+                        $arr_data['sex'] = $data->sex ;
+                        $arr_data['age'] = $data->birth ;
+
+                        if (in_array($arr_data, $arr_select_user)){
+                            // skip
+                        }else{
+                            array_push( $arr_select_user , $arr_data );
+                        }
+                    }
                 }
                 // กรอง 1
                 else if( !empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->select('profiles.*')
                         ->get();
                 }else if( empty($select_user_sex) && !empty($select_user_age) && empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
                         ->select('profiles.*')
@@ -680,6 +709,7 @@ class Check_inController extends Controller
                 }else if( empty($select_user_sex) && empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.changwat_th' , $select_user_location)
                         ->select('profiles.*')
                         ->get();
@@ -688,6 +718,7 @@ class Check_inController extends Controller
                 else if( !empty($select_user_sex) && !empty($select_user_age) && empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
@@ -696,6 +727,7 @@ class Check_inController extends Controller
                 }else if( !empty($select_user_sex) && empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->where('profiles.changwat_th' , $select_user_location)
                         ->select('profiles.*')
@@ -703,6 +735,7 @@ class Check_inController extends Controller
                 }else if( empty($select_user_sex) && !empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
                         ->where('profiles.changwat_th' , $select_user_location)
@@ -713,6 +746,7 @@ class Check_inController extends Controller
                 else if( !empty($select_user_sex) && !empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.check_in_at', 'LIKE' , "%$name_partner%")
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
@@ -747,6 +781,7 @@ class Check_inController extends Controller
 
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.partner_id',  $id_name_area)
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->groupBy('check_ins.user_id')
                     ->select('profiles.*')
                     ->get();
@@ -771,6 +806,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.partner_id',  $id_name_area)
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->whereTime('check_ins.created_at', '>=', $time_1)
                     ->whereTime('check_ins.created_at', '<=', $time_2)
                     ->groupBy('check_ins.user_id')
@@ -797,6 +833,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.partner_id',  $id_name_area)
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->select('profiles.*' , 'check_ins.created_at as created_at')
                     ->get();
 
@@ -827,6 +864,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->selectRaw('profiles.* , count(check_ins.user_id) as count' )
                     ->where('check_ins.partner_id',  $id_name_area)
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->where('check_ins.time_in' , '!=' , null)
                     ->groupBy('check_ins.user_id')
                     ->get();
@@ -853,6 +891,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.partner_id',  $id_name_area)
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->select('profiles.*' , 'check_ins.created_at as created_at')
                     ->get();
 
@@ -881,6 +920,7 @@ class Check_inController extends Controller
                 $data_all_check_partner = "" ;
                 $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                     ->where('check_ins.partner_id',  $id_name_area)
+                    ->where('profiles.type' , 'LIKE' , 'line')
                     ->whereMonth('profiles.birth' , date('m'))
                     ->select('profiles.*')
                     ->get();
@@ -942,18 +982,39 @@ class Check_inController extends Controller
 
                 // ว่างหมด
                 if ( empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ) {
-                    $data_all_check_partner = [] ;
+                    $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
+                        ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
+                        ->groupBy('check_ins.user_id')
+                        ->select('profiles.*')
+                        ->get();
+
+                    foreach ($data_all_check_partner as $data) {
+                        $arr_data = array();
+                        $arr_data['user_id'] = $data->user_id ;
+                        $arr_data['name'] = $data->name ;
+                        $arr_data['sex'] = $data->sex ;
+                        $arr_data['age'] = $data->birth ;
+
+                        if (in_array($arr_data, $arr_select_user)){
+                            // skip
+                        }else{
+                            array_push( $arr_select_user , $arr_data );
+                        }
+                    }
                 }
                 // กรอง 1
                 else if( !empty($select_user_sex) && empty($select_user_age) && empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->select('profiles.*')
                         ->get();
                 }else if( empty($select_user_sex) && !empty($select_user_age) && empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
                         ->select('profiles.*')
@@ -961,6 +1022,7 @@ class Check_inController extends Controller
                 }else if( empty($select_user_sex) && empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.changwat_th' , $select_user_location)
                         ->select('profiles.*')
                         ->get();
@@ -969,6 +1031,7 @@ class Check_inController extends Controller
                 else if( !empty($select_user_sex) && !empty($select_user_age) && empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
@@ -977,6 +1040,7 @@ class Check_inController extends Controller
                 }else if( !empty($select_user_sex) && empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->where('profiles.changwat_th' , $select_user_location)
                         ->select('profiles.*')
@@ -984,6 +1048,7 @@ class Check_inController extends Controller
                 }else if( empty($select_user_sex) && !empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
                         ->where('profiles.changwat_th' , $select_user_location)
@@ -994,6 +1059,7 @@ class Check_inController extends Controller
                 else if( !empty($select_user_sex) && !empty($select_user_age) && !empty($select_user_location) ){
                     $data_all_check_partner = Check_in::join('profiles', 'check_ins.user_id', '=', 'profiles.id')
                         ->where('check_ins.partner_id',  $id_name_area)
+                        ->where('profiles.type' , 'LIKE' , 'line')
                         ->where('profiles.sex' , $select_user_sex)
                         ->whereYear('profiles.birth' , "<=" , $age_range_1)
                         ->whereYear('profiles.birth' , ">=" , $age_range_2)
