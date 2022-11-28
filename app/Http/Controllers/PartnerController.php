@@ -273,7 +273,7 @@ class PartnerController extends Controller
 
             $ads_contents = Ads_content::where('id_partner' , $partner_id)->where('type_content' , 'BC_by_check_in')->get();
 
-            return view('partner_admin.broadcast.broadcast_by_check_in', compact('partner_id' , 'data_partners','all_area_partners','location_user', 'check_in','BC_by_check_in_max','BC_by_check_in_sent','name_partner'));
+            return view('partner_admin.broadcast.broadcast_by_check_in', compact('partner_id' , 'data_partners','all_area_partners','location_user', 'check_in','BC_by_check_in_max','BC_by_check_in_sent','name_partner','ads_contents'));
         }else{
             return redirect('404');
         }

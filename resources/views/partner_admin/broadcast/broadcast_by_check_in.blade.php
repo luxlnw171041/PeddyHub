@@ -68,6 +68,267 @@
     </span>
 </div>
 
+
+<form method="POST" action="{{ url('/') }}/api/send_content_BC_by_check_in" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+    {{ csrf_field() }}
+
+    <input class="form-control d-none" type="text" name="arr_user_id_send_to_user" id="arr_user_id_send_to_user" readonly>
+
+    <input class="form-control d-none" type="text" name="type_content" id="type_content" value="BC_by_check_in">
+    <input class="form-control d-" type="text" name="arr_user_id_selected" id="arr_user_id_selected" readonly>
+    <input class="form-control d-none" type="text" name="name_partner" id="name_partner" value="{{ $name_partner }}">
+    <input class="form-control d-none" type="text" name="id_partner" id="id_partner" value="{{ $partner_id }}">
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-md-9 col-lg-9">
+                        <div class="modal-content" style="border-radius: 20px;">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold;font-family: 'Kanit', sans-serif;">
+                                    กำหนดบรอดแคสต์
+                                </h5>
+                                <div>
+                                    <a class="btn btn-warning btn-sm text-white main-shadow main-radius " onclick="reset_BC();">
+                                        <i class="fas fa-sync"></i> reset
+                                    </a>
+                                    <button type="button" class="close btn btn-md" data-dismiss="modal" aria-label="Close">
+                                        <span style="font-size: 28px;" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-12" style="font-family: 'Kanit', sans-serif;">
+                                        <h4 class="text-dark">สร้างเนื้อหาใหม่</h4>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group {{ $errors->has('name_content') ? 'has-error' : ''}}">
+                                                    <label for="name_content" class="control-label">{{ 'ชื่อเนื้อหา' }}</label>
+                                                    <input style="border-radius: 10px;" class="form-control" name="name_content" type="text" id="name_content" value="" onchange="check_send_content();">
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group {{ $errors->has('link') ? 'has-error' : ''}}">
+                                                    <label for="link" class="control-label">{{ 'ลิงก์' }}</label>
+                                                    <input  style="border-radius: 10px;"class="form-control" name="link" type="text" id="link" value="" onchange="check_send_content();">
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="col-12 d-none">
+                                                <div class="form-group {{ $errors->has('detail') ? 'has-error' : ''}}">
+                                                    <label for="detail" class="control-label">{{ 'คำอธิบาย' }}</label>
+                                                    <!-- <span class="text-secondary">(ไม่แสดงต่อผู้ใช้)</span> -->
+                                                    <textarea class="form-control" name="detail" rows="4" type="text" id="detail" value="" onchange="check_send_content();"></textarea>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            <div id="div_user_unique" class="col-12 d-none d-flex align-items-center">
+                                                <input class="" name="user_unique" type="checkbox" id="user_unique" value="" style="border-radius:50px;width:20px;height: 20px;cursor: pointer;" onclick="check_user_unique();">
+                                                    &nbsp;<label for="user_unique" style="cursor: pointer;">ไม่ซ้ำกับผู้ใช้ที่เคยส่งแล้ว</label>
+                                                <!-- &nbsp; ไม่ซ้ำกับผู้ใช้ที่เคยส่งแล้ว -->
+                                                <br>
+                                            </div>
+                                            <div class="col-12 d-none">
+                                                <div class="form-group {{ $errors->has('arr_show_user') ? 'has-error' : ''}}">
+                                                    <input class="form-control" name="arr_show_user" type="text" id="arr_show_user" value="" readonly>
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="col-3 d-none">
+                                                <div class="form-group {{ $errors->has('send_again') ? 'has-error' : ''}}">
+                                                    <input class="form-control" name="send_again" type="text" id="send_again" value="" readonly>
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="col-3 d-none">
+                                                <div class="form-group {{ $errors->has('id_ads') ? 'has-error' : ''}}">
+                                                    <input class="form-control" name="id_ads" type="text" id="id_ads" value="" readonly>
+                                                </div>
+                                                <br>
+                                            </div>
+                                            <div class="col-6 d-none">
+                                                <div class="form-group {{ $errors->has('photo') ? 'has-error' : ''}}">
+                                                    <!-- <label for="photo" class="control-label">{{ 'รูปภาพ' }}</label> -->
+                                                    <input class="form-control" name="photo" id="photo" type="file" accept="image/*" onchange="loadFile(event),check_send_content();">
+                                                </div>
+                                                <br>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <span style="font-size:20px;color:blue;">จำนวน <span id="span_amount_send">0</span> คัน</span>
+                                                <div class="d-none form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
+                                                    <!-- <label for="amount" class="control-label">{{ 'Amount' }}</label> -->
+                                                    <input class="form-control" name="amount" type="text" id="amount" value="" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <button id="btn_send_content" style="float: right;width: 40%;" class="btn-select btn btn-success btn-md main-shadow main-radius" data-toggle="modal" data-target="#btn-loading" data-dismiss="modal" aria-label="Close" disabled onclick="document.querySelector('#btn_btn_send_content_submit').click();">
+                                                        ยืนยัน
+                                                    </button>
+                                                    <input class="d-none" id="btn_btn_send_content_submit" type="submit" value="{{ 'ยืนยัน' }}"  >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                        <hr>
+                                        <br>
+
+                                        <h4>เลือกเนื้อหา</h4>
+                                        <br>
+                                        <div class="owl-carousel owl-theme content">
+                                            @if(!empty($ads_contents))
+                                                @foreach($ads_contents as $ads)
+                                                    @php
+                                                        if(!empty($ads->show_user)){
+                                                            $show_user = json_decode($ads->show_user) ;
+                                                            $count_show_user = count($show_user) ;
+                                                        }else{
+                                                            $count_show_user = '0' ;
+                                                        }
+
+                                                        if(!empty($ads->user_click)){
+                                                            $user_click = json_decode($ads->user_click) ;
+                                                            $count_user_click = count($user_click) ;
+                                                        }else{
+                                                            $count_user_click = '0' ;
+                                                        }
+                                                        
+                                                    
+                                                    @endphp
+
+                                                    <div class="item item-content " >
+                                                        <h5>{{ $ads->name_content }}</h5>
+                                                        <div class="img-content">
+                                                            <img src="{{ url('storage')}}/{{ $ads->photo }}" alt="">
+                                                        </div>
+                                                        <div class="content-status">
+                                                            <div class="col-6">
+                                                                <h6>
+                                                                    ส่ง {{ $ads->send_round }} ครั้ง                
+                                                                </h6>
+                                                            </div >
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-md-12 col-6 col-lg-6 p-0 ">
+                                                                        <h6 style="float: right; padding-right:10px;">
+                                                                            <i class="fa-solid fa-user"></i> {{ $count_show_user }}
+                                                                        </h6>
+                                                                    </div>
+                                                                    <div class="col-md-12  col-6 col-lg-6 p-0" >
+                                                                        <h6 style="float: right; padding-right:10px;">
+                                                                            <i class="fad fa-eye"></i> {{ $count_user_click }}
+                                                                        </h6>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <span style="float: right;width: 100%;margin-top:15px;margin-bottom:5px;" class="btn-select btn btn-success btn-sm main-shadow main-radius" onclick="select_content_again('{{ $ads->id }}');">
+                                                            เลือก
+                                                        </span>
+                                                    </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+
+                                    </div>
+                                <!-- ----------------phone----------------- -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-12 col-md-3 col-lg-3">
+                        <center>
+                            <br class="mt-5 d-block d-md-none">
+                            <div class="phone-frame ml-5 modal-content" style="padding-top: 0px;">
+                                <div class="row">
+                                    <div class="col-12 " style="background-color: #FFFFFF;  border-radius:50px 50px 0px 0px;margin-top:-0.5%">
+                                        <div class="row">
+                                        <div class="col-3 text-center">{{ date('H:i') }}</div>
+                                        <div class="col-6 phone-camera"></div>
+                                        <div class="col-3 d-flex align-items-center">
+                                            <div class="col-12 p-0">
+                                                <div class="row ">
+                                                    <div class="col p-0 phone-icon"><i class="fa-sharp fa-solid fa-signal-bars"></i></div>
+                                                    <div class="col p-0 phone-icon"><i class="fa-solid fa-wifi"></i></div>
+                                                    <div class="col p-0 phone-icon"><i class="fa-solid fa-battery-full"></i></div></div>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="phone-header">
+                                        <div class="row">
+                                            <div class="col-7 phone-name ">
+                                                <div class="row">
+                                                    <div class="col-2 text-center"><i class="fa-solid fa-chevron-left"></i></div>
+                                                    <div class="col-10 text-start p-0"> <img src="{{ asset('/peddyhub/images/icons/โล่.png') }}" alt="" width="8%"> ViiCHECK</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 phone-icon-header">
+                                                <div class="row ">
+                                                    <div class="col"><img src="{{ asset('/peddyhub/images/icons/search.png') }}" alt="" width="100%"></i></div>
+                                                    <div class="col"><img src="{{ asset('/peddyhub/images/icons/document.png') }}" alt="" width="100%"></div>
+                                                    <div class="col"><img src="{{ asset('/peddyhub/images/icons/more.png') }}" alt="" width="100%"></i></div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div  class="phone-content" >
+                                        <div id="div_img" class="col-12 d-none remove-scrollbar div_img" style="min-width: 100%;max-height: 100%;overflow:auto;cursor: grab;">
+                                            <div class="col-12" >
+                                                <div id="send-img">
+                                                    <img src="{{ asset('/peddyhub/images/logo/logo-3.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#db2d2e 1px solid ; background-color:white;margin:5px" alt="" width="13%">
+                                                        
+                                                    <button id="img_exchange" type="button" class="button-reset-img" onclick="document.querySelector('#photo').click();">
+                                                        <span class="button-reset-img-icon">
+                                                            <i class="fa-solid fa-arrows-rotate"></i>
+                                                        </span>
+                                                        <span class="button-reset-img-text">Reset</span>
+                                                    </button>
+                                                    <img src="" alt="" width="100%" style="padding: 0px 5px;border-radius:10px" id="img-content"  >
+                                                </div>
+                                            </div>
+                                            
+                                            <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
+                                        </div>
+                                        <div id="div_add_img" class="col-12 remove-scrollbar" style="min-width: 100%;max-height: 250px;overflow:auto;cursor: grab;" onclick="document.querySelector('#photo').click();">
+                                            <div class="col-12" >
+                                                <div id="send-img">
+                                                    <img src="{{ asset('/peddyhub/images/logo/logo-3.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#db2d2e 1px solid ; background-color:white;margin:5px" alt="" width="13%">
+                                                    <img src="{{ asset('peddyhub/images/sticker/community.png') }}" alt="" width="100%" style="padding: 0px 5px;border-radius:10px" id="img_add_img"  >
+                                                </div>
+                                            </div>
+                                            <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
+                                        </div>
+                                    </div>
+                                    <div class="richmenu text-center" >
+                                        <img src="{{ asset('/peddyhub/images/richmenu/main-richmenu_new/ph_richmenu_th.png') }}" alt="" width="100%">
+                                    </div>
+                                    <div class="row phone-footer d-flex justify-content-start">
+                                        <div class="col d-flex justify-content-start" style="float: left;"><img src="{{ asset('/img/icon/keyboard.png') }}" alt="" width="20%"></div>
+                                        <div class="col d-flex justify-content-start" style="cursor: pointer;float: left;">
+                                            <span onclick="document.querySelector('.richmenu').classList.toggle('d-none');
+                                            document.querySelector('.phone-content').classList.toggle('no-richmenu');
+                                            document.querySelector('.div_img').classList.toggle('no-richmenu');">เมนู▾</span>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 <div class="card radius-10">
 
     <div class="card-body" style="position: relative;padding:30px;">
@@ -455,9 +716,6 @@
                                 </div>
                                 <div class="col-12">
 
-                                    <label for="arr_user_id_selected" class="control-label">{{ 'arr_user_id_selected' }}</label>
-                                    <input class="form-control d-" type="text" name="arr_user_id_selected" id="arr_user_id_selected" readonly>
-
                                     <!-- content_search_data -->
                                     <div class="row" id="content_search_data">
                                         
@@ -696,8 +954,8 @@ function search_data(){
 // ตรวจสอบเกินจำนวนหรือไม่และเลือกหรือลบ
 function click_select(user_id){
 
-    // document.querySelector('#user_unique').checked = false ;
-    // document.querySelector('#arr_user_id_send_to_user').value = null ;
+    document.querySelector('#user_unique').checked = false ;
+    document.querySelector('#arr_user_id_send_to_user').value = null ;
     
     let btn_select_user_id = document.querySelector('#btn_select_user_id_' + user_id);
     let class_btn_select_user_id = btn_select_user_id.classList[0] ;
@@ -916,6 +1174,42 @@ function remain_it_0(remain){
     }
 }
 
+// ----------------------------- function in modal -----------------------------------
+
+function check_send_content(){
+    let name_content = document.querySelector("#name_content").value;
+    let link = document.querySelector("#link").value;
+    let photo = document.querySelector("#photo").value;
+
+    if (name_content && link && photo) {
+        document.querySelector('#btn_send_content').disabled = false ;
+    }else{
+        document.querySelector('#btn_send_content').disabled = true ;
+    }
+}
+
+function reset_BC(){
+    document.querySelector('#id_ads').value = null ;
+    document.querySelector('#div_user_unique').classList.add('d-none');
+    document.querySelector('#send_again').value = null ;
+    document.querySelector('#name_content').readOnly = false ;
+    document.querySelector('#name_content').value = null;
+    document.querySelector('#link').readOnly = false ;
+    document.querySelector('#link').value = null;
+    document.querySelector('#arr_show_user').value = null;
+    document.querySelector('#img_exchange').classList.remove('d-none') ;
+    document.querySelector('#send-img').classList.add('sand');
+    document.querySelector('#div_img').classList.add('d-none');
+    document.querySelector('#div_add_img').classList.remove('d-none');
+    // document.querySelector('#img-content').src = null ;
+    document.querySelector('#photo').value = null ;
+    document.querySelector('#img_add_img').src = "{{ asset('/peddyhub/images/sticker/community.png') }}" ;
+    
+}
+
+// ----------------------------- function in modal -----------------------------------
+
+
 function check_click_checked($checked){
     let check_input_checked = document.querySelector('#check_click_' + $checked).checked ;
 
@@ -948,4 +1242,31 @@ function check_click_checked($checked){
 }
 
 </script>
+
+<script>
+  var loadFile = function(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+
+        
+        document.querySelector('#send-img').classList.remove('sand');
+
+        setTimeout(function(){ 
+            document.querySelector('#div_img').classList.remove('d-none');
+            document.querySelector('#div_add_img').classList.add('d-none');
+
+            document.querySelector('#send-img').classList.add('sand');
+            var img_content = document.getElementById('img-content');
+            img_content.src = reader.result;
+        }, 100);
+        
+
+     
+    };
+    reader.readAsDataURL(event.target.files[0]);
+
+  };
+</script>
+
+
 @endsection
