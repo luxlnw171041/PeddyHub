@@ -196,6 +196,29 @@ class LoginController extends Controller
                 "photo" => $photo,
             ];
             Profile::create($profile);
+        }else{
+            // AVATAR
+            if (!empty($data->avatar)) {
+                $avatar = $data->avatar;
+
+                $url = $data->avatar;
+                $img = storage_path("app/public")."/uploads". "/" . 'photo' . $data->id . '.png';
+                // Save image
+                file_put_contents($img, file_get_contents($url));
+                $photo = "uploads". "/" . 'photo' . $data->id . '.png';
+            }
+            else if (empty($data->avatar)) {
+                $avatar = "กรุณาเพิ่มรูปโปรไฟล์";
+                $photo = null ;
+            }
+
+            DB::table('users')
+                ->where('user_id', $user->id)
+                ->update([
+                    'name' => $data->name,
+                    'photo' => $photo,
+                    'avatar' => $avatar,
+                ]);
         }
 
         //LOGIN
