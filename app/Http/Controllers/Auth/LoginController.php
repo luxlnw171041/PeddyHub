@@ -212,7 +212,7 @@ class LoginController extends Controller
                 $photo = null ;
             }
 
-            DB::table('users')
+            DB::table('profiles')
                 ->where('user_id', $user->id)
                 ->update([
                     'name' => $data->name,
