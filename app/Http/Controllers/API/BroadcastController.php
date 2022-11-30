@@ -22,70 +22,79 @@ class BroadcastController extends Controller
         // echo "<pre>" ;
         // exit();
 
-        // เช็คว่าเป็น Content ใหม่หรือเก่า
-        if ($requestData['send_again'] == "Yes") { // Content เก่า
-
-            $data_Ads_content = Ads_content::where('id' , $requestData['id_ads'] )->first();
-            $data_partner_premium = Partner_premium::where('id_partner' , $requestData['id_partner'])->first();
-
-            $requestData['photo'] = $data_Ads_content->photo ;
-
-            $BC_by_check_in_sent = $data_partner_premium->BC_by_check_in_sent ;
-            $sum_BC_by_check_in_sent = $BC_by_check_in_sent + $requestData['amount'] ;
-            $sum_send_round = $data_Ads_content->send_round + 1 ;
-
-            
-            DB::table('partner_premia')
-                ->where('id_partner', $requestData['id_partner'])
-                ->update([
-                    'BC_by_check_in_sent' => $sum_BC_by_check_in_sent ,
-            ]);
-
-            DB::table('ads_contents')
-                ->where('id', $requestData['id_ads'])
-                ->update([
-                    'send_round' => $sum_send_round ,
-            ]);
-
-            $requestData['link'] = $data_Ads_content->link ;
-
-            // ส่ง content เข้าไลน์
-            $this->send_content_BC_to_line($requestData , $data_Ads_content);
-
-        }else{ // Content ใหม่
-
-            if ($request->hasFile('photo')) {
-                $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
-            }
-
-            Ads_content::create($requestData);
-
-            $data_Ads_content = Ads_content::latest()->first();
-            $data_partner_premium = Partner_premium::where('id_partner' , $requestData['id_partner'])->first();
-
-            $BC_by_check_in_sent = $data_partner_premium->BC_by_check_in_sent ;
-            $sum_BC_by_check_in_sent = $BC_by_check_in_sent + $requestData['amount'] ;
-            $sum_send_round = $data_Ads_content->send_round + 1 ;
-
-            DB::table('partner_premia')
-                ->where('id_partner', $requestData['id_partner'])
-                ->update([
-                    'BC_by_check_in_sent' => $sum_BC_by_check_in_sent ,
-            ]);
-
-            DB::table('ads_contents')
-                ->where('id', $data_Ads_content->id)
-                ->update([
-                    'link' => "https://www.peddyhub.com/api/check_content?redirectTo=" . $requestData['link'] . "&id_content=" . $data_Ads_content->id,
-                    'send_round' => $sum_send_round ,
-            ]);
-
-            $requestData['link'] = "https://www.peddyhub.com/api/check_content?redirectTo=" . $requestData['link'] . "&id_content=" . $data_Ads_content->id;
-
-            // ส่ง content เข้าไลน์
-            $this->send_content_BC_to_line($requestData , $data_Ads_content);
-
+        if ($requestData['send_again'] == "Yes") {
+            $arr_user_id = json_decode($requestData['arr_user_id_send_to_user']) ;
+        }else{
+            $arr_user_id = json_decode($requestData['arr_user_id_selected']) ;
         }
+
+        if (!empty($arr_user_id)) {
+            // เช็คว่าเป็น Content ใหม่หรือเก่า
+            if ($requestData['send_again'] == "Yes") { // Content เก่า
+
+                $data_Ads_content = Ads_content::where('id' , $requestData['id_ads'] )->first();
+                $data_partner_premium = Partner_premium::where('id_partner' , $requestData['id_partner'])->first();
+
+                $requestData['photo'] = $data_Ads_content->photo ;
+
+                $BC_by_check_in_sent = $data_partner_premium->BC_by_check_in_sent ;
+                $sum_BC_by_check_in_sent = $BC_by_check_in_sent + $requestData['amount'] ;
+                $sum_send_round = $data_Ads_content->send_round + 1 ;
+
+                
+                DB::table('partner_premia')
+                    ->where('id_partner', $requestData['id_partner'])
+                    ->update([
+                        'BC_by_check_in_sent' => $sum_BC_by_check_in_sent ,
+                ]);
+
+                DB::table('ads_contents')
+                    ->where('id', $requestData['id_ads'])
+                    ->update([
+                        'send_round' => $sum_send_round ,
+                ]);
+
+                $requestData['link'] = $data_Ads_content->link ;
+
+                // ส่ง content เข้าไลน์
+                $this->send_content_BC_to_line($requestData , $data_Ads_content);
+
+            }else{ // Content ใหม่
+
+                if ($request->hasFile('photo')) {
+                    $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
+                }
+
+                Ads_content::create($requestData);
+
+                $data_Ads_content = Ads_content::latest()->first();
+                $data_partner_premium = Partner_premium::where('id_partner' , $requestData['id_partner'])->first();
+
+                $BC_by_check_in_sent = $data_partner_premium->BC_by_check_in_sent ;
+                $sum_BC_by_check_in_sent = $BC_by_check_in_sent + $requestData['amount'] ;
+                $sum_send_round = $data_Ads_content->send_round + 1 ;
+
+                DB::table('partner_premia')
+                    ->where('id_partner', $requestData['id_partner'])
+                    ->update([
+                        'BC_by_check_in_sent' => $sum_BC_by_check_in_sent ,
+                ]);
+
+                DB::table('ads_contents')
+                    ->where('id', $data_Ads_content->id)
+                    ->update([
+                        'link' => "https://www.peddyhub.com/api/check_content?redirectTo=" . $requestData['link'] . "&id_content=" . $data_Ads_content->id,
+                        'send_round' => $sum_send_round ,
+                ]);
+
+                $requestData['link'] = "https://www.peddyhub.com/api/check_content?redirectTo=" . $requestData['link'] . "&id_content=" . $data_Ads_content->id;
+
+                // ส่ง content เข้าไลน์
+                $this->send_content_BC_to_line($requestData , $data_Ads_content);
+
+            }
+        }
+
 
         return redirect('/broadcast/broadcast_by_check_in')->with('flash_message', 'Partner updated!');
 
