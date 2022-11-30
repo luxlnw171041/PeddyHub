@@ -20,11 +20,10 @@ class BroadcastController extends Controller
         // echo "<pre>" ;
         // print_r($requestData);
         // echo "<pre>" ;
-
         // exit();
 
         // เช็คว่าเป็น Content ใหม่หรือเก่า
-        if ($requestData['send_again'] == "Yes") { // Content ใหม่
+        if ($requestData['send_again'] == "Yes") { // Content เก่า
 
             $data_Ads_content = Ads_content::where('id' , $requestData['id_ads'] )->first();
             $data_partner_premium = Partner_premium::where('id_partner' , $requestData['id_partner'])->first();
@@ -53,7 +52,7 @@ class BroadcastController extends Controller
             // ส่ง content เข้าไลน์
             // $this->send_content_BC_to_line($requestData , $data_Ads_content);
 
-        }else{ // Content เก่า
+        }else{ // Content ใหม่
 
             if ($request->hasFile('photo')) {
                 $requestData['photo'] = $request->file('photo')->store('uploads', 'public');
