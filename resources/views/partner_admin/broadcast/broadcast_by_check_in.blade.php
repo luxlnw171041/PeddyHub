@@ -73,7 +73,7 @@
     {{ csrf_field() }}
 
     <input class="form-control d-none" type="text" name="type_content" id="type_content" value="BC_by_check_in">
-    <input class="form-control d-" type="text" name="arr_user_id_selected" id="arr_user_id_selected" readonly>
+    <input class="form-control d-none" type="text" name="arr_user_id_selected" id="arr_user_id_selected" readonly>
     <input class="form-control d-none" type="text" name="name_partner" id="name_partner" value="{{ $name_partner }}">
     <input class="form-control d-none" type="text" name="id_partner" id="id_partner" value="{{ $partner_id }}">
 
@@ -85,8 +85,8 @@
                     <div class="col-12 col-md-9 col-lg-9">
                         <div class="modal-content" style="border-radius: 20px;">
                             <div class="modal-header">
-                                <label for="link" class="control-label">{{ 'send_to_user' }}</label>
-                                <input class="form-control d-" type="text" name="arr_user_id_send_to_user" id="arr_user_id_send_to_user" readonly>
+                                <input class="form-control d-none" type="text" name="arr_user_id_send_to_user" id="arr_user_id_send_to_user" readonly>
+
                                 <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold;font-family: 'Kanit', sans-serif;">
                                     กำหนดบรอดแคสต์
                                 </h5>
@@ -1163,8 +1163,8 @@ function remain_it_0(remain){
 
     if (count_i != 0) {
         document.querySelector('#btn_next_selected_user').disabled = false ;
-        // document.querySelector('#amount').value = count_i.toString(); // MODAL
-        // document.querySelector('#span_amount_send').innerHTML = count_i.toString(); // MODAL
+        document.querySelector('#amount').value = count_i.toString(); // MODAL
+        document.querySelector('#span_amount_send').innerHTML = count_i.toString(); // MODAL
     }else{
         document.querySelector('#btn_next_selected_user').disabled = true ;
     }
@@ -1185,6 +1185,7 @@ function check_send_content(){
 }
 
 function reset_BC(){
+    document.querySelector('#arr_user_id_send_to_user').value = null ;
     document.querySelector('#id_ads').value = null ;
     document.querySelector('#div_user_unique').classList.add('d-none');
     document.querySelector('#send_again').value = null ;

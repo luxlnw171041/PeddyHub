@@ -17,10 +17,10 @@ class BroadcastController extends Controller
     {
         $requestData = $request->all();
 
-        // echo "<pre>" ;
-        // print_r($requestData);
-        // echo "<pre>" ;
-        // exit();
+        echo "<pre>" ;
+        print_r($requestData);
+        echo "<pre>" ;
+        exit();
 
         // เช็คว่าเป็น Content ใหม่หรือเก่า
         if ($requestData['send_again'] == "Yes") { // Content เก่า
@@ -50,7 +50,7 @@ class BroadcastController extends Controller
             $requestData['link'] = $data_Ads_content->link ;
 
             // ส่ง content เข้าไลน์
-            // $this->send_content_BC_to_line($requestData , $data_Ads_content);
+            $this->send_content_BC_to_line($requestData , $data_Ads_content);
 
         }else{ // Content ใหม่
 
