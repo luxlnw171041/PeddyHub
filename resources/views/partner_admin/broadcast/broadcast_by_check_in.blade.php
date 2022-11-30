@@ -159,7 +159,7 @@
                                             </div>
 
                                             <div class="col-6">
-                                                <span style="font-size:20px;color:blue;">จำนวน <span id="span_amount_send">0</span> คัน</span>
+                                                <span style="font-size:20px;color:blue;">จำนวน <span id="span_amount_send">0</span> คน</span>
                                                 <div class="d-none form-group {{ $errors->has('amount') ? 'has-error' : ''}}">
                                                     <!-- <label for="amount" class="control-label">{{ 'Amount' }}</label> -->
                                                     <input class="form-control" name="amount" type="text" id="amount" value="" readonly>
@@ -380,7 +380,7 @@
                                 <div class="col-12 text-selected">
                                     <h5>
                                         เลือกแล้ว
-                                        <span id="user_selected">0</span> / {{ $BC_by_check_in_max - $BC_by_check_in_sent }} คัน
+                                        <span id="user_selected">0</span> / {{ $BC_by_check_in_max - $BC_by_check_in_sent }} คน
                                     </h5>
                                 </div>
                                 <div class="col-12">
