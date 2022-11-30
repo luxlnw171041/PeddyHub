@@ -113,58 +113,61 @@ class BroadcastController extends Controller
         $img_content_h = $img_content->height();
 
         // ส่ง content
-        for ($xi=0; $xi < count($arr_user_id); $xi++) { 
+        if (!empty($arr_user_id)) {
+            for ($xi=0; $xi < count($arr_user_id); $xi++) { 
 
-            $data_user = User::where('id' , $arr_user_id[$xi])->first();
+                $data_user = User::where('id' , $arr_user_id[$xi])->first();
 
-            $template_path = storage_path('../public/json/broadcast/flex-broadcast.json');
-            $string_json = file_get_contents($template_path);
+                $template_path = storage_path('../public/json/broadcast/flex-broadcast.json');
+                $string_json = file_get_contents($template_path);
 
-            $string_json = str_replace("ตัวอย่าง",$requestData['name_content'],$string_json);
-            $string_json = str_replace("TEXT_W",$img_content_w,$string_json);
-            $string_json = str_replace("TEXT_H",$img_content_h,$string_json);
-            $string_json = str_replace("PHOTO_BC",$requestData['photo'],$string_json);
-            $string_json = str_replace("TEXT_URL",$requestData['link'] . "&user_id=" . $arr_user_id[$xi] ,$string_json);
+                $string_json = str_replace("ตัวอย่าง",$requestData['name_content'],$string_json);
+                $string_json = str_replace("TEXT_W",$img_content_w,$string_json);
+                $string_json = str_replace("TEXT_H",$img_content_h,$string_json);
+                $string_json = str_replace("PHOTO_BC",$requestData['photo'],$string_json);
+                $string_json = str_replace("TEXT_URL",$requestData['link'] . "&user_id=" . $arr_user_id[$xi] ,$string_json);
 
-            $messages = [ json_decode($string_json, true) ];
+                $messages = [ json_decode($string_json, true) ];
 
-            $body = [
-                "to" => $data_user->provider_id,
-                "messages" => $messages,
-            ];
+                $body = [
+                    "to" => $data_user->provider_id,
+                    "messages" => $messages,
+                ];
 
-            // flex ask_for_help
-            $opts = [
-                'http' =>[
-                    'method'  => 'POST',
-                    'header'  => "Content-Type: application/json \r\n".
-                                'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
-                    'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
-                    //'timeout' => 60
-                ]
-            ];
-                                
-            $context  = stream_context_create($opts);
-            $url = "https://api.line.me/v2/bot/message/push";
-            $result = file_get_contents($url, false, $context);
+                // flex ask_for_help
+                $opts = [
+                    'http' =>[
+                        'method'  => 'POST',
+                        'header'  => "Content-Type: application/json \r\n".
+                                    'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                        'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                        //'timeout' => 60
+                    ]
+                ];
+                                    
+                $context  = stream_context_create($opts);
+                $url = "https://api.line.me/v2/bot/message/push";
+                $result = file_get_contents($url, false, $context);
 
-            // SAVE LOG
-            $data = [
-                "title" => "BC_by_check_in" ,
-                "content" => "TO >> user_id = " . $arr_user_id[$xi],
-            ];
-            MyLog::create($data);
+                // SAVE LOG
+                $data = [
+                    "title" => "BC_by_check_in" ,
+                    "content" => "TO >> user_id = " . $arr_user_id[$xi],
+                ];
+                MyLog::create($data);
 
-            // update show_user in ads_contents
-            array_push($show_user, $arr_user_id[$xi]);
+                // update show_user in ads_contents
+                array_push($show_user, $arr_user_id[$xi]);
 
-            DB::table('ads_contents')
-                ->where('id', $data_Ads_content->id)
-                ->update([
-                    'show_user' => $show_user ,
-            ]);
+                DB::table('ads_contents')
+                    ->where('id', $data_Ads_content->id)
+                    ->update([
+                        'show_user' => $show_user ,
+                ]);
 
+            }
         }
+        
 
         return "send done all" ;
 
