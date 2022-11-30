@@ -17,10 +17,10 @@ class BroadcastController extends Controller
     {
         $requestData = $request->all();
 
-        echo "<pre>" ;
-        print_r($requestData);
-        echo "<pre>" ;
-        exit();
+        // echo "<pre>" ;
+        // print_r($requestData);
+        // echo "<pre>" ;
+        // exit();
 
         // เช็คว่าเป็น Content ใหม่หรือเก่า
         if ($requestData['send_again'] == "Yes") { // Content เก่า
