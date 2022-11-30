@@ -834,6 +834,61 @@ class test_for_devController extends Controller
         return "ok" ;
     }
 
+    function BC_to_user_line_carousel(){
+
+        // $data_users_line = Profile::where('type' , 'line')->get();
+        $data_users_line = Profile::where('type' , 'line')
+            ->where('id' , 9)
+            ->orWhere('id' , 1)
+            ->get();
+
+        $iii = 1 ;
+
+        foreach ($data_users_line as $item) {
+
+            if ( !empty($item->user->provider_id) ) {
+                $topic = "พร้อมพาน้องบินหรือยัง.." ;
+                
+                $template_path = storage_path('../public/json/broadcast/bc_to_user_line_carousel.json');   
+                $string_json = file_get_contents($template_path);
+
+                $string_json = str_replace("ตัวอย่าง",$topic,$string_json);
+
+                $messages = [ json_decode($string_json, true) ]; 
+
+                $body = [
+                    "to" => $item->user->provider_id,
+                    "messages" => $messages,
+                ];
+
+                $opts = [
+                    'http' =>[
+                        'method'  => 'POST',
+                        'header'  => "Content-Type: application/json \r\n".
+                                    'Authorization: Bearer '.env('CHANNEL_ACCESS_TOKEN'),
+                        'content' => json_encode($body, JSON_UNESCAPED_UNICODE),
+                    ]
+                ];
+                                    
+                $context  = stream_context_create($opts);
+                $url = "https://api.line.me/v2/bot/message/push";
+                $result = file_get_contents($url, false, $context);
+
+                //SAVE LOG
+                $data_save_log = [
+                    "title" => "BC_to_user_line_carousel : id = " . $item->id,
+                    "content" => $topic . " / ครั้งที่ : " . $iii,
+                ];
+
+                MyLog::create($data_save_log);
+
+                $iii = $iii + 1 ;
+            }
+        }
+
+        return "ok" ;
+    }
+
 
 
 }

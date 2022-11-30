@@ -1,0 +1,102 @@
+{
+  "type": "flex",
+  "altText": "ตัวอย่าง",
+  "contents": {
+  "type": "carousel",
+  "contents": [
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectMode": "fit",
+            "aspectRatio": "1:1",
+            "gravity": "top",
+            "url": "https://i.ibb.co/SnSBhKQ/nokair-newww-01.png",
+            "action": {
+              "type": "uri",
+              "uri": "https://line.me/ti/p/~nokair-petonboard"
+            }
+          }
+        ],
+        "paddingAll": "0px",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectMode": "fit",
+            "aspectRatio": "1:1",
+            "gravity": "top",
+            "url": "https://i.ibb.co/41Jx131/S-4096349.jpg",
+            "action": {
+              "type": "uri",
+              "uri": "https://line.me/ti/p/~nokair-petonboard"
+            }
+          }
+        ],
+        "paddingAll": "0px",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectMode": "fit",
+            "aspectRatio": "1:1",
+            "gravity": "top",
+            "url": "https://i.ibb.co/wLmR0W8/S-4096350.jpg",
+            "action": {
+              "type": "uri",
+              "uri": "https://line.me/ti/p/~nokair-petonboard"
+            }
+          }
+        ],
+        "paddingAll": "0px",
+        "backgroundColor": "#000000"
+      }
+    },
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+          {
+            "type": "image",
+            "size": "full",
+            "aspectMode": "fit",
+            "aspectRatio": "1:1",
+            "gravity": "top",
+            "url": "https://i.ibb.co/TrCX8yV/S-4096351.jpg",
+            "action": {
+              "type": "uri",
+              "uri": "https://line.me/ti/p/~nokair-petonboard"
+            }
+          }
+        ],
+        "paddingAll": "0px",
+        "backgroundColor": "#000000"
+      }
+    }
+  ]
+}
+
+}
