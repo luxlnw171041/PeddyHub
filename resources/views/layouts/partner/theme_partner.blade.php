@@ -306,6 +306,11 @@
 					</a>
 					<ul>
 						<li> 
+							<a href="{{ url('/check_in_admin') }}">
+								<i class="fa-regular fa-location-dot"></i> การเข้า-ออกพื้นที่
+							</a>
+						</li>
+						<li> 
 							<a href="{{ url('/check_in/add_new_check_in') }}">
 								<i class="fas fa-qrcode"></i> เพิ่มจุด Check in
 							</a>
@@ -348,7 +353,7 @@
 				<!-- shop -->
 				<li>
 					<a href="#" class="has-arrow">
-						<div class="parent-icon"><i class="fas fa-user-shield"></i>
+						<div class="parent-icon"><i class="fa-solid fa-shop"></i>
 						</div>
 						<div class="menu-title">Shop</div>
 					</a>
@@ -388,7 +393,7 @@
 				<!-- other -->
 				<li>
 					<a href="#" class="has-arrow">
-						<div class="parent-icon"><i class="fas fa-user-shield"></i>
+						<div class="parent-icon"><i class="fa-sharp fa-solid fa-circle-info"></i>
 						</div>
 						<div class="menu-title">การใช้งาน</div>
 					</a>
