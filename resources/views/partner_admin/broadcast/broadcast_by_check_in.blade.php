@@ -73,7 +73,7 @@
     {{ csrf_field() }}
 
     <input class="form-control d-none" type="text" name="type_content" id="type_content" value="BC_by_check_in">
-    <input class="form-control d-" type="text" name="arr_user_id_selected" id="arr_user_id_selected" readonly>
+    <input class="form-control d-none" type="text" name="arr_user_id_selected" id="arr_user_id_selected" readonly>
     <input class="form-control d-none" type="text" name="name_partner" id="name_partner" value="{{ $name_partner }}">
     <input class="form-control d-none" type="text" name="id_partner" id="id_partner" value="{{ $partner_id }}">
 
@@ -85,7 +85,7 @@
                     <div class="col-12 col-md-9 col-lg-9">
                         <div class="modal-content" style="border-radius: 20px;">
                             <div class="modal-header">
-                                <input class="form-control d-" type="text" name="arr_user_id_send_to_user" id="arr_user_id_send_to_user" readonly>
+                                <input class="form-control d-none" type="text" name="arr_user_id_send_to_user" id="arr_user_id_send_to_user" readonly>
 
                                 <h5 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold;font-family: 'Kanit', sans-serif;">
                                     กำหนดบรอดแคสต์
