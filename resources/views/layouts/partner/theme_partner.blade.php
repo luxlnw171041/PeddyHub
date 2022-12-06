@@ -68,7 +68,7 @@
 	<!--wrapper-->
 	@php
 	$user = \Illuminate\Support\Facades\Auth::user();
-	$partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->where('name_area' , '=' , null)->get();
+	$partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
 	@endphp
 	@foreach($partner as $item)
 	<div class="wrapper">
@@ -756,7 +756,7 @@
 	function check_data_partner()
     {
     	let user_organization = document.querySelector('#user_organization').value ;
-    	console.log(user_organization);
+    	// console.log(user_organization);
 
     	fetch("{{ url('/') }}/api/check_data_partner/" + user_organization)
             .then(response => response.json())
