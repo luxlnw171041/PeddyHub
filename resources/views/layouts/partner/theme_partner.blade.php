@@ -756,7 +756,7 @@
 	function check_data_partner()
     {
     	let user_organization = document.querySelector('#user_organization').value ;
-    	// console.log(user_organization);
+    	console.log(user_organization);
 
     	fetch("{{ url('/') }}/api/check_data_partner/" + user_organization)
             .then(response => response.json())
