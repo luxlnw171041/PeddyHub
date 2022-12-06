@@ -14,6 +14,69 @@
         
         return $data ;
     }
+    $count_user = count($check_in);
+    $count_man = 0;
+    $count_female = 0;
+    $count_sex_not_specified = 0;
+
+    $count_age_Range_1 = 0 ;
+    $count_age_Range_2 = 0 ;
+    $count_age_Range_3 = 0 ;
+    $count_age_Range_4 = 0 ;
+    $count_age_Range_5 = 0 ;
+    $count_age_not_specified = 0 ;
+
+    $count_location_bkk = 0 ;
+    $count_location_near_bkk = 0 ;
+    $count_location_other = 0 ;
+    $count_location_not_specified = 0 ;
+
+    foreach($check_in as $item){
+        // เพศ
+        if( $item->profile->sex == "ผู้ชาย" ){
+            $count_man = $count_man + 1 ;
+        }else if( $item->profile->sex == "ผู้หญิง" ){
+            $count_female = $count_female + 1 ;
+        }else{
+            $count_sex_not_specified = $count_sex_not_specified + 1 ;
+        }
+        $percent_man = percent( $count_man , $count_user ) ;
+        $percent_female = percent( $count_female , $count_user );
+        $percent_sex_not_specified = percent( $count_sex_not_specified , $count_user );
+
+        // อายุ 
+        $year_now = date('Y');
+        $birth = $item->profile->birth ;
+
+        if(empty($birth)){
+            $count_age_not_specified = $count_age_not_specified + 1 ;
+        }else{
+            $birth_sp = explode("-" , $birth);
+            $birth_year = $birth_sp[0];
+            $age_user = (int)$year_now - (int)$birth_year ;
+
+            if($age_user < 20){
+                $count_age_Range_1 = $count_age_Range_1 + 1 ;
+            }else if($age_user >= 21 && $age_user < 30){
+                $count_age_Range_2 = $count_age_Range_2 + 1 ;
+            }else if($age_user >= 30 && $age_user < 46){
+                $count_age_Range_3 = $count_age_Range_3 + 1 ;
+            }else if($age_user >= 46 && $age_user < 60){
+                $count_age_Range_4 = $count_age_Range_4 + 1 ;
+            }else if($age_user >= 60){
+                $count_age_Range_5 = $count_age_Range_5 + 1 ;
+            }
+        }
+
+        $percent_age_Range_1 = percent( $count_age_Range_1 , $count_user ) ;
+        $percent_age_Range_2 = percent( $count_age_Range_2 , $count_user ) ;
+        $percent_age_Range_3 = percent( $count_age_Range_3 , $count_user ) ;
+        $percent_age_Range_4 = percent( $count_age_Range_4 , $count_user ) ;
+        $percent_age_Range_5 = percent( $count_age_Range_5 , $count_user ) ;
+        $percent_age_not_specified = percent( $count_age_not_specified , $count_user ) ;
+
+        // สถานที่
+    }
 @endphp
 <style>
 
@@ -60,6 +123,261 @@
 .btn-peddyhub:hover {
     color:white;
       }
+      .sub-filter{
+    border-radius: 10px;
+    border: #b5bfd9 1px solid;
+    background-color: #fff;
+    padding:10px;
+} .sub-filter:hover{
+    cursor: pointer;
+}
+    /* Hide default radio style */
+.input-checkbox {
+opacity: 0;
+visibility: hidden;
+margin: 0;
+}
+.tile-checkbox{
+    font-size: 1rem;
+}
+/* Change icon, border and text color when radio is checked */
+.input-checkbox:checked + .tile-checkbox,
+.input-checkbox:checked + .tile-checkbox span ,
+.input-checkbox:checked + .tile-checkbox::before{
+border-color: #b8205b!important;
+color: #b8205b!important;
+}
+
+/* Checkbox display */
+.input-checkbox:checked + .tile-checkbox::before  {
+transform: scale(1);
+opacity: 1;
+background-color: #b8205b;
+border-color: #b8205b;
+
+}
+
+
+.tile-checkbox:hover::before  ,.tile-checkbox:hover{
+transform: scale(1);
+opacity: 1;
+border-color: #b5bfd9;
+cursor: pointer;
+
+}
+/* Checkmark (icon inside checker) */
+.tile-checkbox::before {
+content: "";
+display: inline-block;
+margin-right: 1rem;
+position: relative;
+min-width: 1rem !important;
+min-height: 1rem !important;
+background-color: #fff;
+border-radius: 50%;
+top: 0.25rem;
+left: 0.25rem;
+opacity: 0;
+transform: scale(0);
+transition: 0.25s ease;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' fill='%23FFFFFF' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'%3E%3C/rect%3E%3Cpolyline points='216 72.005 104 184 48 128.005' fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='32'%3E%3C/polyline%3E%3C/svg%3E");
+border: 2px solid #b8205b;
+background-size: 12px;
+background-repeat: no-repeat;
+background-position: 50% 50%;
+
+}
+#chart {
+    height: 10px;
+max-width: 650px;
+}.apexcharts-toolbar{
+display: none;
+}.chart-border{
+border:black solid 1px;
+border-radius: 10px;
+}
+.result{
+border-top: #3b5998 solid 4px;
+border-radius: 20px;
+padding: 15px;
+font-family: 'Kanit', sans-serif;
+
+}.text-result h4 {
+color:#3b5998;
+}.item-content{
+border-radius: 10px;
+padding: 10px;
+}
+.icon-circle{
+margin: 10px;
+}
+.icon-circle-hover {
+transition: transform .2s; /* Animation */
+opacity: 0;
+margin: 10px;
+}
+
+.item-content:hover .icon-circle-hover{
+transform: scale(1.2);
+opacity: 1;
+}.content-header{
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+}.name-user{
+width: 100%;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+padding-left: 10px;
+}.content-age{
+display: flex;
+justify-content: center;
+align-items: center;
+} .filter{
+        border-top: #B8205B solid 4px;
+        border-radius: 20px;
+    font-family: 'Kanit', sans-serif;
+
+    }.form-select-user{
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+}.btn{
+    border-radius: 10px;
+    font-family: 'Kanit', sans-serif;
+
+}.text-selected {
+    justify-content: center;
+    display: flex;
+}
+.text-selected h5{
+    color:#3b5998;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+}.text-filter h5{
+        font-family: 'Kanit', sans-serif;
+        font-weight: 900;
+    } .remove-scrollbar::-webkit-scrollbar {
+display:none;
+}
+    .phone-frame{
+    border-radius: 40px;
+    border: black 12px solid;
+    flex-direction:  column;
+    font-family: 'Kanit', sans-serif;
+    padding:0px 10px 0px 10px;
+    min-width: 300px;
+    max-width: 300px;
+
+}
+.phone-camera{
+    padding: 0px;
+    border-radius: 0px 0px 15px 15px;
+    color: black;
+    background-color: black;
+}
+.phone-icon{
+    font-size: 10px;
+
+
+}
+.phone-header{
+    background-color: #8CABD9;
+    flex-direction:  row;
+
+}
+.phone-name{
+    padding: 10px 10px 10px 10px;
+}
+.phone-icon-header{
+    display: flex;
+     align-items: center;
+}
+.phone-footer{
+    padding: 10px 10px 10px 20px;
+}
+.richmenu{
+    z-index: 99;
+    padding: 0;
+    height: 100%!important;
+}
+.phone-content{
+    background-color: #8CABD9;
+    padding:0px;
+    display: flex;
+    align-items: flex-start;
+    height: 250px;
+    z-index: 1;
+}
+.no-richmenu{
+    height: 440px !important;
+}
+.button-reset-img {
+	display: flex;
+	height: 30px;
+	padding: 0;
+	background: #FF6961;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	overflow: hidden;
+	font-family: "Quicksand", sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	cursor: pointer;
+    float: right;
+    margin: 5px;
+}
+
+.button-reset-img:hover {
+	background: #FD4B41;
+}
+
+.button-reset-img:active {
+	background: #F13E34;
+}
+
+.button-reset-img-text,
+.button-reset-img-icon {
+	display: inline-flex;
+	align-items: center;
+	padding: 0 5px;
+	color: #fff;
+	height: 100%;
+}
+
+.button-reset-img-icon {
+	font-size: 1em;
+	background: rgba(0, 0, 0, 0.08);
+} 
+  
+  @media (min-width:200px) and (max-width:1200px){
+    .owl-nav{
+        display: none;
+    }
+  }.item-content-send{
+    background-color: #DAE3F8;
+    border-radius: 20px;
+    padding: 10px 10px;
+    }
+    .item-content-send h5{
+        white-space: nowrap; 
+        width: 100%; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
+    }.img-content img{
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+    }.content-status{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+    }.content-status h6{
+    margin: 0px;
+    }
 </style>
 
 <div id="check_in_max" class="div_alert d-none" role="alert">
@@ -67,6 +385,7 @@
         ขออภัย เกินจำนวนที่กำหนด
     </span>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 
 <form method="POST" action="{{ url('/') }}/api/send_content_BC_by_check_in" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
@@ -181,7 +500,7 @@
 
                                         <h4>เลือกเนื้อหา</h4>
                                         <br>
-                                        <div class="owl-carousel owl-theme content">
+                                        <div class="owl-carousel owl-theme content col-12">
                                             @if(!empty($ads_contents))
                                                 @foreach($ads_contents as $ads)
                                                     @php
@@ -198,14 +517,12 @@
                                                         }else{
                                                             $count_user_click = '0' ;
                                                         }
-                                                        
-                                                    
                                                     @endphp
-
-                                                    <div class="item item-content " >
+                                                    
+                                                    <div class=" item-content-send " >
                                                         <h5>{{ $ads->name_content }}</h5>
                                                         <div class="img-content">
-                                                            <img src="{{ url('storage')}}/{{ $ads->photo }}" alt="">
+                                                            <img src="{{ url('storage')}}/{{ $ads->photo }}" alt="" style="width:100% ;">
                                                         </div>
                                                         <div class="content-status">
                                                             <div class="col-6">
@@ -243,6 +560,11 @@
                         </div>
                         
                     </div>
+
+
+                    <style>
+                        
+                    </style>
                     <div class="col-12 col-md-3 col-lg-3">
                         <center>
                             <br class="mt-5 d-block d-md-none">
@@ -284,7 +606,7 @@
                                         <div id="div_img" class="col-12 d-none remove-scrollbar div_img" style="min-width: 100%;max-height: 100%;overflow:auto;cursor: grab;">
                                             <div class="col-12" >
                                                 <div id="send-img">
-                                                    <img src="{{ asset('/peddyhub/images/logo/logo-3.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#db2d2e 1px solid ; background-color:white;margin:5px" alt="" width="13%">
+                                                    <img src="{{ asset('/peddyhub/images/logo/logo-3.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#db2d2e 1px solid ; background-color:white;margin:5px;height:10%;object-fit:contain;" alt="" width="15%" height="1%">
                                                         
                                                     <button id="img_exchange" type="button" class="button-reset-img" onclick="document.querySelector('#photo').click();">
                                                         <span class="button-reset-img-icon">
@@ -295,14 +617,13 @@
                                                     <img src="" alt="" width="100%" style="padding: 0px 5px;border-radius:10px" id="img-content"  >
                                                 </div>
                                             </div>
-                                            
                                             <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
                                         </div>
                                         <div id="div_add_img" class="col-12 remove-scrollbar" style="min-width: 100%;max-height: 250px;overflow:auto;cursor: grab;" onclick="document.querySelector('#photo').click();">
                                             <div class="col-12" >
                                                 <div id="send-img">
-                                                    <img src="{{ asset('/peddyhub/images/logo/logo-3.png') }}" style="float: left;border-radius: 50%; padding:10px 0px; border:#db2d2e 1px solid ; background-color:white;margin:5px" alt="" width="13%">
-                                                    <img src="{{ asset('peddyhub/images/sticker/community.png') }}" alt="" width="100%" style="padding: 0px 5px;border-radius:10px" id="img_add_img"  >
+                                                    <img src="{{ asset('/peddyhub/images/logo/logo-3.png') }}" style="float: left;border-radius: 50%; padding:2px 0px; border:#db2d2e 1px solid ; background-color:white;margin:5px;height:30px;object-fit:contain;" alt="" width="30px" >
+                                                    <img src="{{ asset('/peddyhub/images/more/add_img.png') }}" alt="" width="100%" style="padding: 0px 5px;border-radius:10px;height:100%;" id="img_add_img"  >
                                                 </div>
                                             </div>
                                             <p class="m-0 text-right d-flex justify-content-end"style="padding-right:10px;font-size:10px">{{ date('H:i') }} น.</p>
@@ -329,22 +650,19 @@
     </div>
 </form>
 
-<div class="card radius-10">
-
-    <div class="card-body" style="position: relative;padding:30px;">
         <div class="row">
 
             <!-- DIV เลือกจำนวน / กรองข้อมูล -->
-            <div class="col-3">
+            <div class="col-12 col-md-3 col-lg-3">
                 <div class="row">
                     <div class="card filter"  style="padding:20px;">
                         <div class="col-12">
-                            <div class="row form-select-car" >
+                            <div class="row form-select-user" >
                                 <div class="col-12 text-center text-selected">
-                                    <h5>เลือกจำนวน</h5>
-                                    <span id="tell_BC_by_check_in_max">
+                                    <h5> <b>เลือกจำนวน </b> </h5>
+                                    <!-- <span id="tell_BC_by_check_in_max">
                                         (ไม่เกิน <span id="amount_remain">{{ $BC_by_check_in_max - $BC_by_check_in_sent }}</span>)
-                                    </span>
+                                    </span> -->
                                     
                                 </div>
                                 <div class="col-12 mt-2">
@@ -388,6 +706,9 @@
                                         <button id="btn_next_selected_user" type="button" class="btn-select btn btn-md btn-success main-shadow main-radius" style="width:70%;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
                                             ต่อไป
                                         </button>
+                                        <button type="button" class="btn-select btn btn-md btn-success main-shadow main-radius" style="width:70%;" data-toggle="modal" data-target="#exampleModalCenter">
+                                            ต่อไป
+                                        </button>
                                     </center>
                                 </div>
                             </div>
@@ -400,14 +721,179 @@
                     <!-- ตัวกรองข้อมูล -->
                     <div class="card filter accordion" id="accordion_data_filter" style="padding:20px;">
                         <div>
-                            <div class="header text-filter ">
+                            <div class="text-filter ">
                                 <h5>
                                     <i class="fa-regular fa-filter-list"></i> กรองข้อมูล
                                 </h5>
                             </div>
                             <div class="row ">
+                                <div class="col-12 p-0">
+                                    <select name="name_area" class="notranslate form-control" id="name_area" style="border-radius: 10px;" onchange="search_data();">
+                                        <option class="translate" value="" selected> พื้นที่ : <b>ทั้งหมด</b> </option>
+                                        @foreach($all_area_partners as $area)
+                                        <option value="{{ $area->id }}">
+                                            พื้นที่ : <b>{{ $area->name_area }}</b>
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                <div class="col-12">
+                                <!-- เข้าพื้นที่มากกว่า -->
+                                <div class="sub-filter mt-2">
+                                    <label for="check_click_time" class="col-12 form-label" data-toggle="collapse" data-target="#collapse_time" aria-expanded="true" aria-controls="collapse_time">
+                                        <div class="row">
+                                            <input type="checkbox" name="check_click_time" id="check_click_time" class="d-none input-checkbox"  onclick="check_click_checked('time');">
+                                            <span class="tile-checkbox">ช่วงเวลา</span>
+                                        </div>
+                                    </label>
+
+                                    <div id="collapse_time" class="collapse" data-parent="#accordion_data_filter">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                <input type="time" class="form-control" name="time_1" id="time_1" onchange="search_data();">
+                                            </div>
+                                            <div class="col-2">
+                                                <center style="margin-top:10px;">
+                                                    <span>ถึง</span>
+                                                </center>
+                                            </div>
+                                            <div class="col-5">
+                                                <input type="time" class="form-control" name="time_2" id="time_2" onchange="search_data();">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- เข้าพื้นที่มากกว่า -->
+
+                                <!-- วัน -->
+                                <div class="sub-filter mt-2">
+                                    <label for="check_click_select_day" class="col-12 form-label" data-toggle="collapse" data-target="#collapse_select_day" aria-expanded="true" aria-controls="collapse_select_day">
+                                        <div class="row">
+                                            <input type="checkbox" name="check_click_select_day" id="check_click_select_day" class="d-none input-checkbox" onclick="check_click_checked('select_day');">
+                                            <span class="tile-checkbox">วัน (จันทร์ - อาทิตย์)</span>
+                                        </div>
+                                    </label>
+
+                                    <div id="collapse_select_day" class="collapse" data-parent="#accordion_data_filter">
+                                        <select name="select_day" id="select_day" class="notranslate form-control" onchange="search_data();">
+                                            <option value="" selected> - เลือก - </option>
+                                            <option value="Monday" > จันทร์ </option>
+                                            <option value="Tuesday" > อังคาร </option>
+                                            <option value="Wednesday" > พุธ </option>
+                                            <option value="Thursday" > พฤหัสบดี </option>
+                                            <option value="Friday" > ศุกร์ </option>
+                                            <option value="Saturday" > เสาร์ </option>
+                                            <option value="Sunday" > อาทิตย์ </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- วัน -->
+                              
+                                <!-- จำนวนการเข้าพื้นที่ -->
+                                <div class="sub-filter mt-2">
+                                    <label for="check_click_amount_in_out" class="col-12 form-label" data-toggle="collapse" data-target="#collapse_amount_in_out" aria-expanded="true" aria-controls="collapse_amount_in_out">
+                                        <div class="row">
+                                            <input type="checkbox" name="check_click_amount_in_out" class="d-none input-checkbox" id="check_click_amount_in_out" onclick="check_click_checked('amount_in_out');">
+                                            <span class="tile-checkbox">จำนวนการเข้าพื้นที่</span>
+                                        </div>
+                                    </label>
+
+                                    <div id="collapse_amount_in_out" class="collapse" data-parent="#collapse_amount_in_out">
+                                        <div class="form-inline">
+                                            <div class="input-group d-flex align-items-center">
+                                                <span style="margin-right:15px">เข้าพื้นที่มากกว่า </span>
+                                                <input type="number" name="amount_in_out" id="amount_in_out"style='width:1em' class="form-control" min="0" value="" placeholder="ใส่จำนวนครั้ง" onchange="search_data();">
+                                                <span style="margin-left:15px">คร้ัง</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- จำนวนการเข้าพื้นที่ -->
+
+                                <!-- เข้า-ออก ล่าสุด -->
+                                <div class="sub-filter mt-2">
+                                    <label for="check_click_last_entry" class="col-12 form-label" data-toggle="collapse" data-target="#collapse_last_entry" aria-expanded="true" aria-controls="collapse_last_entry">
+                                        <div class="row">
+                                            <input type="checkbox" name="check_click_last_entry" id="check_click_last_entry" class="d-none input-checkbox" onclick="check_click_checked('last_entry');">
+                                            <span class="tile-checkbox">เข้า-ออก ล่าสุด</span>
+                                        </div>
+                                    </label>
+
+                                    <div id="collapse_last_entry" class="collapse" data-parent="#collapse_last_entry">
+                                        <div class="form-inline">
+                                            <div class="input-group d-flex align-items-center">
+                                                <span style="margin-right:15px">เข้า-ออก </span>
+                                                <input type="number" name="amount_last_entry" id="amount_last_entry" class="form-control" min="0" value="" onchange="search_data();">
+                                                <span style="margin-left:15px">วันล่าสุด</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- เข้า-ออก ล่าสุด -->
+
+                                 <!-- เกิดเดือนนี้ -->
+                                 <div class="sub-filter mt-2">
+                                    <label for="this_month" class="col-12 form-label" >
+                                        <div class="row">
+                                            <input type="checkbox" name="this_month" id="this_month" class="d-none input-checkbox" onclick="search_data();">
+                                            <span class="tile-checkbox">ผู้ใช้ที่เกิดเดือนนี้<span class="text-secondary"> ( {{ thaidate("F", mktime(0, 0, 0, date('m'), 10)); }} )</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <!-- เกิดเดือนนี้ -->
+
+                                 <!-- ข้อมูลผู้ใช้ -->
+                                 <div class="sub-filter mt-2">
+                                    <label for="check_click_user_data" class="col-12 form-label" data-toggle="collapse" data-target="#collapse_user_data" aria-expanded="true" aria-controls="collapse_user_data">
+                                        <div class="row">
+                                            <input type="checkbox" name="check_click_user_data" id="check_click_user_data" class="d-none input-checkbox" onclick="check_click_checked('user_data');">
+
+                                            <!-- <input type="checkbox" name="check_click_last_entry" id="check_click_last_entry" class="d-none input-checkbox" onclick="check_click_checked('last_entry');"> -->
+                                            <span class="tile-checkbox">ข้อมูลผู้ใช้</span>
+                                        </div>
+                                    </label>
+
+                                    <div id="collapse_user_data" class="collapse" data-parent="#collapse_user_data">
+                                        <div class="chart-border text-center p-2">
+                                            <h4 class="m-0 p-0 mt-2">เพศ</h4>
+                                            <div id="chart-gender"></div>
+                                            <select  name="select_user_sex" id="select_user_sex" class="notranslate form-control" onchange="search_data();">
+                                                <option value="" selected> - ทั้งหมด - </option>
+                                                <option value="ผู้ชาย" > ผู้ชาย </option>
+                                                <option value="ผู้หญิง" > ผู้หญิง </option>
+                                            </select>
+                                        </div>
+                                        <div class="chart-border text-center p-2 mt-2">
+                                            <h4 class="m-0 p-0 mt-2">อายุ</h4>
+                                            <div id="chart-age"></div>
+                                            <select style="margin-top:8px;" name="select_user_age" id="select_user_age" class="notranslate form-control" onchange="search_data();">
+                                                <option value="" selected> - ทั้งหมด - </option>
+                                                <option value="<20" > น้อยกว่า 20 </option>
+                                                <option value="21-29" > 21 - 29 </option>
+                                                <option value="30-45" > 30 - 45 </option>
+                                                <option value="46-59" > 46 - 59 </option>
+                                                <option value="60+" > 60 ขึ้นไป </option>
+                                            </select>
+                                        </div>
+                                        <div class="chart-border text-center p-2 mt-2">
+                                            <h4 class="m-0 p-0 mt-2">สถานที่</h4>
+                                            <div id="chart-position"></div>
+                                            <select style="margin-top:8px;" name="select_user_location" id="select_user_location" class="notranslate form-control" onchange="search_data();">
+                                                <option value="" selected> - ทั้งหมด - </option>
+                                                <!-- loop location -->
+                                                @foreach($location_user as $lo_user)
+                                                    <option value="{{ $lo_user->changwat_th }}" > {{ $lo_user->changwat_th }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ข้อมูลผู้ใช้ -->
+
+
+                                    
+
+                                <!-- <div class="col-12">
                                     <br>
                                     <label for="name_area" class="form-label">
                                         <b>พื้นที่</b>
@@ -447,7 +933,7 @@
                                     <br>
                                     <label for="select_day" class="form-label">
                                         <input type="checkbox" name="check_click_select_day" id="check_click_select_day" data-toggle="collapse" data-target="#collapse_select_day" aria-expanded="true" aria-controls="collapse_select_day" onclick="check_click_checked('select_day');">
-                                        &nbsp;&nbsp;<b>วัน</b> (จันนทร์ - อาทิตย์)
+                                        &nbsp;&nbsp;<b>วัน</b> (จันทร์ - อาทิตย์)
                                     </label>
                                     <div id="collapse_select_day" class="collapse" data-parent="#accordion_data_filter">
                                         <select name="select_day" id="select_day" class="notranslate form-control" onchange="search_data();">
@@ -485,8 +971,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
+                                </div> -->
+                                <!-- <div class="col-12">
                                     <br>
                                     <label for="last_entry" class="form-label">
                                         <input type="checkbox" name="check_click_last_entry" id="check_click_last_entry" data-toggle="collapse" data-target="#collapse_last_entry" aria-expanded="true" aria-controls="collapse_last_entry"onclick="check_click_checked('last_entry');">
@@ -509,90 +995,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="col-12">
+                                <!-- <div class="col-12">
                                     <br>
                                     <label for="amount_in_out" class="form-label">
                                         <input type="checkbox" name="this_month" id="this_month" onclick="search_data();">
                                         &nbsp;&nbsp;<b>ผู้ใช้ที่เกิดเดือนนี้</b><span class="text-secondary"> ( {{ date("F", mktime(0, 0, 0, date('m'), 10)); }} )</span>
                                     </label>
-                                </div>
+                                </div> -->
                                 <!-- กรองข้อมูลผู้ใช้ -->
                                 <!-- หา % ต่างๆ -->
-                                @php
-                                    $count_user = count($check_in);
-                                    $count_man = 0;
-                                    $count_female = 0;
-                                    $count_sex_not_specified = 0;
-
-                                    $count_age_Range_1 = 0 ;
-                                    $count_age_Range_2 = 0 ;
-                                    $count_age_Range_3 = 0 ;
-                                    $count_age_Range_4 = 0 ;
-                                    $count_age_Range_5 = 0 ;
-                                    $count_age_not_specified = 0 ;
-
-                                    $count_location_bkk = 0 ;
-                                    $count_location_near_bkk = 0 ;
-                                    $count_location_other = 0 ;
-                                    $count_location_not_specified = 0 ;
-
-                                    foreach($check_in as $item){
-                                        // เพศ
-                                        if( $item->profile->sex == "ผู้ชาย" ){
-                                            $count_man = $count_man + 1 ;
-                                        }else if( $item->profile->sex == "ผู้หญิง" ){
-                                            $count_female = $count_female + 1 ;
-                                        }else{
-                                            $count_sex_not_specified = $count_sex_not_specified + 1 ;
-                                        }
-                                        $percent_man = percent( $count_man , $count_user ) ;
-                                        $percent_female = percent( $count_female , $count_user );
-                                        $percent_sex_not_specified = percent( $count_sex_not_specified , $count_user );
-
-                                        // อายุ 
-                                        $year_now = date('Y');
-                                        $birth = $item->profile->birth ;
-
-                                        if(empty($birth)){
-                                            $count_age_not_specified = $count_age_not_specified + 1 ;
-                                        }else{
-                                            $birth_sp = explode("-" , $birth);
-                                            $birth_year = $birth_sp[0];
-                                            $age_user = (int)$year_now - (int)$birth_year ;
-
-                                            if($age_user < 20){
-                                                $count_age_Range_1 = $count_age_Range_1 + 1 ;
-                                            }else if($age_user >= 21 && $age_user < 30){
-                                                $count_age_Range_2 = $count_age_Range_2 + 1 ;
-                                            }else if($age_user >= 30 && $age_user < 46){
-                                                $count_age_Range_3 = $count_age_Range_3 + 1 ;
-                                            }else if($age_user >= 46 && $age_user < 60){
-                                                $count_age_Range_4 = $count_age_Range_4 + 1 ;
-                                            }else if($age_user >= 60){
-                                                $count_age_Range_5 = $count_age_Range_5 + 1 ;
-                                            }
-                                        }
-
-                                        $percent_age_Range_1 = percent( $count_age_Range_1 , $count_user ) ;
-                                        $percent_age_Range_2 = percent( $count_age_Range_2 , $count_user ) ;
-                                        $percent_age_Range_3 = percent( $count_age_Range_3 , $count_user ) ;
-                                        $percent_age_Range_4 = percent( $count_age_Range_4 , $count_user ) ;
-                                        $percent_age_Range_5 = percent( $count_age_Range_5 , $count_user ) ;
-                                        $percent_age_not_specified = percent( $count_age_not_specified , $count_user ) ;
-
-                                        // สถานที่
-                                    }
-                                @endphp
-                                <div class="col-12">
+                                
+                                <!-- <div class="col-12">
                                     <br>
                                     <label for="user_data" class="form-label">
                                         <input type="checkbox" name="check_click_user_data" id="check_click_user_data" data-toggle="collapse" data-target="#collapse_user_data" aria-expanded="true" aria-controls="collapse_user_data"onclick="check_click_checked('user_data');">
                                         &nbsp;&nbsp;<b>ข้อมูลผู้ใช้</b>
                                     </label>
                                     <div id="collapse_user_data" class="collapse" data-parent="#accordion_data_filter">
-                                        <!-- เพศ -->
+                                       /// เพศ ///
                                         <label for="user_sex" class="form-label">
                                             <i class="fa-solid fa-circle-small"></i> เพศ
                                         </label>
@@ -615,13 +1037,13 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <!-- อายุ -->
+                                       /// อายุ ///
                                         <label for="user_age" class="form-label">
                                             <i class="fa-solid fa-circle-small"></i> อายุ
                                         </label>
                                         <div class="row">
                                             <div class="col-4">
-                                                <20 : {{ $percent_age_Range_1 }} %
+                                                20 : {{ $percent_age_Range_1 }} %
                                             </div>
                                             <div class="col-4">
                                                 21 - 29 : {{ $percent_age_Range_2 }} %
@@ -650,7 +1072,7 @@
                                             </div>
                                         </div>
                                         <br>
-                                        <!-- สถานที่ -->
+                                        ส///ถานที่ ///
                                         <label for="user_location" class="form-label">
                                             <i class="fa-solid fa-circle-small"></i> สถานที่
                                         </label>
@@ -670,7 +1092,7 @@
                                             <div class="col-12">
                                                 <select style="margin-top:8px;" name="select_user_location" id="select_user_location" class="notranslate form-control" onchange="search_data();">
                                                     <option value="" selected> - ทั้งหมด - </option>
-                                                    <!-- loop location -->
+                                                    loop loca///tion ///
                                                     @foreach($location_user as $lo_user)
                                                         <option value="{{ $lo_user->changwat_th }}" > {{ $lo_user->changwat_th }} </option>
                                                     @endforeach
@@ -678,7 +1100,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-12">
                                     <br>
                                     <center>
@@ -693,10 +1115,53 @@
                     </div>
                 </div>
             </div>
-
             <!-- DIV ผลการค้นหา -->
+            <div class="col-12 col-lg-9 col-md-9 test item" >
+            <br class="mt-5 d-block d-md-none">
+            <div class="card result">
+                <div class="text-result">
+                    <h4>
+                        <i class="fa-solid fa-square-poll-horizontal"></i> ผลการค้นหา&nbsp;&nbsp;
+                        <span style="font-size:15px;color: grey;">
+                            <span>ทั้งหมด</span> <span id="count_search_data">0</span>&nbsp;<span>คน</span>
+                        </span>
+                    </h4>
+                </div>    
+                <div class="div-result" >
+                    <div class="row ">
+                    <div class="col-12">
+                                    <span>
+                                        <b>กำลังค้นหา : </b> <span id="text_searching"></span>
+                                    </span>
+                                </div>
+                        <div class="col-12">
+                            <!-- <div class="col-12 col-md-3 col-lg-3 card main-shadow item-content  m-0">
+                                <div class="content-header">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <span class="name-user">Teerasak Senaraksssssssssssss</span>
+                                    <i class="fa-regular fa-circle icon-circle-hover icon-circle"></i>
+                                </div>
+                                <div class="content-age">
+                                    <i class="fa-solid fa-mars" style="color:#0090E0"></i> &nbsp; <span >อายุ:24</span>
+                                </div>
+                            </div> -->
 
-            <div class="col-9">
+                            
+                            <!-- content_search_data -->
+                            <div class="row p-3" id="content_search_data">
+                                
+                            </div>
+                        </div>
+                
+                        
+                    </div>
+
+
+                </div>        
+            </div>
+        <div>
+
+            <!-- <div class="col-9">
                 <div class="row">
                     <div style="padding: 15px;">
                         <div>
@@ -716,10 +1181,8 @@
                                 </div>
                                 <div class="col-12">
 
-                                    <!-- content_search_data -->
+                                    content_search_data
                                     <div class="row" id="content_search_data">
-                                        
-                                        <!--  -->
 
                                     </div>
                                 </div>
@@ -730,11 +1193,9 @@
                         </div>        
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
-    </div>
-</div>
 
 <script>
 
@@ -848,7 +1309,7 @@ function search_data(){
                     // DIV COL-3
                     let div_data_name = document.createElement("div");
                         let class_div_data_name = document.createAttribute("class");
-                            class_div_data_name.value = "col-12 col-md-3 col-lg-3 p-1";
+                            class_div_data_name.value = "col-12 col-md-3 col-lg-3 card main-shadow item-content  m-1";
                             div_data_name.setAttributeNode(class_div_data_name);
                         let onclick_btn_select = document.createAttribute("onclick");
                             onclick_btn_select.value = "click_select('" + result[i]['user_id'] + "')";
@@ -857,8 +1318,22 @@ function search_data(){
                             id_div_result_content.value = "div_result_content_count_" + content_count ;
                             div_data_name.setAttributeNode(id_div_result_content);
 
-                    // ------------------------------------------------------------
+                    // div header 
+                    let div_header = document.createElement("div");
+                        let class_div_header = document.createAttribute("class");
+                            class_div_header.value = "content-header";
+                            div_header.setAttributeNode(class_div_header);
+                            div_data_name.appendChild(div_header);
+                    
+                    // user name
+                    let data_name_user = document.createElement("span");
+                        let class_name_user = document.createAttribute("class");
+                            class_name_user.value = "name-user";
+                            data_name_user.setAttributeNode(class_name_user);
+                    data_name_user.innerHTML =  "<b><h5>"+ result[i]['name']  +"</h5></b>";
+                    div_header.appendChild(data_name_user);
 
+                    // ------------------------------------------------------------
                     let btn_select = document.createElement("i");
                         let name_btn_select = document.createAttribute("name");
                             name_btn_select.value = "i_btn_select_"  + content_count;
@@ -874,23 +1349,34 @@ function search_data(){
                             btn_select.setAttributeNode(id_btn_select);
 
                         let text_user_id = result[i]['user_id'].toString();
-
                             if ( arr_user_id.includes(text_user_id) ) {
                                 // console.log("เลือกแล้ว");
-                                class_btn_select.value = "fas fa-check-circle btn text-success";
+                                
+                                class_btn_select.value = "fas fa-solid fa-circle-check text-success icon-circle h6";
                             }else{
-                                class_btn_select.value = "far fa-circle btn";
+                                class_btn_select.value = "far fa-regular fa-circle icon-circle-hover icon-circle";
                                 // console.log("ยังไม่ได้เลือก");
                             }
-
                         btn_select.setAttributeNode(class_btn_select);
+                        div_header.appendChild(btn_select);
 
-                        div_data_name.appendChild(btn_select);
+                    // user detail
+                    let data_age_user = document.createElement("div");
+                        let class_age_user = document.createAttribute("class");
+                            class_age_user.value = "content-age";
+                            data_age_user.setAttributeNode(class_age_user);
+                            div_data_name.appendChild(data_age_user);
+                    
 
+                    let span_detail_user = document.createElement("span");
+                    span_detail_user.innerHTML = "<span class='text-secondary ' style='font-size: 14px;'><b>เพศ :</b> " + result[i]['sex'] + " <b>อายุ :</b> " + age_user +"</span>";
+                    data_age_user.appendChild(span_detail_user);
 
-                    let span_name_user = document.createElement("span");
-                        span_name_user.innerHTML = "<center><h5>" + result[i]['name'] + "<span class='text-secondary' style='font-size: 14px;'>(" + result[i]['user_id'] +")</span></h5>  <br> <b>เพศ :</b> " + result[i]['sex'] + " <b>อายุ :</b> " + age_user + "</center>" ;
-                        div_data_name.appendChild(span_name_user);
+                    // let span_name_user = document.createElement("span");
+                        // span_name_user.innerHTML = "<center><h5>" + result[i]['name'] + "<span class='text-secondary' style='font-size: 14px;'>(" + result[i]['user_id'] +")</span></h5>  <br> <b>เพศ :</b> " + result[i]['sex'] + " <b>อายุ :</b> " + age_user + "</center>" ;
+
+                        // span_name_user.innerHTML = "<center><h5>" + result[i]['name'] + "</h5>  <br> <b>เพศ :</b> " + result[i]['sex'] + " <b>อายุ :</b> " + age_user + "</center>" ;
+                        // div_data_name.appendChild(span_name_user);
 
                     // -------------------------------------------------------
                     content_search_data.appendChild(div_data_name);
@@ -1010,7 +1496,7 @@ function select_user(user_id){
 
     // ยังไม่ได้เลือก
     let btn_select_user_id = document.querySelector('#btn_select_user_id_' + user_id);
-        btn_select_user_id.classList = "fas fa-check-circle btn text-success" ;
+        btn_select_user_id.classList = "fa-solid fa-circle-check text-success icon-circle h6" ;
 
     document.querySelector('#user_selected').innerHTML = JSON.parse(arr_user_id_selected.value).length ;
 
@@ -1028,7 +1514,7 @@ function drop_user(user_id){
     let btn_select_user_id = document.querySelector('#btn_select_user_id_' + user_id);
 
     try{
-        btn_select_user_id.classList = "far fa-circle btn" ;
+        btn_select_user_id.classList = "far fa-circle icon-circle-hover icon-circle" ;
     }
     catch{
         // 
@@ -1377,5 +1863,226 @@ function check_click_checked($checked){
   };
 </script>
 
+<script>
+    var options = {
+    series: [{
+    name: 'จำนวน',
+    data: [{{ $percent_man}} ,  {{$percent_female}} ,  {{$percent_sex_not_specified}} , ]
+    }],chart: {
+    type: 'bar',
+    height: 180
+    },
+    plotOptions: {
+    bar: {
+        borderRadius: 5 ,
+        columnWidth: '55%',
+        dataLabels: {
+        position: 'top', // top, center, bottom
+        },
+    }
+    },
+    dataLabels: {
+    enabled: true,
+    formatter: function (val) {
+        return val + "%";
+    },
+    offsetY: -20,
+    style: {
+        fontSize: '12px',
+        colors: ["#000000"]
+    }},
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    xaxis: {
+        categories: ['ชาย', 'หญิง', 'ไม่ทราบ' ],
+    },
+    fill: {
+        opacity: 1
+    },
+    tooltip: {
+        y: {
+        formatter: function (val) {
+            return val + "%"
+        }
+        }
+    },yaxis: {
+        axisBorder: {
+            show: false
+        },
+        axisTicks: {
+            show: false,
+        },
+        labels: {
+            show: false,
+            formatter: function (val) {
+            return val + "%";
+            }
+        }
+    }
+};
 
+    var chart = new ApexCharts(document.querySelector("#chart-gender"), options);
+    chart.render();
+</script>
+
+<script>
+    var options = {
+    series: [{
+    name: 'จำนวน',
+    data: [{{ $percent_age_Range_1 }} ,  {{ $percent_age_Range_2 }} , {{ $percent_age_Range_3 }}  ,{{ $percent_age_Range_4 }},{{ $percent_age_Range_5 }},{{ $percent_age_not_specified }}]
+    }],chart: {
+    type: 'bar',
+    height: 180
+    },
+    plotOptions: {
+    bar: {
+        borderRadius: 5 ,
+        columnWidth: '55%',
+        dataLabels: {
+        position: 'top', // top, center, bottom
+        },
+    }
+    },
+    dataLabels: {
+    enabled: true,
+    formatter: function (val) {
+        return val + "%";
+    },
+    offsetY: -20,
+    style: {
+        fontSize: '12px',
+        colors: ["#000000"]
+    }},
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    xaxis: {
+        categories: ['20', '21-29', '30-45' ,'46-59','60+','ไม่ทราบ'],
+    },
+    fill: {
+        opacity: 1
+    },
+    tooltip: {
+        y: {
+        formatter: function (val) {
+            return val + "%"
+        }
+        }
+    },yaxis: {
+        axisBorder: {
+            show: false
+        },
+        axisTicks: {
+            show: false,
+        },
+        labels: {
+            show: false,
+            formatter: function (val) {
+            return val + "%";
+            }
+        }
+    }
+};
+    var chart = new ApexCharts(document.querySelector("#chart-age"), options);
+    chart.render();
+</script>
+
+<script>
+var options = {
+        series: [{
+        name: 'จำนวน',
+        data: [44, 55, 57,10]
+    }],
+    chart: {
+    type: 'bar',
+    height: 180
+    },
+    plotOptions: {
+    bar: {
+        borderRadius: 5 ,
+        columnWidth: '55%',
+        dataLabels: {
+        position: 'top', // top, center, bottom
+        },
+    }
+    },
+    dataLabels: {
+    enabled: true,
+    formatter: function (val) {
+        return val + "%";
+    },
+    offsetY: -20,
+    style: {
+        fontSize: '12px',
+        colors: ["#000000"]
+    }},
+    stroke: {
+        show: true,
+        width: 2,
+        colors: ['transparent']
+    },
+    xaxis: {
+        categories: ['กรุงเทพ', 'ปริมณฑล', 'อื่นๆ' ,'ไม่ทราบ'],
+    },
+    fill: {
+        opacity: 1
+    },
+    tooltip: {
+        y: {
+        formatter: function (val) {
+            return val + "%"
+        }
+        }
+    },yaxis: {
+        axisBorder: {
+            show: false
+        },
+        axisTicks: {
+            show: false,
+        },
+        labels: {
+            show: false,
+            formatter: function (val) {
+            return val + "%";
+            }
+        }
+    }
+};
+    var chart = new ApexCharts(document.querySelector("#chart-position"), options);
+    chart.render();
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script>
+    $('.owl-carousel').owlCarousel({
+    loop:false,
+    margin:10,
+    nav:true,
+    dots:false,
+    pading:10,
+    navText : ["<i style='border-radius:50%;padding:20px 25px' class='fa-solid fa-chevron-left  '></i>",
+    "<i style='border-radius:50%;padding:20px 25px' class='fa-solid fa-chevron-right  '></i>"],
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    }
+})
+</script>
 @endsection

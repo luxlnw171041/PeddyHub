@@ -26,7 +26,8 @@
 	<link rel="stylesheet" href="{{ asset('/admin/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('/admin/css/header-colors.css') }}" />
     <!-- fontawesome icon -->
-    <link href="https://kit-pro.fontawesome.com/releases/v6.0.0/css/pro.min.css" rel="stylesheet">
+	<link href="https://kit-pro.fontawesome.com/releases/v6.2.1/css/pro.min.css" rel="stylesheet">
+
     
     <!-- font -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Laila:wght@700&family=Mitr&display=swap" rel="stylesheet">
