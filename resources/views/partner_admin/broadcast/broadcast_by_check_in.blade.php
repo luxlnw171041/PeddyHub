@@ -2,6 +2,7 @@
 
 @section('content')
 
+<!-- คิด % -->
 @php
     function percent($data_find , $data_total){
 
@@ -14,6 +15,10 @@
         
         return $data ;
     }
+@endphp
+<!-- จบคิด % -->
+
+@php
     $count_user = count($check_in);
     $count_man = 0;
     $count_female = 0;
@@ -660,9 +665,9 @@ display:none;
                             <div class="row form-select-user" >
                                 <div class="col-12 text-center text-selected">
                                     <h5> <b>เลือกจำนวน </b> </h5>
-                                    <!-- <span id="tell_BC_by_check_in_max">
+                                    <span class="d-none" id="tell_BC_by_check_in_max">
                                         (ไม่เกิน <span id="amount_remain">{{ $BC_by_check_in_max - $BC_by_check_in_sent }}</span>)
-                                    </span> -->
+                                    </span> 
                                     
                                 </div>
                                 <div class="col-12 mt-2">
@@ -704,9 +709,6 @@ display:none;
                                 <div class="col-12">
                                     <center>
                                         <button id="btn_next_selected_user" type="button" class="btn-select btn btn-md btn-success main-shadow main-radius" style="width:70%;" data-toggle="modal" data-target="#exampleModalCenter" disabled>
-                                            ต่อไป
-                                        </button>
-                                        <button type="button" class="btn-select btn btn-md btn-success main-shadow main-radius" style="width:70%;" data-toggle="modal" data-target="#exampleModalCenter">
                                             ต่อไป
                                         </button>
                                     </center>
