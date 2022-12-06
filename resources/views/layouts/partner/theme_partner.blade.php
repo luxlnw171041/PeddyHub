@@ -68,7 +68,7 @@
 	<!--wrapper-->
 	@php
 	$user = \Illuminate\Support\Facades\Auth::user();
-	$partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->get();
+	$partner = \App\Models\Partner::where('id' , '=' ,$user->partner)->where('name_area' , '=' , null)->get();
 	@endphp
 	@foreach($partner as $item)
 	<div class="wrapper">
