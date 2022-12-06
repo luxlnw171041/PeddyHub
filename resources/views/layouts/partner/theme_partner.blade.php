@@ -156,7 +156,7 @@
 					</li> -->
 				@endif
 
-				@if (Auth::user()->id == 1)
+				@if (Auth::user()->id == 1 or Auth::user()->id == 9)
 					<!-- Broadcast -->
 					<li id="div_menu_Broadcast" class="">
 						<a class="has-arrow" href="javascript:;" >
