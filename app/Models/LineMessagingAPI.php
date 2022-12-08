@@ -677,7 +677,7 @@ class LineMessagingAPI extends Model
                         }
                             $birth = Carbon::parse($data_pet->birth);
                         
-                            $birth_month = $birth->diffInMonths($now)% 12;
+                            $birth_month = $birth->diffInMonths($now)% 12 + "เดือน";
                             $birth_year = $birth->diffInYears($now);
                             $birth_day = $birth->diffInDays($now);
                         
