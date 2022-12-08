@@ -580,38 +580,26 @@ class LineMessagingAPI extends Model
 
         $photo = $data['photo'];
 
-        if (!empty($data['detail'])) {
-            $detail = $data['detail'];
-        }else{
-            $detail = "-";
-        }
-        
         $phone = $data['phone'];
 
         switch ($data['pet_category_id']) {
         	case '1':
         		$pet_category_id = 'สุนัข';
-        		$img_icon = 'shiba.png';
         		break;
         	case '2':
         		$pet_category_id = 'แมว';
-        		$img_icon = 'cat.png';
         		break;
         	case '3':
         		$pet_category_id = 'นก';
-        		$img_icon = 'bird.png';
         		break;
         	case '4':
         		$pet_category_id = 'ปลา';
-        		$img_icon = 'fish.png';
         		break;
         	case '5':
         		$pet_category_id = 'สัตว์เล็ก';
-        		$img_icon = 'otter.png';
         		break;
         	case '6':
         		$pet_category_id = 'Exotic';
-        		$img_icon = 'spider.png';
         		break;
         }
 
@@ -632,12 +620,14 @@ class LineMessagingAPI extends Model
                     $data_Text_topic = [
                         "ตามหา",
                         "วันที่หาย",
-                        "คำอธิบาย",
-                        "ติดต่อ",
+                        "โทร",
                         "หาย",
-                        "แปลภาษา",
                         "เจ้าของ",
                         $pet_category_id,
+                        "ประเภท",
+                        "เพศ",
+                        "สายพันธ์",
+
                     ];
 
                     $data_topic = $this->language_for_user($data_Text_topic, $item->user->provider_id);
@@ -648,20 +638,19 @@ class LineMessagingAPI extends Model
 
                     $string_json = str_replace("ตามหา",$data_topic[0],$string_json);
                     $string_json = str_replace("วันที่หาย",$data_topic[1],$string_json);
-                    $string_json = str_replace("คำอธิบาย",$data_topic[2],$string_json);
-                    $string_json = str_replace("ติดต่อ",$data_topic[3],$string_json);
-                    $string_json = str_replace("หาย",$data_topic[4],$string_json);
-                    $string_json = str_replace("แปลภาษา",$data_topic[5],$string_json);
-                    $string_json = str_replace("เจ้าของ",$data_topic[6],$string_json);
-
-                    $string_json = str_replace("pet_cat",$data_topic[7],$string_json);
+                    $string_json = str_replace("โทร",$data_topic[2],$string_json);
+                    $string_json = str_replace("หาย",$data_topic[3],$string_json);
+                    $string_json = str_replace("เจ้าของ",$data_topic[4],$string_json);
+                    $string_json = str_replace("pet_cat",$data_topic[5],$string_json);
+                    $string_json = str_replace("ประเภท",$data_topic[6],$string_json);
+                    $string_json = str_replace("เพศ",$data_topic[7],$string_json);
+                    $string_json = str_replace("สายพันธ์",$data_topic[8],$string_json);
 
                     foreach ($data_users as $data_user) {
                         $string_json = str_replace("lucky",$data_user->profile->name,$string_json);   
                     }
 
                     $string_json = str_replace("IMGPET",$photo,$string_json);
-                    $string_json = str_replace("4544.png",$img_icon,$string_json);
                     $string_json = str_replace("22/2/2022",$date_now,$string_json);
                     // $string_json = str_replace("รายละเอียด",$detail,$string_json);
                     $string_json = str_replace("0999999999",$phone,$string_json);
@@ -669,9 +658,10 @@ class LineMessagingAPI extends Model
                     // $string_json = str_replace("TEXT_EN",$item->user->language,$string_json);
                     // $string_json = str_replace("สีแดง",$detail,$string_json);
                     
+
                     // data pet 
                     foreach ($data_pets as $data_pet) {
-                        $string_json = str_replace("pet_name",$data_pet->name,$string_json);
+                        $string_json = str_replace("PET_NAME",$data_pet->name,$string_json);
 
                         switch ($data_pet->gender) {
                             case 'ชาย':
@@ -684,6 +674,20 @@ class LineMessagingAPI extends Model
                                 $img_pet_gendeer = 'equality.png';
                                 break;
                         }
+
+                        if(\Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 ){
+                            $pet_age = \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') + "ปี";
+                            
+                        }
+                        if(\Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 ){
+                            $pet_age = \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m') + "เดือน";
+                        }
+
+                        if( \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0){
+                            $pet_age = \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%d') + "วัน";
+                        }
+
+                        $string_json = str_replace("PET_AGE",$pet_age,$string_json);
 
                         $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
                     }

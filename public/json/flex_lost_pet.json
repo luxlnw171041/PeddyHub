@@ -3,23 +3,18 @@
     "altText": "ตามหา pet_cat หาย",
     "contents": {
       "type": "bubble",
+      "size": "giga",
       "body": {
         "type": "box",
         "layout": "vertical",
         "contents": [
           {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "image",
-                "url": "https://www.peddyhub.com/peddyhub/images/logo/logo-2.png",
-                "size": "4xl",
-                "aspectRatio": "16:9",
-                "aspectMode": "fit"
-              }
-            ],
-            "paddingAll": "0px"
+            "type": "image",
+            "size": "full",
+            "aspectMode": "fit",
+            "aspectRatio": "1150:1863",
+            "gravity": "center",
+            "url": "https://www.peddyhub.com/peddyhub/images/flex-line/lost_pet/flex-lost-pet.png"
           },
           {
             "type": "box",
@@ -27,109 +22,21 @@
             "contents": [
               {
                 "type": "text",
-                "text": "ตามหา pet_cat หาย",
-                "align": "center",
-                "size": "xl",
-                "weight": "bold"
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-              {
-                "type": "image",
-                "url": "https://www.peddyhub.com/storage/IMGPET",
-                "size": "full",
-                "aspectRatio": "1:1",
-                "aspectMode": "fit"
+                "text": "ตามหา PET_TYPE หาย",
+                "wrap": false,
+                "maxLines": 1,
+                "weight": "bold",
+                "color": "#ffffff",
+                "align": "start",
+                "size": "25px"
               }
             ],
-            "offsetTop": "md"
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "baseline",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "pet_name",
-                    "size": "xl",
-                    "weight": "bold",
-                    "offsetStart": "20px",
-                    "margin": "sm",
-                    "flex": 0
-                  },
-                  {
-                    "type": "icon",
-                    "url": "https://www.peddyhub.com/peddyhub/images/img-icon/4544.png",
-                    "position": "relative"
-                  },
-                  {
-                    "type": "icon",
-                    "url": "https://www.peddyhub.com/peddyhub/images/img-icon/pet_img_gender.png",
-                    "position": "relative",
-                    "offsetEnd": "xxl"
-                  }
-                ],
-                "spacing": "25px"
-              },
-              {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "เจ้าของ :",
-                        "flex": 0,
-                        "margin": "sm",
-                        "weight": "bold"
-                      },
-                      {
-                        "type": "text",
-                        "text": "lucky",
-                        "flex": 0,
-                        "margin": "sm",
-                        "weight": "bold"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "contents": [
-                      {
-                        "type": "text",
-                        "text": "วันที่หาย :",
-                        "flex": 0,
-                        "margin": "sm",
-                        "weight": "bold"
-                      },
-                      {
-                        "type": "text",
-                        "text": "22/2/2022",
-                        "flex": 0,
-                        "margin": "sm",
-                        "weight": "bold"
-                      }
-                    ]
-                  }
-                ],
-                "paddingStart": "20px"
-              }
-            ],
-            "spacing": "md",
-            "margin": "xl",
-            "offsetTop": "10px"
+            "position": "absolute",
+            "width": "69%",
+            "offsetStart": "26%",
+            "offsetTop": "5%",
+            "alignItems": "center",
+            "justifyContent": "center"
           },
           {
             "type": "box",
@@ -141,47 +48,207 @@
                 "contents": [
                   {
                     "type": "image",
-                    "url": "https://www.peddyhub.com/peddyhub/images/logo-4.png",
-                    "offsetBottom": "xxl"
+                    "aspectMode": "cover",
+                    "size": "full",
+                    "aspectRatio": "1:1",
+                    "url": "https:IMGPET",
+                    "backgroundColor": "#FFFFFF"
                   }
-                ]
-              },
+                ],
+                "borderColor": "#FFFFFF",
+                "borderWidth": "5px",
+                "backgroundColor": "#B8205B",
+                "justifyContent": "center",
+                "cornerRadius": "200px"
+              }
+            ],
+            "alignItems": "center",
+            "justifyContent": "center",
+            "position": "absolute",
+            "offsetTop": "13%",
+            "width": "57.8%",
+            "offsetStart": "21%"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "PET_NAME",
+                "wrap": false,
+                "maxLines": 1,
+                "weight": "bold",
+                "offsetTop": "17%",
+                "color": "#ffffff",
+                "align": "center",
+                "size": "27px",
+                "decoration": "underline"
+              }
+            ],
+            "position": "absolute",
+            "width": "90%",
+            "offsetBottom": "0px",
+            "offsetEnd": "0px",
+            "offsetTop": "41.1%",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "offsetStart": "5%"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "PET_AGE",
+                "wrap": false,
+                "maxLines": 1,
+                "weight": "regular",
+                "color": "#ffffff",
+                "align": "center",
+                "size": "20px"
+              }
+            ],
+            "position": "absolute",
+            "width": "90%",
+            "offsetTop": "59%",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "offsetStart": "5%"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "วันที่หาย : DATE_LOST",
+                "wrap": false,
+                "maxLines": 1,
+                "weight": "regular",
+                "color": "#ffffff",
+                "align": "start",
+                "size": "20px"
+              }
+            ],
+            "position": "absolute",
+            "width": "87%",
+            "offsetTop": "66%",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "offsetStart": "7%"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "ประเภท : PET_TYPE",
+                "wrap": false,
+                "maxLines": 1,
+                "weight": "regular",
+                "color": "#ffffff",
+                "align": "start",
+                "size": "20px"
+              }
+            ],
+            "position": "absolute",
+            "width": "45.5%",
+            "offsetTop": "72%",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "offsetStart": "7%"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "เพศ : PET_GENDER",
+                "wrap": false,
+                "maxLines": 1,
+                "weight": "regular",
+                "color": "#ffffff",
+                "align": "start",
+                "size": "20px"
+              }
+            ],
+            "position": "absolute",
+            "width": "43%",
+            "offsetTop": "72%",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "offsetStart": "53%"
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "สายพันธุ์ : PET_SPECIES",
+                "wrap": false,
+                "maxLines": 1,
+                "weight": "regular",
+                "color": "#ffffff",
+                "align": "start",
+                "size": "20px"
+              }
+            ],
+            "position": "absolute",
+            "width": "89%",
+            "offsetTop": "79%",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "offsetStart": "7%"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
               {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
                   {
-                    "type": "box",
-                    "layout": "vertical",
-                    "contents": [
-                      {
-                        "type": "button",
-                        "action": {
-                          "type": "uri",
-                          "label": "ติดต่อ",
-                          "uri": "tel:0999999999"
-                        },
-                        "height": "sm",
-                        "style": "primary",
-                        "color": "#28A754"
-                      }
-                    ],
-                    "borderWidth": "bold",
-                    "borderColor": "#28A754",
-                    "cornerRadius": "lg"
+                    "type": "text",
+                    "text": "โทร : 0999999999",
+                    "color": "#b8205b",
+                    "weight": "bold",
+                    "size": "18px",
+                    "lineSpacing": "0px"
+                  },
+                  {
+                    "type": "text",
+                    "text": "เจ้าของ : lucky",
+                    "color": "#b8205b",
+                    "weight": "bold",
+                    "size": "18px"
                   }
                 ],
-                "paddingAll": "10px",
-                "borderColor": "#B8205B"
+                "position": "absolute",
+                "width": "60%",
+                "height": "100%",
+                "justifyContent": "center",
+                "offsetStart": "18%"
               }
             ],
-            "offsetTop": "20px"
+            "position": "absolute",
+            "width": "82%",
+            "offsetTop": "86.5%",
+            "action": {
+              "type": "uri",
+              "label": "ติดต่อ",
+              "uri": "tel:PHONE_USER_TEL"
+            },
+            "height": "9%",
+            "offsetStart": "8%"
           }
         ],
-        "paddingAll": "0px",
-        "borderWidth": "bold",
-        "borderColor": "#B8205B",
-        "cornerRadius": "xl"
+        "paddingAll": "0px"
       }
     }
 }
