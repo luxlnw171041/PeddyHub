@@ -680,16 +680,15 @@ class LineMessagingAPI extends Model
                             $birth_month = $birth->diffInMonths($now)% 12;
                             $birth_day = $birth->diffInDays($now);
 
-                            if (empty($birth_year)) {
-                                $pet_age = $birth_year . "ปี";
-                            }if (empty($birth_month)) {
-                                $pet_age = $birth_month . "เดือน";
-                            }if (empty($birth_day)) {
-                                $pet_age = $birth_day . "วัน";
+                            if ( $birth_year != 0 ) {
+                                $pet_age = $birth_year ." ปี";
                             }
-                            
-
-
+                            if( $birth_month != 0){
+                                $pet_age = $birth_month ." เดือน " .$pet_age;
+                            }
+                            if( $birth_day != 0){
+                                $pet_age = $birth_day ." วัน " .$pet_age;
+                            }
                            
             
 
