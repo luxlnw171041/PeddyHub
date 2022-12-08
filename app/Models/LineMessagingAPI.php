@@ -681,13 +681,13 @@ class LineMessagingAPI extends Model
                             $birth_day = $birth->diffInDays($now);
 
                             if (empty($birth_year)) {
-                                $pet_age = $birth_year +"ปี";
+                                $pet_age = $birth_year . "ปี";
                             };
                             if (empty($birth_month)) {
-                                $pet_age = $birth_month + "เดือน";
+                                $pet_age = $birth_month . "เดือน";
                             };
                             if (empty($birth_day)) {
-                                $pet_age = $birth_day + "วัน";
+                                $pet_age = $birth_day . "วัน";
                             };
                             
 
