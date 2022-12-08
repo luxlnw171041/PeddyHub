@@ -676,15 +676,26 @@ class LineMessagingAPI extends Model
                                 break;
                         }
                             $birth = Carbon::parse($data_pet->birth);
-                        
-                            $birth_month = $birth->diffInMonths($now)% 12 + "เดือน";
                             $birth_year = $birth->diffInYears($now);
+                            $birth_month = $birth->diffInMonths($now)% 12;
                             $birth_day = $birth->diffInDays($now);
-                        
+
+                            if (empty($birth_year)) {
+                                $pet_age = $birth_year +"ปี";
+                            };
+                            if (empty($birth_month)) {
+                                $pet_age = $birth_month + "เดือน";
+                            };
+                            if (empty($birth_day)) {
+                                $pet_age = $birth_day + "วัน";
+                            };
+                            
+
+
                            
             
 
-                        $string_json = str_replace("PET_AGE",$birth_month,$string_json);
+                        $string_json = str_replace("PET_AGE",$pet_age,$string_json);
 
                         $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
                     }
