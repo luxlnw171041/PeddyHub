@@ -676,7 +676,7 @@ class LineMessagingAPI extends Model
                         }
 
                         if(\Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 ){
-                            $pet_age = \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') + "ปี";
+                            $pet_age = \Carbon\Carbon::parse(strtotime($data_pet->birth))->diff(\Carbon\Carbon::now())->format('%y') + "ปี";
                             
                         }
                         if(\Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 ){
