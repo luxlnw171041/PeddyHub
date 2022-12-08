@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Pet;
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\Mylog;
 use App\Models\Lost_Pet;
@@ -680,7 +680,7 @@ class LineMessagingAPI extends Model
                             
                         }
                         if(\Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 ){
-                            $pet_age = \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m') + "เดือน";
+                            $pet_age = Carbon::parse($data_pet->birth)->diffInMonths(Carbon::now()->format('%m เดือน'));
                         }
 
                         if( \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0){
