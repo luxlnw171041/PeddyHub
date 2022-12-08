@@ -682,13 +682,11 @@ class LineMessagingAPI extends Model
 
                             if (empty($birth_year)) {
                                 $pet_age = $birth_year . "ปี";
-                            };
-                            if (empty($birth_month)) {
+                            }if (empty($birth_month)) {
                                 $pet_age = $birth_month . "เดือน";
-                            };
-                            if (empty($birth_day)) {
+                            }if (empty($birth_day)) {
                                 $pet_age = $birth_day . "วัน";
-                            };
+                            }
                             
 
 
