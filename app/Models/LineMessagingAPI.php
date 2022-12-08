@@ -658,6 +658,7 @@ class LineMessagingAPI extends Model
                     // $string_json = str_replace("TEXT_EN",$item->user->language,$string_json);
                     // $string_json = str_replace("สีแดง",$detail,$string_json);
                     
+                    $now = Carbon::now();
 
                     // data pet 
                     foreach ($data_pets as $data_pet) {
@@ -674,20 +675,16 @@ class LineMessagingAPI extends Model
                                 $img_pet_gendeer = 'equality.png';
                                 break;
                         }
+                            $birth = Carbon::parse($data_pet->birth);
+                        
+                            $birth_month = $birth->diffInMonths($now)% 12;
+                            $birth_year = $birth->diffInYears($now);
+                            $birth_day = $birth->diffInDays($now);
+                        
+                           
+            
 
-                        if(\Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') != 0 ){
-                            $pet_age = \Carbon\Carbon::parse(strtotime($data_pet->birth))->diff(\Carbon\Carbon::now())->format('%y') + "ปี";
-                            
-                        }
-                        if(\Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m') != 0 ){
-                            $pet_age = Carbon::parse($data_pet->birth)->diffInMonths(Carbon::now()->format('%m เดือน'));
-                        }
-
-                        if( \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%y') == 0 & \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%m')== 0){
-                            $pet_age = \Carbon\Carbon::parse($data_pet->birth)->diff(\Carbon\Carbon::now())->format('%d') + "วัน";
-                        }
-
-                        $string_json = str_replace("PET_AGE",$pet_age,$string_json);
+                        $string_json = str_replace("PET_AGE",$birth_month,$string_json);
 
                         $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
                     }
