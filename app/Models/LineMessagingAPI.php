@@ -676,20 +676,20 @@ class LineMessagingAPI extends Model
                                 break;
                         }
                             $birth = Carbon::parse($data_pet->birth);
-                            $birth_year = $birth->diffInYears($now);
-                            $birth_month = $birth->diffInMonths($now)% 12;
-                            $birth_day = $birth->diffInDays($now);
+                            $birth_year = $birth->diff($now)->format("%y");
+                            $birth_month = $birth->diff($now)->format("%m");;
+                            $birth_day = $birth->diff($now)->format("%d");;
 
                             $pet_age = null;
-                            
+
                             if ( $birth_year != 0 ) {
                                 $pet_age = $birth_year ." ปี";
                             }
                             if( $birth_month != 0){
-                                $pet_age = $birth_month ." เดือน " .$pet_age;
+                                $pet_age =  $pet_age . $birth_month ." เดือน ";
                             }
                             if( $birth_day != 0){
-                                $pet_age = $birth_day ." วัน " .$pet_age;
+                                $pet_age = $pet_age . $birth_day ." วัน ";
                             }
                            
             
