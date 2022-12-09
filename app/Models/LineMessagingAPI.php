@@ -696,7 +696,6 @@ class LineMessagingAPI extends Model
                         }
                     // partner
                     $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get();
-                    $partner->toArray();
 
                     $string_json = str_replace("IMGPARTNER_1",$partner[0],$string_json);   
                     $string_json = str_replace("IMGPARTNER_2",$partner[1],$string_json);   
@@ -704,7 +703,7 @@ class LineMessagingAPI extends Model
                     $string_json = str_replace("IMGPARTNER_4",$partner[3],$string_json);   
                     $string_json = str_replace("IMGPARTNER_5",$partner[4],$string_json);   
                     $string_json = str_replace("IMGPARTNER_6",$partner[5],$string_json);   
-                    
+
                     $messages = [ json_decode($string_json, true) ];
 
 
