@@ -691,7 +691,7 @@ class LineMessagingAPI extends Model
 
                         
                         $string_json = str_replace("PET_NAME",$data_pet->name,$string_json);    
-                        $string_json = str_replace("PET_AGE",$pet_age,$string_json);
+                        $string_json = str_replace("PET_AGE",$photo,$string_json);
                         $string_json = str_replace("PET_GENDER",$data_pet->gender,$string_json);
                     }
 
