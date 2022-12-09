@@ -695,7 +695,15 @@ class LineMessagingAPI extends Model
                         $string_json = str_replace("PET_AGE",$pet_age,$string_json);
                         $string_json = str_replace("PET_GENDER",$data_pet->gender,$string_json);
                     }
-                    
+                    // partner
+                    $partner = Partner::where('show_homepage' , 'show')->inRandomOrder()->limit(6)->get();
+                
+                    for ($i=0; $i < count($partner);) { 
+                        foreach($partner as $item ){
+                            $img_partner[$i] = $item->logo;
+                            $i++;
+                        }
+                    } 
 
                     $messages = [ json_decode($string_json, true) ];
 
