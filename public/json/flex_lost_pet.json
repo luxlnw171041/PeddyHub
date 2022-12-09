@@ -12,9 +12,9 @@
             "type": "image",
             "size": "full",
             "aspectMode": "fit",
-            "aspectRatio": "1150:1863",
+            "aspectRatio": "1150:2078",
             "gravity": "center",
-            "url": "https://www.peddyhub.com/peddyhub/images/flex-line/lost_pet/flex-lost-pet.png"
+            "url": "https://peddyhub.com/peddyhub/images/flex-line/lost_pet/flex-lost-pet-partner.png"
           },
           {
             "type": "box",
@@ -34,7 +34,7 @@
             "position": "absolute",
             "width": "69%",
             "offsetStart": "26%",
-            "offsetTop": "5%",
+            "offsetTop": "4.5%",
             "alignItems": "center",
             "justifyContent": "center"
           },
@@ -65,7 +65,7 @@
             "alignItems": "center",
             "justifyContent": "center",
             "position": "absolute",
-            "offsetTop": "13%",
+            "offsetTop": "11.5%",
             "width": "57.8%",
             "offsetStart": "21%"
           },
@@ -79,7 +79,6 @@
                 "wrap": false,
                 "maxLines": 1,
                 "weight": "bold",
-                "offsetTop": "17%",
                 "color": "#ffffff",
                 "align": "center",
                 "size": "27px",
@@ -88,9 +87,7 @@
             ],
             "position": "absolute",
             "width": "90%",
-            "offsetBottom": "0px",
-            "offsetEnd": "0px",
-            "offsetTop": "41.1%",
+            "offsetTop": "45%",
             "alignItems": "center",
             "justifyContent": "center",
             "offsetStart": "5%"
@@ -112,7 +109,7 @@
             ],
             "position": "absolute",
             "width": "90%",
-            "offsetTop": "59%",
+            "offsetTop": "52%",
             "alignItems": "center",
             "justifyContent": "center",
             "offsetStart": "5%"
@@ -134,7 +131,7 @@
             ],
             "position": "absolute",
             "width": "87%",
-            "offsetTop": "66%",
+            "offsetTop": "58%",
             "alignItems": "center",
             "justifyContent": "center",
             "offsetStart": "7%"
@@ -156,7 +153,7 @@
             ],
             "position": "absolute",
             "width": "45.5%",
-            "offsetTop": "72%",
+            "offsetTop": "63.5%",
             "alignItems": "center",
             "justifyContent": "center",
             "offsetStart": "7%"
@@ -178,7 +175,7 @@
             ],
             "position": "absolute",
             "width": "43%",
-            "offsetTop": "72%",
+            "offsetTop": "63.5%",
             "alignItems": "center",
             "justifyContent": "center",
             "offsetStart": "53%"
@@ -200,7 +197,7 @@
             ],
             "position": "absolute",
             "width": "89%",
-            "offsetTop": "79%",
+            "offsetTop": "69.5%",
             "alignItems": "center",
             "justifyContent": "center",
             "offsetStart": "7%"
@@ -238,13 +235,193 @@
             ],
             "position": "absolute",
             "width": "82%",
-            "offsetTop": "86.5%",
+            "offsetTop": "76%",
             "action": {
               "type": "uri",
               "label": "ติดต่อ",
               "uri": "tel:PHONE_USER_TEL"
             },
-            "height": "9%",
+            "height": "8%",
+            "offsetStart": "7.5%"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https:IMGPARTNER_1",
+                        "size": "full",
+                        "aspectMode": "cover"
+                      }
+                    ],
+                    "cornerRadius": "100px"
+                  }
+                ],
+                "width": "13.5%",
+                "height": "80%",
+                "backgroundColor": "#b8205b",
+                "cornerRadius": "xxl",
+                "offsetTop": "10%",
+                "offsetStart": "4%",
+                "borderWidth": "semi-bold",
+                "justifyContent": "center",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https:IMGPARTNER_2",
+                        "size": "full",
+                        "aspectMode": "cover"
+                      }
+                    ],
+                    "cornerRadius": "100px"
+                  }
+                ],
+                "width": "13.5%",
+                "height": "80%",
+                "backgroundColor": "#b8205b",
+                "cornerRadius": "xxl",
+                "offsetTop": "10%",
+                "offsetStart": "20%",
+                "borderWidth": "semi-bold",
+                "justifyContent": "center",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https:IMGPARTNER_3",
+                        "size": "full",
+                        "aspectMode": "cover"
+                      }
+                    ],
+                    "cornerRadius": "100px",
+                    "justifyContent": "center"
+                  }
+                ],
+                "width": "13.5%",
+                "height": "80%",
+                "backgroundColor": "#b8205b",
+                "cornerRadius": "xxl",
+                "offsetTop": "10%",
+                "offsetStart": "35%",
+                "borderWidth": "semi-bold",
+                "justifyContent": "center",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https:IMGPARTNER_4",
+                        "size": "full",
+                        "aspectMode": "cover"
+                      }
+                    ],
+                    "cornerRadius": "xxl"
+                  }
+                ],
+                "width": "13.5%",
+                "height": "80%",
+                "backgroundColor": "#b8205b",
+                "cornerRadius": "200px",
+                "offsetTop": "10%",
+                "offsetStart": "50%",
+                "borderWidth": "semi-bold",
+                "justifyContent": "center",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https:IMGPARTNER_5",
+                        "size": "full",
+                        "aspectMode": "cover"
+                      }
+                    ],
+                    "cornerRadius": "xxl"
+                  }
+                ],
+                "width": "13.5%",
+                "height": "80%",
+                "backgroundColor": "#b8205b",
+                "cornerRadius": "200px",
+                "offsetTop": "10%",
+                "offsetStart": "65%",
+                "borderWidth": "semi-bold",
+                "justifyContent": "center",
+                "position": "absolute"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "image",
+                        "url": "https:IMGPARTNER_6",
+                        "size": "full",
+                        "aspectMode": "cover"
+                      }
+                    ],
+                    "cornerRadius": "xxl"
+                  }
+                ],
+                "width": "13.5%",
+                "height": "80%",
+                "backgroundColor": "#b8205b",
+                "cornerRadius": "200px",
+                "offsetTop": "10%",
+                "offsetStart": "80%",
+                "borderWidth": "semi-bold",
+                "justifyContent": "center",
+                "position": "absolute"
+              }
+            ],
+            "position": "absolute",
+            "width": "82%",
+            "offsetTop": "88%",
+            "height": "8%",
             "offsetStart": "8%"
           }
         ],
