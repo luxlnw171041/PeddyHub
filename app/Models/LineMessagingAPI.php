@@ -669,8 +669,8 @@ class LineMessagingAPI extends Model
                         
                         $birth = Carbon::parse($data_pet->birth);
                         $birth_year = $birth->diff($now)->format("%y");
-                        $birth_month = $birth->diff($now)->format("%m");;
-                        $birth_day = $birth->diff($now)->format("%d");;
+                        $birth_month = $birth->diff($now)->format("%m");
+                        $birth_day = $birth->diff($now)->format("%d");
 
                         $pet_age = null;
 
@@ -690,20 +690,13 @@ class LineMessagingAPI extends Model
                             $string_json = str_replace("PET_SPECIES","ไม่ได้ระบุ",$string_json);
                         }
 
-                        
                         $string_json = str_replace("PET_NAME",$data_pet->name,$string_json);    
                         $string_json = str_replace("PET_AGE",$pet_age,$string_json);
                         $string_json = str_replace("PET_GENDER",$data_pet->gender,$string_json);
                     }
+
                     // partner
                     $partner = Partner::where('show_homepage' , 'show')->inRandomOrder()->limit(6)->get();
-                
-                    for ($i=0; $i < count($partner);) { 
-                        foreach($partner as $item ){
-                            $img_partner[$i] = $item->logo;
-                            $i++;
-                        }
-                    } 
 
                     $messages = [ json_decode($string_json, true) ];
 
