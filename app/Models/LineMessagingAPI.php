@@ -669,7 +669,7 @@ class LineMessagingAPI extends Model
                         ->limit(6)
                         ->get();
 
-                    $cout_partner = count($partner) - 1;
+                    $cout_partner = count($partner) - 1 ;
 
 
                     for ($i=0; $i <= $cout_partner; ) { 
@@ -682,12 +682,12 @@ class LineMessagingAPI extends Model
                         
                     }
                     
-                    $string_json = str_replace("IMGPARTNER_1",$img_partner[0],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_2",$img_partner[1],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_3",$img_partner[2],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_4",$img_partner[3],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_5",$img_partner[4],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_6",$img_partner[5],$string_json); 
+                    $string_json = str_replace("IMGPARTNER_1","",$string_json);
+                    $string_json = str_replace("IMGPARTNER_2","",$string_json);
+                    $string_json = str_replace("IMGPARTNER_3","",$string_json);
+                    $string_json = str_replace("IMGPARTNER_4","",$string_json);
+                    $string_json = str_replace("IMGPARTNER_5","",$string_json);
+                    $string_json = str_replace("IMGPARTNER_6","",$string_json);
 
                       
                     
