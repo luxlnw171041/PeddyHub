@@ -701,10 +701,9 @@ class LineMessagingAPI extends Model
                     ->limit(6)
                     ->get();
 
-                    for ($i=0; $i == count($partner);) { 
+                    for ($i=0; $i < count($partner);) { 
                         foreach($partner as $item ){
-                            $img_partner[$i] = $item->logo;
-
+                            $img_partner[$i++] = $item->logo;
                             $i++;
                         }
                     }
@@ -714,6 +713,8 @@ class LineMessagingAPI extends Model
                     $string_json = str_replace("IMGPARTNER_4",$img_partner[3],$string_json);   
                     $string_json = str_replace("IMGPARTNER_5",$img_partner[4],$string_json);   
                     $string_json = str_replace("IMGPARTNER_6",$img_partner[5],$string_json);   
+                    
+
 
                     $messages = [ json_decode($string_json, true) ];
 
