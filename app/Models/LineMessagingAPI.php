@@ -697,6 +697,13 @@ class LineMessagingAPI extends Model
 
                     // partner
                     $partner = Partner::where('show_homepage' , 'show')->inRandomOrder()->limit(6)->get();
+                    
+                    for ($i=0; $i < count($partner);) { 
+                        foreach($partner as $item ){
+                            $img_partner[$i] = $item->logo;
+                            $i++;
+                        }
+                    } 
 
                     $messages = [ json_decode($string_json, true) ];
 
