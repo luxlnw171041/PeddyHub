@@ -14,6 +14,7 @@ use App\Models\Mylog;
 use App\Models\Lost_Pet;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Blood_bank;
+use App\Models\Partner;
 
 class LineMessagingAPI extends Model
 {
@@ -644,7 +645,7 @@ class LineMessagingAPI extends Model
                     $string_json = str_replace("PET_TYPE",$data_topic[5],$string_json);
                     $string_json = str_replace("ประเภท",$data_topic[6],$string_json);
                     $string_json = str_replace("เพศ",$data_topic[7],$string_json);
-                    $string_json = str_replace("สายพันธ์",$data_topic[8],$string_json);
+                    $string_json = str_replace("สายพันธ์ุ",$data_topic[8],$string_json);
 
                     foreach ($data_users as $data_user) {
                     //     $string_json = str_replace("lucky",$data_user->profile->name,$string_json); 
@@ -695,7 +696,7 @@ class LineMessagingAPI extends Model
                             $string_json = str_replace("PET_GENDER",$data_pet->gender,$string_json);
                         }
                     // partner
-                    $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get();
+                    $partner = Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get();
 
                     $string_json = str_replace("IMGPARTNER_1",$partner[0],$string_json);   
                     $string_json = str_replace("IMGPARTNER_2",$partner[1],$string_json);   
