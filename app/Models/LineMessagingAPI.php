@@ -648,15 +648,8 @@ class LineMessagingAPI extends Model
 
                     foreach ($data_users as $data_user) {
                     //     $string_json = str_replace("lucky",$data_user->profile->name,$string_json); 
-                        if ($phone == 'ไม่ได้ระบุ') {
                             $string_json = str_replace("lucky",$data_user->profile->name,$string_json);
-                            $string_json = str_replace("0999999999","ไม่ได้ระบุ",$string_json);
-    
-                        }else{
-                            $string_json = str_replace("lucky",$data_user->profile->name,$string_json);
-                            $string_json = str_replace("0999999999",$phone,$string_json);
                             $string_json = str_replace("PHONE_USER_TEL",$phone,$string_json);
-                        }
                           
                     }
 

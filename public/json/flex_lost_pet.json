@@ -212,7 +212,7 @@
                 "contents": [
                   {
                     "type": "text",
-                    "text": "โทร : 0999999999",
+                    "text": "โทร : PHONE_USER_TEL",
                     "color": "#b8205b",
                     "weight": "bold",
                     "size": "18px",
