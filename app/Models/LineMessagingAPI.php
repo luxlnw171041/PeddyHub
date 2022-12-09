@@ -697,13 +697,20 @@ class LineMessagingAPI extends Model
                         }
                     // partner
                     $partner = Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get();
+                    
+                    for ($i=0; $i < count($partner);) { 
+                        foreach($partner as $item ){
+                            $img_partner[$i] = $item->logo;
+                            $i++;
+                        }
+                    }
 
-                    $string_json = str_replace("IMGPARTNER_1",$partner[0],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_2",$partner[1],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_3",$partner[2],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_4",$partner[3],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_5",$partner[4],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_6",$partner[5],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_1",$img_partner[0],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_2",$img_partner[1],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_3",$img_partner[2],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_4",$img_partner[3],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_5",$img_partner[4],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_6",$img_partner[5],$string_json);   
 
                     $messages = [ json_decode($string_json, true) ];
 
