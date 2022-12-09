@@ -664,24 +664,32 @@ class LineMessagingAPI extends Model
 
                     //partner
                     $partner = DB::table('partners')
-                    ->where('show_homepage' , "show")
-                    ->inRandomOrder()
-                    ->limit(6)
-                    ->get();
+                        ->where('show_homepage' , "show")
+                        ->inRandomOrder()
+                        ->limit(6)
+                        ->get();
 
-                    for ($i=0; $i < count($partner);) { 
+                    $cout_partner = count($partner) - 1;
+
+
+                    for ($i=0; $i <= $cout_partner; ) { 
+
                         foreach($partner as $item ){
                             $img_partner[$i] = $item->logo;
                             $i++;
-                        }
-                    }
 
+                        }
+                        
+                    }
+                    
                     $string_json = str_replace("IMGPARTNER_1",$img_partner[0],$string_json);   
                     $string_json = str_replace("IMGPARTNER_2",$img_partner[1],$string_json);   
                     $string_json = str_replace("IMGPARTNER_3",$img_partner[2],$string_json);   
                     $string_json = str_replace("IMGPARTNER_4",$img_partner[3],$string_json);   
                     $string_json = str_replace("IMGPARTNER_5",$img_partner[4],$string_json);   
-                    $string_json = str_replace("IMGPARTNER_6",$img_partner[5],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_6",$img_partner[5],$string_json); 
+
+                      
                     
                     $now = Carbon::now();
 
