@@ -641,19 +641,28 @@ class LineMessagingAPI extends Model
                     $string_json = str_replace("โทร",$data_topic[2],$string_json);
                     $string_json = str_replace("หาย",$data_topic[3],$string_json);
                     $string_json = str_replace("เจ้าของ",$data_topic[4],$string_json);
-                    $string_json = str_replace("pet_cat",$data_topic[5],$string_json);
+                    $string_json = str_replace("PET_TYPE",$data_topic[5],$string_json);
                     $string_json = str_replace("ประเภท",$data_topic[6],$string_json);
                     $string_json = str_replace("เพศ",$data_topic[7],$string_json);
                     $string_json = str_replace("สายพันธ์",$data_topic[8],$string_json);
 
                     foreach ($data_users as $data_user) {
-                        $string_json = str_replace("lucky",$data_user->profile->name,$string_json);   
+                    //     $string_json = str_replace("lucky",$data_user->profile->name,$string_json); 
+                        if ($phone == 'ไม่ได้ระบุ') {
+                            $string_json = str_replace("lucky",$data_user->profile->name,$string_json);
+                            $string_json = str_replace("0999999999","ไม่ได้ระบุ",$string_json);
+    
+                        }else{
+                            $string_json = str_replace("lucky",$data_user->profile->name,$string_json);
+                            $string_json = str_replace("0999999999",$phone,$string_json);
+                        }
+                          
                     }
 
                     $string_json = str_replace("IMGPET",$photo,$string_json);
-                    $string_json = str_replace("22/2/2022",$date_now,$string_json);
+                    $string_json = str_replace("DATE_LOST",$date_now,$string_json);
                     // $string_json = str_replace("รายละเอียด",$detail,$string_json);
-                    $string_json = str_replace("0999999999",$phone,$string_json);
+                    
 
                     // $string_json = str_replace("TEXT_EN",$item->user->language,$string_json);
                     // $string_json = str_replace("สีแดง",$detail,$string_json);
@@ -662,41 +671,34 @@ class LineMessagingAPI extends Model
 
                     // data pet 
                     foreach ($data_pets as $data_pet) {
-                        $string_json = str_replace("PET_NAME",$data_pet->name,$string_json);
+                        
+                        $birth = Carbon::parse($data_pet->birth);
+                        $birth_year = $birth->diff($now)->format("%y");
+                        $birth_month = $birth->diff($now)->format("%m");;
+                        $birth_day = $birth->diff($now)->format("%d");;
 
-                        switch ($data_pet->gender) {
-                            case 'ชาย':
-                                $img_pet_gendeer = 'male.png';
-                                break;
-                            case 'หญิง':
-                                $img_pet_gendeer = 'female.png';
-                                break;
-                            case 'ไม่ระบุ':
-                                $img_pet_gendeer = 'equality.png';
-                                break;
+                        $pet_age = null;
+
+                        if ( $birth_year != 0 ) {
+                            $pet_age = $birth_year ." ปี";
                         }
-                            $birth = Carbon::parse($data_pet->birth);
-                            $birth_year = $birth->diff($now)->format("%y");
-                            $birth_month = $birth->diff($now)->format("%m");;
-                            $birth_day = $birth->diff($now)->format("%d");;
+                        if( $birth_month != 0){
+                            $pet_age =  $pet_age . $birth_month ." เดือน ";
+                        }
+                        if( $birth_day != 0){
+                            $pet_age = $pet_age . $birth_day ." วัน ";
+                        }
 
-                            $pet_age = null;
+                        if (!empty($data_pet->species)) {
+                            $string_json = str_replace("PET_SPECIES",$data_pet->species,$string_json);
+                        }else{
+                            $string_json = str_replace("PET_SPECIES","ไม่ได้ระบุ",$string_json);
+                        }
 
-                            if ( $birth_year != 0 ) {
-                                $pet_age = $birth_year ." ปี";
-                            }
-                            if( $birth_month != 0){
-                                $pet_age =  $pet_age . $birth_month ." เดือน ";
-                            }
-                            if( $birth_day != 0){
-                                $pet_age = $pet_age . $birth_day ." วัน ";
-                            }
-                           
-            
-
+                        
+                        $string_json = str_replace("PET_NAME",$data_pet->name,$string_json);    
                         $string_json = str_replace("PET_AGE",$pet_age,$string_json);
-
-                        $string_json = str_replace("pet_img_gender.png",$img_pet_gendeer,$string_json);
+                        $string_json = str_replace("PETGENDER",$data_pet->gender,$string_json);
                     }
 
                     $messages = [ json_decode($string_json, true) ];
