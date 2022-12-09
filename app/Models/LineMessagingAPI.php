@@ -664,37 +664,47 @@ class LineMessagingAPI extends Model
                     $now = Carbon::now();
 
                     // data pet 
-                    foreach ($data_pets as $data_pet) {
-                        
-                        $birth = Carbon::parse($data_pet->birth);
-                        $birth_year = $birth->diff($now)->format("%y");
-                        $birth_month = $birth->diff($now)->format("%m");;
-                        $birth_day = $birth->diff($now)->format("%d");;
+                        foreach ($data_pets as $data_pet) {
+                            
+                            $birth = Carbon::parse($data_pet->birth);
+                            $birth_year = $birth->diff($now)->format("%y");
+                            $birth_month = $birth->diff($now)->format("%m");;
+                            $birth_day = $birth->diff($now)->format("%d");;
 
-                        $pet_age = null;
+                            $pet_age = null;
 
-                        if ( $birth_year != 0 ) {
-                            $pet_age = $birth_year ." ปี";
+                            if ( $birth_year != 0 ) {
+                                $pet_age = $birth_year ." ปี";
+                            }
+                            if( $birth_month != 0){
+                                $pet_age =  $pet_age . $birth_month ." เดือน ";
+                            }
+                            if( $birth_day != 0){
+                                $pet_age = $pet_age . $birth_day ." วัน ";
+                            }
+
+                            if (!empty($data_pet->species)) {
+                                $string_json = str_replace("PET_SPECIES",$data_pet->species,$string_json);
+                            }else{
+                                $string_json = str_replace("PET_SPECIES","ไม่ได้ระบุ",$string_json);
+                            }
+
+                            
+                            $string_json = str_replace("PET_NAME",$data_pet->name,$string_json);    
+                            $string_json = str_replace("PET_AGE",$pet_age,$string_json);
+                            $string_json = str_replace("PET_GENDER",$data_pet->gender,$string_json);
                         }
-                        if( $birth_month != 0){
-                            $pet_age =  $pet_age . $birth_month ." เดือน ";
-                        }
-                        if( $birth_day != 0){
-                            $pet_age = $pet_age . $birth_day ." วัน ";
-                        }
+                    // partner
+                    $partner = \App\Models\Partner::where(['show_homepage' => 'show'])->inRandomOrder()->get();
+                    $partner->toArray();
 
-                        if (!empty($data_pet->species)) {
-                            $string_json = str_replace("PET_SPECIES",$data_pet->species,$string_json);
-                        }else{
-                            $string_json = str_replace("PET_SPECIES","ไม่ได้ระบุ",$string_json);
-                        }
-
-                        
-                        $string_json = str_replace("PET_NAME",$data_pet->name,$string_json);    
-                        $string_json = str_replace("PET_AGE",$pet_age,$string_json);
-                        $string_json = str_replace("PET_GENDER",$data_pet->gender,$string_json);
-                    }
-
+                    $string_json = str_replace("IMGPARTNER_1",$partner[0],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_2",$partner[1],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_3",$partner[2],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_4",$partner[3],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_5",$partner[4],$string_json);   
+                    $string_json = str_replace("IMGPARTNER_6",$partner[5],$string_json);   
+                    
                     $messages = [ json_decode($string_json, true) ];
 
 

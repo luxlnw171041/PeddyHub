@@ -258,7 +258,7 @@
                     "contents": [
                       {
                         "type": "image",
-                        "url": "https:IMGPARTNER_1",
+                        "url": "https://www.peddyhub.com/storage/IMGPARTNER_1",
                         "size": "full",
                         "aspectMode": "cover"
                       }
@@ -269,7 +269,7 @@
                 "width": "13.5%",
                 "height": "80%",
                 "backgroundColor": "#b8205b",
-                "cornerRadius": "xxl",
+                "cornerRadius": "200px",
                 "offsetTop": "10%",
                 "offsetStart": "4%",
                 "borderWidth": "semi-bold",
@@ -286,7 +286,7 @@
                     "contents": [
                       {
                         "type": "image",
-                        "url": "https:IMGPARTNER_2",
+                        "url": "https://www.peddyhub.com/storage/IMGPARTNER_2",
                         "size": "full",
                         "aspectMode": "cover"
                       }
@@ -297,7 +297,7 @@
                 "width": "13.5%",
                 "height": "80%",
                 "backgroundColor": "#b8205b",
-                "cornerRadius": "xxl",
+                "cornerRadius": "200px",
                 "offsetTop": "10%",
                 "offsetStart": "20%",
                 "borderWidth": "semi-bold",
@@ -314,7 +314,7 @@
                     "contents": [
                       {
                         "type": "image",
-                        "url": "https:IMGPARTNER_3",
+                        "url": "https://www.peddyhub.com/storage/IMGPARTNER_3",
                         "size": "full",
                         "aspectMode": "cover"
                       }
@@ -326,7 +326,7 @@
                 "width": "13.5%",
                 "height": "80%",
                 "backgroundColor": "#b8205b",
-                "cornerRadius": "xxl",
+                "cornerRadius": "200px",
                 "offsetTop": "10%",
                 "offsetStart": "35%",
                 "borderWidth": "semi-bold",
@@ -343,7 +343,7 @@
                     "contents": [
                       {
                         "type": "image",
-                        "url": "https:IMGPARTNER_4",
+                        "url": "https://www.peddyhub.com/storage/IMGPARTNER_4",
                         "size": "full",
                         "aspectMode": "cover"
                       }
@@ -371,7 +371,7 @@
                     "contents": [
                       {
                         "type": "image",
-                        "url": "https:IMGPARTNER_5",
+                        "url": "https://www.peddyhub.com/storage/IMGPARTNER_5",
                         "size": "full",
                         "aspectMode": "cover"
                       }
@@ -399,7 +399,7 @@
                     "contents": [
                       {
                         "type": "image",
-                        "url": "https:IMGPARTNER_6",
+                        "url": "https://www.peddyhub.com/storage/IMGPARTNER_6",
                         "size": "full",
                         "aspectMode": "cover"
                       }
