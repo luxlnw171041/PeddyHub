@@ -422,6 +422,9 @@
                     @else
                     ที่อยู่: ไม่ระบุ
                     @endif
+                    @if(!empty($item->profile->address))
+                    <br>รายละเอียดทีอยู่เพิ่มเติม: {{$item->profile->address}}
+                    @endif
                 </b>
             </div>
         </div>

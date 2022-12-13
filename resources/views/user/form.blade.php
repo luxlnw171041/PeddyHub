@@ -236,7 +236,7 @@
                                         <div class="faq ">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                                    <textarea style="border-radius: 25px 0px 25px 25px ;" name="address" class="form-control" rows="3" type="text" id="address" value="{{ $data->profile->address }}" placeholder="รายละเอียดที่อยู่"></textarea>
+                                                    <textarea style="border-radius: 25px 0px 25px 25px ;" name="address" class="form-control" rows="3" type="text" id="address" value="{{ $data->profile->address }}" placeholder="รายละเอียดที่อยู่เพิ่มเติม">{{ $data->profile->address }}</textarea>
                                                     {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
                                                 </div>
                                             </div>
