@@ -578,17 +578,9 @@ class test_for_devController extends Controller
     {
         $data_users = User::where('id', "1")->first();
 
-        $requestArr = [
-            'name' => $data_users->profile->name,
-            'phone' => $data_users->profile->phone,
-            'province' => $data_users->profile->tambon_th,
-            'amphoe' => $data_users->profile->amphoe_th,
-            'tambon' => $data_users->profile->changwat_th,
-            'std_of' => "PEDDYHUB",
-            
-        ];
+        $data_users->std_of = "PEDDYHUB" ;
 
-        return view('test_for_dev.test_api_register_viicheck', compact('requestArr'));
+        return view('test_for_dev.test_api_register_viicheck', compact('data_users'));
 
         // echo "<pre>";
         // print_r($data_users);
