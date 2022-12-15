@@ -13,7 +13,7 @@
 	        <input type="text" class="form-control" name="tambon_th" placeholder="tambon_th..." value="{{ $data_users->profile->tambon_th }}">
 	        <input type="text" class="form-control" name="amphoe_th" placeholder="amphoe_th..." value="{{ $data_users->profile->amphoe_th }}">
 	        <input type="text" class="form-control" name="changwat_th" placeholder="changwat_th..." value="{{ $data_users->profile->changwat_th }}">
-	        <input type="text" class="form-control" name="std_of" placeholder="std_of..." value="PEDDYHUB">
+	        <input type="text" class="form-control" name="by_api" placeholder="by_api..." value="PEDDYHUB">
 
 	        <span class="input-group-append">
 	            <button class="btn btn-success" type="submit">
