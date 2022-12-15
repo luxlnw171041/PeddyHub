@@ -588,6 +588,8 @@ class test_for_devController extends Controller
             
         ];
 
+        return view('pet.index', compact('requestArr'));
+
         // echo "<pre>";
         // print_r($data_users);
         // echo "<pre>";
