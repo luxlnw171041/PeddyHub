@@ -578,16 +578,27 @@ class test_for_devController extends Controller
     {
         $data_users = User::where('id', "1")->first();
 
-        echo "<pre>";
-        print_r($data_users);
-        echo "<pre>";
-        exit();
+        $requestArr = [
+            'name' => $data_users->profile->name,
+            'phone' => $data_users->profile->phone,
+            'province' => $data_users->profile->tambon_th,
+            'amphoe' => $data_users->profile->amphoe_th,
+            'tambon' => $data_users->profile->changwat_th,
+            'std_of' => "PEDDYHUB",
+            
+        ];
+
+        // echo "<pre>";
+        // print_r($data_users);
+        // echo "<pre>";
+        // exit();
+
         // $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
         $url = 'https://www.viicheck.com/api/register_api';
         $ch = curl_init($url);
 
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_users);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $requestArr);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
