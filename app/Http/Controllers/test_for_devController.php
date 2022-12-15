@@ -573,6 +573,26 @@ class test_for_devController extends Controller
         echo $response;
 
     }
+
+    public function test_api_register_viicheck()
+    {
+        $data_users = User::where('id', "1")->first();
+
+        // $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
+        $url = 'https://www.viicheck.com/api/register_api';
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_users);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+        echo $response;
+
+    }
+
+
     public function test_for_dev()
     {
         $pet_id = "1";
