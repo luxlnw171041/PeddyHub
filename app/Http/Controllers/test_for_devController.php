@@ -588,7 +588,7 @@ class test_for_devController extends Controller
             
         ];
 
-        return view('pet.index', compact('requestArr'));
+        return view('test_for_dev.test_api_register_viicheck', compact('requestArr'));
 
         // echo "<pre>";
         // print_r($data_users);
