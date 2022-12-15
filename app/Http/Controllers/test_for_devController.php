@@ -578,6 +578,10 @@ class test_for_devController extends Controller
     {
         $data_users = User::where('id', "1")->first();
 
+        echo "<pre>";
+        print_r($requestData);
+        echo "<pre>";
+        exit();
         // $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
         $url = 'https://www.viicheck.com/api/register_api';
         $ch = curl_init($url);
