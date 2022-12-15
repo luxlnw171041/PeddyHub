@@ -578,8 +578,6 @@ class test_for_devController extends Controller
     {
         $data_users = User::where('id', "1")->first();
 
-        $data_users->std_of = "PEDDYHUB" ;
-
         return view('test_for_dev.test_api_register_viicheck', compact('data_users'));
 
         // echo "<pre>";
