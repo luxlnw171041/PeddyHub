@@ -576,7 +576,7 @@ class test_for_devController extends Controller
 
     public function test_api_register_viicheck()
     {
-        $data_users = User::where('id', "1")->first();
+        $data_users = Auth::user();
 
         return view('test_for_dev.test_api_register_viicheck', compact('data_users'));
 
