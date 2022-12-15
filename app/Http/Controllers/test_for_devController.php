@@ -579,7 +579,7 @@ class test_for_devController extends Controller
         $data_users = User::where('id', "1")->first();
 
         echo "<pre>";
-        print_r($requestData);
+        print_r($data_users);
         echo "<pre>";
         exit();
         // $url = 'http://localhost/PeddyHub/public/api/partner_lost_pet';
