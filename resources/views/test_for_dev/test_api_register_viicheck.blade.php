@@ -5,7 +5,7 @@
 	<br><br><br><br><br><br><br><br>
 
 
-    <form method="POST" action="https://www.viicheck.com/api/register_api" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="data">
+    <form method="GET" action="https://www.viicheck.com/api/register_api" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="data">
 	    <div class="input-group">
 
 	        <input type="text" class="form-control" name="name" placeholder="name..." value="{{ $data_users->profile->name }}">
