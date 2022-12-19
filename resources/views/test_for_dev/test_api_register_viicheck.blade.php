@@ -4,7 +4,7 @@
 	
 	<br><br><br><br><br><br><br><br>
 
-	<a href="https://www.viicheck.com/login/line" class="btn btn-danger">
+	<a href="https://www.viicheck.com/login/line" class="btn btn-danger" target="bank">
 		Login Line 
 	</a>
 
