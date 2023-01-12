@@ -178,6 +178,7 @@ Route::get('test_for_dev/send_line_lost_pet', 'test_for_devController@send_line_
 Route::get('test_for_dev', 'test_for_devController@test_for_dev');
 Route::get('test_for_dev/test_send_png', 'test_for_devController@test_send_png');
 Route::get('test_for_dev/lat_lng_pro', 'test_for_devController@lat_lng_pro');
+Route::get('test_for_dev/test_api_register_viicheck', 'test_for_devController@test_api_register_viicheck');
 
 Route::get('BC_to_user_line', 'test_for_devController@BC_to_user_line');
 Route::get('BC_to_user_line_carousel', 'test_for_devController@BC_to_user_line_carousel');
