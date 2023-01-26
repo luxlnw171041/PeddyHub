@@ -88,7 +88,7 @@ aside {
                                 <div class="card main-shadow main-radius" onclick="view_markar('{{ $item->lat }}' , '{{ $item->lng }}','{{ $item->name }}');">
                                     <div class="row">
                                         <div class="col-9">
-                                            <h6>{{ $item->name }}</h6>
+                                            <h6 class="notranslate">{{ $item->name }}</h6>
                                         </div>
                                         <div class="col-3">
                                             <button class="btn btn-sm btn-success float-right" style="margin-top: -10px;">
