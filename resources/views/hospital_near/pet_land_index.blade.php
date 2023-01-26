@@ -347,7 +347,7 @@ aside {
 
                             let div_card = document.createElement("div");
                             let class_div_card = document.createAttribute("class");
-                                class_div_card.value = "card main-shadow main-radius";
+                                class_div_card.value = "card main-shadow main-radius notranslate";
                                 div_card.setAttributeNode(class_div_card);
                             let onclick_div_card = document.createAttribute("onclick");
                                 onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
@@ -362,7 +362,7 @@ aside {
                             // ชื่อ
                             let div_col_name = document.createElement("div");
                             let class_div_name = document.createAttribute("class");
-                                class_div_name.value = "col-12";
+                                class_div_name.value = "col-12 notranslate";
                                 div_col_name.setAttributeNode(class_div_name);
                             let h_name = document.createElement("h6");
                                 h_name.innerHTML = item.name ;
@@ -494,7 +494,7 @@ aside {
 
                             let div_card_recommend = document.createElement("div");
                             let class_div_card_recommend = document.createAttribute("class");
-                                class_div_card_recommend.value = "card main-shadow main-radius";
+                                class_div_card_recommend.value = "card main-shadow main-radius notranslate";
                                 div_card_recommend.setAttributeNode(class_div_card_recommend);
                             let onclick_div_card_recommend = document.createAttribute("onclick");
                                 onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
@@ -509,7 +509,7 @@ aside {
                             // ชื่อ
                             let div_col_name_recommend = document.createElement("div");
                             let class_div_name_recommend = document.createAttribute("class");
-                                class_div_name_recommend.value = "col-9";
+                                class_div_name_recommend.value = "col-9 notranslate";
                                 div_col_name_recommend.setAttributeNode(class_div_name_recommend);
                             let h_name_recommend = document.createElement("h6");
                                 h_name_recommend.innerHTML = item.name ;
@@ -920,7 +920,7 @@ aside {
 
                             let div_card_recommend = document.createElement("div");
                             let class_div_card_recommend = document.createAttribute("class");
-                                class_div_card_recommend.value = "card main-shadow main-radius";
+                                class_div_card_recommend.value = "card main-shadow main-radius notranslate";
                                 div_card_recommend.setAttributeNode(class_div_card_recommend);
                             let onclick_div_card_recommend = document.createAttribute("onclick");
                                 onclick_div_card_recommend.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
@@ -935,7 +935,7 @@ aside {
                             // ชื่อ
                             let div_col_name_recommend = document.createElement("div");
                             let class_div_name_recommend = document.createAttribute("class");
-                                class_div_name_recommend.value = "col-9";
+                                class_div_name_recommend.value = "col-9 notranslate";
                                 div_col_name_recommend.setAttributeNode(class_div_name_recommend);
                             let h_name_recommend = document.createElement("h6");
                                 h_name_recommend.innerHTML = item.name ;
@@ -1108,7 +1108,7 @@ aside {
 
                             let div_card = document.createElement("div");
                             let class_div_card = document.createAttribute("class");
-                                class_div_card.value = "card main-shadow main-radius";
+                                class_div_card.value = "card main-shadow main-radius notranslate";
                                 div_card.setAttributeNode(class_div_card);
                             let onclick_div_card = document.createAttribute("onclick");
                                 onclick_div_card.value = "view_markar('" + item.lat + "' , '" + item.lng + "' , '" + item.name + "');";
@@ -1123,7 +1123,7 @@ aside {
                             // ชื่อ
                             let div_col_name = document.createElement("div");
                             let class_div_name = document.createAttribute("class");
-                                class_div_name.value = "col-12";
+                                class_div_name.value = "col-12 notranslate";
                                 div_col_name.setAttributeNode(class_div_name);
                             let h_name = document.createElement("h6");
                                 h_name.innerHTML = item.name ;
@@ -1275,7 +1275,7 @@ aside {
             let lat_mail = '@' + parseFloat(lat) ;
             const contentString =
                 '<div>' +
-                    '<h6>'+ name +'</h6>' +
+                    '<h6 class="notranslate">'+ name +'</h6>' +
                     '<div>' +
                         "<p>lat : "+ lat + "lng : "+ lng + "</p>" +
                     '</div>' +
