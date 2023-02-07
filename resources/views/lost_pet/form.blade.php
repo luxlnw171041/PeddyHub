@@ -369,7 +369,7 @@
         // getLocation();
         select_province();
         check();
-        // document.querySelector('#btn_lost_pet_15day').click();
+        document.querySelector('#btn_lost_pet_15day').click();
     });
 
     // function getLocation() {
