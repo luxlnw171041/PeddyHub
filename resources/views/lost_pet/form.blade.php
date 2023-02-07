@@ -4,6 +4,70 @@
         border-radius: 20px 0px 20px 20px ;
     }
 </style>
+
+
+            <!-- Button trigger modal -->
+            <button id="btn_lost_pet_15day" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#lost_pet_15day">
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="lost_pet_15day" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/01.png') }}">
+                            <br><br>
+                            <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
+                            <p>
+                                ในการลงประกาศตามหาเจ้าตัวแสบ กรณีที่คุณยังค้นหาไม่พบคุณสามารถเข้ามาส่งข้อความอีกครั้งหลัง <span class="text-danger"><b>7 วัน</b></span> โดยไม่ต้องประกาศใหม่รวมไปถึงอัพเดทสถานะการค้นหาได้ที่หน้า <a href="{{ url('/my_post') }}"><u>โพสของฉัน</u></a>
+                            </p>
+                        </div>
+                        <div class="modal-body text-center">
+                            <b>สนับสนุนโดย</b>
+                            @include ('layouts.partner_2_row')
+                            <button type="button" class="btn btn-primary d-none">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- คุณมีประกาศของสัตว์เลี้ยงนี้อยู่ -->
+            <button id="btn_lost_pet_You_have" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#lost_pet_You_have">
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="lost_pet_You_have" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
+                            <a style="float:right;" class="btn" href="{{ url('/my_post') }}">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/09.png') }}">
+                            <br><br>
+                            <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
+                            <p style="font-size:20px;" class="text-danger">
+                                <u><b>คุณมีประกาศของสัตว์เลี้ยงนี้อยู่</b></u>
+                            </p>
+                        </div>
+                        <div class="modal-body text-center">
+                            <b>สนับสนุนโดย</b>
+                            @include ('layouts.partner_2_row')
+                            <button type="button" class="btn btn-primary d-none">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 <section class="contact">
     <div class="container">
         <div class="row">
@@ -288,68 +352,6 @@
                     </div>
                 </div>
 
-            </div>
-
-            <!-- Button trigger modal -->
-            <button id="btn_lost_pet_15day" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#lost_pet_15day">
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="lost_pet_15day" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body text-center">
-                            <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/01.png') }}">
-                            <br><br>
-                            <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
-                            <p>
-                                ในการลงประกาศตามหาเจ้าตัวแสบ กรณีที่คุณยังค้นหาไม่พบคุณสามารถเข้ามาส่งข้อความอีกครั้งหลัง <span class="text-danger"><b>7 วัน</b></span> โดยไม่ต้องประกาศใหม่รวมไปถึงอัพเดทสถานะการค้นหาได้ที่หน้า <a href="{{ url('/my_post') }}"><u>โพสของฉัน</u></a>
-                            </p>
-                        </div>
-                        <div class="modal-body text-center">
-                            <b>สนับสนุนโดย</b>
-                            @include ('layouts.partner_2_row')
-                            <button type="button" class="btn btn-primary d-none">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- คุณมีประกาศของสัตว์เลี้ยงนี้อยู่ -->
-            <button id="btn_lost_pet_You_have" type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#lost_pet_You_have">
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="lost_pet_You_have" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">แจ้งเตือน</h5>
-                            <a style="float:right;" class="btn" href="{{ url('/my_post') }}">
-                                <span aria-hidden="true">&times;</span>
-                            </a>
-                        </div>
-                        <div class="modal-body text-center">
-                            <img width="60%" src="{{ url('peddyhub/images/PEDDyHUB sticker line/09.png') }}">
-                            <br><br>
-                            <p style="font-size:30px;"><b>สวัสดีคุณ <span class="text-primary">{{ Auth::user()->profile->name }}</span></b></p>
-                            <p style="font-size:20px;" class="text-danger">
-                                <u><b>คุณมีประกาศของสัตว์เลี้ยงนี้อยู่</b></u>
-                            </p>
-                        </div>
-                        <div class="modal-body text-center">
-                            <b>สนับสนุนโดย</b>
-                            @include ('layouts.partner_2_row')
-                            <button type="button" class="btn btn-primary d-none">Save changes</button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </section>
