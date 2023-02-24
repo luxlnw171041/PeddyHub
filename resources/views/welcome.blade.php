@@ -109,12 +109,15 @@
                                 .slogan-mobile{
                                     padding: 0 20px;
                                 }
+                                .an_image_image{
+                                    margin-top: 55px;
+                                }
                             }
                         </style>
                        
                         <div class="col-lg-5 col-md-12 col-sm-12 method" style="margin-top:-20px;">
                             <div class="image">
-                                <div class="a\"
+                                <div class="an_image an_image_hz_ps_right_end an_image_vt_ps_top an_image_anime_delay_300 an_image_anime_duration_1500 an_image_anime_style_ease_out_sine"
                                     data-speed="1.2">
                                     <div class="an_image_image" data-speed="1.2">
                                         <!-- <div class="pt_image"><span><img src="peddyhub/images/home_5/icon1.png" title="Pet"
@@ -122,7 +125,7 @@
                                         </div> -->
                                         <center>
                                             <video class="video" loop autoplay controls>
-                                                <source src="{{ url('/peddyhub/images/video/PeddyHUB.mp4') }}" />
+                                                <source src="https://www.peddyhub.com/peddyhub/images/video/PEDDyHUB.mp4" />
                                             </video>
                                         </center>
                                         <div class="row text-center mt-3 slogan-mobile">
