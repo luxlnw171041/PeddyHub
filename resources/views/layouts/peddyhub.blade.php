@@ -51,6 +51,27 @@
   <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 </head>
 <style>
+      .goog-logo-link {
+      display: none !important;
+    }
+
+    .goog-te-gadget {
+      color: transparent !important;
+    }
+
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }.VIpgJd-ZVi9od-l4eHX-hSRGPd {
+      display: none !important;
+    }.VIpgJd-ZVi9od-aZ2wEe-wOHMyf{
+      display: none !important;
+    }.VIpgJd-ZVi9od-ORHb-OEVmcd {
+      display: none !important;
+
+    }#goog-gt-{
+      display: none !important;
+
+    }
   .goog-logo-link {
     display: none !important;
   }
