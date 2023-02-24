@@ -39,14 +39,125 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <style>
+                             .video {
+                                aspect-ratio: 4/3;
+                                max-height: calc(100vh - 6rem);
+                                max-width: 95%;
+                                width: fit-content;
+                                height: fit-content;
+                                display: block;
+                                background-color: black;
+                                border-radius: 1.28rem;
+                                object-fit: cover;
+                                align-self: center;
+                            }
+                            .slogan{
+                                font-size: 15px;
+                                background-color: #B8205B;
+                                padding: 10px 5px;
+                                border-radius: 15px;
+                                color: #fff;
+                                font-weight: bold;
+                                font-family: 'Kanit', sans-serif !important;
+                                animation: slogan 2s ease 0s 1 normal forwards;
+                                opacity: 0;
+                                justify-content: center;
+                            }
+                            .slogan img{ 
+                                width: 50px !important;
+                                height: 50px !important;
+                                display: block;
+                                margin-bottom: 5px;
+                            }
+                            @keyframes slogan {
+                                0%, 20%, 40%, 60%, 80%, 100% {
+                                -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+                                }
+                                0% {
+                                opacity: 0;
+                                -webkit-transform: scale3d(.3, .3, .3);
+                                transform: scale3d(.3, .3, .3);
+                                }
+                                20% {
+                                -webkit-transform: scale3d(1.1, 1.1, 1.1);
+                                transform: scale3d(1.1, 1.1, 1.1);
+                                }
+                                40% {
+                                -webkit-transform: scale3d(.9, .9, .9);
+                                transform: scale3d(.9, .9, .9);
+                                }
+                                60% {
+                                opacity: 1;
+                                -webkit-transform: scale3d(1.03, 1.03, 1.03);
+                                transform: scale3d(1.03, 1.03, 1.03);
+                                }
+                                80% {
+                                -webkit-transform: scale3d(.97, .97, .97);
+                                transform: scale3d(.97, .97, .97);
+                                }
+                                100% {
+                                opacity: 1;
+                                -webkit-transform: scale3d(1, 1, 1);
+                                transform: scale3d(1, 1, 1);
+                                }
+                                
+                            }   
+                            
+                            @media only screen and (max-width: 600px) {
+                                .slogan-mobile{
+                                    padding: 0 20px;
+                                }
+                            }
+                        </style>
+                       
                         <div class="col-lg-5 col-md-12 col-sm-12 method" style="margin-top:-20px;">
                             <div class="image">
                                 <div class="an_image an_image_hz_ps_right_end an_image_vt_ps_top an_image_anime_delay_300 an_image_anime_duration_1500 an_image_anime_style_ease_out_sine"
                                     data-speed="1.2">
                                     <div class="an_image_image" data-speed="1.2">
-                                        <div class="pt_image"><span><img src="peddyhub/images/home_5/icon1.png" title="Pet"
+                                        <!-- <div class="pt_image"><span><img src="peddyhub/images/home_5/icon1.png" title="Pet"
                                                     alt="Image of Pet"></span>
+                                        </div> -->
+                                        <center>
+                                            <video class="video" loop autoplay controls>
+                                                <source src="{{ url('/peddyhub/images/video/PeddyHUB.mp4') }}" />
+                                            </video>
+                                        </center>
+                                        <div class="row text-center mt-3 slogan-mobile">
+                                            <div class="col-6 col-md-3 p-1" >
+                                                <div class="wow slogan"style="animation-delay: 0s;">
+                                                    <center>
+                                                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/30.png') }}"  alt="">
+                                                    </center>
+                                                    ช่วยเหลือ
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-3 p-1" >
+                                            <div class="wow slogan"style="animation-delay: 0.2s;">
+                                                    <center>
+                                                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/33.png') }}"  alt="">
+                                                    </center>
+                                                    ปลอดภัย
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-3 p-1" >
+                                                <div class="wow slogan"style="animation-delay: 0.4s;">
+                                                    <center>
+                                                        <img src="{{ url('/peddyhub/images/PEDDyHUB sticker line/11.png') }}"  alt="">
+                                                    </center>
+                                                    สุขใจ
+                                                </div>
+                                            </div>
+                                            <div class="col-6 col-md-3 p-1" >
+                                                <div class="wow slogan"style="animation-delay: 0.6s;">
+                                                    <center>
+                                                        <img src="{{ url('/peddyhub/images/logo/logo-5.png') }}"  alt="">
+                                                    </center>
+                                                    ไปกับเพ็ทดี้ฮับ
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
