@@ -27,8 +27,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('cron:check_15days_lost__pets')->dailyAt('08:00')->withoutOverlapping(5);
-        $schedule->command('cron:check_15day_sendcovid_and_check_in')->dailyAt('08:00')->withoutOverlapping(5);
+        $schedule->command('cron:check_15days_lost__pets')->dailyAt('07:00')->withoutOverlapping(5);
+        $schedule->command('cron:check_15day_sendcovid_and_check_in')->dailyAt('07:30')->withoutOverlapping(5);
         $schedule->command('cron:alert_vaccine')->dailyAt('08:00')->withoutOverlapping(5);
 
     }
