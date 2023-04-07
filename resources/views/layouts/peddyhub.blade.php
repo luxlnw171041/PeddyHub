@@ -712,7 +712,6 @@
         </div>
       </div>
       <!-- END MODAL LOADNING -->
-      
       <!--Main Footer-->
       <footer class="main-footer">
         <div class="container">

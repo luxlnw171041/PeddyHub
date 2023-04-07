@@ -69,6 +69,13 @@ font-family: 'Kaushan Script', sans-serif;*/
 ====================================================================
 
  ***/
+
+ .cwc-banner-show-settings{
+    color: #007bff !important;
+  }.cwc-banner-show-settings:hover{
+    color: #0056b3 !important;
+    text-decoration: underline !important;
+  }
  a.disabled {
     pointer-events: none;
     cursor: default;
