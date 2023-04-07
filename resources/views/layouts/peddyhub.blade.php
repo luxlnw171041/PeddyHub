@@ -2,7 +2,9 @@
 <html lang="en">
 
 <head>
-
+<!-- Cookie Consent by https://www.cookiewow.com --> 
+<script type="text/javascript" src="https://cookiecdn.com/cwc.js"></script> 
+<script id="cookieWow" type="text/javascript" src="https://cookiecdn.com/configs/8miny9bozQ32U3da1iwN64n2" data-cwcid="8miny9bozQ32U3da1iwN64n2"></script>
   <meta charset="utf-8">
   <!-- <title>PeddyHub</title> -->
   <!-- icon -->
@@ -726,6 +728,10 @@
                 <span>•</span>
                 <a href="{{'terms_of_service'}}">
                   <span>ข้อกำหนดและเงื่อนไขการใช้บริการ</span>
+                </a>
+                <span>•</span>
+                <a class="cwc-banner-show-settings">
+                  <span>Cookie Settings</span>
                 </a>
               </div>
             </div>
