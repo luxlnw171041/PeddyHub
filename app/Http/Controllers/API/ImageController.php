@@ -528,4 +528,51 @@ class ImageController extends Controller
 
     }
 
+    function Manage_resize_photos(Request $request){
+
+        $text_hello_world = "HELLO WORLD" ;
+
+        $files = Storage::files('public/uploads');
+        $type_part = "uploads";
+
+        // $files = Storage::files('public/check_in');
+        // $type_part = "check_in";
+
+        return view('Manage_resize_photos', compact('text_hello_world','files','type_part'));
+    }
+
+    function resize_img($name_file , $type_part){
+
+        $filename = 'public/'.$type_part.'/' . $name_file;
+
+        $image = Image::make(storage_path("app/") . $filename);
+        
+        $size = $image->filesize();  
+
+        if($size > 112000 ){
+            $image->resize(
+                intval($image->width()/2) , 
+                intval($image->height()/2)
+            )->save(); 
+        }
+
+        $new_filesize = $image->filesize(); 
+        // $new_size = round($new_filesize / (1024 * 1024), 2);
+
+        return $new_filesize ;
+
+    }
+
+    function get_new_size_img($name_file , $type_part){
+
+        $filename = 'public/'.$type_part.'/' . $name_file;
+
+        $image = Image::make(storage_path("app/") . $filename);
+        
+        $size = $image->filesize(); 
+        
+        return $size ;
+
+    }
+
 }

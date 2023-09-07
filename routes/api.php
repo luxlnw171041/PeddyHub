@@ -117,7 +117,9 @@ Route::get('Create_Token/{id_partner}', 'API\PartnersController@Create_Token');
 Route::get('/check_content','API\BroadcastController@check_content');
 Route::post('/send_content_BC_by_check_in','API\BroadcastController@send_content_BC_by_check_in');
 
+// จัดการรูปภาพ
 Route::get('/delete_uploaded_photos/{name_file}/{type_part}','API\ImageController@delete_uploaded_photos');
-
+Route::get('/resize_img/{name_file}/{type_part}','API\ImageController@resize_img');
+Route::get('/get_new_size_img/{name_file}/{type_part}','API\ImageController@get_new_size_img');
 
 
