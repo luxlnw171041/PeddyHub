@@ -73,22 +73,75 @@
 
 	    	$address_img = "";
 
-	    	//if($type_part == "uploads"){
-		    	// --- ads_contents ---
-		    	//$db_ads_contents = App\Models\Ads_content::where('photo',$name_db_file)->first();
-		    	//if(!empty($db_ads_contents)){
-		    		//$address_img = $address_img . "/" . 'ads_contents' ;
-		    	//}
+	    	if($type_part == "uploads"){
 
-		    	// --- users ---
-		    	//$db_users = App\User::where('photo',$name_db_file)
-		    		//->orWhere('driver_license',$name_db_file)
-		    		//->orWhere('driver_license2',$name_db_file)
-		    		//->first();
-		    	//if(!empty($db_users)){
-		    		//$address_img = $address_img . "/" . 'users' ;
-		    	//}
-		    //}
+	    		// --- adoptpets ---
+		    	$db_adoptpets = App\Models\Adoptpet::where('photo',$name_db_file)->first();
+		    	if(!empty($db_adoptpets)){
+		    		$address_img = $address_img . "/" . 'adoptpets' ;
+		    	}
+
+		    	// --- ads_contents ---
+		    	$db_ads_contents = App\Models\Ads_content::where('photo',$name_db_file)->first();
+		    	if(!empty($db_ads_contents)){
+		    		$address_img = $address_img . "/" . 'ads_contents' ;
+		    	}
+
+		    	// --- hospital_nears ---
+		    	$db_hospital_nears = App\Models\Hospital_near::where('photo',$name_db_file)->first();
+		    	if(!empty($db_hospital_nears)){
+		    		$address_img = $address_img . "/" . 'hospital_nears' ;
+		    	}
+
+		    	// --- lost__pets ---
+		    	$db_lost__pets = App\Models\Lost_Pet::where('photo',$name_db_file)->first();
+		    	if(!empty($db_lost__pets)){
+		    		$address_img = $address_img . "/" . 'lost__pets' ;
+		    	}
+
+		    	// --- partners ---
+		    	$db_partners = App\Models\Partner::where('logo',$name_db_file)->first();
+		    	if(!empty($db_partners)){
+		    		$address_img = $address_img . "/" . 'partners' ;
+		    	}
+
+		    	// --- pets ---
+		    	$db_pets = App\Models\Pet::where('photo',$name_db_file)
+		    		->orWhere('photo_2',$name_db_file)
+		    		->orWhere('photo_3',$name_db_file)
+		    		->orWhere('photo_medical_certificate',$name_db_file)
+		    		->orWhere('photo_vaccine',$name_db_file)
+		    		->orWhere('photo_vaccine_2',$name_db_file)
+		    		->orWhere('photo_vaccine_3',$name_db_file)
+		    		->orWhere('qr_code',$name_db_file)
+		    		->orWhere('qr_code_checklist',$name_db_file)
+		    		->first();
+		    	if(!empty($db_pets)){
+		    		$address_img = $address_img . "/" . 'pets' ;
+		    	}
+
+		    	// --- posts ---
+		    	$db_posts = App\Models\Post::where('photo',$name_db_file)->first();
+		    	if(!empty($db_posts)){
+		    		$address_img = $address_img . "/" . 'posts' ;
+		    	}
+
+		    	// --- products ---
+		    	$db_products = App\Models\Product::where('photo',$name_db_file)->first();
+		    	if(!empty($db_products)){
+		    		$address_img = $address_img . "/" . 'products' ;
+		    	}
+
+
+		    	// --- profiles ---
+		    	$db_profiles = App\Models\Profile::where('photo',$name_db_file)
+		    		->orWhere('photo_passport',$name_db_file)
+		    		->orWhere('photo_id_card',$name_db_file)
+		    		->first();
+		    	if(!empty($db_profiles)){
+		    		$address_img = $address_img . "/" . 'profiles' ;
+		    	}
+		    }
 
 
 	   	@endphp
