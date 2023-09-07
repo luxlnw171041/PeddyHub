@@ -538,6 +538,9 @@ class ImageController extends Controller
         // $files = Storage::files('public/check_in');
         // $type_part = "check_in";
 
+        echo $files[705];
+        exit();
+
         return view('Manage_resize_photos', compact('text_hello_world','files','type_part'));
     }
 
