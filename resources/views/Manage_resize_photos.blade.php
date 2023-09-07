@@ -139,6 +139,14 @@
 </div>
 
 <script>
+
+	document.addEventListener('DOMContentLoaded', (event) => {
+        // console.log("START");
+
+        document.querySelector('#sticky-header').remove();
+        document.querySelector('.main-footer').remove();
+        
+    });
 	
 	function resize_img(name_file,iii,type_part){
 
