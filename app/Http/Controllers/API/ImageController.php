@@ -504,11 +504,11 @@ class ImageController extends Controller
 
         $text_hello_world = "HELLO WORLD" ;
 
-        // $files = Storage::files('public/uploads');
-        // $type_part = "uploads";
+        $files = Storage::files('public/uploads');
+        $type_part = "uploads";
 
-        $files = Storage::files('public/check_in');
-        $type_part = "check_in";
+        // $files = Storage::files('public/check_in');
+        // $type_part = "check_in";
 
         return view('Manage_uploaded_photos', compact('text_hello_world','files','type_part'));
     }
@@ -532,11 +532,11 @@ class ImageController extends Controller
 
         $text_hello_world = "HELLO WORLD" ;
 
-        // $files = Storage::files('public/uploads');
-        // $type_part = "uploads";
+        $files = Storage::files('public/uploads');
+        $type_part = "uploads";
 
-        $files = Storage::files('public/check_in');
-        $type_part = "check_in";
+        // $files = Storage::files('public/check_in');
+        // $type_part = "check_in";
 
         return view('Manage_resize_photos', compact('text_hello_world','files','type_part'));
     }
