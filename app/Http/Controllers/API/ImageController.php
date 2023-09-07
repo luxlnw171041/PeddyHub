@@ -499,4 +499,32 @@ class ImageController extends Controller
         
     }
 
+    function Manage_uploaded_photos(Request $request){
+
+        $text_hello_world = "HELLO WORLD" ;
+
+        $files = Storage::files('public/uploads');
+        $type_part = "uploads";
+
+        // $files = Storage::files('public/check_in');
+        // $type_part = "check_in";
+
+        return view('Manage_uploaded_photos', compact('text_hello_world','files','type_part'));
+    }
+
+    function delete_uploaded_photos($name_file,$type_part){
+
+        $filename = 'public/'.$type_part.'/' . $name_file;
+
+        if (Storage::exists($filename)) {
+            Storage::delete($filename);
+            $text = 'ไฟล์ถูกลบออกแล้ว';
+        } else {
+            $text = 'ไม่พบไฟล์ที่ต้องการลบ';
+        }
+
+        return $name_file . " - " . $text ;
+
+    }
+
 }

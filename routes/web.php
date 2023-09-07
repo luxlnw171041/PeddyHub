@@ -41,6 +41,8 @@ Route::get('/how_to_use', function () {
 // ADMIN
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
+    Route::get('/Manage_uploaded_photos', 'API\ImageController@Manage_uploaded_photos');
+    
     Route::resource('text_topic', 'Text_topicController');
     Route::resource('hospital_near', 'Hospital_nearController');
     Route::resource('partner', 'PartnerController'); 
