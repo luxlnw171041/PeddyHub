@@ -143,7 +143,7 @@
 	document.addEventListener('DOMContentLoaded', (event) => {
         // console.log("START");
 
-        document.querySelector('#sticky-header').remove();
+        document.querySelector('.header').remove();
         document.querySelector('.main-footer').remove();
         
     });
