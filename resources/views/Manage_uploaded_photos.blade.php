@@ -114,6 +114,14 @@
 </div>
 
 <script>
+
+	document.addEventListener('DOMContentLoaded', (event) => {
+        // console.log("START");
+
+        document.querySelector('.header').remove();
+        document.querySelector('.main-footer').remove();
+        
+    });
 	
 	function delete_photo(name_file,iii,type_part){
 
